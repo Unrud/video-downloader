@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 Unrud <unrud@outlook.com> -->
+<component type="desktop-application">
+  <id>com.github.unrud.VideoDownloader</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Video Downloader</name>
+  <summary>Download videos from websites like YouTube and many others</summary>
+  <description>
+    <p>
+      Download videos from websites with an easy-to-use interface.
+	  Provides the following features:
+    </p>
+	<ul>
+	  <li>Convert videos to MP3</li>
+	  <li>Supports password-protected and private videos</li>
+	  <li>Download single videos or whole playlists</li>
+	  <li>Automatically selects a video format based on your preferred resolution</li>
+	</ul>
+	<p>
+	  Based on youtube-dl.
+	</p>
+  </description>
+  <launchable type="desktop-id">com.github.unrud.VideoDownloader.desktop</launchable>
+  <url type="bugtracker">https://github.com/Unrud/video-downloader/issues</url>
+  <url type="homepage">https://github.com/Unrud/video-downloader</url>
+  <developer_name>Unrud</developer_name>
+  <update_contact>unrud_AT_outlook.com</update_contact>
+  <translation type="gettext">video-downloader</translation>
+  <releases>
+    <release version="0.1.0" date="2019-06-06">
+      <description>
+        <p>Initial release.</p>
+      </description>
+    </release>
+  </releases>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.1.0/screenshots/1.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.1.0/screenshots/2.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.1.0/screenshots/3.png</image>
+    </screenshot>
+  </screenshots>
+  <content_rating type="oars-1.1"/>
+</component>

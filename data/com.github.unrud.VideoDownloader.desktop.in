@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Video Downloader
+Comment=Download videos from websites like YouTube and many others
+Exec=video-downloader
+Icon=com.github.unrud.VideoDownloader
+Terminal=false
+Type=Application
+Categories=Network;
