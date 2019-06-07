@@ -28,6 +28,11 @@
   <update_contact>unrud_AT_outlook.com</update_contact>
   <translation type="gettext">video-downloader</translation>
   <releases>
+    <release version="0.1.1" date="2019-06-08">
+      <description>
+        <p>Support videos with emoticons in the title.</p>
+      </description>
+    </release>
     <release version="0.1.0" date="2019-06-06">
       <description>
         <p>Initial release.</p>
@@ -36,13 +41,13 @@
   </releases>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.1.0/screenshots/1.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.1.1/screenshots/1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.1.0/screenshots/2.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.1.1/screenshots/2.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.1.0/screenshots/3.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.1.1/screenshots/3.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
