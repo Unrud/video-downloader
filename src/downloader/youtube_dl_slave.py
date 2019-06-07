@@ -158,6 +158,7 @@ class YoutubeDLSlave:
                         "preferredquality": "192",
                     }]
                 })
+            os.makedirs(target_dir, exist_ok=True)
             for i, info_path in enumerate(info_playlist):
                 self.handler.on_playlist_progress(i, len(info_playlist))
                 with open(info_path) as f:
