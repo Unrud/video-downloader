@@ -12,7 +12,7 @@ Based on [youtube-dl](http://ytdl-org.github.io/youtube-dl/).
 
 ## Installation
 
-Pending
+  * [Snap](https://snapcraft.io/video-downloader)
 
 ## Screenshots
 
