@@ -1,7 +1,5 @@
 import os
 import re
-import subprocess
-import shutil
 import tkinter as tk
 import tkinter.font
 from tkinter import ttk
@@ -17,8 +15,6 @@ class Platform:
         self._platform = []  # ["gnome", "nt", "x11"]
         self._xlib = None
         self._dpy = None
-        self._xprop_exe = None
-        self._xrdb_exe = None
         if "GNOME" in os.environ.get("XDG_CURRENT_DESKTOP", "").split(":"):
             self._platform.append("gnome")
         if re.match(r"X\d+R\d+", self.master.winfo_server()):
@@ -28,14 +24,10 @@ class Platform:
         if "x11" in self._platform:
             import Xlib
             import Xlib.display
-            self._xlib = Xlib
+            import Xlib.rdb
+            from Xlib import Xatom, Xutil
+            self._xlib, self._xatom, self._xutil = Xlib, Xatom, Xutil
             self._dpy = Xlib.display.Display()
-            self._xprop_exe = shutil.which("xprop")
-            self._xrdb_exe = shutil.which("xrdb")
-            for exe_name, exe in [("xprop", self._xprop_exe),
-                                  ("xrdb", self._xrdb_exe)]:
-                if exe is None:
-                    raise FileNotFoundError(repr(exe_name))
 
         initial_scaling = self.master.tk.call("tk", "scaling")
         if "x11" in self._platform and "gnome" in self._platform:
@@ -59,14 +51,6 @@ class Platform:
         Xlib = self._xlib
         window = self._dpy.create_resource_object("window", w.winfo_id())
         parent = window.query_tree().parent
-        subprocess.run(
-            [
-                self._xprop_exe, "-id", str(parent.id),
-                "-f", "_MOTIF_WM_HINTS", "32c",
-                "-set", "_MOTIF_WM_HINTS", "0x2, 0x0, 0x2, 0x0, 0x0"
-            ], check=True, stdout=subprocess.DEVNULL, stdin=subprocess.DEVNULL)
-        # TODO: Why does this not work?
-        """
         _MOTIF_WM_HINTS_STRUCT = Xlib.protocol.rq.Struct(
             Xlib.protocol.rq.Card32("flags"),
             Xlib.protocol.rq.Card32("functions", default=0),
@@ -79,18 +63,15 @@ class Platform:
         parent.change_property(
             _motif_wm_hints, _motif_wm_hints, 32,
             _MOTIF_WM_HINTS_STRUCT.to_binary(flags=0x2, decorations=0x2))
-        """
+        self._dpy.flush()
 
     def _set_X_scaling(self):
-        stdout = subprocess.check_output(
-            [self._xrdb_exe, "-query"], stdin=subprocess.DEVNULL,
-            universal_newlines=True)
-        db = {}
-        for line in stdout.split("\n"):
-            if ":" in line:
-                k, v = line.split(":", maxsplit=1)
-                db[k.strip()] = v.strip()
-        xdpi = int(db.get("Xft.dpi", BASE_DPI))
+        Xlib, Xatom, Xutil = self._xlib, self._xatom, self._xutil
+        rdbstring = self._dpy.screen().root.get_full_property(
+            Xatom.RESOURCE_MANAGER, Xatom.STRING)
+        rdbstring = rdbstring.value.decode() if rdbstring else None
+        rdb = Xlib.rdb.ResourceDB(string=rdbstring)
+        xdpi = int(rdb.get("Xft.dpi", "Xft.dpi", BASE_DPI))
         self.master.tk.call("tk", "scaling", xdpi / BASE_DPI)
 
     def _set_theme(self, unused_fonts, initial_scaling):
