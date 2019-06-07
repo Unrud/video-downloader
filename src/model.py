@@ -24,6 +24,7 @@ import typing
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
+from video_downloader.utils import sanitize_str_for_tk
 
 g_ = gettext.gettext
 
@@ -160,12 +161,12 @@ class Model(downloader.Handler):
     @call_in_mainloop
     def on_error(self, msg):
         assert self.page.get() == "download"
-        self.error.set(msg)
+        self.error.set(sanitize_str_for_tk(msg))
 
     @call_in_mainloop
     def on_progress(self, filename, progress, bytes_, bytes_total, eta, speed):
         assert self.page.get() == "download"
-        self.download_title.set(filename)
+        self.download_title.set(sanitize_str_for_tk(filename))
         self.download_progress.set(progress)
         self.download_bytes.set(bytes_)
         self.download_bytes_total.set(bytes_total)

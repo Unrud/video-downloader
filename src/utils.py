@@ -34,3 +34,7 @@ def wrap_text(s, wraplength=WRAPLENGTH):
             if not line:
                 break
     return "\n".join(new_lines)
+
+
+def sanitize_str_for_tk(s):
+    return "".join(c if ord(c) <= 0xffff else "�" for c in s)
