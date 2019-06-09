@@ -77,3 +77,8 @@ apps:
       - home
       - network
       - x11
+  youtube-dl:
+    command: bin/youtube-dl
+    plugs:
+      - home
+      - network
