@@ -60,12 +60,14 @@ parts:
           -i "${SNAPCRAFT_PART_INSTALL}/usr/local/bin/video-downloader"
 
 environment:
-# WORKAROUND: TCL library path is hardcoded
+  # WORKAROUND: TCL library path is hardcoded
   TCL_LIBRARY: "${SNAP}/usr/share/tcltk/tcl8.6"
-# WORKAROUND: .../pulseaudio subdirectory is missing from library path
+  # WORKAROUND: .../pulseaudio subdirectory is missing from library path
   LD_LIBRARY_PATH: "${SNAP}/usr/lib/aarch64-linux-gnu/pulseaudio:${SNAP}/usr/lib/arm-linux-gnueabihf/pulseaudio:${SNAP}/usr/lib/i386-linux-gnu/pulseaudio:${SNAP}/usr/lib/powerpc64le-linux-gnu/pulseaudio:${SNAP}/usr/lib/s390x-linux-gnu/pulseaudio:${SNAP}/usr/lib/x86_64-linux-gnu/pulseaudio"
-# WORKAROUND: HOME is set by video-downloader launcher to real home of user, keep the cache in snap's private home
+  # WORKAROUND: HOME is set by video-downloader launcher to real home of user, keep the cache in snap's private home
   XDG_CACHE_HOME: "${HOME}/.cache"
+  # WORKAROUND: Allow youtube-dl to use UTF-8 filenames
+  LC_ALL: C.UTF-8
 
 apps:
   video-downloader:
