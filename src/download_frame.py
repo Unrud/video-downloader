@@ -36,7 +36,6 @@ class DownloadFrame(ttk.Frame):
     def on_download_progress_changed(self, *_):
         download_progress = self.master.model.download_progress.get()
         if download_progress < 0:
-            self.download_progress_internal.set(0)
             self.download_progressbar.config(mode="indeterminate")
         else:
             self.download_progress_internal.set(download_progress)
