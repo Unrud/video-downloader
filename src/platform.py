@@ -83,12 +83,12 @@ class Platform:
             # Font sizes in px are scaled by initial scaling value
             return round(abs(v) / initial_scaling)
 
+        for name in ["TkDefaultFont", "TkTextFont", "TkFixedFont",
+                     "TkMenuFont", "TkHeadingFont", "TkCaptionFont",
+                     "TkSmallCaptionFont", "TkIconFont", "TkTooltipFont"]:
+            font = tk.font.nametofont(name)
+            font.config(size=font_px_to_pt(font.config()["size"]))
         default_font = tk.font.nametofont("TkDefaultFont")
-        default_font.config(size=font_px_to_pt(default_font.config()["size"]))
-        text_font = tk.font.nametofont("TkTextFont")
-        text_font.config(size=font_px_to_pt(text_font.config()["size"]))
-        fixed_font = tk.font.nametofont("TkFixedFont")
-        fixed_font.config(size=font_px_to_pt(fixed_font.config()["size"]))
         title_font = unused_fonts.pop()
         title_font.config(**default_font.config())
         title_font.config(weight="bold")
