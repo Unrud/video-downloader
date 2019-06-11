@@ -103,7 +103,7 @@ class DownloadFrame(ttk.Frame):
                                     text=g_("Video Downloader"))
             self.master.bind_window_drag_handler(title_label)
         self.cancel_button = ttk.Button(
-            header, style="Header.TButton", text=g_("Abbrechen"),
+            header, style="Header.TButton", text=g_("Cancel"),
             command=self.master.model.cancel)
         self.master.make_header(header, self.cancel_button, title_label)
         header.pack(fill=tk.X, side=tk.TOP)
