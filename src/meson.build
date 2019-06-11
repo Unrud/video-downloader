@@ -29,6 +29,7 @@ video_downloader_sources = [
   'model.py',
   'platform.py',
   'playlist_dialog.py',
+  'resize_label.py',
   'success_frame.py',
   'utils.py',
   'videopassword_dialog.py',

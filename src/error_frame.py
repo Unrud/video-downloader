@@ -20,7 +20,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from video_downloader import PAD
-from video_downloader.utils import wrap_text
+from video_downloader.resize_label import ResizeLabel
 
 g_ = gettext.gettext
 
@@ -32,10 +32,6 @@ class ErrorFrame(ttk.Frame):
 
     def focus_set(self):
         self.back_button.focus_set()
-
-    def on_error_changed(self, *_):
-        self.message_label.config(
-            text=wrap_text(self.master.model.error.get()))
 
     def create_widgets(self):
         header = ttk.Frame(self)
@@ -57,8 +53,7 @@ class ErrorFrame(ttk.Frame):
             self, style="Title.TLabel", text=g_("Download failed"))
         self.message_title_label.grid(column=1, row=1, sticky=tk.W, padx=PAD,
                                       pady=PAD)
-        self.message_label = ttk.Label(self)
-        self.message_label.grid(column=1, row=2, sticky=tk.N+tk.W, padx=PAD,
-                                pady=PAD)
-        self.master.model.error.trace("w", self.on_error_changed)
-        self.on_error_changed()
+        self.message_label = ResizeLabel(
+            self, textvariable=self.master.model.error)
+        self.message_label.grid(column=1, row=2, sticky=tk.N+tk.W+tk.E,
+                                padx=PAD, pady=PAD)

@@ -21,7 +21,7 @@ import tkinter as tk
 from tkinter import ttk
 
 from video_downloader import PAD
-from video_downloader.utils import wrap_text
+from video_downloader.resize_label import ResizeLabel
 
 g_ = gettext.gettext
 
@@ -39,8 +39,7 @@ class SuccessFrame(ttk.Frame):
         user_dir = os.path.expanduser("~")
         if os.path.commonpath([user_dir, download_target_dir]) == user_dir:
             download_target_dir = "~" + download_target_dir[len(user_dir):]
-        self.message_label.config(
-            text=wrap_text(g_("Saved in {}").format(download_target_dir)))
+        self.message_label.text = g_("Saved in {}").format(download_target_dir)
 
     def create_widgets(self):
         header = ttk.Frame(self)
@@ -62,9 +61,9 @@ class SuccessFrame(ttk.Frame):
             self, style="Title.TLabel", text=g_("Download finished"))
         self.message_title_label.grid(column=1, row=1, sticky=tk.W, padx=PAD,
                                       pady=PAD)
-        self.message_label = ttk.Label(self)
-        self.message_label.grid(column=1, row=2, sticky=tk.N+tk.W, padx=PAD,
-                                pady=PAD)
+        self.message_label = ResizeLabel(self)
+        self.message_label.grid(column=1, row=2, sticky=tk.N+tk.W+tk.E,
+                                padx=PAD, pady=PAD)
         self.master.model.download_target_dir.trace(
             "w", self.on_download_target_dir_changed)
         self.on_download_target_dir_changed()

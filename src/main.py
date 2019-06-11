@@ -44,8 +44,8 @@ class App(BaseWindowMixin, tk.Tk, Handler):
         f2 = tk.font.Font(self)
         BaseWindowMixin.__init__(self, Platform(self, [f1, f2]))
         self.active_page = None
-        self.minsize(self.pt_to_px(480), self.pt_to_px(180))
-        self.resizable(False, False)
+        self.minsize(round(self.winfo_fpixels("480p")),
+                     round(self.winfo_fpixels("180p")))
         self.title(g_("Video Downloader"))
         self.model = Model(self, self)
         self.protocol("WM_DELETE_WINDOW", self.quit)

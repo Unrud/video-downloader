@@ -20,7 +20,8 @@ import gettext
 import tkinter as tk
 from tkinter import ttk
 
-from video_downloader import PAD, WRAPLENGTH
+from video_downloader import PAD
+from video_downloader.resize_label import ResizeLabel
 
 g_ = gettext.gettext
 
@@ -81,18 +82,16 @@ class DownloadFrame(ttk.Frame):
         self.download_bytes_label.config(text=text)
 
     def on_download_title_changed(self, *_):
-        filename = self.master.model.download_title.get()
+        filename = self.master.model.download_filename.get()
         playlist_count = self.master.model.download_playlist_count.get()
         playlist_index = self.master.model.download_playlist_index.get()
         title = g_("Downloading")
         if playlist_count > 1:
-            title = "{} ({} of {})".format(title, playlist_index + 1,
-                                           playlist_count)
+            title = g_("{} ({} of {})").format(title, playlist_index + 1,
+                                               playlist_count)
         if filename:
             title = "{}: {}".format(title, filename)
-        if len(title) > WRAPLENGTH:
-            title = title[:WRAPLENGTH - 1] + "…"
-        self.download_title_label.config(text=title)
+        self.download_title_label.text = title
 
     def create_widgets(self):
         self.download_progress_internal = tk.IntVar(self)
@@ -108,8 +107,9 @@ class DownloadFrame(ttk.Frame):
             command=self.master.model.cancel)
         self.master.make_header(header, self.cancel_button, title_label)
         header.pack(fill=tk.X, side=tk.TOP)
-        self.download_title_label = ttk.Label(self, style="Title.TLabel")
-        self.download_title_label.pack(anchor=tk.W, side=tk.TOP, padx=PAD,
+        self.download_title_label = ResizeLabel(
+            self, style="Title.TLabel", overflow=True)
+        self.download_title_label.pack(fill=tk.X, side=tk.TOP, padx=PAD,
                                        pady=PAD)
         self.download_progressbar = ttk.Progressbar(
             self, variable=self.download_progress_internal)
@@ -118,7 +118,7 @@ class DownloadFrame(ttk.Frame):
         self.download_bytes_label = ttk.Label(self)
         self.download_bytes_label.pack(anchor=tk.W, side=tk.TOP, padx=PAD,
                                        pady=PAD)
-        self.master.model.download_title.trace(
+        self.master.model.download_filename.trace(
             "w", self.on_download_title_changed)
         self.master.model.download_playlist_count.trace(
             "w", self.on_download_title_changed)

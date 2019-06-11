@@ -15,26 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from video_downloader import WRAPLENGTH
-
-
-def wrap_text(s, wraplength=WRAPLENGTH):
-    lines = s.split("\n")
-    new_lines = []
-    for _, line in enumerate(lines):
-        while True:
-            wrap_start = wrap_end = wraplength
-            if len(line) > wrap_start:
-                p = line[:wrap_start].rfind(" ")
-                if p >= 0:
-                    wrap_start = p
-                    wrap_end = p + 1
-            new_lines.append(line[:wrap_start])
-            line = line[wrap_end:]
-            if not line:
-                break
-    return "\n".join(new_lines)
-
 
 def sanitize_str_for_tk(s):
     return "".join(c if ord(c) <= 0xffff else "�" for c in s)

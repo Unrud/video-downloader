@@ -55,7 +55,7 @@ class Model(downloader.Handler):
         self.error = tk.StringVar(self.master)
         self.download_playlist_index = tk.IntVar(self.master)
         self.download_playlist_count = tk.IntVar(self.master)
-        self.download_title = tk.StringVar(self.master)
+        self.download_filename = tk.StringVar(self.master)
         # 0-100 (inclusive), -1 if unknown:
         self.download_progress = tk.IntVar(self.master)
         self.download_bytes = tk.IntVar(self.master)  # -1 if unknown
@@ -101,7 +101,7 @@ class Model(downloader.Handler):
         self.cancelled = False
         self.download_playlist_index.set(0)
         self.download_playlist_count.set(0)
-        self.download_title.set("")
+        self.download_filename.set("")
         self.download_progress.set(-1)
         self.download_bytes.set(-1)
         self.download_bytes_total.set(-1)
@@ -166,7 +166,7 @@ class Model(downloader.Handler):
     @call_in_mainloop
     def on_progress(self, filename, progress, bytes_, bytes_total, eta, speed):
         assert self.page.get() == "download"
-        self.download_title.set(sanitize_str_for_tk(filename))
+        self.download_filename.set(sanitize_str_for_tk(filename))
         self.download_progress.set(progress)
         self.download_bytes.set(bytes_)
         self.download_bytes_total.set(bytes_total)

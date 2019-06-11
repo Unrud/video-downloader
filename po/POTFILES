@@ -11,6 +11,7 @@ src/main.py
 src/model.py
 src/platform.py
 src/playlist_dialog.py
+src/resize_label.py
 src/success_frame.py
 src/utils.py
 src/videopassword_dialog.py

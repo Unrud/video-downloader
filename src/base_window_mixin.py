@@ -27,9 +27,6 @@ class BaseWindowMixin:
         self.platform.window_apply(self)
         self.window_drag_pos = None
 
-    def pt_to_px(self, pt):
-        return round(pt * self.winfo_fpixels("1p"))
-
     def bind_window_drag_handler(self, widget):
         if self.platform.custom_titlebar:
             widget.bind("<ButtonPress-1>", self.on_window_drag_start)
