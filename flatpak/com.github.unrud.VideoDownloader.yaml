@@ -70,8 +70,6 @@ modules:
         url: https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz
         sha256: da60b54064d4cfcd9c26576f6df2690e62085123826cff2e667e72a91952d318
 
-  - shared-modules/lame/lame-3.99.5.json
-
   - name: chrpath
     cleanup:
       - "*"
@@ -129,7 +127,7 @@ modules:
   - name: setuptools-scm
     buildsystem: simple
     build-commands:
-      - python3 -O -mpip install . --prefix=/app --no-index --find-links .
+      - pip3 install . --prefix=/app --no-index --find-links .
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/83/44/53cad68ce686585d12222e6769682c4bdb9686808d2739671f9175e2938b/setuptools_scm-3.3.3.tar.gz
@@ -138,7 +136,7 @@ modules:
   - name: python-xlib
     buildsystem: simple
     build-commands:
-      - python3 -O -mpip install . --prefix=/app --no-index --find-links .
+      - pip3 install . --prefix=/app --no-index --find-links .
     sources:
       - type: archive
         url: https://github.com/python-xlib/python-xlib/archive/0.25.tar.gz
@@ -147,7 +145,7 @@ modules:
   - name: pyxattr
     buildsystem: simple
     build-commands:
-      - python3 -O -mpip install . --prefix=/app --no-index --find-links .
+      - pip3 install . --prefix=/app --no-index --find-links .
     sources:
       - type: archive
         url: https://github.com/iustin/pyxattr/releases/download/pyxattr-v0.6.1/pyxattr-0.6.1.tar.gz
@@ -157,7 +155,7 @@ modules:
     # Missing optional dependencies mpv and phantomjs
     buildsystem: simple
     build-commands:
-      - python3 -O -mpip install . --prefix=/app --no-index --find-links .
+      - pip3 install . --prefix=/app --no-index --find-links .
     cleanup:
       - /etc
       - /share/doc
