@@ -163,7 +163,7 @@ modules:
     sources:
       - type: archive
         url: https://yt-dl.org/downloads/2019.08.02/youtube-dl-2019.08.02.tar.gz
-        sha256: f32828acecb4282c87eaa554d2e1db74e418cd6845843012463a3324028bdd9d
+        sha256: 573c37add3e6107bf0c3c8ce43443bb788957d7bfb5e736cee6b32e3b2342b80
 
   - name: video-downloader
     buildsystem: meson
