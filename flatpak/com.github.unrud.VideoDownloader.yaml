@@ -96,8 +96,8 @@ modules:
       - /share/ffmpeg
     sources:
       - type: archive
-        url: https://ffmpeg.org/releases/ffmpeg-4.1.4.tar.xz
-        sha256: f1f049a82fcfbf156564e73a3935d7e750891fab2abf302e735104fd4050a7e1
+        url: https://ffmpeg.org/releases/ffmpeg-4.2.tar.xz
+        sha256: 023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5
 
   - name: rtmpdump
     buildsystem: simple
@@ -162,8 +162,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://yt-dl.org/downloads/2019.08.02/youtube-dl-2019.08.02.tar.gz
-        sha256: 573c37add3e6107bf0c3c8ce43443bb788957d7bfb5e736cee6b32e3b2342b80
+        url: https://yt-dl.org/downloads/2019.08.13/youtube-dl-2019.08.13.tar.gz
+        sha256: b23d59df96f9dccf34d9c48b65e7bc93532f1ebc4bf71b9285f228bc6086242d
 
   - name: video-downloader
     buildsystem: meson
