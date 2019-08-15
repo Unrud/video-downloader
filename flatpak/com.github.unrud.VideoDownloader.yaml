@@ -78,6 +78,25 @@ modules:
         url: http://deb.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz
         sha256: bb0d4c54bac2990e1bdf8132f2c9477ae752859d523e141e72b3b11a12c26e7b
 
+  - name: pillow
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/51/fe/18125dc680720e4c3086dd3f5f95d80057c41ab98326877fc7d3ff6d0ee5/Pillow-6.1.0.tar.gz
+        sha256: 0804f77cb1e9b6dbd37601cee11283bba39a8d44b9ddb053400c58e0c0d7d9de
+    buildsystem: simple
+    build-commands:
+      - pip3 install . --prefix=/app --no-index --find-links .
+    build-options:
+      arch:
+        aarch64:
+          ldflags: -L/usr/lib/aarch64-linux-gnu
+        arm:
+          ldflags: -L/usr/lib/arm-linux-gnueabihf
+        i386:
+          ldflags: -L/usr/lib/i386-linux-gnu
+        x86_64:
+          ldflags: -L/usr/lib/x86_64-linux-gnu
+
   - name: ffmpeg
     config-opts:
       - --enable-shared

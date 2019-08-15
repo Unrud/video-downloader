@@ -1,3 +1,5 @@
+pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
+
 desktop_file = i18n.merge_file(
   input: 'com.github.unrud.VideoDownloader.desktop.in',
   output: 'com.github.unrud.VideoDownloader.desktop',
@@ -54,3 +56,16 @@ foreach res : [16, 32, 48, 64, 128, 256, 512]
   )
 endforeach
 meson.add_install_script('build-aux/meson/rename-icons.sh')
+
+custom_target(
+  'icon.png',
+  input: icon_svg,
+  output: 'icon.png',
+  command: [
+    rsvg_util,
+    '--height', '128', '--keep-aspect-ratio',
+    '--format', 'png', '--output', '@OUTPUT@', '@INPUT@'
+  ],
+  install: true,
+  install_dir: pkgdatadir,
+)

@@ -23,6 +23,8 @@ import sys
 import threading
 import typing
 
+from video_downloader import pkgdatadir
+
 MAX_RESOLUTION = 2**32
 
 
@@ -38,7 +40,6 @@ class Downloader(threading.Thread):
         self.process.wait()
 
     def start(self):
-        pkgdatadir = os.path.abspath(os.path.join(__file__, *[os.pardir]*3))
         env = os.environ.copy()
         pythonpath = env.get("PYTHONPATH", "")
         env["PYTHONPATH"] = pythonpath = (

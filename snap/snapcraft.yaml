@@ -41,6 +41,7 @@ parts:
       - gettext
       - librsvg2-bin
     stage-packages:
+      - python3-pil.imagetk
       - python3-tk
       - python3-xlib
       - xdg-user-dirs

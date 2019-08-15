@@ -18,10 +18,13 @@
 import argparse
 import contextlib
 import gettext
+import os
 import tkinter as tk
 import tkinter.font
+from PIL import Image, ImageTk
 from tkinter import ttk
 
+from video_downloader import pkgdatadir
 from video_downloader.base_window_mixin import BaseWindowMixin
 from video_downloader.download_frame import DownloadFrame
 from video_downloader.error_frame import ErrorFrame
@@ -42,6 +45,9 @@ class App(BaseWindowMixin, tk.Tk, Handler):
         # BUG: Fonts don't work, when they are not created here.
         f1 = tk.font.Font(self)
         f2 = tk.font.Font(self)
+        icon = Image.open(os.path.join(pkgdatadir, "icon.png"))
+        icon = ImageTk.PhotoImage(icon)
+        self.wm_iconphoto(True, icon)
         BaseWindowMixin.__init__(self, Platform(self, [f1, f2]))
         self.active_page = None
         self.minsize(round(self.winfo_fpixels("480p")),
