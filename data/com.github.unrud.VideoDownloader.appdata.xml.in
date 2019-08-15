@@ -9,17 +9,17 @@
   <description>
     <p>
       Download videos from websites with an easy-to-use interface.
-	  Provides the following features:
+      Provides the following features:
     </p>
-	<ul>
-	  <li>Convert videos to MP3</li>
-	  <li>Supports password-protected and private videos</li>
-	  <li>Download single videos or whole playlists</li>
-	  <li>Automatically selects a video format based on your preferred resolution</li>
-	</ul>
-	<p>
-	  Based on youtube-dl.
-	</p>
+    <ul>
+      <li>Convert videos to MP3</li>
+      <li>Supports password-protected and private videos</li>
+      <li>Download single videos or whole playlists</li>
+      <li>Automatically selects a video format based on your preferred resolution</li>
+    </ul>
+    <p>
+      Based on youtube-dl.
+    </p>
   </description>
   <launchable type="desktop-id">com.github.unrud.VideoDownloader.desktop</launchable>
   <url type="bugtracker">https://github.com/Unrud/video-downloader/issues</url>
