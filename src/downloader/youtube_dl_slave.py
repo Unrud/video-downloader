@@ -140,6 +140,9 @@ class YoutubeDLSlave:
                         fullplaylist_dir, ydl_opts, url)
                 else:
                     info_playlist = info_noplaylist
+            elif len(info_testplaylist) > 1:
+                info_playlist = self.load_playlist(
+                    fullplaylist_dir, ydl_opts, url)
             else:
                 info_playlist = info_testplaylist
             del ydl_opts["writeinfojson"]
