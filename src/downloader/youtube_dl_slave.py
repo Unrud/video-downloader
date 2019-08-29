@@ -119,8 +119,8 @@ class YoutubeDLSlave:
             ydl_opts["cookiefile"] = os.path.join(temp_dir, "cookies")
             testplaylist_dir = os.path.join(temp_dir, "testplaylist")
             noplaylist_dir = os.path.join(temp_dir, "noplaylist")
-            yesplaylist_dir = os.path.join(temp_dir, "yesplaylist")
-            for path in [testplaylist_dir, noplaylist_dir, yesplaylist_dir]:
+            fullplaylist_dir = os.path.join(temp_dir, "fullplaylist")
+            for path in [testplaylist_dir, noplaylist_dir, fullplaylist_dir]:
                 os.mkdir(path)
             # Test playlist
             info_testplaylist = self.load_playlist(
@@ -136,13 +136,12 @@ class YoutubeDLSlave:
             if len(info_testplaylist) > len(info_noplaylist):
                 ydl_opts["noplaylist"] = not self.handler.on_playlist_request()
                 if not ydl_opts["noplaylist"]:
-                    info_yesplaylist = self.load_playlist(
-                        yesplaylist_dir, ydl_opts, url)
+                    info_playlist = self.load_playlist(
+                        fullplaylist_dir, ydl_opts, url)
                 else:
-                    info_yesplaylist = info_noplaylist
-                info_playlist = info_yesplaylist
+                    info_playlist = info_noplaylist
             else:
-                info_playlist = info_yesplaylist = info_testplaylist
+                info_playlist = info_testplaylist
             del ydl_opts["writeinfojson"]
             del ydl_opts["skip_download"]
             del ydl_opts["outtmpl"]
