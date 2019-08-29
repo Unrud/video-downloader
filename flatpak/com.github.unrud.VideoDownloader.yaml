@@ -99,9 +99,12 @@ modules:
 
   - name: ffmpeg
     config-opts:
-      - --enable-shared
-      - --disable-static
+      - --disable-debug
       - --disable-doc
+      - --disable-static
+      - --enable-gpl
+      - --enable-optimizations
+      - --enable-shared
       - --disable-ffplay
       - --disable-devices
       - --enable-gnutls
