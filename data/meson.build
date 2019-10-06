@@ -21,7 +21,7 @@ appstream_file = i18n.merge_file(
   output: 'com.github.unrud.VideoDownloader.appdata.xml',
   po_dir: '../po',
   install: true,
-  install_dir: join_paths(get_option('datadir'), 'metainfo')
+  install_dir: join_paths(get_option('datadir'), 'appdata')
 )
 
 appstream_util = find_program('appstream-util', required: false)
