@@ -1,6 +1,6 @@
 app-id: com.github.unrud.VideoDownloader
 runtime: org.freedesktop.Platform
-runtime-version: '18.08'
+runtime-version: '19.08'
 sdk: org.freedesktop.Sdk
 command: video-downloader
 finish-args:
@@ -67,8 +67,8 @@ modules:
       - cp -a _flatpak_install/app/lib/python3.7/tkinter _flatpak_install/app/lib/python3.7/lib-dynload/_tkinter.* /app/lib/python3.7/site-packages
     sources:
       - type: archive
-        url: https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tar.xz
-        sha256: da60b54064d4cfcd9c26576f6df2690e62085123826cff2e667e72a91952d318
+        url: https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz
+        sha256: fb799134b868199930b75f26678f18932214042639cd52b16da7fd134cd9b13f
 
   - name: chrpath
     cleanup:
@@ -81,8 +81,8 @@ modules:
   - name: pillow
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/51/fe/18125dc680720e4c3086dd3f5f95d80057c41ab98326877fc7d3ff6d0ee5/Pillow-6.1.0.tar.gz
-        sha256: 0804f77cb1e9b6dbd37601cee11283bba39a8d44b9ddb053400c58e0c0d7d9de
+        url: https://files.pythonhosted.org/packages/5b/bb/cdc8086db1f15d0664dd22a62c69613cdc00f1dd430b5b19df1bea83f2a3/Pillow-6.2.1.tar.gz
+        sha256: bf4e972a88f8841d8fdc6db1a75e0f8d763e66e3754b03006cbc3854d89f1cb1
     buildsystem: simple
     build-commands:
       - pip3 install . --prefix=/app --no-index --find-links .
