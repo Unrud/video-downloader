@@ -71,7 +71,7 @@ class Platform:
             Xatom.RESOURCE_MANAGER, Xatom.STRING)
         rdbstring = rdbstring.value.decode() if rdbstring else None
         rdb = Xlib.rdb.ResourceDB(string=rdbstring)
-        xdpi = int(rdb.get("Xft.dpi", "Xft.dpi", BASE_DPI))
+        xdpi = float(rdb.get("Xft.dpi", "Xft.dpi", BASE_DPI))
         self.master.tk.call("tk", "scaling", xdpi / BASE_DPI)
 
     def _set_theme(self, unused_fonts, initial_scaling):
