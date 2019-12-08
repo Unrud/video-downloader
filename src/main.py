@@ -20,9 +20,8 @@ import contextlib
 import gettext
 import os
 import tkinter as tk
-import tkinter.font
+import tkinter.font as tk_font
 from PIL import Image, ImageTk
-from tkinter import ttk
 
 from video_downloader import pkgdatadir
 from video_downloader.base_window_mixin import BaseWindowMixin
@@ -43,8 +42,8 @@ class App(BaseWindowMixin, tk.Tk, Handler):
     def __init__(self):
         tk.Tk.__init__(self)
         # BUG: Fonts don't work, when they are not created here.
-        f1 = tk.font.Font(self)
-        f2 = tk.font.Font(self)
+        f1 = tk_font.Font(self)
+        f2 = tk_font.Font(self)
         icon = Image.open(os.path.join(pkgdatadir, "icon.png"))
         icon = ImageTk.PhotoImage(icon)
         self.wm_iconphoto(True, icon)

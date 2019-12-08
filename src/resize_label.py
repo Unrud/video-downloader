@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import tkinter as tk
-import tkinter.font
+import tkinter.font as tk_font
 from tkinter import ttk
 
 
@@ -45,7 +45,7 @@ class ResizeLabel:
             ss = s.configure(style_name) or {}
             font_name = ss.get("font", font_name)
             borderwidth_dim = ss.get("borderwidth", borderwidth_dim)
-        self._font = tk.font.nametofont(font_name)
+        self._font = tk_font.nametofont(font_name)
         self._borderwidth = round(self._frame.winfo_fpixels(borderwidth_dim))
         self._configured_size = None
         self._textvariable.trace("w", self._on_textvariable_changed)

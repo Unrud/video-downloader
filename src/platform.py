@@ -1,7 +1,6 @@
 import os
 import re
-import tkinter as tk
-import tkinter.font
+import tkinter.font as tk_font
 from tkinter import ttk
 
 from video_downloader import BASE_DPI
@@ -66,7 +65,7 @@ class Platform:
         self._dpy.flush()
 
     def _set_X_scaling(self):
-        Xlib, Xatom, Xutil = self._xlib, self._xatom, self._xutil
+        Xlib, Xatom = self._xlib, self._xatom
         rdbstring = self._dpy.screen().root.get_full_property(
             Xatom.RESOURCE_MANAGER, Xatom.STRING)
         rdbstring = rdbstring.value.decode() if rdbstring else None
@@ -86,9 +85,9 @@ class Platform:
         for name in ["TkDefaultFont", "TkTextFont", "TkFixedFont",
                      "TkMenuFont", "TkHeadingFont", "TkCaptionFont",
                      "TkSmallCaptionFont", "TkIconFont", "TkTooltipFont"]:
-            font = tk.font.nametofont(name)
+            font = tk_font.nametofont(name)
             font.config(size=font_px_to_pt(font.config()["size"]))
-        default_font = tk.font.nametofont("TkDefaultFont")
+        default_font = tk_font.nametofont("TkDefaultFont")
         title_font = unused_fonts.pop()
         title_font.config(**default_font.config())
         title_font.config(weight="bold")
