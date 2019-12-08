@@ -129,6 +129,7 @@ class App(BaseWindowMixin, tk.Tk, Handler):
         menu.entryconfig(1, state=tk.NORMAL if select else tk.DISABLED,
                          command=lambda: widget.event_generate("<<Copy>>"))
         menu.entryconfig(2, command=lambda: widget.event_generate("<<Paste>>"))
+        self.platform.apply_tk_theme(menu)
         self.tk.call("tk_popup", menu, event.x_root, event.y_root)
 
 

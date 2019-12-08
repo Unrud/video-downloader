@@ -121,6 +121,7 @@ class MainFrame(ttk.Frame):
                 self.master.model.resolutionIndex.set(i)
             self.resolution_menu.add_command(
                 label=resolution_name, command=on_resolution)
+        self.master.platform.apply_tk_theme(self.resolution_menu)
         self.resolution_menubutton = ttk.Menubutton(
             self.video_frame, direction="below", width=20,
             menu=self.resolution_menu,

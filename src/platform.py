@@ -113,3 +113,16 @@ class Platform:
               darkcolor=[("pressed", "#163661")],
               lightcolor=[("pressed", "#225394")])
         s.configure("Icon.TLabel", font=icon_font)
+
+    def apply_tk_theme(self, widget):
+        s = ttk.Style(self.master)
+        if widget.winfo_class() == "Menu":
+            widget.config(background=s.lookup("TButton", "background"),
+                          foreground=s.lookup("TButton", "foreground"),
+                          activebackground=s.lookup("TButton", "background",
+                                                    state=["active"]),
+                          activeforeground=s.lookup("TButton", "foreground",
+                                                    state=["active"]),
+                          disabledforeground=s.lookup("TButton", "foreground",
+                                                      state=["disabled"]),
+                          font=s.lookup("TButton", "font"))
