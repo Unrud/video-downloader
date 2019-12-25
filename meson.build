@@ -1,4 +1,4 @@
-project('video-downloader',         version: '0.1.7',
+project('video-downloader',         version: '0.1.8',
   meson_version: '>= 0.40.0',
 )
 
