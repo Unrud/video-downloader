@@ -27,8 +27,8 @@ modules:
       - /lib/*.sh
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.9-src.tar.gz
-        sha256: ad0cd2de2c87b9ba8086b43957a0de3eb2eb565c7159d5f53ccbba3feb915f4e
+        url: https://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.10-src.tar.gz
+        sha256: 5196dbf6638e3df8d5c87b5815c8c2b758496eb6f0e41446596c9a4e638d87ed
 
   - name: tk
     config-opts:
@@ -48,8 +48,8 @@ modules:
       - /lib/*.sh
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/sourceforge/tcl/tk8.6.9-src.tar.gz
-        sha256: d3f9161e8ba0f107fe8d4df1f6d3a14c30cc3512dfc12a795daa367a27660dac
+        url: https://downloads.sourceforge.net/sourceforge/tcl/tk8.6.10-src.tar.gz
+        sha256: 63df418a859d0a463347f95ded5cd88a3dd3aaa1ceecaeee362194bc30f3e386
 
   - name: tkinter
     config-opts:
@@ -81,8 +81,8 @@ modules:
   - name: pillow
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/5b/bb/cdc8086db1f15d0664dd22a62c69613cdc00f1dd430b5b19df1bea83f2a3/Pillow-6.2.1.tar.gz
-        sha256: bf4e972a88f8841d8fdc6db1a75e0f8d763e66e3754b03006cbc3854d89f1cb1
+        url: https://github.com/python-pillow/Pillow/archive/6.2.1.tar.gz
+        sha256: 7bf2d6bdb68fa6ccec15c0fd9aa20fac9641cd20dc6079344f5a6534e13a70f9
     buildsystem: simple
     build-commands:
       - pip3 install . --prefix=/app --no-index --find-links .
@@ -161,8 +161,8 @@ modules:
       - pip3 install . --prefix=/app --no-index --find-links .
     sources:
       - type: archive
-        url: https://github.com/python-xlib/python-xlib/archive/0.25.tar.gz
-        sha256: 376498149e0ecc70a11b33882da68fc587b2f422a2b1fe0d9169fda8b566d14d
+        url: https://github.com/python-xlib/python-xlib/releases/download/0.26/python-xlib-0.26.tar.bz2
+        sha256: b819c7e5f55830305919d78ea42b0cbd5e13687f5d12aa53556c33674b9876df
 
   - name: pyxattr
     buildsystem: simple
@@ -170,8 +170,8 @@ modules:
       - pip3 install . --prefix=/app --no-index --find-links .
     sources:
       - type: archive
-        url: https://github.com/iustin/pyxattr/releases/download/pyxattr-v0.6.1/pyxattr-0.6.1.tar.gz
-        sha256: b525843f6b51036198b3b87c4773a5093d6dec57d60c18a1f269dd7059aa16e3
+        url: https://github.com/iustin/pyxattr/releases/download/v0.7.1/pyxattr-0.7.1.tar.gz
+        sha256: 965388dd629334e850aa989a67d2360ec8257cfe8f67d07c29f980d3152f2882
 
   - name: youtube-dl
     # Missing optional dependencies mpv and phantomjs
@@ -184,8 +184,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://yt-dl.org/downloads/2019.11.28/youtube-dl-2019.11.28.tar.gz
-        sha256: 93dfcb77811cafb5aef090504eb43e8fd3fca0df694676a4ff71023a6ce3b1a7
+        url: https://yt-dl.org/downloads/2019.12.25/youtube-dl-2019.12.25.tar.gz
+        sha256: 0ea2f15fa68f97ce5a57077a126a85f425cbc996af59e022a4f19fb3d3e6c78d
 
   - name: video-downloader
     buildsystem: meson
