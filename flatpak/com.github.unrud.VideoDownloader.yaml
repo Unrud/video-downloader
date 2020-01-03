@@ -184,8 +184,8 @@ modules:
       - /share/man
     sources:
       - type: archive
-        url: https://yt-dl.org/downloads/2019.12.25/youtube-dl-2019.12.25.tar.gz
-        sha256: 0ea2f15fa68f97ce5a57077a126a85f425cbc996af59e022a4f19fb3d3e6c78d
+        url: https://yt-dl.org/downloads/2020.01.01/youtube-dl-2020.01.01.tar.gz
+        sha256: 0ab06abce0eecf77b6ceed4c06613325ede4e72e1a6ff528be320277250a1b5d
 
   - name: video-downloader
     buildsystem: meson
