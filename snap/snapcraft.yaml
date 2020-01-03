@@ -1,23 +1,28 @@
 name: video-downloader
-adopt-info: video-downloader
-title: Video Downloader
-# WORKAROUND: Snapcraft doesn't normalize whitespaces in description from AppStream
-description: |
-  Download videos from websites with an easy-to-use interface.
-  Provides the following features:
-
-  - Convert videos to MP3
-  - Supports password-protected and private videos
-  - Download single videos or whole playlists
-  - Automatically selects a video format based on your preferred resolution
-
-  Based on youtube-dl.
 # WORKAROUND: Snapcraft doesn't accept GPL-3.0-or-later
 license: GPL-3.0
-icon: data/com.github.unrud.VideoDownloader.svg
-confinement: strict
 grade: stable
+adopt-info: video-downloader
+
 base: core18
+confinement: strict
+
+apps:
+  video-downloader:
+    command: usr/bin/video-downloader
+    plugs:
+      - desktop
+      - desktop-legacy
+      - home
+      - network
+      - x11
+    common-id: com.github.unrud.VideoDownloader
+    desktop: usr/share/applications/com.github.unrud.VideoDownloader.desktop
+  youtube-dl:
+    command: bin/youtube-dl
+    plugs:
+      - home
+      - network
 
 parts:
   youtube-dl:
@@ -32,11 +37,17 @@ parts:
       - libslang2  # required by ffmpeg
       - python3-pyxattr
       - rtmpdump
+    override-build: |
+      snapcraftctl build
+      # WORKAROUND: Use correct python version
+      sed -e '1c#!/usr/bin/env python3' -i "${SNAPCRAFT_PART_INSTALL}/bin/youtube-dl"
 
   video-downloader:
     plugin: meson
     source: .
     source-type: git
+    # WORKAROUND: Fake installation location, to find dependencies when running
+    meson-parameters: [--prefix=/snap/video-downloader/current/usr]
     build-packages:
       - gettext
       - librsvg2-bin
@@ -45,43 +56,27 @@ parts:
       - python3-tk
       - python3-xlib
       - xdg-user-dirs
-    parse-info: [snapbuild/data/com.github.unrud.VideoDownloader.appdata.xml]
+    override-pull: |
+      snapcraftctl pull
+      # WORKAROUND: Point icon to the correct location
+      sed -e 's|Icon=com.github.unrud.VideoDownloader|Icon=/usr/share/icons/hicolor/scalable/apps/com.github.unrud.VideoDownloader.svg|' -i data/com.github.unrud.VideoDownloader.desktop.in
     override-build: |
       snapcraftctl build
       # WORKAROUND: Version is not extracted from AppStream
-      snapcraftctl set-version "$(sed -n 's/^\s*VERSION\s*=\s*["'\'']\([^"'\'']*\)["'\''].*/\1/p' "${SNAPCRAFT_PART_INSTALL}/usr/local/bin/video-downloader")"
-      # WORKAROUND: Absolute path for icon in desktop file
-      sed -e 's,^\(Icon=\).*,\1${SNAP}/meta/gui/icon.svg,' \
-          -i "${SNAPCRAFT_PART_INSTALL}/usr/local/share/applications/com.github.unrud.VideoDownloader.desktop"
-      # WORKAROUND: Fix paths for snap
-      sed -e 's,#!/usr/bin/,\0env ,' \
-          -e 's/import gettext/\0\nimport os/' \
-          -e 's|^VERSION\s*=\s*|if "/snap/" in os.environ["HOME"]:\n    os.environ["HOME"] = os.path.realpath(os.path.join(os.environ["HOME"], *[".."]*3))\n\n\0|' \
-          -e 's/dir = /\0os.environ.get("SNAP", "") + /' \
-          -i "${SNAPCRAFT_PART_INSTALL}/usr/local/bin/video-downloader"
+      snapcraftctl set-version "$(sed -n 's/^\s*VERSION\s*=\s*["'\'']\([^"'\'']*\)["'\''].*/\1/p' "${SNAPCRAFT_PART_INSTALL}/snap/video-downloader/current/usr/bin/video-downloader")"
+      # WORKAROUND: Use correct python version
+      sed -e '1c#!/usr/bin/env python3' -i "${SNAPCRAFT_PART_INSTALL}/snap/video-downloader/current/usr/bin/video-downloader"
+    organize:
+      snap/video-downloader/current/usr: usr
+    parse-info: [usr/share/metainfo/com.github.unrud.VideoDownloader.appdata.xml]
 
 environment:
   # WORKAROUND: TCL library path is hardcoded
   TCL_LIBRARY: "${SNAP}/usr/share/tcltk/tcl8.6"
   # WORKAROUND: .../pulseaudio subdirectory is missing from library path
   LD_LIBRARY_PATH: "${SNAP}/usr/lib/aarch64-linux-gnu/pulseaudio:${SNAP}/usr/lib/arm-linux-gnueabihf/pulseaudio:${SNAP}/usr/lib/i386-linux-gnu/pulseaudio:${SNAP}/usr/lib/powerpc64le-linux-gnu/pulseaudio:${SNAP}/usr/lib/s390x-linux-gnu/pulseaudio:${SNAP}/usr/lib/x86_64-linux-gnu/pulseaudio"
-  # WORKAROUND: HOME is set by video-downloader launcher to real home of user, keep the cache in snap's private home
-  XDG_CACHE_HOME: "${HOME}/.cache"
+  # WORKAROUND: Set HOME to real home of user
+  HOME: "${HOME}/../../.."
+  XDG_CACHE_HOME: "${SNAP_USER_COMMON}/.cache"
   # WORKAROUND: Allow youtube-dl to use UTF-8 filenames
   LC_ALL: C.UTF-8
-
-apps:
-  video-downloader:
-    command: usr/local/bin/video-downloader
-    desktop: usr/local/share/applications/com.github.unrud.VideoDownloader.desktop
-    plugs:
-      - desktop
-      - desktop-legacy
-      - home
-      - network
-      - x11
-  youtube-dl:
-    command: bin/youtube-dl
-    plugs:
-      - home
-      - network
