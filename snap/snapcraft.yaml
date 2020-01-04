@@ -46,6 +46,7 @@ parts:
     plugin: meson
     source: .
     source-type: git
+    source-tag: 0.1.8
     # WORKAROUND: Fake installation location, to find dependencies when running
     meson-parameters: [--prefix=/snap/video-downloader/current/usr]
     build-packages:

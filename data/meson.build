@@ -31,6 +31,17 @@ if appstream_util.found()
   )
 endif
 
+install_data('com.github.unrud.VideoDownloader.gschema.xml',
+  install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
+)
+
+compile_schemas = find_program('glib-compile-schemas', required: false)
+if compile_schemas.found()
+  test('Validate schema file', compile_schemas,
+    args: ['--strict', '--dry-run', meson.current_source_dir()]
+  )
+endif
+
 icon_id = 'com.github.unrud.VideoDownloader'
 icon_svg = icon_id + '.svg'
 install_data(icon_svg, install_dir: join_paths(

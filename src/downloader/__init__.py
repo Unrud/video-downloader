@@ -15,64 +15,79 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import fcntl
 import json
 import os
-import select
 import subprocess
 import sys
-import threading
 import typing
+from gi.repository import GLib
 
-from video_downloader import pkgdatadir
+from video_downloader.util import g_log
 
-MAX_RESOLUTION = 2**32
+MAX_RESOLUTION = 2**16
 
 
-class Downloader(threading.Thread):
+class Downloader:
     def __init__(self, handler):
-        super().__init__()
-        self.process = None
-        self.handler = handler
-        self.daemon = True
+        self._handler = handler
+        self._process = None
+        self._process_stderr_rem = ''
 
     def cancel(self):
-        self.process.terminate()
-        self.process.wait()
+        if self._process:
+            self._process.terminate()
+            self._process.wait()
 
     def start(self):
+        assert not self._process
         env = os.environ.copy()
-        pythonpath = env.get("PYTHONPATH", "")
-        env["PYTHONPATH"] = pythonpath = (
-            pkgdatadir + (os.pathsep if pythonpath else "") + pythonpath)
-        self.process = subprocess.Popen(
-            [sys.executable, "-m", "video_downloader.downloader"],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE, env=env,
-            universal_newlines=True, start_new_session=True)
-        return super().start()
+        env['PYTHONPATH'] = os.pathsep.join(filter(None, [
+            os.path.join(__file__, *[os.pardir]*3), env.get('PYTHONPATH')]))
+        self._process = subprocess.Popen(
+            [sys.executable, '-u', '-m', 'video_downloader.downloader'],
+            stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, env=env, universal_newlines=True,
+            start_new_session=True)
+        fcntl.fcntl(self._process.stderr, fcntl.F_SETFL, os.O_NONBLOCK)
+        GLib.unix_fd_add_full(
+            GLib.PRIORITY_DEFAULT_IDLE, self._process.stdout.fileno(),
+            GLib.IOCondition.IN, self._on_process_stdout)
+        GLib.unix_fd_add_full(
+            GLib.PRIORITY_DEFAULT_IDLE, self._process.stderr.fileno(),
+            GLib.IOCondition.IN, self._on_process_stderr)
 
-    def run(self):
-        while True:
-            _, _, _ = select.select([self.process.stdout], [], [])
-            s = self.process.stdout.readline()
-            if s:
-                try:
-                    request = json.loads(s)
-                except json.JSONDecodeError:
-                    print("ERROR: Invalid request: %r" % s, file=sys.stderr)
-                    self.process.kill()
-                    break
-                method = getattr(self.handler, request["method"])
-                result = method(*request["args"])
-                try:
-                    print(json.dumps({"result": result}),
-                          flush=True, file=self.process.stdin)
-                except BrokenPipeError:
-                    self.process.kill()
-                    break
-            else:
-                break
-        retcode = self.process.wait()
-        self.handler.on_finished(retcode == 0)
+    def _on_process_stdout(self, *args):
+        s = self._process.stdout.readline()
+        if not s:
+            self._handler.on_finished(self._process.wait() == 0)
+            self._process = None
+            return False
+        try:
+            request = json.loads(s)
+        except json.JSONDecodeError:
+            print('ERROR: Invalid request: %r' % s, file=sys.stderr)
+            self._process.kill()
+            return True
+        method = getattr(self._handler, request['method'])
+        result = method(*request['args'])
+        try:
+            print(json.dumps({'result': result}),
+                  flush=True, file=self._process.stdin)
+        except BrokenPipeError:
+            self._process.kill()
+        return True
+
+    def _on_process_stderr(self, *args):
+        if self._process:
+            self._handler.on_pulse()
+            self._process_stderr_rem += self._process.stderr.read()
+        else:
+            self._process_stderr_rem += '\n'
+        *lines, self._process_stderr_rem = self._process_stderr_rem.split('\n')
+        for line in filter(None, lines):
+            g_log('youtube-dl', GLib.LogLevelFlags.LEVEL_DEBUG, '%s', line)
+        return bool(self._process)
 
 
 class Handler:
@@ -102,11 +117,15 @@ class Handler:
     def on_error(self, msg: str):
         raise NotImplementedError
 
-    def on_progress(self, filename: str, progress: int, bytes_: int,
-                    bytes_total: int, eta: int, speed: int):
+    def on_load_progress(self, filename: str, progress: float, bytes_: int,
+                         bytes_total: int, eta: int, speed: int):
         raise NotImplementedError
 
-    def on_playlist_progress(self, playlist_index: int, playlist_count: int):
+    def on_progress(self, playlist_index: int, playlist_count: int, title: str,
+                    thumbnail: str):
+        raise NotImplementedError
+
+    def on_pulse(self):
         raise NotImplementedError
 
     def on_finished(self, success: bool):

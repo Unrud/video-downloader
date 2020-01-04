@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/com/github/unrud/VideoDownloader">
+    <file>authentication_dialog_login.ui</file>
+    <file>authentication_dialog_password.ui</file>
+    <file>window.ui</file>
+  </gresource>
+</gresources>

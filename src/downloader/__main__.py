@@ -19,7 +19,7 @@ import youtube_dl
 
 from video_downloader.downloader.youtube_dl_slave import YoutubeDLSlave
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     try:
         YoutubeDLSlave()
     except youtube_dl.utils.DownloadError:

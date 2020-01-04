@@ -5,4 +5,5 @@ Exec=video-downloader
 Icon=com.github.unrud.VideoDownloader
 Terminal=false
 Type=Application
-Categories=Network;
+Categories=Network;GTK;
+StartupNotify=true

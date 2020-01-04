@@ -15,127 +15,70 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import argparse
-import contextlib
 import gettext
-import os
-import tkinter as tk
-import tkinter.font as tk_font
-from PIL import Image, ImageTk
+import sys
+import gi
+from gi.repository import GLib, Gtk, Gio
 
-from video_downloader import pkgdatadir
-from video_downloader.base_window_mixin import BaseWindowMixin
-from video_downloader.download_frame import DownloadFrame
-from video_downloader.error_frame import ErrorFrame
-from video_downloader.login_dialog import LoginDialog
-from video_downloader.main_frame import MainFrame
+from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import Handler, Model
-from video_downloader.platform import Platform
+from video_downloader.window import Window
 from video_downloader.playlist_dialog import PlaylistDialog
-from video_downloader.success_frame import SuccessFrame
-from video_downloader.videopassword_dialog import VideopasswordDialog
+from video_downloader.util import bind_property
 
-g_ = gettext.gettext
+N_ = gettext.gettext
 
 
-class App(BaseWindowMixin, tk.Tk, Handler):
+class Application(Gtk.Application, Handler):
     def __init__(self):
-        tk.Tk.__init__(self)
-        # BUG: Fonts don't work, when they are not created here.
-        f1 = tk_font.Font(self)
-        f2 = tk_font.Font(self)
-        icon = Image.open(os.path.join(pkgdatadir, "icon.png"))
-        icon = ImageTk.PhotoImage(icon)
-        self.wm_iconphoto(True, icon)
-        BaseWindowMixin.__init__(self, Platform(self, [f1, f2]))
-        self.active_page = None
-        self.minsize(round(self.winfo_fpixels("480p")),
-                     round(self.winfo_fpixels("180p")))
-        self.title(g_("Video Downloader"))
-        self.model = Model(self, self)
-        self.protocol("WM_DELETE_WINDOW", self.quit)
-        self.create_widgets()
+        super().__init__(application_id='com.github.unrud.VideoDownloader',
+                         flags=Gio.ApplicationFlags.FLAGS_NONE)
+        GLib.set_application_name(N_('Video Downloader'))
+        self.model = Model(self)
+        self._settings = Gio.Settings.new(self.props.application_id)
+        self.model.mode = self._settings.get_string('mode')
+        r = self._settings.get_uint('resolution')
+        for resolution in sorted(x[0] for x in self.model.resolutions):
+            if r <= resolution:
+                break
+        self.model.resolution = resolution
+        bind_property(self.model, 'mode', func_a_to_b=lambda x:
+                      self._settings.set_string('mode', x))
+        bind_property(self.model, 'resolution', func_a_to_b=lambda x:
+                      self._settings.set_uint('resolution', x))
 
-    def quit(self):
-        with contextlib.suppress(AssertionError):
-            self.model.cancel()
-        super().quit()
-
-    def focus_set(self):
-        self.pages[self.active_page].focus_set()
-
-    def create_widgets(self):
-        self.bind_class("TEntry", "<<ContextMenu>>", self.show_context_menu)
-        # HACK: Fix select all
-        self.bind_class("TEntry", "<<SelectAll>>", lambda event: (
-            self.after_idle(event.widget.select_range, 0, tk.END)))
-        self.bind_class("TEntry", "<<SelectAll>>", lambda event: (
-            self.after_idle(event.widget.select_range, 0, tk.END)))
-        self.bind_class("TEntry", "<Control-Key-a>", lambda event: (
-            event.widget.event_generate("<<SelectAll>>")))
-        self.bind_class("TEntry", "<Control-Key-A>", lambda event: (
-            event.widget.event_generate("<<SelectAll>>")))
-        self.main_frame = MainFrame(self)
-        self.download_frame = DownloadFrame(self)
-        self.error_frame = ErrorFrame(self)
-        self.success_frame = SuccessFrame(self)
-        self.model.page.trace("w", self.on_page_changed)
-        self.pages = {
-            "main": self.main_frame,
-            "download": self.download_frame,
-            "error": self.error_frame,
-            "success": self.success_frame}
-        self.on_page_changed()
+    def do_activate(self):
+        for name in self.model.actions.list_actions():
+            self.add_action(self.model.actions.lookup_action(name))
+        win = self.props.active_window
+        if not win:
+            win = Window(application=self)
+            win.set_default_icon_name(self.props.application_id)
+        win.present()
 
     def on_playlist_request(self):
-        result = PlaylistDialog(self).wait()
-        if result is None:
-            self.model.cancel()
-            return False
-        return result
+        dialog = PlaylistDialog(self.props.active_window)
+        res = dialog.run()
+        dialog.destroy()
+        return res == Gtk.ResponseType.YES
 
     def on_login_request(self):
-        result = LoginDialog(self).wait()
-        if result is None:
-            self.model.cancel()
-            return ("", "")
-        return result
+        dialog = LoginDialog(self.props.active_window)
+        res = dialog.run()
+        dialog.destroy()
+        if res == Gtk.ResponseType.OK:
+            return (dialog.username, dialog.password)
+        return ('', '')
 
-    def on_videopassword_request(self):
-        result = VideopasswordDialog(self).wait()
-        if result is None:
-            self.model.cancel()
-            return ""
-        return result
-
-    def on_page_changed(self, *_):
-        if self.active_page == self.model.page.get():
-            return
-        self.active_page = self.model.page.get()
-        for frame in self.pages.values():
-            frame.pack_forget()
-        self.pages[self.active_page].pack(expand=1, fill=tk.BOTH)
-        self.focus_set()
-
-    def show_context_menu(self, event):
-        menu = tk.Menu(self, tearoff=0)
-        menu.add_command(label=g_("Cut"))
-        menu.add_command(label=g_("Copy"))
-        menu.add_command(label=g_("Paste"))
-        widget = event.widget
-        select = widget.select_present()
-        menu.entryconfig(0, state=tk.NORMAL if select else tk.DISABLED,
-                         command=lambda: widget.event_generate("<<Cut>>"))
-        menu.entryconfig(1, state=tk.NORMAL if select else tk.DISABLED,
-                         command=lambda: widget.event_generate("<<Copy>>"))
-        menu.entryconfig(2, command=lambda: widget.event_generate("<<Paste>>"))
-        self.platform.apply_tk_theme(menu)
-        self.tk.call("tk_popup", menu, event.x_root, event.y_root)
+    def on_videopassword_request(self) -> str:
+        dialog = PasswordDialog(self.props.active_window)
+        res = dialog.run()
+        dialog.destroy()
+        if res == Gtk.ResponseType.OK:
+            return dialog.password
+        return ''
 
 
 def main(version):
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--version", action="version", version=version)
-    parser.parse_args()
-    app = App()
-    app.mainloop()
+    app = Application()
+    return app.run(sys.argv)

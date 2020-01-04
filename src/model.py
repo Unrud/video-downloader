@@ -18,176 +18,166 @@
 import gettext
 import os
 import subprocess
-import threading
-import tkinter as tk
 import typing
+from gi.repository import GObject, Gio
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.utils import sanitize_str_for_tk
+from video_downloader.util import bind_property
 
-g_ = gettext.gettext
+N_ = gettext.gettext
 
 
-class Model(downloader.Handler):
-    def __init__(self, master, handler):
-        self.master = master
-        self.handler = handler
-        self.mainloop_thread = threading.current_thread()
-        # "main", "download", "error", "success":
-        self.page = tk.StringVar(self.master)
-        self.page.set("main")
-        self.url = tk.StringVar(self.master)
-        self.mode = tk.StringVar(self.master)  # "audio", "video"
-        self.mode.set("audio")
-        self.resolutions = [(g_("Max"), MAX_RESOLUTION),
-                            (g_("4320p (8K)"), 4320),
-                            (g_("2160p (4K)"), 2160),
-                            (g_("1440p (HD)"), 1440),
-                            (g_("1080p (HD)"), 1080),
-                            (g_("720p (HD)"), 720),
-                            (g_("480p"), 480),
-                            (g_("360p"), 360),
-                            (g_("240p"), 240),
-                            (g_("144p"), 144)]
-        self.resolutionIndex = tk.IntVar(self.master)
-        self.resolutionIndex.set(4)
-        self.error = tk.StringVar(self.master)
-        self.download_playlist_index = tk.IntVar(self.master)
-        self.download_playlist_count = tk.IntVar(self.master)
-        self.download_filename = tk.StringVar(self.master)
-        # 0-100 (inclusive), -1 if unknown:
-        self.download_progress = tk.IntVar(self.master)
-        self.download_bytes = tk.IntVar(self.master)  # -1 if unknown
-        self.download_bytes_total = tk.IntVar(self.master)  # -1 if unknown
-        self.download_speed = tk.IntVar(self.master)  # -1 if unknown
-        self.download_eta = tk.IntVar(self.master)  # -1 if unknown
-        self.download_target_dir = tk.StringVar(self.master)
+class Model(GObject.GObject, downloader.Handler):
+    __gsignals__ = {
+        'download-pulse': (GObject.SIGNAL_RUN_FIRST, None, ())
+    }
+    state = GObject.Property(type=str, default='start')
+    prev_state = GObject.Property(type=str)
+    mode = GObject.Property(type=str, default='audio')
+    url = GObject.Property(type=str)
+    error = GObject.Property(type=str)
+    resolution = GObject.Property(type=GObject.TYPE_UINT, default=1080)
+    download_dir = GObject.Property(type=str)
+    download_playlist_index = GObject.Property(type=int)
+    download_playlist_count = GObject.Property(type=int)
+    download_filename = GObject.Property(type=str)
+    download_title = GObject.Property(type=str)
+    download_thumbnail = GObject.Property(type=str)
+    # 0.0 - 1.0 (inclusive), negative if unknown:
+    download_progress = GObject.Property(type=float, default=-1)
+    download_bytes = GObject.Property(type=int, default=-1)
+    download_bytes_total = GObject.Property(type=int, default=-1)
+    download_speed = GObject.Property(type=int, default=-1)
+    download_eta = GObject.Property(type=int, default=-1)
+    resolutions = [
+        (MAX_RESOLUTION, N_('Best')),
+        (4320, N_('4320p (8K)')),
+        (2160, N_('2160p (4K)')),
+        (1440, N_('1440p (HD)')),
+        (1080, N_('1080p (HD)')),
+        (720, N_('720p (HD)')),
+        (480, N_('480p')),
+        (360, N_('360p')),
+        (240, N_('240p')),
+        (144, N_('144p'))]
+
+    def __init__(self, handler=None):
+        super().__init__()
+        self._handler = handler
+        self._downloader = downloader.Downloader(self)
         try:
             download_dir = subprocess.check_output(
-                ["xdg-user-dir", "DOWNLOAD"], universal_newlines=True,
+                ['xdg-user-dir', 'DOWNLOAD'], universal_newlines=True,
                 stdin=subprocess.DEVNULL).splitlines()[0]
         except FileNotFoundError:
-            download_dir = os.path.expanduser(os.path.join("~", "Downloads"))
-        self.download_target_dir.set(os.path.abspath(
-            os.path.join(download_dir, "VideoDownloader")))
-        self.cancelled = False
-        self.downloader = None
+            download_dir = os.path.expanduser(os.path.join('~', 'Downloads'))
+        self.download_dir = os.path.abspath(os.path.join(
+            download_dir, 'VideoDownloader'))
+        self.actions = Gio.SimpleActionGroup.new()
+        self.actions.add_action_entries([
+            ('download', lambda *_: self.set_property('state', 'download')),
+            ('cancel', lambda *_: self.set_property('state', 'cancel')),
+            ('back', lambda *_: self.set_property('state', 'start'))])
+        bind_property(self, 'url', self.actions.lookup_action('download'),
+                      'enabled', bool)
+        bind_property(self, 'state', self,
+                      'prev-state', self._state_transition)
 
-    def call_in_mainloop(fn):
-        def fn_wrapper(self, *args, **kwargs):
-            if threading.current_thread() is self.mainloop_thread:
-                return fn(self, *args, **kwargs)
-            result_condition = threading.Condition()
-            result = None
+    def _state_transition(self, state):
+        if state == 'start':
+            assert self.prev_state != 'download'
+        elif state == 'download':
+            assert self.prev_state == 'start'
+            self.error = ''
+            self.download_playlist_index = 0
+            self.download_playlist_count = 0
+            self.download_filename = ''
+            self.download_title = ''
+            self.download_thumbnail = ''
+            self.download_progress = -1
+            self.download_bytes = -1
+            self.download_bytes_total = -1
+            self.download_speed = -1
+            self.download_eta = -1
+            self._downloader.start()
+        elif state == 'cancel':
+            assert self.prev_state == 'download'
+            self._downloader.cancel()
+        elif state in ['success', 'error']:
+            assert self.prev_state == 'download'
+        else:
+            assert False
+        return state
 
-            def result_wrapper():
-                nonlocal result
-                temp = fn(self, *args, **kwargs)
-                with result_condition:
-                    result = temp
-                    result_condition.notify_all()
+    def on_pulse(self):
+        assert self.state in ['download', 'cancel']
+        self.emit('download-pulse')
 
-            with result_condition:
-                self.master.after_idle(result_wrapper)
-                result_condition.wait()
-                return result
-        return fn_wrapper
-
-    def start(self):
-        assert self.page.get() == "main"
-        assert self.downloader is None
-        self.error.set("")
-        self.cancelled = False
-        self.download_playlist_index.set(0)
-        self.download_playlist_count.set(0)
-        self.download_filename.set("")
-        self.download_progress.set(-1)
-        self.download_bytes.set(-1)
-        self.download_bytes_total.set(-1)
-        self.download_speed.set(-1)
-        self.download_eta.set(-1)
-        self.page.set("download")
-        self.downloader = downloader.Downloader(self)
-        self.downloader.start()
-
-    def cancel(self):
-        assert self.page.get() == "download"
-        assert self.downloader is not None
-        self.cancelled = True
-        self.downloader.cancel()
-
-    def back_to_main(self):
-        assert self.page.get() in ["error", "success"]
-        assert self.downloader is None
-        self.page.set("main")
-
-    @call_in_mainloop
-    def get_target_dir(self):
-        assert self.page.get() == "download"
-        return self.download_target_dir.get()
-
-    @call_in_mainloop
-    def get_url(self):
-        assert self.page.get() == "download"
-        return self.url.get()
-
-    @call_in_mainloop
-    def get_mode(self):
-        assert self.page.get() == "download"
-        return self.mode.get()
-
-    @call_in_mainloop
-    def get_resolution(self):
-        assert self.page.get() == "download"
-        _, resolution = self.resolutions[self.resolutionIndex.get()]
-        return resolution
-
-    @call_in_mainloop
-    def on_playlist_request(self):
-        assert self.page.get() == "download"
-        return self.handler.on_playlist_request()
-
-    @call_in_mainloop
-    def on_login_request(self):
-        assert self.page.get() == "download"
-        return self.handler.on_login_request()
-
-    @call_in_mainloop
-    def on_videopassword_request(self):
-        assert self.page.get() == "download"
-        return self.handler.on_videopassword_request()
-
-    @call_in_mainloop
-    def on_error(self, msg):
-        assert self.page.get() == "download"
-        self.error.set(sanitize_str_for_tk(msg))
-
-    @call_in_mainloop
-    def on_progress(self, filename, progress, bytes_, bytes_total, eta, speed):
-        assert self.page.get() == "download"
-        self.download_filename.set(sanitize_str_for_tk(filename))
-        self.download_progress.set(progress)
-        self.download_bytes.set(bytes_)
-        self.download_bytes_total.set(bytes_total)
-        self.download_eta.set(eta)
-        self.download_speed.set(speed)
-
-    @call_in_mainloop
-    def on_playlist_progress(self, playlist_index, playlist_count):
-        assert self.page.get() == "download"
-        self.download_playlist_index.set(playlist_index)
-        self.download_playlist_count.set(playlist_count)
-
-    @call_in_mainloop
     def on_finished(self, success):
-        assert self.page.get() == "download"
-        assert self.downloader is not None
-        self.downloader = None
-        if not success and self.cancelled:
-            self.page.set("main")
-            return
-        self.page.set("success" if success else "error")
+        assert self.state in ['download', 'cancel']
+        if self.state == 'cancel':
+            self.state = 'start'
+        else:
+            self.state = 'success' if success else 'error'
+
+    def on_playlist_request(self):
+        return self._handler.on_playlist_request()
+
+    def on_login_request(self):
+        return self._handler.on_login_request()
+
+    def on_videopassword_request(self):
+        return self._handler.on_videopassword_request()
+
+    def get_target_dir(self):
+        assert self.state in ['download', 'cancel']
+        return self.download_dir
+
+    def get_url(self):
+        assert self.state in ['download', 'cancel']
+        return self.url
+
+    def get_mode(self):
+        assert self.state in ['download', 'cancel']
+        return self.mode
+
+    def get_resolution(self):
+        assert self.state in ['download', 'cancel']
+        return self.resolution
+
+    def on_playlist_request(self):
+        assert self.state in ['download', 'cancel']
+        return self._handler.on_playlist_request()
+
+    def on_login_request(self):
+        assert self.state in ['download', 'cancel']
+        return self._handler.on_login_request()
+
+    def on_password_request(self):
+        assert self.state in ['download', 'cancel']
+        return self._handler.on_password_request()
+
+    def on_error(self, msg):
+        assert self.state in ['download', 'cancel']
+        self.error = msg
+
+    def on_load_progress(self, filename, progress, bytes_, bytes_total, eta,
+                         speed):
+        assert self.state in ['download', 'cancel']
+        self.download_filename = filename
+        self.download_progress = progress
+        self.download_bytes = bytes_
+        self.download_bytes_total = bytes_total
+        self.download_eta = eta
+        self.download_speed = speed
+
+    def on_progress(self, playlist_index, playlist_count, title, thumbnail):
+        assert self.state in ['download', 'cancel']
+        self.download_playlist_index = playlist_index
+        self.download_playlist_count = playlist_count
+        self.download_title = title
+        self.download_thumbnail = thumbnail
 
 
 class Handler:
