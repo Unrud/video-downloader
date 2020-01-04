@@ -10,12 +10,13 @@ confinement: strict
 apps:
   video-downloader:
     command: usr/bin/video-downloader
+    extensions: [gnome-3-28]
     plugs:
-      - desktop
-      - desktop-legacy
+      - gsettings
       - home
       - network
-      - x11
+    slots:
+      - dbus-daemon
     common-id: com.github.unrud.VideoDownloader
     desktop: usr/share/applications/com.github.unrud.VideoDownloader.desktop
   youtube-dl:
@@ -23,6 +24,19 @@ apps:
     plugs:
       - home
       - network
+    environment:
+      # WORKAROUND: Allow youtube-dl to use UTF-8 filenames
+      LC_ALL: C.UTF-8
+
+slots:
+  dbus-daemon:
+    interface: dbus
+    bus: session
+    name: com.github.unrud.VideoDownloader
+
+environment:
+  # WORKAROUND: .../pulseaudio subdirectory is missing from library path
+  LD_LIBRARY_PATH: "${SNAP}/usr/lib/aarch64-linux-gnu/pulseaudio:${SNAP}/usr/lib/arm-linux-gnueabihf/pulseaudio:${SNAP}/usr/lib/i386-linux-gnu/pulseaudio:${SNAP}/usr/lib/powerpc64le-linux-gnu/pulseaudio:${SNAP}/usr/lib/s390x-linux-gnu/pulseaudio:${SNAP}/usr/lib/x86_64-linux-gnu/pulseaudio"
 
 parts:
   youtube-dl:
@@ -42,20 +56,28 @@ parts:
       # WORKAROUND: Use correct python version
       sed -e '1c#!/usr/bin/env python3' -i "${SNAPCRAFT_PART_INSTALL}/bin/youtube-dl"
 
+  pygobject:
+    plugin: python
+    python-packages:
+      - pycairo
+      - PyGObject
+    build-packages:
+      - libgirepository1.0-dev
+      - libcairo2-dev
+      - python3-dev
+    stage-packages:
+      - gir1.2-gtk-3.0
+
   video-downloader:
     plugin: meson
     source: .
     source-type: git
-    source-tag: 0.1.8
     # WORKAROUND: Fake installation location, to find dependencies when running
     meson-parameters: [--prefix=/snap/video-downloader/current/usr]
     build-packages:
       - gettext
       - librsvg2-bin
     stage-packages:
-      - python3-pil.imagetk
-      - python3-tk
-      - python3-xlib
       - xdg-user-dirs
     override-pull: |
       snapcraftctl pull
@@ -70,14 +92,3 @@ parts:
     organize:
       snap/video-downloader/current/usr: usr
     parse-info: [usr/share/metainfo/com.github.unrud.VideoDownloader.appdata.xml]
-
-environment:
-  # WORKAROUND: TCL library path is hardcoded
-  TCL_LIBRARY: "${SNAP}/usr/share/tcltk/tcl8.6"
-  # WORKAROUND: .../pulseaudio subdirectory is missing from library path
-  LD_LIBRARY_PATH: "${SNAP}/usr/lib/aarch64-linux-gnu/pulseaudio:${SNAP}/usr/lib/arm-linux-gnueabihf/pulseaudio:${SNAP}/usr/lib/i386-linux-gnu/pulseaudio:${SNAP}/usr/lib/powerpc64le-linux-gnu/pulseaudio:${SNAP}/usr/lib/s390x-linux-gnu/pulseaudio:${SNAP}/usr/lib/x86_64-linux-gnu/pulseaudio"
-  # WORKAROUND: Set HOME to real home of user
-  HOME: "${HOME}/../../.."
-  XDG_CACHE_HOME: "${SNAP_USER_COMMON}/.cache"
-  # WORKAROUND: Allow youtube-dl to use UTF-8 filenames
-  LC_ALL: C.UTF-8
