@@ -20,6 +20,7 @@ import gettext
 import locale
 import math
 import os
+import re
 import subprocess
 from gi.repository import GLib, Gtk, GdkPixbuf, GObject
 
