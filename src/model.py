@@ -39,17 +39,18 @@ class Model(GObject.GObject, downloader.Handler):
     error = GObject.Property(type=str)
     resolution = GObject.Property(type=GObject.TYPE_UINT, default=1080)
     download_dir = GObject.Property(type=str)
-    download_playlist_index = GObject.Property(type=int)
-    download_playlist_count = GObject.Property(type=int)
+    download_playlist_index = GObject.Property(type=GObject.TYPE_INT64)
+    download_playlist_count = GObject.Property(type=GObject.TYPE_INT64)
     download_filename = GObject.Property(type=str)
     download_title = GObject.Property(type=str)
     download_thumbnail = GObject.Property(type=str)
     # 0.0 - 1.0 (inclusive), negative if unknown:
     download_progress = GObject.Property(type=float, default=-1)
-    download_bytes = GObject.Property(type=int, default=-1)
-    download_bytes_total = GObject.Property(type=int, default=-1)
-    download_speed = GObject.Property(type=int, default=-1)
-    download_eta = GObject.Property(type=int, default=-1)
+    download_bytes = GObject.Property(type=GObject.TYPE_INT64, default=-1)
+    download_bytes_total = GObject.Property(type=GObject.TYPE_INT64,
+                                            default=-1)
+    download_speed = GObject.Property(type=GObject.TYPE_INT64, default=-1)
+    download_eta = GObject.Property(type=GObject.TYPE_INT64, default=-1)
     resolutions = [
         (MAX_RESOLUTION, N_('Best')),
         (4320, N_('4320p (8K)')),
