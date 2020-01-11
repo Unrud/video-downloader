@@ -32,7 +32,7 @@ N_ = gettext.gettext
 class Application(Gtk.Application, Handler):
     def __init__(self):
         super().__init__(application_id='com.github.unrud.VideoDownloader',
-                         flags=Gio.ApplicationFlags.FLAGS_NONE)
+                         flags=Gio.ApplicationFlags.NON_UNIQUE)
         GLib.set_application_name(N_('Video Downloader'))
         self.model = Model(self)
         self._settings = Gio.Settings.new(self.props.application_id)
