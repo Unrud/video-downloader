@@ -15,11 +15,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import contextlib
 import fcntl
 import json
 import os
 import subprocess
 import sys
+import traceback
 import typing
 from gi.repository import GLib
 
@@ -32,12 +34,9 @@ class Downloader:
     def __init__(self, handler):
         self._handler = handler
         self._process = None
-        self._process_stderr_rem = ''
 
     def cancel(self):
-        if self._process:
-            self._process.terminate()
-            self._process.wait()
+        self._process.terminate()
 
     def start(self):
         assert not self._process
@@ -49,45 +48,51 @@ class Downloader:
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE, env=env, universal_newlines=True,
             start_new_session=True)
+        fcntl.fcntl(self._process.stdout, fcntl.F_SETFL, os.O_NONBLOCK)
         fcntl.fcntl(self._process.stderr, fcntl.F_SETFL, os.O_NONBLOCK)
+        self._process.stdout_remainder = self._process.stderr_remainder = ""
         GLib.unix_fd_add_full(
             GLib.PRIORITY_DEFAULT_IDLE, self._process.stdout.fileno(),
             GLib.IOCondition.IN, self._on_process_stdout)
         GLib.unix_fd_add_full(
             GLib.PRIORITY_DEFAULT_IDLE, self._process.stderr.fileno(),
-            GLib.IOCondition.IN, self._on_process_stderr)
+            GLib.IOCondition.IN, self._on_process_stderr, self._process)
 
     def _on_process_stdout(self, *args):
-        s = self._process.stdout.readline()
+        s = self._process.stdout.read()
+        self._process.stdout_remainder += s
+        *lines, self._process.stdout_remainder = \
+            self._process.stdout_remainder.split('\n')
+        for line in lines:
+            try:
+                request = json.loads(line)
+                method = getattr(self._handler, request['method'])
+                result = method(*request['args'])
+                with contextlib.suppress(BrokenPipeError):
+                    print(json.dumps({'result': result}),
+                          flush=True, file=self._process.stdin)
+            except Exception:
+                g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
+                      'failed request %r\n%s', line, traceback.format_exc())
         if not s:
-            self._handler.on_finished(self._process.wait() == 0)
-            self._process = None
+            if self._process.stdout_remainder:
+                g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
+                      'incomplete request %r', self._process.stdout_remainder)
+            # Unset self._process first for self._on_process_stderr
+            process, self._process = self._process, None
+            self._handler.on_finished(process.wait() == 0)
             return False
-        try:
-            request = json.loads(s)
-        except json.JSONDecodeError:
-            print('ERROR: Invalid request: %r' % s, file=sys.stderr)
-            self._process.kill()
-            return True
-        method = getattr(self._handler, request['method'])
-        result = method(*request['args'])
-        try:
-            print(json.dumps({'result': result}),
-                  flush=True, file=self._process.stdin)
-        except BrokenPipeError:
-            self._process.kill()
         return True
 
-    def _on_process_stderr(self, *args):
-        if self._process:
-            self._handler.on_pulse()
-            self._process_stderr_rem += self._process.stderr.read()
-        else:
-            self._process_stderr_rem += '\n'
-        *lines, self._process_stderr_rem = self._process_stderr_rem.split('\n')
+    def _on_process_stderr(self, fd, condition, process):
+        s = process.stderr.read()
+        process.stderr_remainder += s or '\n'
+        *lines, process.stderr_remainder = process.stderr_remainder.split('\n')
         for line in filter(None, lines):
             g_log('youtube-dl', GLib.LogLevelFlags.LEVEL_DEBUG, '%s', line)
-        return bool(self._process)
+        if self._process is process:
+            self._handler.on_pulse()
+        return bool(s)
 
 
 class Handler:
