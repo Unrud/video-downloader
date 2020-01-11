@@ -27,6 +27,8 @@ import youtube_dl
 from video_downloader.downloader import MAX_RESOLUTION
 from video_downloader.downloader.youtube_dl_formats import sort_formats
 
+OUTPUT_TEMPLATE = '%(title)s-%(id)s-%(format_id)s.%(ext)s'
+
 
 class YoutubeDLSlave:
     def _on_progress(self, d):
@@ -149,7 +151,7 @@ class YoutubeDLSlave:
             del ydl_opts['writeinfojson']
             del ydl_opts['writethumbnail']
             del ydl_opts['skip_download']
-            del ydl_opts['outtmpl']
+            ydl_opts['outtmpl'] = OUTPUT_TEMPLATE
             mode = self._handler.get_mode()
             resolution = self._handler.get_resolution()
             if mode == 'audio':
