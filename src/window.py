@@ -67,9 +67,9 @@ class Window(Gtk.ApplicationWindow):
         bind_property(self.model, 'resolution', self.resolution_wdg,
                       'active-id', str, int, bi=True)
         bind_property(
-            self.model, 'state', self.main_stack_wdg, 'visible-child-name')
-        bind_property(self.main_stack_wdg, 'visible-child-name',
-                      func_a_to_b=self._update_header)
+            self.model, 'state', self.main_stack_wdg, 'visible-child-name',
+            lambda s: {s: s, 'cancel': 'download'}[s])
+        bind_property(self.model, 'state', func_a_to_b=self._update_header)
         bind_property(self.model, 'mode', self.audio_video_stack_wdg,
                       'visible-child-name', bi=True)
         bind_property(self.main_stack_wdg, 'visible-child-name',
