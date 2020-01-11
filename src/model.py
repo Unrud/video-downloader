@@ -83,6 +83,8 @@ class Model(GObject.GObject, downloader.Handler):
                       'enabled', bool)
         bind_property(self, 'state', self,
                       'prev-state', self._state_transition)
+        bind_property(self, 'state', self.actions.lookup_action('cancel'),
+                      'enabled', lambda s: s == 'download')
 
     def _state_transition(self, state):
         if state == 'start':
