@@ -74,6 +74,7 @@ class Downloader:
             except Exception:
                 g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
                       'failed request %r\n%s', line, traceback.format_exc())
+                self._process.kill()
         if not s:
             if self._process.stdout_remainder:
                 g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
