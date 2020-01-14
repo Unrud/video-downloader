@@ -42,8 +42,8 @@ parts:
   youtube-dl:
     plugin: python
     python-version: python3
-    source: https://yt-dl.org/downloads/2020.01.01/youtube-dl-2020.01.01.tar.gz
-    source-checksum: sha256/0ab06abce0eecf77b6ceed4c06613325ede4e72e1a6ff528be320277250a1b5d
+    source: https://yt-dl.org/downloads/2020.01.15/youtube-dl-2020.01.15.tar.gz
+    source-checksum: sha256/556711f8dc827910096fd648d7ead051ddadb81b90ae4abdf0393ddf2d62d237
     stage-packages:
       # Missing optional dependencies mpv and phantomjs
       - atomicparsley
