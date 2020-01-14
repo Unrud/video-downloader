@@ -93,13 +93,13 @@ class YoutubeDLSlave:
         return sorted(map(os.path.abspath, glob.iglob('*.info.json')))
 
     def debug(self, msg):
-        print(msg, file=sys.stderr)
+        print(msg, file=sys.stderr, flush=True)
 
     def warning(self, msg):
-        print(msg, file=sys.stderr)
+        print(msg, file=sys.stderr, flush=True)
 
     def error(self, msg):
-        print(msg, file=sys.stderr)
+        print(msg, file=sys.stderr, flush=True)
         self._handler.on_error(msg)
 
     def __init__(self):
