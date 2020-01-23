@@ -116,8 +116,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://yt-dl.org/downloads/2020.01.15/youtube-dl-2020.01.15.tar.gz",
-                    "sha256" : "556711f8dc827910096fd648d7ead051ddadb81b90ae4abdf0393ddf2d62d237"
+                    "url" : "https://yt-dl.org/downloads/2020.01.24/youtube-dl-2020.01.24.tar.gz",
+                    "sha256" : "0b1dcc96d204984df1ee364e81cddd5645421f6065d2815472258ccdad5c36ff"
                 }
             ]
         },
