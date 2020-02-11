@@ -114,7 +114,8 @@ class YoutubeDLSlave:
             'skip_download': True,
             'playlistend': 2,
             'outtmpl': '%(autonumber)s.%(ext)s',
-            'fixup': 'detect_or_warn'}
+            'fixup': 'detect_or_warn',
+            'postprocessors' : [{'key': 'XAttrMetadata'}]}
         url = self._handler.get_url()
         target_dir = os.path.abspath(self._handler.get_target_dir())
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -156,12 +157,11 @@ class YoutubeDLSlave:
             resolution = self._handler.get_resolution()
             if mode == 'audio':
                 resolution = MAX_RESOLUTION
-                ydl_opts.update({
-                    'format': 'bestaudio/best',
-                    'postprocessors': [{
-                        'key': 'FFmpegExtractAudio',
-                        'preferredcodec': 'mp3',
-                        'preferredquality': '192'}]})
+                ydl_opts['format'] = 'bestaudio/best'
+                ydl_opts['postprocessors'].insert(0, {
+                    'key': 'FFmpegExtractAudio',
+                    'preferredcodec': 'mp3',
+                    'preferredquality': '192'})
             os.makedirs(target_dir, exist_ok=True)
             for i, info_path in enumerate(info_playlist):
                 with open(info_path) as f:

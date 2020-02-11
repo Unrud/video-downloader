@@ -70,8 +70,22 @@
             ]
         },
         {
+            "name" : "pyxattr",
+            "buildsystem" : "simple",
+            "build-commands" : [
+                "pip3 install . --prefix=/app --no-index --find-links ."
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/iustin/pyxattr/archive/v0.7.1.tar.gz",
+                    "sha256" : "9caec22e2fb2d437a6a546be9a44fd7a809f56868fd6e175a4a26f38f50f4260"
+                }
+            ]
+        },
+        {
             "name" : "youtube-dl",
-            /* Missing optional dependencies atomicparsley, mpv, phantomjs, pyxattr and rtmpdump */
+            /* Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump */
             "buildsystem" : "simple",
             "build-commands" : [
                 "pip3 install . --prefix=/app --no-index --find-links ."

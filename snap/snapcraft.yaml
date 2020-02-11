@@ -33,11 +33,12 @@ environment:
 parts:
   youtube-dl:
     plugin: python
-    python-version: python3
     source: https://yt-dl.org/downloads/2020.01.24/youtube-dl-2020.01.24.tar.gz
     source-checksum: sha256/0b1dcc96d204984df1ee364e81cddd5645421f6065d2815472258ccdad5c36ff
+    python-packages:
+      - pyxattr
     stage-packages:
-      # Missing optional dependencies atomicparsley, mpv, phantomjs, pyxattr and rtmpdump
+      # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
       - ffmpeg
       - libslang2  # required by ffmpeg
       - freeglut3
