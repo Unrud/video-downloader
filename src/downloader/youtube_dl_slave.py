@@ -162,16 +162,22 @@ class YoutubeDLSlave:
                     'key': 'FFmpegExtractAudio',
                     'preferredcodec': 'mp3',
                     'preferredquality': '192'})
+                ydl_opts['postprocessors'].insert(1, {
+                    'key': 'EmbedThumbnail',
+                    'already_have_thumbnail': True})
             os.makedirs(target_dir, exist_ok=True)
             for i, info_path in enumerate(info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
                 title = info.get('title', info.get('id', 'video'))
-                thumbs = list(filter(
+                thumbnail_paths = list(filter(
                     lambda p: os.path.splitext(p)[1][1:] != 'json', glob.iglob(
                         glob.escape(info_path[:-len('info.json')]) + '*')))
-                thumb = thumbs[0] if thumbs else ''
-                self._handler.on_progress(i, len(info_playlist), title, thumb)
+                thumbnail_path = thumbnail_paths[0] if thumbnail_paths else ''
+                self._handler.on_progress(i, len(info_playlist), title,
+                                          thumbnail_path)
+                if info.get('thumbnails'):
+                    info['thumbnails'][-1]['filename'] = thumbnail_path
                 sort_formats(info['formats'], resolution=resolution)
                 with open(info_path, 'w') as f:
                     json.dump(info, f)
