@@ -19,14 +19,6 @@ apps:
       - dbus-daemon
     common-id: com.github.unrud.VideoDownloader
     desktop: usr/share/applications/com.github.unrud.VideoDownloader.desktop
-  youtube-dl:
-    command: bin/youtube-dl
-    plugs:
-      - home
-      - network
-    environment:
-      # WORKAROUND: Allow youtube-dl to use UTF-8 filenames
-      LC_ALL: C.UTF-8
 
 slots:
   dbus-daemon:
@@ -45,12 +37,11 @@ parts:
     source: https://yt-dl.org/downloads/2020.01.24/youtube-dl-2020.01.24.tar.gz
     source-checksum: sha256/0b1dcc96d204984df1ee364e81cddd5645421f6065d2815472258ccdad5c36ff
     stage-packages:
-      # Missing optional dependencies mpv and phantomjs
-      - atomicparsley
+      # Missing optional dependencies atomicparsley, mpv, phantomjs, pyxattr and rtmpdump
       - ffmpeg
       - libslang2  # required by ffmpeg
-      - python3-pyxattr
-      - rtmpdump
+      - freeglut3
+      - libglu1-mesa
     override-build: |
       snapcraftctl build
       # WORKAROUND: Use correct python version
