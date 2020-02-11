@@ -76,7 +76,7 @@ class Window(Gtk.ApplicationWindow):
                       func_a_to_b=self._update_focus_and_default)
         bind_property(self.audio_video_stack_wdg, 'visible-child-name',
                       func_a_to_b=self._update_focus_and_default)
-        bind_property(self.model, 'download-dir',
+        bind_property(self.model, 'download-dir-abs',
                       func_a_to_b=self._update_success_msg)
         self.success_msg_wdg.connect('activate-link', self._on_activate_link)
         for name in ['download-bytes', 'download-bytes-total',
@@ -168,15 +168,15 @@ class Window(Gtk.ApplicationWindow):
             if child_wdg is not visible_child_wdg:
                 self.download_images_wdg.remove(child_wdg)
 
-    def _update_success_msg(self, download_dir):
-        label = download_dir = os.path.abspath(download_dir)
-        user_dir = os.path.expanduser('~')
-        if os.path.commonpath([user_dir, download_dir]) == user_dir:
-            label = '~' + download_dir[len(user_dir):]
+    def _update_success_msg(self, download_dir_abs):
+        label_dir = download_dir_abs
+        home_dir = os.path.expanduser('~')
+        if os.path.commonpath([home_dir, label_dir]) == home_dir:
+            label_dir = '~' + label_dir[len(home_dir):]
         template = GObject.markup_escape_text(N_('Saved in {}'))
         link = '<a href="%s">%s</a>' % (
-            GObject.markup_escape_text('file://' + download_dir),
-            GObject.markup_escape_text(label))
+            GObject.markup_escape_text('file://' + download_dir_abs),
+            GObject.markup_escape_text(label_dir))
         self.success_msg_wdg.set_markup(template.format(link))
 
     def _on_activate_link(self, _, uri):

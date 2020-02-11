@@ -16,14 +16,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import gettext
-import os
-import subprocess
 import typing
 from gi.repository import GObject, Gio
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.util import bind_property
+from video_downloader.util import bind_property, expand_path
 
 N_ = gettext.gettext
 
@@ -39,6 +37,7 @@ class Model(GObject.GObject, downloader.Handler):
     error = GObject.Property(type=str)
     resolution = GObject.Property(type=GObject.TYPE_UINT, default=1080)
     download_dir = GObject.Property(type=str)
+    download_dir_abs = GObject.Property(type=str)
     download_playlist_index = GObject.Property(type=GObject.TYPE_INT64)
     download_playlist_count = GObject.Property(type=GObject.TYPE_INT64)
     download_filename = GObject.Property(type=str)
@@ -67,14 +66,8 @@ class Model(GObject.GObject, downloader.Handler):
         super().__init__()
         self._handler = handler
         self._downloader = downloader.Downloader(self)
-        try:
-            download_dir = subprocess.check_output(
-                ['xdg-user-dir', 'DOWNLOAD'], universal_newlines=True,
-                stdin=subprocess.DEVNULL).splitlines()[0]
-        except FileNotFoundError:
-            download_dir = os.path.expanduser(os.path.join('~', 'Downloads'))
-        self.download_dir = os.path.abspath(os.path.join(
-            download_dir, 'VideoDownloader'))
+        bind_property(self, 'download-dir', self, 'download-dir-abs',
+                      expand_path)
         self.actions = Gio.SimpleActionGroup.new()
         self.actions.add_action_entries([
             ('download', lambda *_: self.set_property('state', 'download')),
@@ -135,7 +128,7 @@ class Model(GObject.GObject, downloader.Handler):
 
     def get_target_dir(self):
         assert self.state in ['download', 'cancel']
-        return self.download_dir
+        return self.download_dir_abs
 
     def get_url(self):
         assert self.state in ['download', 'cancel']

@@ -83,3 +83,10 @@ parts:
     organize:
       snap/video-downloader/current/usr: usr
     parse-info: [usr/share/metainfo/com.github.unrud.VideoDownloader.appdata.xml]
+
+  compile-schemas:
+    plugin: nil
+    after: [youtube-dl, pygobject, video-downloader]
+    override-prime: |
+      snapcraftctl prime
+      glib-compile-schemas usr/share/glib-2.0/schemas

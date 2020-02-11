@@ -5,13 +5,17 @@
     <value value="1" nick="video"/>
   </enum>
 
-	<schema id="com.github.unrud.VideoDownloader" path="/com/github/unrud/VideoDownloader/">
+  <schema id="com.github.unrud.VideoDownloader" path="/com/github/unrud/VideoDownloader/">
+    <key type="s" name="download-folder">
+      <default>'xdg-download/VideoDownloader'</default>
+    </key>
+
     <key name="mode" enum="com.github.unrud.VideoDownloader.Mode">
       <default>'audio'</default>
     </key>
 
-	  <key type="u" name="resolution">
+    <key type="u" name="resolution">
       <default>1080</default>
     </key>
-	</schema>
+  </schema>
 </schemalist>

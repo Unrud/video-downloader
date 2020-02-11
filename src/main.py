@@ -36,6 +36,7 @@ class Application(Gtk.Application, Handler):
         GLib.set_application_name(N_('Video Downloader'))
         self.model = Model(self)
         self._settings = Gio.Settings.new(self.props.application_id)
+        self.model.download_dir = self._settings.get_string('download-folder')
         self.model.mode = self._settings.get_string('mode')
         r = self._settings.get_uint('resolution')
         for resolution in sorted(x[0] for x in self.model.resolutions):

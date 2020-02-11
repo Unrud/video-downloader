@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
+import subprocess
 from gi.repository import GLib, GObject
 
 
@@ -52,6 +54,22 @@ def bind_property(obj_a, prop_a, obj_b=None, prop_b=None, func_a_to_b=None,
     obj_a.connect('notify::' + prop_a, lambda *args: apply_binding('>'))
     if bi:
         obj_b.connect('notify::' + prop_b, lambda *args: apply_binding('<'))
+
+
+def expand_path(path):
+    parts = path.replace(os.altsep or os.sep, os.sep).split(os.sep)
+    home_dir = os.path.expanduser('~')
+    if parts[0] == '~':
+        parts[0] = home_dir
+    elif parts[0].startswith('xdg-'):
+        name = parts[0][len('xdg-'):].replace('-', '').upper()
+        try:
+            parts[0] = subprocess.check_output(
+                ['xdg-user-dir', name], universal_newlines=True,
+                stdin=subprocess.DEVNULL).splitlines()[0]
+        except FileNotFoundError:
+            parts[0] = home_dir
+    return os.path.normpath(os.path.join(os.sep, *parts))
 
 
 def g_log(domain, log_level, format_string, *args):
