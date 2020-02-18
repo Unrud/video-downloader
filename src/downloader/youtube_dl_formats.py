@@ -54,9 +54,12 @@ def sort_formats(formats, resolution=MAX_RESOLUTION):
 
         width = f.get('width') if f.get('width') is not None else -1
         height = f.get('height') if f.get('height') is not None else -1
-        norm_width = max(width, height)
-        norm_height = min(width, height)
-        if norm_height > 0:
+        if width >= 0 and (height < 0 or width < height):
+            # Vertical video
+            norm_width, norm_height = height, width
+        else:
+            norm_width, norm_height = width, height
+        if norm_height >= 0:
             norm_height = MAX_RESOLUTION - abs(norm_height - resolution)
 
         return (
