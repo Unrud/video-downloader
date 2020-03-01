@@ -1,6 +1,5 @@
 name: video-downloader
-# WORKAROUND: Snapcraft doesn't accept GPL-3.0-or-later
-license: GPL-3.0
+license: GPL-3.0+
 grade: stable
 adopt-info: video-downloader
 
