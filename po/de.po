@@ -1,0 +1,198 @@
+# German translations for video-downloader package.
+# Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the video-downloader package.
+# Roy Meissner <roy-meissner@gmx.net>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: video-downloader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-22 10:39+0200\n"
+"PO-Revision-Date: 2020-04-22 11:39+0200\n"
+"Last-Translator: Roy Meissner <roy-meissner@gmx.net>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:36
+#: src/window.ui:502
+msgid "Video Downloader"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
+#: data/com.github.unrud.VideoDownloader.desktop.in:4
+msgid "Download videos from websites like YouTube and many others"
+msgstr "Lade Videos von Youtube und vielen weiteren Webseiten herunter"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:10
+msgid ""
+"Download videos from websites with an easy-to-use interface. Provides the "
+"following features:"
+msgstr ""
+"Über eine einfach zu bedienende Oberfläche können Videos von vielen "
+"Webseiten heruntergeladen werden. Das Programm bietet:"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
+msgid "Convert videos to MP3"
+msgstr "Videos nach MP3 zu konvertieren"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:16
+msgid "Supports password-protected and private videos"
+msgstr "Passwortgeschütze und private Videos herunterzuladen"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:17
+msgid "Download single videos or whole playlists"
+msgstr "Einzelne Videos und ganze Wiedergabelisten herunterzuladen"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
+msgid "Automatically selects a video format based on your preferred resolution"
+msgstr ""
+"Automatisch das Videoformat auszuwählen, das den eigenen Qualitätsansprüchen "
+"entspricht"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
+msgid "Based on youtube-dl."
+msgstr "Baut auf youtube-dl auf."
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+msgid "Unrud"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:6
+msgid "com.github.unrud.VideoDownloader"
+msgstr ""
+
+#: src/authentication_dialog.py:29
+msgid "Authentication Required"
+msgstr "Authentifizierung erforderlich"
+
+#: src/authentication_dialog.py:33 src/window.ui:536
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/authentication_dialog.py:34
+msgid "Continue"
+msgstr "Weiter"
+
+#: src/authentication_dialog_login.ui:15
+#: src/authentication_dialog_password.ui:15
+msgid "The video is not public."
+msgstr "Das Video ist nicht öffentlich."
+
+#: src/authentication_dialog_login.ui:39
+msgid "Username"
+msgstr "Benutzername"
+
+#: src/authentication_dialog_login.ui:84
+#: src/authentication_dialog_password.ui:33
+msgid "Password"
+msgstr "Passwort"
+
+#: src/model.py:54
+msgid "Best"
+msgstr "Automatisch (Beste)"
+
+#: src/model.py:55
+msgid "4320p (8K)"
+msgstr ""
+
+#: src/model.py:56
+msgid "2160p (4K)"
+msgstr ""
+
+#: src/model.py:57
+msgid "1440p (HD)"
+msgstr ""
+
+#: src/model.py:58
+msgid "1080p (HD)"
+msgstr ""
+
+#: src/model.py:59
+msgid "720p (HD)"
+msgstr ""
+
+#: src/model.py:60
+msgid "480p"
+msgstr ""
+
+#: src/model.py:61
+msgid "360p"
+msgstr ""
+
+#: src/model.py:62
+msgid "240p"
+msgstr ""
+
+#: src/model.py:63
+msgid "144p"
+msgstr ""
+
+#: src/playlist_dialog.py:31
+msgid "Download Playlist?"
+msgstr "Wiedergabeliste herunterladen?"
+
+#: src/playlist_dialog.py:33
+msgid "Single Video"
+msgstr "Einzelnes Video"
+
+#: src/playlist_dialog.py:34
+msgid "All Videos in Playlist"
+msgstr "Alle Videos der Liste"
+
+#: src/window.py:113
+msgid "Downloading"
+msgstr "Lädt herunter"
+
+#: src/window.py:115 src/window.py:140
+msgid "{} of {}"
+msgstr "{} von {}"
+
+#: src/window.py:141 src/window.py:143
+msgid "unknown"
+msgstr "unbekannt"
+
+#: src/window.py:176
+msgid "Saved in {}"
+msgstr "Gespeichert in {}"
+
+#: src/window.ui:45 src/window.ui:102
+msgid "URL"
+msgstr ""
+
+#: src/window.ui:83
+msgid "Audio"
+msgstr ""
+
+#: src/window.ui:146
+msgid "Resolution"
+msgstr "Qualität"
+
+#: src/window.ui:191
+msgid "Video"
+msgstr ""
+
+#: src/window.ui:317
+msgid "Download failed"
+msgstr "Das Video konnte nicht heruntergeladen werden"
+
+#: src/window.ui:347
+msgid "Details"
+msgstr ""
+
+#: src/window.ui:430
+msgid "Download finished"
+msgstr "Das Video wurde erfolgreich herunterladen"
+
+#: src/window.ui:522
+msgid "Back"
+msgstr "Zurück"
+
+#: src/window.ui:550
+msgid "Download"
+msgstr "Herunterladen"
