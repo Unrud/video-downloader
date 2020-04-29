@@ -16,12 +16,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import gettext
+import os
+import subprocess
+import traceback
 import typing
-from gi.repository import GObject, Gio
+from gi.repository import GLib, GObject, Gio
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.util import bind_property, expand_path
+from video_downloader.util import bind_property, g_log, expand_path
 
 N_ = gettext.gettext
 
@@ -66,13 +69,21 @@ class Model(GObject.GObject, downloader.Handler):
         super().__init__()
         self._handler = handler
         self._downloader = downloader.Downloader(self)
+        self._download_finished_filenames = []
+        self._filemanager_proxy = Gio.DBusProxy.new_for_bus_sync(
+            Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
+            Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
+            Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
+            'org.freedesktop.FileManager1', '/org/freedesktop/FileManager1',
+            'org.freedesktop.FileManager1')
         bind_property(self, 'download-dir', self, 'download-dir-abs',
                       expand_path)
         self.actions = Gio.SimpleActionGroup.new()
         self.actions.add_action_entries([
             ('download', lambda *_: self.set_property('state', 'download')),
             ('cancel', lambda *_: self.set_property('state', 'cancel')),
-            ('back', lambda *_: self.set_property('state', 'start'))])
+            ('back', lambda *_: self.set_property('state', 'start')),
+            ('open-download-dir', self._open_download_dir)])
         bind_property(self, 'url', self.actions.lookup_action('download'),
                       'enabled', bool)
         bind_property(self, 'state', self,
@@ -96,6 +107,7 @@ class Model(GObject.GObject, downloader.Handler):
             self.download_bytes_total = -1
             self.download_speed = -1
             self.download_eta = -1
+            self._download_finished_filenames.clear()
             self._downloader.start()
         elif state == 'cancel':
             assert self.prev_state == 'download'
@@ -105,6 +117,24 @@ class Model(GObject.GObject, downloader.Handler):
         else:
             assert False
         return state
+
+    def _open_download_dir(self, action, parameter, user_data):
+        if len(self._download_finished_filenames) == 1:
+            method = 'ShowItems'
+            paths = [os.path.join(self.download_dir_abs, filename) for
+                     filename in self._download_finished_filenames]
+        else:
+            method = 'ShowFolders'
+            paths = [self.download_dir_abs]
+        parameters = GLib.Variant(
+            '(ass)', ([Gio.File.new_for_path(p).get_uri() for p in paths], ''))
+        try:
+            self._filemanager_proxy.call_sync(
+                method, parameters, Gio.DBusCallFlags.NONE, -1)
+        except GLib.Error:
+            g_log('youtube-dl', GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+                  traceback.format_exc())
+            subprocess.run(['xdg-open', self.download_dir_abs], check=True)
 
     def on_pulse(self):
         assert self.state in ['download', 'cancel']
@@ -168,12 +198,17 @@ class Model(GObject.GObject, downloader.Handler):
         self.download_eta = eta
         self.download_speed = speed
 
-    def on_progress(self, playlist_index, playlist_count, title, thumbnail):
+    def on_progress_start(self, playlist_index, playlist_count, title,
+                          thumbnail):
         assert self.state in ['download', 'cancel']
         self.download_playlist_index = playlist_index
         self.download_playlist_count = playlist_count
         self.download_title = title
         self.download_thumbnail = thumbnail
+
+    def on_progress_end(self, filename):
+        assert self.state in ['download', 'cancel']
+        self._download_finished_filenames.append(filename)
 
 
 class Handler:

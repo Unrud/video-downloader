@@ -13,6 +13,7 @@
         "--filesystem=~/.config/dconf:ro",
         "--talk-name=ca.desrt.dconf",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
+        "--talk-name=org.freedesktop.FileManager1",
         "--filesystem=xdg-download/VideoDownloader:create"
     ],
     "cleanup" : [

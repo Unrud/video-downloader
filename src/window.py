@@ -21,7 +21,6 @@ import locale
 import math
 import os
 import re
-import subprocess
 from gi.repository import GLib, Gtk, GdkPixbuf, GObject
 
 from video_downloader.util import bind_property
@@ -174,14 +173,16 @@ class Window(Gtk.ApplicationWindow):
         if os.path.commonpath([home_dir, label_dir]) == home_dir:
             label_dir = '~' + label_dir[len(home_dir):]
         template = GObject.markup_escape_text(N_('Saved in {}'))
-        link = '<a href="%s">%s</a>' % (
-            GObject.markup_escape_text('file://' + download_dir_abs),
+        link = '<a href="action:open-download-dir">{}</a>'.format(
             GObject.markup_escape_text(label_dir))
         self.success_msg_wdg.set_markup(template.format(link))
 
     def _on_activate_link(self, _, uri):
-        if re.match('[a-zA-Z]+://', uri):
-            return subprocess.run(['xdg-open', uri]).returncode == 0
+        if uri.startswith('action:'):
+            action = self.get_application().lookup_action(uri[len('action:'):])
+            action.activate()
+            return True
+        return False
 
     def _update_header(self, state):
         self.audio_video_switcher_wdg.set_visible(state == 'start')

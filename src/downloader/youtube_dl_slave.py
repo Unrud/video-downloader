@@ -93,6 +93,11 @@ class YoutubeDLSlave:
         return sorted(map(os.path.abspath, glob.iglob('*.info.json')))
 
     def debug(self, msg):
+        # For ydl_opts['forcejson']
+        if self._expect_info_dict_json:
+            self._expect_info_dict_json = False
+            self._info_dict = json.loads(msg)
+            return
         print(msg, file=sys.stderr, flush=True)
 
     def warning(self, msg):
@@ -104,6 +109,9 @@ class YoutubeDLSlave:
 
     def __init__(self):
         self._handler = Handler()
+        # See ydl_opts['forcejson']
+        self._expect_info_dict_json = False
+        self._info_dict = None
         ydl_opts = {
             'logger': self,
             'logtostderr': True,
@@ -115,7 +123,7 @@ class YoutubeDLSlave:
             'playlistend': 2,
             'outtmpl': '%(autonumber)s.%(ext)s',
             'fixup': 'detect_or_warn',
-            'postprocessors' : [{'key': 'XAttrMetadata'}]}
+            'postprocessors': [{'key': 'XAttrMetadata'}]}
         url = self._handler.get_url()
         target_dir = os.path.abspath(self._handler.get_target_dir())
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -153,6 +161,8 @@ class YoutubeDLSlave:
             del ydl_opts['writethumbnail']
             del ydl_opts['skip_download']
             ydl_opts['outtmpl'] = OUTPUT_TEMPLATE
+            # Output info_dict as JSON with debug method of logger
+            ydl_opts['forcejson'] = True
             mode = self._handler.get_mode()
             resolution = self._handler.get_resolution()
             if mode == 'audio':
@@ -174,14 +184,23 @@ class YoutubeDLSlave:
                     lambda p: os.path.splitext(p)[1][1:] != 'json', glob.iglob(
                         glob.escape(info_path[:-len('info.json')]) + '*')))
                 thumbnail_path = thumbnail_paths[0] if thumbnail_paths else ''
-                self._handler.on_progress(i, len(info_playlist), title,
-                                          thumbnail_path)
+                self._handler.on_progress_start(i, len(info_playlist), title,
+                                                thumbnail_path)
                 if info.get('thumbnails'):
                     info['thumbnails'][-1]['filename'] = thumbnail_path
                 sort_formats(info['formats'], resolution=resolution)
                 with open(info_path, 'w') as f:
                     json.dump(info, f)
+                # See ydl_opts['forcejson']
+                self._expect_info_dict_json = True
                 self._load_playlist(target_dir, ydl_opts, info_path=info_path)
+                if self._expect_info_dict_json:
+                    raise RuntimeError('info_dict not received')
+                filename = self._info_dict['_filename']
+                if mode == 'audio':
+                    filename = os.path.splitext(filename)[0] + '.mp3'
+                self._handler.on_progress_end(filename)
+                self._info_dict = None
 
 
 class Handler:
