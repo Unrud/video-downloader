@@ -15,7 +15,7 @@
       <li>Convert videos to MP3</li>
       <li>Supports password-protected and private videos</li>
       <li>Download single videos or whole playlists</li>
-      <li>Automatically selects a video format based on your preferred resolution</li>
+      <li>Automatically selects a video format based on your quality demands</li>
     </ul>
     <p>
       Based on youtube-dl.
