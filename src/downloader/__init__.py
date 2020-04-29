@@ -50,7 +50,7 @@ class Downloader:
             start_new_session=True)
         fcntl.fcntl(self._process.stdout, fcntl.F_SETFL, os.O_NONBLOCK)
         fcntl.fcntl(self._process.stderr, fcntl.F_SETFL, os.O_NONBLOCK)
-        self._process.stdout_remainder = self._process.stderr_remainder = ""
+        self._process.stdout_remainder = self._process.stderr_remainder = ''
         GLib.unix_fd_add_full(
             GLib.PRIORITY_DEFAULT_IDLE, self._process.stdout.fileno(),
             GLib.IOCondition.IN, self._on_process_stdout)
