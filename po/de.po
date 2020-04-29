@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-22 10:39+0200\n"
-"PO-Revision-Date: 2020-04-22 11:39+0200\n"
+"POT-Creation-Date: 2020-04-29 22:31+0200\n"
+"PO-Revision-Date: 2020-04-29 22:33+0200\n"
 "Last-Translator: Roy Meissner <roy-meissner@gmx.net>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:36
 #: src/window.ui:502
 msgid "Video Downloader"
-msgstr ""
+msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
@@ -50,22 +50,22 @@ msgid "Download single videos or whole playlists"
 msgstr "Einzelne Videos und ganze Wiedergabelisten herunterzuladen"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
-msgid "Automatically selects a video format based on your preferred resolution"
+msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
 "Automatisch das Videoformat auszuwählen, das den eigenen Qualitätsansprüchen "
 "entspricht"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
 msgid "Based on youtube-dl."
-msgstr "Baut auf youtube-dl auf."
+msgstr "Basiert auf youtube-dl."
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
 msgid "Unrud"
-msgstr ""
+msgstr "Unrud"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:6
 msgid "com.github.unrud.VideoDownloader"
-msgstr ""
+msgstr "com.github.unrud.VideoDownloader"
 
 #: src/authentication_dialog.py:29
 msgid "Authentication Required"
@@ -93,49 +93,53 @@ msgstr "Benutzername"
 msgid "Password"
 msgstr "Passwort"
 
-#: src/model.py:54
-msgid "Best"
-msgstr "Automatisch (Beste)"
-
-#: src/model.py:55
-msgid "4320p (8K)"
-msgstr ""
-
-#: src/model.py:56
-msgid "2160p (4K)"
-msgstr ""
-
 #: src/model.py:57
-msgid "1440p (HD)"
-msgstr ""
+msgid "Best"
+msgstr "Beste"
 
 #: src/model.py:58
-msgid "1080p (HD)"
-msgstr ""
+msgid "4320p (8K)"
+msgstr "4320p (8K)"
 
 #: src/model.py:59
-msgid "720p (HD)"
-msgstr ""
+msgid "2160p (4K)"
+msgstr "2160p (4K)"
 
 #: src/model.py:60
-msgid "480p"
-msgstr ""
+msgid "1440p (HD)"
+msgstr "1440p (HD)"
 
 #: src/model.py:61
-msgid "360p"
-msgstr ""
+msgid "1080p (HD)"
+msgstr "1080p (HD)"
 
 #: src/model.py:62
-msgid "240p"
-msgstr ""
+msgid "720p (HD)"
+msgstr "720p (HD)"
 
 #: src/model.py:63
+msgid "480p"
+msgstr "480p"
+
+#: src/model.py:64
+msgid "360p"
+msgstr "360p"
+
+#: src/model.py:65
+msgid "240p"
+msgstr "240p"
+
+#: src/model.py:66
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/playlist_dialog.py:31
 msgid "Download Playlist?"
 msgstr "Wiedergabeliste herunterladen?"
+
+#: src/playlist_dialog.py:32
+msgid "The video is part of a playlist."
+msgstr "Das Video ist Teil einer Wiedergabeliste."
 
 #: src/playlist_dialog.py:33
 msgid "Single Video"
@@ -145,49 +149,49 @@ msgstr "Einzelnes Video"
 msgid "All Videos in Playlist"
 msgstr "Alle Videos der Liste"
 
-#: src/window.py:113
+#: src/window.py:112
 msgid "Downloading"
 msgstr "Lädt herunter"
 
-#: src/window.py:115 src/window.py:140
+#: src/window.py:114 src/window.py:139
 msgid "{} of {}"
 msgstr "{} von {}"
 
-#: src/window.py:141 src/window.py:143
+#: src/window.py:140 src/window.py:142
 msgid "unknown"
 msgstr "unbekannt"
 
-#: src/window.py:176
+#: src/window.py:175
 msgid "Saved in {}"
 msgstr "Gespeichert in {}"
 
 #: src/window.ui:45 src/window.ui:102
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:83
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: src/window.ui:146
 msgid "Resolution"
-msgstr "Qualität"
+msgstr "Auflösung"
 
 #: src/window.ui:191
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: src/window.ui:317
 msgid "Download failed"
-msgstr "Das Video konnte nicht heruntergeladen werden"
+msgstr "Download fehlgeschlagen"
 
 #: src/window.ui:347
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: src/window.ui:430
 msgid "Download finished"
-msgstr "Das Video wurde erfolgreich herunterladen"
+msgstr "Download abgeschlossen"
 
 #: src/window.ui:522
 msgid "Back"
