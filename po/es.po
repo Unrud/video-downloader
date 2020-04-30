@@ -50,7 +50,7 @@ msgid "Download single videos or whole playlists"
 msgstr "Descargar vídeos individuales o listas de reproducción completas"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
-msgid "Automatically selects a video format based on your preferred resolution"
+msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
 "Selecciona automáticamente un formato de vídeo basado en su resolución "
 "preferida"
@@ -136,6 +136,10 @@ msgstr "144p"
 #: src/playlist_dialog.py:31
 msgid "Download Playlist?"
 msgstr "¿Descargar lista de reproducción? "
+
+#: src/playlist_dialog.py:32
+msgid "The video is part of a playlist."
+msgstr "El vídeo es parte de una lista de reproducción."
 
 #: src/playlist_dialog.py:33
 msgid "Single Video"
