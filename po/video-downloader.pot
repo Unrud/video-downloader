@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-22 10:39+0200\n"
+"POT-Creation-Date: 2020-05-02 21:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:36
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
 #: src/window.ui:502
 msgid "Video Downloader"
 msgstr ""
@@ -47,7 +47,7 @@ msgid "Download single videos or whole playlists"
 msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
-msgid "Automatically selects a video format based on your preferred resolution"
+msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
@@ -88,48 +88,56 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: src/model.py:54
-msgid "Best"
-msgstr ""
-
-#: src/model.py:55
-msgid "4320p (8K)"
-msgstr ""
-
-#: src/model.py:56
-msgid "2160p (4K)"
+#: src/main.py:38
+msgid "Prefill URL field"
 msgstr ""
 
 #: src/model.py:57
-msgid "1440p (HD)"
+msgid "Best"
 msgstr ""
 
 #: src/model.py:58
-msgid "1080p (HD)"
+msgid "4320p (8K)"
 msgstr ""
 
 #: src/model.py:59
-msgid "720p (HD)"
+msgid "2160p (4K)"
 msgstr ""
 
 #: src/model.py:60
-msgid "480p"
+msgid "1440p (HD)"
 msgstr ""
 
 #: src/model.py:61
-msgid "360p"
+msgid "1080p (HD)"
 msgstr ""
 
 #: src/model.py:62
-msgid "240p"
+msgid "720p (HD)"
 msgstr ""
 
 #: src/model.py:63
+msgid "480p"
+msgstr ""
+
+#: src/model.py:64
+msgid "360p"
+msgstr ""
+
+#: src/model.py:65
+msgid "240p"
+msgstr ""
+
+#: src/model.py:66
 msgid "144p"
 msgstr ""
 
 #: src/playlist_dialog.py:31
 msgid "Download Playlist?"
+msgstr ""
+
+#: src/playlist_dialog.py:32
+msgid "The video is part of a playlist."
 msgstr ""
 
 #: src/playlist_dialog.py:33
@@ -140,19 +148,19 @@ msgstr ""
 msgid "All Videos in Playlist"
 msgstr ""
 
-#: src/window.py:113
+#: src/window.py:112
 msgid "Downloading"
 msgstr ""
 
-#: src/window.py:115 src/window.py:140
+#: src/window.py:114 src/window.py:139
 msgid "{} of {}"
 msgstr ""
 
-#: src/window.py:141 src/window.py:143
+#: src/window.py:140 src/window.py:142
 msgid "unknown"
 msgstr ""
 
-#: src/window.py:176
+#: src/window.py:175
 msgid "Saved in {}"
 msgstr ""
 
