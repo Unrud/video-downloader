@@ -80,11 +80,13 @@ class YoutubeDLSlave:
                     youtube_dl.YoutubeDL(ydl_opts).download_with_info_file(
                         info_path)
             except youtube_dl.utils.DownloadError as e:
-                if '--username' in str(e) and 'username' not in ydl_opts:
+                if 'username' not in ydl_opts and (
+                        'please sign in' in str(e) or
+                        '--username' in str(e)):
                     ydl_opts['username'], ydl_opts['password'] = (
                         self._handler.on_login_request())
-                if ('--video-password' in str(e) and
-                        'videopassword' not in ydl_opts):
+                if 'videopassword' not in ydl_opts and (
+                        '--video-password' in str(e)):
                     ydl_opts['videopassword'] = (
                         self._handler.on_videopassword_request())
                     continue
