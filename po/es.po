@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-05-02 21:42+0200\n"
-"PO-Revision-Date: 2020-05-02 21:44+0200\n"
+"PO-Revision-Date: 2020-05-02 21:55+0200\n"
 "Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>\n"
 "Language-Team: Spanish; Castilian\n"
 "Language: es\n"
@@ -97,8 +97,9 @@ msgid "Password"
 msgstr "Contraseña"
 
 #: src/main.py:38
+#, fuzzy
 msgid "Prefill URL field"
-msgstr ""
+msgstr "Rellenar campo URL"
 
 #: src/model.py:57
 msgid "Best"
