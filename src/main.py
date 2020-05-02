@@ -33,6 +33,9 @@ class Application(Gtk.Application, Handler):
     def __init__(self):
         super().__init__(application_id='com.github.unrud.VideoDownloader',
                          flags=Gio.ApplicationFlags.NON_UNIQUE)
+        self.add_main_option(
+            'url', ord('u'), GLib.OptionFlags.NONE, GLib.OptionArg.STRING,
+            N_('Prefill URL field'), 'URL')
         GLib.set_application_name(N_('Video Downloader'))
         self.model = Model(self)
         self._settings = Gio.Settings.new(self.props.application_id)
@@ -56,6 +59,12 @@ class Application(Gtk.Application, Handler):
             win = Window(application=self)
             win.set_default_icon_name(self.props.application_id)
         win.present()
+
+    def do_handle_local_options(self, options):
+        url_variant = options.lookup_value('url', GLib.VariantType('s'))
+        if url_variant:
+            self.model.url = url_variant.get_string()
+        return -1
 
     def on_playlist_request(self):
         dialog = PlaylistDialog(self.props.active_window)
