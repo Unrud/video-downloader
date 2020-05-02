@@ -96,7 +96,7 @@ msgstr "Password"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr ""
+msgstr "Campo URL precompilato"
 
 #: src/model.py:57
 msgid "Best"
@@ -144,7 +144,7 @@ msgstr "Scaricare playlist?"
 
 #: src/playlist_dialog.py:32
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "Il video fa parte di una playlist."
 
 #: src/playlist_dialog.py:33
 msgid "Single Video"
