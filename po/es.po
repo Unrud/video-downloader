@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-22 10:39+0200\n"
-"PO-Revision-Date: 2020-04-30 14:19-0500\n"
+"POT-Creation-Date: 2020-05-02 21:42+0200\n"
+"PO-Revision-Date: 2020-05-02 21:44+0200\n"
 "Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>\n"
 "Language-Team: Spanish; Castilian\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.3\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:36
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
 #: src/window.ui:502
 msgid "Video Downloader"
 msgstr "Video Downloader"
@@ -50,6 +50,9 @@ msgid "Download single videos or whole playlists"
 msgstr "Descargar vídeos individuales o listas de reproducción completas"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
+#, fuzzy
+#| msgid ""
+#| "Automatically selects a video format based on your preferred resolution"
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
 "Selecciona automáticamente un formato de vídeo basado en su resolución "
@@ -93,49 +96,53 @@ msgstr "Nombre de usuario"
 msgid "Password"
 msgstr "Contraseña"
 
-#: src/model.py:54
+#: src/main.py:38
+msgid "Prefill URL field"
+msgstr ""
+
+#: src/model.py:57
 msgid "Best"
 msgstr "La mejor"
 
-#: src/model.py:55
+#: src/model.py:58
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:56
+#: src/model.py:59
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:57
+#: src/model.py:60
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:58
+#: src/model.py:61
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:59
+#: src/model.py:62
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:60
+#: src/model.py:63
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:61
+#: src/model.py:64
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:62
+#: src/model.py:65
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:63
+#: src/model.py:66
 msgid "144p"
 msgstr "144p"
 
 #: src/playlist_dialog.py:31
 msgid "Download Playlist?"
-msgstr "¿Descargar lista de reproducción? "
+msgstr "¿Descargar lista de reproducción?"
 
 #: src/playlist_dialog.py:32
 msgid "The video is part of a playlist."
@@ -149,19 +156,19 @@ msgstr "Vídeo individual"
 msgid "All Videos in Playlist"
 msgstr "Todos los vídeos en la lista de reproducción"
 
-#: src/window.py:113
+#: src/window.py:112
 msgid "Downloading"
 msgstr "Descargando"
 
-#: src/window.py:115 src/window.py:140
+#: src/window.py:114 src/window.py:139
 msgid "{} of {}"
 msgstr "{} de {}"
 
-#: src/window.py:141 src/window.py:143
+#: src/window.py:140 src/window.py:142
 msgid "unknown"
 msgstr "desconocido"
 
-#: src/window.py:176
+#: src/window.py:175
 msgid "Saved in {}"
 msgstr "Guardado en {}"
 
