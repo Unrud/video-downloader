@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-29 22:31+0200\n"
-"PO-Revision-Date: 2020-04-29 22:33+0200\n"
+"POT-Creation-Date: 2020-05-02 21:09+0200\n"
+"PO-Revision-Date: 2020-05-02 21:11+0200\n"
 "Last-Translator: Roy Meissner <roy-meissner@gmx.net>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:36
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
 #: src/window.ui:502
 msgid "Video Downloader"
 msgstr "Video Downloader"
@@ -92,6 +92,10 @@ msgstr "Benutzername"
 #: src/authentication_dialog_password.ui:33
 msgid "Password"
 msgstr "Passwort"
+
+#: src/main.py:38
+msgid "Prefill URL field"
+msgstr "URL-Feld vorausfüllen"
 
 #: src/model.py:57
 msgid "Best"
