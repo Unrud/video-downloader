@@ -78,6 +78,7 @@ class Application(Gtk.Application, Handler):
         dialog.destroy()
         if res == Gtk.ResponseType.OK:
             return (dialog.username, dialog.password)
+        self.lookup_action('cancel').activate()
         return ('', '')
 
     def on_videopassword_request(self) -> str:
@@ -86,6 +87,7 @@ class Application(Gtk.Application, Handler):
         dialog.destroy()
         if res == Gtk.ResponseType.OK:
             return dialog.password
+        self.lookup_action('cancel').activate()
         return ''
 
 
