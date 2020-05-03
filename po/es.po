@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 21:42+0200\n"
-"PO-Revision-Date: 2020-05-02 21:55+0200\n"
+"POT-Creation-Date: 2020-05-03 14:37+0200\n"
+"PO-Revision-Date: 2020-05-03 14:39+0200\n"
 "Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>\n"
 "Language-Team: Spanish; Castilian\n"
 "Language: es\n"
@@ -70,17 +70,23 @@ msgstr "Unrud"
 msgid "com.github.unrud.VideoDownloader"
 msgstr "com.github.unrud.VideoDownloader"
 
-#: src/authentication_dialog.py:29
+#: src/authentication_dialog.py:30
 msgid "Authentication Required"
 msgstr "Autenticación Requerida"
 
-#: src/authentication_dialog.py:33 src/window.ui:536
+#: src/authentication_dialog.py:34 src/window.ui:536
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/authentication_dialog.py:34
-msgid "Continue"
-msgstr "Continuar"
+#: src/authentication_dialog.py:42
+#, fuzzy
+msgid "Sign in"
+msgstr "Registrarse"
+
+#: src/authentication_dialog.py:42
+#, fuzzy
+msgid "Skip"
+msgstr "Omitir"
 
 #: src/authentication_dialog_login.ui:15
 #: src/authentication_dialog_password.ui:15
@@ -101,75 +107,75 @@ msgstr "Contraseña"
 msgid "Prefill URL field"
 msgstr "Rellenar campo URL"
 
-#: src/model.py:57
+#: src/model.py:58
 msgid "Best"
 msgstr "La mejor"
 
-#: src/model.py:58
+#: src/model.py:59
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:59
+#: src/model.py:60
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:60
+#: src/model.py:61
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:61
+#: src/model.py:62
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:62
+#: src/model.py:63
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:63
+#: src/model.py:64
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:64
+#: src/model.py:65
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:65
+#: src/model.py:66
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:66
+#: src/model.py:67
 msgid "144p"
 msgstr "144p"
 
-#: src/playlist_dialog.py:31
+#: src/playlist_dialog.py:32
 msgid "Download Playlist?"
 msgstr "¿Descargar lista de reproducción?"
 
-#: src/playlist_dialog.py:32
+#: src/playlist_dialog.py:33
 msgid "The video is part of a playlist."
 msgstr "El vídeo es parte de una lista de reproducción."
 
-#: src/playlist_dialog.py:33
+#: src/playlist_dialog.py:34
 msgid "Single Video"
 msgstr "Vídeo individual"
 
-#: src/playlist_dialog.py:34
+#: src/playlist_dialog.py:35
 msgid "All Videos in Playlist"
 msgstr "Todos los vídeos en la lista de reproducción"
 
-#: src/window.py:112
+#: src/window.py:111
 msgid "Downloading"
 msgstr "Descargando"
 
-#: src/window.py:114 src/window.py:139
+#: src/window.py:113 src/window.py:138
 msgid "{} of {}"
 msgstr "{} de {}"
 
-#: src/window.py:140 src/window.py:142
+#: src/window.py:139 src/window.py:141
 msgid "unknown"
 msgstr "desconocido"
 
-#: src/window.py:175
+#: src/window.py:174
 msgid "Saved in {}"
 msgstr "Guardado en {}"
 

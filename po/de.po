@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 21:09+0200\n"
-"PO-Revision-Date: 2020-05-02 21:11+0200\n"
+"POT-Creation-Date: 2020-05-03 14:37+0200\n"
+"PO-Revision-Date: 2020-05-03 14:38+0200\n"
 "Last-Translator: Roy Meissner <roy-meissner@gmx.net>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -67,17 +67,21 @@ msgstr "Unrud"
 msgid "com.github.unrud.VideoDownloader"
 msgstr "com.github.unrud.VideoDownloader"
 
-#: src/authentication_dialog.py:29
+#: src/authentication_dialog.py:30
 msgid "Authentication Required"
 msgstr "Authentifizierung erforderlich"
 
-#: src/authentication_dialog.py:33 src/window.ui:536
+#: src/authentication_dialog.py:34 src/window.ui:536
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/authentication_dialog.py:34
-msgid "Continue"
-msgstr "Weiter"
+#: src/authentication_dialog.py:42
+msgid "Sign in"
+msgstr "Anmelden"
+
+#: src/authentication_dialog.py:42
+msgid "Skip"
+msgstr "Überspringen"
 
 #: src/authentication_dialog_login.ui:15
 #: src/authentication_dialog_password.ui:15
@@ -97,75 +101,75 @@ msgstr "Passwort"
 msgid "Prefill URL field"
 msgstr "URL-Feld vorausfüllen"
 
-#: src/model.py:57
+#: src/model.py:58
 msgid "Best"
 msgstr "Beste"
 
-#: src/model.py:58
+#: src/model.py:59
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:59
+#: src/model.py:60
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:60
+#: src/model.py:61
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:61
+#: src/model.py:62
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:62
+#: src/model.py:63
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:63
+#: src/model.py:64
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:64
+#: src/model.py:65
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:65
+#: src/model.py:66
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:66
+#: src/model.py:67
 msgid "144p"
 msgstr "144p"
 
-#: src/playlist_dialog.py:31
+#: src/playlist_dialog.py:32
 msgid "Download Playlist?"
 msgstr "Wiedergabeliste herunterladen?"
 
-#: src/playlist_dialog.py:32
+#: src/playlist_dialog.py:33
 msgid "The video is part of a playlist."
 msgstr "Das Video ist Teil einer Wiedergabeliste."
 
-#: src/playlist_dialog.py:33
+#: src/playlist_dialog.py:34
 msgid "Single Video"
 msgstr "Einzelnes Video"
 
-#: src/playlist_dialog.py:34
+#: src/playlist_dialog.py:35
 msgid "All Videos in Playlist"
 msgstr "Alle Videos der Liste"
 
-#: src/window.py:112
+#: src/window.py:111
 msgid "Downloading"
 msgstr "Lädt herunter"
 
-#: src/window.py:114 src/window.py:139
+#: src/window.py:113 src/window.py:138
 msgid "{} of {}"
 msgstr "{} von {}"
 
-#: src/window.py:140 src/window.py:142
+#: src/window.py:139 src/window.py:141
 msgid "unknown"
 msgstr "unbekannt"
 
-#: src/window.py:175
+#: src/window.py:174
 msgid "Saved in {}"
 msgstr "Gespeichert in {}"
 
