@@ -190,7 +190,8 @@ class YoutubeDLSlave:
                                                 thumbnail_path)
                 if info.get('thumbnails'):
                     info['thumbnails'][-1]['filename'] = thumbnail_path
-                sort_formats(info['formats'], resolution=resolution)
+                if info.get('formats'):
+                    sort_formats(info['formats'], resolution=resolution)
                 with open(info_path, 'w') as f:
                     json.dump(info, f)
                 # See ydl_opts['forcejson']
