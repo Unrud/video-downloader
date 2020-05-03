@@ -31,10 +31,14 @@ class BaseAuthenticationDialog(Gtk.Dialog):
             use_header_bar=True)
         self.set_resizable(False)
         self.add_button(N_('Cancel'), Gtk.ResponseType.CANCEL)
-        self.add_button(N_('Continue'), Gtk.ResponseType.OK)
+        self._ok_button = self.add_button('', Gtk.ResponseType.OK)
+        self._update_response(False)
         self.set_default_response(Gtk.ResponseType.OK)
         area_wdg = self.get_content_area()
         area_wdg.add(self._build_content())
+
+    def _update_response(self, form_filled):
+        self._ok_button.set_label(N_('Sign in') if form_filled else N_('Skip'))
 
     def _build_content(self):
         raise NotImplementedError
@@ -44,30 +48,29 @@ class LoginDialog(BaseAuthenticationDialog):
     username = GObject.Property(type=str)
     password = GObject.Property(type=str)
 
-    def _update_sensitivity(self, _):
-        self.set_response_sensitive(
-            Gtk.ResponseType.OK, bool(self.username and self.password))
+    def _update_form(self, _):
+        self._update_response(self.username or self.password)
 
     def _build_content(self):
         content = LoginDialogContent()
         bind_property(self, 'username', content.username_wdg, 'text', bi=True)
         bind_property(self, 'password', content.password_wdg, 'text', bi=True)
         for prop in ['username', 'password']:
-            bind_property(self, prop, func_a_to_b=self._update_sensitivity)
-            bind_property(self, prop, func_a_to_b=self._update_sensitivity)
+            bind_property(self, prop, func_a_to_b=self._update_form)
+            bind_property(self, prop, func_a_to_b=self._update_form)
         return content
 
 
 class PasswordDialog(BaseAuthenticationDialog):
     password = GObject.Property(type=str)
 
-    def _update_sensitivity(self, _):
-        self.set_response_sensitive(Gtk.ResponseType.OK, bool(self.password))
+    def _update_form(self, _):
+        self._update_response(self.password)
 
     def _build_content(self):
         content = PasswordDialogContent()
         bind_property(self, 'password', content.password_wdg, 'text', bi=True)
-        bind_property(self, 'password', func_a_to_b=self._update_sensitivity)
+        bind_property(self, 'password', func_a_to_b=self._update_form)
         return content
 
 

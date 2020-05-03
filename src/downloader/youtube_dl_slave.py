@@ -30,6 +30,10 @@ from video_downloader.downloader.youtube_dl_formats import sort_formats
 OUTPUT_TEMPLATE = '%(title)s-%(id)s-%(format_id)s.%(ext)s'
 
 
+class RetryException(BaseException):
+    pass
+
+
 class YoutubeDLSlave:
     def _on_progress(self, d):
         if d['status'] not in ['downloading', 'finished']:
@@ -70,32 +74,24 @@ class YoutubeDLSlave:
         self._handler.on_load_progress(
             filename, progress, bytes_, bytes_total, eta, speed)
 
-    def _load_playlist(self, dir_, ydl_opts, url=None, info_path=None):
+    def _load_playlist(self, dir_, url=None, info_path=None):
         os.chdir(dir_)
         while True:
             try:
+                saved_skipped_count = self._skipped_count
                 if url is not None:
-                    youtube_dl.YoutubeDL(ydl_opts).download([url])
+                    youtube_dl.YoutubeDL(self.ydl_opts).download([url])
                 else:
-                    youtube_dl.YoutubeDL(ydl_opts).download_with_info_file(
-                        info_path)
-            except youtube_dl.utils.DownloadError as e:
-                if 'username' not in ydl_opts and (
-                        'please sign in' in str(e) or
-                        '--username' in str(e)):
-                    ydl_opts['username'], ydl_opts['password'] = (
-                        self._handler.on_login_request())
-                if 'videopassword' not in ydl_opts and (
-                        '--video-password' in str(e)):
-                    ydl_opts['videopassword'] = (
-                        self._handler.on_videopassword_request())
-                    continue
-                raise
+                    youtube_dl.YoutubeDL(
+                        self.ydl_opts).download_with_info_file(info_path)
+            except RetryException:
+                continue
             break
-        return sorted(map(os.path.abspath, glob.iglob('*.info.json')))
+        return (sorted(map(os.path.abspath, glob.iglob('*.info.json'))),
+                self._skipped_count - saved_skipped_count)
 
     def debug(self, msg):
-        # For ydl_opts['forcejson']
+        # See ydl_opts['forcejson']
         if self._expect_info_dict_json:
             self._expect_info_dict_json = False
             self._info_dict = json.loads(msg)
@@ -107,74 +103,113 @@ class YoutubeDLSlave:
 
     def error(self, msg):
         print(msg, file=sys.stderr, flush=True)
+        # Handle authentication requests
+        if self._allow_authentication_request and (
+                'please sign in' in msg or '--username' in msg):
+            if self._skip_authentication:
+                self._skipped_count += 1
+                return
+            user, password = self._handler.on_login_request()
+            if not user and not password:
+                self._skip_authentication = True
+                self._skipped_count += 1
+                return
+            self.ydl_opts['username'] = user
+            self.ydl_opts['password'] = password
+            self._allow_authentication_request = False
+            raise RetryException(msg)
+        if self._allow_authentication_request and '--video-password' in msg:
+            if self._skip_authentication:
+                self._skipped_count += 1
+                return
+            videopassword = self._handler.on_videopassword_request()
+            if not videopassword:
+                self._skip_authentication = True
+                self._skipped_count += 1
+                return
+            self.ydl_opts['videopassword'] = videopassword
+            self._allow_authentication_request = False
+            raise RetryException(msg)
         self._handler.on_error(msg)
+        raise youtube_dl.utils.DownloadError(msg)
 
     def __init__(self):
         self._handler = Handler()
         # See ydl_opts['forcejson']
         self._expect_info_dict_json = False
         self._info_dict = None
-        ydl_opts = {
+        self._allow_authentication_request = True
+        self._skip_authentication = False
+        self._skipped_count = 0
+        self.ydl_opts = {
             'logger': self,
             'logtostderr': True,
             'no_color': True,
             'progress_hooks': [self._on_progress],
-            'writeinfojson': True,
-            'writethumbnail': True,
-            'skip_download': True,
-            'playlistend': 2,
-            'outtmpl': '%(autonumber)s.%(ext)s',
             'fixup': 'detect_or_warn',
+            'ignoreerrors': True,  # handled via logger error callback
             'postprocessors': [{'key': 'XAttrMetadata'}]}
         url = self._handler.get_url()
         target_dir = os.path.abspath(self._handler.get_target_dir())
         with tempfile.TemporaryDirectory() as temp_dir:
-            ydl_opts['cookiefile'] = os.path.join(temp_dir, 'cookies')
+            self.ydl_opts['cookiefile'] = os.path.join(temp_dir, 'cookies')
+            # Collect info without downloading videos
             testplaylist_dir = os.path.join(temp_dir, 'testplaylist')
             noplaylist_dir = os.path.join(temp_dir, 'noplaylist')
             fullplaylist_dir = os.path.join(temp_dir, 'fullplaylist')
             for path in [testplaylist_dir, noplaylist_dir, fullplaylist_dir]:
                 os.mkdir(path)
+            self.ydl_opts['writeinfojson'] = True
+            self.ydl_opts['writethumbnail'] = True
+            self.ydl_opts['skip_download'] = True
+            self.ydl_opts['playlistend'] = 2
+            self.ydl_opts['outtmpl'] = '%(autonumber)s.%(ext)s'
             # Test playlist
-            info_testplaylist = self._load_playlist(
-                testplaylist_dir, ydl_opts, url)
-            ydl_opts['noplaylist'] = True
-            if len(info_testplaylist) > 1:
-                info_noplaylist = self._load_playlist(
-                    noplaylist_dir, ydl_opts, url)
+            info_testplaylist, skipped_testplaylist = self._load_playlist(
+                testplaylist_dir, url)
+            self.ydl_opts['noplaylist'] = True
+            if len(info_testplaylist) + skipped_testplaylist > 1:
+                info_noplaylist, skipped_noplaylist = self._load_playlist(
+                    noplaylist_dir, url)
             else:
                 info_noplaylist = info_testplaylist
-            del ydl_opts['noplaylist']
-            del ydl_opts['playlistend']
-            if len(info_testplaylist) > len(info_noplaylist):
-                ydl_opts['noplaylist'] = (
+                skipped_noplaylist = skipped_testplaylist
+            del self.ydl_opts['noplaylist']
+            del self.ydl_opts['playlistend']
+            if (len(info_testplaylist) + skipped_testplaylist >
+                    len(info_noplaylist) + skipped_noplaylist):
+                self.ydl_opts['noplaylist'] = (
                     not self._handler.on_playlist_request())
-                if not ydl_opts['noplaylist']:
-                    info_playlist = self._load_playlist(
-                        fullplaylist_dir, ydl_opts, url)
+                if not self.ydl_opts['noplaylist']:
+                    info_playlist, skipped_playlist = self._load_playlist(
+                        fullplaylist_dir, url)
                 else:
                     info_playlist = info_noplaylist
-            elif len(info_testplaylist) > 1:
-                info_playlist = self._load_playlist(
-                    fullplaylist_dir, ydl_opts, url)
+                    skipped_playlist = skipped_noplaylist
+            elif len(info_testplaylist) + skipped_testplaylist > 1:
+                info_playlist, skipped_playlist = self._load_playlist(
+                    fullplaylist_dir, url)
             else:
                 info_playlist = info_testplaylist
-            del ydl_opts['writeinfojson']
-            del ydl_opts['writethumbnail']
-            del ydl_opts['skip_download']
-            ydl_opts['outtmpl'] = OUTPUT_TEMPLATE
-            # Output info_dict as JSON with debug method of logger
-            ydl_opts['forcejson'] = True
+                skipped_playlist = skipped_testplaylist
+            # Download videos
+            self._allow_authentication_request = False
+            del self.ydl_opts['writeinfojson']
+            del self.ydl_opts['writethumbnail']
+            del self.ydl_opts['skip_download']
+            self.ydl_opts['outtmpl'] = OUTPUT_TEMPLATE
+            # Output info_dict as JSON handled via logger debug callback
+            self.ydl_opts['forcejson'] = True
             mode = self._handler.get_mode()
             resolution = self._handler.get_resolution()
             if mode == 'audio':
                 resolution = MAX_RESOLUTION
-                ydl_opts['format'] = 'bestaudio/best'
-                ydl_opts['postprocessors'].insert(0, {
+                self.ydl_opts['format'] = 'bestaudio/best'
+                self.ydl_opts['postprocessors'].insert(0, {
                     'key': 'FFmpegExtractAudio',
                     'preferredcodec': 'mp3',
                     'preferredquality': '192'})
-                ydl_opts['postprocessors'].insert(1, {
+                self.ydl_opts['postprocessors'].insert(1, {
                     'key': 'EmbedThumbnail',
                     'already_have_thumbnail': True})
             os.makedirs(target_dir, exist_ok=True)
@@ -196,7 +231,7 @@ class YoutubeDLSlave:
                     json.dump(info, f)
                 # See ydl_opts['forcejson']
                 self._expect_info_dict_json = True
-                self._load_playlist(target_dir, ydl_opts, info_path=info_path)
+                self._load_playlist(target_dir, info_path=info_path)
                 if self._expect_info_dict_json:
                     raise RuntimeError('info_dict not received')
                 filename = self._info_dict['_filename']
