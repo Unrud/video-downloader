@@ -15,12 +15,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import datetime
 import gettext
 import locale
 import math
 import os
-import re
+
 from gi.repository import GLib, Gtk, GdkPixbuf, GObject
 
 from video_downloader.util import bind_property

@@ -17,7 +17,7 @@
 
 import gettext
 import sys
-import gi
+
 from gi.repository import GLib, Gtk, Gio
 
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog

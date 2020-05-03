@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import gettext
+
 from gi.repository import Gtk, GObject
 
 N_ = gettext.gettext

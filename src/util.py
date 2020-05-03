@@ -17,16 +17,18 @@
 
 import os
 import subprocess
+
 from gi.repository import GLib, GObject
 
 
 def bind_property(obj_a, prop_a, obj_b=None, prop_b=None, func_a_to_b=None,
                   func_b_to_a=None, bi=False):
     if not func_a_to_b and not func_b_to_a:
-        return GObject.Binding.bind_property(
+        GObject.Binding.bind_property(
             obj_a, prop_a, obj_b, prop_b, GObject.BindingFlags.SYNC_CREATE | (
                 GObject.BindingFlags.BIDIRECTIONAL if bi else
                 GObject.BindingFlags.DEFAULT))
+        return
 
     def apply_binding(direction):
         nonlocal skip

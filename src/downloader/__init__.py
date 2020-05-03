@@ -23,6 +23,7 @@ import subprocess
 import sys
 import traceback
 import typing
+
 from gi.repository import GLib
 
 from video_downloader.util import g_log

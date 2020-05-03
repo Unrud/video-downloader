@@ -15,6 +15,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import sys
+
 import youtube_dl
 
 from video_downloader.downloader.youtube_dl_slave import YoutubeDLSlave
@@ -23,4 +25,4 @@ if __name__ == '__main__':
     try:
         YoutubeDLSlave()
     except youtube_dl.utils.DownloadError:
-        exit(1)
+        sys.exit(1)

@@ -20,6 +20,7 @@ import os
 import subprocess
 import traceback
 import typing
+
 from gi.repository import GLib, GObject, Gio
 
 from video_downloader import downloader
