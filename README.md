@@ -14,6 +14,7 @@ Based on [youtube-dl](http://ytdl-org.github.io/youtube-dl/).
 
   * [Flatpak](https://flathub.org/apps/details/com.github.unrud.VideoDownloader)
   * [Snap](https://snapcraft.io/video-downloader)
+  * [Fedora](https://src.fedoraproject.org/rpms/video-downloader): `sudo dnf install video-downloader`
 
 ## Screenshots
 
