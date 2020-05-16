@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-03 14:37+0200\n"
-"PO-Revision-Date: 2020-05-03 14:39+0200\n"
+"POT-Creation-Date: 2020-05-17 00:39+0200\n"
+"PO-Revision-Date: 2020-05-17 00:45+0200\n"
 "Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>\n"
 "Language-Team: Spanish; Castilian\n"
 "Language: es\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
@@ -69,6 +69,10 @@ msgstr "Unrud"
 #: data/com.github.unrud.VideoDownloader.desktop.in:6
 msgid "com.github.unrud.VideoDownloader"
 msgstr "com.github.unrud.VideoDownloader"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "New Window"
+msgstr "Nueva ventana"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"

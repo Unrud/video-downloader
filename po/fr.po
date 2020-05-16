@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-12 20:18+0200\n"
-"PO-Revision-Date: 2020-05-13 13:46+0200\n"
+"POT-Creation-Date: 2020-05-17 00:39+0200\n"
+"PO-Revision-Date: 2020-05-17 00:45+0200\n"
 "Last-Translator: Thorfin89 <thorfin89@free.fr>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
@@ -27,7 +27,8 @@ msgstr "Video Downloader"
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download videos from websites like YouTube and many others"
-msgstr "Téléchargement de vidéos à partir de sites comme YouTube et bien d'autres"
+msgstr ""
+"Téléchargement de vidéos à partir de sites comme YouTube et bien d'autres"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:10
 msgid ""
@@ -51,7 +52,8 @@ msgstr "Télécharge une simple vidéo ou une liste complète"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr "Sélectionne automatiquement la vidéo en fonction de la qualité demandée"
+msgstr ""
+"Sélectionne automatiquement la vidéo en fonction de la qualité demandée"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
 msgid "Based on youtube-dl."
@@ -64,6 +66,10 @@ msgstr "Unrud"
 #: data/com.github.unrud.VideoDownloader.desktop.in:6
 msgid "com.github.unrud.VideoDownloader"
 msgstr "com.github.unrud.VideoDownloader"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "New Window"
+msgstr "Nouvelle fenêtre"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
@@ -81,7 +87,8 @@ msgstr "Se connecter"
 msgid "Skip"
 msgstr "Passer"
 
-#: src/authentication_dialog_login.ui:15 src/authentication_dialog_password.ui:15
+#: src/authentication_dialog_login.ui:15
+#: src/authentication_dialog_password.ui:15
 msgid "The video is not public."
 msgstr "Cette vidéo n'est pas publique."
 
@@ -89,7 +96,8 @@ msgstr "Cette vidéo n'est pas publique."
 msgid "Username"
 msgstr "Identifiant"
 
-#: src/authentication_dialog_login.ui:84 src/authentication_dialog_password.ui:33
+#: src/authentication_dialog_login.ui:84
+#: src/authentication_dialog_password.ui:33
 msgid "Password"
 msgstr "Mot de passe"
 
