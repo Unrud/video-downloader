@@ -6,7 +6,7 @@ Provides the following features:
   * Convert videos to MP3
   * Supports password-protected and private videos
   * Download single videos or whole playlists
-  * Automatically selects a video format based on your preferred resolution
+  * Automatically selects a video format based on your quality demands
 
 Based on [youtube-dl](http://ytdl-org.github.io/youtube-dl/).
 
