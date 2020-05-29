@@ -32,8 +32,8 @@ environment:
 parts:
   youtube-dl:
     plugin: python
-    source: https://github.com/ytdl-org/youtube-dl/archive/2020.05.08.tar.gz
-    source-checksum: sha256/99c7d1fd490fce71ab92d9b54b73e669a9370c6dbc3010590f690880cf3728f3
+    source: https://github.com/ytdl-org/youtube-dl/archive/2020.05.29.tar.gz
+    source-checksum: sha256/57ca5ac03d15efd38cf7ba1b6d09c92c4d223a008b586d877d4b9afc54b0ca56
     python-packages:
       - pyxattr
     stage-packages:

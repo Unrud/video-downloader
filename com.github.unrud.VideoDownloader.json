@@ -65,8 +65,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz",
-                    "sha256" : "cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c"
+                    "url" : "https://ffmpeg.org/releases/ffmpeg-4.2.3.tar.xz",
+                    "sha256" : "9df6c90aed1337634c1fb026fb01c154c29c82a64ea71291ff2da9aacb9aad31"
                 }
             ]
         },
@@ -97,8 +97,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ytdl-org/youtube-dl/archive/2020.05.08.tar.gz",
-                    "sha256" : "99c7d1fd490fce71ab92d9b54b73e669a9370c6dbc3010590f690880cf3728f3"
+                    "url" : "https://github.com/ytdl-org/youtube-dl/archive/2020.05.29.tar.gz",
+                    "sha256" : "57ca5ac03d15efd38cf7ba1b6d09c92c4d223a008b586d877d4b9afc54b0ca56"
                 }
             ]
         },
