@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-14 21:30+0900\n"
-"PO-Revision-Date: 2020-06-14 22:00+0900\n"
+"PO-Revision-Date: 2020-06-14 22:35+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/com.github.unrud.VideoDownloader.desktop.in:2
 #: main.py:39 window.ui.h:8
 msgid "Video Downloader"
-msgstr "動画ダウンローダー"
+msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:3
@@ -55,12 +55,6 @@ msgstr "指定した品質に基づいた動画形式の自動選択"
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
 msgid "Based on youtube-dl."
 msgstr "youtube-dl を利用しています。"
-
-#: data/com.github.unrud.VideoDownloader.desktop.in:8
-msgid "Network;GTK;"
-msgstr ""
-"Network;GTK;Video;Movie;Audio;Download;YouTube;WebSite;ネットワーク;動画;映"
-"像;音声;ダウンロード;ウェブサイト;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:13
 msgid "New Window"
