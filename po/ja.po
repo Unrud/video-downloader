@@ -33,8 +33,8 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"使いやすいインターフェースで、ウェブサイトから動画をダウンロードします。"
-"以下の機能があります:"
+"使いやすいインターフェースでウェブサイトから動画をダウンロードします。以下"
+"の機能があります:"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
 msgid "Convert videos to MP3"
@@ -42,7 +42,7 @@ msgstr "動画を MP3 に変換"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "パスワードを入力しないと閲覧できない非公開動画のサポート"
+msgstr "パスワードで保護された閲覧制限動画のサポート"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:17
 msgid "Download single videos or whole playlists"
