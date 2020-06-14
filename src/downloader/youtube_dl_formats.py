@@ -20,7 +20,7 @@ import youtube_dl
 from video_downloader.downloader import MAX_RESOLUTION
 
 
-def sort_formats(formats, resolution=MAX_RESOLUTION):
+def sort_formats(formats, resolution=MAX_RESOLUTION, prefer_mpeg=False):
     """Mostly copied from youtube_dl.extractor.common._sort_formats"""
     def _formats_key(f):
         preference = f.get('preference')
@@ -36,7 +36,10 @@ def sort_formats(formats, resolution=MAX_RESOLUTION):
 
         if f.get('vcodec') == 'none':  # audio only
             preference -= 50
-            ORDER = ['aac', 'm4a', 'mp3', 'webm', 'ogg', 'opus']
+            if prefer_mpeg:
+                ORDER = ['webm', 'ogg', 'opus', 'aac', 'm4a', 'mp3']
+            else:
+                ORDER = ['aac', 'm4a', 'mp3', 'webm', 'ogg', 'opus']
             ext_preference = 0
             try:
                 audio_ext_preference = ORDER.index(f['ext'])
@@ -45,7 +48,10 @@ def sort_formats(formats, resolution=MAX_RESOLUTION):
         else:
             if f.get('acodec') == 'none':  # video only
                 preference -= 40
-            ORDER = ['flv', 'mp4', 'webm']
+            if prefer_mpeg:
+                ORDER = ['flv', 'webm', 'mp4']
+            else:
+                ORDER = ['flv', 'mp4', 'webm']
             try:
                 ext_preference = ORDER.index(f['ext'])
             except ValueError:

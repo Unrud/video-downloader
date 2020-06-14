@@ -201,9 +201,9 @@ class YoutubeDLSlave:
             # Output info_dict as JSON handled via logger debug callback
             self.ydl_opts['forcejson'] = True
             mode = self._handler.get_mode()
-            resolution = self._handler.get_resolution()
             if mode == 'audio':
                 resolution = MAX_RESOLUTION
+                prefer_mpeg = False
                 self.ydl_opts['format'] = 'bestaudio/best'
                 self.ydl_opts['postprocessors'].insert(0, {
                     'key': 'FFmpegExtractAudio',
@@ -212,6 +212,9 @@ class YoutubeDLSlave:
                 self.ydl_opts['postprocessors'].insert(1, {
                     'key': 'EmbedThumbnail',
                     'already_have_thumbnail': True})
+            else:
+                resolution = self._handler.get_resolution()
+                prefer_mpeg = self._handler.get_prefer_mpeg()
             os.makedirs(target_dir, exist_ok=True)
             for i, info_path in enumerate(info_playlist):
                 with open(info_path) as f:
@@ -226,7 +229,7 @@ class YoutubeDLSlave:
                 if info.get('thumbnails'):
                     info['thumbnails'][-1]['filename'] = thumbnail_path
                 if info.get('formats'):
-                    sort_formats(info['formats'], resolution=resolution)
+                    sort_formats(info['formats'], resolution, prefer_mpeg)
                 with open(info_path, 'w') as f:
                     json.dump(info, f)
                 # See ydl_opts['forcejson']

@@ -101,6 +101,9 @@ class Handler:
     def get_target_dir(self) -> str:
         raise NotImplementedError
 
+    def get_prefer_mpeg(self) -> bool:
+        raise NotImplementedError
+
     def get_url(self) -> str:
         raise NotImplementedError
 

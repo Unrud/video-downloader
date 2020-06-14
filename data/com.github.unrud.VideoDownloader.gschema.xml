@@ -10,6 +10,10 @@
       <default>'xdg-download/VideoDownloader'</default>
     </key>
 
+    <key type="b" name="prefer-mpeg">
+      <default>false</default>
+    </key>
+
     <key name="mode" enum="com.github.unrud.VideoDownloader.Mode">
       <default>'audio'</default>
     </key>
