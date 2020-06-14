@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-06-14 21:30+0900\n"
-"PO-Revision-Date: 2020-06-14 22:35+0900\n"
+"PO-Revision-Date: 2020-06-15 02:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -154,7 +154,7 @@ msgstr "{} に保存しました"
 
 #: authentication_dialog_login.ui.h:1 authentication_dialog_password.ui.h:1
 msgid "The video is not public."
-msgstr "ログインしないと閲覧できない動画です。"
+msgstr "閲覧が制限されている動画です。"
 
 #: authentication_dialog_login.ui.h:2
 msgid "Username"
