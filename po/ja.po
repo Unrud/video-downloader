@@ -142,7 +142,7 @@ msgstr "ダウンロード中"
 
 #: window.py:113 window.py:138
 msgid "{} of {}"
-msgstr "{}/{}"
+msgstr "{} / {}"
 
 #: window.py:139 window.py:141
 msgid "unknown"
