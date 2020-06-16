@@ -97,8 +97,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ytdl-org/youtube-dl/archive/2020.06.06.tar.gz",
-                    "sha256" : "9b29c376fdb4ebeda084ade898a678c9437b791bf7e8c6d71aef9285d376c722"
+                    "url" : "https://github.com/ytdl-org/youtube-dl/archive/2020.06.16.1.tar.gz",
+                    "sha256" : "7cba21e613315ed5bcb07e416b4d70f53b95fc78db87e5f4e0a451c13a94bacf"
                 }
             ]
         },
