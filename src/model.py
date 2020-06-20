@@ -149,15 +149,6 @@ class Model(GObject.GObject, downloader.Handler):
         else:
             self.state = 'success' if success else 'error'
 
-    def on_playlist_request(self):
-        return self._handler.on_playlist_request()
-
-    def on_login_request(self):
-        return self._handler.on_login_request()
-
-    def on_videopassword_request(self):
-        return self._handler.on_videopassword_request()
-
     def get_target_dir(self):
         assert self.state in ['download', 'cancel']
         return self.download_dir_abs
@@ -186,9 +177,9 @@ class Model(GObject.GObject, downloader.Handler):
         assert self.state in ['download', 'cancel']
         return self._handler.on_login_request()
 
-    def on_password_request(self):
+    def on_videopassword_request(self):
         assert self.state in ['download', 'cancel']
-        return self._handler.on_password_request()
+        return self._handler.on_videopassword_request()
 
     def on_error(self, msg):
         assert self.state in ['download', 'cancel']

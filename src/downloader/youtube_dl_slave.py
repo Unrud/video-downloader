@@ -181,17 +181,14 @@ class YoutubeDLSlave:
                 self.ydl_opts['noplaylist'] = (
                     not self._handler.on_playlist_request())
                 if not self.ydl_opts['noplaylist']:
-                    info_playlist, skipped_playlist = self._load_playlist(
+                    info_playlist, _ = self._load_playlist(
                         fullplaylist_dir, url)
                 else:
                     info_playlist = info_noplaylist
-                    skipped_playlist = skipped_noplaylist
             elif len(info_testplaylist) + skipped_testplaylist > 1:
-                info_playlist, skipped_playlist = self._load_playlist(
-                    fullplaylist_dir, url)
+                info_playlist, _ = self._load_playlist(fullplaylist_dir, url)
             else:
                 info_playlist = info_testplaylist
-                skipped_playlist = skipped_testplaylist
             # Download videos
             self._allow_authentication_request = False
             del self.ydl_opts['writeinfojson']
@@ -226,10 +223,10 @@ class YoutubeDLSlave:
                 thumbnail_path = thumbnail_paths[0] if thumbnail_paths else ''
                 self._handler.on_progress_start(i, len(info_playlist), title,
                                                 thumbnail_path)
-                if info.get('thumbnails'):
-                    info['thumbnails'][-1]['filename'] = thumbnail_path
-                if info.get('formats'):
-                    sort_formats(info['formats'], resolution, prefer_mpeg)
+                for thumbnail in info.get('thumbnails') or []:
+                    thumbnail['filename'] = thumbnail_path
+                sort_formats(info.get('formats') or [], resolution,
+                             prefer_mpeg)
                 with open(info_path, 'w') as f:
                     json.dump(info, f)
                 # See ydl_opts['forcejson']
