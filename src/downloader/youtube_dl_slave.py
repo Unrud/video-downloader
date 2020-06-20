@@ -27,7 +27,8 @@ import youtube_dl
 from video_downloader.downloader import MAX_RESOLUTION
 from video_downloader.downloader.youtube_dl_formats import sort_formats
 
-OUTPUT_TEMPLATE = '%(title)s-%(id)s-%(format_id)s.%(ext)s'
+OUTPUT_TEMPLATE = '%(output_title)s-%(id)s-%(format_id)s.%(ext)s'
+MAX_OUTPUT_TITLE_LENGTH = 150  # File names are typically limited to 255 bytes
 
 
 class RetryException(BaseException):
@@ -227,6 +228,16 @@ class YoutubeDLSlave:
                     thumbnail['filename'] = thumbnail_path
                 sort_formats(info.get('formats') or [], resolution,
                              prefer_mpeg)
+                # Limit length of title in output file name
+                for i in range(len(title), -1, -1):
+                    info['output_title'] = title[:i]
+                    if i < len(title):
+                        info['output_title'] += '…'
+                    # Check length with file system encoding
+                    if (len(info['output_title'].encode(
+                                sys.getfilesystemencoding(), 'ignore')) <
+                            MAX_OUTPUT_TITLE_LENGTH):
+                        break
                 with open(info_path, 'w') as f:
                     json.dump(info, f)
                 # See ydl_opts['forcejson']
