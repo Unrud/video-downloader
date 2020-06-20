@@ -29,6 +29,16 @@
     ],
     "modules" : [
         {
+            "name" : "imagemagick",
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/ImageMagick/ImageMagick/archive/7.0.10-19.tar.gz",
+                    "sha256" : "fe8b7706e17960c52c7cc3759ccc25b3ce29d3fa2b99035d81654450032faad6"
+                }
+            ]
+        },
+        {
             "name" : "chrpath",
             "cleanup" : [
                 "*"

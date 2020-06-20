@@ -70,6 +70,7 @@ parts:
       - librsvg2-bin
     stage-packages:
       - xdg-user-dirs
+      - imagemagick
     override-pull: |
       snapcraftctl pull
       # WORKAROUND: Point icon to the correct location
