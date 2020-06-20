@@ -59,6 +59,24 @@ parts:
     stage-packages:
       - gir1.2-gtk-3.0
 
+  imagemagick:
+    plugin: autotools
+    source: https://github.com/ImageMagick/ImageMagick/archive/7.0.10-19.tar.gz
+    source-type: tar
+    source-checksum: sha256/fe8b7706e17960c52c7cc3759ccc25b3ce29d3fa2b99035d81654450032faad6
+    build-packages:
+      - libjpeg-dev
+      - libpng-dev
+      - libtiff-dev
+      - libwebp-dev
+    stage-packages:
+      - libjpeg8
+      - libpng16-16
+      - libtiff5
+      - libwebpmux3
+      - libgomp1
+      - libwebpdemux2
+
   video-downloader:
     plugin: meson
     source: .
@@ -70,7 +88,6 @@ parts:
       - librsvg2-bin
     stage-packages:
       - xdg-user-dirs
-      - imagemagick
     override-pull: |
       snapcraftctl pull
       # WORKAROUND: Point icon to the correct location
