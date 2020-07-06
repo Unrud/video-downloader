@@ -153,6 +153,8 @@ class YoutubeDLSlave:
             'progress_hooks': [self._on_progress],
             'fixup': 'detect_or_warn',
             'ignoreerrors': True,  # handled via logger error callback
+            'retries': 10,
+            'fragment_retries': 10,
             'postprocessors': [{'key': 'XAttrMetadata'}]}
         url = self._handler.get_url()
         target_dir = os.path.abspath(self._handler.get_target_dir())
