@@ -60,9 +60,10 @@ class YoutubeDLSlave:
             if fragments_total is None:
                 fragments_total = -1
             if bytes_ >= 0 and bytes_total >= 0:
-                progress = bytes_ / bytes_total
+                progress = bytes_ / bytes_total if bytes_total > 0 else -1
             elif fragments >= 0 and fragments_total >= 0:
-                progress = fragments / fragments_total
+                progress = (fragments / fragments_total
+                            if fragments_total > 0 else -1)
             else:
                 progress = -1
             eta = d.get('eta')
