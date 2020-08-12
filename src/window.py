@@ -20,7 +20,7 @@ import locale
 import math
 import os
 
-from gi.repository import GLib, Gtk, GdkPixbuf, GObject
+from gi.repository import GLib, Gtk, GdkPixbuf, GObject, Handy
 
 from video_downloader.util import bind_property
 
@@ -30,7 +30,7 @@ N_ = gettext.gettext
 
 
 @Gtk.Template(resource_path='/com/github/unrud/VideoDownloader/window.ui')
-class Window(Gtk.ApplicationWindow):
+class Window(Handy.ApplicationWindow):
     __gtype_name__ = 'VideoDownloaderWindow'
     error_buffer = Gtk.Template.Child()
     resolutions_store = Gtk.Template.Child()

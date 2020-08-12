@@ -13,11 +13,15 @@
       <column type="gchararray"/>
     </columns>
   </object>
-  <template class="VideoDownloaderWindow" parent="GtkApplicationWindow">
+  <template class="VideoDownloaderWindow" parent="HdyApplicationWindow">
     <property name="can_focus">False</property>
     <property name="default_width">600</property>
-    <child type="titlebar">
-      <object class="GtkHeaderBar" id="header_bar">
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+    <child>
+      <object class="HdyHeaderBar" id="header_bar">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="show_close_button">True</property>
@@ -566,6 +570,8 @@
             <property name="position">3</property>
           </packing>
         </child>
+      </object>
+    </child>
       </object>
     </child>
   </template>
