@@ -18,7 +18,7 @@
 import gettext
 import sys
 
-from gi.repository import GLib, Gtk, Gio
+from gi.repository import GLib, Gtk, Gio, Handy
 
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import Handler, Model
@@ -51,6 +51,10 @@ class Application(Gtk.Application, Handler):
                       self._settings.set_string('mode', x))
         bind_property(self.model, 'resolution', func_a_to_b=lambda x:
                       self._settings.set_uint('resolution', x))
+
+    def do_startup(self):
+        Gtk.Application.do_startup(self)
+        Handy.init()
 
     def do_activate(self):
         for name in self.model.actions.list_actions():
