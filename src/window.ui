@@ -38,22 +38,6 @@
                     <property name="stack">audio_video_stack_wdg</property>
                   </object>
                 </child>
-                <child>
-                  <object class="GtkButton" id="download_wdg">
-                    <property name="label" translatable="yes">Download</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="can_default">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="action_name">app.download</property>
-                    <style>
-                      <class name="suggested-action"/>
-                    </style>
-                  </object>
-                  <packing>
-                    <property name="pack_type">end</property>
-                  </packing>
-                </child>
               </object>
             </child>
             <child>
@@ -111,6 +95,20 @@
                         <property name="fill">True</property>
                         <property name="position">0</property>
                       </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="audio_download_wdg">
+                        <property name="label" translatable="yes">Download</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="can_default">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="halign">center</property>
+                        <property name="action_name">app.download</property>
+                        <style>
+                          <class name="suggested-action"/>
+                        </style>
+                      </object>
                     </child>
                   </object>
                   <packing>
@@ -219,6 +217,20 @@
                         <property name="fill">True</property>
                         <property name="position">1</property>
                       </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="video_download_wdg">
+                        <property name="label" translatable="yes">Download</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="can_default">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="halign">center</property>
+                        <property name="action_name">app.download</property>
+                        <style>
+                          <class name="suggested-action"/>
+                        </style>
+                      </object>
                     </child>
                   </object>
                   <packing>

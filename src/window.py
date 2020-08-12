@@ -39,7 +39,8 @@ class Window(Handy.ApplicationWindow):
     resolution_wdg = Gtk.Template.Child()
     main_stack_wdg = Gtk.Template.Child()
     audio_video_stack_wdg = Gtk.Template.Child()
-    download_wdg = Gtk.Template.Child()
+    audio_download_wdg = Gtk.Template.Child()
+    video_download_wdg = Gtk.Template.Child()
     error_back_wdg = Gtk.Template.Child()
     success_back_wdg = Gtk.Template.Child()
     download_cancel_wdg = Gtk.Template.Child()
@@ -66,7 +67,6 @@ class Window(Handy.ApplicationWindow):
         bind_property(
             self.model, 'state', self.main_stack_wdg, 'visible-child-name',
             lambda s: {s: s, 'cancel': 'download'}[s])
-        bind_property(self.model, 'state', func_a_to_b=self._update_header)
         bind_property(self.model, 'mode', self.audio_video_stack_wdg,
                       'visible-child-name', bi=True)
         bind_property(self.main_stack_wdg, 'visible-child-name',
@@ -182,17 +182,15 @@ class Window(Handy.ApplicationWindow):
             return True
         return False
 
-    def _update_header(self, state):
-        self.download_wdg.set_visible(state == 'start')
-
     def _update_focus_and_default(self, _):
         state = self.main_stack_wdg.get_visible_child_name()
         mode = self.audio_video_stack_wdg.get_visible_child_name()
         if state == 'start':
-            self.download_wdg.grab_default()
             if mode == 'audio':
+                self.audio_download_wdg.grab_default()
                 self.audio_url_wdg.grab_focus()
             elif mode == 'video':
+                self.video_download_wdg.grab_default()
                 self.video_url_wdg.grab_focus()
             else:
                 assert False
