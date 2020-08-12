@@ -39,11 +39,10 @@ class Window(Handy.ApplicationWindow):
     resolution_wdg = Gtk.Template.Child()
     main_stack_wdg = Gtk.Template.Child()
     audio_video_stack_wdg = Gtk.Template.Child()
-    audio_video_switcher_wdg = Gtk.Template.Child()
     download_wdg = Gtk.Template.Child()
-    back_wdg = Gtk.Template.Child()
-    cancel_wdg = Gtk.Template.Child()
-    title_wdg = Gtk.Template.Child()
+    error_back_wdg = Gtk.Template.Child()
+    success_back_wdg = Gtk.Template.Child()
+    download_cancel_wdg = Gtk.Template.Child()
     success_msg_wdg = Gtk.Template.Child()
     download_title_wdg = Gtk.Template.Child()
     download_progress_wdg = Gtk.Template.Child()
@@ -184,11 +183,7 @@ class Window(Handy.ApplicationWindow):
         return False
 
     def _update_header(self, state):
-        self.audio_video_switcher_wdg.set_visible(state == 'start')
         self.download_wdg.set_visible(state == 'start')
-        self.back_wdg.set_visible(state in ['success', 'error'])
-        self.cancel_wdg.set_visible(state in ['download', 'cancel'])
-        self.title_wdg.set_visible(state != 'start')
 
     def _update_focus_and_default(self, _):
         state = self.main_stack_wdg.get_visible_child_name()
@@ -201,9 +196,11 @@ class Window(Handy.ApplicationWindow):
                 self.video_url_wdg.grab_focus()
             else:
                 assert False
-        elif state in ['download', 'cancel']:
-            self.cancel_wdg.grab_focus()
-        elif state in ['success', 'error']:
-            self.back_wdg.grab_focus()
+        elif state == 'download':
+            self.download_cancel_wdg.grab_focus()
+        elif state == 'error':
+            self.error_back_wdg.grab_focus()
+        elif state == 'success':
+            self.success_back_wdg.grab_focus()
         else:
             assert False

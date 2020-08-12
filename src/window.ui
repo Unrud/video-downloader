@@ -16,85 +16,27 @@
   <template class="VideoDownloaderWindow" parent="HdyApplicationWindow">
     <property name="can_focus">False</property>
     <property name="default_width">600</property>
+    <property name="title" translatable="yes">Video Downloader</property>
     <child>
-      <object class="GtkBox">
+      <object class="GtkStack" id="main_stack_wdg">
         <property name="visible">True</property>
-        <property name="orientation">vertical</property>
+        <property name="can_focus">False</property>
+        <property name="transition_type">slide-left-right</property>
         <child>
-          <object class="HdyHeaderBar" id="header_bar">
+          <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="show_close_button">True</property>
-            <child type="title">
-              <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="HdyHeaderBar">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="hexpand">True</property>
-                <child type="center">
-                  <object class="GtkBox">
+                <property name="show_close_button">True</property>
+                <child type="title">
+                  <object class="GtkStackSwitcher">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <child>
-                      <object class="GtkStackSwitcher" id="audio_video_switcher_wdg">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="stack">audio_video_stack_wdg</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="title_wdg">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Video Downloader</property>
-                        <style>
-                          <class name="title"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
+                    <property name="stack">audio_video_stack_wdg</property>
                   </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="back_wdg">
-                    <property name="label" translatable="yes">Back</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="action_name">app.back</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkButton" id="cancel_wdg">
-                    <property name="label" translatable="yes">Cancel</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="action_name">app.cancel</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">2</property>
-                  </packing>
                 </child>
                 <child>
                   <object class="GtkButton" id="download_wdg">
@@ -109,21 +51,11 @@
                     </style>
                   </object>
                   <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
                     <property name="pack_type">end</property>
-                    <property name="position">3</property>
                   </packing>
                 </child>
               </object>
             </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkStack" id="main_stack_wdg">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="transition_type">slide-left-right</property>
             <child>
               <object class="GtkStack" id="audio_video_stack_wdg">
                 <property name="visible">True</property>
@@ -296,9 +228,32 @@
                   </packing>
                 </child>
               </object>
-              <packing>
-                <property name="name">start</property>
-              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="name">start</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="HdyHeaderBar">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="show_close_button">True</property>
+                <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
+                <child>
+                  <object class="GtkButton" id="download_cancel_wdg">
+                    <property name="label" translatable="yes">Cancel</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="action_name">app.cancel</property>
+                  </object>
+                </child>
+              </object>
             </child>
             <child>
               <object class="GtkBox" id="download_page">
@@ -383,10 +338,33 @@
                   </packing>
                 </child>
               </object>
-              <packing>
-                <property name="name">download</property>
-                <property name="position">1</property>
-              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="name">download</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="HdyHeaderBar">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="show_close_button">True</property>
+                <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
+                <child>
+                  <object class="GtkButton" id="error_back_wdg">
+                    <property name="label" translatable="yes">Back</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="action_name">app.back</property>
+                  </object>
+                </child>
+              </object>
             </child>
             <child>
               <object class="GtkBox" id="error_page">
@@ -495,10 +473,33 @@
                   </packing>
                 </child>
               </object>
-              <packing>
-                <property name="name">error</property>
-                <property name="position">2</property>
-              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="name">error</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="HdyHeaderBar">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="show_close_button">True</property>
+                <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
+                <child>
+                  <object class="GtkButton" id="success_back_wdg">
+                    <property name="label" translatable="yes">Back</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="action_name">app.back</property>
+                  </object>
+                </child>
+              </object>
             </child>
             <child>
               <object class="GtkBox" id="success_page">
@@ -565,12 +566,12 @@
                   </packing>
                 </child>
               </object>
-              <packing>
-                <property name="name">success</property>
-                <property name="position">3</property>
-              </packing>
             </child>
           </object>
+          <packing>
+            <property name="name">success</property>
+            <property name="position">3</property>
+          </packing>
         </child>
       </object>
     </child>
