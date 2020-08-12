@@ -45,10 +45,12 @@
               <object class="GtkStack" id="audio_video_stack_wdg">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="vexpand">True</property>
                 <property name="transition_type">crossfade</property>
                 <child>
                   <object class="HdyClamp">
                     <property name="visible">True</property>
+                    <property name="valign">center</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
@@ -126,6 +128,7 @@
                 <child>
                   <object class="HdyClamp" id="video_page">
                     <property name="visible">True</property>
+                    <property name="valign">center</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
