@@ -115,6 +115,7 @@
                   <packing>
                     <property name="name">audio</property>
                     <property name="title" translatable="yes">Audio</property>
+                    <property name="icon-name">audio-x-generic-symbolic</property>
                   </packing>
                 </child>
                 <child>
@@ -237,6 +238,7 @@
                   <packing>
                     <property name="name">video</property>
                     <property name="title" translatable="yes">Video</property>
+                    <property name="icon-name">video-x-generic-symbolic</property>
                     <property name="position">1</property>
                   </packing>
                 </child>
