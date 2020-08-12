@@ -47,29 +47,52 @@
                 <property name="can_focus">False</property>
                 <property name="transition_type">crossfade</property>
                 <child>
-                  <object class="GtkBox" id="audio_page">
+                  <object class="HdyClamp">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="border_width">18</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">18</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="spacing">12</property>
+                        <property name="border_width">18</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">18</property>
                         <child>
-                          <object class="GtkLabel">
+                          <object class="GtkBox">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">URL</property>
-                            <property name="xalign">1</property>
-                            <accessibility>
-                              <relation type="label-for" target="audio_url_wdg"/>
-                            </accessibility>
-                            <style>
-                              <class name="dim-label"/>
-                            </style>
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">URL</property>
+                                <property name="xalign">1</property>
+                                <accessibility>
+                                  <relation type="label-for" target="audio_url_wdg"/>
+                                </accessibility>
+                                <style>
+                                  <class name="dim-label"/>
+                                </style>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="audio_url_wdg">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="activates_default">True</property>
+                                <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
                           </object>
                           <packing>
                             <property name="expand">False</property>
@@ -78,37 +101,19 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkEntry" id="audio_url_wdg">
+                          <object class="GtkButton" id="audio_download_wdg">
+                            <property name="label" translatable="yes">Download</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
-                            <property name="activates_default">True</property>
-                            <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                            <property name="can_default">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="halign">center</property>
+                            <property name="action_name">app.download</property>
+                            <style>
+                              <class name="suggested-action"/>
+                            </style>
                           </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
                         </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="audio_download_wdg">
-                        <property name="label" translatable="yes">Download</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="can_default">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="halign">center</property>
-                        <property name="action_name">app.download</property>
-                        <style>
-                          <class name="suggested-action"/>
-                        </style>
                       </object>
                     </child>
                   </object>
@@ -119,119 +124,124 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="video_page">
+                  <object class="HdyClamp" id="video_page">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="border_width">18</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">18</property>
                     <child>
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="spacing">12</property>
+                        <property name="border_width">18</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">18</property>
                         <child>
-                          <object class="GtkLabel" id="video_url_label">
+                          <object class="GtkBox">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">URL</property>
-                            <property name="xalign">1</property>
-                            <accessibility>
-                              <relation type="label-for" target="video_url_wdg"/>
-                            </accessibility>
-                            <style>
-                              <class name="dim-label"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkEntry" id="video_url_wdg">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="activates_default">True</property>
-                            <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
-                          </object>
-                          <packing>
-                            <property name="expand">True</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="spacing">12</property>
-                        <child>
-                          <object class="GtkLabel" id="resolution_label">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Resolution</property>
-                            <property name="xalign">1</property>
-                            <accessibility>
-                              <relation type="label-for" target="resolution_wdg"/>
-                            </accessibility>
-                            <style>
-                              <class name="dim-label"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkComboBox" id="resolution_wdg">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="model">resolutions_store</property>
-                            <property name="active">0</property>
-                            <property name="id_column">0</property>
+                            <property name="spacing">12</property>
                             <child>
-                              <object class="GtkCellRendererText"/>
-                              <attributes>
-                                <attribute name="text">1</attribute>
-                              </attributes>
+                              <object class="GtkLabel" id="video_url_label">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">URL</property>
+                                <property name="xalign">1</property>
+                                <accessibility>
+                                  <relation type="label-for" target="video_url_wdg"/>
+                                </accessibility>
+                                <style>
+                                  <class name="dim-label"/>
+                                </style>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="video_url_wdg">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="activates_default">True</property>
+                                <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
                             </child>
                           </object>
                           <packing>
-                            <property name="expand">True</property>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="spacing">12</property>
+                            <child>
+                              <object class="GtkLabel" id="resolution_label">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">Resolution</property>
+                                <property name="xalign">1</property>
+                                <accessibility>
+                                  <relation type="label-for" target="resolution_wdg"/>
+                                </accessibility>
+                                <style>
+                                  <class name="dim-label"/>
+                                </style>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBox" id="resolution_wdg">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="model">resolutions_store</property>
+                                <property name="active">0</property>
+                                <property name="id_column">0</property>
+                                <child>
+                                  <object class="GtkCellRendererText"/>
+                                  <attributes>
+                                    <attribute name="text">1</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="video_download_wdg">
-                        <property name="label" translatable="yes">Download</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="can_default">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="halign">center</property>
-                        <property name="action_name">app.download</property>
-                        <style>
-                          <class name="suggested-action"/>
-                        </style>
+                        <child>
+                          <object class="GtkButton" id="video_download_wdg">
+                            <property name="label" translatable="yes">Download</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="can_default">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="halign">center</property>
+                            <property name="action_name">app.download</property>
+                            <style>
+                              <class name="suggested-action"/>
+                            </style>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
