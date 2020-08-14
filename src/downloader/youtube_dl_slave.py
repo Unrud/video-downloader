@@ -248,6 +248,8 @@ class YoutubeDLSlave:
                     except subprocess.CalledProcessError:
                         traceback.print_exc(file=sys.stderr)
                         new_thumbnail_path = ''
+                    # No longer needed
+                    os.remove(thumbnail_path)
                     thumbnail_path = new_thumbnail_path
                 self._handler.on_progress_start(i, len(info_playlist), title,
                                                 thumbnail_path)
