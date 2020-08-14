@@ -194,7 +194,7 @@ class Window(Handy.ApplicationWindow):
                 self.video_url_wdg.grab_focus()
             else:
                 assert False
-        elif state == 'download':
+        elif state in ['download', 'cancel']:
             self.download_cancel_wdg.grab_focus()
         elif state == 'error':
             self.error_back_wdg.grab_focus()
