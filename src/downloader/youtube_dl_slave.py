@@ -32,7 +32,7 @@ from video_downloader.downloader.youtube_dl_formats import sort_formats
 OUTPUT_TEMPLATE = '%(output_title)s-%(id)s-%(format_id)s.%(ext)s'
 MAX_OUTPUT_TITLE_LENGTH = 150  # File names are typically limited to 255 bytes
 MAX_THUMBNAIL_RESOLUTION = 1024
-CONVERT_EXE = 'convert'
+FFMPEG_EXE = 'ffmpeg'
 
 
 class RetryException(BaseException):
@@ -234,16 +234,16 @@ class YoutubeDLSlave:
                     new_thumbnail_path = thumbnail_path + '-converted.jpg'
                     try:
                         subprocess.run(
-                            [CONVERT_EXE, '-alpha', 'remove',
-                             os.path.abspath(thumbnail_path), '-resize',
-                             '{0}>x{0}>'.format(MAX_THUMBNAIL_RESOLUTION),
+                            [FFMPEG_EXE, '-i', os.path.abspath(thumbnail_path),
+                             '-vf', ('scale=\'min({0},iw):min({0},ih):'
+                                     'force_original_aspect_ratio=decrease\''
+                                     ).format(MAX_THUMBNAIL_RESOLUTION),
                              os.path.abspath(new_thumbnail_path)],
                             check=True, stdin=subprocess.DEVNULL,
                             stdout=sys.stderr)
                     except FileNotFoundError:
                         self._handler.on_error(
-                            'ERROR: %r not found. Please install ImageMagick.'
-                            % CONVERT_EXE)
+                            'ERROR: %r not found' % FFMPEG_EXE)
                         raise
                     except subprocess.CalledProcessError:
                         traceback.print_exc(file=sys.stderr)
