@@ -103,6 +103,23 @@
             ]
         },
         {
+            "name": "libhandy",
+            "buildsystem": "meson",
+            "builddir": true,
+            "config-opts": [
+                "-Dexamples=false",
+                "-Dglade_catalog=disabled",
+                "-Dtests=false",
+                "-Dvapi=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libhandy.git"
+                }
+            ]
+        },
+        {
             "name" : "video-downloader",
             "builddir" : true,
             "buildsystem" : "meson",
