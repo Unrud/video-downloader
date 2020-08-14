@@ -66,7 +66,7 @@ class Window(Gtk.ApplicationWindow):
                       'active-id', str, int, bi=True)
         bind_property(
             self.model, 'state', self.main_stack_wdg, 'visible-child-name',
-            lambda s: {s: s, 'cancel': 'download'}[s])
+            lambda s: {'cancel': 'download'}.get(s, s))
         bind_property(self.model, 'state', func_a_to_b=self._update_header)
         bind_property(self.model, 'mode', self.audio_video_stack_wdg,
                       'visible-child-name', bi=True)
