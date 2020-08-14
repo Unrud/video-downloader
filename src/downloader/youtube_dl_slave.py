@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import contextlib
 import functools
 import glob
 import json
@@ -25,12 +26,12 @@ import tempfile
 import traceback
 
 import youtube_dl
+from youtube_dl.utils import sanitize_filename
 
 from video_downloader.downloader import MAX_RESOLUTION
 from video_downloader.downloader.youtube_dl_formats import sort_formats
 
-OUTPUT_TEMPLATE = '%(output_title)s-%(id)s-%(format_id)s.%(ext)s'
-MAX_OUTPUT_TITLE_LENGTH = 150  # File names are typically limited to 255 bytes
+MAX_OUTPUT_TITLE_LENGTH = 240  # File names are typically limited to 255 bytes
 MAX_THUMBNAIL_RESOLUTION = 1024
 FFMPEG_EXE = 'ffmpeg'
 
@@ -139,6 +140,31 @@ class YoutubeDLSlave:
         self._handler.on_error(msg)
         raise youtube_dl.utils.DownloadError(msg)
 
+    @staticmethod
+    def _get_output_title(title):
+        # Limit length of title in output file name
+        for i in range(len(title), -1, -1):
+            output_title = title[:i]
+            if i < len(title):
+                output_title += '…'
+            output_title = sanitize_filename(output_title)
+            # Check length with file system encoding
+            if (len(output_title.encode(sys.getfilesystemencoding(), 'ignore'))
+                    < MAX_OUTPUT_TITLE_LENGTH):
+                break
+        return output_title
+
+    @staticmethod
+    def _download_exists(target_dir, output_title, mode):
+        for filepath in glob.iglob(glob.escape(
+                os.path.join(target_dir, output_title)) + '.*'):
+            file_title, file_ext = os.path.splitext(os.path.basename(filepath))
+            if file_title == output_title and (
+                    mode == 'audio' and file_ext.lower() == '.mp3' or
+                    mode != 'audio' and file_ext.lower() != '.mp3'):
+                return True
+        return False
+
     def __init__(self):
         self._handler = Handler()
         # See ydl_opts['forcejson']
@@ -202,7 +228,9 @@ class YoutubeDLSlave:
             del self.ydl_opts['writeinfojson']
             del self.ydl_opts['writethumbnail']
             del self.ydl_opts['skip_download']
-            self.ydl_opts['outtmpl'] = OUTPUT_TEMPLATE
+            # Include id and format_id in outtmpl to prevent youtube-dl
+            # from continuing wrong file
+            self.ydl_opts['outtmpl'] = '%(id)s.%(format_id)s.%(ext)s'
             # Output info_dict as JSON handled via logger debug callback
             self.ydl_opts['forcejson'] = True
             mode = self._handler.get_mode()
@@ -225,6 +253,10 @@ class YoutubeDLSlave:
                 with open(info_path) as f:
                     info = json.load(f)
                 title = info.get('title', info.get('id', 'video'))
+                output_title = self._get_output_title(title)
+                # Check if we already got the file
+                if self._download_exists(target_dir, output_title, mode):
+                    continue
                 thumbnail_paths = list(filter(
                     lambda p: os.path.splitext(p)[1][1:] != 'json', glob.iglob(
                         glob.escape(info_path[:-len('info.json')]) + '*')))
@@ -257,26 +289,33 @@ class YoutubeDLSlave:
                     thumbnail['filename'] = thumbnail_path
                 sort_formats(info.get('formats') or [], resolution,
                              prefer_mpeg)
-                # Limit length of title in output file name
-                for i in range(len(title), -1, -1):
-                    info['output_title'] = title[:i]
-                    if i < len(title):
-                        info['output_title'] += '…'
-                    # Check length with file system encoding
-                    if (len(info['output_title'].encode(
-                                sys.getfilesystemencoding(), 'ignore')) <
-                            MAX_OUTPUT_TITLE_LENGTH):
-                        break
                 with open(info_path, 'w') as f:
                     json.dump(info, f)
+                # Download into separate directory because youtube-dl generates
+                # many temporary files
+                # TODO: Lock subdirectory to prevent parallel instances to
+                # write to the same files
+                download_dir = os.path.join(target_dir, output_title + '.part')
+                os.makedirs(download_dir, exist_ok=True)
                 # See ydl_opts['forcejson']
                 self._expect_info_dict_json = True
-                self._load_playlist(target_dir, info_path=info_path)
+                self._load_playlist(download_dir, info_path=info_path)
                 if self._expect_info_dict_json:
                     raise RuntimeError('info_dict not received')
-                filename = self._info_dict['_filename']
+                # Move finished download from download_dir to target_dir
+                temp_filename = self._info_dict['_filename']
                 if mode == 'audio':
-                    filename = os.path.splitext(filename)[0] + '.mp3'
+                    temp_filename = os.path.splitext(temp_filename)[0] + '.mp3'
+                output_ext = os.path.splitext(temp_filename)[1]
+                filename = output_title + output_ext
+                try:
+                    os.replace(os.path.join(download_dir, temp_filename),
+                               os.path.join(target_dir, filename))
+                except OSError as e:
+                    self._handler.on_error('ERROR: %s' % e)
+                    raise
+                with contextlib.suppress(OSError):
+                    os.rmdir(download_dir)
                 self._handler.on_progress_end(filename)
                 self._info_dict = None
 
