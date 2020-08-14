@@ -162,7 +162,8 @@ class YoutubeDLSlave:
             file_title, file_ext = os.path.splitext(filename)
             if file_title == output_title and (
                     mode == 'audio' and file_ext.lower() == '.mp3' or
-                    mode != 'audio' and file_ext.lower() != '.mp3'):
+                    mode != 'audio' and file_ext.lower() != '.mp3') and (
+                    os.path.isfile(filepath)):
                 return filename
         return None
 
