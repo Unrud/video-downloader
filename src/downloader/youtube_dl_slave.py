@@ -155,15 +155,16 @@ class YoutubeDLSlave:
         return output_title
 
     @staticmethod
-    def _download_exists(target_dir, output_title, mode):
+    def _find_existing_download(target_dir, output_title, mode):
         for filepath in glob.iglob(glob.escape(
                 os.path.join(target_dir, output_title)) + '.*'):
-            file_title, file_ext = os.path.splitext(os.path.basename(filepath))
+            filename = os.path.basename(filepath)
+            file_title, file_ext = os.path.splitext(filename)
             if file_title == output_title and (
                     mode == 'audio' and file_ext.lower() == '.mp3' or
                     mode != 'audio' and file_ext.lower() != '.mp3'):
-                return True
-        return False
+                return filename
+        return None
 
     def __init__(self):
         self._handler = Handler()
@@ -254,9 +255,6 @@ class YoutubeDLSlave:
                     info = json.load(f)
                 title = info.get('title', info.get('id', 'video'))
                 output_title = self._get_output_title(title)
-                # Check if we already got the file
-                if self._download_exists(target_dir, output_title, mode):
-                    continue
                 thumbnail_paths = list(filter(
                     lambda p: os.path.splitext(p)[1][1:] != 'json', glob.iglob(
                         glob.escape(info_path[:-len('info.json')]) + '*')))
@@ -291,6 +289,12 @@ class YoutubeDLSlave:
                              prefer_mpeg)
                 with open(info_path, 'w') as f:
                     json.dump(info, f)
+                # Check if we already got the file
+                existing_filename = self._find_existing_download(
+                    target_dir, output_title, mode)
+                if existing_filename is not None:
+                    self._handler.on_progress_end(existing_filename)
+                    continue
                 # Download into separate directory because youtube-dl generates
                 # many temporary files
                 # TODO: Lock subdirectory to prevent parallel instances to
