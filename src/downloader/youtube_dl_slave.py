@@ -254,7 +254,7 @@ class YoutubeDLSlave:
             for i, info_path in enumerate(info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
-                title = info.get('title', info.get('id', 'video'))
+                title = info.get('title') or info.get('id') or 'video'
                 output_title = self._get_output_title(title)
                 thumbnail_paths = list(filter(
                     lambda p: os.path.splitext(p)[1][1:] != 'json', glob.iglob(
