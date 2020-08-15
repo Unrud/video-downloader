@@ -286,7 +286,12 @@ class YoutubeDLSlave:
             else:
                 resolution = self._handler.get_resolution()
                 prefer_mpeg = self._handler.get_prefer_mpeg()
-            os.makedirs(target_dir, exist_ok=True)
+            try:
+                os.makedirs(target_dir, exist_ok=True)
+            except OSError as e:
+                self._handler.on_error(
+                    'ERROR: Failed to create download folder: %s' % e)
+                raise
             for i, info_path in enumerate(info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
@@ -338,7 +343,15 @@ class YoutubeDLSlave:
                 download_dir = os.path.join(target_dir, output_title + '.part')
                 # Lock download directory to prevent other processes from
                 # writing to the same files
-                with self._create_and_lock_dir(download_dir):
+                download_dir_cm = contextlib.ExitStack()
+                try:
+                    download_dir_cm.enter_context(
+                        self._create_and_lock_dir(download_dir))
+                except OSError as e:
+                    self._handler.on_error(
+                        'ERROR: Failed to lock download folder: %s' % e)
+                    raise
+                with download_dir_cm:
                     # Check if the file got downloaded in the meantime
                     existing_filename = self._find_existing_download(
                         target_dir, output_title, mode)
@@ -362,7 +375,9 @@ class YoutubeDLSlave:
                                 os.path.join(download_dir, temp_filename),
                                 os.path.join(target_dir, filename))
                         except OSError as e:
-                            self._handler.on_error('ERROR: %s' % e)
+                            self._handler.on_error((
+                                'ERROR: Falied to move finished download to '
+                                'download folder: %s') % e)
                             raise
                     # Delete download directory
                     with contextlib.suppress(OSError):
