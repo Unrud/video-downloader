@@ -16,13 +16,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import contextlib
+import fcntl
 import functools
 import glob
+import itertools
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
+import time
 import traceback
 
 import youtube_dl
@@ -167,6 +171,38 @@ class YoutubeDLSlave:
                 return filename
         return None
 
+    @staticmethod
+    @contextlib.contextmanager
+    def _create_and_lock_dir(dirpath):
+        for i in itertools.count():
+            if i > 0:
+                time.sleep(0.5)
+            os.makedirs(dirpath, exist_ok=True)
+            try:
+                fd = os.open(dirpath, 0)
+            except FileNotFoundError:
+                continue
+            try:
+                # Acquire lock on directory
+                fcntl.flock(fd, fcntl.LOCK_EX)
+                stat = os.fstat(fd)
+                # Check that the directory still exists and is the same
+                try:
+                    fd_cmp = os.open(dirpath, 0)
+                except FileNotFoundError:
+                    continue
+                try:
+                    stat_cmp = os.fstat(fd_cmp)
+                finally:
+                    os.close(fd_cmp)
+                if (stat.st_dev != stat_cmp.st_dev or
+                        stat.st_ino != stat_cmp.st_ino):
+                    continue
+                yield
+                break
+            finally:
+                os.close(fd)
+
     def __init__(self):
         self._handler = Handler()
         # See ydl_opts['forcejson']
@@ -299,29 +335,38 @@ class YoutubeDLSlave:
                     continue
                 # Download into separate directory because youtube-dl generates
                 # many temporary files
-                # TODO: Lock subdirectory to prevent parallel instances to
-                # write to the same files
                 download_dir = os.path.join(target_dir, output_title + '.part')
-                os.makedirs(download_dir, exist_ok=True)
-                # See ydl_opts['forcejson']
-                self._expect_info_dict_json = True
-                self._load_playlist(download_dir, info_path=info_path)
-                if self._expect_info_dict_json:
-                    raise RuntimeError('info_dict not received')
-                # Move finished download from download_dir to target_dir
-                temp_filename = self._info_dict['_filename']
-                if mode == 'audio':
-                    temp_filename = os.path.splitext(temp_filename)[0] + '.mp3'
-                output_ext = os.path.splitext(temp_filename)[1]
-                filename = output_title + output_ext
-                try:
-                    os.replace(os.path.join(download_dir, temp_filename),
-                               os.path.join(target_dir, filename))
-                except OSError as e:
-                    self._handler.on_error('ERROR: %s' % e)
-                    raise
-                with contextlib.suppress(OSError):
-                    os.rmdir(download_dir)
+                # Lock download directory to prevent other processes from
+                # writing to the same files
+                with self._create_and_lock_dir(download_dir):
+                    # Check if the file got downloaded in the meantime
+                    existing_filename = self._find_existing_download(
+                        target_dir, output_title, mode)
+                    if existing_filename is not None:
+                        filename = existing_filename
+                    else:
+                        # See ydl_opts['forcejson']
+                        self._expect_info_dict_json = True
+                        self._load_playlist(download_dir, info_path=info_path)
+                        if self._expect_info_dict_json:
+                            raise RuntimeError('info_dict not received')
+                        # Move finished download from download to target dir
+                        temp_filename = self._info_dict['_filename']
+                        if mode == 'audio':
+                            temp_filename = (
+                                os.path.splitext(temp_filename)[0] + '.mp3')
+                        output_ext = os.path.splitext(temp_filename)[1]
+                        filename = output_title + output_ext
+                        try:
+                            os.replace(
+                                os.path.join(download_dir, temp_filename),
+                                os.path.join(target_dir, filename))
+                        except OSError as e:
+                            self._handler.on_error('ERROR: %s' % e)
+                            raise
+                    # Delete download directory
+                    with contextlib.suppress(OSError):
+                        shutil.rmtree(download_dir)
                 self._handler.on_progress_end(filename)
                 self._info_dict = None
 
