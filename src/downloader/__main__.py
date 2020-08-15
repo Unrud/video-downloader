@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import signal
 import sys
 
 import youtube_dl
@@ -22,6 +23,8 @@ import youtube_dl
 from video_downloader.downloader.youtube_dl_slave import YoutubeDLSlave
 
 if __name__ == '__main__':
+    # Exit gracefully on SIGTERM to allow cleanup code to run
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(1))
     try:
         YoutubeDLSlave()
     except youtube_dl.utils.DownloadError:
