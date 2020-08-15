@@ -35,7 +35,7 @@ from youtube_dl.utils import sanitize_filename
 from video_downloader.downloader import MAX_RESOLUTION
 from video_downloader.downloader.youtube_dl_formats import sort_formats
 
-MAX_OUTPUT_TITLE_LENGTH = 240  # File names are typically limited to 255 bytes
+MAX_OUTPUT_TITLE_LENGTH = 150  # File names are typically limited to 255 bytes
 MAX_THUMBNAIL_RESOLUTION = 1024
 FFMPEG_EXE = 'ffmpeg'
 
