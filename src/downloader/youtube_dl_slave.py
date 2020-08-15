@@ -159,9 +159,9 @@ class YoutubeDLSlave:
         return output_title
 
     @staticmethod
-    def _find_existing_download(target_dir, output_title, mode):
+    def _find_existing_download(download_dir, output_title, mode):
         for filepath in glob.iglob(glob.escape(
-                os.path.join(target_dir, output_title)) + '.*'):
+                os.path.join(download_dir, output_title)) + '.*'):
             filename = os.path.basename(filepath)
             file_title, file_ext = os.path.splitext(filename)
             if file_title == output_title and (
@@ -222,7 +222,7 @@ class YoutubeDLSlave:
             'fragment_retries': 10,
             'postprocessors': [{'key': 'XAttrMetadata'}]}
         url = self._handler.get_url()
-        target_dir = os.path.abspath(self._handler.get_target_dir())
+        download_dir = os.path.abspath(self._handler.get_download_dir())
         with tempfile.TemporaryDirectory() as temp_dir:
             self.ydl_opts['cookiefile'] = os.path.join(temp_dir, 'cookies')
             # Collect info without downloading videos
@@ -287,7 +287,7 @@ class YoutubeDLSlave:
                 resolution = self._handler.get_resolution()
                 prefer_mpeg = self._handler.get_prefer_mpeg()
             try:
-                os.makedirs(target_dir, exist_ok=True)
+                os.makedirs(download_dir, exist_ok=True)
             except OSError as e:
                 self._handler.on_error(
                     'ERROR: Failed to create download folder: %s' % e)
@@ -334,33 +334,35 @@ class YoutubeDLSlave:
                     json.dump(info, f)
                 # Check if we already got the file
                 existing_filename = self._find_existing_download(
-                    target_dir, output_title, mode)
+                    download_dir, output_title, mode)
                 if existing_filename is not None:
                     self._handler.on_progress_end(existing_filename)
                     continue
                 # Download into separate directory because youtube-dl generates
                 # many temporary files
-                download_dir = os.path.join(target_dir, output_title + '.part')
+                temp_download_dir = os.path.join(
+                    download_dir, output_title + '.part')
                 # Lock download directory to prevent other processes from
                 # writing to the same files
-                download_dir_cm = contextlib.ExitStack()
+                temp_download_dir_cm = contextlib.ExitStack()
                 try:
-                    download_dir_cm.enter_context(
-                        self._create_and_lock_dir(download_dir))
+                    temp_download_dir_cm.enter_context(
+                        self._create_and_lock_dir(temp_download_dir))
                 except OSError as e:
                     self._handler.on_error(
                         'ERROR: Failed to lock download folder: %s' % e)
                     raise
-                with download_dir_cm:
+                with temp_download_dir_cm:
                     # Check if the file got downloaded in the meantime
                     existing_filename = self._find_existing_download(
-                        target_dir, output_title, mode)
+                        download_dir, output_title, mode)
                     if existing_filename is not None:
                         filename = existing_filename
                     else:
                         # See ydl_opts['forcejson']
                         self._expect_info_dict_json = True
-                        self._load_playlist(download_dir, info_path=info_path)
+                        self._load_playlist(
+                            temp_download_dir, info_path=info_path)
                         if self._expect_info_dict_json:
                             raise RuntimeError('info_dict not received')
                         # Move finished download from download to target dir
@@ -372,8 +374,8 @@ class YoutubeDLSlave:
                         filename = output_title + output_ext
                         try:
                             os.replace(
-                                os.path.join(download_dir, temp_filename),
-                                os.path.join(target_dir, filename))
+                                os.path.join(temp_download_dir, temp_filename),
+                                os.path.join(download_dir, filename))
                         except OSError as e:
                             self._handler.on_error((
                                 'ERROR: Falied to move finished download to '
@@ -381,7 +383,7 @@ class YoutubeDLSlave:
                             raise
                     # Delete download directory
                     with contextlib.suppress(OSError):
-                        shutil.rmtree(download_dir)
+                        shutil.rmtree(temp_download_dir)
                 self._handler.on_progress_end(filename)
                 self._info_dict = None
 

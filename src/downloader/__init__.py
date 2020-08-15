@@ -98,7 +98,7 @@ class Downloader:
 
 
 class Handler:
-    def get_target_dir(self) -> str:
+    def get_download_dir(self) -> str:
         raise NotImplementedError
 
     def get_prefer_mpeg(self) -> bool:

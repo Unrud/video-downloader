@@ -149,7 +149,7 @@ class Model(GObject.GObject, downloader.Handler):
         else:
             self.state = 'success' if success else 'error'
 
-    def get_target_dir(self):
+    def get_download_dir(self):
         assert self.state in ['download', 'cancel']
         return self.download_dir_abs
 
