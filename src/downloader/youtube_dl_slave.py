@@ -278,6 +278,7 @@ class YoutubeDLSlave:
                         raise
                     except subprocess.CalledProcessError:
                         traceback.print_exc(file=sys.stderr)
+                        sys.stderr.flush()
                         new_thumbnail_path = ''
                     # No longer needed
                     os.remove(thumbnail_path)
