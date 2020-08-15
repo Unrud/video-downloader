@@ -38,6 +38,7 @@ locale.setlocale(locale.LC_ALL, '')
 if __name__ == '__main__':
     import gi
     gi.require_version('Gtk', '3.0')
+    gi.require_version('Handy', '1')
     from gi.repository import Gio
     resource = Gio.Resource.load(os.path.join(
         pkgdatadir, 'video-downloader.gresource'))
