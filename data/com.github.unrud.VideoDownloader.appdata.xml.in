@@ -28,6 +28,20 @@
   <update_contact>unrud_AT_outlook.com</update_contact>
   <translation type="gettext">video-downloader</translation>
   <releases>
+    <release version="0.4.0" date="2020-08-15">
+      <description>
+        <ul>
+          <li>Save downloads as TITLE.EXT (instead of TITLE-ID-FORMAT.EXT)</li>
+          <li>Store all partial files for a download in a folder named TITLE.part</li>
+          <li>Skip audio files that are already downloaded</li>
+          <li>Polish the GUI (by @Kekun)</li>
+          <li>Display errors accessing the download folder in the GUI</li>
+          <li>Use file-based locking to prevent multiple instances breaking downloads by writing to the same partial files</li>
+          <li>Cleanup temporary files of cancelled downloads</li>
+          <li>Remove ImageMagick dependency</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.3" date="2020-08-11">
       <description>
         <ul>
@@ -185,13 +199,13 @@
   </releases>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.3.3/screenshots/1.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.4.0/screenshots/1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.3.3/screenshots/2.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.4.0/screenshots/2.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.3.3/screenshots/3.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.4.0/screenshots/3.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
