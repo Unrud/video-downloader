@@ -1,3 +1,9 @@
+# Build by running "snapcraft".
+
+# WARNING:
+# Snapcraft uses caching for already build steps but it's buggy and can cause strange problems.
+# Clean the cache by running "snapcraft clean".
+
 name: video-downloader
 license: GPL-3.0+
 grade: stable
@@ -9,9 +15,10 @@ confinement: strict
 apps:
   video-downloader:
     command: usr/bin/video-downloader
+    # HINT: Adds plugs and changes environment variables when building and running
     extensions: [gnome-3-28]
     plugs:
-      - gsettings
+      - gsettings # Missing from gnome-3-28 extension
       - home
       - network
     slots:
@@ -25,9 +32,16 @@ slots:
     bus: session
     name: com.github.unrud.VideoDownloader
 
-environment:
-  # WORKAROUND: .../pulseaudio subdirectory is missing from library path
-  LD_LIBRARY_PATH: "${SNAP}/usr/lib/aarch64-linux-gnu/pulseaudio:${SNAP}/usr/lib/arm-linux-gnueabihf/pulseaudio:${SNAP}/usr/lib/i386-linux-gnu/pulseaudio:${SNAP}/usr/lib/powerpc64le-linux-gnu/pulseaudio:${SNAP}/usr/lib/s390x-linux-gnu/pulseaudio:${SNAP}/usr/lib/x86_64-linux-gnu/pulseaudio"
+# HINT:
+# There are multiple versions of Python. The paths are different when building
+# and running the Snap. Each version has different search paths for modules.
+#   - Base Snap: /usr/bin/python3
+#   - Gnome Extension:
+#       - Build: /snap/gnome-VERSION-sdk/current/usr/bin/python3
+#       - Run: /snap/video-downloader/VERSION/gnome-platform/usr/bin/python3
+#   - This Snap (Automatically installed by a plugin or as a dependency of some package)
+#       - Build: /root/stage/usr/bin/python3
+#       - Run: /snap/video-downloader/VERSION/usr/bin/python3
 
 parts:
   youtube-dl:
@@ -39,14 +53,17 @@ parts:
     stage-packages:
       # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
       - ffmpeg
-      - libslang2  # required by ffmpeg
+      # WORKAROUND: The following packages are required by ffmpeg
+      - libslang2
       - freeglut3
       - libglu1-mesa
     override-build: |
       snapcraftctl build
-      # WORKAROUND: Use correct python version
+      # WORKAROUND: Use python from search path
       sed -e '1c#!/usr/bin/env python3' -i "${SNAPCRAFT_PART_INSTALL}/bin/youtube-dl"
 
+  # WORKAROUND: Python from the gnome extension includes pycairo and PyGObject but fails with the following error:
+  #     AttributeError: 'gi.repository.Gtk' object has no attribute 'Template'
   pygobject:
     plugin: python
     python-packages:
@@ -55,15 +72,17 @@ parts:
     build-packages:
       - libgirepository1.0-dev
       - libcairo2-dev
-      - python3-dev
-    stage-packages:
-      - gir1.2-gtk-3.0
 
   video-downloader:
+    after: [pygobject, youtube-dl]
     plugin: meson
-    source: .
     source-type: git
-    # WORKAROUND: Fake installation location, to find dependencies when running
+    # HINT: Use URL instead of . to get source-branch working on the snapcraft.io builder,
+    #       it doesn't clone the repo with all branches
+    source: https://github.com/Unrud/video-downloader
+    # TODO: Use gnome-3-34 extension and build libhandy
+    source-branch: nolibhandy
+    # WORKAROUND: Fake installation location to find dependencies at runtime
     meson-parameters: [--prefix=/snap/video-downloader/current/usr]
     build-packages:
       - gettext
@@ -72,21 +91,21 @@ parts:
       - xdg-user-dirs
     override-pull: |
       snapcraftctl pull
-      # WORKAROUND: Point icon to the correct location
+      # WORKAROUND: Point icon directly to SVG otherwise snapcraft automatically chooses lowest resolution
       sed -e 's|Icon=com.github.unrud.VideoDownloader|Icon=/usr/share/icons/hicolor/scalable/apps/com.github.unrud.VideoDownloader.svg|' -i data/com.github.unrud.VideoDownloader.desktop.in
     override-build: |
       snapcraftctl build
-      # WORKAROUND: Version is not extracted from AppStream
-      snapcraftctl set-version "$(sed -n 's/^\s*VERSION\s*=\s*["'\'']\([^"'\'']*\)["'\''].*/\1/p' "${SNAPCRAFT_PART_INSTALL}/snap/video-downloader/current/usr/bin/video-downloader")"
-      # WORKAROUND: Use correct python version
+      # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
       sed -e '1c#!/usr/bin/env python3' -i "${SNAPCRAFT_PART_INSTALL}/snap/video-downloader/current/usr/bin/video-downloader"
     organize:
+      # WORKAROUND: Move files from fake installation location to actual target
       snap/video-downloader/current/usr: usr
     parse-info: [usr/share/metainfo/com.github.unrud.VideoDownloader.appdata.xml]
 
+  # WORKAROUND: Compile schemas manually
   compile-schemas:
+    after: [video-downloader]
     plugin: nil
-    after: [youtube-dl, pygobject, video-downloader]
     override-prime: |
       snapcraftctl prime
       glib-compile-schemas usr/share/glib-2.0/schemas
