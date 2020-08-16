@@ -29,35 +29,18 @@
     ],
     "modules" : [
         {
-            "name" : "chrpath",
-            "cleanup" : [
-                "*"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "http://deb.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz",
-                    "sha256" : "bb0d4c54bac2990e1bdf8132f2c9477ae752859d523e141e72b3b11a12c26e7b"
-                }
-            ]
-        },
-        {
             "name" : "ffmpeg",
             "config-opts" : [
                 "--disable-debug",
                 "--disable-doc",
                 "--disable-static",
                 "--enable-gpl",
-                "--enable-optimizations",
                 "--enable-shared",
                 "--disable-ffplay",
                 "--disable-devices",
                 "--enable-gnutls",
                 "--enable-libmp3lame",
                 "--enable-libvorbis"
-            ],
-            "post-install" : [
-                "chrpath -d /app/bin/ffmpeg"
             ],
             "cleanup" : [
                 "/share/ffmpeg"
@@ -74,7 +57,7 @@
             "name" : "pyxattr",
             "buildsystem" : "simple",
             "build-commands" : [
-                "pip3 install . --prefix=/app --no-index --find-links ."
+                "pip3 install --prefix=/app ."
             ],
             "sources" : [
                 {
@@ -89,7 +72,7 @@
             /* Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump */
             "buildsystem" : "simple",
             "build-commands" : [
-                "pip3 install . --prefix=/app --no-index --find-links ."
+                "pip3 install --prefix=/app ."
             ],
             "cleanup" : [
                 "/etc"
