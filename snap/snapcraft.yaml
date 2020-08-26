@@ -16,9 +16,9 @@ apps:
   video-downloader:
     command: usr/bin/video-downloader
     # HINT: Adds plugs and changes environment variables when building and running
-    extensions: [gnome-3-28]
+    # WARNING: Libraries bundled with the extension are incompatible with libraries from packages
+    extensions: [gnome-3-34]
     plugs:
-      - gsettings # Missing from gnome-3-28 extension
       - home
       - network
     slots:
@@ -32,7 +32,7 @@ slots:
     bus: session
     name: com.github.unrud.VideoDownloader
 
-# HINT:
+# WARNING:
 # There are multiple versions of Python. The paths are different when building
 # and running the Snap. Each version has different search paths for modules.
 #   - Base Snap: /usr/bin/python3
@@ -43,45 +43,64 @@ slots:
 #       - Build: /root/stage/usr/bin/python3
 #       - Run: /snap/video-downloader/VERSION/usr/bin/python3
 
+# WARNING:
+# The environment (PATH, LD_LIBRARY_PATH etc.) prefers different paths:
+#   - Build: Gnome extension; This Snap; Base Snap
+#   - Run: This Snap; Base Snap; Gnome extension
+
+# WARNING:
+# Python must be bundled with this Snap or building fails with:
+#     Failed to generate snap metadata: The specified command '/usr/bin/python3 $SNAP/usr/bin/video-downloader' defined in the app 'video-downloader' does not match the pattern expected by snapd.
+
+environment:
+  # WORKAROUND: Add Python path from Gnome extension
+  PYTHONPATH: "${SNAP}/gnome-platform/usr/lib/python3/dist-packages"
+
 parts:
+  # WORKAROUND: Building Gnome extension fails because errno.h is missing
+  gnome-extension-fix:
+    plugin: nil
+    build-packages:
+      - libc6-dev
+
+  ffmpeg:
+    plugin: nil
+#    stage-packages:
+#      # WARNING: This install packages as dependencies that conflict with the Gnome extension
+#      - ffmpeg
+#      # WORKAROUND: The following packages are required by ffmpeg
+#      - libslang2
+#      - freeglut3
+#      - libglu1-mesa
+
   youtube-dl:
+    # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
+    after: [ffmpeg]
     plugin: python
     source: https://github.com/ytdl-org/youtube-dl/archive/2020.07.28.tar.gz
     source-checksum: sha256/5152cd77357640ffd7317ab6c55d8fa6e2443a266e2b7301053055a26aac013e
     python-packages:
-      - pyxattr
-    stage-packages:
-      # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
-      - ffmpeg
-      # WORKAROUND: The following packages are required by ffmpeg
-      - libslang2
-      - freeglut3
-      - libglu1-mesa
-    override-build: |
-      snapcraftctl build
-      # WORKAROUND: Use python from search path
-      sed -e '1c#!/usr/bin/env python3' -i "${SNAPCRAFT_PART_INSTALL}/bin/youtube-dl"
+      - pyxattr==0.7.1
 
-  # WORKAROUND: Python from the gnome extension includes pycairo and PyGObject but fails with the following error:
-  #     AttributeError: 'gi.repository.Gtk' object has no attribute 'Template'
-  pygobject:
-    plugin: python
-    python-packages:
-      - pycairo
-      - PyGObject
-    build-packages:
-      - libgirepository1.0-dev
-      - libcairo2-dev
+  libhandy:
+    plugin: meson
+    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/0.90.0/libhandy-0.90.0.tar.bz2
+    source-checksum: sha256/24f015851cb5ac20c8ae9c88303229f91af84e9f1652904e15ebd3a94c51b4f6
+    meson-parameters:
+      # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
+      - --prefix=/usr
+      - -Dexamples=false
+      - -Dglade_catalog=disabled
+      - -Dtests=false
+      - -Dvapi=false
+    stage:
+      - -usr/include
 
   video-downloader:
-    after: [pygobject, youtube-dl]
+    after: [libhandy, youtube-dl]
     plugin: meson
+    source: .
     source-type: git
-    # HINT: Use URL instead of . to get source-branch working on the snapcraft.io builder,
-    #       it doesn't clone the repo with all branches
-    source: https://github.com/Unrud/video-downloader
-    # TODO: Use gnome-3-34 extension and build libhandy
-    source-branch: nolibhandy
     # WORKAROUND: Fake installation location to find dependencies at runtime
     meson-parameters: [--prefix=/snap/video-downloader/current/usr]
     build-packages:
@@ -101,11 +120,3 @@ parts:
       # WORKAROUND: Move files from fake installation location to actual target
       snap/video-downloader/current/usr: usr
     parse-info: [usr/share/metainfo/com.github.unrud.VideoDownloader.appdata.xml]
-
-  # WORKAROUND: Compile schemas manually
-  compile-schemas:
-    after: [video-downloader]
-    plugin: nil
-    override-prime: |
-      snapcraftctl prime
-      glib-compile-schemas usr/share/glib-2.0/schemas
