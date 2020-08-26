@@ -67,16 +67,3 @@ foreach res : [16, 32, 48, 64, 128, 256, 512]
   )
 endforeach
 meson.add_install_script('build-aux/meson/rename-icons.sh')
-
-custom_target(
-  'icon.png',
-  input: icon_svg,
-  output: 'icon.png',
-  command: [
-    rsvg_util,
-    '--height', '128', '--keep-aspect-ratio',
-    '--format', 'png', '--output', '@OUTPUT@', '@INPUT@'
-  ],
-  install: true,
-  install_dir: pkgdatadir,
-)
