@@ -64,14 +64,34 @@ parts:
       - libc6-dev
 
   ffmpeg:
-    plugin: nil
-#    stage-packages:
-#      # WARNING: This install packages as dependencies that conflict with the Gnome extension
-#      - ffmpeg
-#      # WORKAROUND: The following packages are required by ffmpeg
-#      - libslang2
-#      - freeglut3
-#      - libglu1-mesa
+    # WORKAROUND:
+    # Build from source because the ffmpeg package installs libraries as dependencies
+    # that conflict with the Gnome extension
+    plugin: autotools
+    source: https://ffmpeg.org/releases/ffmpeg-4.3.1.tar.xz
+    source-checksum: sha256/ad009240d46e307b4e03a213a0f49c11b650e445b1f8be0dda2a9212b34d2ffb
+    configflags:
+      # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
+      - --prefix=/usr
+      - --disable-debug
+      - --disable-doc
+      - --disable-static
+      - --enable-gpl
+      - --enable-shared
+      - --disable-ffplay
+      - --disable-devices
+      - --enable-gnutls
+      - --enable-libmp3lame
+      - --enable-libvorbis
+    build-packages:
+      - nasm
+      - libgnutls28-dev
+      - libmp3lame-dev
+      - libvorbis-dev
+    stage-packages:
+      - libmp3lame0
+    stage:
+      - -usr/include
 
   youtube-dl:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
