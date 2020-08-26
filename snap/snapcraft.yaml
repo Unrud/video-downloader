@@ -52,10 +52,6 @@ slots:
 # Python must be bundled with this Snap or building fails with:
 #     Failed to generate snap metadata: The specified command '/usr/bin/python3 $SNAP/usr/bin/video-downloader' defined in the app 'video-downloader' does not match the pattern expected by snapd.
 
-environment:
-  # WORKAROUND: Add Python path from Gnome extension
-  PYTHONPATH: "${SNAP}/gnome-platform/usr/lib/python3/dist-packages"
-
 parts:
   # WORKAROUND: Building Gnome extension fails because errno.h is missing
   gnome-extension-fix:
@@ -116,8 +112,15 @@ parts:
     stage:
       - -usr/include
 
+  # WORKAROUND: The Gnome extension includes PyGObject but it just crashes with SEGFAULT
+  pygobject:
+    plugin: python
+    python-packages:
+      - pycairo==1.19.1
+      - PyGObject==3.34.0
+
   video-downloader:
-    after: [libhandy, youtube-dl]
+    after: [libhandy, pygobject, youtube-dl]
     plugin: meson
     source: .
     source-type: git
