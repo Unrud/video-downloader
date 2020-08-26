@@ -47,6 +47,9 @@ icon_svg = icon_id + '.svg'
 install_data(icon_svg, install_dir: join_paths(
   get_option('datadir'), 'icons', 'hicolor', 'scalable', 'apps'
 ))
+install_data(icon_id + '-symbolic.svg', install_dir: join_paths(
+  get_option('datadir'), 'icons', 'hicolor', 'symbolic', 'apps'
+))
 
 rsvg_util = find_program('rsvg-convert')
 foreach res : [16, 32, 48, 64, 128, 256, 512]
