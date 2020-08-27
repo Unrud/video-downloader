@@ -25,6 +25,9 @@ apps:
       - dbus-daemon
     common-id: com.github.unrud.VideoDownloader
     desktop: usr/share/applications/com.github.unrud.VideoDownloader.desktop
+    environment:
+      PATH: $SNAP_DESKTOP_RUNTIME/usr/bin:$PATH
+      PYTHONPATH: $PYTHONPATH:$SNAP_DESKTOP_RUNTIME/usr/lib/python3.6/site-packages:$SNAP/usr/lib/python3.6/site-packages:$SNAP/lib/python3.6/site-packages
 
 slots:
   dbus-daemon:
@@ -32,30 +35,12 @@ slots:
     bus: session
     name: com.github.unrud.VideoDownloader
 
-# WARNING:
-# There are multiple versions of Python. The paths are different when building
-# and running the Snap. Each version has different search paths for modules.
-#   - Base Snap: /usr/bin/python3
-#   - Gnome Extension:
-#       - Build: /snap/gnome-VERSION-sdk/current/usr/bin/python3
-#       - Run: /snap/video-downloader/VERSION/gnome-platform/usr/bin/python3
-#   - This Snap (Automatically installed by a plugin or as a dependency of some package)
-#       - Build: /root/stage/usr/bin/python3
-#       - Run: /snap/video-downloader/VERSION/usr/bin/python3
-
-# WARNING:
-# The environment (PATH, LD_LIBRARY_PATH etc.) prefers different paths:
-#   - Build: Gnome extension; This Snap; Base Snap
-#   - Run: This Snap; Base Snap; Gnome extension
-
-# WARNING:
-# Python must be bundled with this Snap or building fails with:
-#     Failed to generate snap metadata: The specified command '/usr/bin/python3 $SNAP/usr/bin/video-downloader' defined in the app 'video-downloader' does not match the pattern expected by snapd.
-
 parts:
   # WORKAROUND: Building Gnome extension fails because errno.h is missing
   gnome-extension-fix:
     plugin: nil
+    build-environment: &buildenv
+      - PATH: /snap/gnome-3-34-1804-sdk/current/usr/bin:$PATH
     build-packages:
       - libc6-dev
 
@@ -97,6 +82,7 @@ parts:
     source-checksum: sha256/5152cd77357640ffd7317ab6c55d8fa6e2443a266e2b7301053055a26aac013e
     python-packages:
       - pyxattr==0.7.1
+    build-environment: *buildenv
 
   libhandy:
     plugin: meson
@@ -109,23 +95,18 @@ parts:
       - -Dglade_catalog=disabled
       - -Dtests=false
       - -Dvapi=false
+    build-environment: *buildenv
     stage:
       - -usr/include
 
-  # WORKAROUND: The Gnome extension includes PyGObject but it just crashes with SEGFAULT
-  pygobject:
-    plugin: python
-    python-packages:
-      - pycairo==1.19.1
-      - PyGObject==3.34.0
-
   video-downloader:
-    after: [libhandy, pygobject, youtube-dl]
+    after: [libhandy, youtube-dl]
     plugin: meson
     source: .
     source-type: git
     # WORKAROUND: Fake installation location to find dependencies at runtime
     meson-parameters: [--prefix=/snap/video-downloader/current/usr]
+    build-environment: *buildenv
     build-packages:
       - gettext
       - librsvg2-bin
