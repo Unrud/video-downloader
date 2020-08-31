@@ -22,6 +22,7 @@ import glob
 import itertools
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -85,27 +86,55 @@ class YoutubeDLSlave:
         self._handler.on_load_progress(
             filename, progress, bytes_, bytes_total, eta, speed)
 
-    def _load_playlist(self, dir_, url=None, info_path=None):
+    def _load_playlist(self, dir_, url):
+        """Retrieve info for all videos available on URL.
+
+        `outtmpl` must be set to '%(autonumber)s.%(ext)s'.
+        `writeinfojson` and `skip_download` must be enables.
+        `writethumbnail`, `write_all_thumbnails` are optional.
+
+        Returns the absolute paths of the generated and downloaded files:
+        ([(info json, [thumbnail, ...]), ...], skipped videos)
+        """
         os.chdir(dir_)
         while True:
             try:
                 saved_skipped_count = self._skipped_count
-                if url is not None:
-                    youtube_dl.YoutubeDL(self.ydl_opts).download([url])
-                else:
-                    youtube_dl.YoutubeDL(
-                        self.ydl_opts).download_with_info_file(info_path)
+                youtube_dl.YoutubeDL(self.ydl_opts).download([url])
             except RetryException:
                 continue
             break
-        return (sorted(map(os.path.abspath, glob.iglob('*.info.json'))),
-                self._skipped_count - saved_skipped_count)
+        results = []
+        dir_listing = os.listdir()
+        for name in dir_listing:
+            # Info Json: 00001.info.json
+            if not re.fullmatch(r'[0-9]+\.info\.json', name):
+                continue
+            name_root = name.partition('.')[0]
+            thumbnails = []
+            for name2 in dir_listing:
+                # Thumbnails: 00001.jpg or 00001_0.jpg
+                if re.fullmatch(r'%s(_[0-9]+)?\.[^.]+' % name_root, name2):
+                    thumbnails.append(os.path.abspath(name2))
+            results.append((os.path.abspath(name), thumbnails))
+        results.sort(key=lambda result: result[0])
+        return (results, self._skipped_count - saved_skipped_count)
+
+    def _load_video(self, dir_, info_path):
+        os.chdir(dir_)
+        while True:
+            try:
+                youtube_dl.YoutubeDL(self.ydl_opts).download_with_info_file(
+                    info_path)
+            except RetryException:
+                continue
+            break
 
     def debug(self, msg):
         # See ydl_opts['forcejson']
-        if self._expect_info_dict_json:
-            self._expect_info_dict_json = False
-            self._info_dict = json.loads(msg)
+        if self._on_info_dict_json:
+            self._on_info_dict_json(json.loads(msg))
+            self._on_info_dict_json = None
             return
         print(msg, file=sys.stderr, flush=True)
 
@@ -206,8 +235,7 @@ class YoutubeDLSlave:
     def __init__(self):
         self._handler = Handler()
         # See ydl_opts['forcejson']
-        self._expect_info_dict_json = False
-        self._info_dict = None
+        self._on_info_dict_json = None
         self._allow_authentication_request = True
         self._skip_authentication = False
         self._skipped_count = 0
@@ -220,6 +248,7 @@ class YoutubeDLSlave:
             'ignoreerrors': True,  # handled via logger error callback
             'retries': 10,
             'fragment_retries': 10,
+            'keepvideo': True,
             'postprocessors': [{'key': 'XAttrMetadata'}]}
         url = self._handler.get_url()
         download_dir = os.path.abspath(self._handler.get_download_dir())
@@ -292,14 +321,11 @@ class YoutubeDLSlave:
                 self._handler.on_error(
                     'ERROR: Failed to create download folder: %s' % e)
                 raise
-            for i, info_path in enumerate(info_playlist):
+            for i, (info_path, thumbnail_paths) in enumerate(info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = self._get_output_title(title)
-                thumbnail_paths = list(filter(
-                    lambda p: os.path.splitext(p)[1][1:] != 'json', glob.iglob(
-                        glob.escape(info_path[:-len('info.json')]) + '*')))
                 thumbnail_path = thumbnail_paths[0] if thumbnail_paths else ''
                 if thumbnail_path:
                     # Convert thumbnail to JPEG and limit resolution
@@ -359,15 +385,19 @@ class YoutubeDLSlave:
                     if existing_filename is not None:
                         filename = existing_filename
                     else:
+                        info_dict = None
+
                         # See ydl_opts['forcejson']
-                        self._expect_info_dict_json = True
-                        self._load_playlist(
-                            temp_download_dir, info_path=info_path)
-                        if self._expect_info_dict_json:
+                        def on_info_dict_json(info_dict_):
+                            nonlocal info_dict
+                            info_dict = info_dict_
+                        self._on_info_dict_json = on_info_dict_json
+                        self._load_video(temp_download_dir, info_path)
+                        if self._on_info_dict_json:
                             raise RuntimeError('info_dict not received')
                         # Find the temporary filename
                         temp_filename_root, temp_filename_ext = (
-                            os.path.splitext(self._info_dict['_filename']))
+                            os.path.splitext(info_dict['_filename']))
                         if mode == 'audio':
                             temp_filename_ext = '.mp3'
                         else:
@@ -393,7 +423,6 @@ class YoutubeDLSlave:
                     with contextlib.suppress(OSError):
                         shutil.rmtree(temp_download_dir)
                 self._handler.on_progress_end(filename)
-                self._info_dict = None
 
 
 class Handler:
