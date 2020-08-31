@@ -54,6 +54,7 @@ class Window(Handy.ApplicationWindow):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.model = self.get_application().model
         bind_property(self.model, 'error', self.error_buffer, 'text')
         bind_property(self.error_details_expander_wdg, 'expanded',
                       self.error_details_revealer_wdg, 'reveal-child')
@@ -91,10 +92,6 @@ class Window(Handy.ApplicationWindow):
                       func_a_to_b=self._add_thumbnail)
         bind_property(self.download_images_wdg, 'transition-running',
                       func_a_to_b=lambda b: b or self._clean_thumbnails())
-
-    @property
-    def model(self):
-        return self.get_application().model
 
     def _update_download_progress(self, *_):
         progress = self.model.download_progress
