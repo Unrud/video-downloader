@@ -65,6 +65,10 @@ class Application(Gtk.Application, Handler):
             win.set_default_icon_name(self.props.application_id)
         win.present()
 
+    def do_shutdown(self):
+        self.model.shutdown()
+        Gtk.Application.do_shutdown(self)
+
     def do_handle_local_options(self, options):
         url_variant = options.lookup_value('url', GLib.VariantType('s'))
         if url_variant:

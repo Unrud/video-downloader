@@ -138,6 +138,9 @@ class Model(GObject.GObject, downloader.Handler):
                   traceback.format_exc())
             subprocess.run(['xdg-open', self.download_dir_abs], check=True)
 
+    def shutdown(self):
+        self._downloader.shutdown()
+
     def on_pulse(self):
         assert self.state in ['download', 'cancel']
         self.emit('download-pulse')

@@ -19,6 +19,7 @@ import contextlib
 import fcntl
 import json
 import os
+import signal
 import subprocess
 import sys
 import traceback
@@ -36,6 +37,10 @@ class Downloader:
         self._handler = handler
         self._process = None
 
+    def shutdown(self):
+        if self._process:
+            self._finish_process_and_kill_pgrp(self._process)
+
     def cancel(self):
         self._process.terminate()
 
@@ -45,7 +50,8 @@ class Downloader:
         env['PYTHONPATH'] = os.pathsep.join(filter(None, [
             os.path.join(__file__, *[os.pardir]*3), env.get('PYTHONPATH')]))
         # Start child process in its own process group to shield it from
-        # signals by terminals (e.g. SIGINT)
+        # signals by terminals (e.g. SIGINT) and to identify remaning children.
+        # youtube-dl doesn't kill ffmpeg and other subprocesses on error.
         self._process = subprocess.Popen(
             [sys.executable, '-u', '-m', 'video_downloader.downloader'],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
@@ -61,30 +67,47 @@ class Downloader:
             GLib.PRIORITY_DEFAULT_IDLE, self._process.stderr.fileno(),
             GLib.IOCondition.IN, self._on_process_stderr, self._process)
 
+    @staticmethod
+    def _finish_process_and_kill_pgrp(process):
+        try:
+            # Terminate process gracefully so it can delete temporary files
+            process.terminate()
+            process.wait()
+        except BaseException:  # including SystemExit and KeyboardInterrupt
+            process.kill()
+        finally:
+            # Kill remaining children identified by process group
+            with contextlib.suppress(OSError):
+                os.killpg(process.pid, signal.SIGKILL)
+        return process.returncode
+
     def _on_process_stdout(self, *args):
         s = self._process.stdout.read()
         self._process.stdout_remainder += s
         *lines, self._process.stdout_remainder = \
             self._process.stdout_remainder.split('\n')
+        failure = False
         for line in lines:
             try:
                 request = json.loads(line)
                 method = getattr(self._handler, request['method'])
                 result = method(*request['args'])
-                with contextlib.suppress(BrokenPipeError):
-                    print(json.dumps({'result': result}),
-                          flush=True, file=self._process.stdin)
+                print(json.dumps({'result': result}),
+                      flush=True, file=self._process.stdin)
             except Exception:
                 g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
                       'failed request %r\n%s', line, traceback.format_exc())
-                self._process.kill()
-        if not s:
-            if self._process.stdout_remainder:
-                g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
-                      'incomplete request %r', self._process.stdout_remainder)
+                failure = True
+                break
+        if not s and self._process.stdout_remainder:
+            g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
+                  'incomplete request %r', self._process.stdout_remainder)
+            failure = True
+        if not s or failure:
             # Unset self._process first for self._on_process_stderr
             process, self._process = self._process, None
-            self._handler.on_finished(process.wait() == 0)
+            returncode = self._finish_process_and_kill_pgrp(process)
+            self._handler.on_finished(returncode == 0 and not failure)
             return False
         return True
 
