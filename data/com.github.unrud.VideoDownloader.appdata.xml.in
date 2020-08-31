@@ -28,6 +28,15 @@
   <update_contact>unrud_AT_outlook.com</update_contact>
   <translation type="gettext">video-downloader</translation>
   <releases>
+    <release version="0.5.1" date="2020-08-31">
+      <description>
+        <ul>
+          <li>Embed subtitles in videos</li>
+          <li>Fix download of incompatible audio and video formats</li>
+          <li>Kill remaining subprocesses of youtube-dl when cancelling downloads and exiting program</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.4.1" date="2020-08-26">
       <description>
         <ul>
