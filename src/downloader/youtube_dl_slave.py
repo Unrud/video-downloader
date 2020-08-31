@@ -365,13 +365,21 @@ class YoutubeDLSlave:
                             temp_download_dir, info_path=info_path)
                         if self._expect_info_dict_json:
                             raise RuntimeError('info_dict not received')
-                        # Move finished download from download to target dir
-                        temp_filename = self._info_dict['_filename']
+                        # Find the temporary filename
+                        temp_filename_root, temp_filename_ext = (
+                            os.path.splitext(self._info_dict['_filename']))
                         if mode == 'audio':
-                            temp_filename = (
-                                os.path.splitext(temp_filename)[0] + '.mp3')
-                        output_ext = os.path.splitext(temp_filename)[1]
-                        filename = output_title + output_ext
+                            temp_filename_ext = '.mp3'
+                        else:
+                            # youtube-dl changes extension for incompatible
+                            # formats to .mkv
+                            for ext in [temp_filename_ext, '.mkv']:
+                                if os.path.exists(temp_filename_root + ext):
+                                    temp_filename_ext = ext
+                                    break
+                        temp_filename = temp_filename_root + temp_filename_ext
+                        filename = output_title + temp_filename_ext
+                        # Move finished download from download to target dir
                         try:
                             os.replace(
                                 os.path.join(temp_download_dir, temp_filename),
