@@ -18,6 +18,10 @@ apps:
     # HINT: Adds plugs and changes environment variables when building and running
     # WARNING: Libraries bundled with the extension are incompatible with libraries from packages
     extensions: [gnome-3-34]
+    # WORKAROUND: Use (correct version of) PyGObject from Gnome Extension
+    # WARNING: There is another version of PyGObject in usr/lib/python3/dist-packages that crashes with SEGFAULT
+    environment:
+      PYTHONPATH: $SNAP_DESKTOP_RUNTIME/usr/lib/python3.6/site-packages
     plugs:
       - home
       - network
@@ -112,15 +116,8 @@ parts:
     stage:
       - -usr/include
 
-  # WORKAROUND: The Gnome extension includes PyGObject but it just crashes with SEGFAULT
-  pygobject:
-    plugin: python
-    python-packages:
-      - pycairo==1.19.1
-      - PyGObject==3.34.0
-
   video-downloader:
-    after: [libhandy, pygobject, youtube-dl]
+    after: [libhandy, youtube-dl]
     plugin: meson
     source: .
     source-type: git
