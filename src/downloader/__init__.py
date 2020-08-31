@@ -44,11 +44,13 @@ class Downloader:
         env = os.environ.copy()
         env['PYTHONPATH'] = os.pathsep.join(filter(None, [
             os.path.join(__file__, *[os.pardir]*3), env.get('PYTHONPATH')]))
+        # Start child process in its own process group to shield it from
+        # signals by terminals (e.g. SIGINT)
         self._process = subprocess.Popen(
             [sys.executable, '-u', '-m', 'video_downloader.downloader'],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE, env=env, universal_newlines=True,
-            start_new_session=True)
+            preexec_fn=os.setpgrp)
         fcntl.fcntl(self._process.stdout, fcntl.F_SETFL, os.O_NONBLOCK)
         fcntl.fcntl(self._process.stderr, fcntl.F_SETFL, os.O_NONBLOCK)
         self._process.stdout_remainder = self._process.stderr_remainder = ''
