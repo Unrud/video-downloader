@@ -91,10 +91,12 @@ class YoutubeDLSlave:
 
         `outtmpl` must be set to '%(autonumber)s.%(ext)s'.
         `writeinfojson` and `skip_download` must be enables.
-        `writethumbnail`, `write_all_thumbnails` are optional.
+        `writethumbnail`, `write_all_thumbnails` and `writesubtitles` are
+        optional.
 
         Returns the absolute paths of the generated and downloaded files:
-        ([(info json, [thumbnail, ...]), ...], skipped videos)
+        ([(info json, [thumbnail, ...], [(subtitle, ext), ...]), ...],
+         skipped videos)
         """
         os.chdir(dir_)
         while True:
@@ -112,11 +114,17 @@ class YoutubeDLSlave:
                 continue
             name_root = name.partition('.')[0]
             thumbnails = []
+            subtitles = []
             for name2 in dir_listing:
                 # Thumbnails: 00001.jpg or 00001_0.jpg
                 if re.fullmatch(r'%s(_[0-9]+)?\.[^.]+' % name_root, name2):
                     thumbnails.append(os.path.abspath(name2))
-            results.append((os.path.abspath(name), thumbnails))
+                # Subtitles: 00001.en.vtt
+                if re.fullmatch(r'%s\.[^.]+\.[^.]+' % name_root, name2):
+                    name2_ext = name2[len(name_root):]
+                    if name2_ext != '.info.json':
+                        subtitles.append((os.path.abspath(name2), name2_ext))
+            results.append((os.path.abspath(name), thumbnails, subtitles))
         results.sort(key=lambda result: result[0])
         return (results, self._skipped_count - saved_skipped_count)
 
@@ -248,8 +256,13 @@ class YoutubeDLSlave:
             'ignoreerrors': True,  # handled via logger error callback
             'retries': 10,
             'fragment_retries': 10,
+            'writesubtitles': True,
+            'allsubtitles': True,
+            'subtitlesformat': 'vtt/best',
             'keepvideo': True,
-            'postprocessors': [{'key': 'XAttrMetadata'}]}
+            'postprocessors': [
+                {'key': 'FFmpegSubtitlesConvertor', 'format': 'vtt'},
+                {'key': 'FFmpegEmbedSubtitle'}, {'key': 'XAttrMetadata'}]}
         url = self._handler.get_url()
         download_dir = os.path.abspath(self._handler.get_download_dir())
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -321,7 +334,7 @@ class YoutubeDLSlave:
                 self._handler.on_error(
                     'ERROR: Failed to create download folder: %s' % e)
                 raise
-            for i, (info_path, thumbnail_paths) in enumerate(info_playlist):
+            for i, (info_path, thumbnail_paths, _) in enumerate(info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
                 title = info.get('title') or info.get('id') or 'video'
