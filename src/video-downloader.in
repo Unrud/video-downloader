@@ -17,6 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import contextlib
 import gettext
 import locale
 import os
@@ -33,7 +34,8 @@ locale.bindtextdomain('video-downloader', localedir)
 locale.textdomain('video-downloader')
 gettext.bindtextdomain('video-downloader', localedir)
 gettext.textdomain('video-downloader')
-locale.setlocale(locale.LC_ALL, '')
+with contextlib.suppress(locale.Error):
+    locale.setlocale(locale.LC_ALL, '')
 
 if __name__ == '__main__':
     import gi
