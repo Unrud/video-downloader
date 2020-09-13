@@ -98,8 +98,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gitlab.gnome.org/GNOME/libhandy/-/archive/0.90.0/libhandy-0.90.0.tar.bz2",
-                    "sha256": "24f015851cb5ac20c8ae9c88303229f91af84e9f1652904e15ebd3a94c51b4f6"
+                    "url": "https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.0/libhandy-1.0.0.tar.bz2",
+                    "sha256": "697b7774b4d2fb60c90fcf8fa61463c43c1408f7f7290a197eee4b62d10c6762"
                 }
             ]
         },
