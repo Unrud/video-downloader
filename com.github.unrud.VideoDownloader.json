@@ -80,8 +80,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ytdl-org/youtube-dl/archive/2020.09.06.tar.gz",
-                    "sha256" : "1fde2217ecfad77ba293d8434e17bb0f20978c6b7e9e999c4efff95160b7a15b"
+                    "url" : "https://github.com/ytdl-org/youtube-dl/archive/2020.09.14.tar.gz",
+                    "sha256" : "8fe53d659390e463b40bbe8b3c099b2593c19ff55e41c2c01633ee3c27ef9ca4"
                 }
             ]
         },
