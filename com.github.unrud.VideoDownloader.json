@@ -1,7 +1,7 @@
 {
     "app-id" : "com.github.unrud.VideoDownloader",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.36",
+    "runtime-version" : "3.38",
     "sdk" : "org.gnome.Sdk",
     "command" : "video-downloader",
     "finish-args" : [
