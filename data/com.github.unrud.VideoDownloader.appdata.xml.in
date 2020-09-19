@@ -28,6 +28,14 @@
   <update_contact>unrud_AT_outlook.com</update_contact>
   <translation type="gettext">video-downloader</translation>
   <releases>
+    <release version="0.5.6" date="2020-09-19">
+      <description>
+        <ul>
+          <li>Skip unsupported subtitles preventing download failure</li>
+          <li>Improve format selection</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.5.5" date="2020-09-06">
       <description>
         <ul>
@@ -237,13 +245,13 @@
   </releases>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.5/screenshots/1.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.6/screenshots/1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.5/screenshots/2.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.6/screenshots/2.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.5/screenshots/3.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.6/screenshots/3.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
