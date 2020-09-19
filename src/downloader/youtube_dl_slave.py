@@ -31,7 +31,7 @@ import time
 import traceback
 
 import youtube_dl
-from youtube_dl.utils import sanitize_filename
+from youtube_dl.utils import dfxp2srt, sanitize_filename
 
 from video_downloader.downloader import MAX_RESOLUTION
 from video_downloader.downloader.youtube_dl_formats import sort_formats
@@ -95,8 +95,8 @@ class YoutubeDLSlave:
         optional.
 
         Returns the absolute paths of the generated and downloaded files:
-        ([(info json, [thumbnail, ...], [(subtitle, ext), ...]), ...],
-         skipped videos)
+        ([(info json, [thumbnail, ...],
+         [(subtitle, lang, ext), ...]), ...], skipped videos)
         """
         os.chdir(dir_)
         while True:
@@ -123,7 +123,9 @@ class YoutubeDLSlave:
                 if re.fullmatch(r'%s\.[^.]+\.[^.]+' % name_root, name2):
                     name2_ext = name2[len(name_root):]
                     if name2_ext != '.info.json':
-                        subtitles.append((os.path.abspath(name2), name2_ext))
+                        sub_lang, sub_ext = name2_ext[1:].split('.')
+                        subtitles.append((os.path.abspath(name2),
+                                          sub_lang, sub_ext))
             results.append((os.path.abspath(name), thumbnails, subtitles))
         results.sort(key=lambda result: result[0])
         return (results, self._skipped_count - saved_skipped_count)
@@ -334,14 +336,65 @@ class YoutubeDLSlave:
                 self._handler.on_error(
                     'ERROR: Failed to create download folder: %s' % e)
                 raise
-            for i, (info_path, thumbnail_paths, _) in enumerate(info_playlist):
+            for i, (info_path, thumbnail_paths, subtitles) in enumerate(
+                    info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = self._get_output_title(title)
+                # Test subtitles
+                # youtube-dl fails for subtitles that it can't convert or
+                # are unsupported by ffmpeg
+                supported_subtitles = []
+                for sub_path, sub_lang, sub_ext in subtitles:
+                    print('[youtube_dl_slave] Testing subtitle (%r, %r)' %
+                          (sub_lang, sub_ext), file=sys.stderr, flush=True)
+                    if sub_ext in ['dfxp', 'ttml', 'tt']:
+                        # Try to use youtube-dl's internal dfxp2srt converter
+                        with open(sub_path, 'rb') as f:
+                            sub_data = f.read()
+                        try:
+                            sub_data = dfxp2srt(sub_data)
+                        except Exception:
+                            traceback.print_exc(file=sys.stderr)
+                            sys.stderr.flush()
+                            continue
+                        ff_sub_path = sub_path + '-converted.srt'
+                        with open(ff_sub_path, 'w', encoding='utf-8') as f:
+                            f.write(sub_data)
+                    else:
+                        ff_sub_path = sub_path
+                    # Try to read and convert subtitles with ffmpeg
+                    try:
+                        subprocess.run(
+                            [FFMPEG_EXE, '-i', os.path.abspath(ff_sub_path),
+                             '-f', 'webvtt', '-'],
+                            check=True, stdin=subprocess.DEVNULL,
+                            stdout=subprocess.DEVNULL)
+                    except FileNotFoundError:
+                        self._handler.on_error(
+                            'ERROR: %r not found' % FFMPEG_EXE)
+                        raise
+                    except subprocess.CalledProcessError:
+                        traceback.print_exc(file=sys.stderr)
+                        sys.stderr.flush()
+                        continue
+                    supported_subtitles.append((sub_lang, sub_ext))
+                # Choose supported subtitles
+                new_info_subtitles = {}
+                for sub_lang, subs in (info.get('subtitles') or {}).items():
+                    new_subs = []
+                    for sub in subs or []:
+                        if (sub_lang, sub.get('ext')) in supported_subtitles:
+                            new_subs.append(sub)
+                    if new_subs:
+                        new_info_subtitles[sub_lang] = new_subs
+                info['subtitles'] = new_info_subtitles
                 thumbnail_path = thumbnail_paths[0] if thumbnail_paths else ''
                 if thumbnail_path:
                     # Convert thumbnail to JPEG and limit resolution
+                    print('[youtube_dl_slave] Converting thumbnail',
+                          file=sys.stderr, flush=True)
                     new_thumbnail_path = thumbnail_path + '-converted.jpg'
                     try:
                         subprocess.run(
@@ -351,7 +404,7 @@ class YoutubeDLSlave:
                                      ).format(MAX_THUMBNAIL_RESOLUTION),
                              os.path.abspath(new_thumbnail_path)],
                             check=True, stdin=subprocess.DEVNULL,
-                            stdout=sys.stderr)
+                            stdout=subprocess.DEVNULL)
                     except FileNotFoundError:
                         self._handler.on_error(
                             'ERROR: %r not found' % FFMPEG_EXE)
