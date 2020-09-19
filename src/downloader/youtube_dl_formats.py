@@ -66,15 +66,16 @@ def sort_formats(formats, resolution=MAX_RESOLUTION, prefer_mpeg=False):
         else:
             norm_width, norm_height = width, height
         if norm_height >= 0:
-            norm_height = MAX_RESOLUTION - abs(norm_height - resolution)
+            resolution_diff = MAX_RESOLUTION - abs(norm_height - resolution)
+        else:
+            resolution_diff = -1
 
         return (
             preference,
             (f.get('language_preference')
              if f.get('language_preference') is not None else -1),
+            resolution_diff,
             f.get('quality') if f.get('quality') is not None else -1,
-            norm_height,
-            norm_width,
             f.get('fps') if f.get('fps') is not None else -1,
             ext_preference,
             audio_ext_preference,
@@ -82,6 +83,8 @@ def sort_formats(formats, resolution=MAX_RESOLUTION, prefer_mpeg=False):
             f.get('filesize') if f.get('filesize') is not None else -1,
             f.get('vbr') if f.get('vbr') is not None else -1,
             f.get('abr') if f.get('abr') is not None else -1,
+            norm_height,
+            norm_width,
             proto_preference,
             (f.get('filesize_approx')
              if f.get('filesize_approx') is not None else -1),
