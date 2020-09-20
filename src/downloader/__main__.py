@@ -20,11 +20,14 @@ import sys
 
 import youtube_dl
 
+from video_downloader.downloader.youtube_dl_monkey_patch import (
+    install_monkey_patches)
 from video_downloader.downloader.youtube_dl_slave import YoutubeDLSlave
 
 if __name__ == '__main__':
     # Exit gracefully on SIGTERM to allow cleanup code to run
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(1))
+    install_monkey_patches()
     try:
         YoutubeDLSlave()
     except youtube_dl.utils.DownloadError:
