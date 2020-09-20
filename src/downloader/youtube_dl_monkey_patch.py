@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
-import sys
 
 from youtube_dl.postprocessor.ffmpeg import FFmpegPostProcessor
 
