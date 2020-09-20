@@ -63,6 +63,20 @@ parts:
     build-packages:
       - libc6-dev
 
+  libhandy:
+    plugin: meson
+    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.0/libhandy-1.0.0.tar.bz2
+    source-checksum: sha256/697b7774b4d2fb60c90fcf8fa61463c43c1408f7f7290a197eee4b62d10c6762
+    meson-parameters:
+      # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
+      - --prefix=/usr
+      - -Dexamples=false
+      - -Dglade_catalog=disabled
+      - -Dtests=false
+      - -Dvapi=false
+    stage:
+      - -usr/include
+
   ffmpeg:
     # WORKAROUND:
     # Build from source because the ffmpeg package installs libraries as dependencies
@@ -101,20 +115,6 @@ parts:
     source-checksum: sha256/8fe53d659390e463b40bbe8b3c099b2593c19ff55e41c2c01633ee3c27ef9ca4
     python-packages:
       - pyxattr==0.7.1
-
-  libhandy:
-    plugin: meson
-    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.0/libhandy-1.0.0.tar.bz2
-    source-checksum: sha256/697b7774b4d2fb60c90fcf8fa61463c43c1408f7f7290a197eee4b62d10c6762
-    meson-parameters:
-      # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
-      - --prefix=/usr
-      - -Dexamples=false
-      - -Dglade_catalog=disabled
-      - -Dtests=false
-      - -Dvapi=false
-    stage:
-      - -usr/include
 
   video-downloader:
     after: [libhandy, youtube-dl]
