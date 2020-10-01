@@ -1,4 +1,4 @@
-# Video Downloader
+# AhA! Any Video Downloader
 
 Download videos from websites with an easy-to-use interface.
 Provides the following features:
@@ -10,7 +10,7 @@ Provides the following features:
 
 Based on [youtube-dl](http://ytdl-org.github.io/youtube-dl/).
 
-## Installation
+## Let's Install
 
   * [Flatpak](https://flathub.org/apps/details/com.github.unrud.VideoDownloader)
   * [Snap](https://snapcraft.io/video-downloader)
@@ -28,7 +28,7 @@ Based on [youtube-dl](http://ytdl-org.github.io/youtube-dl/).
 
 The behavior of the program can be tweaked with GSettings.
 
-### Download folder
+### Your Download folder
 
 Paths can either be absolute or start with `~`, `xdg-desktop`, `xdg-download`,
 `xdg-templates`, `xdg-publicshare`, `xdg-documents`, `xdg-music`, `xdg-pictures` or `xdg-videos`.
