@@ -181,7 +181,7 @@ class YoutubeDLSlave:
             self._allow_authentication_request = False
             raise RetryException(msg)
         self._handler.on_error(msg)
-        raise youtube_dl.utils.DownloadError(msg)
+        sys.exit(1)
 
     @staticmethod
     def _get_output_title(title):
