@@ -28,6 +28,15 @@
   <update_contact>unrud_AT_outlook.com</update_contact>
   <translation type="gettext">video-downloader</translation>
   <releases>
+    <release version="0.5.8" date="2020-10-03">
+      <description>
+        <ul>
+          <li>Add hungarian translation</li>
+          <li>Allow download to filesystem without xattr support</li>
+          <li>Improve error handling</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.5.7" date="2020-09-20">
       <description>
         <ul>
@@ -252,13 +261,13 @@
   </releases>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.7/screenshots/1.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.8/screenshots/1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.7/screenshots/2.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.8/screenshots/2.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.7/screenshots/3.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.5.8/screenshots/3.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
