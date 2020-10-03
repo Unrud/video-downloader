@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-17 00:39+0200\n"
+"POT-Creation-Date: 2020-10-04 00:50+0200\n"
 "PO-Revision-Date: 2020-05-17 00:45+0200\n"
 "Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>\n"
 "Language-Team: Spanish; Castilian\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
-#: src/window.ui:502
+#: src/window.ui:19
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
@@ -51,8 +51,6 @@ msgstr "Descargar vídeos individuales o listas de reproducción completas"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
 #, fuzzy
-#| msgid ""
-#| "Automatically selects a video format based on your preferred resolution"
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
 "Selecciona automáticamente un formato de vídeo basado en su resolución "
@@ -78,7 +76,7 @@ msgstr "Nueva ventana"
 msgid "Authentication Required"
 msgstr "Autenticación Requerida"
 
-#: src/authentication_dialog.py:34 src/window.ui:536
+#: src/authentication_dialog.py:34 src/window.ui:277
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -111,43 +109,43 @@ msgstr "Contraseña"
 msgid "Prefill URL field"
 msgstr "Rellenar campo URL"
 
-#: src/model.py:58
+#: src/model.py:59
 msgid "Best"
 msgstr "La mejor"
 
-#: src/model.py:59
+#: src/model.py:60
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:60
+#: src/model.py:61
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:61
+#: src/model.py:62
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:62
+#: src/model.py:63
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:63
+#: src/model.py:64
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:64
+#: src/model.py:65
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:65
+#: src/model.py:66
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:66
+#: src/model.py:67
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:67
+#: src/model.py:68
 msgid "144p"
 msgstr "144p"
 
@@ -167,54 +165,54 @@ msgstr "Vídeo individual"
 msgid "All Videos in Playlist"
 msgstr "Todos los vídeos en la lista de reproducción"
 
-#: src/window.py:111
+#: src/window.py:107
 msgid "Downloading"
 msgstr "Descargando"
 
-#: src/window.py:113 src/window.py:138
+#: src/window.py:109 src/window.py:134
 msgid "{} of {}"
 msgstr "{} de {}"
 
-#: src/window.py:139 src/window.py:141
+#: src/window.py:135 src/window.py:137
 msgid "unknown"
 msgstr "desconocido"
 
-#: src/window.py:174
+#: src/window.py:170
 msgid "Saved in {}"
 msgstr "Guardado en {}"
 
-#: src/window.ui:45 src/window.ui:102
+#: src/window.ui:70 src/window.ui:148
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:83
+#: src/window.ui:107 src/window.ui:236
+msgid "Download"
+msgstr "Descargar"
+
+#: src/window.ui:124
 msgid "Audio"
 msgstr "Audio"
 
-#: src/window.ui:146
+#: src/window.ui:192
 msgid "Resolution"
 msgstr "Resolución"
 
-#: src/window.ui:191
+#: src/window.ui:253
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/window.ui:317
-msgid "Download failed"
-msgstr "Descarga fallida"
-
-#: src/window.ui:347
-msgid "Details"
-msgstr "Detalles"
-
-#: src/window.ui:430
-msgid "Download finished"
-msgstr "Descarga finalizada"
-
-#: src/window.ui:522
+#: src/window.ui:388 src/window.ui:523
 msgid "Back"
 msgstr "Volver"
 
-#: src/window.ui:550
-msgid "Download"
-msgstr "Descargar"
+#: src/window.ui:426
+msgid "Download failed"
+msgstr "Descarga fallida"
+
+#: src/window.ui:456
+msgid "Details"
+msgstr "Detalles"
+
+#: src/window.ui:562
+msgid "Download finished"
+msgstr "Descarga finalizada"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-14 21:30+0900\n"
+"POT-Creation-Date: 2020-10-04 00:50+0200\n"
 "PO-Revision-Date: 2020-06-15 02:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:2
-#: main.py:39 window.ui.h:8
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
+#: src/window.ui:19
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:3
+#: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download videos from websites like YouTube and many others"
 msgstr "YouTube などの動画サイトから動画をダウンロードします"
 
@@ -33,8 +33,8 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"使いやすいインターフェースでウェブサイトから動画をダウンロードします。以下"
-"の機能があります:"
+"使いやすいインターフェースでウェブサイトから動画をダウンロードします。以下の"
+"機能があります:"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
 msgid "Convert videos to MP3"
@@ -56,146 +56,156 @@ msgstr "指定した品質に基づいた動画形式の自動選択"
 msgid "Based on youtube-dl."
 msgstr "youtube-dl を利用しています。"
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:13
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+msgid "Unrud"
+msgstr "Unrud"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:6
+msgid "com.github.unrud.VideoDownloader"
+msgstr "com.github.unrud.VideoDownloader"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
-#: authentication_dialog.py:30
+#: src/authentication_dialog.py:30
 msgid "Authentication Required"
 msgstr "認証が必要です"
 
-#: authentication_dialog.py:34 window.ui.h:10
+#: src/authentication_dialog.py:34 src/window.ui:277
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: authentication_dialog.py:42
+#: src/authentication_dialog.py:42
 msgid "Sign in"
 msgstr "サインイン"
 
-#: authentication_dialog.py:42
+#: src/authentication_dialog.py:42
 msgid "Skip"
 msgstr "スキップ"
 
-#: main.py:38
-msgid "Prefill URL field"
-msgstr "URL フィールドに事前入力する"
-
-#: model.py:58
-msgid "Best"
-msgstr "最高"
-
-#: model.py:59
-msgid "4320p (8K)"
-msgstr "4320p (8K)"
-
-#: model.py:60
-msgid "2160p (4K)"
-msgstr "2160p (4K)"
-
-#: model.py:61
-msgid "1440p (HD)"
-msgstr "1440p (HD)"
-
-#: model.py:62
-msgid "1080p (HD)"
-msgstr "1080p (HD)"
-
-#: model.py:63
-msgid "720p (HD)"
-msgstr "720p (HD)"
-
-#: model.py:64
-msgid "480p"
-msgstr "480p"
-
-#: model.py:65
-msgid "360p"
-msgstr "360p"
-
-#: model.py:66
-msgid "240p"
-msgstr "240p"
-
-#: model.py:67
-msgid "144p"
-msgstr "144p"
-
-#: playlist_dialog.py:32
-msgid "Download Playlist?"
-msgstr "再生リストからダウンロードしますか?"
-
-#: playlist_dialog.py:33
-msgid "The video is part of a playlist."
-msgstr "動画は再生リストに含まれています。"
-
-#: playlist_dialog.py:34
-msgid "Single Video"
-msgstr "単一の動画"
-
-#: playlist_dialog.py:35
-msgid "All Videos in Playlist"
-msgstr "再生リスト内のすべての動画"
-
-#: window.py:111
-msgid "Downloading"
-msgstr "ダウンロード中"
-
-#: window.py:113 window.py:138
-msgid "{} of {}"
-msgstr "{} / {}"
-
-#: window.py:139 window.py:141
-msgid "unknown"
-msgstr "不明"
-
-#: window.py:174
-msgid "Saved in {}"
-msgstr "{} に保存しました"
-
-#: authentication_dialog_login.ui.h:1 authentication_dialog_password.ui.h:1
+#: src/authentication_dialog_login.ui:15
+#: src/authentication_dialog_password.ui:15
 msgid "The video is not public."
 msgstr "閲覧が制限されている動画です。"
 
-#: authentication_dialog_login.ui.h:2
+#: src/authentication_dialog_login.ui:39
 msgid "Username"
 msgstr "ユーザー名"
 
-#: authentication_dialog_login.ui.h:3 authentication_dialog_password.ui.h:2
+#: src/authentication_dialog_login.ui:84
+#: src/authentication_dialog_password.ui:33
 msgid "Password"
 msgstr "パスワード"
 
-#: window.ui.h:1
+#: src/main.py:38
+msgid "Prefill URL field"
+msgstr "URL フィールドに事前入力する"
+
+#: src/model.py:59
+msgid "Best"
+msgstr "最高"
+
+#: src/model.py:60
+msgid "4320p (8K)"
+msgstr "4320p (8K)"
+
+#: src/model.py:61
+msgid "2160p (4K)"
+msgstr "2160p (4K)"
+
+#: src/model.py:62
+msgid "1440p (HD)"
+msgstr "1440p (HD)"
+
+#: src/model.py:63
+msgid "1080p (HD)"
+msgstr "1080p (HD)"
+
+#: src/model.py:64
+msgid "720p (HD)"
+msgstr "720p (HD)"
+
+#: src/model.py:65
+msgid "480p"
+msgstr "480p"
+
+#: src/model.py:66
+msgid "360p"
+msgstr "360p"
+
+#: src/model.py:67
+msgid "240p"
+msgstr "240p"
+
+#: src/model.py:68
+msgid "144p"
+msgstr "144p"
+
+#: src/playlist_dialog.py:32
+msgid "Download Playlist?"
+msgstr "再生リストからダウンロードしますか?"
+
+#: src/playlist_dialog.py:33
+msgid "The video is part of a playlist."
+msgstr "動画は再生リストに含まれています。"
+
+#: src/playlist_dialog.py:34
+msgid "Single Video"
+msgstr "単一の動画"
+
+#: src/playlist_dialog.py:35
+msgid "All Videos in Playlist"
+msgstr "再生リスト内のすべての動画"
+
+#: src/window.py:107
+msgid "Downloading"
+msgstr "ダウンロード中"
+
+#: src/window.py:109 src/window.py:134
+msgid "{} of {}"
+msgstr "{} / {}"
+
+#: src/window.py:135 src/window.py:137
+msgid "unknown"
+msgstr "不明"
+
+#: src/window.py:170
+msgid "Saved in {}"
+msgstr "{} に保存しました"
+
+#: src/window.ui:70 src/window.ui:148
 msgid "URL"
 msgstr "URL"
 
-#: window.ui.h:2
+#: src/window.ui:107 src/window.ui:236
+msgid "Download"
+msgstr "ダウンロード"
+
+#: src/window.ui:124
 msgid "Audio"
 msgstr "音声"
 
-#: window.ui.h:3
+#: src/window.ui:192
 msgid "Resolution"
 msgstr "解像度"
 
-#: window.ui.h:4
+#: src/window.ui:253
 msgid "Video"
 msgstr "動画"
 
-#: window.ui.h:5
-msgid "Download failed"
-msgstr "ダウンロード失敗"
-
-#: window.ui.h:6
-msgid "Details"
-msgstr "詳細"
-
-#: window.ui.h:7
-msgid "Download finished"
-msgstr "ダウンロード完了"
-
-#: window.ui.h:9
+#: src/window.ui:388 src/window.ui:523
 msgid "Back"
 msgstr "戻る"
 
-#: window.ui.h:11
-msgid "Download"
-msgstr "ダウンロード"
+#: src/window.ui:426
+msgid "Download failed"
+msgstr "ダウンロード失敗"
+
+#: src/window.ui:456
+msgid "Details"
+msgstr "詳細"
+
+#: src/window.ui:562
+msgid "Download finished"
+msgstr "ダウンロード完了"

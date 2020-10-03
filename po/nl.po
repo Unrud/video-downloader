@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-02 17:56+0200\n"
+"POT-Creation-Date: 2020-10-04 00:50+0200\n"
 "PO-Revision-Date: 2020-09-02 18:01+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.1\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
@@ -34,8 +34,8 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Download video's van websites met dit gemakkelijk te gebruiken "
-"hulpmiddel. Kenmerken:"
+"Download video's van websites met dit gemakkelijk te gebruiken hulpmiddel. "
+"Kenmerken:"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
 msgid "Convert videos to MP3"
@@ -52,12 +52,15 @@ msgstr "Download losse video's of hele afspeellijsten"
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
-"Bepaalt automatisch het videoformaat op basis van je "
-"kwaliteitsinstellingen"
+"Bepaalt automatisch het videoformaat op basis van je kwaliteitsinstellingen"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
 msgid "Based on youtube-dl."
 msgstr "Gebaseerd op youtube-dl."
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+msgid "Unrud"
+msgstr "Unrud"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:6
 msgid "com.github.unrud.VideoDownloader"
