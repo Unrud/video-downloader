@@ -180,6 +180,9 @@ class YoutubeDLSlave:
             self.ydl_opts['videopassword'] = videopassword
             self._allow_authentication_request = False
             raise RetryException(msg)
+        # Ignore missing xattr support
+        if 'This filesystem doesn\'t support extended attributes.' in msg:
+            return
         self._handler.on_error(msg)
         sys.exit(1)
 
