@@ -75,6 +75,7 @@ class Downloader:
             process.wait()
         except BaseException:  # including SystemExit and KeyboardInterrupt
             process.kill()
+            process.wait()
         finally:
             # Kill remaining children identified by process group
             with contextlib.suppress(OSError):
