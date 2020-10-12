@@ -44,7 +44,7 @@ flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.
 #### Snap
 
 ```
-gsettings --schemadir /snap/video-downloader/current/usr/share/glib-2.0/schemas set com.github.unrud.VideoDownloader download-folder "~/VideoDownloader"
+snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.VideoDownloader download-folder '~/VideoDownloader'
 ```
 
 ### Prefer MPEG
@@ -63,5 +63,5 @@ flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.
 #### Snap
 
 ```
-gsettings --schemadir /snap/video-downloader/current/usr/share/glib-2.0/schemas set com.github.unrud.VideoDownloader prefer-mpeg true
+snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.VideoDownloader prefer-mpeg true
 ```
