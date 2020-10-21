@@ -1,0 +1,212 @@
+# farsi/Persian translations for video-downloader package.
+# Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the video-downloader package.
+# Ali Khomami P. <alikhomami888@gmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: video-downloader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-04 00:50+0200\n"
+"PO-Revision-Date: 2020-10-21 23:44+0330\n"
+"Last-Translator: Ali Khomami P. <alikhomami888@gmail.com>\n"
+"Language-Team: Persian\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.1\n"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
+#: src/window.ui:19
+msgid "Video Downloader"
+msgstr "Video Downloader"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
+#: data/com.github.unrud.VideoDownloader.desktop.in:4
+msgid "Download videos from websites like YouTube and many others"
+msgstr "بارگیری ویدیو از سایت‌هایی مانند یوتیوب یا بسیاری از سایت‌های دیگر"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:10
+msgid ""
+"Download videos from websites with an easy-to-use interface. Provides the "
+"following features:"
+msgstr ""
+"به کمک این برنامه، با یک رابط کاربریِ آسان، از سایت‌های گوناگون ویدیو بارگیری "
+"کنید. این برنامه قابلیت‌های زیر را ارئه می‌دهد:"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
+msgid "Convert videos to MP3"
+msgstr "تبدیل ویدیوها به MP3"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:16
+msgid "Supports password-protected and private videos"
+msgstr "پشتیبانی از ویدیوهای گذرواژه‌دار و خصوصی"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:17
+msgid "Download single videos or whole playlists"
+msgstr "بارگیریِ تک ویدیو یا فهرست‌های پخش"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
+msgid "Automatically selects a video format based on your quality demands"
+msgstr "انتخابِ خودکارِ فرمتِ مناسب، با توجه به نیاز شما به یک کیفیت خاص"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
+msgid "Based on youtube-dl."
+msgstr "بر پایهٔ برنامهٔ youtube-dl."
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+msgid "Unrud"
+msgstr "Unrud"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:6
+msgid "com.github.unrud.VideoDownloader"
+msgstr "com.github.unrud.VideoDownloader"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "New Window"
+msgstr "پنجرهٔ جدید"
+
+#: src/authentication_dialog.py:30
+msgid "Authentication Required"
+msgstr "راستی‌آزمایی لازم است"
+
+#: src/authentication_dialog.py:34 src/window.ui:277
+msgid "Cancel"
+msgstr "لغو"
+
+#: src/authentication_dialog.py:42
+msgid "Sign in"
+msgstr "ورود"
+
+#: src/authentication_dialog.py:42
+msgid "Skip"
+msgstr "پرش"
+
+#: src/authentication_dialog_login.ui:15
+#: src/authentication_dialog_password.ui:15
+msgid "The video is not public."
+msgstr "این ویدیو عمومی نیست."
+
+#: src/authentication_dialog_login.ui:39
+msgid "Username"
+msgstr "نام کاربری"
+
+#: src/authentication_dialog_login.ui:84
+#: src/authentication_dialog_password.ui:33
+msgid "Password"
+msgstr "گذرواژه"
+
+#: src/main.py:38
+msgid "Prefill URL field"
+msgstr "کادرِ مربوط به نشانی اینترنتی را پر کنید"
+
+#: src/model.py:59
+msgid "Best"
+msgstr "بهترین کیفیت"
+
+#: src/model.py:60
+msgid "4320p (8K)"
+msgstr "4320p (8K)"
+
+#: src/model.py:61
+msgid "2160p (4K)"
+msgstr "2160p (4K)"
+
+#: src/model.py:62
+msgid "1440p (HD)"
+msgstr "1440p (HD)"
+
+#: src/model.py:63
+msgid "1080p (HD)"
+msgstr "1080p (HD)"
+
+#: src/model.py:64
+msgid "720p (HD)"
+msgstr "720p (HD)"
+
+#: src/model.py:65
+msgid "480p"
+msgstr "480p"
+
+#: src/model.py:66
+msgid "360p"
+msgstr "360p"
+
+#: src/model.py:67
+msgid "240p"
+msgstr "240p"
+
+#: src/model.py:68
+msgid "144p"
+msgstr "144p"
+
+#: src/playlist_dialog.py:32
+msgid "Download Playlist?"
+msgstr "همهٔ فهرست‌پخش را بارگیری می‌کنید؟"
+
+#: src/playlist_dialog.py:33
+msgid "The video is part of a playlist."
+msgstr "این ویدیو بخشی از یک فهرست پخش است."
+
+#: src/playlist_dialog.py:34
+msgid "Single Video"
+msgstr "تک ویدیو"
+
+#: src/playlist_dialog.py:35
+msgid "All Videos in Playlist"
+msgstr "همهٔ ویدیوهای درون فهرست پخش"
+
+#: src/window.py:107
+msgid "Downloading"
+msgstr "در حال بارگیری"
+
+#: src/window.py:109 src/window.py:134
+msgid "{} of {}"
+msgstr "{} از {}"
+
+#: src/window.py:135 src/window.py:137
+msgid "unknown"
+msgstr "نامعلوم"
+
+#: src/window.py:170
+msgid "Saved in {}"
+msgstr "ذخیره شده در {}"
+
+#: src/window.ui:70 src/window.ui:148
+msgid "URL"
+msgstr "نشانیِ اینترنتیِ ویدیو"
+
+#: src/window.ui:107 src/window.ui:236
+msgid "Download"
+msgstr "بارگیری"
+
+#: src/window.ui:124
+msgid "Audio"
+msgstr "صوت"
+
+#: src/window.ui:192
+msgid "Resolution"
+msgstr "وضوح"
+
+#: src/window.ui:253
+msgid "Video"
+msgstr "ویدیو"
+
+#: src/window.ui:388 src/window.ui:523
+msgid "Back"
+msgstr "بازگشت"
+
+#: src/window.ui:426
+msgid "Download failed"
+msgstr "بارگیری شکست خورد"
+
+#: src/window.ui:456
+msgid "Details"
+msgstr "جزییات"
+
+#: src/window.ui:562
+msgid "Download finished"
+msgstr "بارگیری انجام شد"
