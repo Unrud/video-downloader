@@ -266,8 +266,10 @@ class YoutubeDLSlave:
             'subtitlesformat': 'vtt/best',
             'keepvideo': True,
             'postprocessors': [
+                {'key': 'FFmpegMetadata'},
                 {'key': 'FFmpegSubtitlesConvertor', 'format': 'vtt'},
-                {'key': 'FFmpegEmbedSubtitle'}, {'key': 'XAttrMetadata'}]}
+                {'key': 'FFmpegEmbedSubtitle'},
+                {'key': 'XAttrMetadata'}]}
         url = self._handler.get_url()
         download_dir = os.path.abspath(self._handler.get_download_dir())
         with tempfile.TemporaryDirectory() as temp_dir:
