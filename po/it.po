@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-04 00:50+0200\n"
-"PO-Revision-Date: 2020-05-17 00:46+0200\n"
+"PO-Revision-Date: 2020-10-21 00:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: ITALIAN <LL@li.org>\n"
 "Language: it\n"
@@ -49,10 +49,8 @@ msgid "Download single videos or whole playlists"
 msgstr "Scarica singoli video o intere playlist"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
-#, fuzzy
 msgid "Automatically selects a video format based on your quality demands"
-msgstr ""
-"Seleziona automaticamente un formato video in base alla risoluzione preferita"
+msgstr "Seleziona automaticamente un formato video in base alla risoluzione preferita"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
 msgid "Based on youtube-dl."
@@ -60,7 +58,7 @@ msgstr "Basato su youtube-dl."
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
 msgid "Unrud"
-msgstr ""
+msgstr "Unrud"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:6
 msgid "com.github.unrud.VideoDownloader"
@@ -84,7 +82,6 @@ msgid "Sign in"
 msgstr "Registrati"
 
 #: src/authentication_dialog.py:42
-#, fuzzy
 msgid "Skip"
 msgstr "Salta"
 
