@@ -17,7 +17,6 @@
 
 import contextlib
 import fcntl
-import functools
 import glob
 import itertools
 import json
@@ -245,8 +244,8 @@ class YoutubeDLSlave:
             finally:
                 os.close(fd)
 
-    def __init__(self):
-        self._handler = Handler()
+    def __init__(self, handler):
+        self._handler = handler
         # See ydl_opts['forcejson']
         self._on_info_dict_json = None
         self._allow_authentication_request = True
@@ -338,9 +337,11 @@ class YoutubeDLSlave:
             try:
                 os.makedirs(download_dir, exist_ok=True)
             except OSError as e:
+                traceback.print_exc(file=sys.stderr)
+                sys.stderr.flush()
                 self._handler.on_error(
                     'ERROR: Failed to create download folder: %s' % e)
-                raise
+                sys.exit(1)
             for i, (info_path, thumbnail_paths, subtitles) in enumerate(
                     info_playlist):
                 with open(info_path) as f:
@@ -377,9 +378,11 @@ class YoutubeDLSlave:
                             check=True, stdin=subprocess.DEVNULL,
                             stdout=subprocess.DEVNULL)
                     except FileNotFoundError:
+                        traceback.print_exc(file=sys.stderr)
+                        sys.stderr.flush()
                         self._handler.on_error(
                             'ERROR: %r not found' % FFMPEG_EXE)
-                        raise
+                        sys.exit(1)
                     except subprocess.CalledProcessError:
                         traceback.print_exc(file=sys.stderr)
                         sys.stderr.flush()
@@ -411,9 +414,11 @@ class YoutubeDLSlave:
                             check=True, stdin=subprocess.DEVNULL,
                             stdout=subprocess.DEVNULL)
                     except FileNotFoundError:
+                        traceback.print_exc(file=sys.stderr)
+                        sys.stderr.flush()
                         self._handler.on_error(
                             'ERROR: %r not found' % FFMPEG_EXE)
-                        raise
+                        sys.exit(1)
                     except subprocess.CalledProcessError:
                         traceback.print_exc(file=sys.stderr)
                         sys.stderr.flush()
@@ -446,9 +451,11 @@ class YoutubeDLSlave:
                     temp_download_dir_cm.enter_context(
                         self._create_and_lock_dir(temp_download_dir))
                 except OSError as e:
+                    traceback.print_exc(file=sys.stderr)
+                    sys.stderr.flush()
                     self._handler.on_error(
                         'ERROR: Failed to lock download folder: %s' % e)
-                    raise
+                    sys.exit(1)
                 with temp_download_dir_cm:
                     # Check if the file got downloaded in the meantime
                     existing_filename = self._find_existing_download(
@@ -486,21 +493,13 @@ class YoutubeDLSlave:
                                 os.path.join(temp_download_dir, temp_filename),
                                 os.path.join(download_dir, filename))
                         except OSError as e:
+                            traceback.print_exc(file=sys.stderr)
+                            sys.stderr.flush()
                             self._handler.on_error((
                                 'ERROR: Falied to move finished download to '
                                 'download folder: %s') % e)
-                            raise
+                            sys.exit(1)
                     # Delete download directory
                     with contextlib.suppress(OSError):
                         shutil.rmtree(temp_download_dir)
                 self._handler.on_progress_end(filename)
-
-
-class Handler:
-    def _rpc(self, name, *args):
-        print(json.dumps({'method': name, 'args': args}), flush=True)
-        answer = json.loads(sys.stdin.readline())
-        return answer['result']
-
-    def __getattr__(self, name):
-        return functools.partial(self._rpc, name)

@@ -15,20 +15,38 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import functools
+import json
 import signal
 import sys
 
-import youtube_dl
 
-from video_downloader.downloader.youtube_dl_monkey_patch import (
-    install_monkey_patches)
-from video_downloader.downloader.youtube_dl_slave import YoutubeDLSlave
+class Handler:
+    def _rpc(self, name, *args):
+        print(json.dumps({'method': name, 'args': args}), flush=True)
+        answer = json.loads(sys.stdin.readline())
+        return answer['result']
+
+    def __getattr__(self, name):
+        return functools.partial(self._rpc, name)
+
 
 if __name__ == '__main__':
     # Exit gracefully on SIGTERM to allow cleanup code to run
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(1))
-    install_monkey_patches()
+    handler = Handler()
     try:
-        YoutubeDLSlave()
-    except youtube_dl.utils.DownloadError:
-        sys.exit(1)
+        import youtube_dl
+
+        from video_downloader.downloader.youtube_dl_monkey_patch import (
+            install_monkey_patches)
+        from video_downloader.downloader.youtube_dl_slave import YoutubeDLSlave
+
+        install_monkey_patches()
+        try:
+            YoutubeDLSlave(handler)
+        except youtube_dl.utils.DownloadError:
+            sys.exit(1)
+    except Exception as e:
+        handler.on_error('%s: %s' % (type(e).__name__, e))
+        raise
