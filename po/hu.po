@@ -75,7 +75,7 @@ msgstr "Hitelesítés szükséges"
 
 #: src/authentication_dialog.py:34 src/window.ui:277
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Mégse"
 
 #: src/authentication_dialog.py:42
 msgid "Sign in"
@@ -157,7 +157,7 @@ msgstr "Egyetlen videó"
 
 #: src/playlist_dialog.py:35
 msgid "All Videos in Playlist"
-msgstr "All Videos in Playlist"
+msgstr "Az összes videó a lejátszási listában"
 
 #: src/window.py:107
 msgid "Downloading"
