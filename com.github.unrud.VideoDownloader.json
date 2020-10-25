@@ -95,7 +95,7 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "http://youtube-dl.org/downloads/latest/youtube-dl-2020.09.20.tar.gz",
+                    "url" : "https://yt-dl.org/downloads/latest/youtube-dl-2020.09.20.tar.gz",
                     "sha256" : "ead79e9248aaf7667f015da2ccd4bde44a8948fa980f82965609cdca88ad285e"
                 }
             ]

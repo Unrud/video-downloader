@@ -8,7 +8,7 @@ Provides the following features:
   * Download single videos or whole playlists
   * Automatically selects a video format based on your quality demands
 
-Based on [youtube-dl](http://ytdl-org.github.io/youtube-dl/).
+Based on [youtube-dl](https://yt-dl.org).
 
 ## Installation
 
