@@ -38,8 +38,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.0/libhandy-1.0.0.tar.bz2",
-                    "sha256": "697b7774b4d2fb60c90fcf8fa61463c43c1408f7f7290a197eee4b62d10c6762"
+                    "url": "https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.2/libhandy-1.0.2.tar.bz2",
+                    "sha256": "5b1ceebf80a82bb56804370d88481b8a4affe5d33f13a7fd06905135cceaaf88"
                 }
             ]
         },
@@ -77,8 +77,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/iustin/pyxattr/archive/v0.7.1.tar.gz",
-                    "sha256" : "9caec22e2fb2d437a6a546be9a44fd7a809f56868fd6e175a4a26f38f50f4260"
+                    "url" : "https://github.com/iustin/pyxattr/archive/v0.7.2.tar.gz",
+                    "sha256" : "a1f4b92ffb2193fd381ea352a2a5b60683a4c58c2e7d9468ba7fb71653a3d160"
                 }
             ]
         },

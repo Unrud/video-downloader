@@ -65,8 +65,8 @@ parts:
 
   libhandy:
     plugin: meson
-    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.0/libhandy-1.0.0.tar.bz2
-    source-checksum: sha256/697b7774b4d2fb60c90fcf8fa61463c43c1408f7f7290a197eee4b62d10c6762
+    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.2/libhandy-1.0.2.tar.bz2
+    source-checksum: sha256/5b1ceebf80a82bb56804370d88481b8a4affe5d33f13a7fd06905135cceaaf88
     meson-parameters:
       # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
       - --prefix=/usr
@@ -114,7 +114,7 @@ parts:
     source: https://yt-dl.org/downloads/latest/youtube-dl-2020.09.20.tar.gz
     source-checksum: sha256/ead79e9248aaf7667f015da2ccd4bde44a8948fa980f82965609cdca88ad285e
     python-packages:
-      - pyxattr==0.7.1
+      - pyxattr==0.7.2
 
   video-downloader:
     after: [libhandy, youtube-dl]
