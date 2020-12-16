@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.38.2 
 
-Copyright (C) 2019 Unrud <unrud@outlook.com>
+Copyright (C) 2019-2020 Unrud <unrud@outlook.com>
 
 This file is part of Video Downloader.
 
@@ -24,7 +24,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
   <requires lib="libhandy" version="1.0"/>
   <!-- interface-license-type gplv3 -->
   <!-- interface-name Video Downloader -->
-  <!-- interface-copyright 2019 Unrud <unrud@outlook.com> -->
+  <!-- interface-copyright 2019-2020 Unrud <unrud@outlook.com> -->
   <object class="GtkTextBuffer" id="error_buffer">
     <property name="text">Error XXX</property>
   </object>
@@ -57,10 +57,11 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="show-close-button">True</property>
                 <property name="centering-policy">strict</property>
                 <child type="title">
-                  <object class="HdyViewSwitcher">
+                  <object class="HdyViewSwitcherTitle" id="audio_video_switcher_title_wdg">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="stack">audio_video_stack_wdg</property>
+                    <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
                   </object>
                 </child>
               </object>
@@ -301,6 +302,19 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                 <property name="expand">False</property>
                 <property name="fill">True</property>
                 <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="HdyViewSwitcherBar">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="stack">audio_video_stack_wdg</property>
+                <property name="reveal" bind-source="audio_video_switcher_title_wdg" bind-property="title-visible" bind-flags="sync-create">False</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
