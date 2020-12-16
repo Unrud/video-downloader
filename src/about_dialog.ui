@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2
+
+Copyright (C) 2020 Unrud <unrud@outlook.com>
+
+This file is part of Video Downloader.
+
+Video Downloader is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Video Downloader is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <!-- interface-license-type gplv3 -->
+  <!-- interface-name Video Downloader -->
+  <!-- interface-copyright 2020 Unrud <unrud@outlook.com> -->
+  <template class="VideoDownloaderAboutDialog" parent="GtkAboutDialog">
+    <property name="can-focus">False</property>
+    <property name="modal">True</property>
+    <property name="destroy-with-parent">True</property>
+    <property name="type-hint">dialog</property>
+    <property name="program-name" translatable="yes">Video Downloader</property>
+    <property name="version">Version XXX</property>
+    <property name="copyright">Copyright © 2019-2020 Unrud</property>
+    <property name="comments" translatable="yes">Download videos from websites like YouTube and many others</property>
+    <property name="website">https://github.com/Unrud/video-downloader</property>
+    <property name="authors">Unrud
+Adrien Plazas
+Gustavo Peredo
+Artem Polishchuk</property>
+    <property name="translator-credits">Ali Khomami P.
+Heimen Stoffels
+MartinIIOT
+Rafael Mardojai CM
+Roy Meissner
+Thorfin89
+albanobattistella
+ovari
+sicklylife.jp</property>
+    <property name="artists">Tobias Bernard</property>
+    <property name="logo-icon-name">com.github.unrud.VideoDownloader</property>
+    <property name="license-type">gpl-3-0</property>
+  </template>
+</interface>

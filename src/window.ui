@@ -28,6 +28,31 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
   <object class="GtkTextBuffer" id="error_buffer">
     <property name="text">Error XXX</property>
   </object>
+  <object class="GtkPopover" id="hamburger_menu_popover_wdg">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="border-width">6</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkModelButton">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="action-name">app.about</property>
+            <property name="text" translatable="yes">About Video Downloader</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkListStore" id="resolutions_store">
     <columns>
       <!-- column-name name -->
@@ -63,6 +88,25 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="stack">audio_video_stack_wdg</property>
                     <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
                   </object>
+                </child>
+                <child>
+                  <object class="GtkMenuButton">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="focus-on-click">False</property>
+                    <property name="receives-default">False</property>
+                    <property name="popover">hamburger_menu_popover_wdg</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="icon-name">open-menu-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="pack-type">end</property>
+                  </packing>
                 </child>
               </object>
               <packing>

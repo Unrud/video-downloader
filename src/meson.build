@@ -27,6 +27,7 @@ configure_file(
 
 video_downloader_sources = [
   '__init__.py',
+  'about_dialog.py',
   'authentication_dialog.py',
   'main.py',
   'model.py',

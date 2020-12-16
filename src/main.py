@@ -20,6 +20,7 @@ import sys
 
 from gi.repository import GLib, Gtk, Gio, Handy
 
+from video_downloader.about_dialog import AboutDialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import Handler, Model
 from video_downloader.window import Window
@@ -30,13 +31,14 @@ N_ = gettext.gettext
 
 
 class Application(Gtk.Application, Handler):
-    def __init__(self):
+    def __init__(self, version):
         super().__init__(application_id='com.github.unrud.VideoDownloader',
                          flags=Gio.ApplicationFlags.NON_UNIQUE)
         self.add_main_option(
             'url', ord('u'), GLib.OptionFlags.NONE, GLib.OptionArg.STRING,
             N_('Prefill URL field'), 'URL')
         GLib.set_application_name(N_('Video Downloader'))
+        self.version = version
         self.model = Model(self)
         self._settings = Gio.Settings.new(self.props.application_id)
         self.model.download_dir = self._settings.get_string('download-folder')
@@ -59,6 +61,9 @@ class Application(Gtk.Application, Handler):
     def do_activate(self):
         for name in self.model.actions.list_actions():
             self.add_action(self.model.actions.lookup_action(name))
+        about_action = Gio.SimpleAction.new('about', None)
+        about_action.connect('activate', lambda *_: self._show_about_dialog())
+        self.add_action(about_action)
         win = self.props.active_window
         if not win:
             win = Window(application=self)
@@ -99,7 +104,12 @@ class Application(Gtk.Application, Handler):
         self.lookup_action('cancel').activate()
         return ''
 
+    def _show_about_dialog(self):
+        dialog = AboutDialog(self.props.active_window, self.version)
+        dialog.run()
+        dialog.destroy()
+
 
 def main(version):
-    app = Application()
+    app = Application(version)
     return app.run(sys.argv)
