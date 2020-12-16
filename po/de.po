@@ -16,16 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
-#: src/window.ui:19
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
+#: src/main.py:40 src/window.ui:66
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:4
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
 msgid "Download videos from websites like YouTube and many others"
 msgstr "Lade Videos von Youtube und vielen weiteren Webseiten herunter"
 
@@ -75,7 +75,7 @@ msgstr "Neues Fenster"
 msgid "Authentication Required"
 msgstr "Authentifizierung erforderlich"
 
-#: src/authentication_dialog.py:34 src/window.ui:277
+#: src/authentication_dialog.py:34 src/window.ui:382
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -87,21 +87,21 @@ msgstr "Anmelden"
 msgid "Skip"
 msgstr "Überspringen"
 
-#: src/authentication_dialog_login.ui:15
-#: src/authentication_dialog_password.ui:15
+#: src/authentication_dialog_login.ui:37
+#: src/authentication_dialog_password.ui:37
 msgid "The video is not public."
 msgstr "Das Video ist nicht öffentlich."
 
-#: src/authentication_dialog_login.ui:39
+#: src/authentication_dialog_login.ui:61
 msgid "Username"
 msgstr "Benutzername"
 
-#: src/authentication_dialog_login.ui:84
-#: src/authentication_dialog_password.ui:33
+#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_password.ui:55
 msgid "Password"
 msgstr "Passwort"
 
-#: src/main.py:38
+#: src/main.py:39
 msgid "Prefill URL field"
 msgstr "URL-Feld vorausfüllen"
 
@@ -177,38 +177,42 @@ msgstr "unbekannt"
 msgid "Saved in {}"
 msgstr "Gespeichert in {}"
 
-#: src/window.ui:70 src/window.ui:148
+#: src/window.ui:45
+msgid "About Video Downloader"
+msgstr "Info zu Video Downloader"
+
+#: src/window.ui:145 src/window.ui:229
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:107 src/window.ui:236
+#: src/window.ui:182 src/window.ui:317
 msgid "Download"
 msgstr "Herunterladen"
 
-#: src/window.ui:124
+#: src/window.ui:204
 msgid "Audio"
 msgstr "Audio"
 
-#: src/window.ui:192
+#: src/window.ui:273
 msgid "Resolution"
 msgstr "Auflösung"
 
-#: src/window.ui:253
+#: src/window.ui:339
 msgid "Video"
 msgstr "Video"
 
-#: src/window.ui:388 src/window.ui:523
+#: src/window.ui:504 src/window.ui:650
 msgid "Back"
 msgstr "Zurück"
 
-#: src/window.ui:426
+#: src/window.ui:547
 msgid "Download failed"
 msgstr "Download fehlgeschlagen"
 
-#: src/window.ui:456
+#: src/window.ui:577
 msgid "Details"
 msgstr "Details"
 
-#: src/window.ui:562
+#: src/window.ui:694
 msgid "Download finished"
 msgstr "Download abgeschlossen"

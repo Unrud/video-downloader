@@ -15,17 +15,17 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
-#: src/window.ui:19
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
+#: src/main.py:40 src/window.ui:66
 msgid "Video Downloader"
 msgstr "Videodownloader"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:4
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
 msgid "Download videos from websites like YouTube and many others"
 msgstr "Download video's van videowebsites, zoals bijv. YouTube"
 
@@ -34,8 +34,8 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Download video's van websites met deze gemakkelijk te gebruiken "
-"toepassing. Kenmerken:"
+"Download video's van websites met deze gemakkelijk te gebruiken toepassing. "
+"Kenmerken:"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
 msgid "Convert videos to MP3"
@@ -74,7 +74,7 @@ msgstr "Nieuw venster"
 msgid "Authentication Required"
 msgstr "Authenticatie vereist"
 
-#: src/authentication_dialog.py:34 src/window.ui:277
+#: src/authentication_dialog.py:34 src/window.ui:382
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -86,21 +86,21 @@ msgstr "Inloggen"
 msgid "Skip"
 msgstr "Overslaan"
 
-#: src/authentication_dialog_login.ui:15
-#: src/authentication_dialog_password.ui:15
+#: src/authentication_dialog_login.ui:37
+#: src/authentication_dialog_password.ui:37
 msgid "The video is not public."
 msgstr "Deze video is niet openbaar."
 
-#: src/authentication_dialog_login.ui:39
+#: src/authentication_dialog_login.ui:61
 msgid "Username"
 msgstr "Gebruikersnaam"
 
-#: src/authentication_dialog_login.ui:84
-#: src/authentication_dialog_password.ui:33
+#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_password.ui:55
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: src/main.py:38
+#: src/main.py:39
 msgid "Prefill URL field"
 msgstr "URL-veld automatisch invullen"
 
@@ -176,38 +176,43 @@ msgstr "onbekend"
 msgid "Saved in {}"
 msgstr "Opgeslagen in {}"
 
-#: src/window.ui:70 src/window.ui:148
+#: src/window.ui:45
+#| msgid "Video Downloader"
+msgid "About Video Downloader"
+msgstr ""
+
+#: src/window.ui:145 src/window.ui:229
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:107 src/window.ui:236
+#: src/window.ui:182 src/window.ui:317
 msgid "Download"
 msgstr "Downloaden"
 
-#: src/window.ui:124
+#: src/window.ui:204
 msgid "Audio"
 msgstr "Audio"
 
-#: src/window.ui:192
+#: src/window.ui:273
 msgid "Resolution"
 msgstr "Resolutie"
 
-#: src/window.ui:253
+#: src/window.ui:339
 msgid "Video"
 msgstr "Video"
 
-#: src/window.ui:388 src/window.ui:523
+#: src/window.ui:504 src/window.ui:650
 msgid "Back"
 msgstr "Terug"
 
-#: src/window.ui:426
+#: src/window.ui:547
 msgid "Download failed"
 msgstr "Downloaden mislukt"
 
-#: src/window.ui:456
+#: src/window.ui:577
 msgid "Details"
 msgstr "Details"
 
-#: src/window.ui:562
+#: src/window.ui:694
 msgid "Download finished"
 msgstr "Downloaden voltooid"

@@ -16,16 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
-#: src/window.ui:19
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
+#: src/main.py:40 src/window.ui:66
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:4
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
 msgid "Download videos from websites like YouTube and many others"
 msgstr "بارگیری ویدیو از سایت‌هایی مانند یوتیوب یا بسیاری از سایت‌های دیگر"
 
@@ -73,7 +73,7 @@ msgstr "پنجرهٔ جدید"
 msgid "Authentication Required"
 msgstr "راستی‌آزمایی لازم است"
 
-#: src/authentication_dialog.py:34 src/window.ui:277
+#: src/authentication_dialog.py:34 src/window.ui:382
 msgid "Cancel"
 msgstr "لغو"
 
@@ -85,21 +85,21 @@ msgstr "ورود"
 msgid "Skip"
 msgstr "پرش"
 
-#: src/authentication_dialog_login.ui:15
-#: src/authentication_dialog_password.ui:15
+#: src/authentication_dialog_login.ui:37
+#: src/authentication_dialog_password.ui:37
 msgid "The video is not public."
 msgstr "این ویدیو عمومی نیست."
 
-#: src/authentication_dialog_login.ui:39
+#: src/authentication_dialog_login.ui:61
 msgid "Username"
 msgstr "نام کاربری"
 
-#: src/authentication_dialog_login.ui:84
-#: src/authentication_dialog_password.ui:33
+#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_password.ui:55
 msgid "Password"
 msgstr "گذرواژه"
 
-#: src/main.py:38
+#: src/main.py:39
 msgid "Prefill URL field"
 msgstr "کادرِ مربوط به نشانی اینترنتی را پر کنید"
 
@@ -175,38 +175,42 @@ msgstr "نامعلوم"
 msgid "Saved in {}"
 msgstr "ذخیره شده در {}"
 
-#: src/window.ui:70 src/window.ui:148
+#: src/window.ui:45
+msgid "About Video Downloader"
+msgstr ""
+
+#: src/window.ui:145 src/window.ui:229
 msgid "URL"
 msgstr "نشانیِ اینترنتیِ ویدیو"
 
-#: src/window.ui:107 src/window.ui:236
+#: src/window.ui:182 src/window.ui:317
 msgid "Download"
 msgstr "بارگیری"
 
-#: src/window.ui:124
+#: src/window.ui:204
 msgid "Audio"
 msgstr "صوت"
 
-#: src/window.ui:192
+#: src/window.ui:273
 msgid "Resolution"
 msgstr "وضوح"
 
-#: src/window.ui:253
+#: src/window.ui:339
 msgid "Video"
 msgstr "ویدیو"
 
-#: src/window.ui:388 src/window.ui:523
+#: src/window.ui:504 src/window.ui:650
 msgid "Back"
 msgstr "بازگشت"
 
-#: src/window.ui:426
+#: src/window.ui:547
 msgid "Download failed"
 msgstr "بارگیری شکست خورد"
 
-#: src/window.ui:456
+#: src/window.ui:577
 msgid "Details"
 msgstr "جزییات"
 
-#: src/window.ui:562
+#: src/window.ui:694
 msgid "Download finished"
 msgstr "بارگیری انجام شد"

@@ -16,15 +16,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/main.py:39
-#: src/window.ui:19
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
+#: src/main.py:40 src/window.ui:66
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:4
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
 msgid "Download videos from websites like YouTube and many others"
 msgstr "YouTube などの動画サイトから動画をダウンロードします"
 
@@ -33,8 +34,8 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"使いやすいインターフェースでウェブサイトから動画をダウンロードします。以下の"
-"機能があります:"
+"使いやすいインターフェースでウェブサイトから動画をダウンロードします。以下"
+"の機能があります:"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
 msgid "Convert videos to MP3"
@@ -72,7 +73,7 @@ msgstr "新しいウィンドウ"
 msgid "Authentication Required"
 msgstr "認証が必要です"
 
-#: src/authentication_dialog.py:34 src/window.ui:277
+#: src/authentication_dialog.py:34 src/window.ui:382
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -84,21 +85,21 @@ msgstr "サインイン"
 msgid "Skip"
 msgstr "スキップ"
 
-#: src/authentication_dialog_login.ui:15
-#: src/authentication_dialog_password.ui:15
+#: src/authentication_dialog_login.ui:37
+#: src/authentication_dialog_password.ui:37
 msgid "The video is not public."
 msgstr "閲覧が制限されている動画です。"
 
-#: src/authentication_dialog_login.ui:39
+#: src/authentication_dialog_login.ui:61
 msgid "Username"
 msgstr "ユーザー名"
 
-#: src/authentication_dialog_login.ui:84
-#: src/authentication_dialog_password.ui:33
+#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_password.ui:55
 msgid "Password"
 msgstr "パスワード"
 
-#: src/main.py:38
+#: src/main.py:39
 msgid "Prefill URL field"
 msgstr "URL フィールドに事前入力する"
 
@@ -174,38 +175,43 @@ msgstr "不明"
 msgid "Saved in {}"
 msgstr "{} に保存しました"
 
-#: src/window.ui:70 src/window.ui:148
+#: src/window.ui:45
+#| msgid "Video Downloader"
+msgid "About Video Downloader"
+msgstr ""
+
+#: src/window.ui:145 src/window.ui:229
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:107 src/window.ui:236
+#: src/window.ui:182 src/window.ui:317
 msgid "Download"
 msgstr "ダウンロード"
 
-#: src/window.ui:124
+#: src/window.ui:204
 msgid "Audio"
 msgstr "音声"
 
-#: src/window.ui:192
+#: src/window.ui:273
 msgid "Resolution"
 msgstr "解像度"
 
-#: src/window.ui:253
+#: src/window.ui:339
 msgid "Video"
 msgstr "動画"
 
-#: src/window.ui:388 src/window.ui:523
+#: src/window.ui:504 src/window.ui:650
 msgid "Back"
 msgstr "戻る"
 
-#: src/window.ui:426
+#: src/window.ui:547
 msgid "Download failed"
 msgstr "ダウンロード失敗"
 
-#: src/window.ui:456
+#: src/window.ui:577
 msgid "Details"
 msgstr "詳細"
 
-#: src/window.ui:562
+#: src/window.ui:694
 msgid "Download finished"
 msgstr "ダウンロード完了"
