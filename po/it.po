@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-04 00:50+0200\n"
-"PO-Revision-Date: 2020-10-21 00:46+0100\n"
+"PO-Revision-Date: 2020-12-16 19:46+0100\n"
 "Last-Translator: \n"
 "Language-Team: ITALIAN <LL@li.org>\n"
 "Language: it\n"
@@ -162,7 +162,7 @@ msgstr "Tutti i video nella playlist"
 
 #: src/window.py:107
 msgid "Downloading"
-msgstr "Download"
+msgstr "Download in corso"
 
 #: src/window.py:109 src/window.py:134
 msgid "{} of {}"
@@ -179,7 +179,7 @@ msgstr "Salvato in {}"
 #: src/window.ui:45
 #| msgid "Video Downloader"
 msgid "About Video Downloader"
-msgstr ""
+msgstr "Informazioni su Video Downloader"
 
 #: src/window.ui:145 src/window.ui:229
 msgid "URL"
