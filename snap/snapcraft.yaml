@@ -65,8 +65,8 @@ parts:
 
   libhandy:
     plugin: meson
-    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.2/libhandy-1.0.2.tar.bz2
-    source-checksum: sha256/5b1ceebf80a82bb56804370d88481b8a4affe5d33f13a7fd06905135cceaaf88
+    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.3/libhandy-1.0.3.tar.bz2
+    source-checksum: sha256/8cdeb88deaf13efbc0da73306bf8f8d14b6e5b108807a4f7b43d6a7c6e3a158d
     meson-parameters:
       # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
       - --prefix=/usr
@@ -111,8 +111,8 @@ parts:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     after: [ffmpeg]
     plugin: python
-    source: https://github.com/ytdl-org/youtube-dl/archive/2020.12.22.tar.gz
-    source-checksum: sha256/67f0af90964cfe47747f496e0ac62a35af9cc1315d473027323a37c9dd3fcf16
+    source: https://github.com/ytdl-org/youtube-dl/archive/2020.12.26.tar.gz
+    source-checksum: sha256/9c2e011db4c32f81e1aa521fddc5ba3029e61355abe25c620c3ee7e2fed43c2a
     python-packages:
       - pyxattr==0.7.2
 
