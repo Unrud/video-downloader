@@ -1,0 +1,216 @@
+# Swedish translations for video-downloader package.
+# Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the video-downloader package.
+# Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: video-downloader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-04 00:50+0200\n"
+"PO-Revision-Date: 2021-01-01 13:47+0100\n"
+"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
+"Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
+#: src/main.py:40 src/window.ui:66
+msgid "Video Downloader"
+msgstr "Video Downloader"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
+msgid "Download videos from websites like YouTube and many others"
+msgstr "Ladda ner videoklipp från webbplatser som YouTube och många andra"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:10
+msgid ""
+"Download videos from websites with an easy-to-use interface. Provides the "
+"following features:"
+msgstr ""
+"Ladda ner videoklipp från webbplatser, med ett lättanvänt gränssnitt. "
+"Innehåller följande funktioner:"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
+msgid "Convert videos to MP3"
+msgstr "Konvertera videoklipp till MP3"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:16
+msgid "Supports password-protected and private videos"
+msgstr "Stödjer lösenordsskyddade och privata videoklipp"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:17
+msgid "Download single videos or whole playlists"
+msgstr "Ladda ner enstaka videoklipp eller hela spelningslistor"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
+msgid "Automatically selects a video format based on your quality demands"
+msgstr "Välj automatiskt ett videoformat, baserat på dina kvalitetskrav."
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
+msgid "Based on youtube-dl."
+msgstr "Baserat på youtube-dl."
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+msgid "Unrud"
+msgstr "Unrud"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:6
+msgid "com.github.unrud.VideoDownloader"
+msgstr "com.github.unrud.VideoDownloader"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "New Window"
+msgstr "Nytt fönster"
+
+#: src/authentication_dialog.py:30
+msgid "Authentication Required"
+msgstr "Autentisering krävs"
+
+#: src/authentication_dialog.py:34 src/window.ui:382
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: src/authentication_dialog.py:42
+msgid "Sign in"
+msgstr "Logga in"
+
+#: src/authentication_dialog.py:42
+msgid "Skip"
+msgstr "Hoppa över"
+
+#: src/authentication_dialog_login.ui:37
+#: src/authentication_dialog_password.ui:37
+msgid "The video is not public."
+msgstr "Videon är inte offentlig."
+
+#: src/authentication_dialog_login.ui:61
+msgid "Username"
+msgstr "Användarnamn"
+
+#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_password.ui:55
+msgid "Password"
+msgstr "Password"
+
+#: src/main.py:39
+msgid "Prefill URL field"
+msgstr "Förifyll URL-fält"
+
+#: src/model.py:59
+msgid "Best"
+msgstr "Bäst"
+
+#: src/model.py:60
+msgid "4320p (8K)"
+msgstr "4320p (8K)"
+
+#: src/model.py:61
+msgid "2160p (4K)"
+msgstr "2160p (4K)"
+
+#: src/model.py:62
+msgid "1440p (HD)"
+msgstr "1440p (HD)"
+
+#: src/model.py:63
+msgid "1080p (HD)"
+msgstr "1080p (HD)"
+
+#: src/model.py:64
+msgid "720p (HD)"
+msgstr "720p (HD)"
+
+#: src/model.py:65
+msgid "480p"
+msgstr "480p"
+
+#: src/model.py:66
+msgid "360p"
+msgstr "360p"
+
+#: src/model.py:67
+msgid "240p"
+msgstr "240p"
+
+#: src/model.py:68
+msgid "144p"
+msgstr "144p"
+
+#: src/playlist_dialog.py:32
+msgid "Download Playlist?"
+msgstr "Vill du ladda ner spelningslistan?"
+
+#: src/playlist_dialog.py:33
+msgid "The video is part of a playlist."
+msgstr "Denna video är en del av en spelningslista."
+
+#: src/playlist_dialog.py:34
+msgid "Single Video"
+msgstr "Enstaka video"
+
+#: src/playlist_dialog.py:35
+msgid "All Videos in Playlist"
+msgstr "Alla videor i spelningslistan"
+
+#: src/window.py:107
+msgid "Downloading"
+msgstr "Nerladdning"
+
+#: src/window.py:109 src/window.py:134
+msgid "{} of {}"
+msgstr "{} av {}"
+
+#: src/window.py:135 src/window.py:137
+msgid "unknown"
+msgstr "okänd"
+
+#: src/window.py:170
+msgid "Saved in {}"
+msgstr "Sparad i {}"
+
+#: src/window.ui:45
+msgid "About Video Downloader"
+msgstr "Om Video Downloader"
+
+#: src/window.ui:145 src/window.ui:229
+msgid "URL"
+msgstr "URL"
+
+#: src/window.ui:182 src/window.ui:317
+msgid "Download"
+msgstr "Ladda ner"
+
+#: src/window.ui:204
+msgid "Audio"
+msgstr "Ljud"
+
+#: src/window.ui:273
+msgid "Resolution"
+msgstr "Upplösning"
+
+#: src/window.ui:339
+msgid "Video"
+msgstr "Video"
+
+#: src/window.ui:504 src/window.ui:650
+msgid "Back"
+msgstr "Tillbaka"
+
+#: src/window.ui:547
+msgid "Download failed"
+msgstr "Nerladdning misslyckades"
+
+#: src/window.ui:577
+msgid "Details"
+msgstr "Detaljerad information"
+
+#: src/window.ui:694
+msgid "Download finished"
+msgstr "Nerladdning slutförd"
