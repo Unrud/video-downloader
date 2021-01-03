@@ -1,14 +1,14 @@
 # Japanese translations for video-downloader package.
-# Copyright (C) 2020 video-downloader'S COPYRIGHT HOLDER
+# Copyright (C) 2020-2021 video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-# sicklylife <translation@sicklylife.jp>, 2020.
+# sicklylife <translation@sicklylife.jp>, 2020-2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-04 00:50+0200\n"
-"PO-Revision-Date: 2020-06-15 02:00+0900\n"
+"PO-Revision-Date: 2021-01-03 23:35+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -176,9 +176,8 @@ msgid "Saved in {}"
 msgstr "{} に保存しました"
 
 #: src/window.ui:45
-#| msgid "Video Downloader"
 msgid "About Video Downloader"
-msgstr ""
+msgstr "Video Downloader について"
 
 #: src/window.ui:145 src/window.ui:229
 msgid "URL"
