@@ -28,6 +28,14 @@
   <update_contact>unrud_AT_outlook.com</update_contact>
   <translation type="gettext">video-downloader</translation>
   <releases>
+    <release version="0.6.5" date="2021-01-04">
+      <description>
+        <ul>
+          <li>Add Swedish translation</li>
+          <li>Update Japanese translation</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.6.4" date="2020-12-27">
       <description>
         <ul>
@@ -309,13 +317,13 @@
   </releases>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.6.4/screenshots/1.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.6.5/screenshots/1.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.6.4/screenshots/2.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.6.5/screenshots/2.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.6.4/screenshots/3.png</image>
+      <image>https://raw.githubusercontent.com/Unrud/video-downloader/0.6.5/screenshots/3.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
