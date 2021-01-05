@@ -18,7 +18,7 @@
 import gettext
 import sys
 
-from gi.repository import GLib, Gtk, Gio, Handy
+from gi.repository import GLib, Gtk, Gio, Gdk, Handy
 
 from video_downloader.about_dialog import AboutDialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
@@ -43,6 +43,7 @@ class Application(Gtk.Application, Handler):
         self._settings = Gio.Settings.new(self.props.application_id)
         self.model.download_dir = self._settings.get_string('download-folder')
         self.model.prefer_mpeg = self._settings.get_boolean('prefer-mpeg')
+        self.model.darkmode = self._settings.get_boolean('darkmode')
         self.model.mode = self._settings.get_string('mode')
         r = self._settings.get_uint('resolution')
         for resolution in sorted(x[0] for x in self.model.resolutions):
@@ -53,6 +54,8 @@ class Application(Gtk.Application, Handler):
                       self._settings.set_string('mode', x))
         bind_property(self.model, 'resolution', func_a_to_b=lambda x:
                       self._settings.set_uint('resolution', x))
+        bind_property(self.model, 'darkmode', func_a_to_b=lambda x:
+                      self._settings.set_boolean('darkmode', x))
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -64,6 +67,20 @@ class Application(Gtk.Application, Handler):
         about_action = Gio.SimpleAction.new('about', None)
         about_action.connect('activate', lambda *_: self._show_about_dialog())
         self.add_action(about_action)
+
+        #Setup the CSS and load it.
+        uri = 'resource:///com/github/unrud/VideoDownloader/style.css'
+        provider_file = Gio.File.new_for_uri(uri)
+
+        provider = Gtk.CssProvider()
+        provider.load_from_file(provider_file)
+
+        Gtk.StyleContext.add_provider_for_screen(
+            Gdk.Screen.get_default(),
+            provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_USER
+        )
+
         win = self.props.active_window
         if not win:
             win = Window(application=self)

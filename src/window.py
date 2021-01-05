@@ -51,6 +51,8 @@ class Window(Handy.ApplicationWindow):
     download_images_wdg = Gtk.Template.Child()
     error_details_expander_wdg = Gtk.Template.Child()
     error_details_revealer_wdg = Gtk.Template.Child()
+    light_mode_wdg = Gtk.Template.Child()
+    dark_mode_wdg = Gtk.Template.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -92,6 +94,12 @@ class Window(Handy.ApplicationWindow):
                       func_a_to_b=self._add_thumbnail)
         bind_property(self.download_images_wdg, 'transition-running',
                       func_a_to_b=lambda b: b or self._clean_thumbnails())
+
+        bind_property(self.model, 'darkmode',
+                      self.dark_mode_wdg, 'active',
+                      bi=True)
+
+        bind_property(self.model, 'darkmode', func_a_to_b=lambda x: Gtk.Settings.get_default().set_property('gtk-application-prefer-dark-theme', x))
 
     def _update_download_progress(self, *_):
         progress = self.model.download_progress
@@ -199,3 +207,4 @@ class Window(Handy.ApplicationWindow):
             self.success_back_wdg.grab_focus()
         else:
             assert False
+

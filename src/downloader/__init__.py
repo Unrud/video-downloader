@@ -130,6 +130,9 @@ class Handler:
     def get_prefer_mpeg(self) -> bool:
         raise NotImplementedError
 
+    def get_darkmode(self) -> bool:
+        raise NotImplementedError
+
     def get_url(self) -> str:
         raise NotImplementedError
 
