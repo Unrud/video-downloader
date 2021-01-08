@@ -1,0 +1,409 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2020
+# This file is distributed under the same license as the PACKAGE package.
+# Unrud, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: video-downloader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-07 21:44-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Gustavo Peredo <gustavomperedo@protonmail.com>\n"
+"Language-Team: Portuguese\n"
+"Language: Portuguese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
+#: src/window.ui:144
+msgid "Video Downloader"
+msgstr "Video Downloader"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
+msgid "Download videos from websites like YouTube and many others"
+msgstr "Descarregue vídeos de websites como YouTube e outros"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:10
+msgid ""
+"Download videos from websites with an easy-to-use interface. Provides the "
+"following features:"
+msgstr "Abaixe vídeos de websites com uma interface fácil de user. Contém "
+"as seguintes funções:"
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
+msgid "Convert videos to MP3"
+msgstr "Conversão de vídeos para mp3"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:16
+msgid "Supports password-protected and private videos"
+msgstr "Suporte para vídeos privados e protegidos por senha"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:17
+msgid "Download single videos or whole playlists"
+msgstr "Baixe apenas um vídeo ou playlists inteiras"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
+msgid "Automatically selects a video format based on your quality demands"
+msgstr "Automaticamente seleciona um formato de arquivo baseado nas suas escolhas"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
+msgid "Based on youtube-dl."
+msgstr "Baseado no youtube-dl"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+msgid "Unrud"
+msgstr "Unrud"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:34
+msgid "Add Swedish translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:35
+msgid "Update Japanese translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:42
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:76
+msgid "Update italian translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:49
+msgid "Use adaptive layout"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:50
+msgid "Add about dialog"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:57
+msgid "youtube-dl is back"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:58
+msgid "Update dutch translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:65
+msgid "Add slovak translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:66
+msgid "Enable farsi/persian translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:73
+msgid "Display unexpected errors"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:74
+msgid "Add farsi/persian translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:75
+msgid "Update hungarian translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:83
+msgid "Embed metadata"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:90
+msgid "Add hungarian translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:91
+msgid "Allow download to filesystem without xattr support"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:92
+msgid "Improve error handling"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:99
+msgid "Show activity while converting audio to MP3"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:106
+msgid "Skip unsupported subtitles preventing download failure"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:107
+msgid "Improve format selection"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:114
+msgid "Ignore unsupported locale error"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:121
+msgid "Add dutch translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:128
+msgid "New logo (by @bertob)"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:135
+msgid "Embed subtitles in videos"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:136
+msgid "Fix download of incompatible audio and video formats"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:137
+msgid ""
+"Kill remaining subprocesses of youtube-dl when cancelling downloads and "
+"exiting program"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:144
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:166
+msgid "New logo"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:145
+msgid "Add symbolic icon"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:152
+msgid "Save downloads as TITLE.EXT (instead of TITLE-ID-FORMAT.EXT)"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:153
+msgid "Store all partial files for a download in a folder named TITLE.part"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:154
+msgid "Skip audio files that are already downloaded"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:155
+msgid "Polish the GUI (by @Kekun)"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:156
+msgid "Display errors accessing the download folder in the GUI"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:157
+msgid ""
+"Use file-based locking to prevent multiple instances breaking downloads by "
+"writing to the same partial files"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:158
+msgid "Cleanup temporary files of cancelled downloads"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:159
+msgid "Remove ImageMagick dependency"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:173
+msgid "Fix zero division error causing some downloads to fail"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:180
+msgid "Retry downloads up to 10 times before giving up"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:187
+msgid "Limit title length to 150 characters in file names"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:188
+msgid "Fix bugs with thumbnails in unsupported formats"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:189
+msgid "Limit size of thumbnails to 1024x1024 pixel"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:196
+msgid "Add Japanese translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:203
+msgid "Add French translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:204
+msgid "Add action to open new window (Middle-click in Gnome Shell)"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:211
+msgid "Allow skipping videos that require authentication"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:218
+msgid "Fix detection of private videos"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:219
+msgid "Add --url=URL commandline argument"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:220
+msgid "Add Italian and Spanish translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:227
+msgid "Show downloaded file in file manager"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:228
+msgid "Add German translation"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:234
+msgid ""
+"Fix format selection for extractors that provide either video width or "
+"height."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:240
+msgid "Save thumbnail in audio files"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:241
+msgid "Save metadata in extended attributes"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:242
+msgid "Snap/Flatpak: Remove support for RTMP"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:243
+msgid "Snap: Remove video-downloader.youtube-dl"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:249
+msgid "Stop downloader in case of error."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:255
+msgid "Allow multiple instances"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:256
+msgid "Add description to authentication requests"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:257
+msgid "Add format id to filenames"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:258
+msgid "Fix download of files bigger than 4 GiB"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:264
+msgid "Fix link to download folder."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:269
+msgid "Remember last settings and switch to GTK."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:274
+msgid "Adjust menu colors to theme."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:279
+msgid "Fix crash with non-integer X DPI."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:284
+msgid "Move AppData to metainfo."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:289
+msgid "Download all videos in playlist."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:294
+msgid "Set window icon."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:299
+msgid "Make window resizeable and fix font sizes."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:304
+msgid "Stop progress bar jumping around."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:309
+msgid "Support videos with emoticons in the title."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:314
+msgid "Initial release."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "New Window"
+msgstr "Nova Janela"
+
+#: src/authentication_dialog_login.ui:37
+#: src/authentication_dialog_password.ui:37
+msgid "The video is not public."
+msgstr "Esse vídeo não é público"
+
+#: src/authentication_dialog_login.ui:61
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_password.ui:55
+msgid "Password"
+msgstr "Senha"
+
+#: src/window.ui:123
+msgid "About Video Downloader"
+msgstr "Sobre Video Downloader"
+
+#: src/window.ui:223 src/window.ui:307
+msgid "URL"
+msgstr "URL"
+
+#: src/window.ui:260 src/window.ui:395
+msgid "Download"
+msgstr "Baixar"
+
+#: src/window.ui:282
+msgid "Audio"
+msgstr "Audio"
+
+#: src/window.ui:351
+msgid "Resolution"
+msgstr "Resolução"
+
+#: src/window.ui:417
+msgid "Video"
+msgstr "Vídeo"
+
+#: src/window.ui:460
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/window.ui:582 src/window.ui:728
+msgid "Back"
+msgstr "Voltar"
+
+#: src/window.ui:625
+msgid "Download failed"
+msgstr "O download falhou"
+
+#: src/window.ui:655
+msgid "Details"
+msgstr "Detalhes"
+
+#: src/window.ui:772
+msgid "Download finished"
+msgstr "O download completou"
