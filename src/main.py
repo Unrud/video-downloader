@@ -53,10 +53,9 @@ class Application(Gtk.Application, Handler):
                       self._settings.set_string('mode', x))
         bind_property(self.model, 'resolution', func_a_to_b=lambda x:
                       self._settings.set_uint('resolution', x))
-
         self._settings.bind('dark-mode', Gtk.Settings.get_default(),
-                    'gtk-application-prefer-dark-theme',
-                    Gio.SettingsBindFlags.DEFAULT)
+                            'gtk-application-prefer-dark-theme',
+                            Gio.SettingsBindFlags.DEFAULT)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -69,18 +68,13 @@ class Application(Gtk.Application, Handler):
         about_action.connect('activate', lambda *_: self._show_about_dialog())
         self.add_action(about_action)
 
-        #Setup the CSS and load it.
-        uri = 'resource:///com/github/unrud/VideoDownloader/style.css'
-        provider_file = Gio.File.new_for_uri(uri)
-
-        provider = Gtk.CssProvider()
-        provider.load_from_file(provider_file)
-
+        # Setup the CSS and load it.
+        css_uri = 'resource:///com/github/unrud/VideoDownloader/style.css'
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_file(Gio.File.new_for_uri(css_uri))
         Gtk.StyleContext.add_provider_for_screen(
-            Gdk.Screen.get_default(),
-            provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_USER
-        )
+            Gdk.Screen.get_default(), css_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
         win = self.props.active_window
         if not win:

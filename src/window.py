@@ -94,7 +94,6 @@ class Window(Handy.ApplicationWindow):
                       func_a_to_b=self._add_thumbnail)
         bind_property(self.download_images_wdg, 'transition-running',
                       func_a_to_b=lambda b: b or self._clean_thumbnails())
-
         bind_property(Gtk.Settings.get_default(),
                       'gtk-application-prefer-dark-theme',
                       self.dark_mode_wdg, 'active', bi=True)
@@ -205,4 +204,3 @@ class Window(Handy.ApplicationWindow):
             self.success_back_wdg.grab_focus()
         else:
             assert False
-
