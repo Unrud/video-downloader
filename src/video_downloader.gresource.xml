@@ -5,6 +5,5 @@
     <file>authentication_dialog_login.ui</file>
     <file>authentication_dialog_password.ui</file>
     <file>window.ui</file>
-    <file>style.css</file>
   </gresource>
 </gresources>
