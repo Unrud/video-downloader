@@ -18,7 +18,7 @@
 import gettext
 import sys
 
-from gi.repository import GLib, Gtk, Gio, Handy
+from gi.repository import GLib, Gtk, Gio, Gdk, Handy
 
 from video_downloader.about_dialog import AboutDialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
@@ -53,6 +53,9 @@ class Application(Gtk.Application, Handler):
         self.model.resolution = resolution
         self._settings.bind('resolution', self.model, 'resolution',
                             Gio.SettingsBindFlags.SET)
+        self._settings.bind('dark-mode', Gtk.Settings.get_default(),
+                            'gtk-application-prefer-dark-theme',
+                            Gio.SettingsBindFlags.DEFAULT)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -64,6 +67,15 @@ class Application(Gtk.Application, Handler):
         about_action = Gio.SimpleAction.new('about', None)
         about_action.connect('activate', lambda *_: self._show_about_dialog())
         self.add_action(about_action)
+
+        # Setup the CSS and load it.
+        css_uri = 'resource:///com/github/unrud/VideoDownloader/style.css'
+        css_provider = Gtk.CssProvider()
+        css_provider.load_from_file(Gio.File.new_for_uri(css_uri))
+        Gtk.StyleContext.add_provider_for_screen(
+            Gdk.Screen.get_default(), css_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_USER)
+
         win = self.props.active_window
         if not win:
             win = Window(application=self)

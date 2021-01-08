@@ -14,6 +14,10 @@
       <default>false</default>
     </key>
 
+    <key type="b" name="dark-mode">
+      <default>false</default>
+    </key>
+
     <key name="mode" enum="com.github.unrud.VideoDownloader.Mode">
       <default>'audio'</default>
     </key>
