@@ -43,16 +43,16 @@ class Application(Gtk.Application, Handler):
         self._settings = Gio.Settings.new(self.props.application_id)
         self.model.download_dir = self._settings.get_string('download-folder')
         self.model.prefer_mpeg = self._settings.get_boolean('prefer-mpeg')
-        self.model.mode = self._settings.get_string('mode')
+        self._settings.bind(
+            'mode', self.model, 'mode',
+            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
         r = self._settings.get_uint('resolution')
         for resolution in sorted(x[0] for x in self.model.resolutions):
             if r <= resolution:
                 break
         self.model.resolution = resolution
-        bind_property(self.model, 'mode', func_a_to_b=lambda x:
-                      self._settings.set_string('mode', x))
-        bind_property(self.model, 'resolution', func_a_to_b=lambda x:
-                      self._settings.set_uint('resolution', x))
+        self._settings.bind('resolution', self.model, 'resolution',
+                            Gio.SettingsBindFlags.SET)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
