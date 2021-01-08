@@ -1,0 +1,215 @@
+# Portuguese translations for video-downloader package.
+# Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the video-downloader package.
+# Gustavo Machado Peredo <gustavomperedo@protonmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: video-downloader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-08 00:50+0200\n"
+"PO-Revision-Date: 2021-01-08 00:50+0200\n"
+"Last-Translator: Gustavo Machado Peredo <gustavomperedo@protonmail.com>\n"
+"Language-Team: Portuguese\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
+#: src/main.py:40 src/window.ui:66
+msgid "Video Downloader"
+msgstr "Video Downloader"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
+msgid "Download videos from websites like YouTube and many others"
+msgstr "Descarregue vídeos de websites como YouTube e outros"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:10
+msgid ""
+"Download videos from websites with an easy-to-use interface. Provides the "
+"following features:"
+msgstr "Abaixe vídeos de websites com uma interface fácil de user. Contém "
+"as seguintes funções:"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
+msgid "Convert videos to MP3"
+msgstr "Conversão de vídeos para mp3"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:16
+msgid "Supports password-protected and private videos"
+msgstr "Suporte para vídeos privados e protegidos por senha"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:17
+msgid "Download single videos or whole playlists"
+msgstr "Baixe apenas um vídeo ou playlists inteiras"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
+msgid "Automatically selects a video format based on your quality demands"
+msgstr "Automaticamente seleciona um formato de arquivo baseado nas suas escolhas"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
+msgid "Based on youtube-dl."
+msgstr "Baseado no youtube-dl"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+msgid "Unrud"
+msgstr "Unrud"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:6
+msgid "com.github.unrud.VideoDownloader"
+msgstr "com.github.unrud.VideoDownloader"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "New Window"
+msgstr "Nova Janela"
+
+#: src/authentication_dialog.py:30
+msgid "Authentication Required"
+msgstr "Autenticação Requirida"
+
+#: src/authentication_dialog.py:34 src/window.ui:382
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/authentication_dialog.py:42
+msgid "Sign in"
+msgstr "Entrar"
+
+#: src/authentication_dialog.py:42
+msgid "Skip"
+msgstr "Pular"
+
+#: src/authentication_dialog_login.ui:37
+#: src/authentication_dialog_password.ui:37
+msgid "The video is not public."
+msgstr "Esse vídeo não é público."
+
+#: src/authentication_dialog_login.ui:61
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_password.ui:55
+msgid "Password"
+msgstr "Senha"
+
+#: src/main.py:39
+msgid "Prefill URL field"
+msgstr "Preencha o campo de URL"
+
+#: src/model.py:59
+msgid "Best"
+msgstr "Melhor"
+
+#: src/model.py:60
+msgid "4320p (8K)"
+msgstr "4320p (8K)"
+
+#: src/model.py:61
+msgid "2160p (4K)"
+msgstr "2160p (4K)"
+
+#: src/model.py:62
+msgid "1440p (HD)"
+msgstr "1440p (HD)"
+
+#: src/model.py:63
+msgid "1080p (HD)"
+msgstr "1080p (HD)"
+
+#: src/model.py:64
+msgid "720p (HD)"
+msgstr "720p (HD)"
+
+#: src/model.py:65
+msgid "480p"
+msgstr "480p"
+
+#: src/model.py:66
+msgid "360p"
+msgstr "360p"
+
+#: src/model.py:67
+msgid "240p"
+msgstr "240p"
+
+#: src/model.py:68
+msgid "144p"
+msgstr "144p"
+
+#: src/playlist_dialog.py:32
+msgid "Download Playlist?"
+msgstr "Baixar playlist?"
+
+#: src/playlist_dialog.py:33
+msgid "The video is part of a playlist."
+msgstr "Esse vídeo é parte de uma playlist."
+
+#: src/playlist_dialog.py:34
+msgid "Single Video"
+msgstr "Único vídeo"
+
+#: src/playlist_dialog.py:35
+msgid "All Videos in Playlist"
+msgstr "Todos os vídeos da playlist"
+
+#: src/window.py:107
+msgid "Downloading"
+msgstr "Baixando"
+
+#: src/window.py:109 src/window.py:134
+msgid "{} of {}"
+msgstr "{} de {}"
+
+#: src/window.py:135 src/window.py:137
+msgid "unknown"
+msgstr "desconhecido"
+
+#: src/window.py:170
+msgid "Saved in {}"
+msgstr "Salvo em {}"
+
+#: src/window.ui:45
+msgid "About Video Downloader"
+msgstr "Sobre o Video Downloader"
+
+#: src/window.ui:145 src/window.ui:229
+msgid "URL"
+msgstr "URL"
+
+#: src/window.ui:182 src/window.ui:317
+msgid "Download"
+msgstr "Baixar"
+
+#: src/window.ui:204
+msgid "Audio"
+msgstr "Audio"
+
+#: src/window.ui:273
+msgid "Resolution"
+msgstr "Resolução"
+
+#: src/window.ui:339
+msgid "Video"
+msgstr "Vídeo"
+
+#: src/window.ui:504 src/window.ui:650
+msgid "Back"
+msgstr "Voltar"
+
+#: src/window.ui:547
+msgid "Download failed"
+msgstr "Falha no download"
+
+#: src/window.ui:577
+msgid "Details"
+msgstr "Detalhes"
+
+#: src/window.ui:694
+msgid "Download finished"
+msgstr "Download terminado"
