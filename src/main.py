@@ -43,7 +43,6 @@ class Application(Gtk.Application, Handler):
         self._settings = Gio.Settings.new(self.props.application_id)
         self.model.download_dir = self._settings.get_string('download-folder')
         self.model.prefer_mpeg = self._settings.get_boolean('prefer-mpeg')
-        self.model.darkmode = self._settings.get_boolean('darkmode')
         self.model.mode = self._settings.get_string('mode')
         r = self._settings.get_uint('resolution')
         for resolution in sorted(x[0] for x in self.model.resolutions):
@@ -54,8 +53,10 @@ class Application(Gtk.Application, Handler):
                       self._settings.set_string('mode', x))
         bind_property(self.model, 'resolution', func_a_to_b=lambda x:
                       self._settings.set_uint('resolution', x))
-        bind_property(self.model, 'darkmode', func_a_to_b=lambda x:
-                      self._settings.set_boolean('darkmode', x))
+
+        self._settings.bind('dark-mode', Gtk.Settings.get_default(),
+                    'gtk-application-prefer-dark-theme',
+                    Gio.SettingsBindFlags.DEFAULT)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)

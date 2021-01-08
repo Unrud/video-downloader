@@ -14,7 +14,7 @@
       <default>false</default>
     </key>
 
-    <key type="b" name="darkmode">
+    <key type="b" name="dark-mode">
       <default>false</default>
     </key>
 

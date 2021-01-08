@@ -95,11 +95,9 @@ class Window(Handy.ApplicationWindow):
         bind_property(self.download_images_wdg, 'transition-running',
                       func_a_to_b=lambda b: b or self._clean_thumbnails())
 
-        bind_property(self.model, 'darkmode',
-                      self.dark_mode_wdg, 'active',
-                      bi=True)
-
-        bind_property(self.model, 'darkmode', func_a_to_b=lambda x: Gtk.Settings.get_default().set_property('gtk-application-prefer-dark-theme', x))
+        bind_property(Gtk.Settings.get_default(),
+                      'gtk-application-prefer-dark-theme',
+                      self.dark_mode_wdg, 'active', bi=True)
 
     def _update_download_progress(self, *_):
         progress = self.model.download_progress
