@@ -21,11 +21,11 @@ import subprocess
 import traceback
 import typing
 
-from gi.repository import GLib, GObject, Gio
+from gi.repository import Gio, GLib, GObject
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.util import bind_property, g_log, expand_path
+from video_downloader.util import bind_property, expand_path, g_log
 
 N_ = gettext.gettext
 

@@ -20,7 +20,7 @@ import locale
 import math
 import os
 
-from gi.repository import GLib, Gtk, GdkPixbuf, GObject, Handy
+from gi.repository import GdkPixbuf, GLib, GObject, Gtk, Handy
 
 from video_downloader.util import bind_property
 

@@ -17,7 +17,7 @@
 
 import gettext
 
-from gi.repository import Gtk, GObject
+from gi.repository import GObject, Gtk
 
 N_ = gettext.gettext
 

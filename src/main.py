@@ -18,14 +18,13 @@
 import gettext
 import sys
 
-from gi.repository import GLib, Gtk, Gio, Gdk, Handy
+from gi.repository import Gdk, Gio, GLib, Gtk, Handy
 
 from video_downloader.about_dialog import AboutDialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import Handler, Model
-from video_downloader.window import Window
 from video_downloader.playlist_dialog import PlaylistDialog
-from video_downloader.util import bind_property
+from video_downloader.window import Window
 
 N_ = gettext.gettext
 
@@ -43,9 +42,9 @@ class Application(Gtk.Application, Handler):
         self._settings = Gio.Settings.new(self.props.application_id)
         self.model.download_dir = self._settings.get_string('download-folder')
         self.model.prefer_mpeg = self._settings.get_boolean('prefer-mpeg')
-        self._settings.bind(
-            'mode', self.model, 'mode',
-            Gio.SettingsBindFlags.DEFAULT|Gio.SettingsBindFlags.GET_NO_CHANGES)
+        self._settings.bind('mode', self.model, 'mode', (
+                                Gio.SettingsBindFlags.DEFAULT |
+                                Gio.SettingsBindFlags.GET_NO_CHANGES))
         r = self._settings.get_uint('resolution')
         for resolution in sorted(x[0] for x in self.model.resolutions):
             if r <= resolution:
