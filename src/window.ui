@@ -179,6 +179,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="icon-name">open-menu-symbolic</property>
                       </object>
                     </child>
+                    <accelerator key="F10" signal="clicked"/>
                   </object>
                   <packing>
                     <property name="pack-type">end</property>
