@@ -45,6 +45,7 @@ class Window(Handy.ApplicationWindow):
     success_back_wdg = Gtk.Template.Child()
     download_cancel_wdg = Gtk.Template.Child()
     success_msg_wdg = Gtk.Template.Child()
+    open_dir_wdg = Gtk.Template.Child()
     download_title_wdg = Gtk.Template.Child()
     download_progress_wdg = Gtk.Template.Child()
     download_info_wdg = Gtk.Template.Child()
@@ -78,7 +79,7 @@ class Window(Handy.ApplicationWindow):
                       func_a_to_b=self._update_focus_and_default)
         bind_property(self.model, 'download-dir-abs',
                       func_a_to_b=self._update_success_msg)
-        self.success_msg_wdg.connect('activate-link', self._on_activate_link)
+        self.open_dir_wdg.connect('clicked', self._on_activate_link)
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
             bind_property(
@@ -173,13 +174,13 @@ class Window(Handy.ApplicationWindow):
         if os.path.commonpath([home_dir, label_dir]) == home_dir:
             label_dir = '~' + label_dir[len(home_dir):]
         template = GObject.markup_escape_text(N_('Saved in {}'))
-        link = '<a href="action:open-download-dir">{}</a>'.format(
+        link = '{}'.format(
             GObject.markup_escape_text(label_dir))
         self.success_msg_wdg.set_markup(template.format(link))
 
-    def _on_activate_link(self, _, uri):
-        if uri.startswith('action:'):
-            action = self.get_application().lookup_action(uri[len('action:'):])
+    def _on_activate_link(self, _):
+        action = self.get_application().lookup_action('open-download-dir')
+        if action:
             action.activate()
             return True
         return False
