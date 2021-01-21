@@ -430,6 +430,10 @@ class YoutubeDLSlave:
                                                 thumbnail_path)
                 for thumbnail in info.get('thumbnails') or []:
                     thumbnail['filename'] = thumbnail_path
+                # Remove description, because long comments cause problems when
+                # displayed in Nautilus and other applications.
+                with contextlib.suppress(KeyError):
+                    del info['description']
                 sort_formats(info.get('formats') or [], resolution,
                              prefer_mpeg)
                 with open(info_path, 'w') as f:
