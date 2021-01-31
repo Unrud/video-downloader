@@ -581,8 +581,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="label" translatable="yes">Back</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
-                    <property name="has-focus">True</property>
-                    <property name="receives-default">True</property>
+                    <property name="receives-default">False</property>
                     <property name="action-name">app.back</property>
                   </object>
                 </child>
