@@ -77,8 +77,6 @@ class Window(Handy.ApplicationWindow):
                       func_a_to_b=self._update_focus_and_default)
         bind_property(self.audio_video_stack_wdg, 'visible-child-name',
                       func_a_to_b=self._update_focus_and_default)
-        bind_property(self.model, 'download-dir-abs',
-                      func_a_to_b=self._update_success_msg)
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
             bind_property(
@@ -167,16 +165,6 @@ class Window(Handy.ApplicationWindow):
             if child_wdg is not visible_child_wdg:
                 self.download_images_wdg.remove(child_wdg)
 
-    def _update_success_msg(self, download_dir_abs):
-        label_dir = download_dir_abs
-        home_dir = os.path.expanduser('~')
-        if os.path.commonpath([home_dir, label_dir]) == home_dir:
-            label_dir = '~' + label_dir[len(home_dir):]
-        template = GObject.markup_escape_text(N_('Saved in {}'))
-        link = '{}'.format(
-            GObject.markup_escape_text(label_dir))
-        self.success_msg_wdg.set_markup(template.format(link))
-
     def _update_focus_and_default(self, _):
         state = self.main_stack_wdg.get_visible_child_name()
         mode = self.audio_video_stack_wdg.get_visible_child_name()
@@ -194,6 +182,6 @@ class Window(Handy.ApplicationWindow):
         elif state == 'error':
             self.error_back_wdg.grab_focus()
         elif state == 'success':
-            self.success_back_wdg.grab_focus()
+            self.open_dir_wdg.grab_focus()
         else:
             assert False
