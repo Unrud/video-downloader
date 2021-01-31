@@ -798,6 +798,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="label" translatable="yes">Open Download Location</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
+                    <property name="has-focus">True</property>
                     <property name="receives-default">True</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>

@@ -79,7 +79,6 @@ class Window(Handy.ApplicationWindow):
                       func_a_to_b=self._update_focus_and_default)
         bind_property(self.model, 'download-dir-abs',
                       func_a_to_b=self._update_success_msg)
-        self.open_dir_wdg.connect('clicked', self._on_activate_link)
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
             bind_property(
@@ -177,13 +176,6 @@ class Window(Handy.ApplicationWindow):
         link = '{}'.format(
             GObject.markup_escape_text(label_dir))
         self.success_msg_wdg.set_markup(template.format(link))
-
-    def _on_activate_link(self, _):
-        action = self.get_application().lookup_action('open-download-dir')
-        if action:
-            action.activate()
-            return True
-        return False
 
     def _update_focus_and_default(self, _):
         state = self.main_stack_wdg.get_visible_child_name()
