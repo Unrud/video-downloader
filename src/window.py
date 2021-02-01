@@ -44,7 +44,6 @@ class Window(Handy.ApplicationWindow):
     error_back_wdg = Gtk.Template.Child()
     success_back_wdg = Gtk.Template.Child()
     download_cancel_wdg = Gtk.Template.Child()
-    success_msg_wdg = Gtk.Template.Child()
     open_dir_wdg = Gtk.Template.Child()
     download_title_wdg = Gtk.Template.Child()
     download_progress_wdg = Gtk.Template.Child()
