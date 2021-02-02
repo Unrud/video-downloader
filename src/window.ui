@@ -238,11 +238,12 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkEntry" id="audio_url_wdg">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="hexpand">True</property>
                                 <property name="activates-default">True</property>
                                 <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
+                                <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
@@ -322,11 +323,12 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkEntry" id="video_url_wdg">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
+                                <property name="hexpand">True</property>
                                 <property name="activates-default">True</property>
                                 <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
+                                <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
@@ -366,6 +368,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                               <object class="GtkComboBox" id="resolution_wdg">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="hexpand">True</property>
                                 <property name="model">resolutions_store</property>
                                 <property name="active">0</property>
                                 <property name="id-column">0</property>
@@ -377,7 +380,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                 </child>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
+                                <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">1</property>
                               </packing>
@@ -474,6 +477,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkBox" id="download_page">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="vexpand">True</property>
                 <property name="border-width">18</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">18</property>
@@ -611,6 +615,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkBox" id="error_page">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="vexpand">True</property>
                 <property name="border-width">18</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">24</property>
@@ -644,7 +649,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     </attributes>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
+                    <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">1</property>
                   </packing>
@@ -653,6 +658,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="vexpand">True</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">8</property>
                     <child>
@@ -680,22 +686,19 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                       <object class="GtkRevealer">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="vexpand">True</property>
                         <property name="transition-type">crossfade</property>
                         <property name="reveal-child" bind-source="error_details_expander_wdg" bind-property="expanded" bind-flags="sync-create">False</property>
                         <child>
                           <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
                             <property name="hscrollbar-policy">never</property>
                             <property name="shadow-type">in</property>
                             <child>
                               <object class="GtkTextView">
                                 <property name="visible">True</property>
                                 <property name="can-focus">True</property>
-                                <property name="hexpand">True</property>
-                                <property name="vexpand">True</property>
                                 <property name="editable">False</property>
                                 <property name="wrap-mode">word-char</property>
                                 <property name="buffer">error_buffer</property>
@@ -708,7 +711,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                         </accessibility>
                       </object>
                       <packing>
-                        <property name="expand">True</property>
+                        <property name="expand">False</property>
                         <property name="fill">True</property>
                         <property name="position">1</property>
                       </packing>
@@ -779,8 +782,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkBox" id="success_page">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
+                <property name="vexpand">True</property>
                 <property name="border-width">18</property>
                 <property name="orientation">vertical</property>
                 <property name="spacing">24</property>
