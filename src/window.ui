@@ -806,7 +806,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="can-focus">False</property>
                     <property name="halign">center</property>
                     <property name="label" translatable="yes">Download finished</property>
-                    <property name="wrap">True</property>
                     <attributes>
                       <attribute name="weight" value="bold"/>
                       <attribute name="scale" value="1.125"/>
