@@ -677,11 +677,11 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkRevealer" id="error_details_revealer_wdg">
+                      <object class="GtkRevealer">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="transition-type">crossfade</property>
-                        <property name="reveal-child">True</property>
+                        <property name="reveal-child" bind-source="error_details_expander_wdg" bind-property="expanded" bind-flags="sync-create">False</property>
                         <child>
                           <object class="GtkScrolledWindow">
                             <property name="visible">True</property>
@@ -703,6 +703,9 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                             </child>
                           </object>
                         </child>
+                        <accessibility>
+                          <relation type="embedded-by" target="error_details_expander_wdg"/>
+                        </accessibility>
                       </object>
                       <packing>
                         <property name="expand">True</property>

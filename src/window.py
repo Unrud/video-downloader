@@ -49,8 +49,6 @@ class Window(Handy.ApplicationWindow):
     download_progress_wdg = Gtk.Template.Child()
     download_info_wdg = Gtk.Template.Child()
     download_images_wdg = Gtk.Template.Child()
-    error_details_expander_wdg = Gtk.Template.Child()
-    error_details_revealer_wdg = Gtk.Template.Child()
     light_mode_wdg = Gtk.Template.Child()
     dark_mode_wdg = Gtk.Template.Child()
 
@@ -58,8 +56,6 @@ class Window(Handy.ApplicationWindow):
         super().__init__(**kwargs)
         self.model = self.get_application().model
         bind_property(self.model, 'error', self.error_buffer, 'text')
-        bind_property(self.error_details_expander_wdg, 'expanded',
-                      self.error_details_revealer_wdg, 'reveal-child')
         bind_property(self.model, 'url', self.audio_url_wdg, 'text', bi=True)
         bind_property(self.model, 'url', self.video_url_wdg, 'text', bi=True)
         for resolution, description in self.model.resolutions:
