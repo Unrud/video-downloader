@@ -26,20 +26,20 @@
     ],
     "modules" : [
         {
-            "name": "libhandy",
-            "buildsystem": "meson",
-            "builddir": true,
-            "config-opts": [
+            "name" : "libhandy",
+            "buildsystem" : "meson",
+            "builddir" : true,
+            "config-opts" : [
                 "-Dexamples=false",
                 "-Dglade_catalog=disabled",
                 "-Dtests=false",
                 "-Dvapi=false"
             ],
-            "sources": [
+            "sources" : [
                 {
-                    "type": "archive",
-                    "url": "https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.3/libhandy-1.0.3.tar.bz2",
-                    "sha256": "8cdeb88deaf13efbc0da73306bf8f8d14b6e5b108807a4f7b43d6a7c6e3a158d"
+                    "type" : "archive",
+                    "url" : "https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.0.3/libhandy-1.0.3.tar.bz2",
+                    "sha256" : "8cdeb88deaf13efbc0da73306bf8f8d14b6e5b108807a4f7b43d6a7c6e3a158d"
                 }
             ]
         },
