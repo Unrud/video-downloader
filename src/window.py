@@ -44,7 +44,7 @@ class Window(Handy.ApplicationWindow):
     error_back_wdg = Gtk.Template.Child()
     success_back_wdg = Gtk.Template.Child()
     download_cancel_wdg = Gtk.Template.Child()
-    open_dir_wdg = Gtk.Template.Child()
+    open_download_dir_wdg = Gtk.Template.Child()
     download_title_wdg = Gtk.Template.Child()
     download_progress_wdg = Gtk.Template.Child()
     download_info_wdg = Gtk.Template.Child()
@@ -76,6 +76,8 @@ class Window(Handy.ApplicationWindow):
                       func_a_to_b=self._update_focus_and_default)
         bind_property(self.audio_video_stack_wdg, 'visible-child-name',
                       func_a_to_b=self._update_focus_and_default)
+        bind_property(self.model, 'download-dir-abs',
+                      func_a_to_b=self._update_open_download_dir_wdg_tooltip)
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
             bind_property(
@@ -164,6 +166,13 @@ class Window(Handy.ApplicationWindow):
             if child_wdg is not visible_child_wdg:
                 self.download_images_wdg.remove(child_wdg)
 
+    def _update_open_download_dir_wdg_tooltip(self, download_dir_abs):
+        tooltip_dir = download_dir_abs
+        home_dir = os.path.expanduser('~')
+        if os.path.commonpath([home_dir, tooltip_dir]) == home_dir:
+            tooltip_dir = '~' + tooltip_dir[len(home_dir):]
+        self.open_download_dir_wdg.set_tooltip_text(tooltip_dir)
+
     def _update_focus_and_default(self, _):
         state = self.main_stack_wdg.get_visible_child_name()
         mode = self.audio_video_stack_wdg.get_visible_child_name()
@@ -181,6 +190,6 @@ class Window(Handy.ApplicationWindow):
         elif state == 'error':
             self.error_back_wdg.grab_focus()
         elif state == 'success':
-            self.open_dir_wdg.grab_focus()
+            self.open_download_dir_wdg.grab_focus()
         else:
             assert False
