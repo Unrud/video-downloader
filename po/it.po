@@ -2,6 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Albano battistella <albano:battistella@hotmail.com>,2020.
+# Albano battistella <albano:battistella@hotmail.com>,2021.
 #
 msgid ""
 msgstr ""
@@ -9,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-02-03 00:11+0100\n"
 "PO-Revision-Date: 2021-02-05 05:26+0100\n"
-"Last-Translator: \n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: ITALIAN <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -78,9 +79,8 @@ msgid "Cancel"
 msgstr "Cancella"
 
 #: src/authentication_dialog.py:42
-#, fuzzy
 msgid "Sign in"
-msgstr "Registrati"
+msgstr "Accedi"
 
 #: src/authentication_dialog.py:42
 msgid "Skip"
@@ -214,4 +214,4 @@ msgstr "Download terminato"
 
 #: src/window.ui:822
 msgid "Open Download Location"
-msgstr ""
+msgstr "Apri Percorso di Download"
