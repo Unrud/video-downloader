@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-08 00:50+0200\n"
-"PO-Revision-Date: 2021-01-08 00:50+0200\n"
+"POT-Creation-Date: 2021-02-03 00:11+0100\n"
+"PO-Revision-Date: 2021-02-05 05:27+0100\n"
 "Last-Translator: Gustavo Machado Peredo <gustavomperedo@protonmail.com>\n"
 "Language-Team: Portuguese\n"
 "Language: pt\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:40 src/window.ui:66
+#: src/main.py:39 src/window.ui:142
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
@@ -33,8 +33,9 @@ msgstr "Descarregue vídeos de websites como YouTube e outros"
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
-msgstr "Abaixe vídeos de websites com uma interface fácil de user. Contém "
-"as seguintes funções:"
+msgstr ""
+"Abaixe vídeos de websites com uma interface fácil de user. Contém as "
+"seguintes funções:"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
 msgid "Convert videos to MP3"
@@ -50,7 +51,8 @@ msgstr "Baixe apenas um vídeo ou playlists inteiras"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr "Automaticamente seleciona um formato de arquivo baseado nas suas escolhas"
+msgstr ""
+"Automaticamente seleciona um formato de arquivo baseado nas suas escolhas"
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
 msgid "Based on youtube-dl."
@@ -72,7 +74,7 @@ msgstr "Nova Janela"
 msgid "Authentication Required"
 msgstr "Autenticação Requirida"
 
-#: src/authentication_dialog.py:34 src/window.ui:382
+#: src/authentication_dialog.py:34 src/window.ui:462
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -98,7 +100,7 @@ msgstr "Nome de usuário"
 msgid "Password"
 msgstr "Senha"
 
-#: src/main.py:39
+#: src/main.py:38
 msgid "Prefill URL field"
 msgstr "Preencha o campo de URL"
 
@@ -170,46 +172,46 @@ msgstr "{} de {}"
 msgid "unknown"
 msgstr "desconhecido"
 
-#: src/window.py:170
-msgid "Saved in {}"
-msgstr "Salvo em {}"
-
-#: src/window.ui:45
+#: src/window.ui:121
 msgid "About Video Downloader"
 msgstr "Sobre o Video Downloader"
 
-#: src/window.ui:145 src/window.ui:229
+#: src/window.ui:222 src/window.ui:307
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:182 src/window.ui:317
+#: src/window.ui:260 src/window.ui:397
 msgid "Download"
 msgstr "Baixar"
 
-#: src/window.ui:204
+#: src/window.ui:282
 msgid "Audio"
 msgstr "Audio"
 
-#: src/window.ui:273
+#: src/window.ui:352
 msgid "Resolution"
 msgstr "Resolução"
 
-#: src/window.ui:339
+#: src/window.ui:419
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/window.ui:504 src/window.ui:650
+#: src/window.ui:599 src/window.ui:766
 msgid "Back"
 msgstr "Voltar"
 
-#: src/window.ui:547
+#: src/window.ui:644
 msgid "Download failed"
 msgstr "Falha no download"
 
-#: src/window.ui:577
+#: src/window.ui:675
 msgid "Details"
 msgstr "Detalhes"
 
-#: src/window.ui:694
+#: src/window.ui:808
 msgid "Download finished"
 msgstr "Download terminado"
+
+#: src/window.ui:822
+msgid "Open Download Location"
+msgstr ""

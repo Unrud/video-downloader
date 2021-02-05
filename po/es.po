@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-04 00:50+0200\n"
-"PO-Revision-Date: 2020-05-17 00:45+0200\n"
+"POT-Creation-Date: 2021-02-03 00:11+0100\n"
+"PO-Revision-Date: 2021-02-05 05:25+0100\n"
 "Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>\n"
 "Language-Team: Spanish; Castilian\n"
 "Language: es\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:40 src/window.ui:66
+#: src/main.py:39 src/window.ui:142
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
@@ -76,7 +76,7 @@ msgstr "Nueva ventana"
 msgid "Authentication Required"
 msgstr "Autenticación Requerida"
 
-#: src/authentication_dialog.py:34 src/window.ui:382
+#: src/authentication_dialog.py:34 src/window.ui:462
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -104,7 +104,7 @@ msgstr "Nombre de usuario"
 msgid "Password"
 msgstr "Contraseña"
 
-#: src/main.py:39
+#: src/main.py:38
 #, fuzzy
 msgid "Prefill URL field"
 msgstr "Rellenar campo URL"
@@ -177,46 +177,46 @@ msgstr "{} de {}"
 msgid "unknown"
 msgstr "desconocido"
 
-#: src/window.py:170
-msgid "Saved in {}"
-msgstr "Guardado en {}"
-
-#: src/window.ui:45
+#: src/window.ui:121
 msgid "About Video Downloader"
 msgstr ""
 
-#: src/window.ui:145 src/window.ui:229
+#: src/window.ui:222 src/window.ui:307
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:182 src/window.ui:317
+#: src/window.ui:260 src/window.ui:397
 msgid "Download"
 msgstr "Descargar"
 
-#: src/window.ui:204
+#: src/window.ui:282
 msgid "Audio"
 msgstr "Audio"
 
-#: src/window.ui:273
+#: src/window.ui:352
 msgid "Resolution"
 msgstr "Resolución"
 
-#: src/window.ui:339
+#: src/window.ui:419
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/window.ui:504 src/window.ui:650
+#: src/window.ui:599 src/window.ui:766
 msgid "Back"
 msgstr "Volver"
 
-#: src/window.ui:547
+#: src/window.ui:644
 msgid "Download failed"
 msgstr "Descarga fallida"
 
-#: src/window.ui:577
+#: src/window.ui:675
 msgid "Details"
 msgstr "Detalles"
 
-#: src/window.ui:694
+#: src/window.ui:808
 msgid "Download finished"
 msgstr "Descarga finalizada"
+
+#: src/window.ui:822
+msgid "Open Download Location"
+msgstr ""
