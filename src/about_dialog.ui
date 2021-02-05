@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.38.2
 
-Copyright (C) 2020 Unrud <unrud@outlook.com>
+Copyright (C) 2020-2021 Unrud <unrud@outlook.com>
 
 This file is part of Video Downloader.
 
@@ -23,7 +23,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
   <requires lib="gtk+" version="3.24"/>
   <!-- interface-license-type gplv3 -->
   <!-- interface-name Video Downloader -->
-  <!-- interface-copyright 2020 Unrud <unrud@outlook.com> -->
+  <!-- interface-copyright 2020-2021 Unrud <unrud@outlook.com> -->
   <template class="VideoDownloaderAboutDialog" parent="GtkAboutDialog">
     <property name="can-focus">False</property>
     <property name="modal">True</property>

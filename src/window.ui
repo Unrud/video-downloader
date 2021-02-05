@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.38.2 
 
-Copyright (C) 2019-2020 Unrud <unrud@outlook.com>
+Copyright (C) 2019-2021 Unrud <unrud@outlook.com>
 
 This file is part of Video Downloader.
 
@@ -24,7 +24,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
   <requires lib="libhandy" version="1.0"/>
   <!-- interface-license-type gplv3 -->
   <!-- interface-name Video Downloader -->
-  <!-- interface-copyright 2019-2020 Unrud <unrud@outlook.com> -->
+  <!-- interface-copyright 2019-2021 Unrud <unrud@outlook.com> -->
   <object class="GtkTextBuffer" id="error_buffer">
     <property name="text">Error XXX</property>
   </object>

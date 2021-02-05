@@ -1,4 +1,4 @@
-# Copyright (C) 2019 Unrud <unrud@outlook.com>
+# Copyright (C) 2019-2021 Unrud <unrud@outlook.com>
 #
 # This file is part of Video Downloader.
 #
