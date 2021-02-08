@@ -60,11 +60,11 @@ msgstr "Postavený na youtube-dl."
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
 msgid "Unrud"
-msgstr ""
+msgstr "Unrud"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:6
 msgid "com.github.unrud.VideoDownloader"
-msgstr ""
+msgstr "com.github.unrud.VideoDownloader"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "New Window"
@@ -110,39 +110,39 @@ msgstr "Nejlepší"
 
 #: src/model.py:60
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:61
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:62
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:63
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:64
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:65
 msgid "480p"
-msgstr ""
+msgstr "480p"
 
 #: src/model.py:66
 msgid "360p"
-msgstr ""
+msgstr "360p"
 
 #: src/model.py:67
 msgid "240p"
-msgstr ""
+msgstr "240p"
 
 #: src/model.py:68
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/playlist_dialog.py:32
 msgid "Download Playlist?"
@@ -178,7 +178,7 @@ msgstr "O Stahovači videa"
 
 #: src/window.ui:222 src/window.ui:307
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:260 src/window.ui:397
 msgid "Download"
