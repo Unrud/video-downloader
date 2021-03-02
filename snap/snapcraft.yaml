@@ -111,8 +111,8 @@ parts:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     after: [ffmpeg]
     plugin: python
-    source: https://github.com/ytdl-org/youtube-dl/archive/2021.02.22.tar.gz
-    source-checksum: sha256/216f60f1d29b44d505e49ea05dabcf1bbb3df3d47635e7b7c42f0c4c668caa1a
+    source: https://github.com/ytdl-org/youtube-dl/archive/2021.03.02.tar.gz
+    source-checksum: sha256/1ba124842bf486e7e106536ae02fe240a2e8280de4dfabeb66bf4aca8801295a
     python-packages:
       - pyxattr==0.7.2
 
