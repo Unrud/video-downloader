@@ -36,10 +36,15 @@ Paths can either be absolute or start with `~`, `xdg-desktop`, `xdg-download`,
 The default is `xdg-download/VideoDownloader`.
 
 #### Flatpak
-
+In the following example, the download location is being changed to `~/Videos/VideoDownloader` or `xdg-videos/VideoDownloader`.
 ```
-flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.unrud.VideoDownloader download-folder '~/VideoDownloader'
+flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.unrud.VideoDownloader download-folder 'xdg-videos/VideoDownloader'
 ```
+Remember to also give the flatpak the necessary filesystem permissions. This can be done through the command-line or through _Flatseal_.
+```
+flatpak override com.github.unrud.VideoDownloader --filesystem=xdg-videos/VideoDownloader:create
+```
+`:create` tells flatpak to make a new folder called `VideoDownloader` in `~/Videos` if it doesn't already exist.
 
 #### Snap
 
