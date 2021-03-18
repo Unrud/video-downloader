@@ -40,7 +40,7 @@ In the following example, the download location is being changed to `~/Videos/Vi
 ```
 flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.unrud.VideoDownloader download-folder 'xdg-videos/VideoDownloader'
 ```
-Remember to also give the flatpak the necessary filesystem permissions. This can be done through the command-line or through _Flatseal_.
+Remember to also give the flatpak the necessary filesystem permissions. This can be done through the command-line or through _Flatseal_.  If you used `xdg-videos/VideoDownloader` as the download folder in the previous command, remember to use that in the following command as well. Using `~/Videos/VideoDownloader` may cause an error.
 ```
 flatpak override com.github.unrud.VideoDownloader --filesystem=xdg-videos/VideoDownloader:create
 ```
