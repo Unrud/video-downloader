@@ -65,3 +65,7 @@ flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.
 ```
 snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.VideoDownloader prefer-mpeg true
 ```
+
+## Translations!
+
+They are here and need your help! Don't be afraid to open an issue or contribute to the translations here: [https://github.com/GustavoPeredo/video-downloader/tree/master/po](https://github.com/GustavoPeredo/video-downloader/tree/master/po)
