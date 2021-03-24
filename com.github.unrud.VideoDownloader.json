@@ -95,8 +95,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ytdl-org/youtube-dl/archive/2021.03.14.tar.gz",
-                    "sha256" : "a2bdf5041a31ad4b2e517f036aaffef0c7213b718cfae488523287914b23e0ba"
+                    "url" : "https://github.com/ytdl-org/youtube-dl/archive/2021.03.25.tar.gz",
+                    "sha256" : "fc5682fea08e1d856601d7070eb0b73478c521794a02720cbbefff1168654b2b"
                 }
             ]
         },
