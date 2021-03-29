@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-04 00:50+0200\n"
+"POT-Creation-Date: 2021-03-29 01:21+0200\n"
 "PO-Revision-Date: 2021-03-23 15:58+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:40 src/window.ui:66
+#: src/main.py:39 src/window.ui:142
 msgid "Video Downloader"
 msgstr "Preuzimanje videa"
 
@@ -74,7 +74,7 @@ msgstr "Novi prozor"
 msgid "Authentication Required"
 msgstr "Potrebna je autentifikacija"
 
-#: src/authentication_dialog.py:34 src/window.ui:382
+#: src/authentication_dialog.py:34 src/window.ui:462
 msgid "Cancel"
 msgstr "Odustani"
 
@@ -100,7 +100,7 @@ msgstr "Korisničko ime"
 msgid "Password"
 msgstr "Lozinka"
 
-#: src/main.py:39
+#: src/main.py:38
 msgid "Prefill URL field"
 msgstr "Unaprijed ispuni polje URL-adrese"
 
@@ -172,46 +172,46 @@ msgstr "{} od {}"
 msgid "unknown"
 msgstr "nepoznato"
 
-#: src/window.py:170
-msgid "Saved in {}"
-msgstr "Spremljeno u {}"
-
-#: src/window.ui:45
+#: src/window.ui:121
 msgid "About Video Downloader"
 msgstr "O Preuzimanje videa"
 
-#: src/window.ui:145 src/window.ui:229
+#: src/window.ui:222 src/window.ui:307
 msgid "URL"
 msgstr "URL-adresa"
 
-#: src/window.ui:182 src/window.ui:317
+#: src/window.ui:260 src/window.ui:397
 msgid "Download"
 msgstr "Preuzimanje"
 
-#: src/window.ui:204
+#: src/window.ui:282
 msgid "Audio"
 msgstr "Zvuk"
 
-#: src/window.ui:273
+#: src/window.ui:352
 msgid "Resolution"
 msgstr "Rezolucija"
 
-#: src/window.ui:339
+#: src/window.ui:419
 msgid "Video"
 msgstr "Video"
 
-#: src/window.ui:504 src/window.ui:650
+#: src/window.ui:599 src/window.ui:766
 msgid "Back"
 msgstr "Natrag"
 
-#: src/window.ui:547
+#: src/window.ui:644
 msgid "Download failed"
 msgstr "Neuspjelo preuzimanje"
 
-#: src/window.ui:577
+#: src/window.ui:675
 msgid "Details"
 msgstr "Detalji"
 
-#: src/window.ui:694
+#: src/window.ui:808
 msgid "Download finished"
 msgstr "Preuzimanje je gotovo"
+
+#: src/window.ui:822
+msgid "Open Download Location"
+msgstr ""
