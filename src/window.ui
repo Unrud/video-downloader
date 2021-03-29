@@ -559,6 +559,9 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="halign">center</property>
                         <property name="label">Info XXX</property>
                         <property name="xalign">0</property>
+                        <accessibility>
+                          <relation type="label-for" target="download_progress_wdg"/>
+                        </accessibility>
                         <style>
                           <class name="dim-label"/>
                         </style>
