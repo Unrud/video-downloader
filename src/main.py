@@ -106,7 +106,7 @@ class Application(Gtk.Application, Handler):
         self.lookup_action('cancel').activate()
         return ('', '')
 
-    def on_videopassword_request(self) -> str:
+    def on_videopassword_request(self):
         dialog = PasswordDialog(self.props.active_window)
         res = dialog.run()
         dialog.destroy()
