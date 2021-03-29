@@ -214,4 +214,4 @@ msgstr "Preuzimanje je gotovo"
 
 #: src/window.ui:822
 msgid "Open Download Location"
-msgstr ""
+msgstr "Otvori mjesto preuzimanja"
