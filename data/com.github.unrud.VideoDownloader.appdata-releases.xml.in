@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<releases>
+  <release version="0.7.1" date="2021-02-08">
+    <description>
+      <ul>
+        <li>Add Czech translation</li>
+        <li>Update Italian translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.7.0" date="2021-02-05">
+    <description>
+      <ul>
+        <li>Redesign finish and error page</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.6.8" date="2021-01-21">
+    <description>
+      <ul>
+        <li>Don't save video description</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.6.7" date="2021-01-16">
+    <description>
+      <ul>
+        <li>Update Dutch translation</li>
+        <li>Add shortcut for menu</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.6.6" date="2021-01-08">
+    <description>
+      <ul>
+        <li>Implement dark mode switcher</li>
+        <li>Add Portuguese translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.6.5" date="2021-01-04">
+    <description>
+      <ul>
+        <li>Add Swedish translation</li>
+        <li>Update Japanese translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.6.4" date="2020-12-27">
+    <description>
+      <ul>
+        <li>Update italian translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.6.3" date="2020-12-16">
+    <description>
+      <ul>
+        <li>Use adaptive layout</li>
+        <li>Add about dialog</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.6.2" date="2020-12-12">
+    <description>
+      <ul>
+        <li>youtube-dl is back</li>
+        <li>Update dutch translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.6.1" date="2020-10-25">
+    <description>
+      <ul>
+        <li>Add slovak translation</li>
+        <li>Enable farsi/persian translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.6.0" date="2020-10-24">
+    <description>
+      <ul>
+        <li>Display unexpected errors</li>
+        <li>Add farsi/persian translation</li>
+        <li>Update hungarian translation</li>
+        <li>Update italian translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.5.9" date="2020-10-21">
+    <description>
+      <ul>
+        <li>Embed metadata</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.5.8" date="2020-10-03">
+    <description>
+      <ul>
+        <li>Add hungarian translation</li>
+        <li>Allow download to filesystem without xattr support</li>
+        <li>Improve error handling</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.5.7" date="2020-09-20">
+    <description>
+      <ul>
+        <li>Show activity while converting audio to MP3</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.5.6" date="2020-09-19">
+    <description>
+      <ul>
+        <li>Skip unsupported subtitles preventing download failure</li>
+        <li>Improve format selection</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.5.5" date="2020-09-06">
+    <description>
+      <ul>
+        <li>Ignore unsupported locale error</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.5.4" date="2020-09-03">
+    <description>
+      <ul>
+        <li>Add dutch translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.5.3" date="2020-08-31">
+    <description>
+      <ul>
+        <li>New logo (by @bertob)</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.5.2" date="2020-08-31">
+    <description>
+      <ul>
+        <li>Embed subtitles in videos</li>
+        <li>Fix download of incompatible audio and video formats</li>
+        <li>Kill remaining subprocesses of youtube-dl when cancelling downloads and exiting program</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.4.1" date="2020-08-26">
+    <description>
+      <ul>
+        <li>New logo</li>
+        <li>Add symbolic icon</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.4.0" date="2020-08-15">
+    <description>
+      <ul>
+        <li>Save downloads as TITLE.EXT (instead of TITLE-ID-FORMAT.EXT)</li>
+        <li>Store all partial files for a download in a folder named TITLE.part</li>
+        <li>Skip audio files that are already downloaded</li>
+        <li>Polish the GUI (by @Kekun)</li>
+        <li>Display errors accessing the download folder in the GUI</li>
+        <li>Use file-based locking to prevent multiple instances breaking downloads by writing to the same partial files</li>
+        <li>Cleanup temporary files of cancelled downloads</li>
+        <li>Remove ImageMagick dependency</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.3.3" date="2020-08-11">
+    <description>
+      <ul>
+        <li>New logo</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.3.2" date="2020-07-23">
+    <description>
+      <ul>
+        <li>Fix zero division error causing some downloads to fail</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.3.1" date="2020-07-06">
+    <description>
+      <ul>
+        <li>Retry downloads up to 10 times before giving up</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.3.0" date="2020-06-20">
+    <description>
+      <ul>
+        <li>Limit title length to 150 characters in file names</li>
+        <li>Fix bugs with thumbnails in unsupported formats</li>
+        <li>Limit size of thumbnails to 1024x1024 pixel</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.2.10" date="2020-06-14">
+    <description>
+      <ul>
+        <li>Add Japanese translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.2.9" date="2020-05-16">
+    <description>
+      <ul>
+        <li>Add French translation</li>
+        <li>Add action to open new window (Middle-click in Gnome Shell)</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.2.8" date="2020-05-03">
+    <description>
+      <ul>
+        <li>Allow skipping videos that require authentication</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.2.7" date="2020-05-02">
+    <description>
+      <ul>
+        <li>Fix detection of private videos</li>
+        <li>Add --url=URL commandline argument</li>
+        <li>Add Italian and Spanish translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.2.6" date="2020-04-29">
+    <description>
+      <ul>
+        <li>Show downloaded file in file manager</li>
+        <li>Add German translation</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.2.5" date="2020-02-18">
+    <description>
+      <p>Fix format selection for extractors that provide either video width or height.</p>
+    </description>
+  </release>
+  <release version="0.2.4" date="2020-02-11">
+    <description>
+      <ul>
+        <li>Save thumbnail in audio files</li>
+        <li>Save metadata in extended attributes</li>
+        <li>Snap/Flatpak: Remove support for RTMP</li>
+        <li>Snap: Remove video-downloader.youtube-dl</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.2.3" date="2020-01-14">
+    <description>
+      <p>Stop downloader in case of error.</p>
+    </description>
+  </release>
+  <release version="0.2.2" date="2020-01-11">
+    <description>
+      <ul>
+        <li>Allow multiple instances</li>
+        <li>Add description to authentication requests</li>
+        <li>Add format id to filenames</li>
+        <li>Fix download of files bigger than 4 GiB</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.2.1" date="2020-01-04">
+    <description>
+      <p>Fix link to download folder.</p>
+    </description>
+  </release>
+  <release version="0.2.0" date="2020-01-03">
+    <description>
+      <p>Remember last settings and switch to GTK.</p>
+    </description>
+  </release>
+  <release version="0.1.8" date="2019-12-25">
+    <description>
+      <p>Adjust menu colors to theme.</p>
+    </description>
+  </release>
+  <release version="0.1.7" date="2019-11-10">
+    <description>
+      <p>Fix crash with non-integer X DPI.</p>
+    </description>
+  </release>
+  <release version="0.1.6" date="2019-10-11">
+    <description>
+      <p>Move AppData to metainfo.</p>
+    </description>
+  </release>
+  <release version="0.1.5" date="2019-08-29">
+    <description>
+      <p>Download all videos in playlist.</p>
+    </description>
+  </release>
+  <release version="0.1.4" date="2019-08-15">
+    <description>
+      <p>Set window icon.</p>
+    </description>
+  </release>
+  <release version="0.1.3" date="2019-06-11">
+    <description>
+      <p>Make window resizeable and fix font sizes.</p>
+    </description>
+  </release>
+  <release version="0.1.2" date="2019-06-10">
+    <description>
+      <p>Stop progress bar jumping around.</p>
+    </description>
+  </release>
+  <release version="0.1.1" date="2019-06-08">
+    <description>
+      <p>Support videos with emoticons in the title.</p>
+    </description>
+  </release>
+  <release version="0.1.0" date="2019-06-06">
+    <description>
+      <p>Initial release.</p>
+    </description>
+  </release>
+</releases>

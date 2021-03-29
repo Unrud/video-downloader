@@ -16,10 +16,23 @@ if desktop_utils.found()
   )
 endif
 
-appstream_file = i18n.merge_file(
+base_appstream_file = i18n.merge_file(
   input: 'com.github.unrud.VideoDownloader.appdata.xml.in',
+  output: 'com.github.unrud.VideoDownloader.appdata.xml.base',
+  po_dir: '../po'
+)
+
+appstream_file = custom_target('com.github.unrud.VideoDownloader.appdata.xml',
+  input: [
+    base_appstream_file,
+    'com.github.unrud.VideoDownloader.appdata-releases.xml.in'
+  ],
   output: 'com.github.unrud.VideoDownloader.appdata.xml',
-  po_dir: '../po',
+  command: [
+    python, meson.current_source_dir() / 'build-aux' / 'meson' / 'merge-xml.py',
+    '@INPUT0@', '@INPUT1@', '.'
+  ],
+  capture: true,
   install: true,
   install_dir: get_option('datadir') / 'metainfo'
 )
