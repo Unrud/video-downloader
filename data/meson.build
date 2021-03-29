@@ -66,4 +66,4 @@ foreach res : [16, 32, 48, 64, 128, 256, 512]
     install_dir: get_option('datadir') / 'icons' / 'hicolor' / '@0@x@0@'.format(res) / 'apps'
   )
 endforeach
-meson.add_install_script('build-aux/meson/rename-icons.sh')
+meson.add_install_script(python, meson.current_source_dir() / 'build-aux' / 'meson' / 'rename-icons.py')

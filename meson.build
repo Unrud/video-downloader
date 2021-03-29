@@ -5,10 +5,11 @@ project('video-downloader',
 )
 
 i18n = import('i18n')
+python = import('python').find_installation('python3')
 
 
 subdir('data')
 subdir('src')
 subdir('po')
 
-meson.add_install_script('build-aux/meson/postinstall.py')
+meson.add_install_script(python, meson.current_source_dir() / 'build-aux' / 'meson' / 'postinstall.py')

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 from os import environ, path
 from subprocess import call
 

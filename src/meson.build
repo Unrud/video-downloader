@@ -8,8 +8,6 @@ gnome.compile_resources('video-downloader', 'video_downloader.gresource.xml',
   install_dir: pkgdatadir,
 )
 
-python = import('python').find_installation('python3')
-
 conf = configuration_data()
 conf.set('PYTHON', python.path())
 conf.set('VERSION', meson.project_version())
