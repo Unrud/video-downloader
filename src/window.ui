@@ -477,6 +477,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkBox" id="download_page">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="valign">center</property>
                 <property name="vexpand">True</property>
                 <property name="border-width">18</property>
                 <property name="orientation">vertical</property>
@@ -485,6 +486,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="GtkLabel" id="download_title_wdg">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="halign">center</property>
                     <property name="label">Downloading: XXX</property>
                     <property name="ellipsize">end</property>
                     <property name="xalign">0</property>
@@ -499,30 +501,50 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkStack" id="download_images_wdg">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="transition-type">slide-up-down</property>
-                    <child>
-                      <placeholder/>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
                   <object class="GtkBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="orientation">vertical</property>
                     <property name="spacing">6</property>
                     <child>
-                      <object class="GtkProgressBar" id="download_progress_wdg">
+                      <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">12</property>
+                        <child>
+                          <object class="GtkStack" id="download_images_wdg">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="transition-type">slide-up-down</property>
+                            <child>
+                              <placeholder/>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="HdyClamp">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="maximum-size">300</property>
+                            <child>
+                              <object class="GtkProgressBar" id="download_progress_wdg">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
                       </object>
                       <packing>
                         <property name="expand">False</property>
@@ -534,18 +556,16 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                       <object class="GtkLabel" id="download_info_wdg">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
+                        <property name="halign">center</property>
                         <property name="label">Info XXX</property>
                         <property name="xalign">0</property>
-                        <accessibility>
-                          <relation type="label-for" target="download_progress_wdg"/>
-                        </accessibility>
                         <style>
                           <class name="dim-label"/>
                         </style>
                       </object>
                       <packing>
                         <property name="expand">False</property>
-                        <property name="fill">True</property>
+                        <property name="fill">False</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
@@ -777,6 +797,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkBox" id="success_page">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="valign">center</property>
                 <property name="vexpand">True</property>
                 <property name="border-width">18</property>
                 <property name="orientation">vertical</property>
