@@ -12,4 +12,6 @@ subdir('data')
 subdir('src')
 subdir('po')
 
-meson.add_install_script(python, meson.current_source_dir() / 'build-aux' / 'meson' / 'postinstall.py')
+meson.add_install_script(python,
+  meson.current_source_dir() / 'build-aux' / 'meson' / 'postinstall.py'
+)
