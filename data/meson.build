@@ -66,6 +66,9 @@ install_data(icon_id + '-symbolic.svg',
 
 rsvg_util = find_program('rsvg-convert')
 foreach res : [16, 32, 48, 64, 128, 256, 512]
+  icon_install_dir = (
+    get_option('datadir') / 'icons' / 'hicolor' / '@0@x@0@'.format(res) / 'apps'
+  )
   icon_png = '@0@_@1@.png'.format(icon_id, res)
   custom_target(icon_png,
     input: icon_svg,
@@ -76,7 +79,12 @@ foreach res : [16, 32, 48, 64, 128, 256, 512]
       '--format', 'png', '--output', '@OUTPUT@', '@INPUT@'
     ],
     install: true,
-    install_dir: get_option('datadir') / 'icons' / 'hicolor' / '@0@x@0@'.format(res) / 'apps'
+    install_dir: icon_install_dir
+  )
+  # rename icon after installation
+  meson.add_install_script(python,
+    meson.current_source_dir() / 'build-aux' / 'meson' / 'move.py',
+    icon_install_dir / icon_png,
+    icon_install_dir / icon_id + '.png'
   )
 endforeach
-meson.add_install_script(python, meson.current_source_dir() / 'build-aux' / 'meson' / 'rename-icons.py')
