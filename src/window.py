@@ -101,7 +101,7 @@ class Window(Handy.ApplicationWindow):
             self.download_progress_wdg.set_fraction(progress)
 
     def _update_download_title(self, _):
-        title = self.model.download_title
+        title = self.model.download_title.split('\n', maxsplit=1)[0]
         playlist_count = self.model.download_playlist_count
         playlist_index = self.model.download_playlist_index
         s = N_('Downloading')
