@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.7.3" date="2021-03-30">
+    <description>
+      <ul>
+        <li>Update Croatian translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.7.2" date="2021-03-29">
     <description>
       <ul>
