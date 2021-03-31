@@ -45,6 +45,7 @@ class Window(Handy.ApplicationWindow):
     success_back_wdg = Gtk.Template.Child()
     download_cancel_wdg = Gtk.Template.Child()
     open_download_dir_wdg = Gtk.Template.Child()
+    download_page_title_wdg = Gtk.Template.Child()
     download_title_wdg = Gtk.Template.Child()
     download_progress_wdg = Gtk.Template.Child()
     download_info_wdg = Gtk.Template.Child()
@@ -76,15 +77,16 @@ class Window(Handy.ApplicationWindow):
                       func_a_to_b=self._update_open_download_dir_wdg_tooltip)
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
-            bind_property(
-                self.model, name, func_a_to_b=self._update_download_msg)
+            bind_property(self.model, name,
+                          func_a_to_b=self._update_download_msg)
         bind_property(self.model, 'download-progress',
                       func_a_to_b=self._update_download_progress)
         self.model.connect('download-pulse', self._update_download_progress)
-        for name in ['download-title', 'download-playlist-count',
-                     'download-playlist-index']:
-            bind_property(
-                self.model, name, func_a_to_b=self._update_download_title)
+        for name in ['download-playlist-count', 'download-playlist-index']:
+            bind_property(self.model, name,
+                          func_a_to_b=self._update_download_page_title)
+        bind_property(self.model, 'download-title', self.download_title_wdg,
+                      'label', func_a_to_b=lambda title: title or '…')
         bind_property(self.model, 'download-thumbnail',
                       func_a_to_b=self._add_thumbnail)
         bind_property(self.download_images_wdg, 'transition-running',
@@ -100,17 +102,14 @@ class Window(Handy.ApplicationWindow):
         else:
             self.download_progress_wdg.set_fraction(progress)
 
-    def _update_download_title(self, _):
-        title = self.model.download_title.split('\n', maxsplit=1)[0]
+    def _update_download_page_title(self, _):
         playlist_count = self.model.download_playlist_count
         playlist_index = self.model.download_playlist_index
         s = N_('Downloading')
         if playlist_count > 1:
             s += ' (' + N_('{} of {}').format(
                 playlist_index + 1, playlist_count) + ')'
-        if title:
-            s += ': ' + title
-        self.download_title_wdg.set_text(s)
+        self.download_page_title_wdg.set_text(s)
 
     def _update_download_msg(self, _):
         def filesize_fmt(num, suffix='B'):
