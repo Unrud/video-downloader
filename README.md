@@ -41,6 +41,11 @@ The default is `xdg-download/VideoDownloader`.
 flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.unrud.VideoDownloader download-folder '~/VideoDownloader'
 ```
 
+Grant filesystem access to the sandboxed app:
+```
+flatpak override --user --filesystem='~/VideoDownloader:create' com.github.unrud.VideoDownloader
+```
+
 #### Snap
 
 ```
