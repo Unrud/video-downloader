@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 01:21+0200\n"
-"PO-Revision-Date: 2021-02-05 05:38+0100\n"
+"POT-Creation-Date: 2021-04-01 17:32+0200\n"
+"PO-Revision-Date: 2021-04-01 17:32+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -61,10 +61,6 @@ msgstr "Gebaseerd op youtube-dl."
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
 msgid "Unrud"
 msgstr "Unrud"
-
-#: data/com.github.unrud.VideoDownloader.desktop.in:6
-msgid "com.github.unrud.VideoDownloader"
-msgstr "com.github.unrud.VideoDownloader"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "New Window"
@@ -160,15 +156,15 @@ msgstr "Losse video"
 msgid "All Videos in Playlist"
 msgstr "Alle video's op de afspeellijst"
 
-#: src/window.py:107
+#: src/window.py:108
 msgid "Downloading"
 msgstr "Bezig met downloaden"
 
-#: src/window.py:109 src/window.py:134
+#: src/window.py:110 src/window.py:133
 msgid "{} of {}"
 msgstr "{} van {}"
 
-#: src/window.py:135 src/window.py:137
+#: src/window.py:134 src/window.py:136
 msgid "unknown"
 msgstr "onbekend"
 
@@ -196,22 +192,25 @@ msgstr "Resolutie"
 msgid "Video"
 msgstr "Video"
 
-#: src/window.ui:599 src/window.ui:766
+#: src/window.ui:627 src/window.ui:795
 msgid "Back"
 msgstr "Terug"
 
-#: src/window.ui:644
+#: src/window.ui:672
 msgid "Download failed"
 msgstr "Downloaden mislukt"
 
-#: src/window.ui:675
+#: src/window.ui:702
 msgid "Details"
 msgstr "Details"
 
-#: src/window.ui:808
+#: src/window.ui:841
 msgid "Download finished"
 msgstr "Downloaden voltooid"
 
-#: src/window.ui:822
+#: src/window.ui:855
 msgid "Open Download Location"
-msgstr ""
+msgstr "Downloadlocatie openen"
+
+#~ msgid "com.github.unrud.VideoDownloader"
+#~ msgstr "com.github.unrud.VideoDownloader"
