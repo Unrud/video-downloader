@@ -20,8 +20,12 @@ import locale
 import math
 import os
 
-from gi.repository import GdkPixbuf, GLib, Gtk, Handy
+from gi.repository import GdkPixbuf, Gio, GLib, Gtk, Handy
 
+from video_downloader.about_dialog import AboutDialog
+from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
+from video_downloader.model import Handler, Model
+from video_downloader.playlist_dialog import PlaylistDialog
 from video_downloader.util import bind_property
 
 DOWNLOAD_IMAGE_SIZE = 128
@@ -30,7 +34,7 @@ N_ = gettext.gettext
 
 
 @Gtk.Template(resource_path='/com/github/unrud/VideoDownloader/window.ui')
-class Window(Handy.ApplicationWindow):
+class Window(Handy.ApplicationWindow, Handler):
     __gtype_name__ = 'VideoDownloaderWindow'
     error_buffer = Gtk.Template.Child()
     resolutions_store = Gtk.Template.Child()
@@ -53,41 +57,47 @@ class Window(Handy.ApplicationWindow):
     light_mode_wdg = Gtk.Template.Child()
     dark_mode_wdg = Gtk.Template.Child()
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.model = self.get_application().model
-        bind_property(self.model, 'error', self.error_buffer, 'text')
-        bind_property(self.model, 'url', self.audio_url_wdg, 'text', bi=True)
-        bind_property(self.model, 'url', self.video_url_wdg, 'text', bi=True)
-        for resolution, description in self.model.resolutions:
+    def __init__(self, application):
+        super().__init__(application=application)
+        self.model = model = Model(self)
+        # Setup actions
+        for name in model.actions.list_actions():
+            self.add_action(model.actions.lookup_action(name))
+        about_action = Gio.SimpleAction.new('about', None)
+        about_action.connect('activate', lambda *_: self._show_about_dialog())
+        self.add_action(about_action)
+        # Bind properties to UI
+        bind_property(model, 'error', self.error_buffer, 'text')
+        bind_property(model, 'url', self.audio_url_wdg, 'text', bi=True)
+        bind_property(model, 'url', self.video_url_wdg, 'text', bi=True)
+        for resolution, description in model.resolutions:
             it = self.resolutions_store.append()
             self.resolutions_store.set(it, 0, str(resolution), 1, description)
-        bind_property(self.model, 'resolution', self.resolution_wdg,
-                      'active-id', str, int, bi=True)
+        bind_property(model, 'resolution', self.resolution_wdg, 'active-id',
+                      str, int, bi=True)
         bind_property(
-            self.model, 'state', self.main_stack_wdg, 'visible-child-name',
+            model, 'state', self.main_stack_wdg, 'visible-child-name',
             lambda s: {'cancel': 'download'}.get(s, s))
-        bind_property(self.model, 'mode', self.audio_video_stack_wdg,
+        bind_property(model, 'mode', self.audio_video_stack_wdg,
                       'visible-child-name', bi=True)
         bind_property(self.main_stack_wdg, 'visible-child-name',
                       func_a_to_b=self._update_focus_and_default)
         bind_property(self.audio_video_stack_wdg, 'visible-child-name',
                       func_a_to_b=self._update_focus_and_default)
-        bind_property(self.model, 'download-dir-abs',
+        bind_property(model, 'download-dir-abs',
                       func_a_to_b=self._update_open_download_dir_wdg_tooltip)
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
-            bind_property(self.model, name,
-                          func_a_to_b=self._update_download_msg)
-        bind_property(self.model, 'download-progress',
+            bind_property(model, name, func_a_to_b=self._update_download_msg)
+        bind_property(model, 'download-progress',
                       func_a_to_b=self._update_download_progress)
-        self.model.connect('download-pulse', self._update_download_progress)
+        model.connect('download-pulse', self._update_download_progress)
         for name in ['download-playlist-count', 'download-playlist-index']:
-            bind_property(self.model, name,
+            bind_property(model, name,
                           func_a_to_b=self._update_download_page_title)
-        bind_property(self.model, 'download-title', self.download_title_wdg,
+        bind_property(model, 'download-title', self.download_title_wdg,
                       'label', func_a_to_b=lambda title: title or '…')
-        bind_property(self.model, 'download-thumbnail',
+        bind_property(model, 'download-thumbnail',
                       func_a_to_b=self._add_thumbnail)
         bind_property(self.download_images_wdg, 'transition-running',
                       func_a_to_b=lambda b: b or self._clean_thumbnails())
@@ -188,3 +198,36 @@ class Window(Handy.ApplicationWindow):
             self.open_download_dir_wdg.grab_focus()
         else:
             assert False
+
+    def _show_about_dialog(self):
+        dialog = AboutDialog(self, self.get_application().version)
+        dialog.run()
+        dialog.destroy()
+
+    def on_playlist_request(self):
+        dialog = PlaylistDialog(self)
+        res = dialog.run()
+        dialog.destroy()
+        return res == Gtk.ResponseType.YES
+
+    def on_login_request(self):
+        dialog = LoginDialog(self)
+        res = dialog.run()
+        dialog.destroy()
+        if res == Gtk.ResponseType.OK:
+            return (dialog.username, dialog.password)
+        self.lookup_action('cancel').activate()
+        return ('', '')
+
+    def on_videopassword_request(self):
+        dialog = PasswordDialog(self)
+        res = dialog.run()
+        dialog.destroy()
+        if res == Gtk.ResponseType.OK:
+            return dialog.password
+        self.lookup_action('cancel').activate()
+        return ''
+
+    def do_destroy(self):
+        self.model.shutdown()
+        Handy.ApplicationWindow.do_destroy(self)

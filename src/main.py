@@ -20,54 +20,34 @@ import sys
 
 from gi.repository import Gdk, Gio, GLib, Gtk, Handy
 
-from video_downloader.about_dialog import AboutDialog
-from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
-from video_downloader.model import Handler, Model
-from video_downloader.playlist_dialog import PlaylistDialog
 from video_downloader.window import Window
 
 N_ = gettext.gettext
 
 
-class Application(Gtk.Application, Handler):
+class Application(Gtk.Application):
     def __init__(self, version):
-        super().__init__(application_id='com.github.unrud.VideoDownloader',
-                         flags=Gio.ApplicationFlags.NON_UNIQUE)
+        super().__init__(application_id='com.github.unrud.VideoDownloader')
         self.add_main_option(
             'url', ord('u'), GLib.OptionFlags.NONE, GLib.OptionArg.STRING,
             N_('Prefill URL field'), 'URL')
         GLib.set_application_name(N_('Video Downloader'))
         self.version = version
-        self.model = Model(self)
-        self._settings = Gio.Settings.new(self.props.application_id)
-        self.model.download_dir = self._settings.get_string('download-folder')
-        self.model.prefer_mpeg = self._settings.get_boolean('prefer-mpeg')
-        self._settings.bind('mode', self.model, 'mode', (
-                                Gio.SettingsBindFlags.DEFAULT |
-                                Gio.SettingsBindFlags.GET_NO_CHANGES))
-        r = self._settings.get_uint('resolution')
-        for resolution in sorted(x[0] for x in self.model.resolutions):
-            if r <= resolution:
-                break
-        self.model.resolution = resolution
-        self._settings.bind('resolution', self.model, 'resolution',
-                            Gio.SettingsBindFlags.SET)
-        self._settings.bind('dark-mode', Gtk.Settings.get_default(),
-                            'gtk-application-prefer-dark-theme',
-                            Gio.SettingsBindFlags.DEFAULT)
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
         Handy.init()
-
-    def do_activate(self):
-        for name in self.model.actions.list_actions():
-            self.add_action(self.model.actions.lookup_action(name))
-        about_action = Gio.SimpleAction.new('about', None)
-        about_action.connect('activate', lambda *_: self._show_about_dialog())
-        self.add_action(about_action)
-
-        # Setup the CSS and load it.
+        self.settings = Gio.Settings.new(self.props.application_id)
+        self.settings.bind('dark-mode', Gtk.Settings.get_default(),
+                           'gtk-application-prefer-dark-theme',
+                           Gio.SettingsBindFlags.DEFAULT)
+        # Setup actions
+        new_window_action = Gio.SimpleAction.new(
+            'new-window', GLib.VariantType('s'))
+        new_window_action.connect(
+            'activate', lambda _, param: self._new_window(param.get_string()))
+        self.add_action(new_window_action)
+        # Setup CSS
         css_uri = 'resource:///com/github/unrud/VideoDownloader/style.css'
         css_provider = Gtk.CssProvider()
         css_provider.load_from_file(Gio.File.new_for_uri(css_uri))
@@ -75,50 +55,36 @@ class Application(Gtk.Application, Handler):
             Gdk.Screen.get_default(), css_provider,
             Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
-        win = self.props.active_window
-        if not win:
-            win = Window(application=self)
-            win.set_default_icon_name(self.props.application_id)
+    def _new_window(self, url=''):
+        win = Window(self)
+        win.set_default_icon_name(self.props.application_id)
+        model = win.model
+        model.url = url
+        # Apply/Bind settings
+        model.download_dir = self.settings.get_string('download-folder')
+        model.prefer_mpeg = self.settings.get_boolean('prefer-mpeg')
+        self.settings.bind('mode', model, 'mode', (
+                               Gio.SettingsBindFlags.DEFAULT |
+                               Gio.SettingsBindFlags.GET_NO_CHANGES))
+        r = self.settings.get_uint('resolution')
+        for resolution in sorted(x[0] for x in model.resolutions):
+            if r <= resolution:
+                break
+        model.resolution = resolution
+        self.settings.bind('resolution', model, 'resolution',
+                           Gio.SettingsBindFlags.SET)
         win.present()
 
-    def do_shutdown(self):
-        self.model.shutdown()
-        Gtk.Application.do_shutdown(self)
+    def do_activate(self):
+        self._new_window()
 
     def do_handle_local_options(self, options):
         url_variant = options.lookup_value('url', GLib.VariantType('s'))
         if url_variant:
-            self.model.url = url_variant.get_string()
+            self.register()
+            self.activate_action('new-window', url_variant)
+            return 0
         return -1
-
-    def on_playlist_request(self):
-        dialog = PlaylistDialog(self.props.active_window)
-        res = dialog.run()
-        dialog.destroy()
-        return res == Gtk.ResponseType.YES
-
-    def on_login_request(self):
-        dialog = LoginDialog(self.props.active_window)
-        res = dialog.run()
-        dialog.destroy()
-        if res == Gtk.ResponseType.OK:
-            return (dialog.username, dialog.password)
-        self.lookup_action('cancel').activate()
-        return ('', '')
-
-    def on_videopassword_request(self):
-        dialog = PasswordDialog(self.props.active_window)
-        res = dialog.run()
-        dialog.destroy()
-        if res == Gtk.ResponseType.OK:
-            return dialog.password
-        self.lookup_action('cancel').activate()
-        return ''
-
-    def _show_about_dialog(self):
-        dialog = AboutDialog(self.props.active_window, self.version)
-        dialog.run()
-        dialog.destroy()
 
 
 def main(version):
