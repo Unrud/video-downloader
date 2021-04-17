@@ -213,4 +213,4 @@ msgstr "Letöltés befejeződött"
 
 #: src/window.ui:822
 msgid "Open Download Location"
-msgstr ""
+msgstr "Letöltési hely megnyitása"
