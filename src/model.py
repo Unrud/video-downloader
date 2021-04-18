@@ -85,7 +85,7 @@ class Model(GObject.GObject, downloader.Handler):
             ('download', lambda *_: self.set_property('state', 'download')),
             ('cancel', lambda *_: self.set_property('state', 'cancel')),
             ('back', lambda *_: self.set_property('state', 'start')),
-            ('open-download-dir', self._open_download_dir)])
+            ('open-download-dir', lambda *_: self.open_download_dir())])
         bind_property(self, 'url', self.actions.lookup_action('download'),
                       'enabled', bool)
         bind_property(self, 'state', self,
@@ -120,7 +120,7 @@ class Model(GObject.GObject, downloader.Handler):
             assert False
         return state
 
-    def _open_download_dir(self, action, parameter, user_data):
+    def open_download_dir(self):
         if len(self._download_finished_filenames) == 1:
             method = 'ShowItems'
             paths = [os.path.join(self.download_dir_abs, filename) for

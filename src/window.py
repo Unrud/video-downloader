@@ -19,6 +19,7 @@ import gettext
 import locale
 import math
 import os
+import uuid
 
 from gi.repository import GdkPixbuf, Gio, GLib, Gtk, Handy
 
@@ -26,11 +27,15 @@ from video_downloader.about_dialog import AboutDialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import Handler, Model
 from video_downloader.playlist_dialog import PlaylistDialog
-from video_downloader.util import bind_property
+from video_downloader.util import bind_property, g_log
 
 DOWNLOAD_IMAGE_SIZE = 128
 MAX_ASPECT_RATIO = 2.39
 N_ = gettext.gettext
+
+NOTIFICATION_ACTIONS = (
+    'notification-success', 'notification-open-download-dir',
+    'notification-error')
 
 
 @Gtk.Template(resource_path='/com/github/unrud/VideoDownloader/window.ui')
@@ -59,6 +64,7 @@ class Window(Handy.ApplicationWindow, Handler):
 
     def __init__(self, application):
         super().__init__(application=application)
+        self.uuid = str(uuid.uuid4())  # Id for matching notifications
         self.model = model = Model(self)
         # Setup actions
         for name in model.actions.list_actions():
@@ -77,7 +83,8 @@ class Window(Handy.ApplicationWindow, Handler):
                       str, int, bi=True)
         bind_property(
             model, 'state', self.main_stack_wdg, 'visible-child-name',
-            lambda s: {'cancel': 'download'}.get(s, s))
+            func_a_to_b=lambda s: {'cancel': 'download'}.get(s, s))
+        bind_property(model, 'state', func_a_to_b=self._update_notification)
         bind_property(model, 'mode', self.audio_video_stack_wdg,
                       'visible-child-name', bi=True)
         bind_property(self.main_stack_wdg, 'visible-child-name',
@@ -199,6 +206,41 @@ class Window(Handy.ApplicationWindow, Handler):
         else:
             assert False
 
+    def _hide_notification(self):
+        self.get_application().withdraw_notification(self.uuid)
+
+    def _update_notification(self, state):
+        self._hide_notification()
+        if state not in ('error', 'success') or self.is_active():
+            return
+        notification = Gio.Notification()
+        uuid_variant = GLib.Variant('s', self.uuid)
+        if state == 'error':
+            notification.set_title(N_('Download failed'))
+            notification.set_default_action_and_target(
+                'app.notification-error', uuid_variant)
+        elif state == 'success':
+            notification.set_title(N_('Download finished'))
+            notification.set_default_action_and_target(
+                'app.notification-success', uuid_variant)
+            notification.add_button_with_target(
+                N_('Open Download Location'),
+                'app.notification-open-download-dir', uuid_variant)
+        else:
+            assert False
+        self.get_application().send_notification(self.uuid, notification)
+
+    def on_notification_action(self, action_name):
+        if action_name in ('notification-success', 'notification-error'):
+            self.present()
+        elif (action_name == 'notification-open-download-dir' and
+                self.model.state == 'success'):
+            self.model.open_download_dir()
+        else:
+            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING,
+                  'Action %r not supported in state %r',
+                  action_name, self.model.state)
+
     def _show_about_dialog(self):
         dialog = AboutDialog(self, self.get_application().version)
         dialog.run()
@@ -230,4 +272,5 @@ class Window(Handy.ApplicationWindow, Handler):
 
     def do_destroy(self):
         self.model.shutdown()
+        self._hide_notification()
         Handy.ApplicationWindow.do_destroy(self)
