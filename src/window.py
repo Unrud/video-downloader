@@ -196,7 +196,7 @@ class Window(Handy.ApplicationWindow, Handler):
                 self.video_download_wdg.grab_default()
                 self.video_url_wdg.grab_focus()
             else:
-                assert False
+                assert False, 'unreachable'
         elif state in ['download', 'cancel']:
             self.download_cancel_wdg.grab_focus()
         elif state == 'error':
@@ -204,7 +204,7 @@ class Window(Handy.ApplicationWindow, Handler):
         elif state == 'success':
             self.open_download_dir_wdg.grab_focus()
         else:
-            assert False
+            assert False, 'unreachable'
 
     def _hide_notification(self):
         self.get_application().withdraw_notification(self.uuid)
@@ -227,7 +227,7 @@ class Window(Handy.ApplicationWindow, Handler):
                 N_('Open Download Location'),
                 'app.notification-open-download-dir', uuid_variant)
         else:
-            assert False
+            assert False, 'unreachable'
         self.get_application().send_notification(self.uuid, notification)
 
     def on_notification_action(self, action_name):

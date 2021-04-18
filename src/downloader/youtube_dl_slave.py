@@ -86,7 +86,7 @@ class YoutubeDLSlave:
             filename, progress, bytes_, bytes_total, eta, speed)
 
     def _load_playlist(self, dir_, url):
-        """Retrieve info for all videos available on URL.
+        '''Retrieve info for all videos available on URL.
 
         `outtmpl` must be set to '%(autonumber)s.%(ext)s'.
         `writeinfojson` and `skip_download` must be enables.
@@ -96,7 +96,7 @@ class YoutubeDLSlave:
         Returns the absolute paths of the generated and downloaded files:
         ([(info json, [thumbnail, ...],
          [(subtitle, lang, ext), ...]), ...], skipped videos)
-        """
+        '''
         os.chdir(dir_)
         while True:
             try:

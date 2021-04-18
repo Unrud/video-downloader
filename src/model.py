@@ -117,7 +117,7 @@ class Model(GObject.GObject, downloader.Handler):
         elif state in ['success', 'error']:
             assert self.prev_state == 'download'
         else:
-            assert False
+            assert False, 'unreachable'
         return state
 
     def open_download_dir(self):
@@ -134,7 +134,7 @@ class Model(GObject.GObject, downloader.Handler):
             self._filemanager_proxy.call_sync(
                 method, parameters, Gio.DBusCallFlags.NONE, -1)
         except GLib.Error:
-            g_log('youtube-dl', GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
                   traceback.format_exc())
             subprocess.run(['xdg-open', self.download_dir_abs], check=True)
 

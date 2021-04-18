@@ -21,7 +21,7 @@ from video_downloader.downloader import MAX_RESOLUTION
 
 
 def sort_formats(formats, resolution=MAX_RESOLUTION, prefer_mpeg=False):
-    """Mostly copied from youtube_dl.extractor.common._sort_formats"""
+    '''Mostly copied from youtube_dl.extractor.common._sort_formats'''
     def _formats_key(f):
         preference = f.get('preference')
         if preference is None:

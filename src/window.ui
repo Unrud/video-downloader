@@ -68,8 +68,8 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="homogeneous">True</property>
             <property name="margin-bottom">6</property>
+            <property name="homogeneous">True</property>
             <child>
               <object class="GtkRadioButton" id="light_mode_wdg">
                 <property name="visible">True</property>

@@ -48,7 +48,7 @@ def bind_property(obj_a, prop_a, obj_b=None, prop_b=None, func_a_to_b=None,
                     v = func_b_to_a(v)
                 obj_a.set_property(prop_a, v)
             else:
-                assert False
+                assert False, 'unreachable'
         finally:
             skip = False
     skip = False

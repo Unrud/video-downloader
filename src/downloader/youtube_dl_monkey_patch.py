@@ -38,11 +38,11 @@ def wrap_popen_ignore_stderr(*args, stderr=None, **kwargs):
 
 
 def with_popen_wrapper(f):
-    """Run function `f` with monkey-patched `subprocess.Popen`
+    '''Run function `f` with monkey-patched `subprocess.Popen`
 
     Not thread-safe and doesn't support recursion
 
-    """
+    '''
     def wrap_f(*args, **kwargs):
         assert subprocess.Popen is real_popen
         subprocess.Popen = wrap_popen_ignore_stderr
