@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.8.0" date="2021-04-18">
+    <description>
+      <ul>
+        <li>Show notification when download is finished</li>
+        <li>Add "New Window" to menu</li>
+        <li>Update Hungarian translation</li>
+        <li>Run single instance with multiple windows</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.7.5" date="2021-04-07">
     <description>
       <ul>
