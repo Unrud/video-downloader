@@ -173,7 +173,7 @@ msgstr "ismeretlen"
 
 #: src/window.ui:121
 msgid "About Video Downloader"
-msgstr ""
+msgstr "A Videó letöltő névjegye"
 
 #: src/window.ui:222 src/window.ui:307
 msgid "URL"
@@ -213,4 +213,4 @@ msgstr "Letöltés befejeződött"
 
 #: src/window.ui:822
 msgid "Open Download Location"
-msgstr ""
+msgstr "Letöltési hely megnyitása"
