@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-29 01:21+0200\n"
+"POT-Creation-Date: 2021-04-18 19:02+0200\n"
 "PO-Revision-Date: 2021-02-05 05:25+0100\n"
 "Last-Translator: Thorfin89 <thorfin89@free.fr>\n"
 "Language-Team: French\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:39 src/window.ui:142
+#: src/main.py:35 src/window.ui:158
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
@@ -67,7 +67,7 @@ msgstr "Unrud"
 msgid "com.github.unrud.VideoDownloader"
 msgstr "com.github.unrud.VideoDownloader"
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:14
+#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
 msgid "New Window"
 msgstr "Nouvelle fenêtre"
 
@@ -75,7 +75,7 @@ msgstr "Nouvelle fenêtre"
 msgid "Authentication Required"
 msgstr "Authentification requise"
 
-#: src/authentication_dialog.py:34 src/window.ui:462
+#: src/authentication_dialog.py:34 src/window.ui:478
 msgid "Cancel"
 msgstr "Abandonner"
 
@@ -101,7 +101,7 @@ msgstr "Identifiant"
 msgid "Password"
 msgstr "Mot de passe"
 
-#: src/main.py:38
+#: src/main.py:34
 msgid "Prefill URL field"
 msgstr "Adresse URL préremplie"
 
@@ -161,58 +161,58 @@ msgstr "Vidéo unique"
 msgid "All Videos in Playlist"
 msgstr "Toutes les vidéos de la playlist"
 
-#: src/window.py:107
+#: src/window.py:125
 msgid "Downloading"
 msgstr "Téléchargement"
 
-#: src/window.py:109 src/window.py:134
+#: src/window.py:127 src/window.py:150
 msgid "{} of {}"
 msgstr "{} de {}"
 
-#: src/window.py:135 src/window.py:137
+#: src/window.py:151 src/window.py:153
 msgid "unknown"
 msgstr "inconnue"
 
-#: src/window.ui:121
-msgid "About Video Downloader"
-msgstr ""
-
-#: src/window.ui:222 src/window.ui:307
-msgid "URL"
-msgstr "URL"
-
-#: src/window.ui:260 src/window.ui:397
-msgid "Download"
-msgstr "Téléchargement"
-
-#: src/window.ui:282
-msgid "Audio"
-msgstr "Audio"
-
-#: src/window.ui:352
-msgid "Resolution"
-msgstr "Résolution"
-
-#: src/window.ui:419
-msgid "Video"
-msgstr "Vidéo"
-
-#: src/window.ui:599 src/window.ui:766
-msgid "Back"
-msgstr "Retour"
-
-#: src/window.ui:644
+#: src/window.py:219 src/window.ui:688
 msgid "Download failed"
 msgstr "Le téléchargement a échoué"
 
-#: src/window.ui:675
-msgid "Details"
-msgstr "Détails"
-
-#: src/window.ui:808
+#: src/window.py:223 src/window.ui:857
 msgid "Download finished"
 msgstr "Téléchargement terminé"
 
-#: src/window.ui:822
+#: src/window.py:227 src/window.ui:871
 msgid "Open Download Location"
 msgstr ""
+
+#: src/window.ui:137
+msgid "About Video Downloader"
+msgstr ""
+
+#: src/window.ui:238 src/window.ui:323
+msgid "URL"
+msgstr "URL"
+
+#: src/window.ui:276 src/window.ui:413
+msgid "Download"
+msgstr "Téléchargement"
+
+#: src/window.ui:298
+msgid "Audio"
+msgstr "Audio"
+
+#: src/window.ui:368
+msgid "Resolution"
+msgstr "Résolution"
+
+#: src/window.ui:435
+msgid "Video"
+msgstr "Vidéo"
+
+#: src/window.ui:643 src/window.ui:811
+msgid "Back"
+msgstr "Retour"
+
+#: src/window.ui:718
+msgid "Details"
+msgstr "Détails"
