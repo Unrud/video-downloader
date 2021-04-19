@@ -55,7 +55,7 @@ msgstr "Automatický výber formátu videa podľa zvolených požiadaviek na kva
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
 msgid "Based on youtube-dl."
-msgstr "Využívajúci youtube-dl."
+msgstr "Založený na youtube-dl."
 
 #: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
 msgid "Unrud"
@@ -181,11 +181,11 @@ msgstr "Sťahovanie je hotové"
 
 #: src/window.py:227 src/window.ui:871
 msgid "Open Download Location"
-msgstr ""
+msgstr "Otvoriť cieľové umiestnenie"
 
 #: src/window.ui:137
 msgid "About Video Downloader"
-msgstr ""
+msgstr "O programe"
 
 #: src/window.ui:238 src/window.ui:323
 msgid "URL"
