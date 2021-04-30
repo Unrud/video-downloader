@@ -39,7 +39,7 @@ class Downloader:
 
     def shutdown(self):
         if self._process:
-            self._finish_process_and_kill_pgrp(self._process)
+            self._finish_process_and_kill_pgrp()
 
     def cancel(self):
         self._process.terminate()
@@ -62,13 +62,14 @@ class Downloader:
         self._process.stdout_remainder = self._process.stderr_remainder = ''
         GLib.unix_fd_add_full(
             GLib.PRIORITY_DEFAULT_IDLE, self._process.stdout.fileno(),
-            GLib.IOCondition.IN, self._on_process_stdout)
+            GLib.IOCondition.IN, self._on_process_stdout, self._process)
         GLib.unix_fd_add_full(
             GLib.PRIORITY_DEFAULT_IDLE, self._process.stderr.fileno(),
             GLib.IOCondition.IN, self._on_process_stderr, self._process)
 
-    @staticmethod
-    def _finish_process_and_kill_pgrp(process):
+    def _finish_process_and_kill_pgrp(self):
+        assert self._process
+        process, self._process = self._process, None
         try:
             # Terminate process gracefully so it can delete temporary files
             process.terminate()
@@ -82,11 +83,12 @@ class Downloader:
                 os.killpg(process.pid, signal.SIGKILL)
         return process.returncode
 
-    def _on_process_stdout(self, *args):
-        s = self._process.stdout.read()
-        self._process.stdout_remainder += s
-        *lines, self._process.stdout_remainder = \
-            self._process.stdout_remainder.split('\n')
+    def _on_process_stdout(self, fd, condition, process):
+        s = process.stdout.read()
+        process.stdout_remainder += s
+        *lines, process.stdout_remainder = process.stdout_remainder.split('\n')
+        if self._process is not process:
+            return bool(s)
         failure = False
         for line in lines:
             try:
@@ -94,23 +96,20 @@ class Downloader:
                 method = getattr(self._handler, request['method'])
                 result = method(*request['args'])
                 print(json.dumps({'result': result}),
-                      flush=True, file=self._process.stdin)
+                      file=process.stdin, flush=True)
             except Exception:
                 g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
                       'failed request %r\n%s', line, traceback.format_exc())
                 failure = True
                 break
-        if not s and self._process.stdout_remainder:
+        if not s and process.stdout_remainder:
             g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
-                  'incomplete request %r', self._process.stdout_remainder)
+                  'incomplete request %r', process.stdout_remainder)
             failure = True
         if not s or failure:
-            # Unset self._process first for self._on_process_stderr
-            process, self._process = self._process, None
-            returncode = self._finish_process_and_kill_pgrp(process)
+            returncode = self._finish_process_and_kill_pgrp()
             self._handler.on_finished(returncode == 0 and not failure)
-            return False
-        return True
+        return bool(s)
 
     def _on_process_stderr(self, fd, condition, process):
         s = process.stderr.read()
