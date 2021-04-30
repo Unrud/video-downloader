@@ -65,6 +65,8 @@ install_data(icon_id + '-symbolic.svg',
 )
 
 rsvg_util = find_program('rsvg-convert')
+move_aux = meson.current_source_dir() / 'build-aux' / 'meson' / 'move.py'
+python_sources_for_linting += move_aux
 foreach res : [16, 32, 48, 64, 128, 256, 512]
   icon_install_dir = (
     get_option('datadir') / 'icons' / 'hicolor' / '@0@x@0@'.format(res) / 'apps'
@@ -82,8 +84,7 @@ foreach res : [16, 32, 48, 64, 128, 256, 512]
     install_dir: icon_install_dir
   )
   # rename icon after installation
-  meson.add_install_script(python,
-    meson.current_source_dir() / 'build-aux' / 'meson' / 'move.py',
+  meson.add_install_script(python, move_aux,
     icon_install_dir / icon_png,
     icon_install_dir / icon_id + '.png'
   )

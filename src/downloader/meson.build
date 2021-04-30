@@ -5,11 +5,6 @@ video_downloader_sources = files([
   'youtube_dl_monkey_patch.py',
   'youtube_dl_slave.py',
 ])
-
-if run_command(python, '-m', 'flake8', '--version').returncode() == 0
-  test('Lint python files', python,
-    args: ['-m', 'flake8', video_downloader_sources]
-  )
-endif
+python_sources_for_linting += video_downloader_sources
 
 install_data(video_downloader_sources, install_dir: moduledir / 'downloader')

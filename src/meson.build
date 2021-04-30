@@ -21,6 +21,7 @@ video_downloader_bin = configure_file(
   install: true,
   install_dir: get_option('bindir')
 )
+python_sources_for_linting += video_downloader_bin
 
 video_downloader_sources = files([
   '__init__.py',
@@ -32,12 +33,7 @@ video_downloader_sources = files([
   'util.py',
   'window.py'
 ])
-
-if run_command(python, '-m', 'flake8', '--version').returncode() == 0
-  test('Lint python files', python,
-    args: ['-m', 'flake8', video_downloader_sources, video_downloader_bin]
-  )
-endif
+python_sources_for_linting += video_downloader_sources
 
 install_data(video_downloader_sources, install_dir: moduledir)
 
