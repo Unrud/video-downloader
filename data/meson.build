@@ -18,7 +18,7 @@ endif
 
 base_appstream_file = i18n.merge_file(
   input: 'com.github.unrud.VideoDownloader.appdata.xml.in',
-  output: 'com.github.unrud.VideoDownloader.appdata.xml.base',
+  output: 'com.github.unrud.VideoDownloader-base.appdata.xml',
   po_dir: '../po'
 )
 

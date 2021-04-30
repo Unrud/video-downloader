@@ -22,42 +22,44 @@ from youtube_dl.postprocessor.ffmpeg import FFmpegPostProcessor
 real_popen = subprocess.Popen
 
 
-def wrap_popen_ignore_stderr(*args, stderr=None, **kwargs):
+def wrapped_popen_ignore_stderr(*args, stderr=None, **kwargs):
+    '''Wrapped `subprocess.Popen` ignoring `stderr=subprocess.PIPE` argument'''
     fwd_stderr = None if stderr == subprocess.PIPE else stderr
     p = real_popen(*args, stderr=fwd_stderr, **kwargs)
     real_communicate = p.communicate
 
-    def wrap_communicate(*args, **kwargs):
+    def wrapped_communicate(*args, **kwargs):
         outs, errs = real_communicate(*args, **kwargs)
         if stderr == subprocess.PIPE:
             # Support for `encoding` etc. is not implemented
             errs = b''
         return outs, errs
-    p.communicate = wrap_communicate
+    p.communicate = wrapped_communicate
     return p
 
 
-def with_popen_wrapper(f):
-    '''Run function `f` with monkey-patched `subprocess.Popen`
+def with_wrapped_popen_ignore_stderr(fn):
+    '''Run function `fn` with monkey-patched `subprocess.Popen`
 
     Not thread-safe and doesn't support recursion
 
     '''
-    def wrap_f(*args, **kwargs):
+    def wrapped_fn(*args, **kwargs):
         assert subprocess.Popen is real_popen
-        subprocess.Popen = wrap_popen_ignore_stderr
+        subprocess.Popen = wrapped_popen_ignore_stderr
         try:
-            retval = f(*args, **kwargs)
+            retval = fn(*args, **kwargs)
         finally:
-            assert subprocess.Popen is wrap_popen_ignore_stderr
+            assert subprocess.Popen is wrapped_popen_ignore_stderr
             subprocess.Popen = real_popen
         return retval
-    return wrap_f
+    return wrapped_fn
 
 
 def install_monkey_patches():
     # ffmpeg writes progress information to stderr, but youtube-dl captures it
     # by default. Overriding this behavior allows us to show activity while
     # converting audio to MP3 or finishing videos.
-    FFmpegPostProcessor.run_ffmpeg_multiple_files = with_popen_wrapper(
-        FFmpegPostProcessor.run_ffmpeg_multiple_files)
+    FFmpegPostProcessor.run_ffmpeg_multiple_files = (
+        with_wrapped_popen_ignore_stderr(
+            FFmpegPostProcessor.run_ffmpeg_multiple_files))

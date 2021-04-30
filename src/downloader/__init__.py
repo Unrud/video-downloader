@@ -85,10 +85,11 @@ class Downloader:
 
     def _on_process_stdout(self, fd, condition, process):
         s = process.stdout.read()
+        pipe_closed = not s
         process.stdout_remainder += s
         *lines, process.stdout_remainder = process.stdout_remainder.split('\n')
         if self._process is not process:
-            return bool(s)
+            return not pipe_closed
         failure = False
         for line in lines:
             try:
@@ -102,24 +103,27 @@ class Downloader:
                       'failed request %r\n%s', line, traceback.format_exc())
                 failure = True
                 break
-        if not s and process.stdout_remainder:
+        if pipe_closed and process.stdout_remainder:
             g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
                   'incomplete request %r', process.stdout_remainder)
             failure = True
-        if not s or failure:
+        if pipe_closed or failure:
             returncode = self._finish_process_and_kill_pgrp()
             self._handler.on_finished(returncode == 0 and not failure)
-        return bool(s)
+        return not pipe_closed
 
     def _on_process_stderr(self, fd, condition, process):
         s = process.stderr.read()
-        process.stderr_remainder += s or '\n'
+        pipe_closed = not s
+        process.stderr_remainder += s
+        if pipe_closed:
+            process.stderr_remainder += '\n'
         *lines, process.stderr_remainder = process.stderr_remainder.split('\n')
         for line in filter(None, lines):
             g_log('youtube-dl', GLib.LogLevelFlags.LEVEL_DEBUG, '%s', line)
         if self._process is process:
             self._handler.on_pulse()
-        return bool(s)
+        return not pipe_closed
 
 
 class Handler:

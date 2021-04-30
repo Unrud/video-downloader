@@ -13,8 +13,8 @@ def make_xml_parser():
     return ET.XMLParser(target=CommentTreeBuilder())
 
 
-_, main_path, insert_path, insert_xpath = sys.argv
-main_xml = ET.parse(main_path, parser=make_xml_parser())
-insert_xml = ET.parse(insert_path, parser=make_xml_parser())
+_, main_xml_path, insert_xml_path, insert_xpath = sys.argv
+main_xml = ET.parse(main_xml_path, parser=make_xml_parser())
+insert_xml = ET.parse(insert_xml_path, parser=make_xml_parser())
 main_xml.find(insert_xpath).append(insert_xml.getroot())
 main_xml.write(sys.stdout.buffer, encoding='utf-8', xml_declaration=True)
