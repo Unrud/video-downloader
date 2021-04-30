@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.8.1" date="2021-04-30">
+    <description>
+      <ul>
+        <li>Update Slovak translation</li>
+        <li>Fix cancelling when external downloader is used by youtube-dl</li>
+        <li>Fix warning when closing window while download is in progress</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.8.0" date="2021-04-18">
     <description>
       <ul>
