@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.8.2" date="2021-05-01">
+    <description>
+      <ul>
+        <li>Fix minor bug which could cause downloads to fail under rare circumstances</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.8.1" date="2021-04-30">
     <description>
       <ul>
