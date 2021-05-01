@@ -19,6 +19,7 @@ import contextlib
 import fcntl
 import json
 import os
+import re
 import signal
 import subprocess
 import sys
@@ -36,6 +37,9 @@ class Downloader:
     def __init__(self, handler):
         self._handler = handler
         self._process = None
+        # Use regex to split lines because `bytes.splitlines` transforms
+        # `b'abc\n'` to `[b'abc']` instead of `[b'abc', b'']`
+        self._splitlines_re = re.compile(rb'\r\n|\r|\n')
 
     def shutdown(self):
         if self._process:
@@ -57,9 +61,19 @@ class Downloader:
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
             stderr=subprocess.PIPE, env=env, universal_newlines=True,
             preexec_fn=os.setpgrp)
+        # WARNING: O_NONBLOCK can break mult ibyte decoding and line splitting
+        # under rare circumstances.
+        # E.g. when the buffer only includes the first byte of a multi byte
+        # UTF-8 character, TextIOWrapper would normally block until all bytes
+        # of the character are read. This does not work with O_NONBLOCK, and it
+        # raises UnicodeDecodeError instead.
+        # E.g. when the buffer only includes `b'\r'`, TextIOWrapper would
+        # normally block to read the next byte and check if it's `b'\n'`.
+        # This does not work with O_NONBLOCK, and it gets transformed to `'\n'`
+        # directly. The line ending `b'\r\n'` will be transformed to `'\n\n'`.
         fcntl.fcntl(self._process.stdout, fcntl.F_SETFL, os.O_NONBLOCK)
         fcntl.fcntl(self._process.stderr, fcntl.F_SETFL, os.O_NONBLOCK)
-        self._process.stdout_remainder = self._process.stderr_remainder = ''
+        self._process.stdout_remainder = self._process.stderr_remainder = b''
         GLib.unix_fd_add_full(
             GLib.PRIORITY_DEFAULT_IDLE, self._process.stdout.fileno(),
             GLib.IOCondition.IN, self._on_process_stdout, self._process)
@@ -84,15 +98,19 @@ class Downloader:
         return process.returncode
 
     def _on_process_stdout(self, fd, condition, process):
-        s = process.stdout.read()
+        # Don't use `process.stdout.read` because of O_NONBLOCK (see `start`)
+        s = process.stdout.buffer.read()
         pipe_closed = not s
         process.stdout_remainder += s
-        *lines, process.stdout_remainder = process.stdout_remainder.split('\n')
+        *lines, process.stdout_remainder = self._splitlines_re.split(
+            process.stdout_remainder)
         if self._process is not process:
             return not pipe_closed
         failure = False
-        for line in lines:
+        line: typing.AnyStr
+        for line in filter(None, lines):  # Filter empty lines
             try:
+                line = line.decode(process.stdout.encoding)
                 request = json.loads(line)
                 method = getattr(self._handler, request['method'])
                 result = method(*request['args'])
@@ -113,13 +131,18 @@ class Downloader:
         return not pipe_closed
 
     def _on_process_stderr(self, fd, condition, process):
-        s = process.stderr.read()
+        # Don't use `process.stderr.read` because of O_NONBLOCK (see `start`)
+        s = process.stderr.buffer.read()
         pipe_closed = not s
         process.stderr_remainder += s
         if pipe_closed:
-            process.stderr_remainder += '\n'
-        *lines, process.stderr_remainder = process.stderr_remainder.split('\n')
-        for line in filter(None, lines):
+            process.stderr_remainder += b'\n'
+        *lines, process.stderr_remainder = self._splitlines_re.split(
+            process.stderr_remainder)
+        for line in filter(None, lines):  # Filter empty lines
+            # Don't use `errors='strict'` because programs might write garbage
+            # to stderr
+            line = line.decode(process.stderr.encoding, errors='replace')
             g_log('youtube-dl', GLib.LogLevelFlags.LEVEL_DEBUG, '%s', line)
         if self._process is process:
             self._handler.on_pulse()
