@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.8.3" date="2021-05-15">
+    <description>
+      <ul>
+        <li>Improve compatibility of notifications with some desktop environments</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.8.2" date="2021-05-01">
     <description>
       <ul>
