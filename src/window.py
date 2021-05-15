@@ -214,18 +214,18 @@ class Window(Handy.ApplicationWindow, Handler):
         if state not in ('error', 'success') or self.is_active():
             return
         notification = Gio.Notification()
-        uuid_variant = GLib.Variant('s', self.uuid)
         if state == 'error':
             notification.set_title(N_('Download failed'))
-            notification.set_default_action_and_target(
-                'app.notification-error', uuid_variant)
+            action_name_with_uuid = 'app.notification-error--%s' % self.uuid
+            notification.set_default_action(action_name_with_uuid)
         elif state == 'success':
             notification.set_title(N_('Download finished'))
-            notification.set_default_action_and_target(
-                'app.notification-success', uuid_variant)
-            notification.add_button_with_target(
-                N_('Open Download Location'),
-                'app.notification-open-download-dir', uuid_variant)
+            action_name_with_uuid = 'app.notification-success--%s' % self.uuid
+            notification.set_default_action(action_name_with_uuid)
+            button_action_name_with_uuid = (
+                'app.notification-open-download-dir--%s' % self.uuid)
+            notification.add_button(N_('Open Download Location'),
+                                    button_action_name_with_uuid)
         else:
             assert False, 'unreachable'
         self.get_application().send_notification(self.uuid, notification)

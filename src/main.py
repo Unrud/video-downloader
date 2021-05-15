@@ -20,7 +20,6 @@ import sys
 
 from gi.repository import Gdk, Gio, GLib, Gtk, Handy
 
-from video_downloader.util import g_log
 from video_downloader.window import NOTIFICATION_ACTIONS, Window
 
 N_ = gettext.gettext
@@ -49,10 +48,6 @@ class Application(Gtk.Application):
         new_window_action.connect(
             'activate', lambda _, param: self._new_window(param.get_string()))
         self.add_action(new_window_action)
-        for action_name in NOTIFICATION_ACTIONS:
-            action = Gio.SimpleAction.new(action_name, GLib.VariantType('s'))
-            action.connect('activate', self._dispatch_notification_action)
-            self.add_action(action)
         # Setup CSS
         css_uri = 'resource:///com/github/unrud/VideoDownloader/style.css'
         css_provider = Gtk.CssProvider()
@@ -81,18 +76,33 @@ class Application(Gtk.Application):
                            Gio.SettingsBindFlags.SET)
         # Add to window list
         self._active_windows[win.uuid] = win
-        win.connect('destroy', lambda win: self._active_windows.pop(win.uuid))
-
+        # Register window notification actions
+        for action_name in NOTIFICATION_ACTIONS:
+            action_name_with_uuid = '%s--%s' % (action_name, win.uuid)
+            action = Gio.SimpleAction.new(action_name_with_uuid)
+            action.connect('activate', self._dispatch_notification_action)
+            self.add_action(action)
+        win.connect('destroy', self._on_destroy_window)
         win.present()
 
+    def _on_destroy_window(self, win):
+        for action_name in NOTIFICATION_ACTIONS:
+            action_name_with_uuid = '%s--%s' % (action_name, win.uuid)
+            self.remove_action(action_name_with_uuid)
+        del self._active_windows[win.uuid]
+
     def _dispatch_notification_action(self, action, param):
-        action_name = action.get_name()
-        uuid = param.get_string()
-        win = self._active_windows.get(uuid)
-        if win is None:
-            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING,
-                  'Ignoring action %r for unknown window %r',
-                  action_name, uuid)
+        action_name_with_uuid = action.get_name()
+        for action_name in NOTIFICATION_ACTIONS:
+            prefix = '%s--' % action_name
+            if action_name_with_uuid.startswith(prefix):
+                uuid = action_name_with_uuid[len(prefix):]
+                break
+        else:
+            assert False, 'unreachable'
+        try:
+            win = self._active_windows[uuid]
+        except KeyError:
             return
         win.on_notification_action(action_name)
 
