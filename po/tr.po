@@ -1,0 +1,216 @@
+# Spanish translations for video-downloader package.
+# Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the video-downloader package.
+# ÜSolmaz <u2slmz@protonmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: video-downloader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-18 19:02+0200\n"
+"PO-Revision-Date: 2021-07-05 00:18+0300\n"
+"Last-Translator: ÜSolmaz <u2slmz@protonmail.com>\n"
+"Language-Team: Turkish; İstanbul\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.3\n"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
+#: src/main.py:35 src/window.ui:158
+msgid "Video Downloader"
+msgstr "Video İndirici"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
+msgid "Download videos from websites like YouTube and many others"
+msgstr "YouTube ve diğer internet sitelerinden video indirin"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:10
+msgid ""
+"Download videos from websites with an easy-to-use interface. Provides the "
+"following features:"
+msgstr ""
+"İnternet sitelerinden kolay indirmek ve kullanmak için videolar. Aşağıdaki "
+"özellikleri sağlar:"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
+msgid "Convert videos to MP3"
+msgstr "MP3 Video dönüştürücü"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:16
+msgid "Supports password-protected and private videos"
+msgstr "Parola korumalı ve özel videoları destekler"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:17
+msgid "Download single videos or whole playlists"
+msgstr "Tek videoları veya tüm çalma listelerini indirin"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
+msgid "Automatically selects a video format based on your quality demands"
+msgstr "Kalite taleplerinize göre otomatik olarak bir video formatı seçer"
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
+msgid "Based on youtube-dl."
+msgstr "Youtube-dl dayalı."
+
+#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+msgid "Unrud"
+msgstr "Unrud"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:6
+msgid "com.github.unrud.VideoDownloader"
+msgstr "com.github.unrud.VideoDownloader"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
+msgid "New Window"
+msgstr "Yeni Pencere"
+
+#: src/authentication_dialog.py:30
+msgid "Authentication Required"
+msgstr "Kimlik Doğrulaması Gerekli"
+
+#: src/authentication_dialog.py:34 src/window.ui:478
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/authentication_dialog.py:42
+msgid "Sign in"
+msgstr "Giriş"
+
+#: src/authentication_dialog.py:42
+msgid "Skip"
+msgstr "Atla"
+
+#: src/authentication_dialog_login.ui:37
+#: src/authentication_dialog_password.ui:37
+msgid "The video is not public."
+msgstr "Video herkese açık değil."
+
+#: src/authentication_dialog_login.ui:61
+msgid "Username"
+msgstr "Kullanıcı adı"
+
+#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_password.ui:55
+msgid "Password"
+msgstr "Parola"
+
+#: src/main.py:34
+msgid "Prefill URL field"
+msgstr "Profil URL alanı"
+
+#: src/model.py:59
+msgid "Best"
+msgstr "En iyi"
+
+#: src/model.py:60
+msgid "4320p (8K)"
+msgstr "4320p (8K)"
+
+#: src/model.py:61
+msgid "2160p (4K)"
+msgstr "2160p (4K)"
+
+#: src/model.py:62
+msgid "1440p (HD)"
+msgstr "1440p (HD)"
+
+#: src/model.py:63
+msgid "1080p (HD)"
+msgstr "1080p (HD)"
+
+#: src/model.py:64
+msgid "720p (HD)"
+msgstr "720p (HD)"
+
+#: src/model.py:65
+msgid "480p"
+msgstr "480p"
+
+#: src/model.py:66
+msgid "360p"
+msgstr "360p"
+
+#: src/model.py:67
+msgid "240p"
+msgstr "240p"
+
+#: src/model.py:68
+msgid "144p"
+msgstr "144p"
+
+#: src/playlist_dialog.py:32
+msgid "Download Playlist?"
+msgstr "Çalma Listesini İndir?"
+
+#: src/playlist_dialog.py:33
+msgid "The video is part of a playlist."
+msgstr "Video bir çalma Listesinin bir parçası."
+
+#: src/playlist_dialog.py:34
+msgid "Single Video"
+msgstr "Tek Video"
+
+#: src/playlist_dialog.py:35
+msgid "All Videos in Playlist"
+msgstr "Çalma listesindeki tüm videolar"
+
+#: src/window.py:125
+msgid "Downloading"
+msgstr "Yükleniyor"
+
+#: src/window.py:127 src/window.py:150
+msgid "{} of {}"
+msgstr "{} nin {}"
+
+#: src/window.py:151 src/window.py:153
+msgid "unknown"
+msgstr "bilinmeyen"
+
+#: src/window.py:219 src/window.ui:688
+msgid "Download failed"
+msgstr "İndirme başarısız oldu"
+
+#: src/window.py:223 src/window.ui:857
+msgid "Download finished"
+msgstr "İndirme tamamlandı"
+
+#: src/window.py:227 src/window.ui:871
+msgid "Open Download Location"
+msgstr "İndirme Konumunu Aç"
+
+#: src/window.ui:137
+msgid "About Video Downloader"
+msgstr "Video İndirici Hakkında"
+
+#: src/window.ui:238 src/window.ui:323
+msgid "URL"
+msgstr "URL"
+
+#: src/window.ui:276 src/window.ui:413
+msgid "Download"
+msgstr "İndir"
+
+#: src/window.ui:298
+msgid "Audio"
+msgstr "Ses"
+
+#: src/window.ui:368
+msgid "Resolution"
+msgstr "Çözünürlük"
+
+#: src/window.ui:435
+msgid "Video"
+msgstr "Video"
+
+#: src/window.ui:643 src/window.ui:811
+msgid "Back"
+msgstr "Geri"
+
+#: src/window.ui:718
+msgid "Details"
+msgstr "Detaylar"
