@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.8.5" date="2021-07-31">
+    <description>
+      <ul>
+        <li>Improve detection of authentication requests</li>
+        <li>Fix download error when video id is too long</li>
+        <li>Fix reporting of FFMPEG error message</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.8.4" date="2021-07-14">
     <description>
       <ul>
