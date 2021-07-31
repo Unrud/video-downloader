@@ -70,3 +70,7 @@ flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.
 ```
 snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.VideoDownloader prefer-mpeg true
 ```
+
+## Debug
+
+To display messages from **youtube-dl** run program with environment variable `G_MESSAGES_DEBUG=youtube-dl`.
