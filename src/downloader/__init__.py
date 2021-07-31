@@ -144,8 +144,8 @@ class Downloader:
             # to stderr
             line = line.decode(process.stderr.encoding, errors='replace')
             g_log('youtube-dl', GLib.LogLevelFlags.LEVEL_DEBUG, '%s', line)
-        if self._process is process:
-            self._handler.on_pulse()
+            if self._process is process:
+                self._handler.on_pulse()
         return not pipe_closed
 
 

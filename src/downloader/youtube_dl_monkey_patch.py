@@ -15,51 +15,47 @@
 # You should have received a copy of the GNU General Public License
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
+import io
 import subprocess
-
-from youtube_dl.postprocessor.ffmpeg import FFmpegPostProcessor
-
-real_popen = subprocess.Popen
+import sys
+import threading
 
 
-def wrapped_popen_ignore_stderr(*args, stderr=None, **kwargs):
-    '''Wrapped `subprocess.Popen` ignoring `stderr=subprocess.PIPE` argument'''
-    fwd_stderr = None if stderr == subprocess.PIPE else stderr
-    p = real_popen(*args, stderr=fwd_stderr, **kwargs)
-    real_communicate = p.communicate
-
-    def wrapped_communicate(*args, **kwargs):
-        outs, errs = real_communicate(*args, **kwargs)
-        if stderr == subprocess.PIPE:
-            # Support for `encoding` etc. is not implemented
-            errs = b''
-        return outs, errs
-    p.communicate = wrapped_communicate
-    return p
+def _tee(fin, *fouts):
+    '''Read from `fin` and write to all `fouts`'''
+    while True:
+        b = fin.read(1)
+        if not b:
+            break
+        for fout in fouts:
+            fout.write(b)
 
 
-def with_wrapped_popen_ignore_stderr(fn):
-    '''Run function `fn` with monkey-patched `subprocess.Popen`
+class PatchedPopen(subprocess.Popen):
 
-    Not thread-safe and doesn't support recursion
-
-    '''
-    def wrapped_fn(*args, **kwargs):
-        assert subprocess.Popen is real_popen
-        subprocess.Popen = wrapped_popen_ignore_stderr
-        try:
-            retval = fn(*args, **kwargs)
-        finally:
-            assert subprocess.Popen is wrapped_popen_ignore_stderr
-            subprocess.Popen = real_popen
-        return retval
-    return wrapped_fn
+    def communicate(self, *args, **kwargs):
+        '''When processe's stderr gets redirected by `subprocess.PIPE`
+           duplicate it to `sys.stderr`
+        '''
+        if not self.stderr:
+            return super().communicate(*args, **kwargs)
+        if hasattr(self.stderr, 'encoding'):
+            errs_buf = io.StringIO()
+            sys_stderr = sys.stderr
+        else:
+            errs_buf = io.BytesIO()
+            sys_stderr = sys.stderr.buffer
+        tee_thread = threading.Thread(
+            target=_tee, args=(self.stderr, sys_stderr, errs_buf), daemon=True)
+        self.stderr = None
+        tee_thread.start()
+        outs, _ = super().communicate(*args, **kwargs)
+        tee_thread.join()
+        return outs, errs_buf.getvalue()
 
 
 def install_monkey_patches():
     # ffmpeg writes progress information to stderr, but youtube-dl captures it
     # by default. Overriding this behavior allows us to show activity while
     # converting audio to MP3 or finishing videos.
-    FFmpegPostProcessor.run_ffmpeg_multiple_files = (
-        with_wrapped_popen_ignore_stderr(
-            FFmpegPostProcessor.run_ffmpeg_multiple_files))
+    subprocess.Popen = PatchedPopen
