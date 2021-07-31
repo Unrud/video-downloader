@@ -18,6 +18,7 @@
 import contextlib
 import fcntl
 import glob
+import hashlib
 import itertools
 import json
 import os
@@ -35,7 +36,9 @@ from youtube_dl.utils import dfxp2srt, sanitize_filename
 from video_downloader.downloader import MAX_RESOLUTION
 from video_downloader.downloader.youtube_dl_formats import sort_formats
 
-MAX_OUTPUT_TITLE_LENGTH = 150  # File names are typically limited to 255 bytes
+# File names are typically limited to 255 bytes
+MAX_OUTPUT_TITLE_LENGTH = 200
+MAX_ID_LENGTH = 150
 MAX_THUMBNAIL_RESOLUTION = 1024
 FFMPEG_EXE = 'ffmpeg'
 
@@ -200,6 +203,17 @@ class YoutubeDLSlave:
         return output_title
 
     @staticmethod
+    def _get_short_id(id_):
+        # Hash id if too long for file name
+        output_id = sanitize_filename(id_)
+        if (len(output_id.encode(sys.getfilesystemencoding(), 'ignore'))
+                <= MAX_ID_LENGTH):
+            return id_
+        m = hashlib.sha256()
+        m.update(id_.encode(errors='replace'))
+        return 'hash-%s' % m.hexdigest()
+
+    @staticmethod
     def _find_existing_download(download_dir, output_title, mode):
         for filepath in glob.iglob(glob.escape(
                 os.path.join(download_dir, output_title)) + '.*'):
@@ -316,7 +330,7 @@ class YoutubeDLSlave:
             del self.ydl_opts['skip_download']
             # Include id and format_id in outtmpl to prevent youtube-dl
             # from continuing wrong file
-            self.ydl_opts['outtmpl'] = '%(id)s.%(format_id)s.%(ext)s'
+            self.ydl_opts['outtmpl'] = '%(short_id)s.%(format_id)s.%(ext)s'
             # Output info_dict as JSON handled via logger debug callback
             self.ydl_opts['forcejson'] = True
             mode = self._handler.get_mode()
@@ -346,6 +360,7 @@ class YoutubeDLSlave:
                     info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
+                info['short_id'] = self._get_short_id(info.get('id') or '')
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = self._get_output_title(title)
                 # Test subtitles
