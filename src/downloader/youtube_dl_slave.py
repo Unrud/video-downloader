@@ -153,8 +153,8 @@ class YoutubeDLSlave:
     def error(self, msg):
         print(msg, file=sys.stderr, flush=True)
         # Handle authentication requests
-        if self._allow_authentication_request and (
-                'please sign in' in msg or '--username' in msg):
+        if (self._allow_authentication_request and
+                re.search(r'\b[Ss]ign in\b|--username', msg)):
             if self._skip_authentication:
                 self._skipped_count += 1
                 return
