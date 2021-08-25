@@ -210,6 +210,3 @@ msgstr "Zpět"
 #: src/window.ui:718
 msgid "Details"
 msgstr "Detaily"
-
-#~ msgid "com.github.unrud.VideoDownloader"
-#~ msgstr "com.github.unrud.VideoDownloader"
