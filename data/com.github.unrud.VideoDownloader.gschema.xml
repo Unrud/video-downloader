@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="video-downloader">
-  <enum id="com.github.unrud.VideoDownloader.Mode">
-    <value value="0" nick="audio"/>
-    <value value="1" nick="video"/>
-  </enum>
-
   <schema id="com.github.unrud.VideoDownloader" path="/com/github/unrud/VideoDownloader/">
     <key type="s" name="download-folder">
       <default>'xdg-download/VideoDownloader'</default>
@@ -18,7 +13,11 @@
       <default>false</default>
     </key>
 
-    <key name="mode" enum="com.github.unrud.VideoDownloader.Mode">
+    <key type="s" name="mode">
+      <choices>
+        <choice value="audio"/>
+        <choice value="video"/>
+      </choices>
       <default>'audio'</default>
     </key>
 

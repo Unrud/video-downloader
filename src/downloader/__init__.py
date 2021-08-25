@@ -30,7 +30,7 @@ from gi.repository import GLib
 
 from video_downloader.util import g_log
 
-MAX_RESOLUTION = 2**16
+MAX_RESOLUTION = 2**16-1
 
 
 class Downloader:
