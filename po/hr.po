@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-18 19:02+0200\n"
-"PO-Revision-Date: 2021-03-23 15:58+0100\n"
+"PO-Revision-Date: 2021-09-24 12:20+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -80,7 +80,7 @@ msgstr "Odustani"
 
 #: src/authentication_dialog.py:42
 msgid "Sign in"
-msgstr "Prijava"
+msgstr "Prijavi se"
 
 #: src/authentication_dialog.py:42
 msgid "Skip"
@@ -186,7 +186,7 @@ msgstr "Otvori mjesto preuzimanja"
 
 #: src/window.ui:137
 msgid "About Video Downloader"
-msgstr "O Preuzimanje videa"
+msgstr "O programu Preuzimanje videa"
 
 #: src/window.ui:238 src/window.ui:323
 msgid "URL"
@@ -194,11 +194,11 @@ msgstr "URL-adresa"
 
 #: src/window.ui:276 src/window.ui:413
 msgid "Download"
-msgstr "Preuzimanje"
+msgstr "Preuzmi"
 
 #: src/window.ui:298
 msgid "Audio"
-msgstr "Zvuk"
+msgstr "Audio"
 
 #: src/window.ui:368
 msgid "Resolution"
