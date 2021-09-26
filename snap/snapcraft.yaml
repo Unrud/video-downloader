@@ -139,4 +139,4 @@ parts:
     organize:
       # WORKAROUND: Move files from fake installation location to actual target
       snap/video-downloader/current/usr: usr
-    parse-info: [usr/share/metainfo/com.github.unrud.VideoDownloader.appdata.xml]
+    parse-info: [usr/share/metainfo/com.github.unrud.VideoDownloader.metainfo.xml]

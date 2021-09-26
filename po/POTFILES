@@ -1,4 +1,4 @@
-data/com.github.unrud.VideoDownloader.appdata.xml.in
+data/com.github.unrud.VideoDownloader.metainfo.xml.in
 data/com.github.unrud.VideoDownloader.desktop.in
 data/com.github.unrud.VideoDownloader.gschema.xml
 src/about_dialog.py
