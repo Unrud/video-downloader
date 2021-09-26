@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-24 14:40+0200\n"
+"POT-Creation-Date: 2021-09-26 13:27+0200\n"
 "PO-Revision-Date: 2021-08-24 14:44+0200\n"
 "Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -18,18 +18,18 @@ msgstr ""
 "X-Generator: Gtranslator 40.0\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
 #: src/main.py:34 src/window.ui:158
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
 msgid "Download videos from websites like YouTube and many others"
 msgstr "Stahování videí ze stránek jako YouTube a mnoho dalších"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:10
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
@@ -37,27 +37,27 @@ msgstr ""
 "Stahujte videa z internetu pomocí jednoduchého rozhraní s následujícími "
 "funkcemi:"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
 msgstr "Převod videí do MP3"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:16
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
 msgstr "Podpora zaheslovaných a soukromých videí"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:17
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
 msgstr "Stažení jednoho videa nebo celých playlistů"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr "Automatický výběr formátu videa podle zvolených požadavků na kvalitu"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on youtube-dl."
 msgstr "Postavený na youtube-dl."
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:27
 msgid "Unrud"
 msgstr "Unrud"
 

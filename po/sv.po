@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-18 19:02+0200\n"
+"POT-Creation-Date: 2021-09-26 13:27+0200\n"
 "PO-Revision-Date: 2021-02-05 05:27+0100\n"
 "Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
 "Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
@@ -18,18 +18,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.4.2\n"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:7
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:35 src/window.ui:158
+#: src/main.py:34 src/window.ui:158
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:8
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
 msgid "Download videos from websites like YouTube and many others"
 msgstr "Ladda ner videoklipp från webbplatser som YouTube och många andra"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:10
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
@@ -37,33 +37,29 @@ msgstr ""
 "Ladda ner videoklipp från webbplatser, med ett lättanvänt gränssnitt. "
 "Innehåller följande funktioner:"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:15
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
 msgstr "Konvertera videoklipp till MP3"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:16
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
 msgstr "Stödjer lösenordsskyddade och privata videoklipp"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:17
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
 msgstr "Ladda ner enstaka videoklipp eller hela spelningslistor"
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:18
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr "Välj automatiskt ett videoformat, baserat på dina kvalitetskrav."
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:20
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on youtube-dl."
 msgstr "Baserat på youtube-dl."
 
-#: data/com.github.unrud.VideoDownloader.appdata.xml.in:27
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:27
 msgid "Unrud"
 msgstr "Unrud"
-
-#: data/com.github.unrud.VideoDownloader.desktop.in:6
-msgid "com.github.unrud.VideoDownloader"
-msgstr "com.github.unrud.VideoDownloader"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
 msgid "New Window"
@@ -99,7 +95,7 @@ msgstr "Användarnamn"
 msgid "Password"
 msgstr "Password"
 
-#: src/main.py:34
+#: src/main.py:33
 msgid "Prefill URL field"
 msgstr "Förifyll URL-fält"
 
@@ -171,11 +167,11 @@ msgstr "{} av {}"
 msgid "unknown"
 msgstr "okänd"
 
-#: src/window.py:219 src/window.ui:688
+#: src/window.py:218 src/window.ui:688
 msgid "Download failed"
 msgstr "Nerladdning misslyckades"
 
-#: src/window.py:223 src/window.ui:857
+#: src/window.py:222 src/window.ui:857
 msgid "Download finished"
 msgstr "Nerladdning slutförd"
 
