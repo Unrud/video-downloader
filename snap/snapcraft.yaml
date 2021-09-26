@@ -125,6 +125,7 @@ parts:
     meson-parameters: [--prefix=/snap/video-downloader/current/usr]
     build-packages:
       - gettext
+      - appstream
       - librsvg2-bin
     stage-packages:
       - xdg-user-dirs
