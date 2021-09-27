@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.8.9" date="2021-09-27">
+    <description>
+      <ul>
+        <li>Fix tests for Python&lt;3.9</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.8.8" date="2021-09-27">
     <description>
       <ul>
