@@ -34,8 +34,8 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Descarrega vídeos des de llocs web amb una interfície fàcil d'usar. Suporta les "
-"següents característiques:"
+"Descarrega vídeos des de llocs web amb una interfície fàcil d'usar. Suporta "
+"les següents característiques:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
