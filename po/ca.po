@@ -1,0 +1,214 @@
+# Catalan translation for video-downloader.
+# Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the video-downloader package.
+# Ícar N. S. <icar.nin@protonmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: video-downloader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-27 23:27+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ícar N. S. <icar.nin@protonmail.com>\n"
+"Language-Team: Catalan\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
+#: src/main.py:34 src/window.ui:158
+msgid "Video Downloader"
+msgstr "Descarregador de vídeo"
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
+msgid "Download videos from websites like YouTube and many others"
+msgstr "Descarrega vídeos de llocs web com YouTube i molts altres"
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
+msgid ""
+"Download videos from websites with an easy-to-use interface. Provides the "
+"following features:"
+msgstr ""
+"Descarrega vídeos des de llocs web amb una interfície fàcil d'usar. Suporta les "
+"següents característiques:"
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
+msgid "Convert videos to MP3"
+msgstr "Converteix vídeos a MP3"
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
+msgid "Supports password-protected and private videos"
+msgstr "Suporta vídeos protegits per contrasenya i privats"
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
+msgid "Download single videos or whole playlists"
+msgstr "Descarrega vídeos individuals o llistes de reproducció completes"
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
+msgid "Automatically selects a video format based on your quality demands"
+msgstr ""
+"Selecciona automàticament un format de vídeo basat en la vostra resolució "
+"preferida"
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
+msgid "Based on youtube-dl."
+msgstr "Basat en youtube-dl."
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:27
+msgid "Unrud"
+msgstr "Unrud"
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
+msgid "New Window"
+msgstr "Finestra nova"
+
+#: src/authentication_dialog.py:30
+msgid "Authentication Required"
+msgstr "Cal autenticació"
+
+#: src/authentication_dialog.py:34 src/window.ui:478
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#: src/authentication_dialog.py:42
+msgid "Sign in"
+msgstr "Inicia la sessió"
+
+#: src/authentication_dialog.py:42
+msgid "Skip"
+msgstr "Omet"
+
+#: src/authentication_dialog_login.ui:37
+#: src/authentication_dialog_password.ui:37
+msgid "The video is not public."
+msgstr "El vídeo no és públic."
+
+#: src/authentication_dialog_login.ui:61
+msgid "Username"
+msgstr "Nom d'usuari"
+
+#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_password.ui:55
+msgid "Password"
+msgstr "Contrasenya"
+
+#: src/main.py:33
+msgid "Prefill URL field"
+msgstr "Omple el camp de la URL"
+
+#: src/model.py:59
+msgid "Best"
+msgstr "Millor"
+
+#: src/model.py:60
+msgid "4320p (8K)"
+msgstr "4320p (8K)"
+
+#: src/model.py:61
+msgid "2160p (4K)"
+msgstr "2160p (4K)"
+
+#: src/model.py:62
+msgid "1440p (HD)"
+msgstr "1440p (HD)"
+
+#: src/model.py:63
+msgid "1080p (HD)"
+msgstr "1080p (HD)"
+
+#: src/model.py:64
+msgid "720p (HD)"
+msgstr "720p (HD)"
+
+#: src/model.py:65
+msgid "480p"
+msgstr "480p"
+
+#: src/model.py:66
+msgid "360p"
+msgstr "360p"
+
+#: src/model.py:67
+msgid "240p"
+msgstr "240p"
+
+#: src/model.py:68
+msgid "144p"
+msgstr "144p"
+
+#: src/playlist_dialog.py:32
+msgid "Download Playlist?"
+msgstr "Voleu baixar la llista de reproducció?"
+
+#: src/playlist_dialog.py:33
+msgid "The video is part of a playlist."
+msgstr "El vídeo forma part d'una llista de reproducció."
+
+#: src/playlist_dialog.py:34
+msgid "Single Video"
+msgstr "Un sol vídeo"
+
+#: src/playlist_dialog.py:35
+msgid "All Videos in Playlist"
+msgstr "Tots els vídeos a la llista de reproducció"
+
+#: src/window.py:125
+msgid "Downloading"
+msgstr "S'està baixant"
+
+#: src/window.py:127 src/window.py:150
+msgid "{} of {}"
+msgstr "{} de {}"
+
+#: src/window.py:151 src/window.py:153
+msgid "unknown"
+msgstr "desconegut"
+
+#: src/window.py:218 src/window.ui:688
+msgid "Download failed"
+msgstr "Ha fallat la baixada"
+
+#: src/window.py:222 src/window.ui:857
+msgid "Download finished"
+msgstr "La baixada ha finalitzat"
+
+#: src/window.py:227 src/window.ui:871
+msgid "Open Download Location"
+msgstr "Obre la ubicació de la descàrrega"
+
+#: src/window.ui:137
+msgid "About Video Downloader"
+msgstr "Sobre el Descarregador de vídeo"
+
+#: src/window.ui:238 src/window.ui:323
+msgid "URL"
+msgstr "URL"
+
+#: src/window.ui:276 src/window.ui:413
+msgid "Download"
+msgstr "Baixa"
+
+#: src/window.ui:298
+msgid "Audio"
+msgstr "Àudio"
+
+#: src/window.ui:368
+msgid "Resolution"
+msgstr "Resolució"
+
+#: src/window.ui:435
+msgid "Video"
+msgstr "Vídeo"
+
+#: src/window.ui:643 src/window.ui:811
+msgid "Back"
+msgstr "Enrere"
+
+#: src/window.ui:718
+msgid "Details"
+msgstr "Detalls"
