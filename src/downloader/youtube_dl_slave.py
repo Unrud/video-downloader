@@ -43,6 +43,62 @@ MAX_THUMBNAIL_RESOLUTION = 1024
 FFMPEG_EXE = 'ffmpeg'
 
 
+def _short_filename(name, length):
+    for i in range(len(name), -1, -1):
+        output = name[:i]
+        if i < len(name):
+            output += '…'
+        output = sanitize_filename(output)
+        # Check length with file system encoding
+        if (len(output.encode(sys.getfilesystemencoding(), 'ignore'))
+                < length):
+            break
+    return output
+
+
+def _get_short_id(id_):
+    # Hash id if too long for file name
+    output_id = sanitize_filename(id_)
+    if (len(output_id.encode(sys.getfilesystemencoding(), 'ignore'))
+            <= MAX_ID_LENGTH):
+        return id_
+    m = hashlib.sha256()
+    m.update(id_.encode(errors='replace'))
+    return 'hash-%s' % m.hexdigest()
+
+
+@contextlib.contextmanager
+def _create_and_lock_dir(dirpath):
+    for i in itertools.count():
+        if i > 0:
+            time.sleep(0.5)
+        os.makedirs(dirpath, exist_ok=True)
+        try:
+            fd = os.open(dirpath, 0)
+        except FileNotFoundError:
+            continue
+        try:
+            # Acquire lock on directory
+            fcntl.flock(fd, fcntl.LOCK_EX)
+            stat = os.fstat(fd)
+            # Check that the directory still exists and is the same
+            try:
+                fd_cmp = os.open(dirpath, 0)
+            except FileNotFoundError:
+                continue
+            try:
+                stat_cmp = os.fstat(fd_cmp)
+            finally:
+                os.close(fd_cmp)
+            if (stat.st_dev != stat_cmp.st_dev or
+                    stat.st_ino != stat_cmp.st_ino):
+                continue
+            yield
+            break
+        finally:
+            os.close(fd)
+
+
 class RetryException(BaseException):
     pass
 
@@ -91,20 +147,21 @@ class YoutubeDLSlave:
     def _load_playlist(self, dir_, url):
         '''Retrieve info for all videos available on URL.
 
-        `outtmpl` must be set to '%(autonumber)s.%(ext)s'.
-        `writeinfojson` and `skip_download` must be enables.
-        `writethumbnail`, `write_all_thumbnails` and `writesubtitles` are
-        optional.
-
         Returns the absolute paths of the generated and downloaded files:
         ([(info json, [thumbnail, ...],
          [(subtitle, lang, ext), ...]), ...], skipped videos)
         '''
         os.chdir(dir_)
         while True:
+            ydl_opts = {**self.ydl_opts,
+                        'writeinfojson': True,
+                        'skip_download': True,
+                        'writethumbnail': True,
+                        'writesubtitles': True,
+                        'outtmpl': '%(autonumber)s.%(ext)s'}
             try:
                 saved_skipped_count = self._skipped_count
-                youtube_dl.YoutubeDL(self.ydl_opts).download([url])
+                youtube_dl.YoutubeDL(ydl_opts).download([url])
             except RetryException:
                 continue
             break
@@ -189,31 +246,6 @@ class YoutubeDLSlave:
         sys.exit(1)
 
     @staticmethod
-    def _get_output_title(title):
-        # Limit length of title in output file name
-        for i in range(len(title), -1, -1):
-            output_title = title[:i]
-            if i < len(title):
-                output_title += '…'
-            output_title = sanitize_filename(output_title)
-            # Check length with file system encoding
-            if (len(output_title.encode(sys.getfilesystemencoding(), 'ignore'))
-                    < MAX_OUTPUT_TITLE_LENGTH):
-                break
-        return output_title
-
-    @staticmethod
-    def _get_short_id(id_):
-        # Hash id if too long for file name
-        output_id = sanitize_filename(id_)
-        if (len(output_id.encode(sys.getfilesystemencoding(), 'ignore'))
-                <= MAX_ID_LENGTH):
-            return id_
-        m = hashlib.sha256()
-        m.update(id_.encode(errors='replace'))
-        return 'hash-%s' % m.hexdigest()
-
-    @staticmethod
     def _find_existing_download(download_dir, output_title, mode):
         for filepath in glob.iglob(glob.escape(
                 os.path.join(download_dir, output_title)) + '.*'):
@@ -225,38 +257,6 @@ class YoutubeDLSlave:
                     os.path.isfile(filepath)):
                 return filename
         return None
-
-    @staticmethod
-    @contextlib.contextmanager
-    def _create_and_lock_dir(dirpath):
-        for i in itertools.count():
-            if i > 0:
-                time.sleep(0.5)
-            os.makedirs(dirpath, exist_ok=True)
-            try:
-                fd = os.open(dirpath, 0)
-            except FileNotFoundError:
-                continue
-            try:
-                # Acquire lock on directory
-                fcntl.flock(fd, fcntl.LOCK_EX)
-                stat = os.fstat(fd)
-                # Check that the directory still exists and is the same
-                try:
-                    fd_cmp = os.open(dirpath, 0)
-                except FileNotFoundError:
-                    continue
-                try:
-                    stat_cmp = os.fstat(fd_cmp)
-                finally:
-                    os.close(fd_cmp)
-                if (stat.st_dev != stat_cmp.st_dev or
-                        stat.st_ino != stat_cmp.st_ino):
-                    continue
-                yield
-                break
-            finally:
-                os.close(fd)
 
     def __init__(self, handler):
         self._handler = handler
@@ -278,11 +278,29 @@ class YoutubeDLSlave:
             'allsubtitles': True,
             'subtitlesformat': 'vtt/best',
             'keepvideo': True,
+            # Include id and format_id in outtmpl to prevent youtube-dl
+            # from continuing wrong file
+            'outtmpl': '%(short_id)s.%(format_id)s.%(ext)s',
             'postprocessors': [
                 {'key': 'FFmpegMetadata'},
                 {'key': 'FFmpegSubtitlesConvertor', 'format': 'vtt'},
                 {'key': 'FFmpegEmbedSubtitle'},
                 {'key': 'XAttrMetadata'}]}
+        mode = self._handler.get_mode()
+        if mode == 'audio':
+            resolution = MAX_RESOLUTION
+            prefer_mpeg = False
+            self.ydl_opts['format'] = 'bestaudio/best'
+            self.ydl_opts['postprocessors'].insert(0, {
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '192'})
+            self.ydl_opts['postprocessors'].insert(1, {
+                'key': 'EmbedThumbnail',
+                'already_have_thumbnail': True})
+        else:
+            resolution = self._handler.get_resolution()
+            prefer_mpeg = self._handler.get_prefer_mpeg()
         url = self._handler.get_url()
         download_dir = os.path.abspath(self._handler.get_download_dir())
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -293,11 +311,7 @@ class YoutubeDLSlave:
             fullplaylist_dir = os.path.join(temp_dir, 'fullplaylist')
             for path in [testplaylist_dir, noplaylist_dir, fullplaylist_dir]:
                 os.mkdir(path)
-            self.ydl_opts['writeinfojson'] = True
-            self.ydl_opts['writethumbnail'] = True
-            self.ydl_opts['skip_download'] = True
             self.ydl_opts['playlistend'] = 2
-            self.ydl_opts['outtmpl'] = '%(autonumber)s.%(ext)s'
             # Test playlist
             info_testplaylist, skipped_testplaylist = self._load_playlist(
                 testplaylist_dir, url)
@@ -325,29 +339,8 @@ class YoutubeDLSlave:
                 info_playlist = info_testplaylist
             # Download videos
             self._allow_authentication_request = False
-            del self.ydl_opts['writeinfojson']
-            del self.ydl_opts['writethumbnail']
-            del self.ydl_opts['skip_download']
-            # Include id and format_id in outtmpl to prevent youtube-dl
-            # from continuing wrong file
-            self.ydl_opts['outtmpl'] = '%(short_id)s.%(format_id)s.%(ext)s'
             # Output info_dict as JSON handled via logger debug callback
             self.ydl_opts['forcejson'] = True
-            mode = self._handler.get_mode()
-            if mode == 'audio':
-                resolution = MAX_RESOLUTION
-                prefer_mpeg = False
-                self.ydl_opts['format'] = 'bestaudio/best'
-                self.ydl_opts['postprocessors'].insert(0, {
-                    'key': 'FFmpegExtractAudio',
-                    'preferredcodec': 'mp3',
-                    'preferredquality': '192'})
-                self.ydl_opts['postprocessors'].insert(1, {
-                    'key': 'EmbedThumbnail',
-                    'already_have_thumbnail': True})
-            else:
-                resolution = self._handler.get_resolution()
-                prefer_mpeg = self._handler.get_prefer_mpeg()
             try:
                 os.makedirs(download_dir, exist_ok=True)
             except OSError as e:
@@ -360,9 +353,9 @@ class YoutubeDLSlave:
                     info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
-                info['short_id'] = self._get_short_id(info.get('id') or '')
+                info['short_id'] = _get_short_id(info.get('id') or '')
                 title = info.get('title') or info.get('id') or 'video'
-                output_title = self._get_output_title(title)
+                output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
                 # Test subtitles
                 # youtube-dl fails for subtitles that it can't convert or
                 # are unsupported by ffmpeg
@@ -380,15 +373,13 @@ class YoutubeDLSlave:
                             traceback.print_exc(file=sys.stderr)
                             sys.stderr.flush()
                             continue
-                        ff_sub_path = sub_path + '-converted.srt'
-                        with open(ff_sub_path, 'w', encoding='utf-8') as f:
+                        sub_path += '-converted.srt'
+                        with open(sub_path, 'w', encoding='utf-8') as f:
                             f.write(sub_data)
-                    else:
-                        ff_sub_path = sub_path
-                    # Try to read and convert subtitles with ffmpeg
+                    # Try to convert subtitles with ffmpeg
                     try:
                         subprocess.run(
-                            [FFMPEG_EXE, '-i', os.path.abspath(ff_sub_path),
+                            [FFMPEG_EXE, '-i', os.path.abspath(sub_path),
                              '-f', 'webvtt', '-'],
                             check=True, stdin=subprocess.DEVNULL,
                             stdout=subprocess.DEVNULL)
@@ -468,7 +459,7 @@ class YoutubeDLSlave:
                 temp_download_dir_cm = contextlib.ExitStack()
                 try:
                     temp_download_dir_cm.enter_context(
-                        self._create_and_lock_dir(temp_download_dir))
+                        _create_and_lock_dir(temp_download_dir))
                 except OSError as e:
                     traceback.print_exc(file=sys.stderr)
                     sys.stderr.flush()
@@ -493,19 +484,19 @@ class YoutubeDLSlave:
                         if self._on_info_dict_json:
                             raise RuntimeError('info_dict not received')
                         # Find the temporary filename
-                        temp_filename_root, temp_filename_ext = (
+                        temp_filename_root, filename_ext = (
                             os.path.splitext(info_dict['_filename']))
                         if mode == 'audio':
-                            temp_filename_ext = '.mp3'
+                            filename_ext = '.mp3'
                         else:
                             # youtube-dl changes extension for incompatible
                             # formats to .mkv
-                            for ext in [temp_filename_ext, '.mkv']:
+                            for ext in [filename_ext, '.mkv']:
                                 if os.path.exists(temp_filename_root + ext):
-                                    temp_filename_ext = ext
+                                    filename_ext = ext
                                     break
-                        temp_filename = temp_filename_root + temp_filename_ext
-                        filename = output_title + temp_filename_ext
+                        temp_filename = temp_filename_root + filename_ext
+                        filename = output_title + filename_ext
                         # Move finished download from download to target dir
                         try:
                             os.replace(
