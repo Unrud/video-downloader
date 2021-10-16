@@ -29,11 +29,9 @@ import tempfile
 import time
 import traceback
 
-import youtube_dl
-from youtube_dl.utils import dfxp2srt, sanitize_filename
-
-from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.downloader.youtube_dl_formats import sort_formats
+import yt_dlp
+from yt_dlp.postprocessor.common import PostProcessor
+from yt_dlp.utils import dfxp2srt, sanitize_filename
 
 # File names are typically limited to 255 bytes
 MAX_OUTPUT_TITLE_LENGTH = 200
@@ -148,7 +146,7 @@ class YoutubeDLSlave:
                         'outtmpl': '%(autonumber)s.%(ext)s'}
             try:
                 saved_skipped_count = self._skipped_count
-                youtube_dl.YoutubeDL(ydl_opts).download([url])
+                yt_dlp.YoutubeDL(ydl_opts).download([url])
             except RetryException:
                 continue
             break
@@ -177,21 +175,24 @@ class YoutubeDLSlave:
         return (results, self._skipped_count - saved_skipped_count)
 
     def _load_video(self, dir_, info_path):
+        class GetFilepathPP(PostProcessor):
+            def run(self, info):
+                nonlocal filepath
+                filepath = info['filepath']
+                return [], info
+        filepath = None
         os.chdir(dir_)
         while True:
             try:
-                youtube_dl.YoutubeDL(self.ydl_opts).download_with_info_file(
-                    info_path)
+                with yt_dlp.YoutubeDL(self.ydl_opts) as ydl:
+                    ydl.add_post_processor(GetFilepathPP())
+                    ydl.download_with_info_file(info_path)
             except RetryException:
                 continue
             break
+        return os.path.abspath(filepath)
 
     def debug(self, msg):
-        # See ydl_opts['forcejson']
-        if self._on_info_dict_json:
-            self._on_info_dict_json(json.loads(msg))
-            self._on_info_dict_json = None
-            return
         print(msg, file=sys.stderr, flush=True)
 
     def warning(self, msg):
@@ -247,8 +248,6 @@ class YoutubeDLSlave:
 
     def __init__(self, handler):
         self._handler = handler
-        # See ydl_opts['forcejson']
-        self._on_info_dict_json = None
         self._allow_authentication_request = True
         self._skip_authentication = False
         self._skipped_count = 0
@@ -262,7 +261,7 @@ class YoutubeDLSlave:
             'retries': 10,
             'fragment_retries': 10,
             'writesubtitles': True,
-            'allsubtitles': True,
+            'subtitleslangs': ['all'],
             'subtitlesformat': 'vtt/best',
             'keepvideo': True,
             # Include id and format_id in outtmpl to prevent youtube-dl
@@ -274,8 +273,6 @@ class YoutubeDLSlave:
                 {'key': 'XAttrMetadata'}]}
         mode = self._handler.get_mode()
         if mode == 'audio':
-            resolution = MAX_RESOLUTION
-            prefer_mpeg = False
             self.ydl_opts['format'] = 'bestaudio/best'
             self.ydl_opts['postprocessors'].insert(0, {
                 'key': 'FFmpegExtractAudio',
@@ -285,8 +282,10 @@ class YoutubeDLSlave:
                 'key': 'EmbedThumbnail',
                 'already_have_thumbnail': True})
         else:
-            resolution = self._handler.get_resolution()
-            prefer_mpeg = self._handler.get_prefer_mpeg()
+            self.ydl_opts['format_sort'] = [
+                'res~%d' % self._handler.get_resolution()]
+            if self._handler.get_prefer_mpeg():
+                self.ydl_opts['format_sort'].append('+codec:avc:m4a')
         url = self._handler.get_url()
         download_dir = os.path.abspath(self._handler.get_download_dir())
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -325,8 +324,6 @@ class YoutubeDLSlave:
                 info_playlist = info_testplaylist
             # Download videos
             self._allow_authentication_request = False
-            # Output info_dict as JSON handled via logger debug callback
-            self.ydl_opts['forcejson'] = True
             try:
                 os.makedirs(download_dir, exist_ok=True)
             except OSError as e:
@@ -422,8 +419,6 @@ class YoutubeDLSlave:
                 # displayed in Nautilus and other applications.
                 with contextlib.suppress(KeyError):
                     del info['description']
-                sort_formats(info.get('formats') or [], resolution,
-                             prefer_mpeg)
                 with open(info_path, 'w') as f:
                     json.dump(info, f)
                 # Check if we already got the file
@@ -455,35 +450,14 @@ class YoutubeDLSlave:
                     if existing_filename is not None:
                         filename = existing_filename
                     else:
-                        info_dict = None
-
-                        # See ydl_opts['forcejson']
-                        def on_info_dict_json(info_dict_):
-                            nonlocal info_dict
-                            info_dict = info_dict_
-                        self._on_info_dict_json = on_info_dict_json
-                        self._load_video(temp_download_dir, info_path)
-                        if self._on_info_dict_json:
-                            raise RuntimeError('info_dict not received')
-                        # Find the temporary filename
-                        temp_filename_root, filename_ext = (
-                            os.path.splitext(info_dict['_filename']))
-                        if mode == 'audio':
-                            filename_ext = '.mp3'
-                        else:
-                            # youtube-dl changes extension for incompatible
-                            # formats to .mkv
-                            for ext in [filename_ext, '.mkv']:
-                                if os.path.exists(temp_filename_root + ext):
-                                    filename_ext = ext
-                                    break
-                        temp_filename = temp_filename_root + filename_ext
+                        temp_filepath = self._load_video(temp_download_dir,
+                                                         info_path)
+                        _, filename_ext = os.path.splitext(temp_filepath)
                         filename = output_title + filename_ext
                         # Move finished download from download to target dir
                         try:
-                            os.replace(
-                                os.path.join(temp_download_dir, temp_filename),
-                                os.path.join(download_dir, filename))
+                            os.replace(temp_filepath,
+                                       os.path.join(download_dir, filename))
                         except OSError as e:
                             traceback.print_exc(file=sys.stderr)
                             sys.stderr.flush()

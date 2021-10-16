@@ -107,17 +107,17 @@ parts:
     stage:
       - -usr/include
 
-  youtube-dl:
+  yt-dlp:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     after: [ffmpeg]
     plugin: python
-    source: https://github.com/ytdl-org/youtube-dl/archive/2021.06.06.tar.gz
-    source-checksum: sha256/3d609df194db40f28fd4ef224cf732cd3ce7acd8596e3a0d19edba0fc5d047fa
+    source: https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2021.10.10.tar.gz
+    source-checksum: sha256/b07c21f7403f2501181c221aa576dedd371b50763d4bf583b6f6ace399cb93db
     python-packages:
       - pyxattr==0.7.2
 
   video-downloader:
-    after: [libhandy, youtube-dl]
+    after: [libhandy, yt-dlp]
     plugin: meson
     source: .
     source-type: git

@@ -77,26 +77,66 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/iustin/pyxattr/archive/v0.7.2.tar.gz",
+                    "url" : "https://github.com/iustin/pyxattr/archive/refs/tags/v0.7.2.tar.gz",
                     "sha256" : "a1f4b92ffb2193fd381ea352a2a5b60683a4c58c2e7d9468ba7fb71653a3d160"
                 }
             ]
         },
         {
-            "name" : "youtube-dl",
-            /* Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump */
+            "name" : "mutagen",
             "buildsystem" : "simple",
             "build-commands" : [
                 "pip3 install --prefix=/app ."
             ],
-            "cleanup" : [
-                "/etc"
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/quodlibet/mutagen/archive/refs/tags/release-1.45.1.tar.gz",
+                    "sha256" : "308d5244c7242b084c824bbbea6d56ddd716300e1bce6420cb8c1e6781c0d4f9"
+                }
+            ]
+        },
+        {
+            "name" : "pycryptodomex",
+            "buildsystem" : "simple",
+            "build-commands" : [
+            	"touch .separate_namespace",
+                "pip3 install --prefix=/app ."
             ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ytdl-org/youtube-dl/archive/2021.06.06.tar.gz",
-                    "sha256" : "3d609df194db40f28fd4ef224cf732cd3ce7acd8596e3a0d19edba0fc5d047fa"
+                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.11.0.zip",
+                    "sha256" : "c40861bdbc11d9d10cf61ec65f4407f56febc31c237990562271b9ca8e1c5ad2"
+                }
+            ]
+        },
+        {
+            "name" : "websockets",
+            "buildsystem" : "simple",
+            "build-commands" : [
+                "pip3 install --prefix=/app ."
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/aaugustin/websockets/archive/refs/tags/10.0.tar.gz",
+                    "sha256" : "eacd5e92558972111deed2c3d948a1cbec03ec280c27f134b622b0d1f0d22edf"
+                }
+            ]
+        },
+        {
+            "name" : "yt-dlp",
+            /* Missing optional dependencies mpv, phantomjs and rtmpdump */
+            "buildsystem" : "simple",
+            "build-commands" : [
+                "pip3 install --prefix=/app ."
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2021.10.10.tar.gz",
+                    "sha256" : "b07c21f7403f2501181c221aa576dedd371b50763d4bf583b6f6ace399cb93db"
                 }
             ]
         },
