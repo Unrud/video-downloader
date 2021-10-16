@@ -270,7 +270,6 @@ class YoutubeDLSlave:
             'outtmpl': '%(id)s.%(format_id)s.%(ext)s',
             'postprocessors': [
                 {'key': 'FFmpegMetadata'},
-                {'key': 'FFmpegSubtitlesConvertor', 'format': 'vtt'},
                 {'key': 'FFmpegEmbedSubtitle'},
                 {'key': 'XAttrMetadata'}]}
         mode = self._handler.get_mode()
@@ -342,10 +341,10 @@ class YoutubeDLSlave:
                     info = json.load(f)
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
-                # Test subtitles
+                # Convert subtitles to VTT format
                 # youtube-dl fails for subtitles that it can't convert or
                 # are unsupported by ffmpeg
-                supported_subtitles = []
+                new_subtitles = {}
                 for sub_path, sub_lang, sub_ext in subtitles:
                     print('[youtube_dl_slave] Testing subtitle (%r, %r)' %
                           (sub_lang, sub_ext), file=sys.stderr, flush=True)
@@ -364,11 +363,11 @@ class YoutubeDLSlave:
                             f.write(sub_data)
                     # Try to convert subtitles with ffmpeg
                     try:
-                        subprocess.run(
+                        sub_data_vtt = subprocess.run(
                             [FFMPEG_EXE, '-i', os.path.abspath(sub_path),
                              '-f', 'webvtt', '-'],
                             check=True, stdin=subprocess.DEVNULL,
-                            stdout=subprocess.DEVNULL)
+                            stdout=subprocess.PIPE).stdout.decode('utf-8')
                     except FileNotFoundError:
                         traceback.print_exc(file=sys.stderr)
                         sys.stderr.flush()
@@ -379,17 +378,12 @@ class YoutubeDLSlave:
                         traceback.print_exc(file=sys.stderr)
                         sys.stderr.flush()
                         continue
-                    supported_subtitles.append((sub_lang, sub_ext))
-                # Choose supported subtitles
-                new_info_subtitles = {}
-                for sub_lang, subs in (info.get('subtitles') or {}).items():
-                    new_subs = []
-                    for sub in subs or []:
-                        if (sub_lang, sub.get('ext')) in supported_subtitles:
-                            new_subs.append(sub)
-                    if new_subs:
-                        new_info_subtitles[sub_lang] = new_subs
-                info['subtitles'] = new_info_subtitles
+                    new_subtitles[sub_lang] = [{
+                        **info['subtitles'][sub_lang][-1],
+                        'ext': 'vtt',
+                        'data': sub_data_vtt
+                    }]
+                info['subtitles'] = new_subtitles
                 thumbnail_path = thumbnail_paths[0] if thumbnail_paths else ''
                 new_thumbnails = []
                 if thumbnail_path:
