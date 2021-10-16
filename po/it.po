@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-26 13:27+0200\n"
+"POT-Creation-Date: 2021-10-16 14:39+0200\n"
 "PO-Revision-Date: 2021-02-05 05:26+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: ITALIAN <LL@li.org>\n"
@@ -55,8 +55,8 @@ msgstr ""
 "Seleziona automaticamente un formato video in base alla risoluzione preferita"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
-msgid "Based on youtube-dl."
-msgstr "Basato su youtube-dl."
+msgid "Based on yt-dlp."
+msgstr "Basato su yt-dlp."
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:27
 msgid "Unrud"

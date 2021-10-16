@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-27 23:27+0200\n"
+"POT-Creation-Date: 2021-10-16 14:39+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ícar N. S. <icar.nin@protonmail.com>\n"
 "Language-Team: Catalan\n"
@@ -56,8 +56,8 @@ msgstr ""
 "preferida"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
-msgid "Based on youtube-dl."
-msgstr "Basat en youtube-dl."
+msgid "Based on yt-dlp."
+msgstr "Basat en yt-dlp."
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:27
 msgid "Unrud"

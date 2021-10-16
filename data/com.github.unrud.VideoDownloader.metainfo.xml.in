@@ -18,7 +18,7 @@
       <li>Automatically selects a video format based on your quality demands</li>
     </ul>
     <p>
-      Based on youtube-dl.
+      Based on yt-dlp.
     </p>
   </description>
   <launchable type="desktop-id">com.github.unrud.VideoDownloader.desktop</launchable>

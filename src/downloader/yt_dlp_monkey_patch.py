@@ -55,7 +55,7 @@ class PatchedPopen(subprocess.Popen):
 
 
 def install_monkey_patches():
-    # ffmpeg writes progress information to stderr, but youtube-dl captures it
+    # ffmpeg writes progress information to stderr, but yt-dlp captures it
     # by default. Overriding this behavior allows us to show activity while
     # converting audio to MP3 or finishing videos.
     subprocess.Popen = PatchedPopen

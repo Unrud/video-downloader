@@ -55,7 +55,7 @@ class Downloader:
             os.path.join(__file__, *[os.pardir]*3), env.get('PYTHONPATH')]))
         # Start child process in its own process group to shield it from
         # signals by terminals (e.g. SIGINT) and to identify remaning children.
-        # youtube-dl doesn't kill ffmpeg and other subprocesses on error.
+        # yt-dlp doesn't kill ffmpeg and other subprocesses on error.
         self._process = subprocess.Popen(
             [sys.executable, '-u', '-m', 'video_downloader.downloader'],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
@@ -143,7 +143,7 @@ class Downloader:
             # Don't use `errors='strict'` because programs might write garbage
             # to stderr
             line = line.decode(process.stderr.encoding, errors='replace')
-            g_log('youtube-dl', GLib.LogLevelFlags.LEVEL_DEBUG, '%s', line)
+            g_log('yt-dlp', GLib.LogLevelFlags.LEVEL_DEBUG, '%s', line)
             if self._process is process:
                 self._handler.on_pulse()
         return not pipe_closed

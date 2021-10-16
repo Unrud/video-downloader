@@ -264,7 +264,7 @@ class YoutubeDLSlave:
             'subtitleslangs': ['all'],
             'subtitlesformat': 'vtt/best',
             'keepvideo': True,
-            # Include id and format_id in outtmpl to prevent youtube-dl
+            # Include id and format_id in outtmpl to prevent yt-dlp
             # from continuing wrong file
             'outtmpl': '%(id)s.%(format_id)s.%(ext)s',
             'postprocessors': [
@@ -339,14 +339,14 @@ class YoutubeDLSlave:
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
                 # Convert subtitles to VTT format
-                # youtube-dl fails for subtitles that it can't convert or
+                # yt-dlp fails for subtitles that it can't convert or
                 # are unsupported by ffmpeg
                 new_subtitles = {}
                 for sub_path, sub_lang, sub_ext in subtitles:
-                    print('[youtube_dl_slave] Testing subtitle (%r, %r)' %
+                    print('[yt_dlp_slave] Testing subtitle (%r, %r)' %
                           (sub_lang, sub_ext), file=sys.stderr, flush=True)
                     if sub_ext in ['dfxp', 'ttml', 'tt']:
-                        # Try to use youtube-dl's internal dfxp2srt converter
+                        # Try to use yt-dlp's internal dfxp2srt converter
                         with open(sub_path, 'rb') as f:
                             sub_data = f.read()
                         try:
@@ -385,7 +385,7 @@ class YoutubeDLSlave:
                 new_thumbnails = []
                 if thumbnail_path:
                     # Convert thumbnail to JPEG and limit resolution
-                    print('[youtube_dl_slave] Converting thumbnail',
+                    print('[yt_dlp_slave] Converting thumbnail',
                           file=sys.stderr, flush=True)
                     new_thumbnail_path = thumbnail_path + '-converted.jpg'
                     try:
@@ -427,7 +427,7 @@ class YoutubeDLSlave:
                 if existing_filename is not None:
                     self._handler.on_progress_end(existing_filename)
                     continue
-                # Download into separate directory because youtube-dl generates
+                # Download into separate directory because yt-dlp generates
                 # many temporary files
                 temp_download_dir = os.path.join(
                     download_dir, output_title + '.part')

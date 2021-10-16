@@ -58,9 +58,9 @@ if __name__ == '__main__':
     try:
         import yt_dlp
 
-        from video_downloader.downloader.youtube_dl_monkey_patch import (
+        from video_downloader.downloader.yt_dlp_monkey_patch import (
             install_monkey_patches)
-        from video_downloader.downloader.youtube_dl_slave import YoutubeDLSlave
+        from video_downloader.downloader.yt_dlp_slave import YoutubeDLSlave
 
         install_monkey_patches()
         try:

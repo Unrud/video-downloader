@@ -8,7 +8,7 @@ Provides the following features:
   * Download single videos or whole playlists
   * Automatically selects a video format based on your quality demands
 
-Based on [youtube-dl](https://yt-dl.org).
+Based on [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
 ## Installation
 
@@ -73,4 +73,4 @@ snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.Vi
 
 ## Debug
 
-To display messages from **youtube-dl** run program with environment variable `G_MESSAGES_DEBUG=youtube-dl`.
+To display messages from **yt-dlp** run program with environment variable `G_MESSAGES_DEBUG=yt-dlp`.
