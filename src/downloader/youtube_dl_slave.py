@@ -405,6 +405,7 @@ class YoutubeDLSlave:
                         new_info_subtitles[sub_lang] = new_subs
                 info['subtitles'] = new_info_subtitles
                 thumbnail_path = thumbnail_paths[0] if thumbnail_paths else ''
+                new_thumbnails = []
                 if thumbnail_path:
                     # Convert thumbnail to JPEG and limit resolution
                     print('[youtube_dl_slave] Converting thumbnail',
@@ -432,10 +433,11 @@ class YoutubeDLSlave:
                     # No longer needed
                     os.remove(thumbnail_path)
                     thumbnail_path = new_thumbnail_path
+                    new_thumbnails.append({**info['thumbnails'][-1],
+                                           'filename': thumbnail_path})
+                info['thumbnails'] = new_thumbnails
                 self._handler.on_progress_start(i, len(info_playlist), title,
                                                 thumbnail_path)
-                for thumbnail in info.get('thumbnails') or []:
-                    thumbnail['filename'] = thumbnail_path
                 # Remove description, because long comments cause problems when
                 # displayed in Nautilus and other applications.
                 with contextlib.suppress(KeyError):
