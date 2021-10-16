@@ -222,30 +222,34 @@ class YoutubeDLSlave:
         self._handler.on_load_progress(
             filename, progress, bytes_, bytes_total, eta, speed)
 
-    def _load_playlist(self, dir_, url):
+    def _load_playlist(self, url):
         '''Retrieve info for all videos available on URL.
 
         Returns the absolute paths of the generated and downloaded files:
-        ([info json, ...], skipped videos)
+        ([info_dict, ...], skipped videos)
         '''
-        os.chdir(dir_)
-        while True:
-            ydl_opts = {**self.ydl_opts,
-                        'writeinfojson': True,
-                        'skip_download': True,
-                        'outtmpl': '%(autonumber)s.%(ext)s'}
-            saved_skipped_count = self._skipped_count
-            try:
-                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                    for args in self.extra_postprocessors:
-                        ydl.add_post_processor(*args)
-                    ydl.download([url])
-            except RetryException:
-                continue
-            break
-        return (sorted(os.path.abspath(filename) for filename in os.listdir()
-                       if re.fullmatch(r'[0-9]+\.info\.json', filename)),
-                self._skipped_count - saved_skipped_count)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            os.chdir(temp_dir)
+            while True:
+                ydl_opts = {**self.ydl_opts,
+                            'writeinfojson': True,
+                            'skip_download': True,
+                            'outtmpl': '%(autonumber)s.%(ext)s'}
+                saved_skipped_count = self._skipped_count
+                try:
+                    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                        for args in self.extra_postprocessors:
+                            ydl.add_post_processor(*args)
+                        ydl.download([url])
+                except RetryException:
+                    continue
+                break
+            info_dicts = []
+            for filename in sorted(os.listdir(temp_dir)):
+                if re.fullmatch(r'[0-9]+\.info\.json', filename):
+                    with open(os.path.join(temp_dir, filename)) as f:
+                        info_dicts.append(json.load(f))
+        return info_dicts, self._skipped_count - saved_skipped_count
 
     def _load_video(self, dir_, info_path):
         class GetFilepathPP(PostProcessor):
@@ -368,20 +372,12 @@ class YoutubeDLSlave:
         download_dir = os.path.abspath(self._handler.get_download_dir())
         with tempfile.TemporaryDirectory() as temp_dir:
             self.ydl_opts['cookiefile'] = os.path.join(temp_dir, 'cookies')
-            # Collect info without downloading videos
-            testplaylist_dir = os.path.join(temp_dir, 'testplaylist')
-            noplaylist_dir = os.path.join(temp_dir, 'noplaylist')
-            fullplaylist_dir = os.path.join(temp_dir, 'fullplaylist')
-            for path in [testplaylist_dir, noplaylist_dir, fullplaylist_dir]:
-                os.mkdir(path)
             self.ydl_opts['playlistend'] = 2
             # Test playlist
-            info_testplaylist, skipped_testplaylist = self._load_playlist(
-                testplaylist_dir, url)
+            info_testplaylist, skipped_testplaylist = self._load_playlist(url)
             self.ydl_opts['noplaylist'] = True
             if len(info_testplaylist) + skipped_testplaylist > 1:
-                info_noplaylist, skipped_noplaylist = self._load_playlist(
-                    noplaylist_dir, url)
+                info_noplaylist, skipped_noplaylist = self._load_playlist(url)
             else:
                 info_noplaylist = info_testplaylist
                 skipped_noplaylist = skipped_testplaylist
@@ -392,12 +388,11 @@ class YoutubeDLSlave:
                 self.ydl_opts['noplaylist'] = (
                     not self._handler.on_playlist_request())
                 if not self.ydl_opts['noplaylist']:
-                    info_playlist, _ = self._load_playlist(
-                        fullplaylist_dir, url)
+                    info_playlist, _ = self._load_playlist(url)
                 else:
                     info_playlist = info_noplaylist
             elif len(info_testplaylist) + skipped_testplaylist > 1:
-                info_playlist, _ = self._load_playlist(fullplaylist_dir, url)
+                info_playlist, _ = self._load_playlist(url)
             else:
                 info_playlist = info_testplaylist
             # Download videos
@@ -412,9 +407,7 @@ class YoutubeDLSlave:
                 self._handler.on_error(
                     'ERROR: Failed to create download folder: %s' % e)
                 sys.exit(1)
-            for i, info_path in enumerate(info_playlist):
-                with open(info_path) as f:
-                    info = json.load(f)
+            for i, info in enumerate(info_playlist):
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
                 self._handler.on_progress_start(i, len(info_playlist), title,
@@ -423,8 +416,6 @@ class YoutubeDLSlave:
                 # displayed in Nautilus and other applications.
                 with contextlib.suppress(KeyError):
                     del info['description']
-                with open(info_path, 'w') as f:
-                    json.dump(info, f)
                 # Check if we already got the file
                 existing_filename = self._find_existing_download(
                     download_dir, output_title, mode)
@@ -448,6 +439,12 @@ class YoutubeDLSlave:
                         'ERROR: Failed to lock download folder: %s' % e)
                     sys.exit(1)
                 with temp_download_dir_cm:
+                    info_path = os.path.join(
+                        temp_download_dir,
+                        sanitize_filename((info.get('id') or '')
+                                          + '.info.json'))
+                    with open(info_path, 'w') as f:
+                        json.dump(info, f)
                     # Check if the file got downloaded in the meantime
                     existing_filename = self._find_existing_download(
                         download_dir, output_title, mode)
