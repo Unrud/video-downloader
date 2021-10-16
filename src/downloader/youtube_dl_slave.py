@@ -18,7 +18,6 @@
 import contextlib
 import fcntl
 import glob
-import hashlib
 import itertools
 import json
 import os
@@ -38,7 +37,6 @@ from video_downloader.downloader.youtube_dl_formats import sort_formats
 
 # File names are typically limited to 255 bytes
 MAX_OUTPUT_TITLE_LENGTH = 200
-MAX_ID_LENGTH = 150
 MAX_THUMBNAIL_RESOLUTION = 1024
 FFMPEG_EXE = 'ffmpeg'
 
@@ -54,17 +52,6 @@ def _short_filename(name, length):
                 < length):
             break
     return output
-
-
-def _get_short_id(id_):
-    # Hash id if too long for file name
-    output_id = sanitize_filename(id_)
-    if (len(output_id.encode(sys.getfilesystemencoding(), 'ignore'))
-            <= MAX_ID_LENGTH):
-        return id_
-    m = hashlib.sha256()
-    m.update(id_.encode(errors='replace'))
-    return 'hash-%s' % m.hexdigest()
 
 
 @contextlib.contextmanager
@@ -280,7 +267,7 @@ class YoutubeDLSlave:
             'keepvideo': True,
             # Include id and format_id in outtmpl to prevent youtube-dl
             # from continuing wrong file
-            'outtmpl': '%(short_id)s.%(format_id)s.%(ext)s',
+            'outtmpl': '%(id)s.%(format_id)s.%(ext)s',
             'postprocessors': [
                 {'key': 'FFmpegMetadata'},
                 {'key': 'FFmpegSubtitlesConvertor', 'format': 'vtt'},
@@ -353,7 +340,6 @@ class YoutubeDLSlave:
                     info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
-                info['short_id'] = _get_short_id(info.get('id') or '')
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
                 # Test subtitles
