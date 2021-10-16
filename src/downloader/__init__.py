@@ -187,6 +187,9 @@ class Handler:
                     thumbnail: str):
         raise NotImplementedError
 
+    def on_progress_thumbnail(self, thumbnail: str):
+        raise NotImplementedError
+
     def on_pulse(self):
         raise NotImplementedError
 

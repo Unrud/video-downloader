@@ -206,6 +206,10 @@ class Model(GObject.GObject, downloader.Handler):
         self.download_title = title
         self.download_thumbnail = thumbnail
 
+    def on_progress_thumbnail(self, thumbnail):
+        assert self.state in ['download', 'cancel']
+        self.download_thumbnail = thumbnail
+
     def on_progress_end(self, filename):
         assert self.state in ['download', 'cancel']
         self._download_finished_filenames.append(filename)

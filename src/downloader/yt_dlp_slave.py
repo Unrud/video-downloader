@@ -23,7 +23,6 @@ import json
 import os
 import re
 import shutil
-import subprocess
 import sys
 import tempfile
 import time
@@ -31,12 +30,13 @@ import traceback
 
 import yt_dlp
 from yt_dlp.postprocessor.common import PostProcessor
+from yt_dlp.postprocessor.ffmpeg import (FFmpegPostProcessor,
+                                         FFmpegPostProcessorError)
 from yt_dlp.utils import dfxp2srt, sanitize_filename
 
 # File names are typically limited to 255 bytes
 MAX_OUTPUT_TITLE_LENGTH = 200
 MAX_THUMBNAIL_RESOLUTION = 1024
-FFMPEG_EXE = 'ffmpeg'
 
 
 def _short_filename(name, length):
@@ -82,6 +82,99 @@ def _create_and_lock_dir(dirpath):
             break
         finally:
             os.close(fd)
+
+
+def _convert_filepath(info, files_to_delete, filepath, new_ext):
+    prefix = '.conv.' + new_ext
+    files_to_delete.append(filepath)
+    info['__files_to_move'][filepath + prefix] = (
+        info['__files_to_move'][filepath] + prefix)
+    return filepath + prefix
+
+
+class SubtitlesConverterPP(FFmpegPostProcessor):
+    """A more robust subtitles converter"""
+
+    def run(self, info):
+        files_to_delete = []
+        new_subtitles = {}
+        for lang, sub in (info.get('requested_subtitles') or {}).items():
+            filepath = sub.get('filepath')
+            if not filepath:
+                continue
+            print('[yt_dlp_slave] Converting subtitle (%r, %r)' %
+                  (lang, sub['ext']), file=sys.stderr, flush=True)
+            if sub['ext'] in ['dfxp', 'ttml', 'tt']:
+                # Try to use yt-dlp's internal dfxp2srt converter
+                with open(filepath, 'rb') as f:
+                    data = f.read()
+                try:
+                    data = dfxp2srt(data)
+                except Exception:
+                    files_to_delete.append(filepath)
+                    traceback.print_exc(file=sys.stderr)
+                    sys.stderr.flush()
+                    continue
+                filepath = _convert_filepath(info, files_to_delete, filepath,
+                                             'srt')
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(data)
+            # Try to convert subtitles with ffmpeg
+            new_filepath = _convert_filepath(info, files_to_delete, filepath,
+                                             'vtt')
+            try:
+                self.run_ffmpeg(filepath, new_filepath, ['-f', 'webvtt'])
+            except FFmpegPostProcessorError:
+                files_to_delete.append(new_filepath)
+                continue
+            filepath = new_filepath
+            new_subtitles[lang] = {**sub, 'filepath': filepath, 'ext': 'vtt'}
+        info['requested_subtitles'] = new_subtitles
+        return files_to_delete, info
+
+
+class ThumbnailConverterPP(FFmpegPostProcessor):
+    """Convert thumbnail to JPEG and if required decrease resolution"""
+
+    def __init__(self, thumbnail_cb=None):
+        super().__init__()
+        self._thumbnail_cb = thumbnail_cb
+
+    def run(self, info):
+        files_to_delete = []
+        new_thumbnails = []
+        # Thumbnails are ordered worst to best
+        for thumb in reversed(info.get('thumbnails') or []):
+            filepath = thumb.get('filepath')
+            if not filepath:
+                continue
+            if new_thumbnails:  # Convert only one thumbnail
+                files_to_delete.append(filepath)
+                continue
+            print('[yt_dlp_slave] Converting thumbnail',
+                  file=sys.stderr, flush=True)
+            # Try to convert thumbnail with ffmpeg
+            new_filepath = _convert_filepath(info, files_to_delete, filepath,
+                                             'jpg')
+            try:
+                # FFmpeg uses % pattern for image input and output files
+                self.real_run_ffmpeg(
+                    # Disable pattern matching for input file
+                    [(filepath, ['-f', 'image2', '-pattern_type', 'none'])],
+                    # Escape % for output file
+                    [(new_filepath.replace('%', '%%'), [
+                        '-vf', ('scale=\'min({0},iw):min({0},ih):'
+                                'force_original_aspect_ratio=decrease\''
+                                ).format(MAX_THUMBNAIL_RESOLUTION)])])
+            except FFmpegPostProcessorError:
+                files_to_delete.append(new_filepath)
+                continue
+            filepath = new_filepath
+            new_thumbnails.insert(0, {**thumb, 'filepath': filepath})
+            if self._thumbnail_cb is not None:
+                self._thumbnail_cb(os.path.abspath(filepath))
+        info['thumbnails'] = new_thumbnails
+        return files_to_delete, info
 
 
 class RetryException(BaseException):
@@ -133,46 +226,26 @@ class YoutubeDLSlave:
         '''Retrieve info for all videos available on URL.
 
         Returns the absolute paths of the generated and downloaded files:
-        ([(info json, [thumbnail, ...],
-         [(subtitle, lang, ext), ...]), ...], skipped videos)
+        ([info json, ...], skipped videos)
         '''
         os.chdir(dir_)
         while True:
             ydl_opts = {**self.ydl_opts,
                         'writeinfojson': True,
                         'skip_download': True,
-                        'writethumbnail': True,
-                        'writesubtitles': True,
                         'outtmpl': '%(autonumber)s.%(ext)s'}
+            saved_skipped_count = self._skipped_count
             try:
-                saved_skipped_count = self._skipped_count
-                yt_dlp.YoutubeDL(ydl_opts).download([url])
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    for args in self.extra_postprocessors:
+                        ydl.add_post_processor(*args)
+                    ydl.download([url])
             except RetryException:
                 continue
             break
-        results = []
-        dir_listing = os.listdir()
-        for name in dir_listing:
-            # Info Json: 00001.info.json
-            if not re.fullmatch(r'[0-9]+\.info\.json', name):
-                continue
-            name_root = name.partition('.')[0]
-            thumbnails = []
-            subtitles = []
-            for name2 in dir_listing:
-                # Thumbnails: 00001.jpg or 00001_0.jpg
-                if re.fullmatch(r'%s(_[0-9]+)?\.[^.]+' % name_root, name2):
-                    thumbnails.append(os.path.abspath(name2))
-                # Subtitles: 00001.en.vtt
-                if re.fullmatch(r'%s\.[^.]+\.[^.]+' % name_root, name2):
-                    name2_ext = name2[len(name_root):]
-                    if name2_ext != '.info.json':
-                        sub_lang, sub_ext = name2_ext[1:].split('.')
-                        subtitles.append((os.path.abspath(name2),
-                                          sub_lang, sub_ext))
-            results.append((os.path.abspath(name), thumbnails, subtitles))
-        results.sort(key=lambda result: result[0])
-        return (results, self._skipped_count - saved_skipped_count)
+        return (sorted(os.path.abspath(filename) for filename in os.listdir()
+                       if re.fullmatch(r'[0-9]+\.info\.json', filename)),
+                self._skipped_count - saved_skipped_count)
 
     def _load_video(self, dir_, info_path):
         class GetFilepathPP(PostProcessor):
@@ -185,6 +258,8 @@ class YoutubeDLSlave:
         while True:
             try:
                 with yt_dlp.YoutubeDL(self.ydl_opts) as ydl:
+                    for args in self.extra_postprocessors:
+                        ydl.add_post_processor(*args)
                     ydl.add_post_processor(GetFilepathPP())
                     ydl.download_with_info_file(info_path)
             except RetryException:
@@ -260,7 +335,6 @@ class YoutubeDLSlave:
             'ignoreerrors': True,  # handled via logger error callback
             'retries': 10,
             'fragment_retries': 10,
-            'writesubtitles': True,
             'subtitleslangs': ['all'],
             'subtitlesformat': 'vtt/best',
             'keepvideo': True,
@@ -271,6 +345,10 @@ class YoutubeDLSlave:
                 {'key': 'FFmpegMetadata'},
                 {'key': 'FFmpegEmbedSubtitle'},
                 {'key': 'XAttrMetadata'}]}
+        self.extra_postprocessors = [
+            (ThumbnailConverterPP(self._handler.on_progress_thumbnail),
+             'before_dl'),
+            (SubtitlesConverterPP(), 'before_dl')]
         mode = self._handler.get_mode()
         if mode == 'audio':
             self.ydl_opts['format'] = 'bestaudio/best'
@@ -324,6 +402,8 @@ class YoutubeDLSlave:
                 info_playlist = info_testplaylist
             # Download videos
             self._allow_authentication_request = False
+            self.ydl_opts['writesubtitles'] = True
+            self.ydl_opts['writethumbnail'] = True
             try:
                 os.makedirs(download_dir, exist_ok=True)
             except OSError as e:
@@ -332,89 +412,13 @@ class YoutubeDLSlave:
                 self._handler.on_error(
                     'ERROR: Failed to create download folder: %s' % e)
                 sys.exit(1)
-            for i, (info_path, thumbnail_paths, subtitles) in enumerate(
-                    info_playlist):
+            for i, info_path in enumerate(info_playlist):
                 with open(info_path) as f:
                     info = json.load(f)
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
-                # Convert subtitles to VTT format
-                # yt-dlp fails for subtitles that it can't convert or
-                # are unsupported by ffmpeg
-                new_subtitles = {}
-                for sub_path, sub_lang, sub_ext in subtitles:
-                    print('[yt_dlp_slave] Testing subtitle (%r, %r)' %
-                          (sub_lang, sub_ext), file=sys.stderr, flush=True)
-                    if sub_ext in ['dfxp', 'ttml', 'tt']:
-                        # Try to use yt-dlp's internal dfxp2srt converter
-                        with open(sub_path, 'rb') as f:
-                            sub_data = f.read()
-                        try:
-                            sub_data = dfxp2srt(sub_data)
-                        except Exception:
-                            traceback.print_exc(file=sys.stderr)
-                            sys.stderr.flush()
-                            continue
-                        sub_path += '-converted.srt'
-                        with open(sub_path, 'w', encoding='utf-8') as f:
-                            f.write(sub_data)
-                    # Try to convert subtitles with ffmpeg
-                    try:
-                        sub_data_vtt = subprocess.run(
-                            [FFMPEG_EXE, '-i', os.path.abspath(sub_path),
-                             '-f', 'webvtt', '-'],
-                            check=True, stdin=subprocess.DEVNULL,
-                            stdout=subprocess.PIPE).stdout.decode('utf-8')
-                    except FileNotFoundError:
-                        traceback.print_exc(file=sys.stderr)
-                        sys.stderr.flush()
-                        self._handler.on_error(
-                            'ERROR: %r not found' % FFMPEG_EXE)
-                        sys.exit(1)
-                    except subprocess.CalledProcessError:
-                        traceback.print_exc(file=sys.stderr)
-                        sys.stderr.flush()
-                        continue
-                    new_subtitles[sub_lang] = [{
-                        **info['subtitles'][sub_lang][-1],
-                        'ext': 'vtt',
-                        'data': sub_data_vtt
-                    }]
-                info['subtitles'] = new_subtitles
-                thumbnail_path = thumbnail_paths[0] if thumbnail_paths else ''
-                new_thumbnails = []
-                if thumbnail_path:
-                    # Convert thumbnail to JPEG and limit resolution
-                    print('[yt_dlp_slave] Converting thumbnail',
-                          file=sys.stderr, flush=True)
-                    new_thumbnail_path = thumbnail_path + '-converted.jpg'
-                    try:
-                        subprocess.run(
-                            [FFMPEG_EXE, '-i', os.path.abspath(thumbnail_path),
-                             '-vf', ('scale=\'min({0},iw):min({0},ih):'
-                                     'force_original_aspect_ratio=decrease\''
-                                     ).format(MAX_THUMBNAIL_RESOLUTION),
-                             os.path.abspath(new_thumbnail_path)],
-                            check=True, stdin=subprocess.DEVNULL,
-                            stdout=subprocess.DEVNULL)
-                    except FileNotFoundError:
-                        traceback.print_exc(file=sys.stderr)
-                        sys.stderr.flush()
-                        self._handler.on_error(
-                            'ERROR: %r not found' % FFMPEG_EXE)
-                        sys.exit(1)
-                    except subprocess.CalledProcessError:
-                        traceback.print_exc(file=sys.stderr)
-                        sys.stderr.flush()
-                        new_thumbnail_path = ''
-                    # No longer needed
-                    os.remove(thumbnail_path)
-                    thumbnail_path = new_thumbnail_path
-                    new_thumbnails.append({**info['thumbnails'][-1],
-                                           'filename': thumbnail_path})
-                info['thumbnails'] = new_thumbnails
                 self._handler.on_progress_start(i, len(info_playlist), title,
-                                                thumbnail_path)
+                                                '')
                 # Remove description, because long comments cause problems when
                 # displayed in Nautilus and other applications.
                 with contextlib.suppress(KeyError):
