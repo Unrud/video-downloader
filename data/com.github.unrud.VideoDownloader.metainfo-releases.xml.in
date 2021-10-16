@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.9.0" date="2021-10-16">
+    <description>
+      <ul>
+        <li>Switch from youtube-dl to yt-dlp</li>
+        <li>Download subtitles only once</li>
+        <li>Don't download subtitles and thumbnail while discovering playlists</li>
+        <li>Save info json and thumbnail in *.part directory</li>
+        <li>Improve prefer-mpeg setting</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.8.10" date="2021-09-28">
     <description>
       <ul>
