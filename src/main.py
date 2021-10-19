@@ -64,6 +64,8 @@ class Application(Gtk.Application):
         # Apply/Bind settings
         model.download_dir = self.settings.get_string('download-folder')
         model.prefer_mpeg = self.settings.get_boolean('prefer-mpeg')
+        model.automatic_subtitles = self.settings.get_strv(
+            'automatic-subtitles')
         self.settings.bind('mode', model, 'mode', (
                                Gio.SettingsBindFlags.DEFAULT |
                                Gio.SettingsBindFlags.GET_NO_CHANGES))

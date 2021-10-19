@@ -43,6 +43,7 @@ class Model(GObject.GObject, downloader.Handler):
     download_dir = GObject.Property(type=str)
     download_dir_abs = GObject.Property(type=str)
     prefer_mpeg = GObject.Property(type=bool, default=False)
+    automatic_subtitles = []
     download_playlist_index = GObject.Property(type=GObject.TYPE_INT64)
     download_playlist_count = GObject.Property(type=GObject.TYPE_INT64)
     download_filename = GObject.Property(type=str)
@@ -159,6 +160,10 @@ class Model(GObject.GObject, downloader.Handler):
     def get_prefer_mpeg(self):
         assert self.state in ['download', 'cancel']
         return self.prefer_mpeg
+
+    def get_automatic_subtitles(self):
+        assert self.state in ['download', 'cancel']
+        return self.automatic_subtitles
 
     def get_url(self):
         assert self.state in ['download', 'cancel']

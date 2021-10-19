@@ -52,6 +52,24 @@ flatpak override --user --filesystem='~/VideoDownloader:create' com.github.unrud
 snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.VideoDownloader download-folder '~/VideoDownloader'
 ```
 
+### Automatic Subtitles
+
+List of automatic subtitles to download. The entry `all` matches all languages.
+
+The default is `[]`.
+
+#### Flatpak
+
+```
+flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.unrud.VideoDownloader automatic-subtitles "['de','en']"
+```
+
+#### Snap
+
+```
+snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.VideoDownloader automatic-subtitles "['de','en']"
+```
+
 ### Prefer MPEG
 
 Prefer MPEG videos instead of free formats when both are available at the same

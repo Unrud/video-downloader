@@ -156,6 +156,9 @@ class Handler:
     def get_prefer_mpeg(self) -> bool:
         raise NotImplementedError
 
+    def get_automatic_subtitles(self) -> typing.List[str]:
+        raise NotImplementedError
+
     def get_url(self) -> str:
         raise NotImplementedError
 

@@ -384,6 +384,8 @@ class YoutubeDLSlave:
                 self.ydl_opts['format_sort'].append('+codec:avc:m4a')
         url = self._handler.get_url()
         download_dir = os.path.abspath(self._handler.get_download_dir())
+        requested_automatic_subtitles = set(
+            self._handler.get_automatic_subtitles())
         with tempfile.TemporaryDirectory() as temp_dir:
             self.ydl_opts['cookiefile'] = os.path.join(temp_dir, 'cookies')
             self.ydl_opts['playlistend'] = 2
@@ -412,6 +414,7 @@ class YoutubeDLSlave:
             # Download videos
             self._allow_authentication_request = False
             self.ydl_opts['writesubtitles'] = True
+            self.ydl_opts['writeautomaticsub'] = True
             self.ydl_opts['writethumbnail'] = True
             try:
                 os.makedirs(download_dir, exist_ok=True)
@@ -430,6 +433,14 @@ class YoutubeDLSlave:
                 # displayed in Nautilus and other applications.
                 with contextlib.suppress(KeyError):
                     del info['description']
+                new_automatic_captions = {}
+                for lang, subs in (
+                        info.get('automatic_captions') or {}).items():
+                    if lang not in (info.get('subtitles') or {}) and (
+                            'all' in requested_automatic_subtitles or
+                            lang in requested_automatic_subtitles):
+                        new_automatic_captions[lang] = subs
+                info['automatic_captions'] = new_automatic_captions
                 # Check if we already got the file
                 existing_filename = self._find_existing_download(
                     download_dir, output_title, mode)
