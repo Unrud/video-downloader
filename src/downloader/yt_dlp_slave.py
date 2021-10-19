@@ -262,7 +262,14 @@ class YoutubeDLSlave:
                 if re.fullmatch(r'[0-9]+\.info\.json', filename):
                     with open(os.path.join(temp_dir, filename),
                               encoding='utf-8') as f:
-                        info_dicts.append(json.load(f))
+                        info = json.load(f)
+                    # yt_dlp creates info files for the playlists itself
+                    if 'formats' not in info:
+                        print('[yt_dlp_slave] Skipping %r without \'formats\''
+                              % (info.get('id') or ''),
+                              file=sys.stderr, flush=True)
+                        continue
+                    info_dicts.append(info)
         return info_dicts, self._skipped_count - saved_skipped_count
 
     def _load_video(self, dir_, info_path):
