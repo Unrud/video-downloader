@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.9.1" date="2021-10-19">
+    <description>
+      <ul>
+        <li>Fix playlist download</li>
+        <li>Fix subtitles containing captions with leading spaces</li>
+        <li>Add automatic-subtitles setting</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.9.0" date="2021-10-16">
     <description>
       <ul>
