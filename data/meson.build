@@ -1,5 +1,3 @@
-pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
-
 desktop_file = i18n.merge_file(
   input: 'com.github.unrud.VideoDownloader.desktop.in',
   output: 'com.github.unrud.VideoDownloader.desktop',
