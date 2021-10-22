@@ -20,6 +20,8 @@ base_appstream_file = i18n.merge_file(
   po_dir: '../po'
 )
 
+merge_xml_aux = meson.current_source_dir() / 'build-aux' / 'meson' / 'merge-xml.py'
+python_sources_for_linting += merge_xml_aux
 appstream_file = custom_target('com.github.unrud.VideoDownloader.metainfo.xml',
   input: [
     base_appstream_file,
@@ -27,7 +29,7 @@ appstream_file = custom_target('com.github.unrud.VideoDownloader.metainfo.xml',
   ],
   output: 'com.github.unrud.VideoDownloader.metainfo.xml',
   command: [
-    python, meson.current_source_dir() / 'build-aux' / 'meson' / 'merge-xml.py',
+    python, merge_xml_aux,
     '@INPUT0@', '@INPUT1@', '.'
   ],
   capture: true,
