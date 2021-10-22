@@ -135,8 +135,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2021.10.10.tar.gz",
-                    "sha256" : "b07c21f7403f2501181c221aa576dedd371b50763d4bf583b6f6ace399cb93db"
+                    "url" : "https://github.com/yt-dlp/yt-dlp/archive/refs/tags/2021.10.22.tar.gz",
+                    "sha256" : "63f267cb0f2e9d18afc8e51267be2a13ce60030eab7c04b25b94d6b90d2ba6d3"
                 }
             ]
         },
