@@ -430,14 +430,16 @@ class YoutubeDLSlave:
                 output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
                 self._handler.on_progress_start(i, len(info_playlist), title,
                                                 '')
+                automatic_captions = info.get('automatic_captions') or {}
                 new_automatic_captions = {}
-                for lang, subs in (
-                        info.get('automatic_captions') or {}).items():
+                for lang, subs in automatic_captions.items():
                     if lang not in (info.get('subtitles') or {}) and (
                             'all' in requested_automatic_subtitles or
                             lang in requested_automatic_subtitles):
                         new_automatic_captions[lang] = subs
-                info['automatic_captions'] = new_automatic_captions
+                if automatic_captions != new_automatic_captions:
+                    info['_backup_automatic_captions'] = automatic_captions
+                    info['automatic_captions'] = new_automatic_captions
                 # Check if we already got the file
                 existing_filename = self._find_existing_download(
                     download_dir, output_title, mode)
