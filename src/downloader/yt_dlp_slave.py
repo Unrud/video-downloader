@@ -430,10 +430,6 @@ class YoutubeDLSlave:
                 output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
                 self._handler.on_progress_start(i, len(info_playlist), title,
                                                 '')
-                # Remove description, because long comments cause problems when
-                # displayed in Nautilus and other applications.
-                with contextlib.suppress(KeyError):
-                    del info['description']
                 new_automatic_captions = {}
                 for lang, subs in (
                         info.get('automatic_captions') or {}).items():
