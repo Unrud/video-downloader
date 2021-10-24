@@ -48,8 +48,8 @@ def _short_filename(name, length):
         # Check length with file system encoding
         if (len(output.encode(sys.getfilesystemencoding(), 'ignore'))
                 < length):
-            break
-    return output
+            return output
+    raise ValueError('can\'t shorten filename %r to %r bytes' % (name, length))
 
 
 @contextlib.contextmanager
