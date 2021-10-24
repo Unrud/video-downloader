@@ -431,12 +431,23 @@ class YoutubeDLSlave:
                 self._handler.on_progress_start(i, len(info_playlist), title,
                                                 '')
                 automatic_captions = info.get('automatic_captions') or {}
+                skip_captions = {*(info.get('subtitles') or {})}
                 new_automatic_captions = {}
                 for lang, subs in automatic_captions.items():
-                    if lang not in (info.get('subtitles') or {}) and (
-                            'all' in requested_automatic_subtitles or
-                            lang in requested_automatic_subtitles):
-                        new_automatic_captions[lang] = subs
+                    if lang in skip_captions:
+                        continue
+                    for requested_lang in requested_automatic_subtitles:
+                        if requested_lang == 'all' or requested_lang == lang:
+                            break
+                        # Translated subtitles
+                        if (lang.startswith(requested_lang+'-')
+                                and requested_lang not in skip_captions
+                                and requested_lang not in automatic_captions):
+                            skip_captions.add(requested_lang)
+                            break
+                    else:
+                        continue
+                    new_automatic_captions[lang] = subs
                 if automatic_captions != new_automatic_captions:
                     info['_backup_automatic_captions'] = automatic_captions
                     info['automatic_captions'] = new_automatic_captions
