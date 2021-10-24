@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.9.4" date="2021-10-24">
+    <description>
+      <ul>
+        <li>Fix subtitles containing multiple consecutive captions with leading spaces</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.9.3" date="2021-10-24">
     <description>
       <ul>
