@@ -54,7 +54,7 @@ snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.Vi
 
 ### Automatic Subtitles
 
-List of automatic subtitles to download. The entry `all` matches all languages.
+List of additional automatic subtitles to download. The entry `all` matches all languages.
 
 The default is `[]`.
 
