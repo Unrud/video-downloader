@@ -38,8 +38,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.4.0/libhandy-1.4.0.tar.bz2",
-                    "sha256" : "4c48a426db5afbfc0014b1ea0c75557cb7b5207406363a768a9c370e047e3420"
+                    "url" : "https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.5.0/libhandy-1.5.0.tar.bz2",
+                    "sha256" : "ca2e6fe95c214590f48b64db88d72526cefa23f67aacf5ebdc63dfbd25bff92b"
                 }
             ]
         },
@@ -120,8 +120,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/aaugustin/websockets/archive/refs/tags/10.0.tar.gz",
-                    "sha256" : "eacd5e92558972111deed2c3d948a1cbec03ec280c27f134b622b0d1f0d22edf"
+                    "url" : "https://github.com/aaugustin/websockets/archive/refs/tags/10.1.tar.gz",
+                    "sha256" : "c0ac9afbc816ea98c793b2f16969522a8b2469f607a8ae1516f5217729508457"
                 }
             ]
         },
