@@ -63,8 +63,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://ffmpeg.org/releases/ffmpeg-4.4.1.tar.xz",
-                    "sha256" : "eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02"
+                    "url" : "https://ffmpeg.org/releases/ffmpeg-5.0.tar.xz",
+                    "sha256" : "51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298"
                 }
             ]
         },
@@ -106,8 +106,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.11.0.zip",
-                    "sha256" : "c40861bdbc11d9d10cf61ec65f4407f56febc31c237990562271b9ca8e1c5ad2"
+                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.12.0.zip",
+                    "sha256" : "0ddef08707ad81c1b035acea4da9a061b1d6c913329233c78d2b23f8d5087eac"
                 }
             ]
         },
