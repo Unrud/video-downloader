@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-21 19:36+0100\n"
+"POT-Creation-Date: 2022-01-21 21:36+0100\n"
 "PO-Revision-Date: 2022-01-21 19:39+0100\n"
 "Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>\n"
 "Language-Team: Spanish; Castilian\n"
@@ -67,7 +67,7 @@ msgstr "Ventana nueva"
 msgid "Authentication Required"
 msgstr "Autenticación requerida"
 
-#: src/authentication_dialog.py:34 src/window.ui:478
+#: src/authentication_dialog.py:34 src/window.ui:480
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -88,7 +88,7 @@ msgstr "El vídeo no es público."
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_login.ui:107
 #: src/authentication_dialog_password.ui:55
 msgid "Password"
 msgstr "Contraseña"
@@ -165,15 +165,15 @@ msgstr "{} de {}"
 msgid "unknown"
 msgstr "desconocido"
 
-#: src/window.py:218 src/window.ui:688
+#: src/window.py:218 src/window.ui:690
 msgid "Download failed"
 msgstr "Descarga fallida"
 
-#: src/window.py:222 src/window.ui:857
+#: src/window.py:222 src/window.ui:859
 msgid "Download finished"
 msgstr "Descarga finalizada"
 
-#: src/window.py:227 src/window.ui:871
+#: src/window.py:227 src/window.ui:873
 msgid "Open Download Location"
 msgstr "Abrir la ubicación de la descarga"
 
@@ -181,30 +181,30 @@ msgstr "Abrir la ubicación de la descarga"
 msgid "About Video Downloader"
 msgstr "Acerca de Descargador de vídeo"
 
-#: src/window.ui:238 src/window.ui:323
+#: src/window.ui:238 src/window.ui:324
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:276 src/window.ui:413
+#: src/window.ui:277 src/window.ui:415
 msgid "Download"
 msgstr "Descargar"
 
-#: src/window.ui:298
+#: src/window.ui:299
 msgid "Audio"
 msgstr "Audio"
 
-#: src/window.ui:368
+#: src/window.ui:370
 msgid "Resolution"
 msgstr "Resolución"
 
-#: src/window.ui:435
+#: src/window.ui:437
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/window.ui:643 src/window.ui:811
+#: src/window.ui:645 src/window.ui:813
 msgid "Back"
 msgstr "Atrás"
 
-#: src/window.ui:718
+#: src/window.ui:720
 msgid "Details"
 msgstr "Detalles"

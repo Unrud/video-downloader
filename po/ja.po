@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 14:39+0200\n"
+"POT-Creation-Date: 2022-01-21 21:36+0100\n"
 "PO-Revision-Date: 2021-02-05 05:26+0100\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:34 src/window.ui:158
+#: src/main.py:36 src/window.ui:158
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
@@ -57,10 +57,6 @@ msgstr "指定した品質に基づいた動画形式の自動選択"
 msgid "Based on yt-dlp."
 msgstr "yt-dlp を利用しています。"
 
-#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:27
-msgid "Unrud"
-msgstr "Unrud"
-
 #: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
 msgid "New Window"
 msgstr "新しいウィンドウ"
@@ -69,7 +65,7 @@ msgstr "新しいウィンドウ"
 msgid "Authentication Required"
 msgstr "認証が必要です"
 
-#: src/authentication_dialog.py:34 src/window.ui:478
+#: src/authentication_dialog.py:34 src/window.ui:480
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -90,52 +86,52 @@ msgstr "閲覧が制限されている動画です。"
 msgid "Username"
 msgstr "ユーザー名"
 
-#: src/authentication_dialog_login.ui:106
+#: src/authentication_dialog_login.ui:107
 #: src/authentication_dialog_password.ui:55
 msgid "Password"
 msgstr "パスワード"
 
-#: src/main.py:33
+#: src/main.py:35
 msgid "Prefill URL field"
 msgstr "URL フィールドに事前入力する"
 
-#: src/model.py:59
+#: src/model.py:60
 msgid "Best"
 msgstr "最高"
 
-#: src/model.py:60
+#: src/model.py:61
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:61
+#: src/model.py:62
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:62
+#: src/model.py:63
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:63
+#: src/model.py:64
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:64
+#: src/model.py:65
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:65
+#: src/model.py:66
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:66
+#: src/model.py:67
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:67
+#: src/model.py:68
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:68
+#: src/model.py:69
 msgid "144p"
 msgstr "144p"
 
@@ -167,15 +163,15 @@ msgstr "{} / {}"
 msgid "unknown"
 msgstr "不明"
 
-#: src/window.py:218 src/window.ui:688
+#: src/window.py:218 src/window.ui:690
 msgid "Download failed"
 msgstr "ダウンロード失敗"
 
-#: src/window.py:222 src/window.ui:857
+#: src/window.py:222 src/window.ui:859
 msgid "Download finished"
 msgstr "ダウンロード完了"
 
-#: src/window.py:227 src/window.ui:871
+#: src/window.py:227 src/window.ui:873
 msgid "Open Download Location"
 msgstr ""
 
@@ -183,30 +179,30 @@ msgstr ""
 msgid "About Video Downloader"
 msgstr "Video Downloader について"
 
-#: src/window.ui:238 src/window.ui:323
+#: src/window.ui:238 src/window.ui:324
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:276 src/window.ui:413
+#: src/window.ui:277 src/window.ui:415
 msgid "Download"
 msgstr "ダウンロード"
 
-#: src/window.ui:298
+#: src/window.ui:299
 msgid "Audio"
 msgstr "音声"
 
-#: src/window.ui:368
+#: src/window.ui:370
 msgid "Resolution"
 msgstr "解像度"
 
-#: src/window.ui:435
+#: src/window.ui:437
 msgid "Video"
 msgstr "動画"
 
-#: src/window.ui:643 src/window.ui:811
+#: src/window.ui:645 src/window.ui:813
 msgid "Back"
 msgstr "戻る"
 
-#: src/window.ui:718
+#: src/window.ui:720
 msgid "Details"
 msgstr "詳細"
