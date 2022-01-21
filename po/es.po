@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 14:39+0200\n"
-"PO-Revision-Date: 2021-02-05 05:25+0100\n"
+"POT-Creation-Date: 2022-01-21 19:36+0100\n"
+"PO-Revision-Date: 2022-01-21 19:39+0100\n"
 "Last-Translator: Rafael Mardojai CM <mardojai.cardenas@gmail.com>\n"
 "Language-Team: Spanish; Castilian\n"
 "Language: es\n"
@@ -16,30 +16,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:34 src/window.ui:158
+#: src/main.py:36 src/window.ui:158
 msgid "Video Downloader"
-msgstr "Video Downloader"
+msgstr "Descargador de vídeo"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
 msgid "Download videos from websites like YouTube and many others"
-msgstr "Descarga vídeos desde sitios web como Youtube y muchos otros"
+msgstr "Descargar vídeos de sitios web como YouTube y muchos otros"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Descarga vídeos desde sitios web con una interfaz fácil de usar. Provee las "
+"Descargue vídeos de sitios web con una interfaz fácil de usar. Ofrece las "
 "siguientes características:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Convertir vídeos a MP3"
+msgstr "Convierte vídeos a MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
@@ -47,49 +47,42 @@ msgstr "Soporta vídeos privados protegidos por contraseña"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "Descargar vídeos individuales o listas de reproducción completas"
+msgstr "Descarga vídeos individuales o listas de reproducción completas"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
-#, fuzzy
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
-"Selecciona automáticamente un formato de vídeo basado en su resolución "
-"preferida"
+"Selecciona automáticamente un formato de vídeo en función de sus exigencias "
+"de calidad"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
 msgstr "Basado en yt-dlp."
 
-#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:27
-msgid "Unrud"
-msgstr "Unrud"
-
 #: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
 msgid "New Window"
-msgstr "Nueva ventana"
+msgstr "Ventana nueva"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "Autenticación Requerida"
+msgstr "Autenticación requerida"
 
 #: src/authentication_dialog.py:34 src/window.ui:478
 msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/authentication_dialog.py:42
-#, fuzzy
 msgid "Sign in"
-msgstr "Registrarse"
+msgstr "Iniciar sesión"
 
 #: src/authentication_dialog.py:42
-#, fuzzy
 msgid "Skip"
 msgstr "Omitir"
 
 #: src/authentication_dialog_login.ui:37
 #: src/authentication_dialog_password.ui:37
 msgid "The video is not public."
-msgstr "El vídeo no es publico."
+msgstr "El vídeo no es público."
 
 #: src/authentication_dialog_login.ui:61
 msgid "Username"
@@ -100,54 +93,53 @@ msgstr "Nombre de usuario"
 msgid "Password"
 msgstr "Contraseña"
 
-#: src/main.py:33
-#, fuzzy
+#: src/main.py:35
 msgid "Prefill URL field"
-msgstr "Rellenar campo URL"
+msgstr "Rellenar el campo URL"
 
-#: src/model.py:59
+#: src/model.py:60
 msgid "Best"
 msgstr "La mejor"
 
-#: src/model.py:60
+#: src/model.py:61
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:61
+#: src/model.py:62
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:62
+#: src/model.py:63
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:63
+#: src/model.py:64
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:64
+#: src/model.py:65
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:65
+#: src/model.py:66
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:66
+#: src/model.py:67
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:67
+#: src/model.py:68
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:68
+#: src/model.py:69
 msgid "144p"
 msgstr "144p"
 
 #: src/playlist_dialog.py:32
 msgid "Download Playlist?"
-msgstr "¿Descargar lista de reproducción?"
+msgstr "¿Descargar la lista de reproducción?"
 
 #: src/playlist_dialog.py:33
 msgid "The video is part of a playlist."
@@ -183,11 +175,11 @@ msgstr "Descarga finalizada"
 
 #: src/window.py:227 src/window.ui:871
 msgid "Open Download Location"
-msgstr ""
+msgstr "Abrir la ubicación de la descarga"
 
 #: src/window.ui:137
 msgid "About Video Downloader"
-msgstr ""
+msgstr "Acerca de Descargador de vídeo"
 
 #: src/window.ui:238 src/window.ui:323
 msgid "URL"
@@ -211,7 +203,7 @@ msgstr "Vídeo"
 
 #: src/window.ui:643 src/window.ui:811
 msgid "Back"
-msgstr "Volver"
+msgstr "Atrás"
 
 #: src/window.ui:718
 msgid "Details"
