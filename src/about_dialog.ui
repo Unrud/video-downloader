@@ -31,7 +31,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
     <property name="type-hint">dialog</property>
     <property name="program-name" translatable="yes">Video Downloader</property>
     <property name="version">Version XXX</property>
-    <property name="copyright">Copyright © 2019-2021 Unrud</property>
+    <property name="copyright">Copyright © 2019-2022 Unrud</property>
     <property name="comments" translatable="yes">Download videos from websites like YouTube and many others</property>
     <property name="website">https://github.com/Unrud/video-downloader</property>
     <property name="authors">Unrud
@@ -47,6 +47,7 @@ Heimen Stoffels
 Ícar
 MartinIIOT
 milotype
+Óscar Fernández Díaz
 ovari
 Rafael Mardojai CM
 Roy Meissner
