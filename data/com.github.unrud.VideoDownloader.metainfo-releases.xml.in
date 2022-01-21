@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.9.5" date="2022-01-21">
+    <description>
+      <ul>
+        <li>Update Spanish translation</li>
+        <li>Set input purpose of entry widgets</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.9.4" date="2021-10-24">
     <description>
       <ul>
