@@ -26,24 +26,6 @@
     ],
     "modules" : [
         {
-            "name" : "libhandy",
-            "buildsystem" : "meson",
-            "builddir" : true,
-            "config-opts" : [
-                "-Dexamples=false",
-                "-Dglade_catalog=disabled",
-                "-Dtests=false",
-                "-Dvapi=false"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.5.0/libhandy-1.5.0.tar.bz2",
-                    "sha256" : "ca2e6fe95c214590f48b64db88d72526cefa23f67aacf5ebdc63dfbd25bff92b"
-                }
-            ]
-        },
-        {
             "name" : "ffmpeg",
             "config-opts" : [
                 "--disable-debug",
@@ -106,8 +88,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.12.0.zip",
-                    "sha256" : "0ddef08707ad81c1b035acea4da9a061b1d6c913329233c78d2b23f8d5087eac"
+                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.14.0.tar.gz",
+                    "sha256" : "586114e16c8f2d258a3e582f70c75248114394d07c68f1ddb8955204418509c1"
                 }
             ]
         },
