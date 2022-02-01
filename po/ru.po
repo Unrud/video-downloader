@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-21 21:36+0100\n"
-"PO-Revision-Date: 2022-02-01 20:27+0500\n"
+"PO-Revision-Date: 2022-02-01 20:34+0500\n"
 "Last-Translator: Umidjon Almasov <umidjon@almasov.uz>\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
@@ -178,7 +178,7 @@ msgstr "Открыть место загрузки"
 
 #: src/window.ui:137
 msgid "About Video Downloader"
-msgstr "О программе Загрузчик видео"
+msgstr "О программе"
 
 #: src/window.ui:238 src/window.ui:324
 msgid "URL"
