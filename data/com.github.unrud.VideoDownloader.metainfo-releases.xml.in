@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.9.6" date="2022-02-02">
+    <description>
+      <ul>
+        <li>Add Russian translation</li>
+        <li>Add Uzbek translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.9.5" date="2022-01-21">
     <description>
       <ul>
