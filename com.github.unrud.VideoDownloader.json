@@ -88,8 +88,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.14.0.tar.gz",
-                    "sha256" : "586114e16c8f2d258a3e582f70c75248114394d07c68f1ddb8955204418509c1"
+                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.14.1.tar.gz",
+                    "sha256" : "2da3d5c2ecd3c3b73946ef00dc585d590e869deacdfe464cefba96f50d13682f"
                 }
             ]
         },
@@ -102,8 +102,22 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/aaugustin/websockets/archive/refs/tags/10.1.tar.gz",
-                    "sha256" : "c0ac9afbc816ea98c793b2f16969522a8b2469f607a8ae1516f5217729508457"
+                    "url" : "https://github.com/aaugustin/websockets/archive/refs/tags/10.2.tar.gz",
+                    "sha256" : "85b816a978d4f2c8b30721383c32e439ede3b0618e252f50c5d14782b974b50e"
+                }
+            ]
+        },
+        {
+            "name" : "brotli",
+            "buildsystem" : "simple",
+            "build-commands" : [
+                "pip3 install --prefix=/app ."
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/google/brotli/archive/refs/tags/v1.0.9.tar.gz",
+                    "sha256" : "f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46"
                 }
             ]
         },
@@ -117,8 +131,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/yt-dlp/yt-dlp/releases/download/2022.02.04/yt-dlp.tar.gz",
-                    "sha256" : "c8dd119c28a5d256322ddb3a2fff72bc02ace43fc5880c0065d97f7a48d7a8e3"
+                    "url" : "https://github.com/yt-dlp/yt-dlp/releases/download/2022.03.08.1/yt-dlp.tar.gz",
+                    "sha256" : "135fd7bbf81c2639419b191d8e5abb80cd8a9801b7ed8e92a331a4107e820ab2"
                 }
             ]
         },
