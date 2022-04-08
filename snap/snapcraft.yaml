@@ -115,6 +115,9 @@ parts:
     source-checksum: sha256/a9ea3753977dd82f051f0674fbdc3eb5ff49a67246f4bd3cac5745702828d1db
     python-packages:
       - pyxattr==0.7.2
+    override-pull: |
+      snapcraftctl pull
+      sed -i 's/^certifi\b/#\0/' requirements.txt
 
   video-downloader:
     after: [libhandy, yt-dlp]

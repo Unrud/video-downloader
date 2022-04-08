@@ -133,6 +133,12 @@
                     "type" : "archive",
                     "url" : "https://github.com/yt-dlp/yt-dlp/releases/download/2022.04.08/yt-dlp.tar.gz",
                     "sha256" : "a9ea3753977dd82f051f0674fbdc3eb5ff49a67246f4bd3cac5745702828d1db"
+                },
+                {
+                    "type" : "shell",
+                    "commands" : [
+                        "sed -i 's/^certifi\\b/#\\0/' requirements.txt"
+                    ]
                 }
             ]
         },
