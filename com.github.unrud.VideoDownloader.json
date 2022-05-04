@@ -46,7 +46,12 @@
                 {
                     "type" : "archive",
                     "url" : "https://ffmpeg.org/releases/ffmpeg-5.0.1.tar.xz",
-                    "sha256" : "ef2efae259ce80a240de48ec85ecb062cecca26e4352ffb3fda562c21a93007b"
+                    "sha256" : "ef2efae259ce80a240de48ec85ecb062cecca26e4352ffb3fda562c21a93007b",
+                    "x-checker-data" : {
+                        "type" : "html",
+                        "url" : "https://ffmpeg.org/releases/",
+                        "pattern" : ">(ffmpeg-([\\d.]+)\\.tar\\.xz)<"
+                    }
                 }
             ]
         },
@@ -60,7 +65,13 @@
                 {
                     "type" : "archive",
                     "url" : "https://github.com/iustin/pyxattr/archive/refs/tags/v0.7.2.tar.gz",
-                    "sha256" : "a1f4b92ffb2193fd381ea352a2a5b60683a4c58c2e7d9468ba7fb71653a3d160"
+                    "sha256" : "a1f4b92ffb2193fd381ea352a2a5b60683a4c58c2e7d9468ba7fb71653a3d160",
+                    "x-checker-data" : {
+                        "type" : "json",
+                        "url" : "https://api.github.com/repos/iustin/pyxattr/releases/latest",
+                        "version-query" : ".tag_name",
+                        "url-query" : "\"https://github.com/iustin/pyxattr/archive/refs/tags/\" + $version + \".tar.gz\""
+                    }
                 }
             ]
         },
@@ -74,7 +85,13 @@
                 {
                     "type" : "archive",
                     "url" : "https://github.com/quodlibet/mutagen/archive/refs/tags/release-1.45.1.tar.gz",
-                    "sha256" : "308d5244c7242b084c824bbbea6d56ddd716300e1bce6420cb8c1e6781c0d4f9"
+                    "sha256" : "308d5244c7242b084c824bbbea6d56ddd716300e1bce6420cb8c1e6781c0d4f9",
+                    "x-checker-data" : {
+                        "type" : "json",
+                        "url" : "https://api.github.com/repos/quodlibet/mutagen/releases/latest",
+                        "version-query" : ".tag_name",
+                        "url-query" : "\"https://github.com/quodlibet/mutagen/archive/refs/tags/\" + $version + \".tar.gz\""
+                    }
                 }
             ]
         },
@@ -89,7 +106,13 @@
                 {
                     "type" : "archive",
                     "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.14.1.tar.gz",
-                    "sha256" : "2da3d5c2ecd3c3b73946ef00dc585d590e869deacdfe464cefba96f50d13682f"
+                    "sha256" : "2da3d5c2ecd3c3b73946ef00dc585d590e869deacdfe464cefba96f50d13682f",
+                    "x-checker-data" : {
+                        "type" : "json",
+                        "url" : "https://api.github.com/repos/Legrandin/pycryptodome/tags",
+                        "version-query" : ".[0].name",
+                        "url-query" : "\"https://github.com/Legrandin/pycryptodome/archive/refs/tags/\" + $version + \".tar.gz\""
+                    }
                 }
             ]
         },
@@ -103,7 +126,13 @@
                 {
                     "type" : "archive",
                     "url" : "https://github.com/aaugustin/websockets/archive/refs/tags/10.3.tar.gz",
-                    "sha256" : "f13384865a14e0beff240b8f835b5b6a105b32928854841f167d920b4be8e75e"
+                    "sha256" : "f13384865a14e0beff240b8f835b5b6a105b32928854841f167d920b4be8e75e",
+                    "x-checker-data" : {
+                        "type" : "json",
+                        "url" : "https://api.github.com/repos/aaugustin/websockets/tags",
+                        "version-query" : ".[0].name",
+                        "url-query" : "\"https://github.com/aaugustin/websockets/archive/refs/tags/\" + $version + \".tar.gz\""
+                    }
                 }
             ]
         },
@@ -117,7 +146,13 @@
                 {
                     "type" : "archive",
                     "url" : "https://github.com/google/brotli/archive/refs/tags/v1.0.9.tar.gz",
-                    "sha256" : "f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46"
+                    "sha256" : "f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46",
+                    "x-checker-data" : {
+                        "type" : "json",
+                        "url" : "https://api.github.com/repos/google/brotli/releases/latest",
+                        "version-query" : ".tag_name",
+                        "url-query" : "\"https://github.com/google/brotli/archive/refs/tags/\" + $version + \".tar.gz\""
+                    }
                 }
             ]
         },
@@ -132,7 +167,13 @@
                 {
                     "type" : "archive",
                     "url" : "https://github.com/yt-dlp/yt-dlp/releases/download/2022.04.08/yt-dlp.tar.gz",
-                    "sha256" : "a9ea3753977dd82f051f0674fbdc3eb5ff49a67246f4bd3cac5745702828d1db"
+                    "sha256" : "a9ea3753977dd82f051f0674fbdc3eb5ff49a67246f4bd3cac5745702828d1db",
+                    "x-checker-data" : {
+                        "type" : "json",
+                        "url" : "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
+                        "version-query" : ".[0].name",
+                        "url-query" : "\"https://github.com/yt-dlp/yt-dlp/releases/download/\" + $version + \"/yt-dlp.tar.gz\""
+                    }
                 },
                 {
                     "type" : "shell",
