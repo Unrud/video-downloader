@@ -110,7 +110,7 @@
                     "x-checker-data" : {
                         "type" : "json",
                         "url" : "https://api.github.com/repos/Legrandin/pycryptodome/tags",
-                        "version-query" : ".[0].name",
+                        "version-query" : "[.[].name | select(test(\"^v?[0-9.]+$\"))] | sort_by(sub(\"^v\"; \"\") | split(\".\") | map(tonumber))[-1]",
                         "url-query" : "\"https://github.com/Legrandin/pycryptodome/archive/refs/tags/\" + $version + \".tar.gz\""
                     }
                 }
@@ -130,7 +130,7 @@
                     "x-checker-data" : {
                         "type" : "json",
                         "url" : "https://api.github.com/repos/aaugustin/websockets/tags",
-                        "version-query" : ".[0].name",
+                        "version-query" : "[.[].name | select(test(\"^v?[0-9.]+$\"))] | sort_by(sub(\"^v\"; \"\") | split(\".\") | map(tonumber))[-1]",
                         "url-query" : "\"https://github.com/aaugustin/websockets/archive/refs/tags/\" + $version + \".tar.gz\""
                     }
                 }
@@ -170,8 +170,8 @@
                     "sha256" : "a9ea3753977dd82f051f0674fbdc3eb5ff49a67246f4bd3cac5745702828d1db",
                     "x-checker-data" : {
                         "type" : "json",
-                        "url" : "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
-                        "version-query" : ".[0].name",
+                        "url" : "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest",
+                        "version-query" : ".tag_name",
                         "url-query" : "\"https://github.com/yt-dlp/yt-dlp/releases/download/\" + $version + \"/yt-dlp.tar.gz\""
                     }
                 },
