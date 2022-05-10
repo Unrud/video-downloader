@@ -170,8 +170,9 @@
                     "sha256" : "a9ea3753977dd82f051f0674fbdc3eb5ff49a67246f4bd3cac5745702828d1db",
                     "x-checker-data" : {
                         "type" : "json",
-                        "url" : "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest",
-                        "version-query" : ".tag_name",
+                        /* Use the Tags API, because the Releases API sometimes returns older versions!? */
+                        "url" : "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
+                        "version-query" : "[.[].name] | sort[-1]",
                         "url-query" : "\"https://github.com/yt-dlp/yt-dlp/releases/download/\" + $version + \"/yt-dlp.tar.gz\""
                     }
                 },
