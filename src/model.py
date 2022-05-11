@@ -118,7 +118,7 @@ class Model(GObject.GObject, downloader.Handler):
         elif state in ['success', 'error']:
             assert self.prev_state == 'download'
         else:
-            assert False, 'unreachable'
+            assert False, 'invalid value for \'state\' property: %r' % state
         return state
 
     def open_download_dir(self):
