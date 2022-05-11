@@ -20,14 +20,17 @@ import locale
 import os
 import sys
 
-from gi.repository import Gdk, Gio, GLib, Gtk, Handy
+from gi.repository import Gdk, Gio, GLib, Gtk, GObject, Handy
 
+from video_downloader.util import bind_property
 from video_downloader.window import NOTIFICATION_ACTIONS, Window
 
 N_ = gettext.gettext
 
 
 class Application(Gtk.Application):
+    color_scheme = GObject.Property(type=str)
+
     def __init__(self, version):
         super().__init__(application_id='com.github.unrud.VideoDownloader')
         self.add_main_option(
@@ -58,13 +61,26 @@ class Application(Gtk.Application):
                 subtitle_languages.append(lang)
         return subtitle_languages
 
+    def _on_color_scheme_changed(self, value):
+        style_manager = Handy.StyleManager.get_default()
+        if value == 'system':
+            style_manager.set_color_scheme(Handy.ColorScheme.PREFER_LIGHT)
+        elif value == 'light':
+            style_manager.set_color_scheme(Handy.ColorScheme.FORCE_LIGHT)
+        elif value == 'dark':
+            style_manager.set_color_scheme(Handy.ColorScheme.FORCE_DARK)
+        else:
+            assert False, ('invalid value for \'color-scheme\' property: %r' %
+                           value)
+
     def do_startup(self):
         Gtk.Application.do_startup(self)
         Handy.init()
         self.settings = Gio.Settings.new(self.props.application_id)
-        self.settings.bind('dark-mode', Gtk.Settings.get_default(),
-                           'gtk-application-prefer-dark-theme',
+        self.settings.bind('color-scheme', self, 'color-scheme',
                            Gio.SettingsBindFlags.DEFAULT)
+        bind_property(self, 'color-scheme',
+                      func_a_to_b=self._on_color_scheme_changed)
         # Setup actions
         new_window_action = Gio.SimpleAction.new(
             'new-window', GLib.VariantType('s'))

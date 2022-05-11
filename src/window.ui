@@ -71,7 +71,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
             <property name="margin-bottom">6</property>
             <property name="homogeneous">True</property>
             <child>
-              <object class="GtkRadioButton" id="light_mode_wdg">
+              <object class="GtkRadioButton" id="color_light_wdg">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">False</property>
@@ -96,13 +96,39 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
               </packing>
             </child>
             <child>
-              <object class="GtkRadioButton" id="dark_mode_wdg">
+              <object class="GtkRadioButton" id="color_system_wdg">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">False</property>
                 <property name="halign">center</property>
                 <property name="draw-indicator">False</property>
-                <property name="group">light_mode_wdg</property>
+                <property name="group">color_light_wdg</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="icon-name">emblem-ok-symbolic</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="color-button"/>
+                  <class name="color-system"/>
+                </style>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkRadioButton" id="color_dark_wdg">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">False</property>
+                <property name="halign">center</property>
+                <property name="draw-indicator">False</property>
+                <property name="group">color_light_wdg</property>
                 <child>
                   <object class="GtkImage">
                     <property name="visible">True</property>
@@ -118,7 +144,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
-                <property name="position">1</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
