@@ -65,8 +65,8 @@ parts:
 
   libhandy:
     plugin: meson
-    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.5.0/libhandy-1.5.0.tar.bz2
-    source-checksum: sha256/ca2e6fe95c214590f48b64db88d72526cefa23f67aacf5ebdc63dfbd25bff92b
+    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.6.2/libhandy-1.6.2.tar.bz2
+    source-checksum: sha256/121a2a2689e4cc5d815131c021c8d71b9496780bac3c73cee747b63b51b3d732
     meson-parameters:
       # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
       - --prefix=/usr
