@@ -30,32 +30,31 @@ def bind_property(obj_a, prop_a, obj_b=None, prop_b=None, func_a_to_b=None,
                 GObject.BindingFlags.DEFAULT))
         return
 
-    def apply_binding(direction):
-        nonlocal skip
-        if skip:
+    def apply_binding(reverse=False):
+        nonlocal frozen
+        if frozen:
             return
-        skip = True
-        try:
-            if direction == '>':
-                v = obj_a.get_property(prop_a)
-                if func_a_to_b:
-                    v = func_a_to_b(v)
-                if obj_b:
-                    obj_b.set_property(prop_b, v)
-            elif direction == '<':
-                v = obj_b.get_property(prop_b)
-                if func_b_to_a:
-                    v = func_b_to_a(v)
-                obj_a.set_property(prop_a, v)
-            else:
-                assert False, 'unreachable'
-        finally:
-            skip = False
-    skip = False
-    apply_binding('>')
-    obj_a.connect('notify::' + prop_a, lambda *args: apply_binding('>'))
+        if not reverse:
+            value = obj_a.get_property(prop_a)
+            if func_a_to_b:
+                value = func_a_to_b(value)
+            target_obj, target_prop = obj_b, prop_b
+        else:
+            value = obj_b.get_property(prop_b)
+            if func_b_to_a:
+                value = func_b_to_a(value)
+            target_obj, target_prop = obj_a, prop_a
+        if target_obj:
+            frozen = True
+            try:
+                target_obj.set_property(target_prop, value)
+            finally:
+                frozen = False
+    frozen = False
+    apply_binding()
+    obj_a.connect('notify::' + prop_a, lambda *_: apply_binding())
     if bi:
-        obj_b.connect('notify::' + prop_b, lambda *args: apply_binding('<'))
+        obj_b.connect('notify::' + prop_b, lambda *_: apply_binding(True))
 
 
 def expand_path(path):
