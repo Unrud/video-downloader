@@ -44,7 +44,7 @@ def bind_property(obj_a, prop_a, obj_b=None, prop_b=None, func_a_to_b=None,
             if func_b_to_a:
                 value = func_b_to_a(value)
             target_obj, target_prop = obj_a, prop_a
-        if target_obj:
+        if target_obj and value is not None:
             frozen = True
             try:
                 target_obj.set_property(target_prop, value)
