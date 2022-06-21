@@ -1,22 +1,25 @@
-# Spanish translations for video-downloader package.
-# Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
+# Turkish translations for video-downloader package.
+# Copyright (C) 2020-2022 video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
+#
 # ÜSolmaz <u2slmz@protonmail.com>, 2021.
+# Sabri Ünal <libreajans@gmail.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-21 21:36+0100\n"
-"PO-Revision-Date: 2021-07-05 00:18+0300\n"
-"Last-Translator: ÜSolmaz <u2slmz@protonmail.com>\n"
-"Language-Team: Turkish; İstanbul\n"
+"PO-Revision-Date: 2022-06-22 01:23+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.1\n"
+"X-Project-Style: gnome\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
@@ -34,12 +37,12 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"İnternet sitelerinden kolay indirmek ve kullanmak için videolar. Aşağıdaki "
+"Kullanımı kolay bir arayüz ile web sitelerinden video indirin. Aşağıdaki "
 "özellikleri sağlar:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "MP3 Video dönüştürücü"
+msgstr "Videoları MP3'e dönüştür"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
@@ -51,11 +54,11 @@ msgstr "Tek videoları veya tüm çalma listelerini indirin"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr "Kalite taleplerinize göre otomatik olarak bir video formatı seçer"
+msgstr "Kalite taleplerinize göre kendiliğinden video biçimi seçer"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "Youtube-dl dayalı."
+msgstr "Youtube-dl temelli."
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
 msgid "New Window"
@@ -67,7 +70,7 @@ msgstr "Kimlik Doğrulaması Gerekli"
 
 #: src/authentication_dialog.py:34 src/window.ui:480
 msgid "Cancel"
-msgstr "İptal"
+msgstr "İptal Et"
 
 #: src/authentication_dialog.py:42
 msgid "Sign in"
@@ -137,7 +140,7 @@ msgstr "144p"
 
 #: src/playlist_dialog.py:32
 msgid "Download Playlist?"
-msgstr "Çalma Listesini İndir?"
+msgstr "Çalma Listesi İndirilsin Mi?"
 
 #: src/playlist_dialog.py:33
 msgid "The video is part of a playlist."
@@ -149,15 +152,15 @@ msgstr "Tek Video"
 
 #: src/playlist_dialog.py:35
 msgid "All Videos in Playlist"
-msgstr "Çalma listesindeki tüm videolar"
+msgstr "Çalma Listesindeki Tüm Videolar"
 
 #: src/window.py:125
 msgid "Downloading"
-msgstr "Yükleniyor"
+msgstr "İndiriliyor"
 
 #: src/window.py:127 src/window.py:150
 msgid "{} of {}"
-msgstr "{} nin {}"
+msgstr "{} / {}"
 
 #: src/window.py:151 src/window.py:153
 msgid "unknown"
@@ -205,4 +208,4 @@ msgstr "Geri"
 
 #: src/window.ui:720
 msgid "Details"
-msgstr "Detaylar"
+msgstr "Ayrıntılar"
