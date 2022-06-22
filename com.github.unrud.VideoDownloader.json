@@ -99,14 +99,14 @@
             "name" : "pycryptodomex",
             "buildsystem" : "simple",
             "build-commands" : [
-            	"touch .separate_namespace",
+                "touch .separate_namespace",
                 "pip3 install --prefix=/app ."
             ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.14.1.tar.gz",
-                    "sha256" : "2da3d5c2ecd3c3b73946ef00dc585d590e869deacdfe464cefba96f50d13682f",
+                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.15.0.tar.gz",
+                    "sha256" : "10356f1e0a76d87688482d497a490e10759d1c7e915731d1932c95030bd48241",
                     "x-checker-data" : {
                         "type" : "json",
                         "url" : "https://api.github.com/repos/Legrandin/pycryptodome/tags",
