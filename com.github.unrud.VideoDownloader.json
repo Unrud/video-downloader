@@ -166,8 +166,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/yt-dlp/yt-dlp/releases/download/2022.05.18/yt-dlp.tar.gz",
-                    "sha256" : "59a0e89d79018070844c6301f7848594b746ca4857e7da14a5e6938a24e63172",
+                    "url" : "https://github.com/yt-dlp/yt-dlp/releases/download/2022.06.22.1/yt-dlp.tar.gz",
+                    "sha256" : "fac29d5a8d4c2f1317ba5c2fc4231cf169887bcef26d0fbf0481c90ddb7826db",
                     "x-checker-data" : {
                         "type" : "json",
                         /* Use the Tags API, because the Releases API sometimes returns older versions!? */
