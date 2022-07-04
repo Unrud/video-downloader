@@ -177,6 +177,10 @@ msgid "Open Download Location"
 msgstr ""
 
 #: src/window.ui:137
+msgid "Change Output Directory"
+msgstr "Mudar Diretório de Saída"
+
+#: src/window.ui:137
 msgid "About Video Downloader"
 msgstr "Sobre o Video Downloader"
 

@@ -72,6 +72,34 @@ class Application(Gtk.Application):
         else:
             assert False, ('invalid value for \'color-scheme\' property: %r' %
                            value)
+    
+    def _open_response_cb(self, dialog, response_id):
+        open_dialog = dialog
+
+        # Case the user has confirmed the directory.
+        if response_id == Gtk.ResponseType.OK:
+            folder_path = open_dialog.get_current_folder()
+            # Sanity check.
+            if folder_path:
+                self.settings.set_string("download-folder", folder_path)
+                # Updates the current folder to all windows.
+                for win in self._active_windows:
+                    self._active_windows[win].model.download_dir = self.settings.get_string('download-folder')
+        
+        dialog.destroy()
+    
+    def _change_output(self, action):
+        dialog = Gtk.FileChooserDialog(
+            title="Please choose a folder",
+            action=Gtk.FileChooserAction.SELECT_FOLDER,
+        )
+
+        dialog.add_buttons(Gtk.STOCK_CANCEL, Gtk.ResponseType.CANCEL,
+            "Select", Gtk.ResponseType.OK)
+
+        dialog.set_modal(True)
+        dialog.connect("response", self._open_response_cb)
+        dialog.show()
 
     def do_startup(self):
         Gtk.Application.do_startup(self)
@@ -87,6 +115,14 @@ class Application(Gtk.Application):
         new_window_action.connect(
             'activate', lambda _, param: self._new_window(param.get_string()))
         self.add_action(new_window_action)
+
+        output_action = Gio.SimpleAction.new(
+            'change-output', GLib.VariantType('s'))
+        output_action.connect(
+            'activate', lambda _, param: self._change_output(param.get_string())
+        )
+        self.add_action(output_action)
+        
         # Setup CSS
         css_uri = 'resource:///com/github/unrud/VideoDownloader/style.css'
         css_provider = Gtk.CssProvider()
