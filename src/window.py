@@ -67,6 +67,8 @@ class Window(Handy.ApplicationWindow, Handler):
         super().__init__(application=application)
         self.uuid = str(uuid.uuid4())  # Id for matching notifications
         self.model = model = Model(self)
+        self.window_group = Gtk.WindowGroup()
+        self.window_group.add_window(self)
         # Setup actions
         for name in model.actions.list_actions():
             self.add_action(model.actions.lookup_action(name))
@@ -250,17 +252,20 @@ class Window(Handy.ApplicationWindow, Handler):
 
     def _show_about_dialog(self):
         dialog = AboutDialog(self, self.get_application().version)
+        self.window_group.add_window(dialog)
         dialog.run()
         dialog.destroy()
 
     def on_playlist_request(self):
         dialog = PlaylistDialog(self)
+        self.window_group.add_window(dialog)
         res = dialog.run()
         dialog.destroy()
         return res == Gtk.ResponseType.YES
 
     def on_login_request(self):
         dialog = LoginDialog(self)
+        self.window_group.add_window(dialog)
         res = dialog.run()
         dialog.destroy()
         if res == Gtk.ResponseType.OK:
@@ -270,6 +275,7 @@ class Window(Handy.ApplicationWindow, Handler):
 
     def on_videopassword_request(self):
         dialog = PasswordDialog(self)
+        self.window_group.add_window(dialog)
         res = dialog.run()
         dialog.destroy()
         if res == Gtk.ResponseType.OK:
