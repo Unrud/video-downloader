@@ -41,7 +41,7 @@ MAX_THUMBNAIL_RESOLUTION = 1024
 
 def _short_filename(name, length):
     for i in range(len(name), -1, -1):
-        output = name[:i]
+        output = name[:i].strip()
         if i < len(name):
             output += '…'
         output = sanitize_filename(output)
