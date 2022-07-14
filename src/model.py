@@ -35,7 +35,6 @@ class Model(GObject.GObject, downloader.Handler):
         'download-pulse': (GObject.SIGNAL_RUN_FIRST, None, ())
     }
     state = GObject.Property(type=str, default='start')
-    prev_state = GObject.Property(type=str)
     mode = GObject.Property(type=str, default='audio')
     url = GObject.Property(type=str)
     error = GObject.Property(type=str)
@@ -92,16 +91,16 @@ class Model(GObject.GObject, downloader.Handler):
             ('open-download-dir', lambda *_: self.open_download_dir())])
         bind_property(self, 'url', self.actions.lookup_action('download'),
                       'enabled', bool)
-        bind_property(self, 'state', self,
-                      'prev-state', self._state_transition)
+        self._prev_state = None
+        bind_property(self, 'state', func_a_to_b=self._state_transition)
         bind_property(self, 'state', self.actions.lookup_action('cancel'),
                       'enabled', lambda s: s == 'download')
 
     def _state_transition(self, state):
         if state == 'start':
-            assert self.prev_state != 'download'
+            assert self._prev_state != 'download'
         elif state == 'download':
-            assert self.prev_state == 'start'
+            assert self._prev_state == 'start'
             self.error = ''
             self.download_playlist_index = 0
             self.download_playlist_count = 0
@@ -116,13 +115,13 @@ class Model(GObject.GObject, downloader.Handler):
             self._download_finished_filenames.clear()
             self._downloader.start()
         elif state == 'cancel':
-            assert self.prev_state == 'download'
+            assert self._prev_state == 'download'
             self._downloader.cancel()
         elif state in ['success', 'error']:
-            assert self.prev_state == 'download'
+            assert self._prev_state == 'download'
         else:
             assert False, 'invalid value for \'state\' property: %r' % state
-        return state
+        self._prev_state = state
 
     def open_download_dir(self):
         if len(self._download_finished_filenames) == 1:
