@@ -16,9 +16,7 @@
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
 import contextlib
-import fcntl
 import glob
-import itertools
 import json
 import os
 import re
@@ -50,38 +48,6 @@ def _short_filename(name, length):
                 < length):
             return output
     raise ValueError('can\'t shorten filename %r to %r bytes' % (name, length))
-
-
-@contextlib.contextmanager
-def _create_and_lock_dir(dirpath):
-    for i in itertools.count():
-        if i > 0:
-            time.sleep(0.5)
-        os.makedirs(dirpath, exist_ok=True)
-        try:
-            fd = os.open(dirpath, 0)
-        except FileNotFoundError:
-            continue
-        try:
-            # Acquire lock on directory
-            fcntl.flock(fd, fcntl.LOCK_EX)
-            stat = os.fstat(fd)
-            # Check that the directory still exists and is the same
-            try:
-                fd_cmp = os.open(dirpath, 0)
-            except FileNotFoundError:
-                continue
-            try:
-                stat_cmp = os.fstat(fd_cmp)
-            finally:
-                os.close(fd_cmp)
-            if (stat.st_dev != stat_cmp.st_dev or
-                    stat.st_ino != stat_cmp.st_ino):
-                continue
-            yield
-            break
-        finally:
-            os.close(fd)
 
 
 def _convert_filepath(info, files_to_delete, filepath, new_ext, type_='conv'):
@@ -420,18 +386,14 @@ class YoutubeDLSlave:
             self.ydl_opts['writesubtitles'] = True
             self.ydl_opts['writeautomaticsub'] = True
             self.ydl_opts['writethumbnail'] = True
-            try:
-                os.makedirs(download_dir, exist_ok=True)
-            except OSError as e:
-                traceback.print_exc(file=sys.stderr)
-                sys.stderr.flush()
-                self._handler.on_error(
-                    'ERROR: Failed to create download folder: %s' % e)
-                sys.exit(1)
             for i, info in enumerate(info_playlist):
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
                 self._handler.on_download_start(i, len(info_playlist), title)
+                # Lock download name to prevent other instances from
+                # writing to the same files
+                while not self._handler.on_download_lock(output_title):
+                    time.sleep(1)
                 automatic_captions = info.get('automatic_captions') or {}
                 skip_captions = {*(info.get('subtitles') or {})}
                 new_automatic_captions = {}
@@ -463,47 +425,35 @@ class YoutubeDLSlave:
                 # many temporary files
                 temp_download_dir = os.path.join(
                     download_dir, output_title + '.part')
-                # Lock download directory to prevent other processes from
-                # writing to the same files
-                temp_download_dir_cm = contextlib.ExitStack()
                 try:
-                    temp_download_dir_cm.enter_context(
-                        _create_and_lock_dir(temp_download_dir))
+                    os.makedirs(download_dir, exist_ok=True)
+                    os.makedirs(temp_download_dir, exist_ok=True)
                 except OSError as e:
                     traceback.print_exc(file=sys.stderr)
                     sys.stderr.flush()
                     self._handler.on_error(
-                        'ERROR: Failed to lock download folder: %s' % e)
+                        'ERROR: Failed to create download folder: %s' % e)
                     sys.exit(1)
-                with temp_download_dir_cm:
-                    info_path = os.path.join(
-                        temp_download_dir,
-                        sanitize_filename((info.get('id') or '')
-                                          + '.info.json'))
-                    with open(info_path, 'w', encoding='utf-8') as f:
-                        json.dump(info, f)
-                    # Check if the file got downloaded in the meantime
-                    existing_filename = self._find_existing_download(
-                        download_dir, output_title, mode)
-                    if existing_filename is not None:
-                        filename = existing_filename
-                    else:
-                        temp_filepath = self._load_video(temp_download_dir,
-                                                         info_path)
-                        _, filename_ext = os.path.splitext(temp_filepath)
-                        filename = output_title + filename_ext
-                        # Move finished download from download to target dir
-                        try:
-                            os.replace(temp_filepath,
-                                       os.path.join(download_dir, filename))
-                        except OSError as e:
-                            traceback.print_exc(file=sys.stderr)
-                            sys.stderr.flush()
-                            self._handler.on_error((
-                                'ERROR: Falied to move finished download to '
-                                'download folder: %s') % e)
-                            sys.exit(1)
-                    # Delete download directory
-                    with contextlib.suppress(OSError):
-                        shutil.rmtree(temp_download_dir)
+                info_path = os.path.join(
+                    temp_download_dir,
+                    sanitize_filename((info.get('id') or '') + '.info.json'))
+                with open(info_path, 'w', encoding='utf-8') as f:
+                    json.dump(info, f)
+                temp_filepath = self._load_video(temp_download_dir, info_path)
+                _, filename_ext = os.path.splitext(temp_filepath)
+                filename = output_title + filename_ext
+                # Move finished download from download to target dir
+                try:
+                    os.replace(temp_filepath,
+                               os.path.join(download_dir, filename))
+                except OSError as e:
+                    traceback.print_exc(file=sys.stderr)
+                    sys.stderr.flush()
+                    self._handler.on_error((
+                        'ERROR: Falied to move finished download to '
+                        'download folder: %s') % e)
+                    sys.exit(1)
+                # Delete download directory
+                with contextlib.suppress(OSError):
+                    shutil.rmtree(temp_download_dir)
                 self._handler.on_download_finished(filename)

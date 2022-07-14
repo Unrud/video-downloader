@@ -68,11 +68,14 @@ class Model(GObject.GObject, downloader.Handler):
         (240, N_('240p')),
         (144, N_('144p'))]
 
+    _global_download_lock = set()
+
     def __init__(self, handler=None):
         super().__init__()
         self._handler = handler
         self._downloader = downloader.Downloader(self)
         self._download_finished_filenames = []
+        self._active_download_lock = None
         self._filemanager_proxy = Gio.DBusProxy.new_for_bus_sync(
             Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
             Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
@@ -148,6 +151,7 @@ class Model(GObject.GObject, downloader.Handler):
 
     def on_finished(self, success):
         assert self.state in ['download', 'cancel']
+        self._download_unlock()
         if self.state == 'cancel':
             self.state = 'start'
         else:
@@ -208,12 +212,27 @@ class Model(GObject.GObject, downloader.Handler):
         self.download_playlist_count = playlist_count
         self.download_title = title
 
+    def _download_unlock(self):
+        if self._active_download_lock:
+            self._global_download_lock.remove(self._active_download_lock)
+            self._active_download_lock = None
+
+    def on_download_lock(self, name):
+        assert self.state in ['download', 'cancel']
+        assert self._active_download_lock is None
+        if name in self._global_download_lock:
+            return False
+        self._global_download_lock.add(name)
+        self._active_download_lock = name
+        return True
+
     def on_download_thumbnail(self, thumbnail):
         assert self.state in ['download', 'cancel']
         self.download_thumbnail = thumbnail
 
     def on_download_finished(self, filename):
         assert self.state in ['download', 'cancel']
+        self._download_unlock()
         self._download_finished_filenames.append(filename)
 
 

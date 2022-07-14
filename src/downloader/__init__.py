@@ -190,6 +190,12 @@ class Handler:
                           title: str):
         raise NotImplementedError
 
+    #                                        lock acquired
+    def on_download_lock(self, name: str) -> bool:
+        """Lock gets released by `on_download_finished` or process termination.
+           It's not allowed to hold more than one lock at a time."""
+        raise NotImplementedError
+
     def on_download_thumbnail(self, thumbnail: str):
         raise NotImplementedError
 
