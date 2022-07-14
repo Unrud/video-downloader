@@ -43,8 +43,10 @@ class Model(GObject.GObject, downloader.Handler):
     download_folder = GObject.Property(type=str)
     # absolute path to dir of active/finished download (empty if no download)
     finished_download_dir = GObject.Property(type=str)
-    prefer_mpeg = GObject.Property(type=bool, default=False)
+    # TYPE_STRV is None by default, empty list can be None or []
+    finished_download_filenames = GObject.Property(type=GObject.TYPE_STRV)
     automatic_subtitles = GObject.Property(type=GObject.TYPE_STRV)
+    prefer_mpeg = GObject.Property(type=bool, default=False)
     download_playlist_index = GObject.Property(type=GObject.TYPE_INT64)
     download_playlist_count = GObject.Property(type=GObject.TYPE_INT64)
     download_filename = GObject.Property(type=str)
@@ -75,7 +77,6 @@ class Model(GObject.GObject, downloader.Handler):
         super().__init__()
         self._handler = handler
         self._downloader = downloader.Downloader(self)
-        self._finished_download_filenames = []
         self._active_download_lock = None
         self._filemanager_proxy = Gio.DBusProxy.new_for_bus_sync(
             Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
@@ -114,7 +115,7 @@ class Model(GObject.GObject, downloader.Handler):
             self.download_bytes_total = -1
             self.download_speed = -1
             self.download_eta = -1
-            self._finished_download_filenames.clear()
+            self.finished_download_filenames = []
             self.finished_download_dir = ''
         elif state == 'download':
             assert self._prev_state == 'start'
@@ -131,10 +132,10 @@ class Model(GObject.GObject, downloader.Handler):
 
     def _open_finished_download_dir(self):
         assert self.finished_download_dir
-        if len(self._finished_download_filenames) == 1:
+        if len(self.finished_download_filenames or []) == 1:
             method = 'ShowItems'
             paths = [os.path.join(self.finished_download_dir, filename) for
-                     filename in self._finished_download_filenames]
+                     filename in (self.finished_download_filenames or [])]
         else:
             method = 'ShowFolders'
             paths = [self.finished_download_dir]
@@ -240,7 +241,8 @@ class Model(GObject.GObject, downloader.Handler):
     def on_download_finished(self, filename):
         assert self.state in ['download', 'cancel']
         self._download_unlock()
-        self._finished_download_filenames.append(filename)
+        self.finished_download_filenames = [
+            *(self.finished_download_filenames or []), filename]
 
 
 class Handler:
