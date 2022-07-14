@@ -9,7 +9,7 @@ gnome.compile_resources('video-downloader', 'video_downloader.gresource.xml',
 )
 
 conf = configuration_data()
-conf.set('PYTHON', python.path())
+conf.set('PYTHON', python.full_path())
 conf.set('VERSION', meson.project_version())
 conf.set('localedir', get_option('prefix') / get_option('localedir'))
 conf.set('pkgdatadir', pkgdatadir)
