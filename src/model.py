@@ -99,8 +99,6 @@ class Model(GObject.GObject, downloader.Handler):
     def _state_transition(self, state):
         if state == 'start':
             assert self._prev_state != 'download'
-        elif state == 'download':
-            assert self._prev_state == 'start'
             self.error = ''
             self.download_playlist_index = 0
             self.download_playlist_count = 0
@@ -113,6 +111,8 @@ class Model(GObject.GObject, downloader.Handler):
             self.download_speed = -1
             self.download_eta = -1
             self._download_finished_filenames.clear()
+        elif state == 'download':
+            assert self._prev_state == 'start'
             self._downloader.start()
         elif state == 'cancel':
             assert self._prev_state == 'download'
