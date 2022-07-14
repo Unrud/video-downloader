@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.9.9" date="2022-07-14">
+    <description>
+      <ul>
+        <li>Trim whitespace of shortened file names</li>
+        <li>Fix dialog windows blocking all instances</li>
+        <li>Apply settings immediately</li>
+        <li>Remove file-based locking</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.9.8" date="2022-06-22">
     <description>
       <ul>
