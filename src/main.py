@@ -16,8 +16,6 @@
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
 import gettext
-import locale
-import os
 import sys
 
 from gi.repository import Gdk, Gio, GLib, Gtk, GObject, Handy
@@ -39,27 +37,6 @@ class Application(Gtk.Application):
         GLib.set_application_name(N_('Video Downloader'))
         self.version = version
         self._active_windows = {}
-
-    @staticmethod
-    def _subtitle_languages_from_locale():
-        languages = []
-        for envar in ['LANGUAGE', 'LC_ALL', 'LC_MESSAGES', 'LANG']:
-            val = os.environ.get(envar)
-            if val:
-                languages = val.split(':')
-                break
-        if 'C' not in languages:
-            languages.append('C')
-        subtitle_languages = []
-        for lang in languages:
-            lang = locale.normalize(lang)
-            for sep in ['@', '.', '_']:
-                lang = lang.split(sep, maxsplit=1)[0]
-            if lang == 'C':
-                lang = 'en'
-            if lang not in subtitle_languages:
-                subtitle_languages.append(lang)
-        return subtitle_languages
 
     def _on_color_scheme_changed(self, value):
         style_manager = Handy.StyleManager.get_default()
@@ -101,11 +78,12 @@ class Application(Gtk.Application):
         model = win.model
         model.url = url
         # Apply/Bind settings
-        model.download_dir = self.settings.get_string('download-folder')
-        model.prefer_mpeg = self.settings.get_boolean('prefer-mpeg')
-        model.automatic_subtitles = [
-            *self._subtitle_languages_from_locale(),
-            *self.settings.get_strv('automatic-subtitles')]
+        self.settings.bind('download-folder', model, 'download-folder',
+                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('prefer-mpeg', model, 'prefer-mpeg',
+                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('automatic-subtitles', model, 'automatic-subtitles',
+                           Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('mode', model, 'mode', (
                                Gio.SettingsBindFlags.DEFAULT |
                                Gio.SettingsBindFlags.GET_NO_CHANGES))

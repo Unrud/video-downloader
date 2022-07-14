@@ -25,7 +25,8 @@ from gi.repository import Gio, GLib, GObject
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.util import bind_property, expand_path, g_log
+from video_downloader.util import (bind_property, expand_path, g_log,
+                                   languages_from_locale)
 
 N_ = gettext.gettext
 
@@ -39,10 +40,11 @@ class Model(GObject.GObject, downloader.Handler):
     url = GObject.Property(type=str)
     error = GObject.Property(type=str)
     resolution = GObject.Property(type=GObject.TYPE_UINT, default=1080)
-    download_dir = GObject.Property(type=str)
-    download_dir_abs = GObject.Property(type=str)
+    download_folder = GObject.Property(type=str)
+    # absolute path to dir of active/finished download (empty if no download)
+    finished_download_dir = GObject.Property(type=str)
     prefer_mpeg = GObject.Property(type=bool, default=False)
-    automatic_subtitles = []
+    automatic_subtitles = GObject.Property(type=GObject.TYPE_STRV)
     download_playlist_index = GObject.Property(type=GObject.TYPE_INT64)
     download_playlist_count = GObject.Property(type=GObject.TYPE_INT64)
     download_filename = GObject.Property(type=str)
@@ -73,7 +75,7 @@ class Model(GObject.GObject, downloader.Handler):
         super().__init__()
         self._handler = handler
         self._downloader = downloader.Downloader(self)
-        self._download_finished_filenames = []
+        self._finished_download_filenames = []
         self._active_download_lock = None
         self._filemanager_proxy = Gio.DBusProxy.new_for_bus_sync(
             Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
@@ -81,20 +83,22 @@ class Model(GObject.GObject, downloader.Handler):
             Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
             'org.freedesktop.FileManager1', '/org/freedesktop/FileManager1',
             'org.freedesktop.FileManager1')
-        bind_property(self, 'download-dir', self, 'download-dir-abs',
-                      expand_path)
         self.actions = Gio.SimpleActionGroup.new()
         self.actions.add_action_entries([
             ('download', lambda *_: self.set_property('state', 'download')),
             ('cancel', lambda *_: self.set_property('state', 'cancel')),
             ('back', lambda *_: self.set_property('state', 'start')),
-            ('open-download-dir', lambda *_: self.open_download_dir())])
+            ('open-finished-download-dir',
+             lambda *_: self._open_finished_download_dir())])
         bind_property(self, 'url', self.actions.lookup_action('download'),
                       'enabled', bool)
         self._prev_state = None
         bind_property(self, 'state', func_a_to_b=self._state_transition)
         bind_property(self, 'state', self.actions.lookup_action('cancel'),
                       'enabled', lambda s: s == 'download')
+        bind_property(self, 'state',
+                      self.actions.lookup_action('open-finished-download-dir'),
+                      'enabled', lambda s: s == 'success')
 
     def _state_transition(self, state):
         if state == 'start':
@@ -110,9 +114,11 @@ class Model(GObject.GObject, downloader.Handler):
             self.download_bytes_total = -1
             self.download_speed = -1
             self.download_eta = -1
-            self._download_finished_filenames.clear()
+            self._finished_download_filenames.clear()
+            self.finished_download_dir = ''
         elif state == 'download':
             assert self._prev_state == 'start'
+            self.finished_download_dir = expand_path(self.download_folder)
             self._downloader.start()
         elif state == 'cancel':
             assert self._prev_state == 'download'
@@ -123,14 +129,15 @@ class Model(GObject.GObject, downloader.Handler):
             assert False, 'invalid value for \'state\' property: %r' % state
         self._prev_state = state
 
-    def open_download_dir(self):
-        if len(self._download_finished_filenames) == 1:
+    def _open_finished_download_dir(self):
+        assert self.finished_download_dir
+        if len(self._finished_download_filenames) == 1:
             method = 'ShowItems'
-            paths = [os.path.join(self.download_dir_abs, filename) for
-                     filename in self._download_finished_filenames]
+            paths = [os.path.join(self.finished_download_dir, filename) for
+                     filename in self._finished_download_filenames]
         else:
             method = 'ShowFolders'
-            paths = [self.download_dir_abs]
+            paths = [self.finished_download_dir]
         parameters = GLib.Variant(
             '(ass)', ([Gio.File.new_for_path(p).get_uri() for p in paths], ''))
         try:
@@ -139,7 +146,8 @@ class Model(GObject.GObject, downloader.Handler):
         except GLib.Error:
             g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
                   traceback.format_exc())
-            subprocess.run(['xdg-open', self.download_dir_abs], check=True)
+            subprocess.run(['xdg-open', self.finished_download_dir],
+                           check=True)
 
     def shutdown(self):
         self._downloader.shutdown()
@@ -158,7 +166,7 @@ class Model(GObject.GObject, downloader.Handler):
 
     def get_download_dir(self):
         assert self.state in ['download', 'cancel']
-        return self.download_dir_abs
+        return self.finished_download_dir
 
     def get_prefer_mpeg(self):
         assert self.state in ['download', 'cancel']
@@ -166,7 +174,7 @@ class Model(GObject.GObject, downloader.Handler):
 
     def get_automatic_subtitles(self):
         assert self.state in ['download', 'cancel']
-        return self.automatic_subtitles
+        return [*languages_from_locale(), *(self.automatic_subtitles or [])]
 
     def get_url(self):
         assert self.state in ['download', 'cancel']
@@ -232,7 +240,7 @@ class Model(GObject.GObject, downloader.Handler):
     def on_download_finished(self, filename):
         assert self.state in ['download', 'cancel']
         self._download_unlock()
-        self._download_finished_filenames.append(filename)
+        self._finished_download_filenames.append(filename)
 
 
 class Handler:

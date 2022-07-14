@@ -895,13 +895,13 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="open_download_dir_wdg">
+                      <object class="GtkButton" id="finished_download_dir_wdg">
                         <property name="label" translatable="yes">Open Download Location</property>
                         <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">False</property>
                         <property name="halign">center</property>
-                        <property name="action-name">win.open-download-dir</property>
+                        <property name="action-name">win.open-finished-download-dir</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>

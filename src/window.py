@@ -34,7 +34,7 @@ MAX_ASPECT_RATIO = 2.39
 N_ = gettext.gettext
 
 NOTIFICATION_ACTIONS = (
-    'notification-success', 'notification-open-download-dir',
+    'notification-success', 'notification-open-finished-download-dir',
     'notification-error')
 
 
@@ -53,7 +53,7 @@ class Window(Handy.ApplicationWindow, Handler):
     error_back_wdg = Gtk.Template.Child()
     success_back_wdg = Gtk.Template.Child()
     download_cancel_wdg = Gtk.Template.Child()
-    open_download_dir_wdg = Gtk.Template.Child()
+    finished_download_dir_wdg = Gtk.Template.Child()
     download_page_title_wdg = Gtk.Template.Child()
     download_title_wdg = Gtk.Template.Child()
     download_progress_wdg = Gtk.Template.Child()
@@ -94,8 +94,8 @@ class Window(Handy.ApplicationWindow, Handler):
                       func_a_to_b=self._update_focus_and_default)
         bind_property(self.audio_video_stack_wdg, 'visible-child-name',
                       func_a_to_b=self._update_focus_and_default)
-        bind_property(model, 'download-dir-abs',
-                      func_a_to_b=self._update_open_download_dir_wdg_tooltip)
+        bind_property(model, 'finished-download-dir', func_a_to_b=(
+                          self._update_finished_download_dir_wdg_tooltip))
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
             bind_property(model, name, func_a_to_b=self._update_download_msg)
@@ -187,12 +187,12 @@ class Window(Handy.ApplicationWindow, Handler):
             if child_wdg is not visible_child_wdg:
                 self.download_images_wdg.remove(child_wdg)
 
-    def _update_open_download_dir_wdg_tooltip(self, download_dir_abs):
-        tooltip_dir = download_dir_abs
-        home_dir = os.path.expanduser('~')
-        if os.path.commonpath([home_dir, tooltip_dir]) == home_dir:
-            tooltip_dir = '~' + tooltip_dir[len(home_dir):]
-        self.open_download_dir_wdg.set_tooltip_text(tooltip_dir)
+    def _update_finished_download_dir_wdg_tooltip(self, download_dir):
+        if download_dir:
+            home_dir = os.path.expanduser('~')
+            if os.path.commonpath([home_dir, download_dir]) == home_dir:
+                download_dir = '~' + download_dir[len(home_dir):]
+        self.finished_download_dir_wdg.set_tooltip_text(download_dir)
 
     def _update_focus_and_default(self, _):
         state = self.main_stack_wdg.get_visible_child_name()
@@ -211,7 +211,7 @@ class Window(Handy.ApplicationWindow, Handler):
         elif state == 'error':
             self.error_back_wdg.grab_focus()
         elif state == 'success':
-            self.open_download_dir_wdg.grab_focus()
+            self.finished_download_dir_wdg.grab_focus()
         else:
             assert False, 'unreachable'
 
@@ -232,7 +232,7 @@ class Window(Handy.ApplicationWindow, Handler):
             action_name_with_uuid = 'app.notification-success--%s' % self.uuid
             notification.set_default_action(action_name_with_uuid)
             button_action_name_with_uuid = (
-                'app.notification-open-download-dir--%s' % self.uuid)
+                'app.notification-open-finished-download-dir--%s' % self.uuid)
             notification.add_button(N_('Open Download Location'),
                                     button_action_name_with_uuid)
         else:
@@ -242,13 +242,11 @@ class Window(Handy.ApplicationWindow, Handler):
     def on_notification_action(self, action_name):
         if action_name in ('notification-success', 'notification-error'):
             self.present()
-        elif (action_name == 'notification-open-download-dir' and
-                self.model.state == 'success'):
-            self.model.open_download_dir()
+        elif action_name == 'notification-open-finished-download-dir':
+            self.model.actions.activate_action('open-finished-download-dir')
         else:
             g_log(None, GLib.LogLevelFlags.LEVEL_WARNING,
-                  'Action %r not supported in state %r',
-                  action_name, self.model.state)
+                  'Action %r not supported', action_name)
 
     def _show_about_dialog(self):
         dialog = AboutDialog(self, self.get_application().version)

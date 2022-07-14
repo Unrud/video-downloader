@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
+import locale
 import os
 import subprocess
 
@@ -77,3 +78,24 @@ def g_log(domain, log_level, format_string, *args):
     fields = GLib.Variant('a{sv}', {
         'MESSAGE': GLib.Variant('s', format_string % args)})
     GLib.log_variant(domain, log_level, fields)
+
+
+def languages_from_locale():
+    locale_languages = []
+    for envar in ['LANGUAGE', 'LC_ALL', 'LC_MESSAGES', 'LANG']:
+        val = os.environ.get(envar)
+        if val:
+            locale_languages.extend(val.split(':'))
+            break
+    if 'C' not in locale_languages:
+        locale_languages.append('C')
+    languages = []
+    for lang in locale_languages:
+        lang = locale.normalize(lang)
+        for sep in ['@', '.', '_']:
+            lang = lang.split(sep, maxsplit=1)[0]
+        if lang == 'C':
+            lang = 'en'
+        if lang not in languages:
+            languages.append(lang)
+    return languages
