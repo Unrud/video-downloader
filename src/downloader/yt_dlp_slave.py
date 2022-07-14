@@ -235,8 +235,8 @@ class YoutubeDLSlave:
             progress = -1
             eta = -1
             speed = -1
-        self._handler.on_load_progress(
-            filename, progress, bytes_, bytes_total, eta, speed)
+        self._handler.on_progress(filename, progress, bytes_, bytes_total, eta,
+                                  speed)
 
     def _load_playlist(self, url):
         '''Retrieve info for all videos available on URL.
@@ -368,7 +368,7 @@ class YoutubeDLSlave:
                 {'key': 'FFmpegEmbedSubtitle'},
                 {'key': 'XAttrMetadata'}]}
         self.extra_postprocessors = [
-            (ThumbnailConverterPP(self._handler.on_progress_thumbnail),
+            (ThumbnailConverterPP(self._handler.on_download_thumbnail),
              'before_dl'),
             (SubtitlesConverterPP(), 'before_dl')]
         mode = self._handler.get_mode()
@@ -431,8 +431,7 @@ class YoutubeDLSlave:
             for i, info in enumerate(info_playlist):
                 title = info.get('title') or info.get('id') or 'video'
                 output_title = _short_filename(title, MAX_OUTPUT_TITLE_LENGTH)
-                self._handler.on_progress_start(i, len(info_playlist), title,
-                                                '')
+                self._handler.on_download_start(i, len(info_playlist), title)
                 automatic_captions = info.get('automatic_captions') or {}
                 skip_captions = {*(info.get('subtitles') or {})}
                 new_automatic_captions = {}
@@ -458,7 +457,7 @@ class YoutubeDLSlave:
                 existing_filename = self._find_existing_download(
                     download_dir, output_title, mode)
                 if existing_filename is not None:
-                    self._handler.on_progress_end(existing_filename)
+                    self._handler.on_download_finished(existing_filename)
                     continue
                 # Download into separate directory because yt-dlp generates
                 # many temporary files
@@ -507,4 +506,4 @@ class YoutubeDLSlave:
                     # Delete download directory
                     with contextlib.suppress(OSError):
                         shutil.rmtree(temp_download_dir)
-                self._handler.on_progress_end(filename)
+                self._handler.on_download_finished(filename)

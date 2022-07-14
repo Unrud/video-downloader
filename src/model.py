@@ -193,8 +193,7 @@ class Model(GObject.GObject, downloader.Handler):
         assert self.state in ['download', 'cancel']
         self.error = msg
 
-    def on_load_progress(self, filename, progress, bytes_, bytes_total, eta,
-                         speed):
+    def on_progress(self, filename, progress, bytes_, bytes_total, eta, speed):
         assert self.state in ['download', 'cancel']
         self.download_filename = filename
         self.download_progress = progress
@@ -203,19 +202,17 @@ class Model(GObject.GObject, downloader.Handler):
         self.download_eta = eta
         self.download_speed = speed
 
-    def on_progress_start(self, playlist_index, playlist_count, title,
-                          thumbnail):
+    def on_download_start(self, playlist_index, playlist_count, title):
         assert self.state in ['download', 'cancel']
         self.download_playlist_index = playlist_index
         self.download_playlist_count = playlist_count
         self.download_title = title
-        self.download_thumbnail = thumbnail
 
-    def on_progress_thumbnail(self, thumbnail):
+    def on_download_thumbnail(self, thumbnail):
         assert self.state in ['download', 'cancel']
         self.download_thumbnail = thumbnail
 
-    def on_progress_end(self, filename):
+    def on_download_finished(self, filename):
         assert self.state in ['download', 'cancel']
         self._download_finished_filenames.append(filename)
 

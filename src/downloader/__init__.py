@@ -182,15 +182,18 @@ class Handler:
     def on_error(self, msg: str):
         raise NotImplementedError
 
-    def on_load_progress(self, filename: str, progress: float, bytes_: int,
-                         bytes_total: int, eta: int, speed: int):
+    def on_progress(self, filename: str, progress: float, bytes_: int,
+                    bytes_total: int, eta: int, speed: int):
         raise NotImplementedError
 
-    def on_progress(self, playlist_index: int, playlist_count: int, title: str,
-                    thumbnail: str):
+    def on_download_start(self, playlist_index: int, playlist_count: int,
+                          title: str):
         raise NotImplementedError
 
-    def on_progress_thumbnail(self, thumbnail: str):
+    def on_download_thumbnail(self, thumbnail: str):
+        raise NotImplementedError
+
+    def on_download_finished(self, filename):
         raise NotImplementedError
 
     def on_pulse(self):
