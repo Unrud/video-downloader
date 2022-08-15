@@ -118,6 +118,8 @@ parts:
     override-pull: |
       snapcraftctl pull
       sed -i 's/^certifi\b/#\0/' requirements.txt
+      # WORKAROUND: yt-dlp requires python>=3.7. At runtime python 3.8 from the gnome sdk is used but the snapcraft python plugin uses 3.6.
+      sed -i "s/\(\bpython_requires='>=3\)\.[0-9]\+\('\)/\1\2/" setup.py
 
   video-downloader:
     after: [libhandy, yt-dlp]
