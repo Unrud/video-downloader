@@ -250,6 +250,7 @@ class Window(Handy.ApplicationWindow, Handler):
 
     def _show_about_dialog(self):
         dialog = AboutDialog(self, self.get_application().version)
+        dialog.connect('response', lambda *_: dialog.destroy())
         self.window_group.add_window(dialog)
         dialog.show()
 
