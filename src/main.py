@@ -21,7 +21,7 @@ import sys
 from gi.repository import Gdk, Gio, GLib, Gtk, GObject, Handy
 
 from video_downloader.util import bind_property
-from video_downloader.window import NOTIFICATION_ACTIONS, Window
+from video_downloader.window import Window
 
 N_ = gettext.gettext
 
@@ -36,7 +36,6 @@ class Application(Gtk.Application):
             N_('Prefill URL field'), 'URL')
         GLib.set_application_name(N_('Video Downloader'))
         self.version = version
-        self._active_windows = {}
 
     def _on_color_scheme_changed(self, value):
         style_manager = Handy.StyleManager.get_default()
@@ -94,37 +93,7 @@ class Application(Gtk.Application):
         model.resolution = resolution
         self.settings.bind('resolution', model, 'resolution',
                            Gio.SettingsBindFlags.SET)
-        # Add to window list
-        self._active_windows[win.uuid] = win
-        # Register window notification actions
-        for action_name in NOTIFICATION_ACTIONS:
-            action_name_with_uuid = '%s--%s' % (action_name, win.uuid)
-            action = Gio.SimpleAction.new(action_name_with_uuid)
-            action.connect('activate', self._dispatch_notification_action)
-            self.add_action(action)
-        win.connect('destroy', self._on_destroy_window)
         win.present()
-
-    def _on_destroy_window(self, win):
-        for action_name in NOTIFICATION_ACTIONS:
-            action_name_with_uuid = '%s--%s' % (action_name, win.uuid)
-            self.remove_action(action_name_with_uuid)
-        del self._active_windows[win.uuid]
-
-    def _dispatch_notification_action(self, action, param):
-        action_name_with_uuid = action.get_name()
-        for action_name in NOTIFICATION_ACTIONS:
-            prefix = '%s--' % action_name
-            if action_name_with_uuid.startswith(prefix):
-                uuid = action_name_with_uuid[len(prefix):]
-                break
-        else:
-            assert False, 'unreachable'
-        try:
-            win = self._active_windows[uuid]
-        except KeyError:
-            return
-        win.on_notification_action(action_name)
 
     def do_activate(self):
         self._new_window()
