@@ -118,9 +118,9 @@ class SubtitlesConverterPP(FFmpegPostProcessor):
 class ThumbnailConverterPP(FFmpegPostProcessor):
     """Convert thumbnail to JPEG and if required decrease resolution"""
 
-    def __init__(self, thumbnail_cb=None):
+    def __init__(self, thumbnail_callback=None):
         super().__init__()
-        self._thumbnail_cb = thumbnail_cb
+        self._thumbnail_callback = thumbnail_callback
 
     def run(self, info):
         files_to_delete = []
@@ -153,8 +153,8 @@ class ThumbnailConverterPP(FFmpegPostProcessor):
                 continue
             filepath = new_filepath
             new_thumbnails.insert(0, {**thumb, 'filepath': filepath})
-            if self._thumbnail_cb is not None:
-                self._thumbnail_cb(os.path.abspath(filepath))
+            if self._thumbnail_callback is not None:
+                self._thumbnail_callback(os.path.abspath(filepath))
         info['thumbnails'] = new_thumbnails
         return files_to_delete, info
 
@@ -281,12 +281,12 @@ class YoutubeDLSlave:
             if self._skip_authentication:
                 self._skipped_count += 1
                 return
-            videopassword = self._handler.on_videopassword_request()
-            if not videopassword:
+            password = self._handler.on_password_request()
+            if not password:
                 self._skip_authentication = True
                 self._skipped_count += 1
                 return
-            self.ydl_opts['videopassword'] = videopassword
+            self.ydl_opts['videopassword'] = password
             self._allow_authentication_request = False
             raise RetryException(msg)
         # Ignore missing xattr support

@@ -197,9 +197,9 @@ class Model(GObject.GObject, downloader.Handler):
         assert self.state in ['download', 'cancel']
         return self._handler.on_login_request()
 
-    def on_videopassword_request(self):
+    def on_password_request(self):
         assert self.state in ['download', 'cancel']
-        return self._handler.on_videopassword_request()
+        return self._handler.on_password_request()
 
     def on_error(self, msg):
         assert self.state in ['download', 'cancel']
@@ -253,6 +253,6 @@ class Handler:
     def on_login_request(self) -> typing.Tuple[str,     str]:
         raise NotImplementedError
 
-    #                                     password
-    def on_videopassword_request(self) -> str:
+    #                                password
+    def on_password_request(self) -> str:
         raise NotImplementedError

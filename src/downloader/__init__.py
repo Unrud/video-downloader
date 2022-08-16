@@ -175,8 +175,8 @@ class Handler:
     def on_login_request(self) -> typing.Tuple[str, str]:
         raise NotImplementedError
 
-    #                                     password
-    def on_videopassword_request(self) -> str:
+    #                                password
+    def on_password_request(self) -> str:
         raise NotImplementedError
 
     def on_error(self, msg: str):

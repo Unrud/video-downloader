@@ -28,7 +28,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
   <object class="GtkTextBuffer" id="error_buffer">
     <property name="text">Error XXX</property>
   </object>
-  <object class="GtkPopover" id="hamburger_menu_popover_wdg">
+  <object class="GtkPopover" id="hamburger_popover_menu">
     <property name="can-focus">False</property>
     <child>
       <object class="GtkBox">
@@ -213,7 +213,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="can-focus">True</property>
                     <property name="focus-on-click">False</property>
                     <property name="receives-default">False</property>
-                    <property name="popover">hamburger_menu_popover_wdg</property>
+                    <property name="popover">hamburger_popover_menu</property>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
