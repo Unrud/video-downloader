@@ -261,7 +261,7 @@ class Window(Handy.ApplicationWindow, Handler):
             elif res == Gtk.ResponseType.YES:
                 async_response.respond(True)
             else:
-                self.lookup_action('cancel').activate()
+                self.activate_action('cancel')
         dialog = PlaylistDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
         dialog.connect('response', handle_response)
@@ -274,7 +274,7 @@ class Window(Handy.ApplicationWindow, Handler):
             if res == Gtk.ResponseType.OK:
                 async_response.respond((dialog.username, dialog.password))
             else:
-                self.lookup_action('cancel').activate()
+                self.activate_action('cancel')
         dialog = LoginDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
         dialog.connect('response', handle_response)
@@ -287,7 +287,7 @@ class Window(Handy.ApplicationWindow, Handler):
             if res == Gtk.ResponseType.OK:
                 async_response.respond(dialog.password)
             else:
-                self.lookup_action('cancel').activate()
+                self.activate_action('cancel')
         dialog = PasswordDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
         dialog.connect('response', handle_response)
