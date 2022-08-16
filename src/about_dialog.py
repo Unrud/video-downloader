@@ -24,6 +24,5 @@ class AboutDialog(Gtk.AboutDialog):
     __gtype_name__ = 'VideoDownloaderAboutDialog'
 
     def __init__(self, parent, version):
-        super().__init__()
+        super().__init__(version=version)
         self.set_transient_for(parent)
-        self.set_version(version)
