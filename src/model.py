@@ -246,13 +246,16 @@ class Model(GObject.GObject, downloader.Handler):
 
 
 class Handler:
-    def on_playlist_request(self) -> bool:
+    AsyncResponse = downloader.Handler.AsyncResponse
+    Response = downloader.Handler.Response
+
+    def on_playlist_request(self) -> Response[bool]:
         raise NotImplementedError
 
-    #                                          username password
-    def on_login_request(self) -> typing.Tuple[str,     str]:
+    #                                                   user password
+    def on_login_request(self) -> Response[typing.Tuple[str, str]]:
         raise NotImplementedError
 
-    #                                password
-    def on_password_request(self) -> str:
+    #                                         password
+    def on_password_request(self) -> Response[str]:
         raise NotImplementedError

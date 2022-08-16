@@ -37,6 +37,7 @@ class Downloader:
     def __init__(self, handler):
         self._handler = handler
         self._process = None
+        self._pending_response = None
         # Use regex to split lines because `bytes.splitlines` transforms
         # `b'abc\n'` to `[b'abc']` instead of `[b'abc', b'']`
         self._splitlines_re = re.compile(rb'\r\n|\r|\n')
@@ -111,22 +112,32 @@ class Downloader:
         for line in filter(None, lines):  # Filter empty lines
             try:
                 line = line.decode(process.stdout.encoding)
+                if self._pending_response:
+                    raise RuntimeError('request during pending request')
                 request = json.loads(line)
                 method = getattr(self._handler, request['method'])
                 result = method(*request['args'])
-                print(json.dumps({'result': result}),
-                      file=process.stdin, flush=True)
             except Exception:
                 g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
                       'failed request %r\n%s', line, traceback.format_exc())
                 failure = True
                 break
+            if isinstance(result, _AsyncResponse):
+                self._pending_response = result
+            else:
+                self._pending_response = _AsyncResponse()
+            self._pending_response._downloader = self
+            self._pending_response._request_line = line
+            if not isinstance(result, _AsyncResponse):
+                self._pending_response.respond(result)
         if pipe_closed and process.stdout_remainder:
             g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
                   'incomplete request %r', process.stdout_remainder)
             failure = True
         if pipe_closed or failure:
             returncode = self._finish_process_and_kill_pgrp()
+            if self._pending_response:
+                self._pending_response._finish()
             self._handler.on_finished(returncode == 0 and not failure)
         return not pipe_closed
 
@@ -149,61 +160,91 @@ class Downloader:
         return not pipe_closed
 
 
+_R = typing.TypeVar('R')
+
+
+class _AsyncResponse(typing.Generic[_R]):
+    def __init__(self, done_callback=None):
+        self._done_callback = done_callback
+        self._downloader = None
+        self._request_line = None
+
+    def _finish(self):
+        assert self._downloader and self._downloader._pending_response is self
+        self._downloader._pending_response = None
+        if self._done_callback is not None:
+            self._done_callback()
+
+    def respond(self, result: _R) -> None:
+        try:
+            print(json.dumps({'result': result}),
+                  file=self._downloader._process.stdin, flush=True)
+        except Exception:
+            g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
+                  'failed request %r\n%s', self._request_line,
+                  traceback.format_exc())
+            self._downloader._process.terminate()
+        self._finish()
+
+
 class Handler:
-    def get_download_dir(self) -> str:
+    AsyncResponse = _AsyncResponse
+    Response = typing.Union[_R, AsyncResponse[_R]]
+
+    def get_download_dir(self) -> Response[str]:
         raise NotImplementedError
 
-    def get_prefer_mpeg(self) -> bool:
+    def get_prefer_mpeg(self) -> Response[bool]:
         raise NotImplementedError
 
-    def get_automatic_subtitles(self) -> typing.List[str]:
+    def get_automatic_subtitles(self) -> Response[typing.List[str]]:
         raise NotImplementedError
 
-    def get_url(self) -> str:
+    def get_url(self) -> Response[str]:
         raise NotImplementedError
 
-    def get_mode(self) -> str:
+    def get_mode(self) -> Response[str]:
         raise NotImplementedError
 
-    def get_resolution(self) -> int:
+    def get_resolution(self) -> Response[int]:
         raise NotImplementedError
 
-    def on_playlist_request(self) -> bool:
+    def on_playlist_request(self) -> Response[bool]:
         raise NotImplementedError
 
-    #                                          user password
-    def on_login_request(self) -> typing.Tuple[str, str]:
+    #                                                   user password
+    def on_login_request(self) -> Response[typing.Tuple[str, str]]:
         raise NotImplementedError
 
-    #                                password
-    def on_password_request(self) -> str:
+    #                                         password
+    def on_password_request(self) -> Response[str]:
         raise NotImplementedError
 
-    def on_error(self, msg: str):
+    def on_error(self, msg: str) -> Response[None]:
         raise NotImplementedError
 
     def on_progress(self, filename: str, progress: float, bytes_: int,
-                    bytes_total: int, eta: int, speed: int):
+                    bytes_total: int, eta: int, speed: int) -> Response[None]:
         raise NotImplementedError
 
     def on_download_start(self, playlist_index: int, playlist_count: int,
-                          title: str):
+                          title: str) -> Response[None]:
         raise NotImplementedError
 
-    #                                        lock acquired
-    def on_download_lock(self, name: str) -> bool:
+    #                                                 lock acquired
+    def on_download_lock(self, name: str) -> Response[bool]:
         """Lock gets released by `on_download_finished` or process termination.
            It's not allowed to hold more than one lock at a time."""
         raise NotImplementedError
 
-    def on_download_thumbnail(self, thumbnail: str):
+    def on_download_thumbnail(self, thumbnail: str) -> Response[None]:
         raise NotImplementedError
 
-    def on_download_finished(self, filename):
+    def on_download_finished(self, filename) -> Response[None]:
         raise NotImplementedError
 
-    def on_pulse(self):
+    def on_pulse(self) -> Response[None]:
         raise NotImplementedError
 
-    def on_finished(self, success: bool):
+    def on_finished(self, success: bool) -> Response[None]:
         raise NotImplementedError

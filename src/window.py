@@ -252,35 +252,48 @@ class Window(Handy.ApplicationWindow, Handler):
     def _show_about_dialog(self):
         dialog = AboutDialog(self, self.get_application().version)
         self.window_group.add_window(dialog)
-        dialog.run()
-        dialog.destroy()
+        dialog.show()
 
     def on_playlist_request(self):
+        def handle_response(dialog, res):
+            if res == Gtk.ResponseType.NO:
+                async_response.respond(False)
+            elif res == Gtk.ResponseType.YES:
+                async_response.respond(True)
+            else:
+                self.lookup_action('cancel').activate()
         dialog = PlaylistDialog(self)
+        async_response = Handler.AsyncResponse(dialog.destroy)
+        dialog.connect('response', handle_response)
         self.window_group.add_window(dialog)
-        res = dialog.run()
-        dialog.destroy()
-        return res == Gtk.ResponseType.YES
+        dialog.show()
+        return async_response
 
     def on_login_request(self):
+        def handle_response(dialog, res):
+            if res == Gtk.ResponseType.OK:
+                async_response.respond((dialog.username, dialog.password))
+            else:
+                self.lookup_action('cancel').activate()
         dialog = LoginDialog(self)
+        async_response = Handler.AsyncResponse(dialog.destroy)
+        dialog.connect('response', handle_response)
         self.window_group.add_window(dialog)
-        res = dialog.run()
-        dialog.destroy()
-        if res == Gtk.ResponseType.OK:
-            return (dialog.username, dialog.password)
-        self.lookup_action('cancel').activate()
-        return ('', '')
+        dialog.show()
+        return async_response
 
-    def on_videopassword_request(self):
+    def on_password_request(self):
+        def handle_response(dialog, res):
+            if res == Gtk.ResponseType.OK:
+                async_response.respond(dialog.password)
+            else:
+                self.lookup_action('cancel').activate()
         dialog = PasswordDialog(self)
+        async_response = Handler.AsyncResponse(dialog.destroy)
+        dialog.connect('response', handle_response)
         self.window_group.add_window(dialog)
-        res = dialog.run()
-        dialog.destroy()
-        if res == Gtk.ResponseType.OK:
-            return dialog.password
-        self.lookup_action('cancel').activate()
-        return ''
+        dialog.show()
+        return async_response
 
     def do_destroy(self):
         self.model.shutdown()
