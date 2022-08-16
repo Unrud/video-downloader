@@ -177,6 +177,7 @@ class Window(Handy.ApplicationWindow, Handler):
             img_wdg.set_pixel_size(DOWNLOAD_IMAGE_SIZE)
         else:
             img_wdg = Gtk.Image.new_from_pixbuf(pixbuf)
+        img_wdg.set_size_request(-1, DOWNLOAD_IMAGE_SIZE)
         img_wdg.show()
         self.download_images_wdg.add(img_wdg)
         self.download_images_wdg.set_visible_child(img_wdg)
