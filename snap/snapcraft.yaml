@@ -123,6 +123,7 @@ parts:
     after: [libhandy, yt-dlp]
     plugin: meson
     source: .
+    source-tag: v0.9.10
     source-type: git
     # WORKAROUND: Fake installation location to find dependencies at runtime
     meson-parameters: [--prefix=/snap/video-downloader/current/usr]
