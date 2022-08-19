@@ -69,6 +69,9 @@ class Application(Adw.Application):
         Gtk.StyleContext.add_provider_for_display(
             Gdk.Display.get_default(), css_provider,
             Gtk.STYLE_PROVIDER_PRIORITY_USER)
+        # WORKAROUND: The `destroy` signal of `ApplicationWindow` doesn't work,
+        # use the `window-removed` signal for shutdown instead
+        self.connect('window-removed', lambda _, win: win.shutdown())
 
     def _new_window(self, url=''):
         win = Window(self)

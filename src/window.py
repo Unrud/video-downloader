@@ -61,6 +61,7 @@ class Window(Adw.ApplicationWindow, Handler):
 
     def __init__(self, application):
         super().__init__(application=application)
+        self.application = application
         self.model = model = Model(self)
         self.window_group = Gtk.WindowGroup()
         self.window_group.add_window(self)
@@ -223,7 +224,7 @@ class Window(Adw.ApplicationWindow, Handler):
             assert False, 'unreachable'
 
     def _hide_notification(self):
-        self.get_application().withdraw_notification(self._notification_uuid)
+        self.application.withdraw_notification(self._notification_uuid)
 
     def _update_notification(self, state):
         self._hide_notification()
@@ -244,11 +245,11 @@ class Window(Adw.ApplicationWindow, Handler):
                 self._notification_uuid)
         else:
             assert False, 'unreachable'
-        self.get_application().send_notification(self._notification_uuid,
-                                                 notification)
+        self.application.send_notification(self._notification_uuid,
+                                           notification)
 
     def _show_about_dialog(self):
-        dialog = AboutDialog(self, self.get_application().version)
+        dialog = AboutDialog(self, self.application.version)
         self.window_group.add_window(dialog)
         dialog.show()
 
@@ -293,10 +294,9 @@ class Window(Adw.ApplicationWindow, Handler):
         dialog.show()
         return async_response
 
-    def do_destroy(self):
+    def shutdown(self):
         self.model.shutdown()
         self._hide_notification()
-        for action_name in self.get_application().list_actions():
+        for action_name in self.application.list_actions():
             if action_name.endswith('--%s' % self._notification_uuid):
-                self.get_application().remove_action(action_name)
-        Adw.ApplicationWindow.do_destroy(self)
+                self.application.remove_action(action_name)
