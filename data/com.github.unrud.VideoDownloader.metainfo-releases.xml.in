@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.0" date="2022-08-19">
+    <description>
+      <ul>
+        <li>Switch to GTK 4</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.9.10" date="2022-08-17">
     <description>
       <ul>
