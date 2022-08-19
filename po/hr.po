@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-21 21:36+0100\n"
+"POT-Creation-Date: 2022-08-19 16:13+0200\n"
 "PO-Revision-Date: 2021-09-24 12:20+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian\n"
@@ -15,18 +15,18 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 2.4.2\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:36 src/window.ui:158
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:25
+#: src/main.py:37 src/window.ui:104
 msgid "Video Downloader"
 msgstr "Preuzimanje videa"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:28
 msgid "Download videos from websites like YouTube and many others"
 msgstr "Preuzimanje videa s web-stranica poput YouTubea i drugih"
 
@@ -58,7 +58,7 @@ msgstr "Automatsko biranje videoformata na osnovi tražene kvalitete"
 msgid "Based on yt-dlp."
 msgstr "Zasnovano na biblioteci yt-dlp."
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
+#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:29
 msgid "New Window"
 msgstr "Novi prozor"
 
@@ -66,144 +66,144 @@ msgstr "Novi prozor"
 msgid "Authentication Required"
 msgstr "Potrebna je autentifikacija"
 
-#: src/authentication_dialog.py:34 src/window.ui:480
+#: src/authentication_dialog.py:33 src/window.ui:325
 msgid "Cancel"
 msgstr "Odustani"
 
-#: src/authentication_dialog.py:42
+#: src/authentication_dialog.py:41
 msgid "Sign in"
 msgstr "Prijavi se"
 
-#: src/authentication_dialog.py:42
+#: src/authentication_dialog.py:41
 msgid "Skip"
 msgstr "Preskoči"
 
-#: src/authentication_dialog_login.ui:37
-#: src/authentication_dialog_password.ui:37
+#: src/authentication_dialog_login.ui:31
+#: src/authentication_dialog_password.ui:13
 msgid "The video is not public."
 msgstr "Video nije javan."
 
-#: src/authentication_dialog_login.ui:61
+#: src/authentication_dialog_login.ui:44
 msgid "Username"
 msgstr "Korisničko ime"
 
-#: src/authentication_dialog_login.ui:107
-#: src/authentication_dialog_password.ui:55
+#: src/authentication_dialog_login.ui:71
+#: src/authentication_dialog_password.ui:22
 msgid "Password"
 msgstr "Lozinka"
 
-#: src/main.py:35
+#: src/main.py:36
 msgid "Prefill URL field"
 msgstr "Unaprijed ispuni polje URL-adrese"
 
-#: src/model.py:60
+#: src/model.py:63
 msgid "Best"
 msgstr "Najbolja"
 
-#: src/model.py:61
+#: src/model.py:64
 msgid "4320p (8K)"
 msgstr "4320 p (8 K)"
 
-#: src/model.py:62
+#: src/model.py:65
 msgid "2160p (4K)"
 msgstr "2160 p (4 K)"
 
-#: src/model.py:63
+#: src/model.py:66
 msgid "1440p (HD)"
 msgstr "1440 p (HD)"
 
-#: src/model.py:64
+#: src/model.py:67
 msgid "1080p (HD)"
 msgstr "1080 p (HD)"
 
-#: src/model.py:65
+#: src/model.py:68
 msgid "720p (HD)"
 msgstr "720 p (HD)"
 
-#: src/model.py:66
+#: src/model.py:69
 msgid "480p"
 msgstr "480 p"
 
-#: src/model.py:67
+#: src/model.py:70
 msgid "360p"
 msgstr "360 p"
 
-#: src/model.py:68
+#: src/model.py:71
 msgid "240p"
 msgstr "240 p"
 
-#: src/model.py:69
+#: src/model.py:72
 msgid "144p"
 msgstr "144 p"
 
-#: src/playlist_dialog.py:32
+#: src/playlist_dialog.py:30
 msgid "Download Playlist?"
 msgstr "Preuzeti zbirku?"
 
-#: src/playlist_dialog.py:33
+#: src/playlist_dialog.py:31
 msgid "The video is part of a playlist."
 msgstr "Video je dio zbirke."
 
-#: src/playlist_dialog.py:34
+#: src/playlist_dialog.py:33
 msgid "Single Video"
 msgstr "Jedan video"
 
-#: src/playlist_dialog.py:35
+#: src/playlist_dialog.py:34
 msgid "All Videos in Playlist"
 msgstr "Sva videa u zbirci"
 
-#: src/window.py:125
+#: src/window.py:142
 msgid "Downloading"
 msgstr "Preuzimanje"
 
-#: src/window.py:127 src/window.py:150
+#: src/window.py:144 src/window.py:167
 msgid "{} of {}"
 msgstr "{} od {}"
 
-#: src/window.py:151 src/window.py:153
+#: src/window.py:168 src/window.py:170
 msgid "unknown"
 msgstr "nepoznato"
 
-#: src/window.py:218 src/window.ui:690
+#: src/window.py:235 src/window.ui:454
 msgid "Download failed"
 msgstr "Neuspjelo preuzimanje"
 
-#: src/window.py:222 src/window.ui:859
+#: src/window.py:239 src/window.ui:563
 msgid "Download finished"
 msgstr "Preuzimanje je gotovo"
 
-#: src/window.py:227 src/window.ui:873
+#: src/window.py:243 src/window.ui:572
 msgid "Open Download Location"
 msgstr "Otvori mjesto preuzimanja"
 
-#: src/window.ui:137
+#: src/window.ui:39
 msgid "About Video Downloader"
 msgstr "O programu Preuzimanje videa"
 
-#: src/window.ui:238 src/window.ui:324
-msgid "URL"
-msgstr "URL-adresa"
-
-#: src/window.ui:277 src/window.ui:415
-msgid "Download"
-msgstr "Preuzmi"
-
-#: src/window.ui:299
+#: src/window.ui:155
 msgid "Audio"
 msgstr "Audio"
 
-#: src/window.ui:370
-msgid "Resolution"
-msgstr "Rezolucija"
+#: src/window.ui:173 src/window.ui:233
+msgid "URL"
+msgstr "URL-adresa"
 
-#: src/window.ui:437
+#: src/window.ui:196 src/window.ui:287
+msgid "Download"
+msgstr "Preuzmi"
+
+#: src/window.ui:215
 msgid "Video"
 msgstr "Video"
 
-#: src/window.ui:645 src/window.ui:813
+#: src/window.ui:259
+msgid "Resolution"
+msgstr "Rezolucija"
+
+#: src/window.ui:425 src/window.ui:533
 msgid "Back"
 msgstr "Natrag"
 
-#: src/window.ui:720
+#: src/window.ui:474
 msgid "Details"
 msgstr "Detalji"

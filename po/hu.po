@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-21 21:36+0100\n"
+"POT-Creation-Date: 2022-08-19 16:13+0200\n"
 "PO-Revision-Date: 2021-02-05 05:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
@@ -19,13 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:36 src/window.ui:158
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:25
+#: src/main.py:37 src/window.ui:104
 msgid "Video Downloader"
 msgstr "Videó letöltő"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:28
 msgid "Download videos from websites like YouTube and many others"
 msgstr "Videó letöltő a YouTube és más webhelyekről"
 
@@ -57,7 +57,7 @@ msgstr "Minőségi igényeknek megfelelő videoformátumot önműködően kivál
 msgid "Based on yt-dlp."
 msgstr "A yt-dlp alapján."
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
+#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:29
 msgid "New Window"
 msgstr "Új ablak"
 
@@ -65,144 +65,144 @@ msgstr "Új ablak"
 msgid "Authentication Required"
 msgstr "Hitelesítés szükséges"
 
-#: src/authentication_dialog.py:34 src/window.ui:480
+#: src/authentication_dialog.py:33 src/window.ui:325
 msgid "Cancel"
 msgstr "Mégse"
 
-#: src/authentication_dialog.py:42
+#: src/authentication_dialog.py:41
 msgid "Sign in"
 msgstr "Bejelentkezés"
 
-#: src/authentication_dialog.py:42
+#: src/authentication_dialog.py:41
 msgid "Skip"
 msgstr "Kihagyás"
 
-#: src/authentication_dialog_login.ui:37
-#: src/authentication_dialog_password.ui:37
+#: src/authentication_dialog_login.ui:31
+#: src/authentication_dialog_password.ui:13
 msgid "The video is not public."
 msgstr "A videó nem nyilvános."
 
-#: src/authentication_dialog_login.ui:61
+#: src/authentication_dialog_login.ui:44
 msgid "Username"
 msgstr "Felhasználónév"
 
-#: src/authentication_dialog_login.ui:107
-#: src/authentication_dialog_password.ui:55
+#: src/authentication_dialog_login.ui:71
+#: src/authentication_dialog_password.ui:22
 msgid "Password"
 msgstr "Jelszó"
 
-#: src/main.py:35
+#: src/main.py:36
 msgid "Prefill URL field"
 msgstr "URL-cím mező előtöltése"
 
-#: src/model.py:60
+#: src/model.py:63
 msgid "Best"
 msgstr "Legjobb"
 
-#: src/model.py:61
+#: src/model.py:64
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:62
+#: src/model.py:65
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:63
+#: src/model.py:66
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:64
+#: src/model.py:67
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:65
+#: src/model.py:68
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:66
+#: src/model.py:69
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:67
+#: src/model.py:70
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:68
+#: src/model.py:71
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:69
+#: src/model.py:72
 msgid "144p"
 msgstr "144p"
 
-#: src/playlist_dialog.py:32
+#: src/playlist_dialog.py:30
 msgid "Download Playlist?"
 msgstr "Lejátszási lista letöltése?"
 
-#: src/playlist_dialog.py:33
+#: src/playlist_dialog.py:31
 msgid "The video is part of a playlist."
 msgstr "A videó egy lejátszási lista része."
 
-#: src/playlist_dialog.py:34
+#: src/playlist_dialog.py:33
 msgid "Single Video"
 msgstr "Egyetlen videó"
 
-#: src/playlist_dialog.py:35
+#: src/playlist_dialog.py:34
 msgid "All Videos in Playlist"
 msgstr "Az összes videó a lejátszási listában"
 
-#: src/window.py:125
+#: src/window.py:142
 msgid "Downloading"
 msgstr "Letöltés folyamatban…"
 
-#: src/window.py:127 src/window.py:150
+#: src/window.py:144 src/window.py:167
 msgid "{} of {}"
 msgstr "{}/{}"
 
-#: src/window.py:151 src/window.py:153
+#: src/window.py:168 src/window.py:170
 msgid "unknown"
 msgstr "ismeretlen"
 
-#: src/window.py:218 src/window.ui:690
+#: src/window.py:235 src/window.ui:454
 msgid "Download failed"
 msgstr "Sikertelen letöltés"
 
-#: src/window.py:222 src/window.ui:859
+#: src/window.py:239 src/window.ui:563
 msgid "Download finished"
 msgstr "Letöltés befejeződött"
 
-#: src/window.py:227 src/window.ui:873
+#: src/window.py:243 src/window.ui:572
 msgid "Open Download Location"
 msgstr "Letöltési hely megnyitása"
 
-#: src/window.ui:137
+#: src/window.ui:39
 msgid "About Video Downloader"
 msgstr "A Videó letöltő névjegye"
 
-#: src/window.ui:238 src/window.ui:324
-msgid "URL"
-msgstr "URL-cím"
-
-#: src/window.ui:277 src/window.ui:415
-msgid "Download"
-msgstr "Letöltés"
-
-#: src/window.ui:299
+#: src/window.ui:155
 msgid "Audio"
 msgstr "Hang"
 
-#: src/window.ui:370
-msgid "Resolution"
-msgstr "Felbontás"
+#: src/window.ui:173 src/window.ui:233
+msgid "URL"
+msgstr "URL-cím"
 
-#: src/window.ui:437
+#: src/window.ui:196 src/window.ui:287
+msgid "Download"
+msgstr "Letöltés"
+
+#: src/window.ui:215
 msgid "Video"
 msgstr "Videó"
 
-#: src/window.ui:645 src/window.ui:813
+#: src/window.ui:259
+msgid "Resolution"
+msgstr "Felbontás"
+
+#: src/window.ui:425 src/window.ui:533
 msgid "Back"
 msgstr "Vissza"
 
-#: src/window.ui:720
+#: src/window.ui:474
 msgid "Details"
 msgstr "Részletek"

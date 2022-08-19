@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-21 21:36+0100\n"
+"POT-Creation-Date: 2022-08-19 16:13+0200\n"
 "PO-Revision-Date: 2021-08-24 14:44+0200\n"
 "Last-Translator: Vojtěch Perník <translations@pervoj.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -19,13 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:32
-#: src/main.py:36 src/window.ui:158
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:25
+#: src/main.py:37 src/window.ui:104
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:35
+#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:28
 msgid "Download videos from websites like YouTube and many others"
 msgstr "Stahování videí ze stránek jako YouTube a mnoho dalších"
 
@@ -57,7 +57,7 @@ msgstr "Automatický výběr formátu videa podle zvolených požadavků na kval
 msgid "Based on yt-dlp."
 msgstr "Postavený na yt-dlp."
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:46
+#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:29
 msgid "New Window"
 msgstr "Nové okno"
 
@@ -65,144 +65,144 @@ msgstr "Nové okno"
 msgid "Authentication Required"
 msgstr "Je vyžadována autentikace"
 
-#: src/authentication_dialog.py:34 src/window.ui:480
+#: src/authentication_dialog.py:33 src/window.ui:325
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/authentication_dialog.py:42
+#: src/authentication_dialog.py:41
 msgid "Sign in"
 msgstr "Přihlásit se"
 
-#: src/authentication_dialog.py:42
+#: src/authentication_dialog.py:41
 msgid "Skip"
 msgstr "Přeskočit"
 
-#: src/authentication_dialog_login.ui:37
-#: src/authentication_dialog_password.ui:37
+#: src/authentication_dialog_login.ui:31
+#: src/authentication_dialog_password.ui:13
 msgid "The video is not public."
 msgstr "Video není veřejné."
 
-#: src/authentication_dialog_login.ui:61
+#: src/authentication_dialog_login.ui:44
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: src/authentication_dialog_login.ui:107
-#: src/authentication_dialog_password.ui:55
+#: src/authentication_dialog_login.ui:71
+#: src/authentication_dialog_password.ui:22
 msgid "Password"
 msgstr "Heslo"
 
-#: src/main.py:35
+#: src/main.py:36
 msgid "Prefill URL field"
 msgstr "Předvyplněné pole URL"
 
-#: src/model.py:60
+#: src/model.py:63
 msgid "Best"
 msgstr "Nejlepší"
 
-#: src/model.py:61
+#: src/model.py:64
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:62
+#: src/model.py:65
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:63
+#: src/model.py:66
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:64
+#: src/model.py:67
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:65
+#: src/model.py:68
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:66
+#: src/model.py:69
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:67
+#: src/model.py:70
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:68
+#: src/model.py:71
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:69
+#: src/model.py:72
 msgid "144p"
 msgstr "144p"
 
-#: src/playlist_dialog.py:32
+#: src/playlist_dialog.py:30
 msgid "Download Playlist?"
 msgstr "Stáhnout playlist?"
 
-#: src/playlist_dialog.py:33
+#: src/playlist_dialog.py:31
 msgid "The video is part of a playlist."
 msgstr "Video je součástí playlistu."
 
-#: src/playlist_dialog.py:34
+#: src/playlist_dialog.py:33
 msgid "Single Video"
 msgstr "Jedno video"
 
-#: src/playlist_dialog.py:35
+#: src/playlist_dialog.py:34
 msgid "All Videos in Playlist"
 msgstr "Všechna videa z playlistu"
 
-#: src/window.py:125
+#: src/window.py:142
 msgid "Downloading"
 msgstr "Stahuji"
 
-#: src/window.py:127 src/window.py:150
+#: src/window.py:144 src/window.py:167
 msgid "{} of {}"
 msgstr "{} z {}"
 
-#: src/window.py:151 src/window.py:153
+#: src/window.py:168 src/window.py:170
 msgid "unknown"
 msgstr "neznámý"
 
-#: src/window.py:218 src/window.ui:690
+#: src/window.py:235 src/window.ui:454
 msgid "Download failed"
 msgstr "Stahování selhalo"
 
-#: src/window.py:222 src/window.ui:859
+#: src/window.py:239 src/window.ui:563
 msgid "Download finished"
 msgstr "Stahování dokončeno"
 
-#: src/window.py:227 src/window.ui:873
+#: src/window.py:243 src/window.ui:572
 msgid "Open Download Location"
 msgstr "Otevřít adresář stahování"
 
-#: src/window.ui:137
+#: src/window.ui:39
 msgid "About Video Downloader"
 msgstr "O aplikaci Video Downloader"
 
-#: src/window.ui:238 src/window.ui:324
-msgid "URL"
-msgstr "URL"
-
-#: src/window.ui:277 src/window.ui:415
-msgid "Download"
-msgstr "Stáhnout"
-
-#: src/window.ui:299
+#: src/window.ui:155
 msgid "Audio"
 msgstr "Zvuk"
 
-#: src/window.ui:370
-msgid "Resolution"
-msgstr "Rozlišení"
+#: src/window.ui:173 src/window.ui:233
+msgid "URL"
+msgstr "URL"
 
-#: src/window.ui:437
+#: src/window.ui:196 src/window.ui:287
+msgid "Download"
+msgstr "Stáhnout"
+
+#: src/window.ui:215
 msgid "Video"
 msgstr "Video"
 
-#: src/window.ui:645 src/window.ui:813
+#: src/window.ui:259
+msgid "Resolution"
+msgstr "Rozlišení"
+
+#: src/window.ui:425 src/window.ui:533
 msgid "Back"
 msgstr "Zpět"
 
-#: src/window.ui:720
+#: src/window.ui:474
 msgid "Details"
 msgstr "Detaily"
