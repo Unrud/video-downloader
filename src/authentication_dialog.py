@@ -26,17 +26,16 @@ N_ = gettext.gettext
 
 class BaseAuthenticationDialog(Gtk.Dialog):
     def __init__(self, parent):
-        super().__init__(
-            N_('Authentication Required'), parent,
-            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-            use_header_bar=True)
-        self.set_resizable(False)
+        super().__init__(modal=True, destroy_with_parent=True, resizable=False,
+                         title=N_('Authentication Required'),
+                         use_header_bar=True)
+        self.set_transient_for(parent)
         self.add_button(N_('Cancel'), Gtk.ResponseType.CANCEL)
         self._ok_button = self.add_button('', Gtk.ResponseType.OK)
         self._update_response(False)
         self.set_default_response(Gtk.ResponseType.OK)
         area_wdg = self.get_content_area()
-        area_wdg.add(self._build_content())
+        area_wdg.append(self._build_content())
 
     def _update_response(self, form_filled):
         self._ok_button.set_label(N_('Sign in') if form_filled else N_('Skip'))

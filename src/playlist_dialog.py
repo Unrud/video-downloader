@@ -24,12 +24,12 @@ N_ = gettext.gettext
 
 class PlaylistDialog(Gtk.MessageDialog):
     def __init__(self, parent):
-        super().__init__(parent, Gtk.DialogFlags.DESTROY_WITH_PARENT |
-                         Gtk.DialogFlags.MODAL, Gtk.MessageType.QUESTION,
-                         Gtk.ButtonsType.NONE, '',
+        super().__init__(modal=True, destroy_with_parent=True,
+                         message_type=Gtk.MessageType.QUESTION,
                          text='<b>%s</b>' % GObject.markup_escape_text(
                              N_('Download Playlist?')), use_markup=True,
                          secondary_text=N_('The video is part of a playlist.'))
+        self.set_transient_for(parent)
         self.add_button(N_('Single Video'), Gtk.ResponseType.NO)
         self.add_button(N_('All Videos in Playlist'), Gtk.ResponseType.YES)
         self.set_default_response(Gtk.ResponseType.NO)
