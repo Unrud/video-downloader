@@ -18,7 +18,7 @@
 import gettext
 import sys
 
-from gi.repository import Gdk, Gio, GLib, Gtk, GObject, Handy
+from gi.repository import Adw, Gdk, Gio, GLib, Gtk, GObject
 
 from video_downloader.util import bind_property
 from video_downloader.window import Window
@@ -26,7 +26,7 @@ from video_downloader.window import Window
 N_ = gettext.gettext
 
 
-class Application(Gtk.Application):
+class Application(Adw.Application):
     color_scheme = GObject.Property(type=str)
 
     def __init__(self, version):
@@ -38,20 +38,19 @@ class Application(Gtk.Application):
         self.version = version
 
     def _on_color_scheme_changed(self, value):
-        style_manager = Handy.StyleManager.get_default()
+        style_manager = Adw.StyleManager.get_default()
         if value == 'system':
-            style_manager.set_color_scheme(Handy.ColorScheme.PREFER_LIGHT)
+            style_manager.set_color_scheme(Adw.ColorScheme.PREFER_LIGHT)
         elif value == 'light':
-            style_manager.set_color_scheme(Handy.ColorScheme.FORCE_LIGHT)
+            style_manager.set_color_scheme(Adw.ColorScheme.FORCE_LIGHT)
         elif value == 'dark':
-            style_manager.set_color_scheme(Handy.ColorScheme.FORCE_DARK)
+            style_manager.set_color_scheme(Adw.ColorScheme.FORCE_DARK)
         else:
             assert False, ('invalid value for \'color-scheme\' property: %r' %
                            value)
 
     def do_startup(self):
-        Gtk.Application.do_startup(self)
-        Handy.init()
+        Adw.Application.do_startup(self)
         self.settings = Gio.Settings.new(self.props.application_id)
         self.settings.bind('color-scheme', self, 'color-scheme',
                            Gio.SettingsBindFlags.DEFAULT)
@@ -67,8 +66,8 @@ class Application(Gtk.Application):
         css_uri = 'resource:///com/github/unrud/VideoDownloader/style.css'
         css_provider = Gtk.CssProvider()
         css_provider.load_from_file(Gio.File.new_for_uri(css_uri))
-        Gtk.StyleContext.add_provider_for_screen(
-            Gdk.Screen.get_default(), css_provider,
+        Gtk.StyleContext.add_provider_for_display(
+            Gdk.Display.get_default(), css_provider,
             Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
     def _new_window(self, url=''):

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 
-
-Copyright (C) 2019-2021 Unrud <unrud@outlook.com>
+<!-- Copyright (C) 2019-2021 Unrud <unrud@outlook.com>
 
 This file is part of Video Downloader.
 
@@ -20,909 +18,563 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
 -->
 <interface>
-  <requires lib="gtk+" version="3.24"/>
-  <requires lib="libhandy" version="1.0"/>
-  <!-- interface-license-type gplv3 -->
-  <!-- interface-name Video Downloader -->
-  <!-- interface-copyright 2019-2021 Unrud <unrud@outlook.com> -->
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.0"/>
   <object class="GtkTextBuffer" id="error_buffer">
     <property name="text">Error XXX</property>
   </object>
-  <object class="GtkPopover" id="hamburger_popover_menu">
-    <property name="can-focus">False</property>
-    <child>
+  <menu id="hamburger_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">New Window</attribute>
+        <attribute name="action">app.new-window</attribute>
+        <attribute name="target">''</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="custom">color-setting</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">About Video Downloader</attribute>
+        <attribute name="action">win.about</attribute>
+      </item>
+    </section>
+  </menu>
+  <object class="GtkPopoverMenu" id="hamburger_popover_menu">
+    <property name="menu-model">hamburger_menu</property>
+    <child type="color-setting">
       <object class="GtkBox">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="border-width">10</property>
-        <property name="orientation">vertical</property>
+        <property name="margin-bottom">6</property>
+        <property name="homogeneous">1</property>
         <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">app.new-window</property>
-            <property name="action-target">''</property>
-            <property name="text" translatable="yes">New Window</property>
+          <object class="GtkToggleButton" id="color_light_wdg">
+            <property name="halign">center</property>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">emblem-ok-symbolic</property>
+              </object>
+            </child>
+            <style>
+              <class name="color-button"/>
+              <class name="color-light"/>
+            </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="margin-top">6</property>
-            <property name="margin-bottom">6</property>
+          <object class="GtkToggleButton" id="color_system_wdg">
+            <property name="halign">center</property>
+            <property name="group">color_light_wdg</property>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">emblem-ok-symbolic</property>
+              </object>
+            </child>
+            <style>
+              <class name="color-button"/>
+              <class name="color-system"/>
+            </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="margin-bottom">6</property>
-            <property name="homogeneous">True</property>
+          <object class="GtkToggleButton" id="color_dark_wdg">
+            <property name="halign">center</property>
+            <property name="group">color_light_wdg</property>
             <child>
-              <object class="GtkRadioButton" id="color_light_wdg">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">False</property>
-                <property name="halign">center</property>
-                <property name="draw-indicator">False</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="icon-name">emblem-ok-symbolic</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="color-button"/>
-                  <class name="color-light"/>
-                </style>
+              <object class="GtkImage">
+                <property name="icon-name">emblem-ok-symbolic</property>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
             </child>
-            <child>
-              <object class="GtkRadioButton" id="color_system_wdg">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">False</property>
-                <property name="halign">center</property>
-                <property name="draw-indicator">False</property>
-                <property name="group">color_light_wdg</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="icon-name">emblem-ok-symbolic</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="color-button"/>
-                  <class name="color-system"/>
-                </style>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkRadioButton" id="color_dark_wdg">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">False</property>
-                <property name="halign">center</property>
-                <property name="draw-indicator">False</property>
-                <property name="group">color_light_wdg</property>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="icon-name">emblem-ok-symbolic</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="color-button"/>
-                  <class name="color-dark"/>
-                </style>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
+            <style>
+              <class name="color-button"/>
+              <class name="color-dark"/>
+            </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.about</property>
-            <property name="text" translatable="yes">About Video Downloader</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">3</property>
-          </packing>
         </child>
       </object>
     </child>
   </object>
   <object class="GtkListStore" id="resolutions_store">
     <columns>
-      <!-- column-name name -->
       <column type="gchararray"/>
-      <!-- column-name id -->
       <column type="gchararray"/>
     </columns>
   </object>
-  <template class="VideoDownloaderWindow" parent="HdyApplicationWindow">
-    <property name="can-focus">False</property>
-    <property name="title" translatable="yes">Video Downloader</property>
+  <template class="VideoDownloaderWindow" parent="AdwApplicationWindow">
+    <property name="title" translatable="1">Video Downloader</property>
     <property name="default-width">600</property>
     <child>
       <object class="GtkStack" id="main_stack_wdg">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
         <property name="transition-type">slide-left-right</property>
         <child>
-          <object class="GtkBox" id="audio_video_page">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="HdyHeaderBar">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="show-close-button">True</property>
-                <property name="centering-policy">strict</property>
-                <child type="title">
-                  <object class="HdyViewSwitcherTitle" id="audio_video_switcher_title_wdg">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="stack">audio_video_stack_wdg</property>
-                    <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkMenuButton">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="focus-on-click">False</property>
-                    <property name="receives-default">False</property>
-                    <property name="popover">hamburger_popover_menu</property>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="icon-name">open-menu-symbolic</property>
-                      </object>
-                    </child>
-                    <accelerator key="F10" signal="clicked"/>
-                  </object>
-                  <packing>
-                    <property name="pack-type">end</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkStack" id="audio_video_stack_wdg">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="vexpand">True</property>
-                <property name="transition-type">crossfade</property>
-                <child>
-                  <object class="HdyClamp" id="audio_page">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="valign">center</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="border-width">18</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">18</property>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="spacing">12</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">URL</property>
-                                <property name="xalign">1</property>
-                                <accessibility>
-                                  <relation type="label-for" target="audio_url_wdg"/>
-                                </accessibility>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="audio_url_wdg">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="hexpand">True</property>
-                                <property name="activates-default">True</property>
-                                <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
-                                <property name="input-purpose">url</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="audio_download_wdg">
-                            <property name="label" translatable="yes">Download</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="can-default">True</property>
-                            <property name="receives-default">True</property>
-                            <property name="halign">center</property>
-                            <property name="action-name">win.download</property>
-                            <style>
-                              <class name="suggested-action"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="name">audio</property>
-                    <property name="title" translatable="yes">Audio</property>
-                    <property name="icon-name">audio-x-generic-symbolic</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="HdyClamp" id="video_page">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="valign">center</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="border-width">18</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">18</property>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="spacing">12</property>
-                            <child>
-                              <object class="GtkLabel" id="video_url_label">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">URL</property>
-                                <property name="xalign">1</property>
-                                <accessibility>
-                                  <relation type="label-for" target="video_url_wdg"/>
-                                </accessibility>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="video_url_wdg">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="hexpand">True</property>
-                                <property name="activates-default">True</property>
-                                <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
-                                <property name="input-purpose">url</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="spacing">12</property>
-                            <child>
-                              <object class="GtkLabel" id="resolution_label">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Resolution</property>
-                                <property name="xalign">1</property>
-                                <accessibility>
-                                  <relation type="label-for" target="resolution_wdg"/>
-                                </accessibility>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkComboBox" id="resolution_wdg">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="hexpand">True</property>
-                                <property name="model">resolutions_store</property>
-                                <property name="active">0</property>
-                                <property name="id-column">0</property>
-                                <child>
-                                  <object class="GtkCellRendererText"/>
-                                  <attributes>
-                                    <attribute name="text">1</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="video_download_wdg">
-                            <property name="label" translatable="yes">Download</property>
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="can-default">True</property>
-                            <property name="receives-default">True</property>
-                            <property name="halign">center</property>
-                            <property name="action-name">win.download</property>
-                            <style>
-                              <class name="suggested-action"/>
-                            </style>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="name">video</property>
-                    <property name="title" translatable="yes">Video</property>
-                    <property name="icon-name">video-x-generic-symbolic</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="HdyViewSwitcherBar">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="stack">audio_video_stack_wdg</property>
-                <property name="reveal" bind-source="audio_video_switcher_title_wdg" bind-property="title-visible" bind-flags="sync-create">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
+          <object class="GtkStackPage">
             <property name="name">start</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkBox" id="download_page">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="HdyHeaderBar">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
-                <property name="show-close-button">True</property>
+            <property name="child">
+              <object class="GtkBox" id="audio_video_page">
+                <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkButton" id="download_cancel_wdg">
-                    <property name="label" translatable="yes">Cancel</property>
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="action-name">win.cancel</property>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="HdyClamp">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="valign">center</property>
-                <property name="vexpand">True</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="border-width">18</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">24</property>
-                    <child>
-                      <object class="GtkLabel" id="download_page_title_wdg">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label">Downloading XXX</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                          <attribute name="scale" value="1.125"/>
-                        </attributes>
+                  <object class="AdwHeaderBar">
+                    <property name="centering-policy">strict</property>
+                    <child type="title">
+                      <object class="AdwViewSwitcherTitle" id="audio_video_switcher_title_wdg">
+                        <property name="stack">audio_video_stack_wdg</property>
+                        <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
                     </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">18</property>
+                    <child type="end">
+                      <object class="GtkMenuButton">
+                        <property name="focusable">1</property>
+                        <property name="focus-on-click">0</property>
+                        <property name="popover">hamburger_popover_menu</property>
                         <child>
-                          <object class="GtkLabel" id="download_title_wdg">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label">Title XXX</property>
-                            <property name="ellipsize">middle</property>
+                          <object class="GtkImage">
+                            <property name="icon-name">open-menu-symbolic</property>
                           </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
                         </child>
                         <child>
-                          <object class="GtkStack" id="download_images_wdg">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="transition-type">slide-up-down</property>
+                          <object class="GtkShortcutController">
+                            <property name="scope">managed</property>
                             <child>
-                              <placeholder/>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">6</property>
-                            <child>
-                              <object class="GtkProgressBar" id="download_progress_wdg">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="download_info_wdg">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label">Info XXX</property>
-                                <style>
-                                  <class name="dim-label"/>
-                                </style>
-                              </object>
-                              <packing>
-                                <property name="expand">False</property>
-                                <property name="fill">False</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="name">download</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkBox" id="error_page">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="HdyHeaderBar">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
-                <property name="show-close-button">True</property>
-                <child>
-                  <object class="GtkButton" id="error_back_wdg">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="action-name">win.back</property>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="icon-name">go-previous-symbolic</property>
-                        <property name="icon_size">1</property>
-                      </object>
-                    </child>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="error_back_wdg-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Back</property>
-                      </object>
-                    </child>
-                    <style>
-                      <class name="image-button"/>
-                    </style>
-                  </object>
-                </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="HdyClamp">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="vexpand">True</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="border-width">18</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">24</property>
-                    <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="pixel-size">96</property>
-                        <property name="icon-name">dialog-warning-symbolic</property>
-                        <property name="icon_size">6</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Download failed</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                          <attribute name="scale" value="1.125"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="vexpand">True</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">8</property>
-                        <child>
-                          <object class="GtkExpander" id="error_details_expander_wdg">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child type="label">
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="label" translatable="yes">Details</property>
+                              <object class="GtkShortcut">
+                                <property name="trigger">F10</property>
+                                <property name="action">activate</property>
                               </object>
                             </child>
                           </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
                         </child>
-                        <child>
-                          <object class="GtkRevealer">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="vexpand">True</property>
-                            <property name="transition-type">crossfade</property>
-                            <property name="reveal-child" bind-source="error_details_expander_wdg" bind-property="expanded" bind-flags="sync-create">False</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwViewStack" id="audio_video_stack_wdg">
+                    <property name="vexpand">1</property>
+                    <child>
+                      <object class="AdwViewStackPage">
+                        <property name="name">audio</property>
+                        <property name="title" translatable="1">Audio</property>
+                        <property name="icon-name">audio-x-generic-symbolic</property>
+                        <property name="child">
+                          <object class="AdwClamp" id="audio_page">
+                            <property name="valign">center</property>
                             <child>
-                              <object class="GtkScrolledWindow">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="hscrollbar-policy">never</property>
-                                <property name="shadow-type">in</property>
+                              <object class="GtkBox">
+                                <property name="margin-start">18</property>
+                                <property name="margin-end">18</property>
+                                <property name="margin-top">18</property>
+                                <property name="margin-bottom">18</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">18</property>
                                 <child>
-                                  <object class="GtkTextView">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="editable">False</property>
-                                    <property name="wrap-mode">word-char</property>
-                                    <property name="buffer">error_buffer</property>
+                                  <object class="GtkBox">
+                                    <property name="spacing">12</property>
+                                    <child>
+                                      <object class="GtkLabel" id="audio_url_label">
+                                        <property name="label" translatable="1">URL</property>
+                                        <property name="xalign">1</property>
+                                        <style>
+                                          <class name="dim-label"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="audio_url_wdg">
+                                        <property name="focusable">1</property>
+                                        <property name="hexpand">1</property>
+                                        <property name="activates-default">1</property>
+                                        <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                                        <property name="input-purpose">url</property>
+                                        <accessibility>
+                                          <relation name="labelled-by">audio_url_label</relation>
+                                        </accessibility>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="audio_download_wdg">
+                                    <property name="label" translatable="1">Download</property>
+                                    <property name="focusable">1</property>
+                                    <property name="receives-default">1</property>
+                                    <property name="halign">center</property>
+                                    <property name="action-name">win.download</property>
+                                    <style>
+                                      <class name="suggested-action"/>
+                                    </style>
                                   </object>
                                 </child>
                               </object>
                             </child>
-                            <accessibility>
-                              <relation type="embedded-by" target="error_details_expander_wdg"/>
-                            </accessibility>
                           </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
-                          </packing>
-                        </child>
+                        </property>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
-                      </packing>
+                    </child>
+                    <child>
+                      <object class="AdwViewStackPage">
+                        <property name="name">video</property>
+                        <property name="title" translatable="1">Video</property>
+                        <property name="icon-name">video-x-generic-symbolic</property>
+                        <property name="child">
+                          <object class="AdwClamp" id="video_page">
+                            <property name="valign">center</property>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="margin-start">18</property>
+                                <property name="margin-end">18</property>
+                                <property name="margin-top">18</property>
+                                <property name="margin-bottom">18</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">18</property>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="spacing">12</property>
+                                    <child>
+                                      <object class="GtkLabel" id="video_url_label">
+                                        <property name="label" translatable="1">URL</property>
+                                        <property name="xalign">1</property>
+                                        <style>
+                                          <class name="dim-label"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="video_url_wdg">
+                                        <property name="focusable">1</property>
+                                        <property name="hexpand">1</property>
+                                        <property name="activates-default">1</property>
+                                        <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                                        <property name="input-purpose">url</property>
+                                        <accessibility>
+                                          <relation name="labelled-by">video_url_label</relation>
+                                        </accessibility>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="spacing">12</property>
+                                    <child>
+                                      <object class="GtkLabel" id="resolution_label">
+                                        <property name="label" translatable="1">Resolution</property>
+                                        <property name="xalign">1</property>
+                                        <style>
+                                          <class name="dim-label"/>
+                                        </style>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkComboBox" id="resolution_wdg">
+                                        <property name="hexpand">1</property>
+                                        <property name="model">resolutions_store</property>
+                                        <property name="active">0</property>
+                                        <property name="id-column">0</property>
+                                        <accessibility>
+                                          <relation name="labelled-by">resolution_label</relation>
+                                        </accessibility>
+                                        <child>
+                                          <object class="GtkCellRendererText"/>
+                                          <attributes>
+                                            <attribute name="text">1</attribute>
+                                          </attributes>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkButton" id="video_download_wdg">
+                                    <property name="label" translatable="1">Download</property>
+                                    <property name="focusable">1</property>
+                                    <property name="receives-default">1</property>
+                                    <property name="halign">center</property>
+                                    <property name="action-name">win.download</property>
+                                    <style>
+                                      <class name="suggested-action"/>
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
+                      </object>
                     </child>
                   </object>
                 </child>
+                <child>
+                  <object class="AdwViewSwitcherBar">
+                    <property name="stack">audio_video_stack_wdg</property>
+                    <property name="reveal" bind-source="audio_video_switcher_title_wdg" bind-property="title-visible" bind-flags="sync-create"/>
+                  </object>
+                </child>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
+            </property>
           </object>
-          <packing>
-            <property name="name">error</property>
-            <property name="position">2</property>
-          </packing>
         </child>
         <child>
-          <object class="GtkBox" id="success_page">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="orientation">vertical</property>
-            <child>
-              <object class="HdyHeaderBar">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="title" bind-source="VideoDownloaderWindow" bind-property="title" bind-flags="sync-create"/>
-                <property name="show-close-button">True</property>
+          <object class="GtkStackPage">
+            <property name="name">download</property>
+            <property name="child">
+              <object class="GtkBox" id="download_page">
+                <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkButton" id="success_back_wdg">
-                    <property name="visible">True</property>
-                    <property name="can-focus">True</property>
-                    <property name="receives-default">False</property>
-                    <property name="action-name">win.back</property>
+                  <object class="AdwHeaderBar">
                     <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="icon-name">go-previous-symbolic</property>
-                        <property name="icon_size">1</property>
+                      <object class="GtkButton" id="download_cancel_wdg">
+                        <property name="label" translatable="1">Cancel</property>
+                        <property name="focusable">1</property>
+                        <property name="action-name">win.cancel</property>
                       </object>
                     </child>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="success_back_wdg-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Back</property>
-                      </object>
-                    </child>
-                    <style>
-                      <class name="image-button"/>
-                    </style>
                   </object>
                 </child>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="HdyClamp">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="valign">center</property>
-                <property name="vexpand">True</property>
                 <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="border-width">18</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">24</property>
+                  <object class="AdwClamp">
+                    <property name="valign">center</property>
+                    <property name="vexpand">True</property>
                     <child>
-                      <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="pixel-size">96</property>
-                        <property name="icon-name">document-save-symbolic</property>
-                        <property name="icon_size">6</property>
+                      <object class="GtkBox">
+                        <property name="margin-start">18</property>
+                        <property name="margin-end">18</property>
+                        <property name="margin-top">18</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">24</property>
+                        <child>
+                          <object class="GtkLabel" id="download_page_title_wdg">
+                            <property name="label">Downloading XXX</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"></attribute>
+                              <attribute name="scale" value="1.125"></attribute>
+                            </attributes>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">18</property>
+                            <child>
+                              <object class="GtkLabel" id="download_title_wdg">
+                                <property name="label">Title XXX</property>
+                                <property name="ellipsize">middle</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkStack" id="download_images_wdg">
+                                <property name="transition-type">slide-up-down</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">6</property>
+                                <child>
+                                  <object class="GtkProgressBar" id="download_progress_wdg"/>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="download_info_wdg">
+                                    <property name="valign">center</property>
+                                    <property name="label">Info XXX</property>
+                                    <style>
+                                      <class name="dim-label"/>
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Download finished</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                          <attribute name="scale" value="1.125"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="finished_download_dir_wdg">
-                        <property name="label" translatable="yes">Open Download Location</property>
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="receives-default">False</property>
-                        <property name="halign">center</property>
-                        <property name="action-name">win.open-finished-download-dir</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
                     </child>
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
+            </property>
           </object>
-          <packing>
+        </child>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">error</property>
+            <property name="child">
+              <object class="GtkBox" id="error_page">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="AdwHeaderBar">
+                    <child>
+                      <object class="GtkButton" id="error_back_wdg">
+                        <property name="focusable">1</property>
+                        <property name="action-name">win.back</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="icon-name">go-previous-symbolic</property>
+                            <property name="icon_size">normal</property>
+                          </object>
+                        </child>
+                        <accessibility>
+                          <property name="label" translatable="1">Back</property>
+                        </accessibility>
+                        <style>
+                          <class name="image-button"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwClamp">
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="margin-start">18</property>
+                        <property name="margin-end">18</property>
+                        <property name="margin-top">18</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">24</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="pixel-size">96</property>
+                            <property name="icon-name">dialog-warning-symbolic</property>
+                            <property name="icon_size">large</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="1">Download failed</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"></attribute>
+                              <attribute name="scale" value="1.125"></attribute>
+                            </attributes>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="vexpand">1</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkExpander" id="error_details_expander_wdg">
+                                <property name="focusable">1</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child type="label">
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="1">Details</property>
+                                  </object>
+                                </child>
+                                <accessibility>
+                                  <relation name="owns">error_details_revealer_wdg</relation>
+                                </accessibility>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkRevealer" id="error_details_revealer_wdg">
+                                <property name="vexpand">1</property>
+                                <property name="transition-type">crossfade</property>
+                                <property name="reveal-child" bind-source="error_details_expander_wdg" bind-property="expanded" bind-flags="sync-create"/>
+                                <property name="child">
+                                  <object class="GtkScrolledWindow">
+                                    <property name="focusable">1</property>
+                                    <property name="hscrollbar-policy">never</property>
+                                    <property name="has-frame">True</property>
+                                    <property name="child">
+                                      <object class="GtkTextView">
+                                        <property name="focusable">1</property>
+                                        <property name="editable">0</property>
+                                        <property name="wrap-mode">word-char</property>
+                                        <property name="buffer">error_buffer</property>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStackPage">
             <property name="name">success</property>
-            <property name="position">3</property>
-          </packing>
+            <property name="child">
+              <object class="GtkBox" id="success_page">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="AdwHeaderBar">
+                    <child>
+                      <object class="GtkButton" id="success_back_wdg">
+                        <property name="focusable">1</property>
+                        <property name="action-name">win.back</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="icon-name">go-previous-symbolic</property>
+                            <property name="icon_size">normal</property>
+                          </object>
+                        </child>
+                        <accessibility>
+                          <property name="label" translatable="1">Back</property>
+                        </accessibility>
+                        <style>
+                          <class name="image-button"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwClamp">
+                    <property name="valign">center</property>
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="margin-start">18</property>
+                        <property name="margin-end">18</property>
+                        <property name="margin-top">18</property>
+                        <property name="margin-bottom">18</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">24</property>
+                        <child>
+                          <object class="GtkImage">
+                            <property name="pixel-size">96</property>
+                            <property name="icon-name">document-save-symbolic</property>
+                            <property name="icon_size">large</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="1">Download finished</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"></attribute>
+                              <attribute name="scale" value="1.125"></attribute>
+                            </attributes>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="finished_download_dir_wdg">
+                            <property name="label" translatable="1">Open Download Location</property>
+                            <property name="focusable">1</property>
+                            <property name="halign">center</property>
+                            <property name="action-name">win.open-finished-download-dir</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </property>
+          </object>
         </child>
       </object>
     </child>

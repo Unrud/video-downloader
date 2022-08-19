@@ -21,7 +21,7 @@ import math
 import os
 import uuid
 
-from gi.repository import GdkPixbuf, Gio, GLib, Gtk, Handy
+from gi.repository import Adw, GdkPixbuf, Gio, GLib, Gtk
 
 from video_downloader.about_dialog import AboutDialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
@@ -35,7 +35,7 @@ N_ = gettext.gettext
 
 
 @Gtk.Template(resource_path='/com/github/unrud/VideoDownloader/window.ui')
-class Window(Handy.ApplicationWindow, Handler):
+class Window(Adw.ApplicationWindow, Handler):
     __gtype_name__ = 'VideoDownloaderWindow'
     error_buffer = Gtk.Template.Child()
     resolutions_store = Gtk.Template.Child()
@@ -179,19 +179,18 @@ class Window(Handy.ApplicationWindow, Handler):
                 thumbnail, math.ceil(DOWNLOAD_IMAGE_SIZE * MAX_ASPECT_RATIO),
                 DOWNLOAD_IMAGE_SIZE)
         except GLib.Error:
-            img_wdg = Gtk.Image.new_from_icon_name(
-                'video-x-generic', Gtk.IconSize.INVALID)
+            img_wdg = Gtk.Image.new_from_icon_name('video-x-generic')
             img_wdg.set_pixel_size(DOWNLOAD_IMAGE_SIZE)
         else:
             img_wdg = Gtk.Image.new_from_pixbuf(pixbuf)
         img_wdg.set_size_request(-1, DOWNLOAD_IMAGE_SIZE)
-        img_wdg.show()
-        self.download_images_wdg.add(img_wdg)
+        self.download_images_wdg.add_child(img_wdg)
         self.download_images_wdg.set_visible_child(img_wdg)
 
     def _clean_thumbnails(self):
         visible_child_wdg = self.download_images_wdg.get_visible_child()
-        for child_wdg in self.download_images_wdg.get_children():
+        for page in list(self.download_images_wdg.get_pages()):
+            child_wdg = page.get_child()
             if child_wdg is not visible_child_wdg:
                 self.download_images_wdg.remove(child_wdg)
 
@@ -207,10 +206,10 @@ class Window(Handy.ApplicationWindow, Handler):
         mode = self.audio_video_stack_wdg.get_visible_child_name()
         if state == 'start':
             if mode == 'audio':
-                self.audio_download_wdg.grab_default()
+                self.set_default_widget(self.audio_download_wdg)
                 self.audio_url_wdg.grab_focus()
             elif mode == 'video':
-                self.video_download_wdg.grab_default()
+                self.set_default_widget(self.video_download_wdg)
                 self.video_url_wdg.grab_focus()
             else:
                 assert False, 'unreachable'
@@ -250,7 +249,6 @@ class Window(Handy.ApplicationWindow, Handler):
 
     def _show_about_dialog(self):
         dialog = AboutDialog(self, self.get_application().version)
-        dialog.connect('response', lambda *_: dialog.destroy())
         self.window_group.add_window(dialog)
         dialog.show()
 
@@ -301,4 +299,4 @@ class Window(Handy.ApplicationWindow, Handler):
         for action_name in self.get_application().list_actions():
             if action_name.endswith('--%s' % self._notification_uuid):
                 self.get_application().remove_action(action_name)
-        Handy.ApplicationWindow.do_destroy(self)
+        Adw.ApplicationWindow.do_destroy(self)
