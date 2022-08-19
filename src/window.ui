@@ -361,10 +361,17 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                               </object>
                             </child>
                             <child>
-                              <object class="GtkStack" id="download_images_wdg">
-                                <property name="transition-type">slide-up-down</property>
+                              <object class="AdwClamp">
+                                <!-- WORKAROUND: Prevent GtkPicture from growing -->
+                                <property name="orientation">vertical</property>
+                                <property name="maximum-size">0</property>
                                 <child>
-                                  <placeholder/>
+                                  <object class="GtkStack" id="download_images_wdg">
+                                    <property name="transition-type">slide-up-down</property>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                  </object>
                                 </child>
                               </object>
                             </child>

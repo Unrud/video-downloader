@@ -182,7 +182,7 @@ class Window(Adw.ApplicationWindow, Handler):
             img_wdg = Gtk.Image.new_from_icon_name('video-x-generic')
             img_wdg.set_pixel_size(DOWNLOAD_IMAGE_SIZE)
         else:
-            img_wdg = Gtk.Image.new_from_pixbuf(pixbuf)
+            img_wdg = Gtk.Picture.new_for_pixbuf(pixbuf)
         img_wdg.set_size_request(-1, DOWNLOAD_IMAGE_SIZE)
         self.download_images_wdg.add_child(img_wdg)
         self.download_images_wdg.set_visible_child(img_wdg)
