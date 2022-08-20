@@ -128,17 +128,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="popover">hamburger_popover_menu</property>
                         <property name="direction">none</property>
                         <property name="primary">True</property>
-                        <child>
-                          <object class="GtkShortcutController">
-                            <property name="scope">managed</property>
-                            <child>
-                              <object class="GtkShortcut">
-                                <property name="trigger">F10</property>
-                                <property name="action">activate</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
                       </object>
                     </child>
                   </object>
