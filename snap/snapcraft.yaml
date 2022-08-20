@@ -111,8 +111,8 @@ parts:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     after: [ffmpeg]
     plugin: python
-    source: https://github.com/yt-dlp/yt-dlp/releases/download/2022.07.18/yt-dlp.tar.gz
-    source-checksum: sha256/d2531dc0d17b78209ac21cbf4e228c5a41b5aca97b46a256c33574ed2176bff2
+    source: https://github.com/yt-dlp/yt-dlp/releases/download/2022.08.18.36/yt-dlp.tar.gz
+    source-checksum: sha256/b32c7f2dd1f0aa2c4c80049e9ef597dcfb32e66bed4d93dd2c5f2bf2e47ee62d
     python-packages:
       - pyxattr==0.7.2
     override-pull: |
