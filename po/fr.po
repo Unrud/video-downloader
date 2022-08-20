@@ -2,41 +2,42 @@
 # Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Thorfin89 <thorfin89@free.fr>, 2020.
+# Irénée THIRION <irenee.thirion@e.email>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-19 16:13+0200\n"
-"PO-Revision-Date: 2021-02-05 05:25+0100\n"
-"Last-Translator: Thorfin89 <thorfin89@free.fr>\n"
-"Language-Team: French\n"
+"PO-Revision-Date: 2022-08-20 09:09+0200\n"
+"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
+"Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:25
 #: src/main.py:37 src/window.ui:104
 msgid "Video Downloader"
-msgstr "Video Downloader"
+msgstr "Téléchargeur de vidéos"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:28
 msgid "Download videos from websites like YouTube and many others"
 msgstr ""
-"Téléchargement de vidéos à partir de sites comme YouTube et bien d'autres"
+"Téléchargez des vidéos à partir de sites comme YouTube et bien d’autres"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Télécharge des vidéos à partir de sites grâce à une interface simple à "
-"utiliser. Propose les fonctions suivantes :"
+"Téléchargez des vidéos à partir de sites internet grâce à une interface "
+"simple à utiliser. L’application propose les fonctions suivantes :"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
@@ -44,16 +45,16 @@ msgstr "Extraire le son en MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "Accepte les vidéos protégées par mot de passe et privées"
+msgstr "Prise en charge des vidéos protégées par mot de passe et privées"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "Télécharge une simple vidéo ou une liste complète"
+msgstr "Télécharger une simple vidéo ou une liste complète"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
-"Sélectionne automatiquement la vidéo en fonction de la qualité demandée"
+"Sélectionner automatiquement la vidéo en fonction de la qualité demandée"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
@@ -139,7 +140,7 @@ msgstr "144p"
 
 #: src/playlist_dialog.py:30
 msgid "Download Playlist?"
-msgstr "Télécharger la playlist ?"
+msgstr "Télécharger la playlist ?"
 
 #: src/playlist_dialog.py:31
 msgid "The video is part of a playlist."
@@ -175,11 +176,11 @@ msgstr "Téléchargement terminé"
 
 #: src/window.py:243 src/window.ui:572
 msgid "Open Download Location"
-msgstr ""
+msgstr "Ouvrir l’emplacement de téléchargement"
 
 #: src/window.ui:39
 msgid "About Video Downloader"
-msgstr ""
+msgstr "À propos de Téléchargeur de vidéos"
 
 #: src/window.ui:155
 msgid "Audio"
