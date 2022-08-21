@@ -28,7 +28,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
       <item>
         <attribute name="label" translatable="yes">New Window</attribute>
         <attribute name="action">app.new-window</attribute>
-        <attribute name="target">''</attribute>
+        <attribute name="target"></attribute>
       </item>
     </section>
     <section>
