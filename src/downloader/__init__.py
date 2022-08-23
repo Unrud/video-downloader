@@ -48,6 +48,8 @@ class Downloader:
 
     def cancel(self):
         self._process.terminate()
+        if self._pending_response:
+            self._pending_response._finish()
 
     def start(self):
         assert not self._process
