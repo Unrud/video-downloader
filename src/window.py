@@ -260,7 +260,7 @@ class Window(Adw.ApplicationWindow, Handler):
             elif res == Gtk.ResponseType.YES:
                 async_response.respond(True)
             else:
-                self.activate_action('cancel')
+                self.model.actions.activate_action('cancel')
         dialog = PlaylistDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
         dialog.connect('response', handle_response)
@@ -273,7 +273,7 @@ class Window(Adw.ApplicationWindow, Handler):
             if res == Gtk.ResponseType.OK:
                 async_response.respond((dialog.username, dialog.password))
             else:
-                self.activate_action('cancel')
+                self.model.actions.activate_action('cancel')
         dialog = LoginDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
         dialog.connect('response', handle_response)
@@ -286,7 +286,7 @@ class Window(Adw.ApplicationWindow, Handler):
             if res == Gtk.ResponseType.OK:
                 async_response.respond(dialog.password)
             else:
-                self.activate_action('cancel')
+                self.model.actions.activate_action('cancel')
         dialog = PasswordDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
         dialog.connect('response', handle_response)
