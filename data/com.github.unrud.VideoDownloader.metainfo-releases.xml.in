@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.2" date="2022-08-23">
+    <description>
+      <ul>
+        <li>Fix dialog cancel button</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.1" date="2022-08-21">
     <description>
       <ul>
