@@ -1,11 +1,12 @@
 project('video-downloader',  
   version: '0.10.2',
-  meson_version: '>= 0.55.0',
+  meson_version: '>= 0.59.0',
   default_options: ['warning_level=2', 'werror=false'],
 )
 
 python_sources_for_linting = []
 i18n = import('i18n')
+gnome = import('gnome')
 python = import('python').find_installation('python3')
 
 
@@ -13,11 +14,11 @@ subdir('data')
 subdir('src')
 subdir('po')
 
-post_install_aux = (
-  meson.current_source_dir() / 'build-aux' / 'meson' / 'postinstall.py'
+gnome.post_install(
+  glib_compile_schemas: true,
+  gtk_update_icon_cache: true,
+  update_desktop_database: true,
 )
-python_sources_for_linting += post_install_aux
-meson.add_install_script(python, post_install_aux)
 
 if (run_command(python, '-m', 'flake8', '--version',
                 check: false).returncode() == 0 and
