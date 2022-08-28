@@ -33,9 +33,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
     </section>
     <section>
       <item>
-        <attribute name="custom">color-setting</attribute>
-      </item>
-      <item>
         <attribute name="label" translatable="yes">About Video Downloader</attribute>
         <attribute name="action">win.about</attribute>
       </item>
@@ -43,56 +40,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
   </menu>
   <object class="GtkPopoverMenu" id="hamburger_popover_menu">
     <property name="menu-model">hamburger_menu</property>
-    <child type="color-setting">
-      <object class="GtkBox">
-        <property name="margin-bottom">6</property>
-        <property name="homogeneous">1</property>
-        <child>
-          <object class="GtkToggleButton" id="color_light_wdg">
-            <property name="halign">center</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">emblem-ok-symbolic</property>
-              </object>
-            </child>
-            <style>
-              <class name="color-button"/>
-              <class name="color-light"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="color_system_wdg">
-            <property name="halign">center</property>
-            <property name="group">color_light_wdg</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">emblem-ok-symbolic</property>
-              </object>
-            </child>
-            <style>
-              <class name="color-button"/>
-              <class name="color-system"/>
-            </style>
-          </object>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="color_dark_wdg">
-            <property name="halign">center</property>
-            <property name="group">color_light_wdg</property>
-            <child>
-              <object class="GtkImage">
-                <property name="icon-name">emblem-ok-symbolic</property>
-              </object>
-            </child>
-            <style>
-              <class name="color-button"/>
-              <class name="color-dark"/>
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
   </object>
   <object class="GtkListStore" id="resolutions_store">
     <columns>

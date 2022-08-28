@@ -18,17 +18,14 @@
 import gettext
 import sys
 
-from gi.repository import Adw, Gdk, Gio, GLib, Gtk, GObject
+from gi.repository import Adw, Gio, GLib
 
-from video_downloader.util import bind_property
 from video_downloader.window import Window
 
 N_ = gettext.gettext
 
 
 class Application(Adw.Application):
-    color_scheme = GObject.Property(type=str)
-
     def __init__(self, version):
         super().__init__(application_id='com.github.unrud.VideoDownloader',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
@@ -38,38 +35,15 @@ class Application(Adw.Application):
         GLib.set_application_name(N_('Video Downloader'))
         self.version = version
 
-    def _on_color_scheme_changed(self, value):
-        style_manager = Adw.StyleManager.get_default()
-        if value == 'system':
-            style_manager.set_color_scheme(Adw.ColorScheme.PREFER_LIGHT)
-        elif value == 'light':
-            style_manager.set_color_scheme(Adw.ColorScheme.FORCE_LIGHT)
-        elif value == 'dark':
-            style_manager.set_color_scheme(Adw.ColorScheme.FORCE_DARK)
-        else:
-            assert False, ('invalid value for \'color-scheme\' property: %r' %
-                           value)
-
     def do_startup(self):
         Adw.Application.do_startup(self)
         self.settings = Gio.Settings.new(self.props.application_id)
-        self.settings.bind('color-scheme', self, 'color-scheme',
-                           Gio.SettingsBindFlags.DEFAULT)
-        bind_property(self, 'color-scheme',
-                      func_a_to_b=self._on_color_scheme_changed)
         # Setup actions
         new_window_action = Gio.SimpleAction.new(
             'new-window', GLib.VariantType('s'))
         new_window_action.connect(
             'activate', lambda _, param: self._new_window(param.get_string()))
         self.add_action(new_window_action)
-        # Setup CSS
-        css_uri = 'resource:///com/github/unrud/VideoDownloader/style.css'
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_file(Gio.File.new_for_uri(css_uri))
-        Gtk.StyleContext.add_provider_for_display(
-            Gdk.Display.get_default(), css_provider,
-            Gtk.STYLE_PROVIDER_PRIORITY_USER)
         # WORKAROUND: The `destroy` signal of `ApplicationWindow` doesn't work,
         # use the `window-removed` signal for shutdown instead
         self.connect('window-removed', lambda _, win: win.shutdown())

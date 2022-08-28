@@ -55,9 +55,6 @@ class Window(Adw.ApplicationWindow, Handler):
     download_progress_wdg = Gtk.Template.Child()
     download_info_wdg = Gtk.Template.Child()
     download_images_wdg = Gtk.Template.Child()
-    color_system_wdg = Gtk.Template.Child()
-    color_light_wdg = Gtk.Template.Child()
-    color_dark_wdg = Gtk.Template.Child()
 
     def __init__(self, application):
         super().__init__(application=application)
@@ -119,15 +116,6 @@ class Window(Adw.ApplicationWindow, Handler):
                       func_a_to_b=self._add_thumbnail)
         bind_property(self.download_images_wdg, 'transition-running',
                       func_a_to_b=lambda b: b or self._clean_thumbnails())
-
-        def bind_color_wdg(color_wdg, color_scheme):
-            bind_property(application, 'color-scheme', color_wdg, 'active',
-                          lambda cs: cs == color_scheme or None,
-                          lambda b: color_scheme if b else None, bi=True)
-        for args in [(self.color_system_wdg, 'system'),
-                     (self.color_light_wdg, 'light'),
-                     (self.color_dark_wdg, 'dark')]:
-            bind_color_wdg(*args)
 
     def _update_download_progress(self, *_):
         progress = self.model.download_progress

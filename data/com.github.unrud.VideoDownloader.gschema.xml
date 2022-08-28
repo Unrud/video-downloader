@@ -13,15 +13,6 @@
       <default>[]</default>
     </key>
 
-    <key type="s" name="color-scheme">
-      <choices>
-        <choice value="system"/>
-        <choice value="light"/>
-        <choice value="dark"/>
-      </choices>
-      <default>'system'</default>
-    </key>
-
     <key type="s" name="mode">
       <choices>
         <choice value="audio"/>
