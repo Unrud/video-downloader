@@ -30,7 +30,8 @@ class Application(Adw.Application):
     color_scheme = GObject.Property(type=str)
 
     def __init__(self, version):
-        super().__init__(application_id='com.github.unrud.VideoDownloader')
+        super().__init__(application_id='com.github.unrud.VideoDownloader',
+                         flags=Gio.ApplicationFlags.FLAGS_NONE)
         self.add_main_option(
             'url', ord('u'), GLib.OptionFlags.NONE, GLib.OptionArg.STRING,
             N_('Prefill URL field'), 'URL')

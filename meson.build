@@ -1,7 +1,7 @@
 project('video-downloader',  
   version: '0.10.2',
   meson_version: '>= 0.55.0',
-  default_options: ['warning_level=2']
+  default_options: ['warning_level=2', 'werror=false'],
 )
 
 python_sources_for_linting = []
