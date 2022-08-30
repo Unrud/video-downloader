@@ -63,11 +63,9 @@ class Application(Adw.Application):
         self.settings.bind('mode', model, 'mode', (
                                Gio.SettingsBindFlags.DEFAULT |
                                Gio.SettingsBindFlags.GET_NO_CHANGES))
-        r = self.settings.get_uint('resolution')
-        for resolution in sorted(model.resolutions):
-            if r <= resolution:
-                break
-        model.resolution = resolution
+        resolution = self.settings.get_uint('resolution')
+        model.resolution = sorted(model.resolutions,
+                                  key=lambda x: abs(x-resolution))[0]
         self.settings.bind('resolution', model, 'resolution',
                            Gio.SettingsBindFlags.SET)
         win.present()
