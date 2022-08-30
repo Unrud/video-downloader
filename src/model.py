@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
+import collections
 import gettext
 import os
 import subprocess
@@ -59,7 +60,7 @@ class Model(GObject.GObject, downloader.Handler):
                                             default=-1)
     download_speed = GObject.Property(type=GObject.TYPE_INT64, default=-1)
     download_eta = GObject.Property(type=GObject.TYPE_INT64, default=-1)
-    resolutions = [
+    resolutions = collections.OrderedDict([
         (MAX_RESOLUTION, N_('Best')),
         (4320, N_('4320p (8K)')),
         (2160, N_('2160p (4K)')),
@@ -69,7 +70,7 @@ class Model(GObject.GObject, downloader.Handler):
         (480, N_('480p')),
         (360, N_('360p')),
         (240, N_('240p')),
-        (144, N_('144p'))]
+        (144, N_('144p'))])
 
     _global_download_lock = set()
 

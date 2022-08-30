@@ -84,7 +84,7 @@ class Window(Adw.ApplicationWindow, Handler):
         bind_property(model, 'error', self.error_buffer, 'text')
         bind_property(model, 'url', self.audio_url_wdg, 'text', bi=True)
         bind_property(model, 'url', self.video_url_wdg, 'text', bi=True)
-        for resolution, description in model.resolutions:
+        for resolution, description in model.resolutions.items():
             it = self.resolutions_store.append()
             self.resolutions_store.set(it, 0, str(resolution), 1, description)
         bind_property(model, 'resolution', self.resolution_wdg, 'active-id',

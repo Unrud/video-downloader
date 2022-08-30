@@ -64,7 +64,7 @@ class Application(Adw.Application):
                                Gio.SettingsBindFlags.DEFAULT |
                                Gio.SettingsBindFlags.GET_NO_CHANGES))
         r = self.settings.get_uint('resolution')
-        for resolution in sorted(x[0] for x in model.resolutions):
+        for resolution in sorted(model.resolutions):
             if r <= resolution:
                 break
         model.resolution = resolution
