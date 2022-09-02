@@ -46,8 +46,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://ffmpeg.org/releases/ffmpeg-5.1.tar.xz",
-                    "sha256" : "55eb6aab5ee235550fa54a33eaf8bf1b4ec66c01453182b12f6a993d75698b03",
+                    "url" : "https://ffmpeg.org/releases/ffmpeg-5.1.1.tar.xz",
+                    "sha256" : "95bf3ff8c496511e71e958fb249e663c8c9c3de583c5bebc0f5a9745abbc0435",
                     "x-checker-data" : {
                         "type" : "html",
                         "url" : "https://ffmpeg.org/releases/",
@@ -167,8 +167,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/yt-dlp/yt-dlp/releases/download/2022.08.19/yt-dlp.tar.gz",
-                    "sha256" : "4740a5ac43e6ff75808a6623145c32e1fc0884ea43bc06768fb40fbd1f97601c",
+                    "url" : "https://github.com/yt-dlp/yt-dlp/releases/download/2022.09.01/yt-dlp.tar.gz",
+                    "sha256" : "675ff266e9400c47bb4df947ab3e7d5e9d4c362abcadd2c61ba341e86590f1df",
                     "x-checker-data" : {
                         "type" : "json",
                         /* Use the Tags API, because the Releases API sometimes returns older versions!? */
