@@ -258,7 +258,7 @@ class Window(Adw.ApplicationWindow, Handler):
                 self.model.actions.activate_action('cancel')
         dialog = PlaylistDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
-        dialog._cm.connect_signal('response', handle_response)
+        dialog._cm.connect(dialog, 'response', handle_response)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
@@ -284,7 +284,7 @@ class Window(Adw.ApplicationWindow, Handler):
                 self.model.actions.activate_action('cancel')
         dialog = PasswordDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
-        dialog._cm.connect('response', handle_response)
+        dialog._cm.connect(dialog, 'response', handle_response)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
