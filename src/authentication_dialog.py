@@ -19,7 +19,7 @@ import gettext
 
 from gi.repository import GObject, Gtk
 
-from video_downloader.util import bind_property
+from video_downloader.util import ConnectionManager, gobject_log
 
 N_ = gettext.gettext
 
@@ -29,6 +29,8 @@ class BaseAuthenticationDialog(Gtk.Dialog):
         super().__init__(modal=True, destroy_with_parent=True, resizable=False,
                          title=N_('Authentication Required'),
                          use_header_bar=True)
+        gobject_log(self)
+        self._cm = ConnectionManager()
         self.set_transient_for(parent)
         self.add_button(N_('Cancel'), Gtk.ResponseType.CANCEL)
         self._ok_button = self.add_button('', Gtk.ResponseType.OK)
@@ -36,6 +38,10 @@ class BaseAuthenticationDialog(Gtk.Dialog):
         self.set_default_response(Gtk.ResponseType.OK)
         area_wdg = self.get_content_area()
         area_wdg.append(self._build_content())
+
+    def destroy(self):
+        self._cm.disconnect()
+        super().destroy()
 
     def _update_response(self, form_filled):
         self._ok_button.set_label(N_('Sign in') if form_filled else N_('Skip'))
@@ -53,11 +59,10 @@ class LoginDialog(BaseAuthenticationDialog):
 
     def _build_content(self):
         content = LoginDialogContent()
-        bind_property(self, 'username', content.username_wdg, 'text', bi=True)
-        bind_property(self, 'password', content.password_wdg, 'text', bi=True)
-        for prop in ['username', 'password']:
-            bind_property(self, prop, func_a_to_b=self._update_form)
-            bind_property(self, prop, func_a_to_b=self._update_form)
+        self._cm.bind(self, 'username', content.username_wdg, 'text', bi=True)
+        self._cm.bind(self, 'password', content.password_wdg, 'text', bi=True)
+        self._cm.bind(self, 'username', func_a_to_b=self._update_form)
+        self._cm.bind(self, 'password', func_a_to_b=self._update_form)
         return content
 
 
@@ -69,8 +74,8 @@ class PasswordDialog(BaseAuthenticationDialog):
 
     def _build_content(self):
         content = PasswordDialogContent()
-        bind_property(self, 'password', content.password_wdg, 'text', bi=True)
-        bind_property(self, 'password', func_a_to_b=self._update_form)
+        self._cm.bind(self, 'password', content.password_wdg, 'text', bi=True)
+        self._cm.bind(self, 'password', func_a_to_b=self._update_form)
         return content
 
 

@@ -20,6 +20,7 @@ import sys
 
 from gi.repository import Adw, Gio, GLib
 
+from video_downloader.util import ConnectionManager, gobject_log
 from video_downloader.window import Window
 
 N_ = gettext.gettext
@@ -29,6 +30,8 @@ class Application(Adw.Application):
     def __init__(self, version):
         super().__init__(application_id='com.github.unrud.VideoDownloader',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
+        gobject_log(self)
+        self._cm = ConnectionManager()
         self.add_main_option(
             'url', ord('u'), GLib.OptionFlags.NONE, GLib.OptionArg.STRING,
             N_('Prefill URL field'), 'URL')
@@ -37,16 +40,16 @@ class Application(Adw.Application):
 
     def do_startup(self):
         Adw.Application.do_startup(self)
-        self.settings = Gio.Settings.new(self.props.application_id)
+        self._cm.connect(self, 'shutdown', self.shutdown, no_args=True)
+        self.settings = gobject_log(
+            Gio.Settings.new(self.props.application_id))
         # Setup actions
-        new_window_action = Gio.SimpleAction.new(
-            'new-window', GLib.VariantType('s'))
-        new_window_action.connect(
-            'activate', lambda _, param: self._new_window(param.get_string()))
+        new_window_action = gobject_log(Gio.SimpleAction.new(
+            'new-window', GLib.VariantType('s')), 'new-window')
+        self._cm.connect(new_window_action, 'activate',
+                         lambda _, param: self._new_window(param.get_string()))
         self.add_action(new_window_action)
-        # WORKAROUND: The `destroy` signal of `ApplicationWindow` doesn't work,
-        # use the `window-removed` signal for shutdown instead
-        self.connect('window-removed', lambda _, win: win.shutdown())
+        self._cm.connect(self, 'window-removed', lambda _, win: win.destroy())
 
     def _new_window(self, url=''):
         win = Window(self)
@@ -80,6 +83,9 @@ class Application(Adw.Application):
             self.activate_action('new-window', url_variant)
             return 0
         return -1
+
+    def shutdown(self):
+        self._cm.disconnect()
 
 
 def main(version):

@@ -27,7 +27,7 @@ from video_downloader.about_dialog import AboutDialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import Handler, Model
 from video_downloader.playlist_dialog import PlaylistDialog
-from video_downloader.util import bind_property
+from video_downloader.util import ConnectionManager, gobject_log
 
 DOWNLOAD_IMAGE_SIZE = 128
 MAX_ASPECT_RATIO = 2.39
@@ -58,66 +58,72 @@ class Window(Adw.ApplicationWindow, Handler):
 
     def __init__(self, application):
         super().__init__(application=application)
+        gobject_log(self)
+        self._cm = ConnectionManager()
         self.application = application
         self.model = model = Model(self)
-        self.window_group = Gtk.WindowGroup()
+        self.window_group = gobject_log(Gtk.WindowGroup())
         self.window_group.add_window(self)
         # Setup actions
-        for name in model.actions.list_actions():
-            self.add_action(model.actions.lookup_action(name))
-        about_action = Gio.SimpleAction.new('about', None)
-        about_action.connect('activate', lambda *_: self._show_about_dialog())
+        for action_name in model.actions.list_actions():
+            self.add_action(model.actions.lookup_action(action_name))
+        about_action = gobject_log(Gio.SimpleAction.new('about', None),
+                                   'about')
+        self._cm.connect(about_action, 'activate', self._show_about_dialog,
+                         no_args=True)
         self.add_action(about_action)
         # Register notifcation actions
         self._notification_uuid = str(uuid.uuid4())
-        for name, func in [
-                ('notification-success', lambda *_: self.present()),
-                ('notification-error', lambda *_: self.present()),
+        for name, callback, *extra_args in [
+                ('notification-success', self.present),
+                ('notification-error', self.present),
                 ('notification-open-finished-download-dir',
-                 lambda *_: self.model.actions.activate_action(
-                     'open-finished-download-dir'))]:
-            action = Gio.SimpleAction.new(
-                '%s--%s' % (name, self._notification_uuid))
-            action.connect('activate', func)
+                 self.model.actions.activate_action,
+                 'open-finished-download-dir')]:
+            action = gobject_log(Gio.SimpleAction.new(
+                '%s--%s' % (name, self._notification_uuid)), name)
+            self._cm.connect(action, 'activate', callback, *extra_args,
+                             no_args=True)
             application.add_action(action)
         # Bind properties to UI
-        bind_property(model, 'error', self.error_buffer, 'text')
-        bind_property(model, 'url', self.audio_url_wdg, 'text', bi=True)
-        bind_property(model, 'url', self.video_url_wdg, 'text', bi=True)
+        self._cm.bind(model, 'error', self.error_buffer, 'text')
+        self._cm.bind(model, 'url', self.audio_url_wdg, 'text', bi=True)
+        self._cm.bind(model, 'url', self.video_url_wdg, 'text', bi=True)
         for resolution, description in model.resolutions.items():
             it = self.resolutions_store.append()
             self.resolutions_store.set(it, 0, str(resolution), 1, description)
-        bind_property(model, 'resolution', self.resolution_wdg, 'active-id',
+        self._cm.bind(model, 'resolution', self.resolution_wdg, 'active-id',
                       str, int, bi=True)
-        bind_property(
+        self._cm.bind(
             model, 'state', self.main_stack_wdg, 'visible-child-name',
             func_a_to_b=lambda s: {'cancel': 'download'}.get(s, s))
-        bind_property(model, 'state', func_a_to_b=self._update_notification)
-        bind_property(model, 'mode', self.audio_video_stack_wdg,
+        self._cm.bind(model, 'state', func_a_to_b=self._update_notification)
+        self._cm.bind(model, 'mode', self.audio_video_stack_wdg,
                       'visible-child-name', bi=True)
-        bind_property(self.main_stack_wdg, 'visible-child-name',
+        self._cm.bind(self.main_stack_wdg, 'visible-child-name',
                       func_a_to_b=self._update_focus_and_default)
-        bind_property(self.audio_video_stack_wdg, 'visible-child-name',
+        self._cm.bind(self.audio_video_stack_wdg, 'visible-child-name',
                       func_a_to_b=self._update_focus_and_default)
-        bind_property(model, 'finished-download-dir', func_a_to_b=(
+        self._cm.bind(model, 'finished-download-dir', func_a_to_b=(
                           self._update_finished_download_dir_wdg_tooltip))
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
-            bind_property(model, name, func_a_to_b=self._update_download_msg)
-        bind_property(model, 'download-progress',
-                      func_a_to_b=self._update_download_progress)
-        model.connect('download-pulse', self._update_download_progress)
+            self._cm.bind(model, name, func_a_to_b=self._update_download_msg)
+        self._cm.connect(model, 'notify::download-progress',
+                         self._update_download_progress, no_args=True)
+        self._cm.connect(model, 'download-pulse',
+                         self._update_download_progress, no_args=True)
         for name in ['download-playlist-count', 'download-playlist-index']:
-            bind_property(model, name,
+            self._cm.bind(model, name,
                           func_a_to_b=self._update_download_page_title)
-        bind_property(model, 'download-title', self.download_title_wdg,
+        self._cm.bind(model, 'download-title', self.download_title_wdg,
                       'label', func_a_to_b=lambda title: title or '…')
-        bind_property(model, 'download-thumbnail',
+        self._cm.bind(model, 'download-thumbnail',
                       func_a_to_b=self._add_thumbnail)
-        bind_property(self.download_images_wdg, 'transition-running',
+        self._cm.bind(self.download_images_wdg, 'transition-running',
                       func_a_to_b=lambda b: b or self._clean_thumbnails())
 
-    def _update_download_progress(self, *_):
+    def _update_download_progress(self):
         progress = self.model.download_progress
         if progress < 0:
             self.download_progress_wdg.pulse()
@@ -164,14 +170,15 @@ class Window(Adw.ApplicationWindow, Handler):
 
     def _add_thumbnail(self, thumbnail):
         try:
-            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_size(
+            pixbuf = gobject_log(GdkPixbuf.Pixbuf.new_from_file_at_size(
                 thumbnail, math.ceil(DOWNLOAD_IMAGE_SIZE * MAX_ASPECT_RATIO),
-                DOWNLOAD_IMAGE_SIZE)
+                DOWNLOAD_IMAGE_SIZE))
         except GLib.Error:
-            img_wdg = Gtk.Image.new_from_icon_name('video-x-generic')
+            img_wdg = gobject_log(Gtk.Image.new_from_icon_name(
+                'video-x-generic'))
             img_wdg.set_pixel_size(DOWNLOAD_IMAGE_SIZE)
         else:
-            img_wdg = Gtk.Picture.new_for_pixbuf(pixbuf)
+            img_wdg = gobject_log(Gtk.Picture.new_for_pixbuf(pixbuf))
         img_wdg.set_size_request(-1, DOWNLOAD_IMAGE_SIZE)
         self.download_images_wdg.add_child(img_wdg)
         self.download_images_wdg.set_visible_child(img_wdg)
@@ -218,7 +225,7 @@ class Window(Adw.ApplicationWindow, Handler):
         self._hide_notification()
         if state not in ('error', 'success') or self.is_active():
             return
-        notification = Gio.Notification()
+        notification = gobject_log(Gio.Notification())
         if state == 'error':
             notification.set_title(N_('Download failed'))
             notification.set_default_action(
@@ -251,7 +258,7 @@ class Window(Adw.ApplicationWindow, Handler):
                 self.model.actions.activate_action('cancel')
         dialog = PlaylistDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
-        dialog.connect('response', handle_response)
+        dialog._cm.connect_signal('response', handle_response)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
@@ -264,7 +271,7 @@ class Window(Adw.ApplicationWindow, Handler):
                 self.model.actions.activate_action('cancel')
         dialog = LoginDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
-        dialog.connect('response', handle_response)
+        dialog._cm.connect(dialog, 'response', handle_response)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
@@ -277,14 +284,19 @@ class Window(Adw.ApplicationWindow, Handler):
                 self.model.actions.activate_action('cancel')
         dialog = PasswordDialog(self)
         async_response = Handler.AsyncResponse(dialog.destroy)
-        dialog.connect('response', handle_response)
+        dialog._cm.connect('response', handle_response)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
 
-    def shutdown(self):
-        self.model.shutdown()
+    def destroy(self):
         self._hide_notification()
         for action_name in self.application.list_actions():
             if action_name.endswith('--%s' % self._notification_uuid):
                 self.application.remove_action(action_name)
+        self._cm.disconnect()
+        for action_name in self.list_actions():
+            self.remove_action(action_name)
+        self.model.shutdown()
+        self.model = None
+        super().destroy()
