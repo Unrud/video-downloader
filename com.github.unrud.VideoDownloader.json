@@ -11,8 +11,7 @@
         "--device=dri",
         "--socket=wayland",
         "--talk-name=org.freedesktop.FileManager1",
-        "--filesystem=xdg-download/VideoDownloader:create",
-        "--metadata=X-DConf=migrate-path=/com/github/unrud/VideoDownloader/"
+        "--filesystem=xdg-download/VideoDownloader:create"
     ],
     "cleanup" : [
         "/include",
