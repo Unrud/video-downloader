@@ -109,8 +109,8 @@ class Window(Adw.ApplicationWindow, Handler):
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
             self._cm.bind(model, name, func_a_to_b=self._update_download_msg)
-        self._cm.connect(model, 'notify::download-progress',
-                         self._update_download_progress, no_args=True)
+        self._cm.bind(model, 'download-progress',
+                      func_a_to_b=self._update_download_progress)
         self._cm.connect(model, 'download-pulse',
                          self._update_download_progress, no_args=True)
         for name in ['download-playlist-count', 'download-playlist-index']:
@@ -123,7 +123,7 @@ class Window(Adw.ApplicationWindow, Handler):
         self._cm.bind(self.download_images_wdg, 'transition-running',
                       func_a_to_b=lambda b: b or self._clean_thumbnails())
 
-    def _update_download_progress(self):
+    def _update_download_progress(self, *_):
         progress = self.model.download_progress
         if progress < 0:
             self.download_progress_wdg.pulse()
