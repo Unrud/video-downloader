@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.3" date="2022-09-05">
+    <description>
+      <ul>
+        <li>New start page layout</li>
+        <li>Fix memory leaks</li>
+        <li>Remove dark/light switcher</li>
+        <li>Remove metadata migration</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.2" date="2022-08-23">
     <description>
       <ul>
