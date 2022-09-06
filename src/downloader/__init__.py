@@ -43,6 +43,7 @@ class Downloader:
         self._splitlines_re = re.compile(rb'\r\n|\r|\n')
 
     def shutdown(self):
+        self._handler = None
         if self._process:
             self._finish_process_and_kill_pgrp()
 

@@ -160,8 +160,8 @@ class Model(GObject.GObject, downloader.Handler):
 
     def shutdown(self):
         self._cm.disconnect()
+        self._handler = None
         self._downloader.shutdown()
-        self._downloader = None
 
     def on_pulse(self):
         assert self.state in ['download', 'cancel']

@@ -298,5 +298,4 @@ class Window(Adw.ApplicationWindow, Handler):
         for action_name in self.list_actions():
             self.remove_action(action_name)
         self.model.shutdown()
-        self.model = None
         super().destroy()
