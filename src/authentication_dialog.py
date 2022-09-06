@@ -19,7 +19,7 @@ import gettext
 
 from gi.repository import GObject, Gtk
 
-from video_downloader.util import ConnectionManager, gobject_log
+from video_downloader.util import ConnectionManager
 
 N_ = gettext.gettext
 
@@ -29,7 +29,6 @@ class BaseAuthenticationDialog(Gtk.Dialog):
         super().__init__(modal=True, destroy_with_parent=True, resizable=False,
                          title=N_('Authentication Required'),
                          use_header_bar=True)
-        gobject_log(self)
         self._cm = ConnectionManager()
         self.set_transient_for(parent)
         self.add_button(N_('Cancel'), Gtk.ResponseType.CANCEL)

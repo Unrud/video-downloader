@@ -76,7 +76,6 @@ class Model(GObject.GObject, downloader.Handler):
 
     def __init__(self, handler=None):
         super().__init__()
-        gobject_log(self)
         self._cm = ConnectionManager()
         self._handler = handler
         self._downloader = downloader.Downloader(self)

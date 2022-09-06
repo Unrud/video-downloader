@@ -15,8 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
-from video_downloader.util import gobject_log
-
 from gi.repository import Gtk
 
 
@@ -27,5 +25,4 @@ class AboutDialog(Gtk.AboutDialog):
 
     def __init__(self, parent, version):
         super().__init__(version=version)
-        gobject_log(self)
         self.set_transient_for(parent)

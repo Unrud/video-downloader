@@ -30,7 +30,6 @@ class Application(Adw.Application):
     def __init__(self, version):
         super().__init__(application_id='com.github.unrud.VideoDownloader',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
-        gobject_log(self)
         self._cm = ConnectionManager()
         self.add_main_option(
             'url', ord('u'), GLib.OptionFlags.NONE, GLib.OptionArg.STRING,
@@ -52,7 +51,7 @@ class Application(Adw.Application):
         self._cm.connect(self, 'window-removed', lambda _, win: win.destroy())
 
     def _new_window(self, url=''):
-        win = Window(self)
+        win = gobject_log(Window(self))
         win.set_default_icon_name(self.props.application_id)
         model = win.model
         model.url = url
@@ -89,5 +88,5 @@ class Application(Adw.Application):
 
 
 def main(version):
-    app = Application(version)
+    app = gobject_log(Application(version))
     return app.run(sys.argv)

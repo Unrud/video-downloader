@@ -58,10 +58,9 @@ class Window(Adw.ApplicationWindow, Handler):
 
     def __init__(self, application):
         super().__init__(application=application)
-        gobject_log(self)
         self._cm = ConnectionManager()
         self.application = application
-        self.model = model = Model(self)
+        self.model = model = gobject_log(Model(self))
         self.window_group = gobject_log(Gtk.WindowGroup())
         self.window_group.add_window(self)
         # Setup actions
@@ -244,7 +243,7 @@ class Window(Adw.ApplicationWindow, Handler):
                                            notification)
 
     def _show_about_dialog(self):
-        dialog = AboutDialog(self, self.application.version)
+        dialog = gobject_log(AboutDialog(self, self.application.version))
         self.window_group.add_window(dialog)
         dialog.show()
 
@@ -256,7 +255,7 @@ class Window(Adw.ApplicationWindow, Handler):
                 async_response.respond(True)
             else:
                 self.model.actions.activate_action('cancel')
-        dialog = PlaylistDialog(self)
+        dialog = gobject_log(PlaylistDialog(self))
         async_response = Handler.AsyncResponse(dialog.destroy)
         dialog._cm.connect(dialog, 'response', handle_response)
         self.window_group.add_window(dialog)
@@ -269,7 +268,7 @@ class Window(Adw.ApplicationWindow, Handler):
                 async_response.respond((dialog.username, dialog.password))
             else:
                 self.model.actions.activate_action('cancel')
-        dialog = LoginDialog(self)
+        dialog = gobject_log(LoginDialog(self))
         async_response = Handler.AsyncResponse(dialog.destroy)
         dialog._cm.connect(dialog, 'response', handle_response)
         self.window_group.add_window(dialog)
@@ -282,7 +281,7 @@ class Window(Adw.ApplicationWindow, Handler):
                 async_response.respond(dialog.password)
             else:
                 self.model.actions.activate_action('cancel')
-        dialog = PasswordDialog(self)
+        dialog = gobject_log(PasswordDialog(self))
         async_response = Handler.AsyncResponse(dialog.destroy)
         dialog._cm.connect(dialog, 'response', handle_response)
         self.window_group.add_window(dialog)
