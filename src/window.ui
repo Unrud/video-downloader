@@ -70,8 +70,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     </child>
                     <child type="end">
                       <object class="GtkMenuButton">
-                        <property name="focusable">1</property>
-                        <property name="focus-on-click">0</property>
                         <property name="popover">hamburger_popover_menu</property>
                         <property name="direction">none</property>
                         <property name="primary">True</property>
@@ -123,7 +121,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                             </child>
                                             <child>
                                               <object class="GtkEntry" id="audio_url_wdg">
-                                                <property name="focusable">1</property>
                                                 <property name="hexpand">1</property>
                                                 <property name="activates-default">1</property>
                                                 <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
@@ -142,7 +139,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                 <child>
                                   <object class="GtkButton" id="audio_download_wdg">
                                     <property name="label" translatable="1">Download</property>
-                                    <property name="focusable">1</property>
                                     <property name="receives-default">1</property>
                                     <property name="halign">center</property>
                                     <property name="action-name">win.download</property>
@@ -199,7 +195,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                             </child>
                                             <child>
                                               <object class="GtkEntry" id="video_url_wdg">
-                                                <property name="focusable">1</property>
                                                 <property name="hexpand">1</property>
                                                 <property name="activates-default">1</property>
                                                 <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
@@ -255,7 +250,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                 <child>
                                   <object class="GtkButton" id="video_download_wdg">
                                     <property name="label" translatable="1">Download</property>
-                                    <property name="focusable">1</property>
                                     <property name="receives-default">1</property>
                                     <property name="halign">center</property>
                                     <property name="action-name">win.download</property>
@@ -294,7 +288,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <child>
                       <object class="GtkButton" id="download_cancel_wdg">
                         <property name="label" translatable="1">Cancel</property>
-                        <property name="focusable">1</property>
                         <property name="action-name">win.cancel</property>
                       </object>
                     </child>
@@ -384,7 +377,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="AdwHeaderBar">
                     <child>
                       <object class="GtkButton" id="error_back_wdg">
-                        <property name="focusable">1</property>
                         <property name="action-name">win.back</property>
                         <child>
                           <object class="GtkImage">
@@ -436,7 +428,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="spacing">8</property>
                             <child>
                               <object class="GtkExpander" id="error_details_expander_wdg">
-                                <property name="focusable">1</property>
                                 <child>
                                   <placeholder/>
                                 </child>
@@ -457,12 +448,10 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                 <property name="reveal-child" bind-source="error_details_expander_wdg" bind-property="expanded" bind-flags="sync-create"/>
                                 <property name="child">
                                   <object class="GtkScrolledWindow">
-                                    <property name="focusable">1</property>
                                     <property name="hscrollbar-policy">never</property>
                                     <property name="has-frame">True</property>
                                     <property name="child">
                                       <object class="GtkTextView">
-                                        <property name="focusable">1</property>
                                         <property name="editable">0</property>
                                         <property name="wrap-mode">word-char</property>
                                         <property name="buffer">error_buffer</property>
@@ -492,7 +481,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="AdwHeaderBar">
                     <child>
                       <object class="GtkButton" id="success_back_wdg">
-                        <property name="focusable">1</property>
                         <property name="action-name">win.back</property>
                         <child>
                           <object class="GtkImage">
@@ -541,7 +529,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                         <child>
                           <object class="GtkButton" id="finished_download_dir_wdg">
                             <property name="label" translatable="1">Open Download Location</property>
-                            <property name="focusable">1</property>
                             <property name="halign">center</property>
                             <property name="action-name">win.open-finished-download-dir</property>
                           </object>

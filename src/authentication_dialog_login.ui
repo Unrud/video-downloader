@@ -51,7 +51,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
             <child>
               <object class="GtkEntry" id="username_wdg">
                 <property name="hexpand">1</property>
-                <property name="focusable">1</property>
                 <property name="activates-default">1</property>
                 <property name="width-chars">30</property>
                 <property name="input-purpose">email</property>
@@ -78,7 +77,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
             <child>
               <object class="GtkEntry" id="password_wdg">
                 <property name="hexpand">1</property>
-                <property name="focusable">1</property>
                 <property name="visibility">0</property>
                 <property name="activates-default">1</property>
                 <property name="width-chars">30</property>
