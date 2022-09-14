@@ -106,6 +106,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                     <child>
                                       <object class="GtkListBoxRow">
                                         <property name="activatable">False</property>
+                                        <property name="focusable">0</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="spacing">12</property>
@@ -180,6 +181,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                     <child>
                                       <object class="GtkListBoxRow">
                                         <property name="activatable">False</property>
+                                        <property name="focusable">0</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="spacing">12</property>
@@ -211,6 +213,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                     <child>
                                       <object class="GtkListBoxRow">
                                         <property name="activatable">False</property>
+                                        <property name="focusable">0</property>
                                         <child>
                                           <object class="GtkBox">
                                             <property name="spacing">12</property>
