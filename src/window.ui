@@ -45,12 +45,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
   <object class="GtkPopoverMenu" id="hamburger_popover_menu">
     <property name="menu-model">hamburger_menu</property>
   </object>
-  <object class="GtkListStore" id="resolutions_store">
-    <columns>
-      <column type="gchararray"/>
-      <column type="gchararray"/>
-    </columns>
-  </object>
   <template class="VideoDownloaderWindow" parent="AdwApplicationWindow">
     <property name="title" translatable="1">Video Downloader</property>
     <property name="default-width">600</property>
@@ -108,35 +102,11 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="valign">start</property>
                                     <property name="selection-mode">none</property>
                                     <child>
-                                      <object class="GtkListBoxRow">
-                                        <property name="activatable">False</property>
-                                        <property name="focusable">0</property>
-                                        <child>
-                                          <object class="GtkBox">
-                                            <property name="spacing">12</property>
-                                            <property name="margin-start">12</property>
-                                            <property name="margin-end">12</property>
-                                            <property name="margin-top">12</property>
-                                            <property name="margin-bottom">12</property>
-                                            <child>
-                                              <object class="GtkLabel" id="audio_url_label">
-                                                <property name="label" translatable="1">URL</property>
-                                                <property name="xalign">0</property>
-                                              </object>
-                                            </child>
-                                            <child>
-                                              <object class="GtkEntry" id="audio_url_wdg">
-                                                <property name="hexpand">1</property>
-                                                <property name="activates-default">1</property>
-                                                <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
-                                                <property name="input-purpose">url</property>
-                                                <accessibility>
-                                                  <relation name="labelled-by">audio_url_label</relation>
-                                                </accessibility>
-                                              </object>
-                                            </child>
-                                          </object>
-                                        </child>
+                                      <object class="AdwEntryRow" id="audio_url_wdg">
+                                        <property name="title" translatable="1">URL</property>
+                                        <property name="activates-default">1</property>
+                                        <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                                        <property name="input-purpose">url</property>
                                       </object>
                                     </child>
                                   </object>
@@ -183,73 +153,19 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="valign">start</property>
                                     <property name="selection-mode">none</property>
                                     <child>
-                                      <object class="GtkListBoxRow">
-                                        <property name="activatable">False</property>
-                                        <property name="focusable">0</property>
-                                        <child>
-                                          <object class="GtkBox">
-                                            <property name="spacing">12</property>
-                                            <property name="margin-start">12</property>
-                                            <property name="margin-end">12</property>
-                                            <property name="margin-top">12</property>
-                                            <property name="margin-bottom">12</property>
-                                            <child>
-                                              <object class="GtkLabel" id="video_url_label">
-                                                <property name="label" translatable="1">URL</property>
-                                                <property name="xalign">0</property>
-                                              </object>
-                                            </child>
-                                            <child>
-                                              <object class="GtkEntry" id="video_url_wdg">
-                                                <property name="hexpand">1</property>
-                                                <property name="activates-default">1</property>
-                                                <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
-                                                <property name="input-purpose">url</property>
-                                                <accessibility>
-                                                  <relation name="labelled-by">video_url_label</relation>
-                                                </accessibility>
-                                              </object>
-                                            </child>
-                                          </object>
-                                        </child>
+                                      <object class="AdwEntryRow" id="video_url_wdg">
+                                        <property name="title" translatable="1">URL</property>
+                                        <property name="activates-default">1</property>
+                                        <property name="input-hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NO_EMOJI | GTK_INPUT_HINT_NONE</property>
+                                        <property name="input-purpose">url</property>
                                       </object>
                                     </child>
                                     <child>
-                                      <object class="GtkListBoxRow">
-                                        <property name="activatable">False</property>
-                                        <property name="focusable">0</property>
-                                        <child>
-                                          <object class="GtkBox">
-                                            <property name="spacing">12</property>
-                                            <property name="margin-start">12</property>
-                                            <property name="margin-end">12</property>
-                                            <property name="margin-top">12</property>
-                                            <property name="margin-bottom">12</property>
-                                            <child>
-                                              <object class="GtkLabel" id="resolution_label">
-                                                <property name="label" translatable="1">Resolution</property>
-                                                <property name="xalign">0</property>
-                                              </object>
-                                            </child>
-                                            <child>
-                                              <object class="GtkComboBox" id="resolution_wdg">
-                                                <property name="hexpand">1</property>
-                                                <property name="model">resolutions_store</property>
-                                                <property name="active">0</property>
-                                                <property name="id-column">0</property>
-                                                <accessibility>
-                                                  <relation name="labelled-by">resolution_label</relation>
-                                                </accessibility>
-                                                <child>
-                                                  <object class="GtkCellRendererText"/>
-                                                  <attributes>
-                                                    <attribute name="text">1</attribute>
-                                                  </attributes>
-                                                </child>
-                                              </object>
-                                            </child>
-                                          </object>
-                                        </child>
+                                      <object class="AdwComboRow" id="resolution_wdg">
+                                        <property name="title" translatable="1">Resolution</property>
+                                        <property name="model">
+                                          <object class="GtkStringList"/>
+                                        </property>
                                       </object>
                                     </child>
                                   </object>
@@ -581,10 +497,4 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
       </object>
     </child>
   </template>
-  <object class="GtkSizeGroup">
-    <widgets>
-      <widget name="video_url_label"/>
-      <widget name="resolution_label"/>
-    </widgets>
-  </object>
 </interface>

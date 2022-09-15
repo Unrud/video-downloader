@@ -40,7 +40,6 @@ N_ = gettext.gettext
 class Window(Adw.ApplicationWindow, Handler):
     __gtype_name__ = 'VideoDownloaderWindow'
     error_buffer = Gtk.Template.Child()
-    resolutions_store = Gtk.Template.Child()
     audio_url_wdg = Gtk.Template.Child()
     video_url_wdg = Gtk.Template.Child()
     resolution_wdg = Gtk.Template.Child()
@@ -100,12 +99,12 @@ class Window(Adw.ApplicationWindow, Handler):
             self.model, 'url', self.audio_url_wdg, 'text', bi=True))
         self._cs.push(PropertyBinding(
             self.model, 'url', self.video_url_wdg, 'text', bi=True))
-        for resolution, description in self.model.resolutions.items():
-            it = self.resolutions_store.append()
-            self.resolutions_store.set(it, 0, str(resolution), 1, description)
+        for description in self.model.resolutions.values():
+            self.resolution_wdg.get_model().append(description)
         self._cs.push(PropertyBinding(
-            self.model, 'resolution', self.resolution_wdg, 'active-id',
-            str, int, bi=True))
+            self.model, 'resolution', self.resolution_wdg, 'selected',
+            lambda r: list(self.model.resolutions).index(r),
+            lambda i: list(self.model.resolutions)[i], bi=True))
         self._cs.push(PropertyBinding(
             self.model, 'state', self.main_stack_wdg, 'visible-child-name',
             func_a_to_b=lambda s: {'cancel': 'download'}.get(s, s)))
