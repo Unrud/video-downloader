@@ -26,38 +26,38 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
       <object class="GtkShortcutsSection">
         <child>
           <object class="GtkShortcutsGroup">
-            <property name="title">General</property>
+            <property name="title" translatable="yes">General</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Primary&gt;N</property>
-                <property name="title">New Window</property>
+                <property name="title" translatable="yes">New Window</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Primary&gt;W</property>
-                <property name="title">Close Window</property>
+                <property name="title" translatable="yes">Close Window</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Primary&gt;Q</property>
-                <property name="title">Quit</property>
+                <property name="title" translatable="yes">Quit</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Primary&gt;question</property>
-                <property name="title">Shortcuts</property>
+                <property name="title" translatable="yes">Shortcuts</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsGroup">
-                <property name="title">View</property>
+                <property name="title" translatable="yes">View</property>
                 <child>
                   <object class="GtkShortcutsShortcut">
                     <property name="accelerator">F10</property>
-                    <property name="title">Show/hide action menu</property>
+                    <property name="title" translatable="yes">Show/hide action menu</property>
                   </object>
                 </child>
               </object>
