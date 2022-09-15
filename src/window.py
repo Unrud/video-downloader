@@ -27,6 +27,7 @@ from video_downloader.about_dialog import AboutDialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import Handler, Model
 from video_downloader.playlist_dialog import PlaylistDialog
+from video_downloader.shortcuts_dialog import ShortcutsDialog
 from video_downloader.util import ConnectionManager, gobject_log
 
 DOWNLOAD_IMAGE_SIZE = 128
@@ -66,6 +67,14 @@ class Window(Adw.ApplicationWindow, Handler):
         # Setup actions
         for action_name in model.actions.list_actions():
             self.add_action(model.actions.lookup_action(action_name))
+        close_action = gobject_log(Gio.SimpleAction.new('close', None), 'close')
+        self._cm.connect(close_action, 'activate', self.destroy, no_args=True)
+        self.add_action(close_action)
+        shortcuts_action = gobject_log(Gio.SimpleAction.new('shortcuts', None),
+                                       'shortcuts')
+        self._cm.connect(shortcuts_action, 'activate',
+                         self._show_shortcuts_dialog, no_args=True)
+        self.add_action(shortcuts_action)
         about_action = gobject_log(Gio.SimpleAction.new('about', None),
                                    'about')
         self._cm.connect(about_action, 'activate', self._show_about_dialog,
@@ -241,6 +250,11 @@ class Window(Adw.ApplicationWindow, Handler):
             assert False, 'unreachable'
         self.application.send_notification(self._notification_uuid,
                                            notification)
+
+    def _show_shortcuts_dialog(self):
+        dialog = gobject_log(ShortcutsDialog(self))
+        self.window_group.add_window(dialog)
+        dialog.show()
 
     def _show_about_dialog(self):
         dialog = gobject_log(AboutDialog(self, self.application.version))

@@ -9,6 +9,8 @@ src/authentication_dialog_password.ui
 src/main.py
 src/model.py
 src/playlist_dialog.py
+src/shortcuts_dialog.py
+src/shortcuts_dialog.ui
 src/util.py
 src/window.py
 src/window.ui

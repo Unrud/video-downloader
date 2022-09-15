@@ -33,6 +33,10 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
     </section>
     <section>
       <item>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+        <attribute name="action">win.shortcuts</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">About Video Downloader</attribute>
         <attribute name="action">win.about</attribute>
       </item>
@@ -542,6 +546,36 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                 </child>
               </object>
             </property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkShortcutController">
+        <property name="scope">global</property>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Primary&gt;N</property>
+            <property name="action">action(app.new-window)</property>
+            <property name="arguments">''</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Primary&gt;W</property>
+            <property name="action">action(win.close)</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Primary&gt;Q</property>
+            <property name="action">action(app.quit)</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Primary&gt;question</property>
+            <property name="action">action(win.shortcuts)</property>
           </object>
         </child>
       </object>

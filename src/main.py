@@ -48,7 +48,14 @@ class Application(Adw.Application):
         self._cm.connect(new_window_action, 'activate',
                          lambda _, param: self._new_window(param.get_string()))
         self.add_action(new_window_action)
+        quit_action = gobject_log(Gio.SimpleAction.new('quit', None), 'quit')
+        self._cm.connect(quit_action, 'activate', self._quit, no_args=True)
+        self.add_action(quit_action)
         self._cm.connect(self, 'window-removed', lambda _, win: win.destroy())
+
+    def _quit(self):
+        for win in self.get_windows():
+            win.close()
 
     def _new_window(self, url=''):
         win = gobject_log(Window(self))

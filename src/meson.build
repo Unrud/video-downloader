@@ -30,6 +30,7 @@ video_downloader_sources = files([
   'main.py',
   'model.py',
   'playlist_dialog.py',
+  'shortcuts_dialog.py',
   'util.py',
   'window.py'
 ])

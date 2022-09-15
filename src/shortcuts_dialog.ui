@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2022 Unrud <unrud@outlook.com>
+
+This file is part of Video Downloader.
+
+Video Downloader is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Video Downloader is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="VideoDownloaderShortcutsDialog" parent="GtkShortcutsWindow">
+    <property name="modal">1</property>
+    <property name="destroy-with-parent">1</property>
+    <child>
+      <object class="GtkShortcutsSection">
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title">General</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;Primary&gt;N</property>
+                <property name="title">New Window</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;Primary&gt;W</property>
+                <property name="title">Close Window</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;Primary&gt;Q</property>
+                <property name="title">Quit</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;Primary&gt;question</property>
+                <property name="title">Shortcuts</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsGroup">
+                <property name="title">View</property>
+                <child>
+                  <object class="GtkShortcutsShortcut">
+                    <property name="accelerator">F10</property>
+                    <property name="title">Show/hide action menu</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
