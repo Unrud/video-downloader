@@ -19,7 +19,6 @@ import gettext
 
 from gi.repository import GObject, Gtk
 
-from video_downloader.util import ConnectionManager
 
 N_ = gettext.gettext
 
@@ -31,12 +30,7 @@ class PlaylistDialog(Gtk.MessageDialog):
                          text='<b>%s</b>' % GObject.markup_escape_text(
                              N_('Download Playlist?')), use_markup=True,
                          secondary_text=N_('The video is part of a playlist.'))
-        self._cm = ConnectionManager()
         self.set_transient_for(parent)
         self.add_button(N_('Single Video'), Gtk.ResponseType.NO)
         self.add_button(N_('All Videos in Playlist'), Gtk.ResponseType.YES)
         self.set_default_response(Gtk.ResponseType.NO)
-
-    def destroy(self):
-        self._cm.disconnect()
-        super().destroy()

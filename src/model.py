@@ -26,7 +26,8 @@ from gi.repository import Gio, GLib, GObject
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.util import (ConnectionManager, expand_path, g_log,
+from video_downloader.util import (CloseStack, PropertyBinding,
+                                   SignalConnection, expand_path, g_log,
                                    gobject_log, languages_from_locale)
 
 N_ = gettext.gettext
@@ -76,9 +77,11 @@ class Model(GObject.GObject, downloader.Handler):
 
     def __init__(self, handler=None):
         super().__init__()
-        self._cm = ConnectionManager()
+        self._cs = CloseStack()
         self._handler = handler
+        self._cs.add_close_callback(setattr, self, '_handler', None)
         self._downloader = downloader.Downloader(self)
+        self._cs.add_close_callback(self._downloader.shutdown)
         self._active_download_lock = None
         self._filemanager_proxy = Gio.DBusProxy.new_for_bus_sync(
             Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
@@ -95,18 +98,22 @@ class Model(GObject.GObject, downloader.Handler):
                  self._open_finished_download_dir)]:
             action = gobject_log(Gio.SimpleAction.new(action_name),
                                  action_name)
-            self._cm.connect(action, 'activate', callback, *extra_args,
-                             no_args=True)
+            self._cs.push(SignalConnection(
+                action, 'activate', callback, *extra_args, no_args=True))
             self.actions.add_action(action)
-        self._cm.bind(self, 'url', self.actions.lookup_action('download'),
-                      'enabled', bool)
+        self._cs.push(PropertyBinding(
+            self, 'url', self.actions.lookup_action('download'), 'enabled',
+            bool))
         self._prev_state = None
-        self._cm.bind(self, 'state', func_a_to_b=self._state_transition)
-        self._cm.bind(self, 'state', self.actions.lookup_action('cancel'),
-                      'enabled', lambda s: s == 'download')
-        self._cm.bind(self, 'state',
-                      self.actions.lookup_action('open-finished-download-dir'),
-                      'enabled', lambda s: s == 'success')
+        self._cs.push(PropertyBinding(
+            self, 'state', func_a_to_b=self._state_transition))
+        self._cs.push(PropertyBinding(
+            self, 'state', self.actions.lookup_action('cancel'), 'enabled',
+            lambda s: s == 'download'))
+        self._cs.push(PropertyBinding(
+            self, 'state',
+            self.actions.lookup_action('open-finished-download-dir'),
+            'enabled', lambda s: s == 'success'))
 
     def _state_transition(self, state):
         if state == 'start':
@@ -158,9 +165,7 @@ class Model(GObject.GObject, downloader.Handler):
                            check=True)
 
     def shutdown(self):
-        self._cm.disconnect()
-        self._handler = None
-        self._downloader.shutdown()
+        self._cs.close()
 
     def on_pulse(self):
         assert self.state in ['download', 'cancel']

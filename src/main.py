@@ -20,7 +20,7 @@ import sys
 
 from gi.repository import Adw, Gio, GLib
 
-from video_downloader.util import ConnectionManager, gobject_log
+from video_downloader.util import CloseStack, SignalConnection, gobject_log
 from video_downloader.window import Window
 
 N_ = gettext.gettext
@@ -30,7 +30,7 @@ class Application(Adw.Application):
     def __init__(self, version):
         super().__init__(application_id='com.github.unrud.VideoDownloader',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
-        self._cm = ConnectionManager()
+        self._cs = CloseStack()
         self.add_main_option(
             'url', ord('u'), GLib.OptionFlags.NONE, GLib.OptionArg.STRING,
             N_('Prefill URL field'), 'URL')
@@ -39,22 +39,26 @@ class Application(Adw.Application):
 
     def do_startup(self):
         Adw.Application.do_startup(self)
-        self._cm.connect(self, 'shutdown', self.shutdown, no_args=True)
+        self._cs.push(SignalConnection(
+            self, 'shutdown', self._cs.close, no_args=True))
         self.settings = gobject_log(
             Gio.Settings.new(self.props.application_id))
         # Setup actions
         new_window_action = gobject_log(Gio.SimpleAction.new(
             'new-window', GLib.VariantType('s')), 'new-window')
-        self._cm.connect(new_window_action, 'activate',
-                         lambda _, param: self._new_window(param.get_string()))
+        self._cs.push(SignalConnection(
+            new_window_action, 'activate',
+            lambda _, param: self._new_window(param.get_string())))
         self.add_action(new_window_action)
         quit_action = gobject_log(Gio.SimpleAction.new('quit', None), 'quit')
-        self._cm.connect(quit_action, 'activate', self._quit, no_args=True)
+        self._cs.push(SignalConnection(
+            quit_action, 'activate', self._quit, no_args=True))
         self.add_action(quit_action)
-        self._cm.connect(self, 'window-removed', lambda _, win: win.destroy())
+        self._cs.push(SignalConnection(
+            self, 'window-removed', lambda _, win: win.destroy()))
 
     def _quit(self):
-        for win in self.get_windows():
+        for win in self.get_windows()[-1:]:
             win.close()
 
     def _new_window(self, url=''):
@@ -89,9 +93,6 @@ class Application(Adw.Application):
             self.activate_action('new-window', url_variant)
             return 0
         return -1
-
-    def shutdown(self):
-        self._cm.disconnect()
 
 
 def main(version):

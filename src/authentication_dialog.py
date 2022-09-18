@@ -19,7 +19,7 @@ import gettext
 
 from gi.repository import GObject, Gtk
 
-from video_downloader.util import ConnectionManager
+from video_downloader.util import CloseStack, PropertyBinding
 
 N_ = gettext.gettext
 
@@ -29,7 +29,7 @@ class BaseAuthenticationDialog(Gtk.Dialog):
         super().__init__(modal=True, destroy_with_parent=True, resizable=False,
                          title=N_('Authentication Required'),
                          use_header_bar=True)
-        self._cm = ConnectionManager()
+        self._cs = CloseStack()
         self.set_transient_for(parent)
         self.add_button(N_('Cancel'), Gtk.ResponseType.CANCEL)
         self._ok_button = self.add_button('', Gtk.ResponseType.OK)
@@ -39,7 +39,7 @@ class BaseAuthenticationDialog(Gtk.Dialog):
         area_wdg.append(self._build_content())
 
     def destroy(self):
-        self._cm.disconnect()
+        self._cs.close()
         super().destroy()
 
     def _update_response(self, form_filled):
@@ -58,10 +58,14 @@ class LoginDialog(BaseAuthenticationDialog):
 
     def _build_content(self):
         content = LoginDialogContent()
-        self._cm.bind(self, 'username', content.username_wdg, 'text', bi=True)
-        self._cm.bind(self, 'password', content.password_wdg, 'text', bi=True)
-        self._cm.bind(self, 'username', func_a_to_b=self._update_form)
-        self._cm.bind(self, 'password', func_a_to_b=self._update_form)
+        self._cs.push(PropertyBinding(
+            self, 'username', content.username_wdg, 'text', bi=True))
+        self._cs.push(PropertyBinding(
+            self, 'password', content.password_wdg, 'text', bi=True))
+        self._cs.push(PropertyBinding(
+            self, 'username', func_a_to_b=self._update_form))
+        self._cs.push(PropertyBinding(
+            self, 'password', func_a_to_b=self._update_form))
         return content
 
 
@@ -73,8 +77,10 @@ class PasswordDialog(BaseAuthenticationDialog):
 
     def _build_content(self):
         content = PasswordDialogContent()
-        self._cm.bind(self, 'password', content.password_wdg, 'text', bi=True)
-        self._cm.bind(self, 'password', func_a_to_b=self._update_form)
+        self._cs.push(PropertyBinding(
+            self, 'password', content.password_wdg, 'text', bi=True))
+        self._cs.push(PropertyBinding(
+            self, 'password', func_a_to_b=self._update_form))
         return content
 
 

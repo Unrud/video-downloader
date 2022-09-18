@@ -15,79 +15,94 @@
 # You should have received a copy of the GNU General Public License
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
+import functools
 import locale
 import os
 import subprocess
+from collections import OrderedDict
 
 from gi.repository import GLib, GObject
 
 
-class ConnectionManager:
+class Closable:
     def __init__(self):
-        self.__connections = []
+        self.closed = False
+        self.__close_callbacks = []
 
-    def bind(self, *args, **kwargs):
-        self.__connections.append(PropertyBinding(*args, **kwargs))
+    def add_close_callback(self, callback, *args, **kwargs):
+        assert not self.closed, 'closed'
+        self.__close_callbacks.append(
+            functools.partial(callback, *args, **kwargs))
 
-    def connect(self, *args, **kwargs):
-        self.__connections.append(SignalConnection(*args, **kwargs))
-
-    def disconnect(self):
-        while self.__connections:
-            self.__connections[-1].disconnect()
-            del self.__connections[-1]
+    def close(self):
+        self.closed = True
+        while self.__close_callbacks:
+            self.__close_callbacks[-1]()
+            del self.__close_callbacks[-1]
 
     def __del__(self):
-        self.disconnect()
+        self.close()
 
 
-class SignalConnection:
+class CloseStack(Closable):
+    def __init__(self):
+        super().__init__()
+        self.__key = 0
+        self.__closables = OrderedDict()
+
+    def push(self, closable):
+        assert not self.closed, 'closed'
+        self.__closables[self.__key] = closable
+        closable.add_close_callback(self.__closables.pop, self.__key)
+        self.__key += 1
+
+    def close(self):
+        self.closed = True
+        while self.__closables:
+            key = next(reversed(self.__closables))
+            self.__closables[key].close()
+        super().close()
+
+
+class SignalConnection(Closable):
     def __init__(self, obj, signal_name, callback, *extra_args, no_args=False):
-        self.__obj = obj
-        self.__callback = callback
-        self.__extra_args = extra_args
-        self.__no_args = no_args
-        self.__handler = None
-        try:
-            self.__handler = obj.connect(signal_name, self.__on_notify)
-        except BaseException:
-            self.disconnect()
+        super().__init__()
 
-    def __on_notify(self, *args):
-        if self.__no_args:
-            args = []
-        self.__callback(*args, *self.__extra_args)
-
-    def disconnect(self):
-        if self.__handler is not None:
-            self.__obj.disconnect(self.__handler)
-        self.__obj = self.__handler = self.__callback = self.__extra_args = (
-            None)
+        def on_notify(*args):
+            if no_args:
+                args = []
+            callback(*args, *extra_args)
+        handler = obj.connect(signal_name, on_notify)
+        self.add_close_callback(obj.disconnect, handler)
 
 
-class PropertyBinding:
+class PropertyBinding(Closable):
     def __init__(self, obj_a, prop_a, obj_b=None, prop_b=None,
                  func_a_to_b=None, func_b_to_a=None, bi=False):
-        self.__binding = None
+        super().__init__()
         self.__frozen = False
-        self.__connections = []
+
+        if not func_a_to_b and not func_b_to_a:
+            binding = GObject.Binding.bind_property(
+                obj_a, prop_a, obj_b, prop_b,
+                GObject.BindingFlags.SYNC_CREATE | (
+                    GObject.BindingFlags.BIDIRECTIONAL if bi else
+                    GObject.BindingFlags.DEFAULT))
+            self.add_close_callback(binding.unbind)
+            return
+
         try:
-            if not func_a_to_b and not func_b_to_a:
-                self.__binding = GObject.Binding.bind_property(
-                    obj_a, prop_a, obj_b, prop_b,
-                    GObject.BindingFlags.SYNC_CREATE | (
-                        GObject.BindingFlags.BIDIRECTIONAL if bi else
-                        GObject.BindingFlags.DEFAULT))
-                return
-            self.__connections.append(SignalConnection(
+            connection_a_to_b = SignalConnection(
                 obj_a, 'notify::' + prop_a, self.__apply,
-                obj_a, prop_a, obj_b, prop_b, func_a_to_b, no_args=True))
+                obj_a, prop_a, obj_b, prop_b, func_a_to_b, no_args=True)
+            self.add_close_callback(connection_a_to_b.close)
             if bi:
-                self.__connections.append(SignalConnection(
+                connection_b_to_a = SignalConnection(
                     obj_b, 'notify::' + prop_b, self.__apply,
-                    obj_b, prop_b, obj_a, prop_a, func_b_to_a, no_args=True))
+                    obj_b, prop_b, obj_a, prop_a, func_b_to_a, no_args=True)
+                self.add_close_callback(connection_b_to_a.close)
         except BaseException:
-            self.disconnect()
+            self.close()
             raise
         self.__apply(obj_a, prop_a, obj_b, prop_b, func_a_to_b)
 
@@ -103,14 +118,6 @@ class PropertyBinding:
                 dest_obj.set_property(dest_prop, value)
             finally:
                 self.__frozen = False
-
-    def disconnect(self):
-        if self.__binding is not None:
-            self.__binding.unbind()
-        self.__binding = None
-        while self.__connections:
-            self.__connections[-1].disconnect()
-            del self.__connections[-1]
 
 
 def expand_path(path):
