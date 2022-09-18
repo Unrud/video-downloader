@@ -155,11 +155,11 @@ msgstr "Todos os vídeos da playlist"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Abrir menu"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
@@ -167,11 +167,11 @@ msgstr ""
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Sair"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:36
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Teclas de atalho"
 
 #: src/window.py:159
 msgid "Downloading"

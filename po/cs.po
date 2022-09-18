@@ -154,11 +154,11 @@ msgstr "Všechna videa z playlistu"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "Obecné"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Otevřít nabídku"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
@@ -166,11 +166,11 @@ msgstr ""
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Ukončit"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:36
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Klávesové zkratky"
 
 #: src/window.py:159
 msgid "Downloading"

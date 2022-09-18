@@ -155,11 +155,11 @@ msgstr "Sva videa u zbirci"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "Općenito"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Otvori izbornik"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
@@ -167,11 +167,11 @@ msgstr ""
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Zatvori"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:36
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Prečaci tipkovnice"
 
 #: src/window.py:159
 msgid "Downloading"

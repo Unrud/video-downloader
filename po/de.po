@@ -156,11 +156,11 @@ msgstr "Alle Videos der Liste"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "Allgemein"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Menü öffnen"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
@@ -168,11 +168,11 @@ msgstr ""
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Beenden"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:36
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Tastenkürzel"
 
 #: src/window.py:159
 msgid "Downloading"
