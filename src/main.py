@@ -58,7 +58,7 @@ class Application(Adw.Application):
             self, 'window-removed', lambda _, win: win.destroy()))
 
     def _quit(self):
-        for win in self.get_windows()[-1:]:
+        for win in self.get_windows():
             win.close()
 
     def _new_window(self, url=''):
