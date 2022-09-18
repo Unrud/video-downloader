@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-19 16:13+0200\n"
+"POT-Creation-Date: 2022-09-18 20:45+0200\n"
 "PO-Revision-Date: 2021-02-05 05:26+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: ITALIAN <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:25
-#: src/main.py:37 src/window.ui:104
+#: src/main.py:37 src/window.ui:55
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
@@ -58,7 +58,8 @@ msgstr ""
 msgid "Based on yt-dlp."
 msgstr "Basato su yt-dlp."
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:14 src/window.ui:29
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+#: src/shortcuts_dialog.ui:39 src/window.ui:29
 msgid "New Window"
 msgstr "Nuova finestra"
 
@@ -66,15 +67,15 @@ msgstr "Nuova finestra"
 msgid "Authentication Required"
 msgstr "Autenticazione richiesta"
 
-#: src/authentication_dialog.py:33 src/window.ui:325
+#: src/authentication_dialog.py:34 src/window.ui:297
 msgid "Cancel"
 msgstr "Cancella"
 
-#: src/authentication_dialog.py:41
+#: src/authentication_dialog.py:46
 msgid "Sign in"
 msgstr "Accedi"
 
-#: src/authentication_dialog.py:41
+#: src/authentication_dialog.py:46
 msgid "Skip"
 msgstr "Salta"
 
@@ -87,7 +88,7 @@ msgstr "Il video non è pubblico."
 msgid "Username"
 msgstr "Nome Utente"
 
-#: src/authentication_dialog_login.ui:71
+#: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:22
 msgid "Password"
 msgstr "Password"
@@ -96,114 +97,138 @@ msgstr "Password"
 msgid "Prefill URL field"
 msgstr "Campo URL precompilato"
 
-#: src/model.py:63
+#: src/model.py:65
 msgid "Best"
 msgstr "Migliore"
 
-#: src/model.py:64
+#: src/model.py:66
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:65
+#: src/model.py:67
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:66
+#: src/model.py:68
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:67
+#: src/model.py:69
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:68
+#: src/model.py:70
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:69
+#: src/model.py:71
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:70
+#: src/model.py:72
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:71
+#: src/model.py:73
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:72
+#: src/model.py:74
 msgid "144p"
 msgstr "144p"
 
-#: src/playlist_dialog.py:30
+#: src/playlist_dialog.py:31
 msgid "Download Playlist?"
 msgstr "Scaricare playlist?"
 
-#: src/playlist_dialog.py:31
+#: src/playlist_dialog.py:32
 msgid "The video is part of a playlist."
 msgstr "Il video fa parte di una playlist."
 
-#: src/playlist_dialog.py:33
+#: src/playlist_dialog.py:34
 msgid "Single Video"
 msgstr "Video Singolo"
 
-#: src/playlist_dialog.py:34
+#: src/playlist_dialog.py:35
 msgid "All Videos in Playlist"
 msgstr "Tutti i video nella playlist"
 
-#: src/window.py:142
+#: src/shortcuts_dialog.ui:29
+msgid "General"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:33
+msgid "Open Menu"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:45
+msgid "Close Window"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:51
+msgid "Quit"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:57
+msgid "Shortcuts"
+msgstr ""
+
+#: src/window.py:159
 msgid "Downloading"
 msgstr "Download in corso"
 
-#: src/window.py:144 src/window.py:167
+#: src/window.py:161 src/window.py:184
 msgid "{} of {}"
 msgstr "{} di {}"
 
-#: src/window.py:168 src/window.py:170
+#: src/window.py:185 src/window.py:187
 msgid "unknown"
 msgstr "sconosciuto"
 
-#: src/window.py:235 src/window.ui:454
+#: src/window.py:253 src/window.ui:424
 msgid "Download failed"
 msgstr "Download fallito"
 
-#: src/window.py:239 src/window.ui:563
+#: src/window.py:257 src/window.ui:529
 msgid "Download finished"
 msgstr "Download terminato"
 
-#: src/window.py:243 src/window.ui:572
+#: src/window.py:261 src/window.ui:538
 msgid "Open Download Location"
 msgstr "Apri Percorso di Download"
 
-#: src/window.ui:39
+#: src/window.ui:36
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/window.ui:40
 msgid "About Video Downloader"
 msgstr "Informazioni su Video Downloader"
 
-#: src/window.ui:155
+#: src/window.ui:90
 msgid "Audio"
 msgstr "Audio"
 
-#: src/window.ui:173 src/window.ui:233
+#: src/window.ui:123 src/window.ui:198
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:196 src/window.ui:287
+#: src/window.ui:146 src/window.ui:259
 msgid "Download"
 msgstr "Download"
 
-#: src/window.ui:215
+#: src/window.ui:165
 msgid "Video"
 msgstr "Video"
 
-#: src/window.ui:259
+#: src/window.ui:230
 msgid "Resolution"
 msgstr "Risoluzione"
 
-#: src/window.ui:425 src/window.ui:533
+#: src/window.ui:395 src/window.ui:499
 msgid "Back"
 msgstr "Indietro"
 
-#: src/window.ui:474
+#: src/window.ui:443
 msgid "Details"
 msgstr "Dettagli"
