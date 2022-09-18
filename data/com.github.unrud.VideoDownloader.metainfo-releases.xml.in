@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.4" date="2022-09-18">
+    <description>
+      <ul>
+        <li>Add keyboard shortcuts</li>
+        <li>Improve keyboard navigation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.3" date="2022-09-05">
     <description>
       <ul>
