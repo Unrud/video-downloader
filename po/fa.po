@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-18 20:45+0200\n"
+"POT-Creation-Date: 2022-09-18 21:51+0200\n"
 "PO-Revision-Date: 2021-02-05 05:25+0100\n"
 "Last-Translator: Ali Khomami P. <alikhomami888@gmail.com>\n"
 "Language-Team: Persian\n"
@@ -168,8 +168,8 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: src/shortcuts_dialog.ui:57
-msgid "Shortcuts"
+#: src/shortcuts_dialog.ui:57 src/window.ui:36
+msgid "Keyboard Shortcuts"
 msgstr ""
 
 #: src/window.py:159
@@ -194,10 +194,6 @@ msgstr "بارگیری انجام شد"
 
 #: src/window.py:261 src/window.ui:538
 msgid "Open Download Location"
-msgstr ""
-
-#: src/window.ui:36
-msgid "Keyboard Shortcuts"
 msgstr ""
 
 #: src/window.ui:40

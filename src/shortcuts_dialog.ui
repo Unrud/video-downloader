@@ -54,7 +54,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Primary&gt;question</property>
-                <property name="title" translatable="yes">Shortcuts</property>
+                <property name="title" translatable="yes">Keyboard Shortcuts</property>
               </object>
             </child>
           </object>
