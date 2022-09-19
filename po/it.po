@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Albano battistella <albano:battistella@hotmail.com>,2020.
-# Albano battistella <albano:battistella@hotmail.com>,2021.
+# Albano battistella <albano:battistella@hotmail.com>,2021,2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-18 21:51+0200\n"
-"PO-Revision-Date: 2021-02-05 05:26+0100\n"
+"PO-Revision-Date: 2022-09-19 21:26+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: ITALIAN <LL@li.org>\n"
 "Language: it\n"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Converte video in mp3"
+msgstr "Converte video in MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
@@ -159,15 +159,15 @@ msgstr "Generale"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr "Apre il menù"
+msgstr "Apri il menù"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Chiudi finestra"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr "Esce"
+msgstr "Esci"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:36
 msgid "Keyboard Shortcuts"
