@@ -148,10 +148,11 @@ class Model(GObject.GObject, downloader.Handler):
         assert self.finished_download_dir
 
         # org.freedesktop.FileManager1
-        if len(self.finished_download_filenames or []) == 1:
+        if self.finished_download_filenames:
             method = 'ShowItems'
             paths = [os.path.join(self.finished_download_dir, filename) for
                      filename in (self.finished_download_filenames or [])]
+            paths = paths[:1]  # Multiple paths open multiple windows
         else:
             method = 'ShowFolders'
             paths = [self.finished_download_dir]
