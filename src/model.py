@@ -146,6 +146,8 @@ class Model(GObject.GObject, downloader.Handler):
 
     def _open_finished_download_dir(self):
         assert self.finished_download_dir
+
+        # org.freedesktop.FileManager1
         if len(self.finished_download_filenames or []) == 1:
             method = 'ShowItems'
             paths = [os.path.join(self.finished_download_dir, filename) for
@@ -161,8 +163,18 @@ class Model(GObject.GObject, downloader.Handler):
         except GLib.Error:
             g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
                   traceback.format_exc())
+        else:
+            return
+
+        # xdg-open
+        try:
             subprocess.run(['xdg-open', self.finished_download_dir],
                            check=True)
+        except subprocess.SubprocessError:
+            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+                  traceback.format_exc())
+        else:
+            return
 
     def shutdown(self):
         self._cs.close()
