@@ -83,6 +83,13 @@ class Model(GObject.GObject, downloader.Handler):
         self._downloader = downloader.Downloader(self)
         self._cs.add_close_callback(self._downloader.shutdown)
         self._active_download_lock = None
+        self._portal_open_uri_proxy = Gio.DBusProxy.new_for_bus_sync(
+            Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
+            Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
+            Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
+            'org.freedesktop.portal.Desktop',
+            '/org/freedesktop/portal/desktop',
+            'org.freedesktop.portal.OpenURI')
         self._filemanager_proxy = Gio.DBusProxy.new_for_bus_sync(
             Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
             Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
@@ -146,6 +153,32 @@ class Model(GObject.GObject, downloader.Handler):
 
     def _open_finished_download_dir(self):
         assert self.finished_download_dir
+
+        # org.freedesktop.portal.OpenURI
+        fdlist = Gio.UnixFDList()
+        path = self.finished_download_dir
+        if self.finished_download_filenames:
+            path = os.path.join(path, self.finished_download_filenames[0])
+        try:
+            fd = os.open(path, os.O_RDONLY)
+        except OSError:
+            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+                  traceback.format_exc())
+            return
+        try:
+            handle = fdlist.append(fd)
+        finally:
+            os.close(fd)
+        try:
+            parameters = GLib.Variant('(sha{sv})', ('', handle, {}))
+            self._portal_open_uri_proxy.call_with_unix_fd_list_sync(
+                'OpenDirectory', parameters, Gio.DBusCallFlags.NONE, -1,
+                fdlist)
+        except GLib.Error:
+            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+                  traceback.format_exc())
+        else:
+            return
 
         # org.freedesktop.FileManager1
         if self.finished_download_filenames:
