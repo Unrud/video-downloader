@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-18 21:51+0200\n"
-"PO-Revision-Date: 2022-08-20 09:09+0200\n"
-"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
+"PO-Revision-Date: 2022-09-21 23:31+0200\n"
+"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 42.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:25
@@ -84,7 +84,7 @@ msgstr "Passer"
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:13
 msgid "The video is not public."
-msgstr "Cette vidéo n'est pas publique."
+msgstr "Cette vidéo n’est pas publique."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
@@ -165,7 +165,7 @@ msgstr "Ouvrir le menu"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Fermer la fenêtre"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
