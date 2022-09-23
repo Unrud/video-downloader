@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.5" date="2022-09-23">
+    <description>
+      <ul>
+        <li>Use OpenURI portal</li>
+        <li>Redesign start page</li>
+        <li>Update French translation</li>
+        <li>Update German translation</li>
+        <li>Update Italian translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.4" date="2022-09-18">
     <description>
       <ul>
