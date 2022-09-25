@@ -22,12 +22,12 @@ msgstr ""
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:25
 #: src/main.py:37 src/window.ui:55
 msgid "Video Downloader"
-msgstr "Videó letöltő"
+msgstr "Videóletöltő"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:28
 msgid "Download videos from websites like YouTube and many others"
-msgstr "Videó letöltő a YouTube és más webhelyekről"
+msgstr "Videók letöltése a YouTube és sok más webhelyről"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
