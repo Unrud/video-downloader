@@ -39,7 +39,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Videók konvertálása MP3-ba"
+msgstr "Videók átalakítása MP3-formátumba"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
@@ -162,7 +162,7 @@ msgstr "Menü megnyitása"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Ablak bezárása"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
@@ -186,7 +186,7 @@ msgstr "ismeretlen"
 
 #: src/window.py:253 src/window.ui:424
 msgid "Download failed"
-msgstr "Sikertelen letöltés"
+msgstr "Letöltés sikertelen"
 
 #: src/window.py:257 src/window.ui:529
 msgid "Download finished"
