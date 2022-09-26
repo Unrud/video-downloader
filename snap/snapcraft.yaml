@@ -9,19 +9,19 @@ license: GPL-3.0+
 grade: stable
 adopt-info: video-downloader
 
-base: core18
+base: core20
 confinement: strict
+
+environment:
+  # WORKAROUND: Add python modules in Snap to search path
+  PYTHONPATH: ${SNAP}/lib/python3.8/site-packages:${SNAP}/usr/lib/python3/dist-packages
 
 apps:
   video-downloader:
     command: usr/bin/video-downloader
-    # HINT: Adds plugs and changes environment variables when building and running
-    # WARNING: Libraries bundled with the extension are incompatible with libraries from packages
-    extensions: [gnome-3-34]
-    # WORKAROUND: Use (correct version of) PyGObject from Gnome Extension
-    # WARNING: There is another version of PyGObject in usr/lib/python3/dist-packages that crashes with SEGFAULT
-    environment:
-      PYTHONPATH: $SNAP_DESKTOP_RUNTIME/usr/lib/python3.6/site-packages
+    extensions:
+      # HINT: Adds plugs and changes environment variables when building and running
+      - gnome-3-38
     plugs:
       - home
       - network
@@ -36,39 +36,13 @@ slots:
     bus: session
     name: com.github.unrud.VideoDownloader
 
-# WARNING:
-# There are multiple versions of Python. The paths are different when building
-# and running the Snap. Each version has different search paths for modules.
-#   - Base Snap: /usr/bin/python3
-#   - Gnome Extension:
-#       - Build: /snap/gnome-VERSION-sdk/current/usr/bin/python3
-#       - Run: /snap/video-downloader/VERSION/gnome-platform/usr/bin/python3
-#   - This Snap (Automatically installed by a plugin or as a dependency of some package)
-#       - Build: /root/stage/usr/bin/python3
-#       - Run: /snap/video-downloader/VERSION/usr/bin/python3
-
-# WARNING:
-# The environment (PATH, LD_LIBRARY_PATH etc.) prefers different paths:
-#   - Build: Gnome extension; This Snap; Base Snap
-#   - Run: This Snap; Base Snap; Gnome extension
-
-# WARNING:
-# Python must be bundled with this Snap or building fails with:
-#     Failed to generate snap metadata: The specified command '/usr/bin/python3 $SNAP/usr/bin/video-downloader' defined in the app 'video-downloader' does not match the pattern expected by snapd.
-
 parts:
-  # WORKAROUND: Building Gnome extension fails because errno.h is missing
-  gnome-extension-fix:
-    plugin: nil
-    build-packages:
-      - libc6-dev
-
   libhandy:
     plugin: meson
-    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.6.2/libhandy-1.6.2.tar.bz2
-    source-checksum: sha256/121a2a2689e4cc5d815131c021c8d71b9496780bac3c73cee747b63b51b3d732
+    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.8.0/libhandy-1.8.0.tar.bz2
+    source-checksum: sha256/a9d4c5b9275232b439a94e714081b7b8b559c3d75fea3a8e2ace486768c133f5
     meson-parameters:
-      # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
+      # WORKAROUND: Must be installed to /usr because of GI search path
       - --prefix=/usr
       - -Dexamples=false
       - -Dglade_catalog=disabled
@@ -84,7 +58,7 @@ parts:
     plugin: autotools
     source: https://ffmpeg.org/releases/ffmpeg-5.1.1.tar.xz
     source-checksum: sha256/95bf3ff8c496511e71e958fb249e663c8c9c3de583c5bebc0f5a9745abbc0435
-    configflags:
+    autotools-configure-parameters:
       # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
       - --prefix=/usr
       - --disable-debug
@@ -111,13 +85,25 @@ parts:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     after: [ffmpeg]
     plugin: python
-    source: https://github.com/yt-dlp/yt-dlp/releases/download/2022.08.18.36/yt-dlp.tar.gz
-    source-checksum: sha256/b32c7f2dd1f0aa2c4c80049e9ef597dcfb32e66bed4d93dd2c5f2bf2e47ee62d
+    source: https://github.com/yt-dlp/yt-dlp/releases/download/2022.09.01/yt-dlp.tar.gz
+    source-checksum: sha256/675ff266e9400c47bb4df947ab3e7d5e9d4c362abcadd2c61ba341e86590f1df
     python-packages:
       - pyxattr==0.7.2
+    build-environment:
+      # WORKAROUND: The python plugin is broken with gnome extension
+      - PATH: ${SNAPCRAFT_PART_INSTALL}/bin:${PATH}
     override-pull: |
       snapcraftctl pull
       sed -i 's/^certifi\b/#\0/' requirements.txt
+    stage:
+      # WORKAROUND: Skip venv from python plugin
+      - -bin/activate
+      - -bin/activate.csh
+      - -bin/activate.fish
+      - -bin/Activate.ps1
+      - -bin/python
+      - -bin/python3
+      - -pyvenv.cfg
 
   video-downloader:
     after: [libhandy, yt-dlp]
@@ -135,7 +121,7 @@ parts:
       - xdg-user-dirs
     override-pull: |
       snapcraftctl pull
-      # WORKAROUND: Point icon directly to SVG otherwise snapcraft automatically chooses lowest resolution
+      # WORKAROUND: Point icon directly to SVG otherwise snapcraft can't find it
       sed -e 's|Icon=com.github.unrud.VideoDownloader|Icon=/usr/share/icons/hicolor/scalable/apps/com.github.unrud.VideoDownloader.svg|' -i data/com.github.unrud.VideoDownloader.desktop.in
     override-build: |
       snapcraftctl build
