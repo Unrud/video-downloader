@@ -56,13 +56,12 @@ if __name__ == '__main__':
         os.dup2(devnull.fileno(), sys.stdout.fileno())
     handler = Handler(input_file, output_file)
     try:
-        import yt_dlp
-
         from video_downloader.downloader.yt_dlp_monkey_patch import (
             install_monkey_patches)
-        from video_downloader.downloader.yt_dlp_slave import YoutubeDLSlave
-
         install_monkey_patches()
+
+        import yt_dlp
+        from video_downloader.downloader.yt_dlp_slave import YoutubeDLSlave
         try:
             YoutubeDLSlave(handler)
         except yt_dlp.utils.DownloadError:
