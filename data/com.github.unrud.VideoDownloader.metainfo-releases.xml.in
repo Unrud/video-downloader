@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.6" date="2022-09-30">
+    <description>
+      <ul>
+        <li>Update Hungarian translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.5" date="2022-09-23">
     <description>
       <ul>
