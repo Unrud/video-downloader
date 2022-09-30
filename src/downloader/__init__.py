@@ -56,7 +56,8 @@ class Downloader:
         assert not self._process
         env = os.environ.copy()
         env['PYTHONPATH'] = os.pathsep.join(filter(None, [
-            os.path.join(__file__, *[os.pardir]*3), env.get('PYTHONPATH')]))
+            os.path.normpath(os.path.join(__file__, *[os.pardir]*3)),
+            env.get('PYTHONPATH')]))
         # Start child process in its own process group to shield it from
         # signals by terminals (e.g. SIGINT) and to identify remaning children.
         # yt-dlp doesn't kill ffmpeg and other subprocesses on error.
