@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.7" date="2022-09-30">
+    <description>
+      <ul>
+        <li>Fix display activity during MP3 conversion</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.6" date="2022-09-30">
     <description>
       <ul>

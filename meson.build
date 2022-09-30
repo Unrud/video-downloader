@@ -1,5 +1,5 @@
 project('video-downloader',  
-  version: '0.10.6',
+  version: '0.10.7',
   meson_version: '>= 0.59.0',
   default_options: ['warning_level=2', 'werror=false'],
 )
