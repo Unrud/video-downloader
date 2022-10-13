@@ -78,13 +78,13 @@
             "name" : "mutagen",
             "buildsystem" : "simple",
             "build-commands" : [
-                "pip3 install --prefix=/app ."
+                "pip3 install --no-build-isolation --prefix=/app ."
             ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/quodlibet/mutagen/archive/refs/tags/release-1.45.1.tar.gz",
-                    "sha256" : "308d5244c7242b084c824bbbea6d56ddd716300e1bce6420cb8c1e6781c0d4f9",
+                    "url" : "https://github.com/quodlibet/mutagen/archive/refs/tags/release-1.46.0.tar.gz",
+                    "sha256" : "734455642e734983353a85ec6e00c809564c63e53ec10cffc1152d51dd576b5e",
                     "x-checker-data" : {
                         "type" : "json",
                         "url" : "https://api.github.com/repos/quodlibet/mutagen/releases/latest",
