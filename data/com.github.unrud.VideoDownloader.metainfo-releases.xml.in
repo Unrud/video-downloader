@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.8" date="2022-10-13">
+    <description>
+      <ul>
+        <li>Show library versions and environment in about dialog</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.7" date="2022-09-30">
     <description>
       <ul>
