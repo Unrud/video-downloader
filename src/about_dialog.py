@@ -53,7 +53,7 @@ class AboutDialog(Gtk.AboutDialog):
             '',
             'Env:',
             *('\t%s=%s' % (name, os.environ[name]) for name in [
-                  'LANGUAGES',
+                  'LANGUAGE',
                   'LC_ALL',
                   'LC_MESSAGES',
                   'LANG',
