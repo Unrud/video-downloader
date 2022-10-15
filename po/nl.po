@@ -163,7 +163,7 @@ msgstr "Menu openen"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Venster sluiten"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"

@@ -163,7 +163,7 @@ msgstr "Abrir menu"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Fecha a janela"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"

@@ -162,7 +162,7 @@ msgstr "Otevřít nabídku"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Zavřít okno"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"

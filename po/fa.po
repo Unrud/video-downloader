@@ -162,7 +162,7 @@ msgstr "گشودن فهرست"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "بستن پنجره"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"

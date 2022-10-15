@@ -162,7 +162,7 @@ msgstr "メニューを開く"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "ウィンドウを閉じる"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
