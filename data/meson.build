@@ -20,8 +20,6 @@ base_appstream_file = i18n.merge_file(
   po_dir: '../po'
 )
 
-merge_xml_aux = meson.current_source_dir() / 'build-aux' / 'meson' / 'merge-xml.py'
-python_sources_for_linting += merge_xml_aux
 appstream_file = custom_target('com.github.unrud.VideoDownloader.metainfo.xml',
   input: [
     base_appstream_file,
@@ -65,8 +63,6 @@ install_data(icon_id + '-symbolic.svg',
 )
 
 rsvg_util = find_program('rsvg-convert')
-move_aux = meson.current_source_dir() / 'build-aux' / 'meson' / 'move.py'
-python_sources_for_linting += move_aux
 foreach res : [16, 32, 48, 64, 128, 256, 512]
   icon_install_dir = (
     get_option('datadir') / 'icons' / 'hicolor' / '@0@x@0@'.format(res) / 'apps'
