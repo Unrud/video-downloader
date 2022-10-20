@@ -1,8 +1,16 @@
 pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
 moduledir = pkgdatadir / 'video_downloader'
 
+release_notes = run_command([
+  python, extract_xml_aux, '--escape',
+  '..' / 'data' / 'com.github.unrud.VideoDownloader.metainfo-releases.xml.in',
+  './/release[@version="' + meson.project_version() + '"]/description/*'],
+  check: true,
+).stdout()
+
 conf = configuration_data()
 conf.set('VERSION', meson.project_version())
+conf.set('releasenotes', release_notes)
 
 about_dialog_ui_source = configure_file(
   input: 'about_dialog.ui.in',

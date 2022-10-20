@@ -27,6 +27,8 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
     <property name="application-name" translatable="1">Video Downloader</property>
     <property name="developer-name">Unrud</property>
     <property name="version">@VERSION@</property>
+    <!-- What's new -->
+    <property name="release-notes">@releasenotes@</property>
     <!-- Details -->
     <property name="website">https://github.com/unrud/video-downloader</property>
     <!-- Troubleshooting -->
