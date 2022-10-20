@@ -23,7 +23,7 @@ import uuid
 
 from gi.repository import Adw, GdkPixbuf, Gio, GLib, Gtk
 
-from video_downloader.about_dialog import AboutDialog
+from video_downloader.about_dialog import build_about_dialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import Handler, Model
 from video_downloader.playlist_dialog import PlaylistDialog
@@ -271,7 +271,8 @@ class Window(Adw.ApplicationWindow, Handler):
         dialog.show()
 
     def _show_about_dialog(self):
-        dialog = gobject_log(AboutDialog(self, self.application.version))
+        dialog = gobject_log(
+            build_about_dialog(self, self.application.version))
         self.window_group.add_window(dialog)
         dialog.show()
 

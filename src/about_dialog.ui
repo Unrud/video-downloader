@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2020-2021 Unrud <unrud@outlook.com>
+<!-- Copyright (C) 2020-2022 Unrud <unrud@outlook.com>
 
 This file is part of Video Downloader.
 
@@ -18,21 +18,29 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
 -->
 <interface>
-  <requires lib="gtk" version="4.0"/>
-  <template class="VideoDownloaderAboutDialog" parent="GtkAboutDialog">
+  <requires lib="libadwaita" version="1.0"/>
+  <object class="AdwAboutWindow" id="about_window">
     <property name="modal">1</property>
     <property name="destroy-with-parent">1</property>
-    <property name="program-name" translatable="1">Video Downloader</property>
-    <property name="version">Version XXX</property>
-    <property name="copyright">Copyright © 2019-2022 Unrud</property>
-    <property name="comments" translatable="1">Download videos from websites like YouTube and many others</property>
-    <property name="website">https://github.com/Unrud/video-downloader</property>
-    <property name="authors">Unrud
+    <!-- Main page -->
+    <property name="application-icon">com.github.unrud.VideoDownloader</property>
+    <property name="application-name" translatable="1">Video Downloader</property>
+    <property name="developer-name">Unrud</property>
+    <property name="version">XXX</property>
+    <!-- Details -->
+    <property name="website">https://github.com/unrud/video-downloader</property>
+    <!-- Troubleshooting -->
+    <property name="issue-url">https://github.com/unrud/video-downloader/issues</property>
+    <property name="debug-info">XXX</property>
+    <property name="debug-info-filename">video-downloader.txt</property>
+    <!-- Credits and Acknowledgements -->
+    <property name="developers">Unrud
 Adrien Plazas
 Gustavo Peredo
 Dave Patrick
 Artem Polishchuk
 Óscar Fernández Díaz</property>
+    <property name="artists">Tobias Bernard</property>
     <property name="translator-credits">Åke Engelbrektson
 albanobattistella
 Ali Khomami P.
@@ -52,8 +60,8 @@ Thorfin89
 Umidjon Almasov
 Ümit Solmaz
 Vojtěch Perník</property>
-    <property name="artists">Tobias Bernard</property>
-    <property name="logo-icon-name">com.github.unrud.VideoDownloader</property>
+    <!-- Legal -->
+    <property name="copyright">Copyright © 2019-2022 Unrud</property>
     <property name="license-type">gpl-3-0</property>
-  </template>
+  </object>
 </interface>
