@@ -10,9 +10,9 @@ gnome.compile_resources('video-downloader', 'video_downloader.gresource.xml',
 
 conf = configuration_data()
 conf.set('PYTHON', python.full_path())
-conf.set('VERSION', meson.project_version())
-conf.set('localedir', get_option('prefix') / get_option('localedir'))
-conf.set('pkgdatadir', pkgdatadir)
+conf.set_quoted('VERSION', meson.project_version())
+conf.set_quoted('localedir', get_option('prefix') / get_option('localedir'))
+conf.set_quoted('pkgdatadir', pkgdatadir)
 
 video_downloader_bin = configure_file(
   input: 'video-downloader.in',

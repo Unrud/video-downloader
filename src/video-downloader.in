@@ -24,9 +24,9 @@ import os
 import signal
 import sys
 
-VERSION = '@VERSION@'
-pkgdatadir = '@pkgdatadir@'
-localedir = '@localedir@'
+VERSION = @VERSION@
+pkgdatadir = @pkgdatadir@
+localedir = @localedir@
 
 sys.path.insert(1, pkgdatadir)
 signal.signal(signal.SIGINT, signal.SIG_DFL)
