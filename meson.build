@@ -12,6 +12,8 @@ python_for_linting = import('python').find_installation('python3',
   modules: ['flake8'],
   required: false,
 )
+create_gresource_aux = meson.current_source_dir() / 'build-aux' / 'meson' / 'create-gresource.py'
+python_sources_for_linting += create_gresource_aux
 merge_xml_aux = meson.current_source_dir() / 'build-aux' / 'meson' / 'merge-xml.py'
 python_sources_for_linting += merge_xml_aux
 move_aux = meson.current_source_dir() / 'build-aux' / 'meson' / 'move.py'

@@ -2,7 +2,22 @@ pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
 moduledir = pkgdatadir / 'video_downloader'
 gnome = import('gnome')
 
-gnome.compile_resources('video-downloader', 'video_downloader.gresource.xml',
+video_downloader_ui_sources = files([
+  'about_dialog.ui',
+  'authentication_dialog_login.ui',
+  'authentication_dialog_password.ui',
+  'shortcuts_dialog.ui',
+  'window.ui',
+])
+
+video_downloader_gresource_xml = configure_file(
+  capture: true,
+  command: [python, create_gresource_aux, '/com/github/unrud/VideoDownloader',
+            video_downloader_ui_sources],
+  output: 'video_downloader.gresource.xml',
+)
+
+gnome.compile_resources('video-downloader', video_downloader_gresource_xml,
   gresource_bundle: true,
   install: true,
   install_dir: pkgdatadir,
