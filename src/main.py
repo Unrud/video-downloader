@@ -27,7 +27,7 @@ N_ = gettext.gettext
 
 
 class Application(Adw.Application):
-    def __init__(self, version):
+    def __init__(self):
         super().__init__(application_id='com.github.unrud.VideoDownloader',
                          flags=Gio.ApplicationFlags.FLAGS_NONE)
         self._cs = CloseStack()
@@ -35,7 +35,6 @@ class Application(Adw.Application):
             'url', ord('u'), GLib.OptionFlags.NONE, GLib.OptionArg.STRING,
             N_('Prefill URL field'), 'URL')
         GLib.set_application_name(N_('Video Downloader'))
-        self.version = version
 
     def do_startup(self):
         Adw.Application.do_startup(self)
@@ -96,5 +95,5 @@ class Application(Adw.Application):
 
 
 def main(version):
-    app = gobject_log(Application(version))
+    app = gobject_log(Application())
     return app.run(sys.argv)

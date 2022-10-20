@@ -271,8 +271,7 @@ class Window(Adw.ApplicationWindow, Handler):
         dialog.show()
 
     def _show_about_dialog(self):
-        dialog = gobject_log(
-            build_about_dialog(self, self.application.version))
+        dialog = gobject_log(build_about_dialog(self))
         self.window_group.add_window(dialog)
         dialog.show()
 

@@ -1,14 +1,24 @@
 pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
 moduledir = pkgdatadir / 'video_downloader'
-gnome = import('gnome')
 
-video_downloader_ui_sources = files([
-  'about_dialog.ui',
-  'authentication_dialog_login.ui',
-  'authentication_dialog_password.ui',
-  'shortcuts_dialog.ui',
-  'window.ui',
-])
+conf = configuration_data()
+conf.set('VERSION', meson.project_version())
+
+about_dialog_ui_source = configure_file(
+  input: 'about_dialog.ui.in',
+  output: 'about_dialog.ui',
+  configuration: conf,
+)
+
+video_downloader_ui_sources = [
+  files([
+    'authentication_dialog_login.ui',
+    'authentication_dialog_password.ui',
+    'shortcuts_dialog.ui',
+    'window.ui',
+  ]),
+  about_dialog_ui_source,
+]
 
 video_downloader_gresource_xml = configure_file(
   capture: true,

@@ -2,7 +2,7 @@ data/com.github.unrud.VideoDownloader.metainfo.xml.in
 data/com.github.unrud.VideoDownloader.desktop.in
 data/com.github.unrud.VideoDownloader.gschema.xml
 src/about_dialog.py
-src/about_dialog.ui
+src/about_dialog.ui.in
 src/authentication_dialog.py
 src/authentication_dialog_login.ui
 src/authentication_dialog_password.ui

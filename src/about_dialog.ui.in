@@ -26,12 +26,11 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
     <property name="application-icon">com.github.unrud.VideoDownloader</property>
     <property name="application-name" translatable="1">Video Downloader</property>
     <property name="developer-name">Unrud</property>
-    <property name="version">XXX</property>
+    <property name="version">@VERSION@</property>
     <!-- Details -->
     <property name="website">https://github.com/unrud/video-downloader</property>
     <!-- Troubleshooting -->
     <property name="issue-url">https://github.com/unrud/video-downloader/issues</property>
-    <property name="debug-info">XXX</property>
     <property name="debug-info-filename">video-downloader.txt</property>
     <!-- Credits and Acknowledgements -->
     <property name="developers">Unrud

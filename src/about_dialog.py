@@ -24,11 +24,10 @@ from gi.repository import Adw, GLib, Gtk
 from video_downloader.util import g_log
 
 
-def build_about_dialog(parent, version):
+def build_about_dialog(parent):
     builder = Gtk.Builder.new_from_resource(
         '/com/github/unrud/VideoDownloader/about_dialog.ui')
     about_window = builder.get_object('about_window')
-    about_window.set_version(version)
     about_window.set_debug_info(get_debug_info(about_window.get_version()))
     about_window.set_transient_for(parent)
     return about_window
