@@ -9,43 +9,44 @@ license: GPL-3.0+
 grade: stable
 adopt-info: video-downloader
 
-base: core20
+base: core22
 confinement: strict
 
 environment:
   # WORKAROUND: Add python modules in Snap to search path
-  PYTHONPATH: ${SNAP}/lib/python3.8/site-packages:${SNAP}/usr/lib/python3/dist-packages
+  PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
 
 apps:
   video-downloader:
     command: usr/bin/video-downloader
     extensions:
       # HINT: Adds plugs and changes environment variables when building and running
-      - gnome-3-38
+      - gnome
     plugs:
       - home
       - network
-    slots:
-      - dbus-daemon
     common-id: com.github.unrud.VideoDownloader
     desktop: usr/share/applications/com.github.unrud.VideoDownloader.desktop
 
 slots:
-  dbus-daemon:
+  video-downloader:
     interface: dbus
     bus: session
     name: com.github.unrud.VideoDownloader
 
 parts:
-  libhandy:
+  libadwaita:
     plugin: meson
-    source: https://gitlab.gnome.org/GNOME/libhandy/-/archive/1.8.0/libhandy-1.8.0.tar.bz2
-    source-checksum: sha256/a9d4c5b9275232b439a94e714081b7b8b559c3d75fea3a8e2ace486768c133f5
+    source: https://gitlab.gnome.org/GNOME/libadwaita/-/archive/1.2.0/libadwaita-1.2.0.tar.bz2
+    source-checksum: sha256/9da0df3d2f2f5c0a79becd47d09312124542545e4aa1ea151b993c5f6b939e78
+    override-pull: |
+      craftctl default
+      # WORKAROUND: Ignore compiler warning
+      sed -e 's/-W\(format-nonliteral\)\b/-Wno-\1/g' -i meson.build
     meson-parameters:
       # WORKAROUND: Must be installed to /usr because of GI search path
       - --prefix=/usr
       - -Dexamples=false
-      - -Dglade_catalog=disabled
       - -Dtests=false
       - -Dvapi=false
     stage:
@@ -91,9 +92,10 @@ parts:
       - pyxattr==0.7.2
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
-      - PATH: ${SNAPCRAFT_PART_INSTALL}/bin:${PATH}
+      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+      - PYTHONPATH: ""
     override-pull: |
-      snapcraftctl pull
+      craftctl default
       sed -i 's/^certifi\b/#\0/' requirements.txt
     stage:
       # WORKAROUND: Skip venv from python plugin
@@ -103,13 +105,16 @@ parts:
       - -bin/Activate.ps1
       - -bin/python
       - -bin/python3
+      - -bin/python3.10
+      - -bin/pip
+      - -bin/pip3
+      - -bin/pip3.10
       - -pyvenv.cfg
 
   video-downloader:
-    after: [libhandy, yt-dlp]
+    after: [libadwaita, yt-dlp]
     plugin: meson
     source: .
-    source-tag: v0.9.10
     source-type: git
     # WORKAROUND: Fake installation location to find dependencies at runtime
     meson-parameters: [--prefix=/snap/video-downloader/current/usr]
@@ -120,13 +125,13 @@ parts:
     stage-packages:
       - xdg-user-dirs
     override-pull: |
-      snapcraftctl pull
+      craftctl default
       # WORKAROUND: Point icon directly to SVG otherwise snapcraft can't find it
       sed -e 's|Icon=com.github.unrud.VideoDownloader|Icon=/usr/share/icons/hicolor/scalable/apps/com.github.unrud.VideoDownloader.svg|' -i data/com.github.unrud.VideoDownloader.desktop.in
     override-build: |
-      snapcraftctl build
+      craftctl default
       # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
-      sed -e '1c#!/usr/bin/env python3' -i "${SNAPCRAFT_PART_INSTALL}/snap/video-downloader/current/usr/bin/video-downloader"
+      sed -e '1c#!/usr/bin/env python3' -i "${CRAFT_PART_INSTALL}/snap/video-downloader/current/usr/bin/video-downloader"
     organize:
       # WORKAROUND: Move files from fake installation location to actual target
       snap/video-downloader/current/usr: usr
