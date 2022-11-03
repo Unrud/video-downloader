@@ -1,10 +1,10 @@
 {
-    "app-id" : "com.github.unrud.VideoDownloader",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "43",
-    "sdk" : "org.gnome.Sdk",
-    "command" : "video-downloader",
-    "finish-args" : [
+    "app-id": "com.github.unrud.VideoDownloader",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "43",
+    "sdk": "org.gnome.Sdk",
+    "command": "video-downloader",
+    "finish-args": [
         "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
@@ -12,7 +12,7 @@
         "--socket=wayland",
         "--filesystem=xdg-download/VideoDownloader:create"
     ],
-    "cleanup" : [
+    "cleanup": [
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -23,10 +23,10 @@
         "*.la",
         "*.a"
     ],
-    "modules" : [
+    "modules": [
         {
-            "name" : "ffmpeg",
-            "config-opts" : [
+            "name": "ffmpeg",
+            "config-opts": [
                 "--disable-debug",
                 "--disable-doc",
                 "--disable-static",
@@ -38,159 +38,157 @@
                 "--enable-libmp3lame",
                 "--enable-libvorbis"
             ],
-            "cleanup" : [
+            "cleanup": [
                 "/share/ffmpeg"
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz",
-                    "sha256" : "619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc",
-                    "x-checker-data" : {
-                        "type" : "html",
-                        "url" : "https://ffmpeg.org/releases/",
-                        "pattern" : ">(ffmpeg-([\\d.]+)\\.tar\\.xz)<"
+                    "type": "archive",
+                    "url": "https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz",
+                    "sha256": "619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc",
+                    "x-checker-data": {
+                        "type": "html",
+                        "url": "https://ffmpeg.org/releases/",
+                        "pattern": ">(ffmpeg-([\\d.]+)\\.tar\\.xz)<"
                     }
                 }
             ]
         },
         {
-            "name" : "pyxattr",
-            "buildsystem" : "simple",
-            "build-commands" : [
+            "name": "pyxattr",
+            "buildsystem": "simple",
+            "build-commands": [
                 "pip3 install --prefix=/app ."
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/iustin/pyxattr/archive/refs/tags/v0.7.2.tar.gz",
-                    "sha256" : "a1f4b92ffb2193fd381ea352a2a5b60683a4c58c2e7d9468ba7fb71653a3d160",
-                    "x-checker-data" : {
-                        "type" : "json",
-                        "url" : "https://api.github.com/repos/iustin/pyxattr/releases/latest",
-                        "version-query" : ".tag_name",
-                        "url-query" : "\"https://github.com/iustin/pyxattr/archive/refs/tags/\" + $version + \".tar.gz\""
+                    "type": "archive",
+                    "url": "https://github.com/iustin/pyxattr/archive/refs/tags/v0.7.2.tar.gz",
+                    "sha256": "a1f4b92ffb2193fd381ea352a2a5b60683a4c58c2e7d9468ba7fb71653a3d160",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/iustin/pyxattr/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": "\"https://github.com/iustin/pyxattr/archive/refs/tags/\" + $version + \".tar.gz\""
                     }
                 }
             ]
         },
         {
-            "name" : "mutagen",
-            "buildsystem" : "simple",
-            "build-commands" : [
+            "name": "mutagen",
+            "buildsystem": "simple",
+            "build-commands": [
                 "pip3 install --no-build-isolation --prefix=/app ."
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/quodlibet/mutagen/archive/refs/tags/release-1.46.0.tar.gz",
-                    "sha256" : "734455642e734983353a85ec6e00c809564c63e53ec10cffc1152d51dd576b5e",
-                    "x-checker-data" : {
-                        "type" : "json",
-                        "url" : "https://api.github.com/repos/quodlibet/mutagen/releases/latest",
-                        "version-query" : ".tag_name",
-                        "url-query" : "\"https://github.com/quodlibet/mutagen/archive/refs/tags/\" + $version + \".tar.gz\""
+                    "type": "archive",
+                    "url": "https://github.com/quodlibet/mutagen/archive/refs/tags/release-1.46.0.tar.gz",
+                    "sha256": "734455642e734983353a85ec6e00c809564c63e53ec10cffc1152d51dd576b5e",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/quodlibet/mutagen/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": "\"https://github.com/quodlibet/mutagen/archive/refs/tags/\" + $version + \".tar.gz\""
                     }
                 }
             ]
         },
         {
-            "name" : "pycryptodomex",
-            "buildsystem" : "simple",
-            "build-commands" : [
+            "name": "pycryptodomex",
+            "buildsystem": "simple",
+            "build-commands": [
                 "touch .separate_namespace",
                 "pip3 install --prefix=/app ."
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.15.0.tar.gz",
-                    "sha256" : "10356f1e0a76d87688482d497a490e10759d1c7e915731d1932c95030bd48241",
-                    "x-checker-data" : {
-                        "type" : "json",
-                        "url" : "https://api.github.com/repos/Legrandin/pycryptodome/tags",
-                        "version-query" : "[.[].name | select(test(\"^v?[0-9.]+$\"))] | sort_by(sub(\"^v\"; \"\") | split(\".\") | map(tonumber))[-1]",
-                        "url-query" : "\"https://github.com/Legrandin/pycryptodome/archive/refs/tags/\" + $version + \".tar.gz\""
+                    "type": "archive",
+                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.15.0.tar.gz",
+                    "sha256": "10356f1e0a76d87688482d497a490e10759d1c7e915731d1932c95030bd48241",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/Legrandin/pycryptodome/tags",
+                        "version-query": "[.[].name | select(test(\"^v?[0-9.]+$\"))] | sort_by(sub(\"^v\"; \"\") | split(\".\") | map(tonumber))[-1]",
+                        "url-query": "\"https://github.com/Legrandin/pycryptodome/archive/refs/tags/\" + $version + \".tar.gz\""
                     }
                 }
             ]
         },
         {
-            "name" : "websockets",
-            "buildsystem" : "simple",
-            "build-commands" : [
+            "name": "websockets",
+            "buildsystem": "simple",
+            "build-commands": [
                 "pip3 install --prefix=/app ."
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/aaugustin/websockets/archive/refs/tags/10.3.tar.gz",
-                    "sha256" : "f13384865a14e0beff240b8f835b5b6a105b32928854841f167d920b4be8e75e",
-                    "x-checker-data" : {
-                        "type" : "json",
-                        "url" : "https://api.github.com/repos/aaugustin/websockets/tags",
-                        "version-query" : "[.[].name | select(test(\"^v?[0-9.]+$\"))] | sort_by(sub(\"^v\"; \"\") | split(\".\") | map(tonumber))[-1]",
-                        "url-query" : "\"https://github.com/aaugustin/websockets/archive/refs/tags/\" + $version + \".tar.gz\""
+                    "type": "archive",
+                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/10.3.tar.gz",
+                    "sha256": "f13384865a14e0beff240b8f835b5b6a105b32928854841f167d920b4be8e75e",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/aaugustin/websockets/tags",
+                        "version-query": "[.[].name | select(test(\"^v?[0-9.]+$\"))] | sort_by(sub(\"^v\"; \"\") | split(\".\") | map(tonumber))[-1]",
+                        "url-query": "\"https://github.com/aaugustin/websockets/archive/refs/tags/\" + $version + \".tar.gz\""
                     }
                 }
             ]
         },
         {
-            "name" : "brotli",
-            "buildsystem" : "simple",
-            "build-commands" : [
+            "name": "brotli",
+            "buildsystem": "simple",
+            "build-commands": [
                 "pip3 install --prefix=/app ."
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/google/brotli/archive/refs/tags/v1.0.9.tar.gz",
-                    "sha256" : "f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46",
-                    "x-checker-data" : {
-                        "type" : "json",
-                        "url" : "https://api.github.com/repos/google/brotli/releases/latest",
-                        "version-query" : ".tag_name",
-                        "url-query" : "\"https://github.com/google/brotli/archive/refs/tags/\" + $version + \".tar.gz\""
+                    "type": "archive",
+                    "url": "https://github.com/google/brotli/archive/refs/tags/v1.0.9.tar.gz",
+                    "sha256": "f9e8d81d0405ba66d181529af42a3354f838c939095ff99930da6aa9cdf6fe46",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/google/brotli/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": "\"https://github.com/google/brotli/archive/refs/tags/\" + $version + \".tar.gz\""
                     }
                 }
             ]
         },
         {
-            "name" : "yt-dlp",
-            /* Missing optional dependencies mpv, phantomjs and rtmpdump */
-            "buildsystem" : "simple",
-            "build-commands" : [
+            "name": "yt-dlp",
+            "buildsystem": "simple",
+            "build-commands": [
                 "pip3 install --prefix=/app ."
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/yt-dlp/yt-dlp/releases/download/2022.10.04/yt-dlp.tar.gz",
-                    "sha256" : "bd3cf6413cd92a400ff015633372a1454906414226f924b57c1f5826b9abc1a8",
-                    "x-checker-data" : {
-                        "type" : "json",
-                        /* Use the Tags API, because the Releases API sometimes returns older versions!? */
-                        "url" : "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
-                        "version-query" : "[.[].name] | sort[-1]",
-                        "url-query" : "\"https://github.com/yt-dlp/yt-dlp/releases/download/\" + $version + \"/yt-dlp.tar.gz\""
+                    "type": "archive",
+                    "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2022.10.04/yt-dlp.tar.gz",
+                    "sha256": "bd3cf6413cd92a400ff015633372a1454906414226f924b57c1f5826b9abc1a8",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
+                        "version-query": "[.[].name] | sort[-1]",
+                        "url-query": "\"https://github.com/yt-dlp/yt-dlp/releases/download/\" + $version + \"/yt-dlp.tar.gz\""
                     }
                 },
                 {
-                    "type" : "shell",
-                    "commands" : [
+                    "type": "shell",
+                    "commands": [
                         "sed -i 's/^certifi\\b/#\\0/' requirements.txt"
                     ]
                 }
             ]
         },
         {
-            "name" : "video-downloader",
-            "builddir" : true,
-            "buildsystem" : "meson",
-            "sources" : [
+            "name": "video-downloader",
+            "builddir": true,
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type" : "git",
-                    "path" : "."
+                    "type": "git",
+                    "path": "."
                 }
             ]
         }
