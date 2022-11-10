@@ -81,7 +81,8 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <child>
                       <object class="AdwViewStackPage">
                         <property name="name">audio</property>
-                        <property name="title" translatable="1">Audio</property>
+                        <property name="title" translatable="1">_Audio</property>
+                        <property name="use-underline">True</property>
                         <property name="icon-name">audio-x-generic-symbolic</property>
                         <property name="child">
                           <object class="AdwClamp" id="audio_page">
@@ -113,7 +114,8 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                 </child>
                                 <child>
                                   <object class="GtkButton" id="audio_download_wdg">
-                                    <property name="label" translatable="1">Download</property>
+                                    <property name="label" translatable="1">_Download</property>
+                                    <property name="use-underline">True</property>
                                     <property name="receives-default">1</property>
                                     <property name="halign">center</property>
                                     <property name="action-name">win.download</property>
@@ -132,7 +134,8 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <child>
                       <object class="AdwViewStackPage">
                         <property name="name">video</property>
-                        <property name="title" translatable="1">Video</property>
+                        <property name="title" translatable="1">_Video</property>
+                        <property name="use-underline">True</property>
                         <property name="icon-name">video-x-generic-symbolic</property>
                         <property name="child">
                           <object class="AdwClamp" id="video_page">
@@ -210,7 +213,8 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                   <object class="AdwHeaderBar">
                     <child>
                       <object class="GtkButton" id="download_cancel_wdg">
-                        <property name="label" translatable="1">Cancel</property>
+                        <property name="label" translatable="1">_Cancel</property>
+                        <property name="use-underline">True</property>
                         <property name="action-name">win.cancel</property>
                       </object>
                     </child>
