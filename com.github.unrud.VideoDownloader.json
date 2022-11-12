@@ -187,8 +187,8 @@
             "buildsystem": "meson",
             "sources": [
                 {
-                    "type": "git",
-                    "path": "."
+                    "type": "dir",
+                    "path": "./"
                 }
             ]
         }
