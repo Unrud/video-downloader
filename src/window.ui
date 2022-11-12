@@ -68,6 +68,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     </child>
                     <child type="end">
                       <object class="GtkMenuButton">
+                        <property name="tooltip-text" translatable="yes">Main Menu</property>
                         <property name="popover">hamburger_popover_menu</property>
                         <property name="direction">none</property>
                         <property name="primary">True</property>
@@ -316,6 +317,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkImage">
                             <property name="icon-name">go-previous-symbolic</property>
                             <property name="icon_size">normal</property>
+                            <property name="tooltip-text" translatable="yes">Back</property>
                           </object>
                         </child>
                         <accessibility>
@@ -420,6 +422,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                           <object class="GtkImage">
                             <property name="icon-name">go-previous-symbolic</property>
                             <property name="icon_size">normal</property>
+                            <property name="tooltip-text" translatable="yes">Back</property>
                           </object>
                         </child>
                         <accessibility>
