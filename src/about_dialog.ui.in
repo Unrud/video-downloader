@@ -24,7 +24,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
     <property name="destroy-with-parent">1</property>
     <!-- Main page -->
     <property name="application-icon">com.github.unrud.VideoDownloader</property>
-    <property name="application-name" translatable="1">Video Downloader</property>
+    <property name="application-name" translatable="yes">Video Downloader</property>
     <property name="developer-name">Unrud</property>
     <property name="version">@VERSION@</property>
     <!-- What's new -->
