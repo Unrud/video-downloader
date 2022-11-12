@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Project-Style: gnome\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
@@ -165,7 +165,7 @@ msgstr "Menüyü Aç"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Pencereyi Kapat"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
