@@ -289,6 +289,10 @@ class YoutubeDLSlave:
             self.ydl_opts['videopassword'] = password
             self._allow_authentication_request = False
             raise RetryException(msg)
+        # Skip unavailable videos
+        if 'Video unavailable.' in msg:
+            self._skipped_count += 1
+            return
         # Ignore missing xattr support
         if 'This filesystem doesn\'t support extended attributes.' in msg:
             return
