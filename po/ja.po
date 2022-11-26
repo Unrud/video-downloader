@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-18 21:51+0200\n"
+"POT-Creation-Date: 2022-11-26 21:08+0100\n"
 "PO-Revision-Date: 2021-02-05 05:26+0100\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese\n"
@@ -19,13 +19,13 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:25
-#: src/main.py:37 src/window.ui:55
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
+#: src/main.py:37 src/window.ui:49
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:28
+#: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download videos from websites like YouTube and many others"
 msgstr "YouTube などの動画サイトから動画をダウンロードします"
 
@@ -66,7 +66,7 @@ msgstr "新しいウィンドウ"
 msgid "Authentication Required"
 msgstr "認証が必要です"
 
-#: src/authentication_dialog.py:34 src/window.ui:297
+#: src/authentication_dialog.py:34 src/window.ui:224
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -136,19 +136,19 @@ msgstr "240p"
 msgid "144p"
 msgstr "144p"
 
-#: src/playlist_dialog.py:31
+#: src/playlist_dialog.py:30
 msgid "Download Playlist?"
 msgstr "再生リストからダウンロードしますか?"
 
-#: src/playlist_dialog.py:32
+#: src/playlist_dialog.py:31
 msgid "The video is part of a playlist."
 msgstr "動画は再生リストに含まれています。"
 
-#: src/playlist_dialog.py:34
+#: src/playlist_dialog.py:33
 msgid "Single Video"
 msgstr "単一の動画"
 
-#: src/playlist_dialog.py:35
+#: src/playlist_dialog.py:34
 msgid "All Videos in Playlist"
 msgstr "再生リスト内のすべての動画"
 
@@ -172,27 +172,27 @@ msgstr "終了する"
 msgid "Keyboard Shortcuts"
 msgstr "キーボードショートカットを表示する"
 
-#: src/window.py:159
+#: src/window.py:161
 msgid "Downloading"
 msgstr "ダウンロード中"
 
-#: src/window.py:161 src/window.py:184
+#: src/window.py:163 src/window.py:186
 msgid "{} of {}"
 msgstr "{} / {}"
 
-#: src/window.py:185 src/window.py:187
+#: src/window.py:187 src/window.py:189
 msgid "unknown"
 msgstr "不明"
 
-#: src/window.py:253 src/window.ui:424
+#: src/window.py:255 src/window.ui:351
 msgid "Download failed"
 msgstr "ダウンロード失敗"
 
-#: src/window.py:257 src/window.ui:529
+#: src/window.py:259 src/window.ui:456
 msgid "Download finished"
 msgstr "ダウンロード完了"
 
-#: src/window.py:261 src/window.ui:538
+#: src/window.py:263 src/window.ui:465
 msgid "Open Download Location"
 msgstr ""
 
@@ -200,30 +200,34 @@ msgstr ""
 msgid "About Video Downloader"
 msgstr "Video Downloader について"
 
-#: src/window.ui:90
+#: src/window.ui:84
 msgid "Audio"
 msgstr "音声"
 
-#: src/window.ui:123 src/window.ui:198
+#: src/window.ui:106 src/window.ui:157
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:146 src/window.ui:259
+#: src/window.ui:116 src/window.ui:186
 msgid "Download"
 msgstr "ダウンロード"
 
-#: src/window.ui:165
+#: src/window.ui:135
 msgid "Video"
 msgstr "動画"
 
-#: src/window.ui:230
+#: src/window.ui:165
 msgid "Resolution"
 msgstr "解像度"
 
-#: src/window.ui:395 src/window.ui:499
+#: src/window.ui:173
+msgid "Prefer MPEG format"
+msgstr ""
+
+#: src/window.ui:322 src/window.ui:426
 msgid "Back"
 msgstr "戻る"
 
-#: src/window.ui:443
+#: src/window.ui:370
 msgid "Details"
 msgstr "詳細"

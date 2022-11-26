@@ -43,6 +43,7 @@ class Window(Adw.ApplicationWindow, Handler):
     audio_url_wdg = Gtk.Template.Child()
     video_url_wdg = Gtk.Template.Child()
     resolution_wdg = Gtk.Template.Child()
+    prefer_mpeg_wdg = Gtk.Template.Child()
     main_stack_wdg = Gtk.Template.Child()
     audio_video_stack_wdg = Gtk.Template.Child()
     audio_download_wdg = Gtk.Template.Child()
@@ -105,6 +106,8 @@ class Window(Adw.ApplicationWindow, Handler):
             self.model, 'resolution', self.resolution_wdg, 'selected',
             lambda r: list(self.model.resolutions).index(r),
             lambda i: list(self.model.resolutions)[i], bi=True))
+        self._cs.push(PropertyBinding(
+            self.model, 'prefer-mpeg', self.prefer_mpeg_wdg, 'state', bi=True))
         self._cs.push(PropertyBinding(
             self.model, 'state', self.main_stack_wdg, 'visible-child-name',
             func_a_to_b=lambda s: {'cancel': 'download'}.get(s, s)))

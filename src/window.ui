@@ -168,6 +168,17 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                         </property>
                                       </object>
                                     </child>
+                                    <child>
+                                      <object class="AdwActionRow">
+                                        <property name="title" translatable="yes">Prefer MPEG format</property>
+                                        <property name="activatable-widget">prefer_mpeg_wdg</property>
+                                        <child>
+                                          <object class="GtkSwitch" id="prefer_mpeg_wdg">
+                                            <property name="valign">center</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                                 <child>

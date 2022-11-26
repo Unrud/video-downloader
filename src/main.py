@@ -68,8 +68,9 @@ class Application(Adw.Application):
         # Apply/Bind settings
         self.settings.bind('download-folder', model, 'download-folder',
                            Gio.SettingsBindFlags.DEFAULT)
-        self.settings.bind('prefer-mpeg', model, 'prefer-mpeg',
-                           Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('prefer-mpeg', model, 'prefer-mpeg', (
+                               Gio.SettingsBindFlags.DEFAULT |
+                               Gio.SettingsBindFlags.GET_NO_CHANGES))
         self.settings.bind('automatic-subtitles', model, 'automatic-subtitles',
                            Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('mode', model, 'mode', (

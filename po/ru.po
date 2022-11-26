@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-18 21:51+0200\n"
+"POT-Creation-Date: 2022-11-26 21:08+0100\n"
 "PO-Revision-Date: 2022-02-01 20:34+0500\n"
 "Last-Translator: Umidjon Almasov <umidjon@almasov.uz>\n"
 "Language-Team: Russian\n"
@@ -19,13 +19,13 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
-#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui:25
-#: src/main.py:37 src/window.ui:55
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
+#: src/main.py:37 src/window.ui:49
 msgid "Video Downloader"
 msgstr "Загрузчик видео"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
-#: data/com.github.unrud.VideoDownloader.desktop.in:4 src/about_dialog.ui:28
+#: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download videos from websites like YouTube and many others"
 msgstr "Загружает видео с таких сайтов как YouTube и многих других"
 
@@ -67,7 +67,7 @@ msgstr "Новое окно"
 msgid "Authentication Required"
 msgstr "Требуется авторизация"
 
-#: src/authentication_dialog.py:34 src/window.ui:297
+#: src/authentication_dialog.py:34 src/window.ui:224
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -137,19 +137,19 @@ msgstr "240p"
 msgid "144p"
 msgstr "144p"
 
-#: src/playlist_dialog.py:31
+#: src/playlist_dialog.py:30
 msgid "Download Playlist?"
 msgstr "Загрузить плейлист?"
 
-#: src/playlist_dialog.py:32
+#: src/playlist_dialog.py:31
 msgid "The video is part of a playlist."
 msgstr "Видео является часть плейлиста."
 
-#: src/playlist_dialog.py:34
+#: src/playlist_dialog.py:33
 msgid "Single Video"
 msgstr "Отдельное видео"
 
-#: src/playlist_dialog.py:35
+#: src/playlist_dialog.py:34
 msgid "All Videos in Playlist"
 msgstr "Все видео в плейлисте"
 
@@ -173,27 +173,27 @@ msgstr "Завершить"
 msgid "Keyboard Shortcuts"
 msgstr "Комбинации клавиш"
 
-#: src/window.py:159
+#: src/window.py:161
 msgid "Downloading"
 msgstr "Загрузка"
 
-#: src/window.py:161 src/window.py:184
+#: src/window.py:163 src/window.py:186
 msgid "{} of {}"
 msgstr "{} из {}"
 
-#: src/window.py:185 src/window.py:187
+#: src/window.py:187 src/window.py:189
 msgid "unknown"
 msgstr "неизвестно"
 
-#: src/window.py:253 src/window.ui:424
+#: src/window.py:255 src/window.ui:351
 msgid "Download failed"
 msgstr "Загрузка не удалась"
 
-#: src/window.py:257 src/window.ui:529
+#: src/window.py:259 src/window.ui:456
 msgid "Download finished"
 msgstr "Загрузка завершена"
 
-#: src/window.py:261 src/window.ui:538
+#: src/window.py:263 src/window.ui:465
 msgid "Open Download Location"
 msgstr "Открыть место загрузки"
 
@@ -201,30 +201,34 @@ msgstr "Открыть место загрузки"
 msgid "About Video Downloader"
 msgstr "О программе"
 
-#: src/window.ui:90
+#: src/window.ui:84
 msgid "Audio"
 msgstr "Аудио"
 
-#: src/window.ui:123 src/window.ui:198
+#: src/window.ui:106 src/window.ui:157
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:146 src/window.ui:259
+#: src/window.ui:116 src/window.ui:186
 msgid "Download"
 msgstr "Загрузить"
 
-#: src/window.ui:165
+#: src/window.ui:135
 msgid "Video"
 msgstr "Видео"
 
-#: src/window.ui:230
+#: src/window.ui:165
 msgid "Resolution"
 msgstr "Разрешение"
 
-#: src/window.ui:395 src/window.ui:499
+#: src/window.ui:173
+msgid "Prefer MPEG format"
+msgstr ""
+
+#: src/window.ui:322 src/window.ui:426
 msgid "Back"
 msgstr "Назад"
 
-#: src/window.ui:443
+#: src/window.ui:370
 msgid "Details"
 msgstr "Подробно"
