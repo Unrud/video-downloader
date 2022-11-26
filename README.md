@@ -70,25 +70,8 @@ flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.
 snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.VideoDownloader automatic-subtitles "['de','en']"
 ```
 
-### Prefer MPEG
-
-Prefer MPEG videos instead of free formats when both are available at the same
-resolution and frame rate.
-
-The default is `false`.
-
-#### Flatpak
-
-```
-flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.unrud.VideoDownloader prefer-mpeg true
-```
-
-#### Snap
-
-```
-snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.VideoDownloader prefer-mpeg true
-```
-
 ## Debug
 
-To display messages from **yt-dlp** run program with environment variable `G_MESSAGES_DEBUG=yt-dlp`.
+To display messages from **yt-dlp** run program with the environment variable `G_MESSAGES_DEBUG=yt-dlp`.
+
+To display information about GOBject references, start the program with the environment variable `G_MESSAGES_DEBUG=gobject-ref`.
