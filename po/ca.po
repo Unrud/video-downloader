@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-26 21:08+0100\n"
+"POT-Creation-Date: 2022-11-27 14:59+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Ícar N. S. <icar.nin@protonmail.com>\n"
 "Language-Team: Catalan\n"
@@ -68,7 +68,7 @@ msgstr "Finestra nova"
 msgid "Authentication Required"
 msgstr "Cal autenticació"
 
-#: src/authentication_dialog.py:34 src/window.ui:224
+#: src/authentication_dialog.py:34 src/window.ui:225
 msgid "Cancel"
 msgstr "Cancel·la"
 
@@ -186,15 +186,15 @@ msgstr "{} de {}"
 msgid "unknown"
 msgstr "desconegut"
 
-#: src/window.py:255 src/window.ui:351
+#: src/window.py:255 src/window.ui:353
 msgid "Download failed"
 msgstr "Ha fallat la baixada"
 
-#: src/window.py:259 src/window.ui:456
+#: src/window.py:259 src/window.ui:459
 msgid "Download finished"
 msgstr "La baixada ha finalitzat"
 
-#: src/window.py:263 src/window.ui:465
+#: src/window.py:263 src/window.ui:468
 msgid "Open Download Location"
 msgstr "Obre la ubicació de la descàrrega"
 
@@ -202,34 +202,38 @@ msgstr "Obre la ubicació de la descàrrega"
 msgid "About Video Downloader"
 msgstr "Sobre el Descarregador de vídeo"
 
-#: src/window.ui:84
+#: src/window.ui:71
+msgid "Main Menu"
+msgstr "Menú principal"
+
+#: src/window.ui:85
 msgid "Audio"
 msgstr "Àudio"
 
-#: src/window.ui:106 src/window.ui:157
+#: src/window.ui:107 src/window.ui:158
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:116 src/window.ui:186
+#: src/window.ui:117 src/window.ui:187
 msgid "Download"
 msgstr "Baixa"
 
-#: src/window.ui:135
+#: src/window.ui:136
 msgid "Video"
 msgstr "Vídeo"
 
-#: src/window.ui:165
+#: src/window.ui:166
 msgid "Resolution"
 msgstr "Resolució"
 
-#: src/window.ui:173
+#: src/window.ui:174
 msgid "Prefer MPEG format"
 msgstr ""
 
-#: src/window.ui:322 src/window.ui:426
+#: src/window.ui:320 src/window.ui:324 src/window.ui:425 src/window.ui:429
 msgid "Back"
 msgstr "Enrere"
 
-#: src/window.ui:370
+#: src/window.ui:372
 msgid "Details"
 msgstr "Detalls"
