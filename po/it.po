@@ -1,15 +1,15 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-# Albano battistella <albano:battistella@hotmail.com>,2020.
-# Albano battistella <albano:battistella@hotmail.com>,2021,2022.
+# Albano Battistella <albano:battistella@hotmail.com>,2020.
+# Albano Battistella <albano:battistella@hotmail.com>,2021,2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-27 16:54+0100\n"
-"PO-Revision-Date: 2022-09-19 21:26+0100\n"
+"PO-Revision-Date: 2022-11-27 19:26+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: ITALIAN <LL@li.org>\n"
 "Language: it\n"
@@ -183,11 +183,11 @@ msgstr "Va indietro"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Passa ad Audio"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Passa aL Video"
 
 #: src/window.py:170
 msgid "Downloading"
@@ -243,7 +243,7 @@ msgstr "Risoluzione"
 
 #: src/window.ui:193
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Preferisci il formato MPEG"
 
 #: src/window.ui:335 src/window.ui:354 src/window.ui:451 src/window.ui:470
 msgid "Back"
