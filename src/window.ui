@@ -58,6 +58,25 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkBox" id="audio_video_page">
                 <property name="orientation">vertical</property>
                 <child>
+                  <object class='GtkShortcutController'>
+                    <property name='scope'>managed</property>
+                    <child>
+                      <object class='GtkShortcut'>
+                        <property name='trigger'>&lt;Alt&gt;A</property>
+                        <property name='action'>action(win.set-audio-video-page)</property>
+                        <property name="arguments">'audio'</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class='GtkShortcut'>
+                        <property name='trigger'>&lt;Alt&gt;V</property>
+                        <property name='action'>action(win.set-audio-video-page)</property>
+                        <property name="arguments">'video'</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
                   <object class="AdwHeaderBar">
                     <property name="centering-policy">strict</property>
                     <child type="title">
@@ -315,6 +334,17 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                         <property name="action-name">win.back</property>
                         <property name="tooltip-text" translatable="yes">Back</property>
                         <child>
+                          <object class='GtkShortcutController'>
+                            <property name='scope'>managed</property>
+                            <child>
+                              <object class='GtkShortcut'>
+                                <property name='trigger'>&lt;Alt&gt;Left</property>
+                                <property name='action'>activate</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
                           <object class="GtkImage">
                             <property name="icon-name">go-previous-symbolic</property>
                             <property name="icon_size">normal</property>
@@ -419,6 +449,17 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                       <object class="GtkButton" id="success_back_wdg">
                         <property name="action-name">win.back</property>
                         <property name="tooltip-text" translatable="yes">Back</property>
+                        <child>
+                          <object class='GtkShortcutController'>
+                            <property name='scope'>managed</property>
+                            <child>
+                              <object class='GtkShortcut'>
+                                <property name='trigger'>&lt;Alt&gt;Left</property>
+                                <property name='action'>activate</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                         <child>
                           <object class="GtkImage">
                             <property name="icon-name">go-previous-symbolic</property>

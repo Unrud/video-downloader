@@ -79,6 +79,15 @@ class Window(Adw.ApplicationWindow, Handler):
                 action, 'activate', callback, no_args=True))
             self.add_action(action)
             self._cs.add_close_callback(self.remove_action, action_name)
+        action_name = 'set-audio-video-page'
+        action = gobject_log(Gio.SimpleAction.new(
+            action_name, GLib.VariantType('s')), action_name)
+        self._cs.push(SignalConnection(
+            action, 'activate',
+            lambda _, param: self.audio_video_stack_wdg.set_visible_child_name(
+                                 param.get_string())))
+        self.add_action(action)
+        self._cs.add_close_callback(self.remove_action, action_name)
         # Register notifcation actions
         self._notification_uuid = str(uuid.uuid4())
         for name, callback, *extra_args in [

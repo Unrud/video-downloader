@@ -59,6 +59,29 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
             </child>
           </object>
         </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <property name="title" translatable="yes">Navigation</property>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;Alt&gt;Left</property>
+                <property name="title" translatable="yes">Go back</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;Alt&gt;A</property>
+                <property name="title" translatable="yes">Switch to Audio</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;Alt&gt;V</property>
+                <property name="title" translatable="yes">Switch to Video</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
   </template>
