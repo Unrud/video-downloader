@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.11" date="2022-11-27">
+    <description>
+      <ul>
+        <li>Skip unavailable videos</li>
+        <li>Add switch to prefer MPEG format</li>
+        <li>Add tooltips</li>
+        <li>Add navigation shortcuts</li>
+        <li>Update Turkish translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.10" date="2022-10-23">
     <description>
       <ul>
