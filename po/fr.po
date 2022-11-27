@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-27 16:54+0100\n"
-"PO-Revision-Date: 2022-09-21 23:31+0200\n"
+"PO-Revision-Date: 2022-11-27 22:40+0100\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -181,15 +181,15 @@ msgstr "Navigation"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "En arrière"
+msgstr "Retour"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Basculer vers l’audio"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Basculer vers la vidéo"
 
 #: src/window.py:170
 msgid "Downloading"
@@ -245,7 +245,7 @@ msgstr "Résolution"
 
 #: src/window.ui:193
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Préférer le format MPEG"
 
 #: src/window.ui:335 src/window.ui:354 src/window.ui:451 src/window.ui:470
 msgid "Back"
