@@ -313,11 +313,11 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <child>
                       <object class="GtkButton" id="error_back_wdg">
                         <property name="action-name">win.back</property>
+                        <property name="tooltip-text" translatable="yes">Back</property>
                         <child>
                           <object class="GtkImage">
                             <property name="icon-name">go-previous-symbolic</property>
                             <property name="icon_size">normal</property>
-                            <property name="tooltip-text" translatable="yes">Back</property>
                           </object>
                         </child>
                         <accessibility>
@@ -418,11 +418,11 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                     <child>
                       <object class="GtkButton" id="success_back_wdg">
                         <property name="action-name">win.back</property>
+                        <property name="tooltip-text" translatable="yes">Back</property>
                         <child>
                           <object class="GtkImage">
                             <property name="icon-name">go-previous-symbolic</property>
                             <property name="icon_size">normal</property>
-                            <property name="tooltip-text" translatable="yes">Back</property>
                           </object>
                         </child>
                         <accessibility>
