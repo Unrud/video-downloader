@@ -63,8 +63,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/iustin/pyxattr/archive/refs/tags/v0.7.2.tar.gz",
-                    "sha256": "a1f4b92ffb2193fd381ea352a2a5b60683a4c58c2e7d9468ba7fb71653a3d160",
+                    "url": "https://github.com/iustin/pyxattr/archive/refs/tags/v0.8.0.tar.gz",
+                    "sha256": "8d72f0c8d43bb9d75b1948229983d2e99593b0e9fd417e89a9026fd1e23b57e7",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/iustin/pyxattr/releases/latest",
