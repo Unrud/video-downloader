@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.10.13" date="2023-01-09">
+    <description>
+      <ul>
+        <li>Workaround for focusing the URL input field at program startup</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.12" date="2022-12-01">
     <description>
       <ul>
