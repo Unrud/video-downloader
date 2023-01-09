@@ -235,12 +235,13 @@ class Window(Adw.ApplicationWindow, Handler):
     def _update_focus_and_default(self):
         state = self.main_stack_wdg.get_visible_child_name()
         mode = self.audio_video_stack_wdg.get_visible_child_name()
+        default_wdg = None
         if state == 'start':
             if mode == 'audio':
-                self.set_default_widget(self.audio_download_wdg)
+                default_wdg = self.audio_download_wdg
                 self.audio_url_wdg.grab_focus()
             elif mode == 'video':
-                self.set_default_widget(self.video_download_wdg)
+                default_wdg = self.video_download_wdg
                 self.video_url_wdg.grab_focus()
             else:
                 assert False, 'unreachable'
@@ -252,6 +253,7 @@ class Window(Adw.ApplicationWindow, Handler):
             self.finished_download_dir_wdg.grab_focus()
         else:
             assert False, 'unreachable'
+        self.set_default_widget(default_wdg)
 
     def _hide_notification(self):
         self.application.withdraw_notification(self._notification_uuid)
