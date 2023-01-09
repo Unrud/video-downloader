@@ -157,6 +157,9 @@ class Window(Adw.ApplicationWindow, Handler):
         self._cs.push(PropertyBinding(
             self.download_images_wdg, 'transition-running',
             func_a_to_b=lambda b: b or self._clean_thumbnails()))
+        # Workaround for focusing AdwEntryRow at program startup
+        self._cs.push(SignalConnection(
+            self, 'show', self._update_focus_and_default, no_args=True))
 
     def _update_download_progress(self):
         progress = self.model.download_progress
