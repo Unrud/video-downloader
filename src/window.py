@@ -127,27 +127,28 @@ class Window(Adw.ApplicationWindow, Handler):
             'visible-child-name', bi=True))
         self._cs.push(PropertyBinding(
             self.main_stack_wdg, 'visible-child-name',
-            func_a_to_b=self._update_focus_and_default))
+            func_a_to_b=lambda _: self._update_focus_and_default()))
         self._cs.push(PropertyBinding(
             self.audio_video_stack_wdg, 'visible-child-name',
-            func_a_to_b=self._update_focus_and_default))
+            func_a_to_b=lambda _: self._update_focus_and_default()))
         self._cs.push(PropertyBinding(
             self.model, 'finished-download-dir',
             func_a_to_b=self._update_finished_download_dir_wdg_tooltip))
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
             self._cs.push(PropertyBinding(
-                self.model, name, func_a_to_b=self._update_download_msg))
+                self.model, name,
+                func_a_to_b=lambda _: self._update_download_msg()))
         self._cs.push(PropertyBinding(
             self.model, 'download-progress',
-            func_a_to_b=self._update_download_progress))
+            func_a_to_b=lambda _: self._update_download_progress()))
         self._cs.push(SignalConnection(
             self.model, 'download-pulse', self._update_download_progress,
             no_args=True))
         for name in ['download-playlist-count', 'download-playlist-index']:
             self._cs.push(PropertyBinding(
                 self.model, name,
-                func_a_to_b=self._update_download_page_title))
+                func_a_to_b=lambda _: self._update_download_page_title()))
         self._cs.push(PropertyBinding(
             self.model, 'download-title', self.download_title_wdg, 'label',
             func_a_to_b=lambda title: title or '…'))
@@ -157,14 +158,14 @@ class Window(Adw.ApplicationWindow, Handler):
             self.download_images_wdg, 'transition-running',
             func_a_to_b=lambda b: b or self._clean_thumbnails()))
 
-    def _update_download_progress(self, *_):
+    def _update_download_progress(self):
         progress = self.model.download_progress
         if progress < 0:
             self.download_progress_wdg.pulse()
         else:
             self.download_progress_wdg.set_fraction(progress)
 
-    def _update_download_page_title(self, _):
+    def _update_download_page_title(self):
         playlist_count = self.model.download_playlist_count
         playlist_index = self.model.download_playlist_index
         s = N_('Downloading')
@@ -173,7 +174,7 @@ class Window(Adw.ApplicationWindow, Handler):
                 playlist_index + 1, playlist_count) + ')'
         self.download_page_title_wdg.set_text(s)
 
-    def _update_download_msg(self, _):
+    def _update_download_msg(self):
         def filesize_fmt(num, suffix='B'):
             for unit in ['', 'k', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y']:
                 if abs(num) < 1000:
@@ -231,7 +232,7 @@ class Window(Adw.ApplicationWindow, Handler):
                 download_dir = '~' + download_dir[len(home_dir):]
         self.finished_download_dir_wdg.set_tooltip_text(download_dir)
 
-    def _update_focus_and_default(self, _):
+    def _update_focus_and_default(self):
         state = self.main_stack_wdg.get_visible_child_name()
         mode = self.audio_video_stack_wdg.get_visible_child_name()
         if state == 'start':

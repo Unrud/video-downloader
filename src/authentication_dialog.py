@@ -53,7 +53,7 @@ class LoginDialog(BaseAuthenticationDialog):
     username = GObject.Property(type=str)
     password = GObject.Property(type=str)
 
-    def _update_form(self, _):
+    def _update_form(self):
         self._update_response(self.username or self.password)
 
     def _build_content(self):
@@ -63,16 +63,16 @@ class LoginDialog(BaseAuthenticationDialog):
         self._cs.push(PropertyBinding(
             self, 'password', content.password_wdg, 'text', bi=True))
         self._cs.push(PropertyBinding(
-            self, 'username', func_a_to_b=self._update_form))
+            self, 'username', func_a_to_b=lambda _: self._update_form()))
         self._cs.push(PropertyBinding(
-            self, 'password', func_a_to_b=self._update_form))
+            self, 'password', func_a_to_b=lambda _: self._update_form()))
         return content
 
 
 class PasswordDialog(BaseAuthenticationDialog):
     password = GObject.Property(type=str)
 
-    def _update_form(self, _):
+    def _update_form(self):
         self._update_response(self.password)
 
     def _build_content(self):
@@ -80,7 +80,7 @@ class PasswordDialog(BaseAuthenticationDialog):
         self._cs.push(PropertyBinding(
             self, 'password', content.password_wdg, 'text', bi=True))
         self._cs.push(PropertyBinding(
-            self, 'password', func_a_to_b=self._update_form))
+            self, 'password', func_a_to_b=lambda _: self._update_form()))
         return content
 
 
