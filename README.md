@@ -12,6 +12,8 @@ Based on [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
 ## Installation
 
+[![AUR version](https://img.shields.io/aur/version/video-downloader?style=plastic)](https://aur.archlinux.org/packages/video-downloader)
+
   * [Flatpak](https://flathub.org/apps/details/com.github.unrud.VideoDownloader)
   * [Snap](https://snapcraft.io/video-downloader)
   * [Fedora](https://src.fedoraproject.org/rpms/video-downloader): `sudo dnf install video-downloader`
