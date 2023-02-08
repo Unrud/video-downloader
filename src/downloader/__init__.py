@@ -32,15 +32,16 @@ from video_downloader.util import g_log
 
 MAX_RESOLUTION = 2**16-1
 
+# RegEx for splitting lines because `bytes.splitlines` transforms
+# `b'abc\n'` to `[b'abc']` instead of `[b'abc', b'']`
+_SPLITLINES_RE = re.compile(rb'\r\n|\r|\n')
+
 
 class Downloader:
     def __init__(self, handler):
         self._handler = handler
         self._process = None
         self._pending_response = None
-        # Use regex to split lines because `bytes.splitlines` transforms
-        # `b'abc\n'` to `[b'abc']` instead of `[b'abc', b'']`
-        self._splitlines_re = re.compile(rb'\r\n|\r|\n')
 
     def shutdown(self):
         self._handler = None
@@ -107,7 +108,7 @@ class Downloader:
         s = process.stdout.buffer.read()
         pipe_closed = not s
         process.stdout_remainder += s
-        *lines, process.stdout_remainder = self._splitlines_re.split(
+        *lines, process.stdout_remainder = _SPLITLINES_RE.split(
             process.stdout_remainder)
         if self._process is not process:
             return not pipe_closed
@@ -152,7 +153,7 @@ class Downloader:
         process.stderr_remainder += s
         if pipe_closed:
             process.stderr_remainder += b'\n'
-        *lines, process.stderr_remainder = self._splitlines_re.split(
+        *lines, process.stderr_remainder = _SPLITLINES_RE.split(
             process.stderr_remainder)
         for line in filter(None, lines):  # Filter empty lines
             # Don't use `errors='strict'` because programs might write garbage
