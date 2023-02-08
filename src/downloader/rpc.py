@@ -38,5 +38,14 @@ class RpcClient:
 
 def handle_rpc_request(interface, implementation, json_request):
     request = json.loads(json_request)
+    # Validate request
+    if (not isinstance(request, dict)
+            or not isinstance(request.get('method'), str)
+            or not isinstance(request.get('args'), list)):
+        raise ValueError('invalid request format')
+    if request['method'].startswith('_'):
+        raise ValueError('invalid method name: %r' % request['method'])
+    if not hasattr(interface, request['method']):
+        raise ValueError('unknown method: %r' % request['method'])
     # Execute request
     return getattr(implementation, request['method'])(*request['args'])
