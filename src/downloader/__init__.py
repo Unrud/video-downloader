@@ -28,6 +28,7 @@ import typing
 
 from gi.repository import GLib
 
+from video_downloader.downloader.rpc import handle_rpc_request
 from video_downloader.util import g_log
 
 MAX_RESOLUTION = 2**16-1
@@ -119,9 +120,8 @@ class Downloader:
                 line = line.decode(process.stdout.encoding)
                 if self._pending_response:
                     raise RuntimeError('request during pending request')
-                request = json.loads(line)
-                method = getattr(self._handler, request['method'])
-                result = method(*request['args'])
+                result = handle_rpc_request(
+                    HandlerInterface, self._handler, line)
             except Exception:
                 g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
                       'failed request %r\n%s', line, traceback.format_exc())
@@ -245,7 +245,7 @@ class HandlerInterface:
     def on_download_thumbnail(self, thumbnail: str) -> Response[None]:
         raise NotImplementedError
 
-    def on_download_finished(self, filename) -> Response[None]:
+    def on_download_finished(self, filename: str) -> Response[None]:
         raise NotImplementedError
 
     def on_pulse(self) -> Response[None]:

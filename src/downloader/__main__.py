@@ -16,26 +16,11 @@
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
 import fcntl
-import functools
-import json
 import os
 import signal
 import sys
 
-
-class Handler:
-    def __init__(self, input_file, output_file):
-        self._in = input_file
-        self._out = output_file
-
-    def _rpc(self, name, *args):
-        print(json.dumps({'method': name, 'args': args}),
-              file=self._out, flush=True)
-        answer = json.loads(self._in.readline())
-        return answer['result']
-
-    def __getattr__(self, name):
-        return functools.partial(self._rpc, name)
+from video_downloader.downloader.rpc import RpcClient
 
 
 if __name__ == '__main__':
@@ -54,7 +39,7 @@ if __name__ == '__main__':
     with open(os.devnull, 'r+') as devnull:
         os.dup2(devnull.fileno(), sys.stdin.fileno())
         os.dup2(devnull.fileno(), sys.stdout.fileno())
-    handler = Handler(input_file, output_file)
+    handler = RpcClient(output_file, input_file)
     try:
         from video_downloader.downloader.yt_dlp_monkey_patch import (
             install_monkey_patches)
