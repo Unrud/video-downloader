@@ -20,7 +20,6 @@ import fcntl
 import json
 import os
 import re
-import signal
 import subprocess
 import sys
 import traceback
@@ -28,7 +27,7 @@ import typing
 
 from gi.repository import GLib
 
-from video_downloader.downloader.rpc import handle_rpc_request
+from video_downloader.downloader.rpc import RpcClient, handle_rpc_request
 from video_downloader.util import g_log
 
 MAX_RESOLUTION = 2**16-1
@@ -42,29 +41,48 @@ class Downloader:
     def __init__(self, handler):
         self._handler = handler
         self._process = None
+        self._process_handler = None
         self._pending_response = None
 
     def shutdown(self):
         self._handler = None
         if self._process:
-            self._finish_process_and_kill_pgrp()
+            self._finish_process()
 
     def cancel(self):
-        self._process.terminate()
+        with contextlib.suppress(BrokenPipeError):
+            self._process_handler.cancel()
         if self._pending_response:
             self._pending_response._finish()
 
     def start(self):
-        assert not self._process
+        assert not self._process and not self._process_handler
         extra_env = {'PYTHONPATH': os.pathsep.join(sys.path)}
-        # Start child process in its own process group to shield it from
-        # signals by terminals (e.g. SIGINT) and to identify remaning children.
-        # yt-dlp doesn't kill ffmpeg and other subprocesses on error.
-        self._process = subprocess.Popen(
-            [sys.executable, '-u', '-m', 'video_downloader.downloader'],
-            stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, env={**os.environ, **extra_env},
-            universal_newlines=True, preexec_fn=os.setpgrp)
+        process_control_output_fd, process_control_input_fd = os.pipe()
+        process_control_input_file = os.fdopen(process_control_input_fd, 'w')
+        try:
+            process_handler = RpcClient(process_control_input_file)
+            sandbox = []
+            if os.path.isfile('/.flatpak-info'):
+                download_dir = self._handler.get_download_dir()
+                sandbox += ['flatpak-spawn', '--directory=/', '--sandbox',
+                            '--sandbox-expose-path=%s' % download_dir,
+                            '--forward-fd=%d' % process_control_output_fd,
+                            *('--env=%s=%s' % (key, value)
+                              for key, value in extra_env.items())]
+            self._process = subprocess.Popen(
+                [*sandbox, sys.executable, '-u', '-m',
+                 'video_downloader.downloader',
+                 '--control-fd=%d' % process_control_output_fd],
+                stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, env={**os.environ, **extra_env},
+                universal_newlines=True, pass_fds=(process_control_output_fd,))
+        except BaseException:
+            process_control_input_file.close()
+            raise
+        finally:
+            os.close(process_control_output_fd)
+        self._process_handler = process_handler
         # WARNING: O_NONBLOCK can break mult ibyte decoding and line splitting
         # under rare circumstances.
         # E.g. when the buffer only includes the first byte of a multi byte
@@ -85,21 +103,13 @@ class Downloader:
             GLib.PRIORITY_DEFAULT_IDLE, self._process.stderr.fileno(),
             GLib.IOCondition.IN, self._on_process_stderr, self._process)
 
-    def _finish_process_and_kill_pgrp(self):
-        assert self._process
-        process, self._process = self._process, None
-        try:
-            # Terminate process gracefully so it can delete temporary files
-            process.terminate()
-            process.wait()
-        except BaseException:  # including SystemExit and KeyboardInterrupt
-            process.kill()
-            process.wait()
-        finally:
-            # Kill remaining children identified by process group
-            with contextlib.suppress(OSError):
-                os.killpg(process.pid, signal.SIGKILL)
-        return process.returncode
+    def _finish_process(self):
+        assert self._process and self._process_handler
+        process, process_handler = self._process, self._process_handler
+        self._process = self._process_handler = None
+        with contextlib.suppress(BrokenPipeError):
+            process_handler.shutdown()
+        return process.wait()
 
     def _on_process_stdout(self, fd, condition, process):
         # Don't use `process.stdout.read` because of O_NONBLOCK (see `start`)
@@ -137,7 +147,7 @@ class Downloader:
                   'incomplete request %r', process.stdout_remainder)
             failure = True
         if pipe_closed or failure:
-            returncode = self._finish_process_and_kill_pgrp()
+            returncode = self._finish_process()
             if self._pending_response:
                 self._pending_response._finish()
             self._handler.on_finished(returncode == 0 and not failure)

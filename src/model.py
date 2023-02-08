@@ -128,7 +128,15 @@ class Model(GObject.GObject, downloader.HandlerInterface):
         elif state == 'download':
             assert self._prev_state == 'start'
             self.finished_download_dir = expand_path(self.download_folder)
-            self._downloader.start()
+            try:
+                os.makedirs(self.finished_download_dir, exist_ok=True)
+            except OSError as e:
+                g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
+                      '%s', traceback.format_exc())
+                self.error = 'ERROR: Failed to create download folder: %s' % e
+                self.state = 'error'
+            else:
+                self._downloader.start()
         elif state == 'cancel':
             assert self._prev_state == 'download'
             self._downloader.cancel()

@@ -430,7 +430,6 @@ class YoutubeDLSlave:
                 temp_download_dir = os.path.join(
                     download_dir, output_title + '.part')
                 try:
-                    os.makedirs(download_dir, exist_ok=True)
                     os.makedirs(temp_download_dir, exist_ok=True)
                 except OSError as e:
                     traceback.print_exc(file=sys.stderr)

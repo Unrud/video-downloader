@@ -15,11 +15,61 @@
 # You should have received a copy of the GNU General Public License
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
+import argparse
+import contextlib
 import os
 import signal
+import subprocess
 import sys
+import threading
 
-from video_downloader.downloader.rpc import RpcClient
+from video_downloader.downloader.rpc import RpcClient, handle_rpc_request
+
+
+class HandlerInterface:
+    def cancel(self) -> None:
+        raise NotImplementedError
+
+    def shutdown(self) -> None:
+        raise NotImplementedError
+
+
+class ProcessMonitor(HandlerInterface):
+    def __init__(self, input_file, output_file):
+        self._supports_group = hasattr(os, 'setpgrp') and hasattr(os, 'killpg')
+        self._process = subprocess.Popen(
+            [sys.executable, '-u', '-m', 'video_downloader.downloader'],
+            stdin=input_file, stdout=output_file,
+            preexec_fn=os.setpgrp if self._supports_group else None)
+
+    def _monitor_process_thread(self):
+        try:
+            returncode = self._process.wait()
+        finally:
+            self._process.kill()
+            if self._supports_group:
+                with contextlib.suppress(OSError):
+                    os.killpg(self._process.pid, signal.SIGKILL)
+        # Exit process and all threads without cleanup
+        os._exit(returncode)
+
+    def monitor_forever(self, control_file):
+        threading.Thread(target=self._monitor_process_thread).start()
+        try:
+            while True:
+                line = control_file.readline()
+                if not line:
+                    raise RuntimeError('control file closed')
+                result = handle_rpc_request(HandlerInterface, self, line)
+                assert result is None
+        finally:
+            self._process.kill()
+
+    def cancel(self) -> None:
+        self._process.terminate()
+
+    def shutdown(self) -> None:
+        self._process.kill()
 
 
 if __name__ == '__main__':
@@ -38,6 +88,15 @@ if __name__ == '__main__':
     with open(os.devnull, 'r+') as devnull:
         os.dup2(devnull.fileno(), sys.stdin.fileno(), inheritable=True)
         os.dup2(devnull.fileno(), sys.stdout.fileno(), inheritable=True)
+    argument_parser = argparse.ArgumentParser()
+    argument_parser.add_argument('--control-fd', type=int)
+    arguments = argument_parser.parse_args()
+    if arguments.control_fd is not None:
+        with os.fdopen(arguments.control_fd, 'r') as control_file:
+            os.set_inheritable(control_file.fileno(), False)
+            process_monitor = ProcessMonitor(input_file, output_file)
+            process_monitor.monitor_forever(control_file)
+        assert False, 'unreachable'
     handler = RpcClient(output_file, input_file)
     try:
         from video_downloader.downloader.yt_dlp_monkey_patch import (
