@@ -192,7 +192,7 @@ class _AsyncResponse(typing.Generic[_R]):
         self._finish()
 
 
-class Handler:
+class HandlerInterface:
     AsyncResponse = _AsyncResponse
     Response = typing.Union[_R, AsyncResponse[_R]]
 

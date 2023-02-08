@@ -25,7 +25,7 @@ from gi.repository import Adw, GdkPixbuf, Gio, GLib, Gtk
 
 from video_downloader.about_dialog import build_about_dialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
-from video_downloader.model import Handler, Model
+from video_downloader.model import HandlerInterface, Model
 from video_downloader.playlist_dialog import PlaylistDialog
 from video_downloader.shortcuts_dialog import ShortcutsDialog
 from video_downloader.util import (CloseStack, PropertyBinding,
@@ -37,7 +37,7 @@ N_ = gettext.gettext
 
 
 @Gtk.Template(resource_path='/com/github/unrud/VideoDownloader/window.ui')
-class Window(Adw.ApplicationWindow, Handler):
+class Window(Adw.ApplicationWindow, HandlerInterface):
     __gtype_name__ = 'VideoDownloaderWindow'
     error_buffer = Gtk.Template.Child()
     audio_url_wdg = Gtk.Template.Child()
@@ -305,7 +305,7 @@ class Window(Adw.ApplicationWindow, Handler):
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
         self._cs.push(connection)
-        async_response = Handler.AsyncResponse(connection.close)
+        async_response = HandlerInterface.AsyncResponse(connection.close)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
@@ -320,7 +320,7 @@ class Window(Adw.ApplicationWindow, Handler):
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
         self._cs.push(connection)
-        async_response = Handler.AsyncResponse(connection.close)
+        async_response = HandlerInterface.AsyncResponse(connection.close)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
@@ -335,7 +335,7 @@ class Window(Adw.ApplicationWindow, Handler):
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
         self._cs.push(connection)
-        async_response = Handler.AsyncResponse(connection.close)
+        async_response = HandlerInterface.AsyncResponse(connection.close)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response

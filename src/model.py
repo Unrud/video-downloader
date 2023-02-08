@@ -33,7 +33,7 @@ from video_downloader.util import (CloseStack, PropertyBinding,
 N_ = gettext.gettext
 
 
-class Model(GObject.GObject, downloader.Handler):
+class Model(GObject.GObject, downloader.HandlerInterface):
     __gsignals__ = {
         'download-pulse': (GObject.SIGNAL_RUN_FIRST, None, ())
     }
@@ -238,9 +238,9 @@ class Model(GObject.GObject, downloader.Handler):
             *(self.finished_download_filenames or []), filename]
 
 
-class Handler:
-    AsyncResponse = downloader.Handler.AsyncResponse
-    Response = downloader.Handler.Response
+class HandlerInterface:
+    AsyncResponse = downloader.HandlerInterface.AsyncResponse
+    Response = downloader.HandlerInterface.Response
 
     def on_playlist_request(self) -> Response[bool]:
         raise NotImplementedError
