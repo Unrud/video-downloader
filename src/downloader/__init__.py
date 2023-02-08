@@ -56,18 +56,15 @@ class Downloader:
 
     def start(self):
         assert not self._process
-        env = os.environ.copy()
-        env['PYTHONPATH'] = os.pathsep.join(filter(None, [
-            os.path.normpath(os.path.join(__file__, *[os.pardir]*3)),
-            env.get('PYTHONPATH')]))
+        extra_env = {'PYTHONPATH': os.pathsep.join(sys.path)}
         # Start child process in its own process group to shield it from
         # signals by terminals (e.g. SIGINT) and to identify remaning children.
         # yt-dlp doesn't kill ffmpeg and other subprocesses on error.
         self._process = subprocess.Popen(
             [sys.executable, '-u', '-m', 'video_downloader.downloader'],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, env=env, universal_newlines=True,
-            preexec_fn=os.setpgrp)
+            stderr=subprocess.PIPE, env={**os.environ, **extra_env},
+            universal_newlines=True, preexec_fn=os.setpgrp)
         # WARNING: O_NONBLOCK can break mult ibyte decoding and line splitting
         # under rare circumstances.
         # E.g. when the buffer only includes the first byte of a multi byte
