@@ -256,14 +256,14 @@ class HandlerInterface:
 
 def _open_in_file_manager(directory, filenames):
     # org.freedesktop.portal.OpenURI
-    portal_open_uri_proxy = Gio.DBusProxy.new_for_bus_sync(
+    portal_open_uri_proxy = gobject_log(Gio.DBusProxy.new_for_bus_sync(
         Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
         Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
         Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
         'org.freedesktop.portal.Desktop',
         '/org/freedesktop/portal/desktop',
-        'org.freedesktop.portal.OpenURI')
-    fdlist = Gio.UnixFDList()
+        'org.freedesktop.portal.OpenURI'))
+    fdlist = gobject_log(Gio.UnixFDList())
     path = directory
     if filenames:
         path = os.path.join(path, filenames[0])
@@ -288,12 +288,12 @@ def _open_in_file_manager(directory, filenames):
         return
 
     # org.freedesktop.FileManager1
-    filemanager_proxy = Gio.DBusProxy.new_for_bus_sync(
+    filemanager_proxy = gobject_log(Gio.DBusProxy.new_for_bus_sync(
         Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
         Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
         Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
         'org.freedesktop.FileManager1', '/org/freedesktop/FileManager1',
-        'org.freedesktop.FileManager1')
+        'org.freedesktop.FileManager1'))
     if filenames:
         method = 'ShowItems'
         paths = [os.path.join(directory, filename)
