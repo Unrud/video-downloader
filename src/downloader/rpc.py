@@ -16,6 +16,7 @@
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
 import functools
+import inspect
 import json
 
 
@@ -45,7 +46,22 @@ def handle_rpc_request(interface, implementation, json_request):
         raise ValueError('invalid request format')
     if request['method'].startswith('_'):
         raise ValueError('invalid method name: %r' % request['method'])
-    if not hasattr(interface, request['method']):
+    interface_method = getattr(interface, request['method'], None)
+    if not inspect.isfunction(interface_method):
         raise ValueError('unknown method: %r' % request['method'])
+    signature = inspect.signature(interface_method)
+    annotations = [p.annotation for p in signature.parameters.values()]
+    del annotations[0]  # remove `self` argument
+    if len(annotations) != len(request['args']):
+        raise TypeError('number of arguments must be %d not %d',
+                        len(annotations), len(request['args']))
+    for annot, value in zip(annotations, request['args'], strict=True):
+        if annot not in {str, int, float, bool}:
+            raise NotImplementedError('unsupported annotation: %r' % (annot,))
+        if annot == float and isinstance(value, int):
+            value = float(value)
+        if not isinstance(value, annot):
+            raise TypeError('argument must be %r not %r' %
+                            (annot.__name__, type(value).__name__))
     # Execute request
     return getattr(implementation, request['method'])(*request['args'])
