@@ -83,19 +83,6 @@ class Model(GObject.GObject, downloader.Handler):
         self._downloader = downloader.Downloader(self)
         self._cs.add_close_callback(self._downloader.shutdown)
         self._active_download_lock = None
-        self._portal_open_uri_proxy = Gio.DBusProxy.new_for_bus_sync(
-            Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
-            Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
-            Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
-            'org.freedesktop.portal.Desktop',
-            '/org/freedesktop/portal/desktop',
-            'org.freedesktop.portal.OpenURI')
-        self._filemanager_proxy = Gio.DBusProxy.new_for_bus_sync(
-            Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
-            Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
-            Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
-            'org.freedesktop.FileManager1', '/org/freedesktop/FileManager1',
-            'org.freedesktop.FileManager1')
         self.actions = gobject_log(Gio.SimpleActionGroup.new())
         for action_name, callback, *extra_args in [
                 ('download', self.set_property, 'state', 'download'),
@@ -153,62 +140,8 @@ class Model(GObject.GObject, downloader.Handler):
 
     def _open_finished_download_dir(self):
         assert self.finished_download_dir
-
-        # org.freedesktop.portal.OpenURI
-        fdlist = Gio.UnixFDList()
-        path = self.finished_download_dir
-        if self.finished_download_filenames:
-            path = os.path.join(path, self.finished_download_filenames[0])
-        try:
-            fd = os.open(path, os.O_RDONLY)
-        except OSError:
-            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
-                  traceback.format_exc())
-            return
-        try:
-            handle = fdlist.append(fd)
-        finally:
-            os.close(fd)
-        try:
-            parameters = GLib.Variant('(sha{sv})', ('', handle, {}))
-            self._portal_open_uri_proxy.call_with_unix_fd_list_sync(
-                'OpenDirectory', parameters, Gio.DBusCallFlags.NONE, -1,
-                fdlist)
-        except GLib.Error:
-            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
-                  traceback.format_exc())
-        else:
-            return
-
-        # org.freedesktop.FileManager1
-        if self.finished_download_filenames:
-            method = 'ShowItems'
-            paths = [os.path.join(self.finished_download_dir, filename) for
-                     filename in (self.finished_download_filenames or [])]
-            paths = paths[:1]  # Multiple paths open multiple windows
-        else:
-            method = 'ShowFolders'
-            paths = [self.finished_download_dir]
-        parameters = GLib.Variant(
-            '(ass)', ([Gio.File.new_for_path(p).get_uri() for p in paths], ''))
-        try:
-            self._filemanager_proxy.call_sync(
-                method, parameters, Gio.DBusCallFlags.NONE, -1)
-        except GLib.Error:
-            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
-                  traceback.format_exc())
-        else:
-            return
-
-        # xdg-open
-        try:
-            subprocess.run(['xdg-open', self.finished_download_dir],
-                           check=True)
-        except subprocess.SubprocessError:
-            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
-                  traceback.format_exc())
-        else:
-            return
+        _open_in_file_manager(self.finished_download_dir,
+                              self.finished_download_filenames)
 
     def shutdown(self):
         self._cs.close()
@@ -319,3 +252,72 @@ class Handler:
     #                                         password
     def on_password_request(self) -> Response[str]:
         raise NotImplementedError
+
+
+def _open_in_file_manager(directory, filenames):
+    # org.freedesktop.portal.OpenURI
+    portal_open_uri_proxy = Gio.DBusProxy.new_for_bus_sync(
+        Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
+        Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
+        Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
+        'org.freedesktop.portal.Desktop',
+        '/org/freedesktop/portal/desktop',
+        'org.freedesktop.portal.OpenURI')
+    fdlist = Gio.UnixFDList()
+    path = directory
+    if filenames:
+        path = os.path.join(path, filenames[0])
+    try:
+        fd = os.open(path, os.O_RDONLY)
+    except OSError:
+        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+              traceback.format_exc())
+        return
+    try:
+        handle = fdlist.append(fd)
+    finally:
+        os.close(fd)
+    try:
+        parameters = GLib.Variant('(sha{sv})', ('', handle, {}))
+        portal_open_uri_proxy.call_with_unix_fd_list_sync(
+            'OpenDirectory', parameters, Gio.DBusCallFlags.NONE, -1, fdlist)
+    except GLib.Error:
+        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+              traceback.format_exc())
+    else:
+        return
+
+    # org.freedesktop.FileManager1
+    filemanager_proxy = Gio.DBusProxy.new_for_bus_sync(
+        Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
+        Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
+        Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
+        'org.freedesktop.FileManager1', '/org/freedesktop/FileManager1',
+        'org.freedesktop.FileManager1')
+    if filenames:
+        method = 'ShowItems'
+        paths = [os.path.join(directory, filename)
+                 for filename in (filenames or [])]
+        paths = paths[:1]  # Multiple paths open multiple windows
+    else:
+        method = 'ShowFolders'
+        paths = [directory]
+    parameters = GLib.Variant(
+        '(ass)', ([Gio.File.new_for_path(p).get_uri() for p in paths], ''))
+    try:
+        filemanager_proxy.call_sync(
+            method, parameters, Gio.DBusCallFlags.NONE, -1)
+    except GLib.Error:
+        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+              traceback.format_exc())
+    else:
+        return
+
+    # xdg-open
+    try:
+        subprocess.run(['xdg-open', directory], check=True)
+    except subprocess.SubprocessError:
+        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+              traceback.format_exc())
+    else:
+        return
