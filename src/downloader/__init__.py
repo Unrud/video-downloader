@@ -17,7 +17,7 @@
 
 import contextlib
 import fcntl
-import json
+import functools
 import os
 import re
 import signal
@@ -28,8 +28,8 @@ import typing
 
 from gi.repository import GLib
 
-from video_downloader.downloader.rpc import handle_rpc_request
-from video_downloader.util import g_log
+from video_downloader.downloader.rpc import handle_rpc_request, rpc_response
+from video_downloader.util import AsyncResponse, Response, g_log
 
 MAX_RESOLUTION = 2**16-1
 
@@ -52,7 +52,7 @@ class Downloader:
     def cancel(self):
         self._process.terminate()
         if self._pending_response:
-            self._pending_response._finish()
+            self._pending_response.cancel()
 
     def start(self):
         assert not self._process
@@ -101,6 +101,23 @@ class Downloader:
                 os.killpg(process.pid, signal.SIGKILL)
         return process.returncode
 
+    def _pending_response_callback(self, process, request_line, response):
+        assert response.done
+        if not response.cancelled:
+            self._send_response(process, request_line, response.result)
+        assert self._pending_response is response
+        self._pending_response = None
+
+    @staticmethod
+    def _send_response(process, request_line, result):
+        try:
+            print(rpc_response(result), file=process.stdin, flush=True)
+        except Exception:
+            g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
+                  'failed request %r\n%s', request_line,
+                  traceback.format_exc())
+            process.terminate()
+
     def _on_process_stdout(self, fd, condition, process):
         # Don't use `process.stdout.read` because of O_NONBLOCK (see `start`)
         s = process.stdout.buffer.read()
@@ -124,14 +141,12 @@ class Downloader:
                       'failed request %r\n%s', line, traceback.format_exc())
                 failure = True
                 break
-            if isinstance(result, _AsyncResponse):
+            if isinstance(result, AsyncResponse):
                 self._pending_response = result
+                self._pending_response.add_done_callback(functools.partial(
+                    self._pending_response_callback, self._process, line))
             else:
-                self._pending_response = _AsyncResponse()
-            self._pending_response._downloader = self
-            self._pending_response._request_line = line
-            if not isinstance(result, _AsyncResponse):
-                self._pending_response.respond(result)
+                self._send_response(self._process, line, result)
         if pipe_closed and process.stdout_remainder:
             g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
                   'incomplete request %r', process.stdout_remainder)
@@ -139,7 +154,7 @@ class Downloader:
         if pipe_closed or failure:
             returncode = self._finish_process_and_kill_pgrp()
             if self._pending_response:
-                self._pending_response._finish()
+                self._pending_response.cancel()
             self._handler.on_finished(returncode == 0 and not failure)
         return not pipe_closed
 
@@ -162,37 +177,7 @@ class Downloader:
         return not pipe_closed
 
 
-_R = typing.TypeVar('R')
-
-
-class _AsyncResponse(typing.Generic[_R]):
-    def __init__(self, done_callback=None):
-        self._done_callback = done_callback
-        self._downloader = None
-        self._request_line = None
-
-    def _finish(self):
-        assert self._downloader and self._downloader._pending_response is self
-        self._downloader._pending_response = None
-        if self._done_callback is not None:
-            self._done_callback()
-
-    def respond(self, result: _R) -> None:
-        try:
-            print(json.dumps({'result': result}),
-                  file=self._downloader._process.stdin, flush=True)
-        except Exception:
-            g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
-                  'failed request %r\n%s', self._request_line,
-                  traceback.format_exc())
-            self._downloader._process.terminate()
-        self._finish()
-
-
 class HandlerInterface:
-    AsyncResponse = _AsyncResponse
-    Response = typing.Union[_R, AsyncResponse[_R]]
-
     def get_download_dir(self) -> Response[str]:
         raise NotImplementedError
 

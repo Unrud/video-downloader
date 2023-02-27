@@ -49,3 +49,7 @@ def handle_rpc_request(interface, implementation, json_request):
         raise ValueError('unknown method: %r' % request['method'])
     # Execute request
     return getattr(implementation, request['method'])(*request['args'])
+
+
+def rpc_response(result):
+    return json.dumps({'result': result})

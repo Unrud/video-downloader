@@ -19,6 +19,7 @@ import functools
 import locale
 import os
 import subprocess
+import typing
 from collections import OrderedDict
 
 from gi.repository import GLib, GObject
@@ -172,3 +173,58 @@ def languages_from_locale():
         if lang not in languages:
             languages.append(lang)
     return languages
+
+
+_R = typing.TypeVar('R')
+
+
+class AsyncResponse(typing.Generic[_R]):
+    _done_callback_type = typing.Callable[["AsyncResponse"], None]
+
+    def __init__(self) -> None:
+        self._done_callbacks: typing.List[self._done_callback_type] = []
+        self._done: bool = False
+        self._cancelled: bool = False
+        self._result: typing.Optional[_R] = None
+
+    @property
+    def done(self) -> bool:
+        return self._done
+
+    @property
+    def cancelled(self) -> bool:
+        return self._cancelled
+
+    @property
+    def result(self) -> typing.Optional[_R]:
+        return self._result
+
+    def _schedule_done_callbacks(self):
+        def wrap_callback(callback):
+            def wrapper():
+                callback(self)
+                return False
+            return wrapper
+        assert self._done
+        while self._done_callbacks:
+            self._done_callbacks.pop()(self)
+
+    def add_done_callback(self, callback: _done_callback_type) -> None:
+        self._done_callbacks.append(callback)
+        if self._done:
+            self._schedule_done_callbacks()
+
+    def set_result(self, result: _R) -> None:
+        assert not self._done, 'done'
+        self._result = result
+        self._done = True
+        self._schedule_done_callbacks()
+
+    def cancel(self) -> None:
+        assert not self._done, 'done'
+        self._cancelled = True
+        self._done = True
+        self._schedule_done_callbacks()
+
+
+Response = typing.Union[_R, AsyncResponse[_R]]

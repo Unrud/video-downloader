@@ -26,7 +26,7 @@ from gi.repository import Gio, GLib, GObject
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.util import (CloseStack, PropertyBinding,
+from video_downloader.util import (CloseStack, PropertyBinding, Response,
                                    SignalConnection, expand_path, g_log,
                                    gobject_log, languages_from_locale)
 
@@ -239,9 +239,6 @@ class Model(GObject.GObject, downloader.HandlerInterface):
 
 
 class HandlerInterface:
-    AsyncResponse = downloader.HandlerInterface.AsyncResponse
-    Response = downloader.HandlerInterface.Response
-
     def on_playlist_request(self) -> Response[bool]:
         raise NotImplementedError
 
