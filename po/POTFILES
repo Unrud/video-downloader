@@ -11,6 +11,10 @@ src/model.py
 src/playlist_dialog.py
 src/shortcuts_dialog.py
 src/shortcuts_dialog.ui
-src/util.py
+src/util/connection.py
+src/util/__init__.py
+src/util/path.py
+src/util/response.py
+src/util/rpc.py
 src/window.py
 src/window.ui

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-27 16:54+0100\n"
+"POT-Creation-Date: 2023-02-27 21:57+0100\n"
 "PO-Revision-Date: 2022-02-01 20:34+0500\n"
 "Last-Translator: Umidjon Almasov <umidjon@almasov.uz>\n"
 "Language-Team: Russian\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
-#: src/main.py:37 src/window.ui:49
+#: src/main.py:38 src/window.ui:53
 msgid "Video Downloader"
 msgstr "Загрузчик видео"
 
@@ -67,7 +67,7 @@ msgstr "Новое окно"
 msgid "Authentication Required"
 msgstr "Требуется авторизация"
 
-#: src/authentication_dialog.py:34 src/window.ui:244
+#: src/authentication_dialog.py:34 src/window.py:355 src/window.ui:248
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -93,63 +93,75 @@ msgstr "Имя пользователя"
 msgid "Password"
 msgstr "Пароль"
 
-#: src/main.py:36
+#: src/main.py:37
 msgid "Prefill URL field"
 msgstr "Заполните поле URL"
 
-#: src/model.py:65
+#: src/model.py:66
 msgid "Best"
 msgstr "Наилучшее"
 
-#: src/model.py:66
+#: src/model.py:67
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:67
+#: src/model.py:68
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:68
+#: src/model.py:69
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:69
+#: src/model.py:70
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:70
+#: src/model.py:71
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:71
+#: src/model.py:72
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:72
+#: src/model.py:73
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:73
+#: src/model.py:74
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:74
+#: src/model.py:75
 msgid "144p"
 msgstr "144p"
 
-#: src/playlist_dialog.py:30
+#: src/model.py:157
+msgid "Invalid download folder"
+msgstr ""
+
+#: src/model.py:277 src/model.py:283 src/window.py:347
+msgid "Not a directory"
+msgstr ""
+
+#: src/model.py:281 src/model.py:286
+msgid "Permission denied"
+msgstr ""
+
+#: src/playlist_dialog.py:29
 msgid "Download Playlist?"
 msgstr "Загрузить плейлист?"
 
-#: src/playlist_dialog.py:31
+#: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
 msgstr "Видео является часть плейлиста."
 
-#: src/playlist_dialog.py:33
+#: src/playlist_dialog.py:32
 msgid "Single Video"
 msgstr "Отдельное видео"
 
-#: src/playlist_dialog.py:34
+#: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
 msgstr "Все видео в плейлисте"
 
@@ -169,7 +181,7 @@ msgstr "Закрыть окно"
 msgid "Quit"
 msgstr "Завершить"
 
-#: src/shortcuts_dialog.ui:57 src/window.ui:36
+#: src/shortcuts_dialog.ui:57 src/window.ui:40
 msgid "Keyboard Shortcuts"
 msgstr "Комбинации клавиш"
 
@@ -189,66 +201,82 @@ msgstr ""
 msgid "Switch to Video"
 msgstr ""
 
-#: src/window.py:170
+#: src/window.py:178
 msgid "Downloading"
 msgstr "Загрузка"
 
-#: src/window.py:172 src/window.py:195
+#: src/window.py:180 src/window.py:203
 msgid "{} of {}"
 msgstr "{} из {}"
 
-#: src/window.py:196 src/window.py:198
+#: src/window.py:204 src/window.py:206
 msgid "unknown"
 msgstr "неизвестно"
 
-#: src/window.py:264 src/window.ui:383
+#: src/window.py:274 src/window.ui:387
 msgid "Download failed"
 msgstr "Загрузка не удалась"
 
-#: src/window.py:268 src/window.ui:500
+#: src/window.py:278 src/window.ui:504
 msgid "Download finished"
 msgstr "Загрузка завершена"
 
-#: src/window.py:272 src/window.ui:509
+#: src/window.py:282 src/window.ui:513
 msgid "Open Download Location"
 msgstr "Открыть место загрузки"
 
-#: src/window.ui:40
+#: src/window.py:320
+msgid "Reset to Default"
+msgstr ""
+
+#: src/window.py:321 src/window.py:353 src/window.ui:36
+msgid "Change Download Location"
+msgstr ""
+
+#: src/window.py:349
+msgid "Invalid folder selected"
+msgstr ""
+
+#: src/window.py:355
+msgid "Select Folder"
+msgstr ""
+
+#: src/window.ui:44
 msgid "About Video Downloader"
 msgstr "О программе"
 
-#: src/window.ui:90
+#: src/window.ui:94
 msgid "Main Menu"
 msgstr "Главное меню"
 
-#: src/window.ui:104
+#: src/window.ui:108
 msgid "Audio"
 msgstr "Аудио"
 
-#: src/window.ui:126 src/window.ui:177
+#: src/window.ui:130 src/window.ui:181
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:136 src/window.ui:206
+#: src/window.ui:140 src/window.ui:210
 msgid "Download"
 msgstr "Загрузить"
 
-#: src/window.ui:155
+#: src/window.ui:159
 msgid "Video"
 msgstr "Видео"
 
-#: src/window.ui:185
+#: src/window.ui:189
 msgid "Resolution"
 msgstr "Разрешение"
 
-#: src/window.ui:193
+#: src/window.ui:197
 msgid "Prefer MPEG format"
 msgstr ""
 
-#: src/window.ui:335 src/window.ui:354 src/window.ui:451 src/window.ui:470
+#: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
 msgid "Back"
 msgstr "Назад"
 
-#: src/window.ui:402
+#: src/window.ui:406
 msgid "Details"
 msgstr "Подробно"
