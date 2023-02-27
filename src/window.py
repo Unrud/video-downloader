@@ -72,7 +72,8 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             self._cs.add_close_callback(self.remove_action, action_name)
         for action_name, callback in [
                 ('close', self.destroy), ('about', self._show_about_dialog),
-                ('shortcuts', self._show_shortcuts_dialog)]:
+                ('shortcuts', self._show_shortcuts_dialog),
+                ('change-download-dir', self._change_download_dir)]:
             action = gobject_log(Gio.SimpleAction.new(action_name, None),
                                  action_name)
             self._cs.push(SignalConnection(
@@ -291,6 +292,22 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
     def _show_about_dialog(self):
         dialog = gobject_log(build_about_dialog(self))
         self.window_group.add_window(dialog)
+        dialog.show()
+
+    def _change_download_dir(self):
+        def handle_response(dialog, res):
+            connection.close()
+            if res == Gtk.ResponseType.ACCEPT:
+                file = dialog.get_file()
+                if file and file.get_path():
+                    self.model.download_folder = file.get_path()
+        dialog = gobject_log(Gtk.FileChooserNative(
+            modal=True, title=N_('Change Download Location'),
+            action=Gtk.FileChooserAction.SELECT_FOLDER,
+            accept_label=N_('Select Folder'), cancel_label=N_('Cancel')))
+        dialog.set_transient_for(self)
+        connection = SignalConnection(dialog, 'response', handle_response)
+        self._cs.push(connection)
         dialog.show()
 
     def on_playlist_request(self):
