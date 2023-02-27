@@ -26,9 +26,9 @@ from gi.repository import Gio, GLib, GObject
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.util import (CloseStack, PropertyBinding, Response,
-                                   SignalConnection, expand_path, g_log,
-                                   gobject_log, languages_from_locale)
+from video_downloader.util import (AsyncResponse, CloseStack, PropertyBinding,
+                                   Response, SignalConnection, expand_path,
+                                   g_log, gobject_log, languages_from_locale)
 
 N_ = gettext.gettext
 
@@ -85,7 +85,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
         self._active_download_lock = None
         self.actions = gobject_log(Gio.SimpleActionGroup.new())
         for action_name, callback, *extra_args in [
-                ('download', self.set_property, 'state', 'download'),
+                ('download', self.set_property, 'state', 'prepare'),
                 ('cancel', self.set_property, 'state', 'cancel'),
                 ('back', self.set_property, 'state', 'start'),
                 ('open-finished-download-dir',
@@ -125,9 +125,11 @@ class Model(GObject.GObject, downloader.HandlerInterface):
             self.download_eta = -1
             self.finished_download_filenames = []
             self.finished_download_dir = ''
-        elif state == 'download':
+        elif state == 'prepare':
             assert self._prev_state == 'start'
-            self.finished_download_dir = expand_path(self.download_folder)
+            self._try_start_download()
+        elif state == 'download':
+            assert self._prev_state == 'prepare'
             self._downloader.start()
         elif state == 'cancel':
             assert self._prev_state == 'download'
@@ -142,6 +144,23 @@ class Model(GObject.GObject, downloader.HandlerInterface):
         assert self.finished_download_dir
         _open_in_file_manager(self.finished_download_dir,
                               self.finished_download_filenames)
+
+    def _try_start_download(self):
+        path = expand_path(self.download_folder)
+        message = check_download_dir(path, create=True)
+        if message is None:
+            self.finished_download_dir = path
+            self.state = 'download'
+            return
+        response = self._handler.on_download_folder_error(
+            N_('Invalid download folder'), message, path)
+
+        def handle_response(response):
+            if response.cancelled:
+                self.state = 'start'
+            else:
+                self._try_start_download()
+        response.add_done_callback(handle_response)
 
     def shutdown(self):
         self._cs.close()
@@ -182,17 +201,27 @@ class Model(GObject.GObject, downloader.HandlerInterface):
         assert self.state in ['download', 'cancel']
         return self.resolution
 
+    def _forward_response(self, response):
+        def callback(response):
+            if response.cancelled:
+                self.state = 'cancel'
+        if isinstance(response, AsyncResponse):
+            response.add_done_callback(callback)
+            if self.state == 'cancel':
+                response.cancel()
+        return response
+
     def on_playlist_request(self):
         assert self.state in ['download', 'cancel']
-        return self._handler.on_playlist_request()
+        return self._forward_response(self._handler.on_playlist_request())
 
     def on_login_request(self):
         assert self.state in ['download', 'cancel']
-        return self._handler.on_login_request()
+        return self._forward_response(self._handler.on_login_request())
 
     def on_password_request(self):
         assert self.state in ['download', 'cancel']
-        return self._handler.on_password_request()
+        return self._forward_response(self._handler.on_password_request())
 
     def on_error(self, msg):
         assert self.state in ['download', 'cancel']
@@ -238,6 +267,25 @@ class Model(GObject.GObject, downloader.HandlerInterface):
             *(self.finished_download_filenames or []), filename]
 
 
+def check_download_dir(path: str, create: bool = False
+                       ) -> typing.Optional[str]:
+    if create:
+        try:
+            os.makedirs(path, exist_ok=True)
+        except FileExistsError:
+            return N_('Not a directory')
+        except Exception:
+            g_log(None, GLib.LogLevelFlags.LEVEL_DEBUG,
+                  '%s', traceback.format_exc())
+            return N_('Permission denied')
+    elif not os.path.isdir(path):
+        return N_('Not a directory')
+    if not os.access(path, os.R_OK | os.W_OK | os.X_OK,
+                     effective_ids=os.access in os.supports_effective_ids):
+        return N_('Permission denied')
+    return None
+
+
 class HandlerInterface:
     def on_playlist_request(self) -> Response[bool]:
         raise NotImplementedError
@@ -248,6 +296,10 @@ class HandlerInterface:
 
     #                                         password
     def on_password_request(self) -> Response[str]:
+        raise NotImplementedError
+
+    def on_download_folder_error(self, title: str, message: str
+                                 ) -> Response[None]:
         raise NotImplementedError
 
 

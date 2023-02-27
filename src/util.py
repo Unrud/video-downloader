@@ -19,6 +19,7 @@ import functools
 import locale
 import os
 import subprocess
+import traceback
 import typing
 from collections import OrderedDict
 
@@ -27,18 +28,27 @@ from gi.repository import GLib, GObject
 
 class Closable:
     def __init__(self):
-        self.closed = False
+        self.__closed = False
         self.__close_callbacks = []
 
+    @property
+    def closed(self):
+        return self.__closed
+
     def add_close_callback(self, callback, *args, **kwargs):
-        assert not self.closed, 'closed'
         self.__close_callbacks.append(
             functools.partial(callback, *args, **kwargs))
+        if self.closed:
+            self.close()
 
     def close(self):
-        self.closed = True
+        self.__closed = True
         while self.__close_callbacks:
-            self.__close_callbacks[-1]()
+            try:
+                self.__close_callbacks[-1]()
+            except Exception:
+                g_log(None, GLib.LogLevelFlags.LEVEL_CRITICAL,
+                      '%s', traceback.format_exc())
             del self.__close_callbacks[-1]
 
     def __del__(self):
@@ -58,7 +68,6 @@ class CloseStack(Closable):
         self.__key += 1
 
     def close(self):
-        self.closed = True
         while self.__closables:
             key = next(reversed(self.__closables))
             self.__closables[key].close()
@@ -178,53 +187,61 @@ def languages_from_locale():
 _R = typing.TypeVar('R')
 
 
-class AsyncResponse(typing.Generic[_R]):
-    _done_callback_type = typing.Callable[["AsyncResponse"], None]
-
+class AsyncResponse(typing.Generic[_R], Closable):
     def __init__(self) -> None:
-        self._done_callbacks: typing.List[self._done_callback_type] = []
-        self._done: bool = False
-        self._cancelled: bool = False
-        self._result: typing.Optional[_R] = None
+        super().__init__()
+        self.__done = False
+        self.__cancelled = False
+        self.__result = None
 
     @property
     def done(self) -> bool:
-        return self._done
+        return self.__done
 
     @property
     def cancelled(self) -> bool:
-        return self._cancelled
+        return self.__cancelled
 
     @property
     def result(self) -> typing.Optional[_R]:
-        return self._result
+        return self.__result
 
-    def _schedule_done_callbacks(self):
-        def wrap_callback(callback):
-            def wrapper():
-                callback(self)
-                return False
-            return wrapper
-        assert self._done
-        while self._done_callbacks:
-            self._done_callbacks.pop()(self)
-
-    def add_done_callback(self, callback: _done_callback_type) -> None:
-        self._done_callbacks.append(callback)
-        if self._done:
-            self._schedule_done_callbacks()
+    def add_done_callback(self, callback: typing.Callable[
+                              ["AsyncResponse[_R]"], None]) -> None:
+        self.add_close_callback(callback, self)
 
     def set_result(self, result: _R) -> None:
-        assert not self._done, 'done'
-        self._result = result
-        self._done = True
-        self._schedule_done_callbacks()
+        assert not self.done, 'done'
+        self.__result = result
+        self.__done = True
+        self.close()
 
     def cancel(self) -> None:
-        assert not self._done, 'done'
-        self._cancelled = True
-        self._done = True
-        self._schedule_done_callbacks()
+        assert not self.done, 'done'
+        self.close()
+
+    def chain(self, chained_response: "AsyncResponse[_R]"
+              ) -> "AsyncResponse[_R]":
+        def callbackChain(response):
+            assert response.done
+            if not response.cancelled:
+                chained_response.set_result(response.result)
+            elif not chained_response.cancelled:
+                chained_response.cancel()
+        self.add_done_callback(callbackChain)
+
+        def callbackCancel(chained_response):
+            assert chained_response.done
+            if not self.done:
+                assert chained_response.cancelled
+                self.cancel()
+        chained_response.add_done_callback(callbackCancel)
+
+    def close(self):
+        if not self.done:
+            self.__cancelled = True
+            self.__done = True
+        super().close()
 
 
 Response = typing.Union[_R, AsyncResponse[_R]]
