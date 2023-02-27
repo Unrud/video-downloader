@@ -28,7 +28,7 @@ from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import HandlerInterface, Model
 from video_downloader.playlist_dialog import PlaylistDialog
 from video_downloader.shortcuts_dialog import ShortcutsDialog
-from video_downloader.util import (CloseStack, PropertyBinding,
+from video_downloader.util import (AsyncResponse, CloseStack, PropertyBinding,
                                    SignalConnection, gobject_log)
 
 DOWNLOAD_IMAGE_SIZE = 128
@@ -300,7 +300,9 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         dialog = Gtk.MessageDialog(
             modal=True, destroy_with_parent=True,
             message_type=Gtk.MessageType.ERROR, text=text,
-            secondary_text=secondary_text, buttons=Gtk.ButtonsType.OK)
+            secondary_text=secondary_text, buttons=Gtk.ButtonsType.CANCEL)
+        dialog.add_button(N_('Change Download Location'), Gtk.ResponseType.OK)
+        dialog.set_default_response(Gtk.ResponseType.OK)
         dialog.set_transient_for(self)
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
@@ -328,16 +330,17 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
     def on_playlist_request(self):
         def handle_response(dialog, res):
             if res == Gtk.ResponseType.NO:
-                async_response.respond(False)
+                async_response.set_result(False)
             elif res == Gtk.ResponseType.YES:
-                async_response.respond(True)
+                async_response.set_result(True)
             else:
                 self.model.actions.activate_action('cancel')
         dialog = gobject_log(PlaylistDialog(self))
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
         self._cs.push(connection)
-        async_response = HandlerInterface.AsyncResponse(connection.close)
+        async_response = AsyncResponse()
+        async_response.add_done_callback(lambda _: connection.close())
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
@@ -345,14 +348,15 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
     def on_login_request(self):
         def handle_response(dialog, res):
             if res == Gtk.ResponseType.OK:
-                async_response.respond((dialog.username, dialog.password))
+                async_response.set_result((dialog.username, dialog.password))
             else:
                 self.model.actions.activate_action('cancel')
         dialog = gobject_log(LoginDialog(self))
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
         self._cs.push(connection)
-        async_response = HandlerInterface.AsyncResponse(connection.close)
+        async_response = AsyncResponse()
+        async_response.add_done_callback(lambda _: connection.close())
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
@@ -360,14 +364,15 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
     def on_password_request(self):
         def handle_response(dialog, res):
             if res == Gtk.ResponseType.OK:
-                async_response.respond(dialog.password)
+                async_response.set_result(dialog.password)
             else:
                 self.model.actions.activate_action('cancel')
         dialog = gobject_log(PasswordDialog(self))
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
         self._cs.push(connection)
-        async_response = HandlerInterface.AsyncResponse(connection.close)
+        async_response = AsyncResponse()
+        async_response.add_done_callback(lambda _: connection.close())
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
