@@ -294,6 +294,19 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         self.window_group.add_window(dialog)
         dialog.show()
 
+    def _show_error_message(self, text, secondary_text=''):
+        def handle_response(dialog, res):
+            connection.close()
+        dialog = Gtk.MessageDialog(
+            modal=True, destroy_with_parent=True,
+            message_type=Gtk.MessageType.ERROR, text=text,
+            secondary_text=secondary_text, buttons=Gtk.ButtonsType.OK)
+        dialog.set_transient_for(self)
+        connection = SignalConnection(dialog, 'response', handle_response)
+        connection.add_close_callback(dialog.destroy)
+        self._cs.push(connection)
+        dialog.show()
+
     def _change_download_dir(self):
         def handle_response(dialog, res):
             connection.close()
@@ -301,6 +314,8 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
                 file = dialog.get_file()
                 if file and file.get_path():
                     self.model.download_folder = file.get_path()
+                else:
+                    self._show_error_message(N_('Invalid folder selected'))
         dialog = gobject_log(Gtk.FileChooserNative(
             modal=True, title=N_('Change Download Location'),
             action=Gtk.FileChooserAction.SELECT_FOLDER,
