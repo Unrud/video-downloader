@@ -1,3 +1,5 @@
+[![Translation status](https://hosted.weblate.org/widgets/video-downloader/-/gui/svg-badge.svg)](https://hosted.weblate.org/engage/video-downloader/)
+
 # Video Downloader
 
 Download videos from websites with an easy-to-use interface.
@@ -51,3 +53,7 @@ snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.Vi
 To display messages from **yt-dlp** run program with the environment variable `G_MESSAGES_DEBUG=yt-dlp`.
 
 To display information about GOBject references, start the program with the environment variable `G_MESSAGES_DEBUG=gobject-ref`.
+
+## Translation
+
+We're using [Weblate](https://hosted.weblate.org/engage/video-downloader/) to translate the UI. So feel free, to contribute translations over there.
