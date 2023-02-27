@@ -19,7 +19,7 @@ import os
 import signal
 import sys
 
-from video_downloader.downloader.rpc import RpcClient
+from video_downloader.util.rpc import RpcClient
 
 
 if __name__ == '__main__':

@@ -28,8 +28,10 @@ from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
 from video_downloader.model import HandlerInterface, Model, check_download_dir
 from video_downloader.playlist_dialog import PlaylistDialog
 from video_downloader.shortcuts_dialog import ShortcutsDialog
-from video_downloader.util import (AsyncResponse, CloseStack, PropertyBinding,
-                                   SignalConnection, expand_path, gobject_log)
+from video_downloader.util import gobject_log
+from video_downloader.util.connection import (CloseStack, PropertyBinding,
+                                              SignalConnection)
+from video_downloader.util.response import AsyncResponse
 
 DOWNLOAD_IMAGE_SIZE = 128
 MAX_ASPECT_RATIO = 2.39
@@ -335,7 +337,7 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             file = dialog.get_file()
             message = path = None
             if file and file.get_path():
-                path = expand_path(file.get_path())
+                path = file.get_path()
                 message = check_download_dir(path)
                 if message is None:
                     self.model.download_folder = path

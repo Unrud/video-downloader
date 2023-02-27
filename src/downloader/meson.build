@@ -1,7 +1,6 @@
 video_downloader_sources = files([
   '__init__.py',
   '__main__.py',
-  'rpc.py',
   'yt_dlp_monkey_patch.py',
   'yt_dlp_slave.py',
 ])

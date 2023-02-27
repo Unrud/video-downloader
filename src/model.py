@@ -18,7 +18,6 @@
 import collections
 import gettext
 import os
-import subprocess
 import traceback
 import typing
 
@@ -26,9 +25,11 @@ from gi.repository import Gio, GLib, GObject
 
 from video_downloader import downloader
 from video_downloader.downloader import MAX_RESOLUTION
-from video_downloader.util import (AsyncResponse, CloseStack, PropertyBinding,
-                                   Response, SignalConnection, expand_path,
-                                   g_log, gobject_log, languages_from_locale)
+from video_downloader.util import g_log, gobject_log, languages_from_locale
+from video_downloader.util.connection import (CloseStack, PropertyBinding,
+                                              SignalConnection)
+from video_downloader.util.path import expand_path, open_in_file_manager
+from video_downloader.util.response import AsyncResponse, Response
 
 N_ = gettext.gettext
 
@@ -142,8 +143,8 @@ class Model(GObject.GObject, downloader.HandlerInterface):
 
     def _open_finished_download_dir(self):
         assert self.finished_download_dir
-        _open_in_file_manager(self.finished_download_dir,
-                              self.finished_download_filenames)
+        open_in_file_manager(self.finished_download_dir,
+                             self.finished_download_filenames)
 
     def _try_start_download(self):
         path = expand_path(self.download_folder)
@@ -301,72 +302,3 @@ class HandlerInterface:
     def on_download_folder_error(self, title: str, message: str
                                  ) -> Response[None]:
         raise NotImplementedError
-
-
-def _open_in_file_manager(directory, filenames):
-    # org.freedesktop.portal.OpenURI
-    portal_open_uri_proxy = gobject_log(Gio.DBusProxy.new_for_bus_sync(
-        Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
-        Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
-        Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
-        'org.freedesktop.portal.Desktop',
-        '/org/freedesktop/portal/desktop',
-        'org.freedesktop.portal.OpenURI'))
-    fdlist = gobject_log(Gio.UnixFDList())
-    path = directory
-    if filenames:
-        path = os.path.join(path, filenames[0])
-    try:
-        fd = os.open(path, os.O_RDONLY)
-    except OSError:
-        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
-              traceback.format_exc())
-        return
-    try:
-        handle = fdlist.append(fd)
-    finally:
-        os.close(fd)
-    try:
-        parameters = GLib.Variant('(sha{sv})', ('', handle, {}))
-        portal_open_uri_proxy.call_with_unix_fd_list_sync(
-            'OpenDirectory', parameters, Gio.DBusCallFlags.NONE, -1, fdlist)
-    except GLib.Error:
-        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
-              traceback.format_exc())
-    else:
-        return
-
-    # org.freedesktop.FileManager1
-    filemanager_proxy = gobject_log(Gio.DBusProxy.new_for_bus_sync(
-        Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
-        Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
-        Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
-        'org.freedesktop.FileManager1', '/org/freedesktop/FileManager1',
-        'org.freedesktop.FileManager1'))
-    if filenames:
-        method = 'ShowItems'
-        paths = [os.path.join(directory, filename)
-                 for filename in (filenames or [])]
-        paths = paths[:1]  # Multiple paths open multiple windows
-    else:
-        method = 'ShowFolders'
-        paths = [directory]
-    parameters = GLib.Variant(
-        '(ass)', ([Gio.File.new_for_path(p).get_uri() for p in paths], ''))
-    try:
-        filemanager_proxy.call_sync(
-            method, parameters, Gio.DBusCallFlags.NONE, -1)
-    except GLib.Error:
-        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
-              traceback.format_exc())
-    else:
-        return
-
-    # xdg-open
-    try:
-        subprocess.run(['xdg-open', directory], check=True)
-    except subprocess.SubprocessError:
-        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
-              traceback.format_exc())
-    else:
-        return
