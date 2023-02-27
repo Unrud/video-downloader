@@ -16,14 +16,12 @@
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
 import functools
-import locale
-import os
-import subprocess
 import traceback
-import typing
 from collections import OrderedDict
 
 from gi.repository import GLib, GObject
+
+from video_downloader.util import g_log
 
 
 class Closable:
@@ -128,120 +126,3 @@ class PropertyBinding(Closable):
                 dest_obj.set_property(dest_prop, value)
             finally:
                 self.__frozen = False
-
-
-def expand_path(path):
-    parts = path.replace(os.altsep or os.sep, os.sep).split(os.sep)
-    home_dir = os.path.expanduser('~')
-    if parts[0] == '~':
-        parts[0] = home_dir
-    elif parts[0].startswith('xdg-'):
-        name = parts[0][len('xdg-'):].replace('-', '').upper()
-        try:
-            parts[0] = subprocess.check_output(
-                ['xdg-user-dir', name], universal_newlines=True,
-                stdin=subprocess.DEVNULL).splitlines()[0]
-        except FileNotFoundError:
-            parts[0] = home_dir
-    return os.path.normpath(os.path.join(os.sep, *parts))
-
-
-def gobject_log(obj, info=None):
-    DOMAIN = 'gobject-ref'
-    LEVEL = GLib.LogLevelFlags.LEVEL_DEBUG
-    name = repr(obj)
-    if info:
-        name += ' (' + str(info) + ')'
-    g_log(DOMAIN, LEVEL, 'Create %s', name)
-    obj.weak_ref(g_log, DOMAIN, LEVEL, 'Destroy %s', name)
-    return obj
-
-
-def g_log(domain, log_level, format_string, *args):
-    fields = GLib.Variant('a{sv}', {
-        'MESSAGE': GLib.Variant('s', format_string % args)})
-    GLib.log_variant(domain, log_level, fields)
-
-
-def languages_from_locale():
-    locale_languages = []
-    for envar in ['LANGUAGE', 'LC_ALL', 'LC_MESSAGES', 'LANG']:
-        val = os.environ.get(envar)
-        if val:
-            locale_languages.extend(val.split(':'))
-            break
-    if 'C' not in locale_languages:
-        locale_languages.append('C')
-    languages = []
-    for lang in locale_languages:
-        lang = locale.normalize(lang)
-        for sep in ['@', '.', '_']:
-            lang = lang.split(sep, maxsplit=1)[0]
-        if lang == 'C':
-            lang = 'en'
-        if lang not in languages:
-            languages.append(lang)
-    return languages
-
-
-_R = typing.TypeVar('R')
-
-
-class AsyncResponse(typing.Generic[_R], Closable):
-    def __init__(self) -> None:
-        super().__init__()
-        self.__done = False
-        self.__cancelled = False
-        self.__result = None
-
-    @property
-    def done(self) -> bool:
-        return self.__done
-
-    @property
-    def cancelled(self) -> bool:
-        return self.__cancelled
-
-    @property
-    def result(self) -> typing.Optional[_R]:
-        return self.__result
-
-    def add_done_callback(self, callback: typing.Callable[
-                              ["AsyncResponse[_R]"], None]) -> None:
-        self.add_close_callback(callback, self)
-
-    def set_result(self, result: _R) -> None:
-        assert not self.done, 'done'
-        self.__result = result
-        self.__done = True
-        self.close()
-
-    def cancel(self) -> None:
-        assert not self.done, 'done'
-        self.close()
-
-    def chain(self, chained_response: "AsyncResponse[_R]"
-              ) -> "AsyncResponse[_R]":
-        def callbackChain(response):
-            assert response.done
-            if not response.cancelled:
-                chained_response.set_result(response.result)
-            elif not chained_response.cancelled:
-                chained_response.cancel()
-        self.add_done_callback(callbackChain)
-
-        def callbackCancel(chained_response):
-            assert chained_response.done
-            if not self.done:
-                assert chained_response.cancelled
-                self.cancel()
-        chained_response.add_done_callback(callbackCancel)
-
-    def close(self):
-        if not self.done:
-            self.__cancelled = True
-            self.__done = True
-        super().close()
-
-
-Response = typing.Union[_R, AsyncResponse[_R]]

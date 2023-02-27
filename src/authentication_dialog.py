@@ -19,7 +19,7 @@ import gettext
 
 from gi.repository import GObject, Gtk
 
-from video_downloader.util import CloseStack, PropertyBinding
+from video_downloader.util.connection import CloseStack, PropertyBinding
 
 N_ = gettext.gettext
 

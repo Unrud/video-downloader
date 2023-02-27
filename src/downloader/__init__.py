@@ -28,8 +28,9 @@ import typing
 
 from gi.repository import GLib
 
-from video_downloader.downloader.rpc import handle_rpc_request, rpc_response
-from video_downloader.util import AsyncResponse, Response, g_log
+from video_downloader.util import g_log
+from video_downloader.util.response import AsyncResponse, Response
+from video_downloader.util.rpc import handle_rpc_request, rpc_response
 
 MAX_RESOLUTION = 2**16-1
 

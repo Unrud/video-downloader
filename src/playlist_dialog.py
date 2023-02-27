@@ -19,7 +19,6 @@ import gettext
 
 from gi.repository import Gtk
 
-
 N_ = gettext.gettext
 
 

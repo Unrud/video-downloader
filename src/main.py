@@ -20,7 +20,8 @@ import sys
 
 from gi.repository import Adw, Gio, GLib
 
-from video_downloader.util import CloseStack, SignalConnection, gobject_log
+from video_downloader.util import gobject_log
+from video_downloader.util.connection import CloseStack, SignalConnection
 from video_downloader.window import Window
 
 N_ = gettext.gettext
