@@ -25,11 +25,11 @@ from gi.repository import Adw, GdkPixbuf, Gio, GLib, Gtk
 
 from video_downloader.about_dialog import build_about_dialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
-from video_downloader.model import HandlerInterface, Model
+from video_downloader.model import HandlerInterface, Model, check_download_dir
 from video_downloader.playlist_dialog import PlaylistDialog
 from video_downloader.shortcuts_dialog import ShortcutsDialog
 from video_downloader.util import (AsyncResponse, CloseStack, PropertyBinding,
-                                   SignalConnection, gobject_log)
+                                   SignalConnection, expand_path, gobject_log)
 
 DOWNLOAD_IMAGE_SIZE = 128
 MAX_ASPECT_RATIO = 2.39
@@ -73,7 +73,7 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         for action_name, callback in [
                 ('close', self.destroy), ('about', self._show_about_dialog),
                 ('shortcuts', self._show_shortcuts_dialog),
-                ('change-download-dir', self._change_download_dir)]:
+                ('change-download-folder', self._change_download_folder)]:
             action = gobject_log(Gio.SimpleAction.new(action_name, None),
                                  action_name)
             self._cs.push(SignalConnection(
@@ -120,7 +120,8 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             self.model, 'prefer-mpeg', self.prefer_mpeg_wdg, 'state', bi=True))
         self._cs.push(PropertyBinding(
             self.model, 'state', self.main_stack_wdg, 'visible-child-name',
-            func_a_to_b=lambda s: {'cancel': 'download'}.get(s, s)))
+            func_a_to_b=lambda s: {'prepare': 'download',
+                                   'cancel': 'download'}.get(s, s)))
         self._cs.push(PropertyBinding(
             self.model, 'state', func_a_to_b=self._update_notification))
         self._cs.push(PropertyBinding(
@@ -294,38 +295,69 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         self.window_group.add_window(dialog)
         dialog.show()
 
-    def _show_error_message(self, text, secondary_text=''):
+    def on_download_folder_error(self, title, message, path,
+                                 show_reset_button=True):
         def handle_response(dialog, res):
-            connection.close()
+            if res == RESPONSE_TYPE_CHANGE:
+                self._change_download_folder().chain(async_response)
+                connection.close()
+            elif res == RESPONSE_TYPE_RESET:
+                self.application.settings.reset('download-folder')
+                async_response.set_result(None)
+            else:
+                async_response.cancel()
+        RESPONSE_TYPE_RESET = 100
+        RESPONSE_TYPE_CHANGE = 101
+        if path is not None:
+            message = '%s: %r' % (message, path) if message else repr(path)
         dialog = Gtk.MessageDialog(
             modal=True, destroy_with_parent=True,
-            message_type=Gtk.MessageType.ERROR, text=text,
-            secondary_text=secondary_text, buttons=Gtk.ButtonsType.CANCEL)
-        dialog.add_button(N_('Change Download Location'), Gtk.ResponseType.OK)
-        dialog.set_default_response(Gtk.ResponseType.OK)
+            message_type=Gtk.MessageType.ERROR, text=title,
+            secondary_text=message, buttons=Gtk.ButtonsType.CANCEL)
+        if show_reset_button:
+            dialog.add_button(N_('Reset to Default'), RESPONSE_TYPE_RESET)
+        dialog.add_button(N_('Change Download Location'), RESPONSE_TYPE_CHANGE)
+        dialog.set_default_response(RESPONSE_TYPE_CHANGE)
         dialog.set_transient_for(self)
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
-        self._cs.push(connection)
+        async_response = AsyncResponse()
+        async_response.add_close_callback(connection.close)
+        self._cs.push(async_response)
         dialog.show()
+        return async_response
 
-    def _change_download_dir(self):
+    def _change_download_folder(self):
         def handle_response(dialog, res):
+            if res != Gtk.ResponseType.ACCEPT:
+                async_response.cancel()
+                return
+            file = dialog.get_file()
+            message = path = None
+            if file and file.get_path():
+                path = expand_path(file.get_path())
+                message = check_download_dir(path)
+                if message is None:
+                    self.model.download_folder = path
+                    async_response.set_result(None)
+                    return
+            else:
+                message = N_('Not a directory')
+            self.on_download_folder_error(
+                N_('Invalid folder selected'), message, path,
+                show_reset_button=False).chain(async_response)
             connection.close()
-            if res == Gtk.ResponseType.ACCEPT:
-                file = dialog.get_file()
-                if file and file.get_path():
-                    self.model.download_folder = file.get_path()
-                else:
-                    self._show_error_message(N_('Invalid folder selected'))
         dialog = gobject_log(Gtk.FileChooserNative(
             modal=True, title=N_('Change Download Location'),
             action=Gtk.FileChooserAction.SELECT_FOLDER,
             accept_label=N_('Select Folder'), cancel_label=N_('Cancel')))
         dialog.set_transient_for(self)
         connection = SignalConnection(dialog, 'response', handle_response)
-        self._cs.push(connection)
+        async_response = AsyncResponse()
+        async_response.add_close_callback(connection.close)
+        self._cs.push(async_response)
         dialog.show()
+        return async_response
 
     def on_playlist_request(self):
         def handle_response(dialog, res):
@@ -334,13 +366,13 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             elif res == Gtk.ResponseType.YES:
                 async_response.set_result(True)
             else:
-                self.model.actions.activate_action('cancel')
+                async_response.cancel()
         dialog = gobject_log(PlaylistDialog(self))
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
-        self._cs.push(connection)
         async_response = AsyncResponse()
-        async_response.add_done_callback(lambda _: connection.close())
+        async_response.add_close_callback(connection.close)
+        self._cs.push(async_response)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
@@ -350,13 +382,13 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             if res == Gtk.ResponseType.OK:
                 async_response.set_result((dialog.username, dialog.password))
             else:
-                self.model.actions.activate_action('cancel')
+                async_response.cancel()
         dialog = gobject_log(LoginDialog(self))
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
-        self._cs.push(connection)
         async_response = AsyncResponse()
-        async_response.add_done_callback(lambda _: connection.close())
+        async_response.add_close_callback(connection.close)
+        self._cs.push(async_response)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response
@@ -366,13 +398,13 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             if res == Gtk.ResponseType.OK:
                 async_response.set_result(dialog.password)
             else:
-                self.model.actions.activate_action('cancel')
+                async_response.cancel()
         dialog = gobject_log(PasswordDialog(self))
         connection = SignalConnection(dialog, 'response', handle_response)
         connection.add_close_callback(dialog.destroy)
-        self._cs.push(connection)
         async_response = AsyncResponse()
-        async_response.add_done_callback(lambda _: connection.close())
+        async_response.add_close_callback(connection.close)
+        self._cs.push(async_response)
         self.window_group.add_window(dialog)
         dialog.show()
         return async_response

@@ -34,7 +34,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
     <section>
       <item>
         <attribute name="label" translatable="yes">Change Download Location</attribute>
-        <attribute name="action">win.change-download-dir</attribute>
+        <attribute name="action">win.change-download-folder</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>

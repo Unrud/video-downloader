@@ -43,6 +43,7 @@ class Downloader:
         self._handler = handler
         self._process = None
         self._pending_response = None
+        self._cancelled = False
 
     def shutdown(self):
         self._handler = None
@@ -50,7 +51,9 @@ class Downloader:
             self._finish_process_and_kill_pgrp()
 
     def cancel(self):
-        self._process.terminate()
+        if not self._cancelled:
+            self._process.terminate()
+        self._cancelled = True
         if self._pending_response:
             self._pending_response.cancel()
 
@@ -88,6 +91,7 @@ class Downloader:
     def _finish_process_and_kill_pgrp(self):
         assert self._process
         process, self._process = self._process, None
+        self._cancelled = False
         try:
             # Terminate process gracefully so it can delete temporary files
             process.terminate()
@@ -102,11 +106,12 @@ class Downloader:
         return process.returncode
 
     def _pending_response_callback(self, process, request_line, response):
-        assert response.done
-        if not response.cancelled:
-            self._send_response(process, request_line, response.result)
         assert self._pending_response is response
         self._pending_response = None
+        if response.cancelled:
+            self.cancel()
+        else:
+            self._send_response(process, request_line, response.result)
 
     @staticmethod
     def _send_response(process, request_line, result):
