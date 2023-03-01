@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-27 21:57+0100\n"
-"PO-Revision-Date: 2021-02-05 05:27+0100\n"
-"Last-Translator: Åke Engelbrektson <eson@svenskasprakfiler.se>\n"
-"Language-Team: Svenska Språkfiler <contactform@svenskasprakfiler.se>\n"
+"PO-Revision-Date: 2023-03-02 08:38+0000\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/video-downloader/"
+"gui/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -138,15 +139,15 @@ msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Ogiltig nerladdningsmapp"
 
 #: src/model.py:277 src/model.py:283 src/window.py:347
 msgid "Not a directory"
-msgstr ""
+msgstr "Inte en mapp"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "Åtkomst nekad"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -194,11 +195,11 @@ msgstr "Gå bakåt"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Ändra till ljud"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Ändra till video"
 
 #: src/window.py:178
 msgid "Downloading"
@@ -222,23 +223,23 @@ msgstr "Nerladdning slutförd"
 
 #: src/window.py:282 src/window.ui:513
 msgid "Open Download Location"
-msgstr ""
+msgstr "Öppna nerladdningsplats"
 
 #: src/window.py:320
 msgid "Reset to Default"
-msgstr ""
+msgstr "Återställ till standard"
 
 #: src/window.py:321 src/window.py:353 src/window.ui:36
 msgid "Change Download Location"
-msgstr ""
+msgstr "Ändra nerladdningsplats"
 
 #: src/window.py:349
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Ogiltig mapp vald"
 
 #: src/window.py:355
 msgid "Select Folder"
-msgstr ""
+msgstr "Välj mapp"
 
 #: src/window.ui:44
 msgid "About Video Downloader"
@@ -270,7 +271,7 @@ msgstr "Upplösning"
 
 #: src/window.ui:197
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Föredra MPEG format"
 
 #: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
 msgid "Back"
