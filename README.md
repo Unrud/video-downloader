@@ -28,30 +28,6 @@ Based on [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
 The behavior of the program can be tweaked with GSettings.
 
-### Download folder
-
-Paths can either be absolute or start with `~`, `xdg-desktop`, `xdg-download`,
-`xdg-templates`, `xdg-publicshare`, `xdg-documents`, `xdg-music`, `xdg-pictures` or `xdg-videos`.
-
-The default is `xdg-download/VideoDownloader`.
-
-#### Flatpak
-
-```
-flatpak run --command=gsettings com.github.unrud.VideoDownloader set com.github.unrud.VideoDownloader download-folder '~/VideoDownloader'
-```
-
-Grant filesystem access to the sandboxed app:
-```
-flatpak override --user --filesystem='~/VideoDownloader:create' com.github.unrud.VideoDownloader
-```
-
-#### Snap
-
-```
-snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.VideoDownloader download-folder '~/VideoDownloader'
-```
-
 ### Automatic Subtitles
 
 List of additional automatic subtitles to download. The entry `all` matches all languages.
