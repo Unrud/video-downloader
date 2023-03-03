@@ -31,6 +31,7 @@ from video_downloader.shortcuts_dialog import ShortcutsDialog
 from video_downloader.util import gobject_log
 from video_downloader.util.connection import (CloseStack, PropertyBinding,
                                               SignalConnection)
+from video_downloader.util.path import expand_path
 from video_downloader.util.response import AsyncResponse
 
 DOWNLOAD_IMAGE_SIZE = 128
@@ -338,7 +339,7 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             message = path = None
             if file and file.get_path():
                 path = file.get_path()
-                message = check_download_dir(path)
+                message = check_download_dir(expand_path(path))
                 if message is None:
                     self.model.download_folder = path
                     async_response.set_result(None)
