@@ -169,7 +169,7 @@
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
-                        "version-query": "[.[].name] | sort[-1]",
+                        "version-query": "[.[].name | select(. != \"nightly\")] | sort[-1]",
                         "url-query": "\"https://github.com/yt-dlp/yt-dlp/releases/download/\" + $version + \"/yt-dlp.tar.gz\""
                     }
                 },
