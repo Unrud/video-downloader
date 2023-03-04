@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.11.0" date="2023-03-04">
+    <description>
+      <ul>
+        <li>Add option to change download folder</li>
+        <li>Fix opening download location when file deleted</li>
+        <li>Add Norwegian translation</li>
+        <li>Add Ukrainian translation</li>
+        <li>Update French translation</li>
+        <li>Update Italian translation</li>
+        <li>Update Spanish translation</li>
+        <li>Update Swedish translation</li>
+        <li>Update Turkish translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.10.13" date="2023-01-09">
     <description>
       <ul>
