@@ -50,15 +50,23 @@ def open_in_file_manager(directory, filenames):
         '/org/freedesktop/portal/desktop',
         'org.freedesktop.portal.OpenURI'))
     fdlist = gobject_log(Gio.UnixFDList())
-    path = directory
-    if filenames:
-        path = os.path.join(path, filenames[0])
-    try:
-        fd = os.open(path, os.O_RDONLY)
-    except OSError:
-        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
-              traceback.format_exc())
-        return
+    for filename in filenames:
+        path = os.path.join(directory, filename)
+        try:
+            fd = os.open(path, os.O_RDONLY)
+        except OSError:
+            g_log(None, GLib.LogLevelFlags.LEVEL_DEBUG, '%s',
+                  traceback.format_exc())
+            continue
+        break
+    else:
+        path = directory
+        try:
+            fd = os.open(path, os.O_RDONLY)
+        except OSError:
+            g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+                  traceback.format_exc())
+            return
     try:
         handle = fdlist.append(fd)
     finally:
@@ -80,16 +88,9 @@ def open_in_file_manager(directory, filenames):
         Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
         'org.freedesktop.FileManager1', '/org/freedesktop/FileManager1',
         'org.freedesktop.FileManager1'))
-    if filenames:
-        method = 'ShowItems'
-        paths = [os.path.join(directory, filename)
-                 for filename in (filenames or [])]
-        paths = paths[:1]  # Multiple paths open multiple windows
-    else:
-        method = 'ShowFolders'
-        paths = [directory]
+    method = 'ShowFolders' if path == diretory else 'ShowItems'
     parameters = GLib.Variant(
-        '(ass)', ([Gio.File.new_for_path(p).get_uri() for p in paths], ''))
+        '(ass)', ([Gio.File.new_for_path(path).get_uri()], ''))
     try:
         filemanager_proxy.call_sync(
             method, parameters, Gio.DBusCallFlags.NONE, -1)
