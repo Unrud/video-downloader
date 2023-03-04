@@ -32,6 +32,8 @@ from yt_dlp.postprocessor.ffmpeg import (FFmpegPostProcessor,
                                          FFmpegPostProcessorError)
 from yt_dlp.utils import dfxp2srt, sanitize_filename
 
+from video_downloader.util.path import encode_filesystem_path
+
 # File names are typically limited to 255 bytes
 MAX_OUTPUT_TITLE_LENGTH = 200
 MAX_THUMBNAIL_RESOLUTION = 1024
@@ -44,8 +46,7 @@ def _short_filename(name, length):
             output += '…'
         output = sanitize_filename(output)
         # Check length with file system encoding
-        if (len(output.encode(sys.getfilesystemencoding(), 'ignore'))
-                < length):
+        if len(encode_filesystem_path(output)) < length:
             return output
     raise ValueError('can\'t shorten filename %r to %r bytes' % (name, length))
 

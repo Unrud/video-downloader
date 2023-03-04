@@ -41,6 +41,11 @@ def expand_path(path):
     return os.path.normpath(os.path.join(os.sep, *parts))
 
 
+def encode_filesystem_path(path):
+    return path.encode(sys.getfilesystemencoding(),
+                       sys.getfilesystemencodeerrors())
+
+
 def decode_filesystem_path(path):
     return path.decode(sys.getfilesystemencoding(),
                        sys.getfilesystemencodeerrors())
