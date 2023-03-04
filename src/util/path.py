@@ -17,6 +17,7 @@
 
 import os
 import subprocess
+import sys
 import traceback
 
 from gi.repository import Gio, GLib
@@ -40,7 +41,35 @@ def expand_path(path):
     return os.path.normpath(os.path.join(os.sep, *parts))
 
 
+def decode_filesystem_path(path):
+    return path.decode(sys.getfilesystemencoding(),
+                       sys.getfilesystemencodeerrors())
+
+
 def open_in_file_manager(directory, filenames):
+    # org.freedesktop.portal.Documents
+    portal_documents_proxy = gobject_log(Gio.DBusProxy.new_for_bus_sync(
+        Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
+        Gio.DBusProxyFlags.DO_NOT_CONNECT_SIGNALS |
+        Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
+        'org.freedesktop.portal.Documents',
+        '/org/freedesktop/portal/documents',
+        'org.freedesktop.portal.Documents'))
+    try:
+        documents_mount_point = decode_filesystem_path(
+            portal_documents_proxy.call_sync(
+                'GetMountPoint', None, Gio.DBusCallFlags.NONE, -1
+            ).get_child_value(0).get_bytestring())
+    except GLib.Error:
+        g_log(None, GLib.LogLevelFlags.LEVEL_WARNING, '%s',
+              traceback.format_exc())
+    else:
+        directory_in_documents_portal = os.path.normpath(directory).startswith(
+            os.path.normpath(documents_mount_point)+os.sep)
+        if directory_in_documents_portal:
+            # WORAROUND: Subpaths in the documents portal are not translated
+            filenames = []
+
     # org.freedesktop.portal.OpenURI
     portal_open_uri_proxy = gobject_log(Gio.DBusProxy.new_for_bus_sync(
         Gio.BusType.SESSION, Gio.DBusProxyFlags.DO_NOT_LOAD_PROPERTIES |
