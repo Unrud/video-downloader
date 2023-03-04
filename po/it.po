@@ -2,16 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Albano Battistella <albano:battistella@hotmail.com>,2020.
-# Albano Battistella <albano:battistella@hotmail.com>,2021,2022.
+# Albano Battistella <albano:battistella@hotmail.com>,2021,2022,2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-27 21:57+0100\n"
-"PO-Revision-Date: 2022-11-27 19:26+0100\n"
+"PO-Revision-Date: 2023-03-04 13:26+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
-"Language-Team: ITALIAN <LL@li.org>\n"
+"Language-Team: Italian <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -143,11 +143,11 @@ msgstr ""
 
 #: src/model.py:277 src/model.py:283 src/window.py:347
 msgid "Not a directory"
-msgstr ""
+msgstr "Non una directory"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "Permesso negato"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -227,19 +227,19 @@ msgstr "Apri Percorso di Download"
 
 #: src/window.py:320
 msgid "Reset to Default"
-msgstr ""
+msgstr "Ripristina impostazioni predefinite"
 
 #: src/window.py:321 src/window.py:353 src/window.ui:36
 msgid "Change Download Location"
-msgstr ""
+msgstr "Cambia posizione di download"
 
 #: src/window.py:349
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Cartella selezionata non valida"
 
 #: src/window.py:355
 msgid "Select Folder"
-msgstr ""
+msgstr "Seleziona cartella"
 
 #: src/window.ui:44
 msgid "About Video Downloader"
