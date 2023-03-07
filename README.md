@@ -1,6 +1,6 @@
-[![Translation status](https://hosted.weblate.org/widgets/video-downloader/-/gui/svg-badge.svg)](https://hosted.weblate.org/engage/video-downloader/)
-
 # Video Downloader
+
+[![Translation status](https://hosted.weblate.org/widgets/video-downloader/-/gui/svg-badge.svg)](https://hosted.weblate.org/engage/video-downloader/)
 
 Download videos from websites with an easy-to-use interface.
 Provides the following features:
@@ -14,9 +14,16 @@ Based on [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
 ## Installation
 
-  * [Flatpak](https://flathub.org/apps/details/com.github.unrud.VideoDownloader)
-  * [Snap](https://snapcraft.io/video-downloader)
+<a href='https://flathub.org/apps/details/com.github.unrud.VideoDownloader'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+
+### Alternative installation methods
+
+  * [Snap Store](https://snapcraft.io/video-downloader)
   * [Fedora](https://src.fedoraproject.org/rpms/video-downloader): `sudo dnf install video-downloader`
+
+## Translation
+
+We're using [Weblate](https://hosted.weblate.org/engage/video-downloader/) to translate the UI. So feel free, to contribute translations over there.
 
 ## Screenshots
 
@@ -53,7 +60,3 @@ snap run --shell video-downloader -c 'gsettings "$@"' '' set com.github.unrud.Vi
 To display messages from **yt-dlp** run program with the environment variable `G_MESSAGES_DEBUG=yt-dlp`.
 
 To display information about GOBject references, start the program with the environment variable `G_MESSAGES_DEBUG=gobject-ref`.
-
-## Translation
-
-We're using [Weblate](https://hosted.weblate.org/engage/video-downloader/) to translate the UI. So feel free, to contribute translations over there.
