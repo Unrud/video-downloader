@@ -20,6 +20,7 @@ Based on [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
   * [Snap Store](https://snapcraft.io/video-downloader)
   * [Fedora](https://src.fedoraproject.org/rpms/video-downloader): `sudo dnf install video-downloader`
+  * [Arch User Repository](https://aur.archlinux.org/packages/video-downloader)
 
 ## Translation
 
