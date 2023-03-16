@@ -7,270 +7,278 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-27 21:57+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-03-17 18:38+0000\n"
+"Last-Translator: Troja <d.iwowi.b@gmail.com>\n"
+"Language-Team: Belarusian <https://hosted.weblate.org/projects/"
+"video-downloader/gui/be/>\n"
 "Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:38 src/window.ui:53
 msgid "Video Downloader"
-msgstr ""
+msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download videos from websites like YouTube and many others"
-msgstr ""
+msgstr "Спампуйце відэа з вэб-сайтаў, такіх як YouTube і многіх іншых"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
+"Спампоўвайце відэа з вэб-сайтаў з простым у выкарыстанні інтэрфейсам. "
+"Прадастаўляе наступныя магчымасці:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr ""
+msgstr "Канвертаваць відэа ў MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr ""
+msgstr "Падтрымлівае абароненыя паролем і прыватныя відэа"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr ""
+msgstr "Спампуйце асобныя відэа ці цэлыя спісы прайгравання"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
+"Аўтаматычна выбірае фармат відэа ў залежнасці ад вашых патрабаванняў да "
+"якасці"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "Заснаваны на yt-dlp."
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 #: src/shortcuts_dialog.ui:39 src/window.ui:29
 msgid "New Window"
-msgstr ""
+msgstr "Новае акно"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr ""
+msgstr "Патрабуецца аўтэнтыфікацыя"
 
 #: src/authentication_dialog.py:34 src/window.py:355 src/window.ui:248
 msgid "Cancel"
-msgstr ""
+msgstr "Адмяніць"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr ""
+msgstr "Увайсці"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr ""
+msgstr "Прапусціць"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:13
 msgid "The video is not public."
-msgstr ""
+msgstr "Відэа не з'яўляецца агульнадаступным."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "Імя карыстальніка"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:22
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: src/main.py:37
 msgid "Prefill URL field"
-msgstr ""
+msgstr "Поле URL профілю"
 
 #: src/model.py:66
 msgid "Best"
-msgstr ""
+msgstr "Найлепшае"
 
 #: src/model.py:67
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:68
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:69
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:70
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:71
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:72
 msgid "480p"
-msgstr ""
+msgstr "480p"
 
 #: src/model.py:73
 msgid "360p"
-msgstr ""
+msgstr "360p"
 
 #: src/model.py:74
 msgid "240p"
-msgstr ""
+msgstr "240p"
 
 #: src/model.py:75
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Няправільная папка спампоўкі"
 
 #: src/model.py:277 src/model.py:283 src/window.py:347
 msgid "Not a directory"
-msgstr ""
+msgstr "Не каталог"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "У доступе адмоўлена"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "Спампаваць спіс прайгравання?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "Відэа з'яўляецца часткай плэйліста."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr ""
+msgstr "Асобнае відэа"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "Усе відэа ў спісе прайгравання"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "Агульны"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Адкрыць меню"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Зачыніць акно"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Выйсці"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:40
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Спалучэнні клавіш"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "Навігацыя"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "Вярнуцца назад"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Пераключыцца на Аўдыё"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Пераключыцца на Відэа"
 
 #: src/window.py:178
 msgid "Downloading"
-msgstr ""
+msgstr "Спампоўка"
 
 #: src/window.py:180 src/window.py:203
 msgid "{} of {}"
-msgstr ""
+msgstr "{} з {}"
 
 #: src/window.py:204 src/window.py:206
 msgid "unknown"
-msgstr ""
+msgstr "невядома"
 
 #: src/window.py:274 src/window.ui:387
 msgid "Download failed"
-msgstr ""
+msgstr "Памылка спампоўкі"
 
 #: src/window.py:278 src/window.ui:504
 msgid "Download finished"
-msgstr ""
+msgstr "Спампоўка скончана"
 
 #: src/window.py:282 src/window.ui:513
 msgid "Open Download Location"
-msgstr ""
+msgstr "Адкрыйце месцазнаходжанне загрузкі"
 
 #: src/window.py:320
 msgid "Reset to Default"
-msgstr ""
+msgstr "Скід па змаўчанні"
 
 #: src/window.py:321 src/window.py:353 src/window.ui:36
 msgid "Change Download Location"
-msgstr ""
+msgstr "Змяніць месца загрузкі"
 
 #: src/window.py:349
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Выбрана няправільная папка"
 
 #: src/window.py:355
 msgid "Select Folder"
-msgstr ""
+msgstr "Выберыце папку"
 
 #: src/window.ui:44
 msgid "About Video Downloader"
-msgstr ""
+msgstr "Аб Video Downloader"
 
 #: src/window.ui:94
 msgid "Main Menu"
-msgstr ""
+msgstr "Галоўнае меню"
 
 #: src/window.ui:108
 msgid "Audio"
-msgstr ""
+msgstr "Аўдыё"
 
 #: src/window.ui:130 src/window.ui:181
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:140 src/window.ui:210
 msgid "Download"
-msgstr ""
+msgstr "Спампаваць"
 
 #: src/window.ui:159
 msgid "Video"
-msgstr ""
+msgstr "Відэа"
 
 #: src/window.ui:189
 msgid "Resolution"
-msgstr ""
+msgstr "Дазвол"
 
 #: src/window.ui:197
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Аддайце перавагу фармату MPEG"
 
 #: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: src/window.ui:406
 msgid "Details"
-msgstr ""
+msgstr "Дэталі"
