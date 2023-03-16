@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Philip Goto <philip.goto@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-27 21:57+0100\n"
-"PO-Revision-Date: 2021-04-01 17:32+0200\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2023-03-17 18:38+0000\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/video-downloader/"
+"gui/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -27,23 +27,23 @@ msgstr "Videodownloader"
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download videos from websites like YouTube and many others"
-msgstr "Download video's van videowebsites, zoals bijv. YouTube"
+msgstr "Download video's van websites als YouTube en nog vele andere"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Download video's van websites met deze gemakkelijk te gebruiken toepassing. "
-"Kenmerken:"
+"Download video's van websites via een gemakkelijk te gebruiken interface. "
+"Bevat de volgende functies:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Converteer video's naar mp3"
+msgstr "Converteer video's naar MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "Ondersteunt wachtwoord-beveiligde en privévideo's"
+msgstr "Ondersteunt met wachtwoord-beveiligde video's en privévideo's"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "Gebaseerd op yt-dlp."
+msgstr "Gebaseerd op yt-dlp"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 #: src/shortcuts_dialog.ui:39 src/window.ui:29
@@ -82,7 +82,7 @@ msgstr "Overslaan"
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:13
 msgid "The video is not public."
-msgstr "Deze video is niet openbaar."
+msgstr "Deze video is niet openbaar"
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
@@ -139,15 +139,15 @@ msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Ongeldige downloadmap"
 
 #: src/model.py:277 src/model.py:283 src/window.py:347
 msgid "Not a directory"
-msgstr ""
+msgstr "Geen map"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "Toestemming geweigerd"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -155,7 +155,7 @@ msgstr "Afspeellijst downloaden?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr "Deze video maakt deel uit van een afspeellijst."
+msgstr "Deze video maakt deel uit van een afspeellijst"
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
@@ -163,7 +163,7 @@ msgstr "Losse video"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "Alle video's op de afspeellijst"
+msgstr "Alle video's in de afspeellijst"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
@@ -195,11 +195,11 @@ msgstr "Ga terug"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Schakelen naar audio"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Schakelen naar video"
 
 #: src/window.py:178
 msgid "Downloading"
@@ -227,19 +227,19 @@ msgstr "Downloadlocatie openen"
 
 #: src/window.py:320
 msgid "Reset to Default"
-msgstr ""
+msgstr "Standaard herstellen"
 
 #: src/window.py:321 src/window.py:353 src/window.ui:36
 msgid "Change Download Location"
-msgstr ""
+msgstr "Downloadlocatie aanpassen"
 
 #: src/window.py:349
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Ongeldige map geselecteerd"
 
 #: src/window.py:355
 msgid "Select Folder"
-msgstr ""
+msgstr "Map selecteren"
 
 #: src/window.ui:44
 msgid "About Video Downloader"
@@ -271,7 +271,7 @@ msgstr "Resolutie"
 
 #: src/window.ui:197
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "MPEG-formaat voorkeur geven"
 
 #: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
 msgid "Back"
