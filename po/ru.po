@@ -2,21 +2,22 @@
 # Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Umidjon Almasov <umidjon@almasov.uz>, 2022.
-#
+# Valeriy Manzhos <valeronishe2002@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-27 21:57+0100\n"
-"PO-Revision-Date: 2022-02-01 20:34+0500\n"
-"Last-Translator: Umidjon Almasov <umidjon@almasov.uz>\n"
-"Language-Team: Russian\n"
+"PO-Revision-Date: 2023-03-19 14:38+0000\n"
+"Last-Translator: Valeriy Manzhos <valeronishe2002@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/video-downloader/"
+"gui/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Weblate 4.16.2-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -139,15 +140,15 @@ msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Неправильная папка для загрузки"
 
 #: src/model.py:277 src/model.py:283 src/window.py:347
 msgid "Not a directory"
-msgstr ""
+msgstr "Не каталог"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "Отказано в доступе"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -195,11 +196,11 @@ msgstr "Перейти назад"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Переключиться на аудио"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Переключиться на видео"
 
 #: src/window.py:178
 msgid "Downloading"
@@ -227,19 +228,19 @@ msgstr "Открыть место загрузки"
 
 #: src/window.py:320
 msgid "Reset to Default"
-msgstr ""
+msgstr "Сбросить по умолчанию"
 
 #: src/window.py:321 src/window.py:353 src/window.ui:36
 msgid "Change Download Location"
-msgstr ""
+msgstr "Изменить место загрузки"
 
 #: src/window.py:349
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Выбрана недопустимая папка"
 
 #: src/window.py:355
 msgid "Select Folder"
-msgstr ""
+msgstr "Выберите папку"
 
 #: src/window.ui:44
 msgid "About Video Downloader"
@@ -271,7 +272,7 @@ msgstr "Разрешение"
 
 #: src/window.ui:197
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Предпочитать формат MPEG"
 
 #: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
 msgid "Back"
