@@ -1,23 +1,23 @@
 # Croatian translations for video-downloader package.
 # Copyright (C) 2021 THE video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-# Milo Ivir <mail@milotype.de>, 2021.
-#
+# Milo Ivir <mail@milotype.de>, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-27 21:57+0100\n"
-"PO-Revision-Date: 2021-09-24 12:20+0100\n"
+"PO-Revision-Date: 2023-03-26 00:39+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Croatian\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/"
+"video-downloader/gui/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -138,17 +138,16 @@ msgid "144p"
 msgstr "144 p"
 
 #: src/model.py:157
-#, fuzzy
 msgid "Invalid download folder"
-msgstr "Preuzimanje videa"
+msgstr "Neispravna mapa za preuzimanja"
 
 #: src/model.py:277 src/model.py:283 src/window.py:347
 msgid "Not a directory"
-msgstr ""
+msgstr "Nije direktorij"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "Dozvola je odbijena"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -176,7 +175,7 @@ msgstr "Otvori izbornik"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Zatvori prozor"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
@@ -196,11 +195,11 @@ msgstr "Idi natrag"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Prijeđi na audio"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Prijeđi na video"
 
 #: src/window.py:178
 msgid "Downloading"
@@ -228,20 +227,19 @@ msgstr "Otvori mjesto preuzimanja"
 
 #: src/window.py:320
 msgid "Reset to Default"
-msgstr ""
+msgstr "Resetiraj na standardne vrijednosti"
 
 #: src/window.py:321 src/window.py:353 src/window.ui:36
-#, fuzzy
 msgid "Change Download Location"
-msgstr "Otvori mjesto preuzimanja"
+msgstr "Promijeni mjesto preuzimanja"
 
 #: src/window.py:349
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Odabrana je neispravna mapa"
 
 #: src/window.py:355
 msgid "Select Folder"
-msgstr ""
+msgstr "Odaberi mapu"
 
 #: src/window.ui:44
 msgid "About Video Downloader"
@@ -273,7 +271,7 @@ msgstr "Rezolucija"
 
 #: src/window.ui:197
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Preferiraj MPEG format"
 
 #: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
 msgid "Back"
