@@ -2,7 +2,6 @@
 # Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Gustavo Machado Peredo <gustavomperedo@protonmail.com>, 2020.
-# Unrud <unrud@outlook.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"

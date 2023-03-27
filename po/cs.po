@@ -2,7 +2,6 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Vojtěch Perník <translations@pervoj.cz>, 2021.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"

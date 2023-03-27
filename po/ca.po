@@ -2,7 +2,6 @@
 # Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Ícar N. S. <icar.nin@protonmail.com>, 2021.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"

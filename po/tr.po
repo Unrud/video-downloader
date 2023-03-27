@@ -1,10 +1,8 @@
 # Turkish translations for video-downloader package.
 # Copyright (C) 2020-2022 video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-#
 # ÜSolmaz <u2slmz@protonmail.com>, 2021.
 # Sabri Ünal <libreajans@gmail.com>, 2022.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
