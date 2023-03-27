@@ -1,6 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
+# Heimen Stoffels <vistausss@outlook.com>, 2020-2021.
 # Philip Goto <philip.goto@gmail.com>, 2023.
 msgid ""
 msgstr ""
