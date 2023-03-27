@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Christian Elbrianno <crse@protonmail.ch>, 2023.
+# Reza Almanda <rezaalmanda27@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-27 21:57+0100\n"
-"PO-Revision-Date: 2023-03-22 09:37+0000\n"
-"Last-Translator: Christian Elbrianno <crse@protonmail.ch>\n"
+"PO-Revision-Date: 2023-03-27 21:48+0000\n"
+"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/"
 "video-downloader/gui/id/>\n"
 "Language: id\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -51,94 +52,94 @@ msgstr "Unduh satu video atau seluruh daftar putar"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr ""
+msgstr "Secara otomatis memilih format video berdasarkan kualitas yg anda pilih"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "Berdasarkan yt-dlp."
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 #: src/shortcuts_dialog.ui:39 src/window.ui:29
 msgid "New Window"
-msgstr ""
+msgstr "Jendela Baru"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr ""
+msgstr "Otentikasi diperlukan"
 
 #: src/authentication_dialog.py:34 src/window.py:355 src/window.ui:248
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr ""
+msgstr "Masuk"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr ""
+msgstr "Lewati"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:13
 msgid "The video is not public."
-msgstr ""
+msgstr "Video ini tidak untuk umum."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "Nama pengguna"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:22
 msgid "Password"
-msgstr ""
+msgstr "Kata sandi"
 
 #: src/main.py:37
 msgid "Prefill URL field"
-msgstr ""
+msgstr "Bidang URL yang sudah diisi sebelumnya"
 
 #: src/model.py:66
 msgid "Best"
-msgstr ""
+msgstr "Terbaik"
 
 #: src/model.py:67
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:68
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:69
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:70
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:71
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:72
 msgid "480p"
-msgstr ""
+msgstr "480p"
 
 #: src/model.py:73
 msgid "360p"
-msgstr ""
+msgstr "360p"
 
 #: src/model.py:74
 msgid "240p"
-msgstr ""
+msgstr "240p"
 
 #: src/model.py:75
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Folder unduhan tidak valid"
 
 #: src/model.py:277 src/model.py:283 src/window.py:347
 msgid "Not a directory"
