@@ -21,6 +21,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
   <object class="GtkTextBuffer" id="error_buffer">
+    <property name="enable-undo">False</property>
     <property name="text">Error XXX</property>
   </object>
   <menu id="hamburger_menu">
