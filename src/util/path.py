@@ -122,7 +122,7 @@ def open_in_file_manager(directory, filenames):
         Gio.DBusProxyFlags.DO_NOT_AUTO_START_AT_CONSTRUCTION, None,
         'org.freedesktop.FileManager1', '/org/freedesktop/FileManager1',
         'org.freedesktop.FileManager1'))
-    method = 'ShowFolders' if path == diretory else 'ShowItems'
+    method = 'ShowFolders' if path == directory else 'ShowItems'
     parameters = GLib.Variant(
         '(ass)', ([Gio.File.new_for_path(path).get_uri()], ''))
     try:
