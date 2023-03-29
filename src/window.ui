@@ -426,6 +426,10 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                         <property name="editable">0</property>
                                         <property name="wrap-mode">word-char</property>
                                         <property name="buffer">error_buffer</property>
+                                        <property name="bottom-margin">6</property>
+                                        <property name="left-margin">6</property>
+                                        <property name="right-margin">6</property>
+                                        <property name="top-margin">6</property>
                                       </object>
                                     </property>
                                   </object>
