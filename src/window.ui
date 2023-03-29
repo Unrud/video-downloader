@@ -487,7 +487,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                 </child>
                 <child>
                   <object class="AdwClamp">
-                    <property name="valign">center</property>
                     <property name="vexpand">True</property>
                     <child>
                       <object class="GtkBox">
@@ -518,6 +517,52 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                             <property name="label" translatable="yes">Open Download Location</property>
                             <property name="halign">center</property>
                             <property name="action-name">win.open-finished-download-dir</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="vexpand">1</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkExpander" id="success_details_expander_wdg">
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child type="label">
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">Details</property>
+                                  </object>
+                                </child>
+                                <accessibility>
+                                  <relation name="owns">success_details_revealer_wdg</relation>
+                                </accessibility>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkRevealer" id="success_details_revealer_wdg">
+                                <property name="vexpand">1</property>
+                                <property name="transition-type">crossfade</property>
+                                <property name="reveal-child" bind-source="success_details_expander_wdg" bind-property="expanded" bind-flags="sync-create"/>
+                                <property name="child">
+                                  <object class="GtkScrolledWindow">
+                                    <property name="hscrollbar-policy">never</property>
+                                    <property name="has-frame">True</property>
+                                    <property name="child">
+                                      <object class="GtkTextView" id="success_details_view_wdg">
+                                        <property name="editable">0</property>
+                                        <property name="wrap-mode">word-char</property>
+                                        <property name="bottom-margin">0</property>
+                                        <property name="left-margin">6</property>
+                                        <property name="right-margin">6</property>
+                                        <property name="top-margin">6</property>
+                                        <property name="pixels-below-lines">6</property>
+                                      </object>
+                                    </property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                       </object>
