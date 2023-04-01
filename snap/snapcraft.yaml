@@ -11,7 +11,7 @@ adopt-info: video-downloader
 
 base: core22
 confinement: strict
-
+type: app
 environment:
   # WORKAROUND: Add python modules in Snap to search path
   PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
