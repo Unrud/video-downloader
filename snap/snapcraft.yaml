@@ -35,23 +35,6 @@ slots:
     name: com.github.unrud.VideoDownloader
 
 parts:
-  libadwaita:
-    plugin: meson
-    source: https://gitlab.gnome.org/GNOME/libadwaita/-/archive/1.2.0/libadwaita-1.2.0.tar.bz2
-    source-checksum: sha256/9da0df3d2f2f5c0a79becd47d09312124542545e4aa1ea151b993c5f6b939e78
-    override-pull: |
-      craftctl default
-      # WORKAROUND: Ignore compiler warning
-      sed -e 's/-W\(format-nonliteral\)\b/-Wno-\1/g' -i meson.build
-    meson-parameters:
-      # WORKAROUND: Must be installed to /usr because of GI search path
-      - --prefix=/usr
-      - -Dexamples=false
-      - -Dtests=false
-      - -Dvapi=false
-    stage:
-      - -usr/include
-
   ffmpeg:
     # WORKAROUND:
     # Build from source because the ffmpeg package installs libraries as dependencies
@@ -112,7 +95,7 @@ parts:
       - -pyvenv.cfg
 
   video-downloader:
-    after: [libadwaita, yt-dlp]
+    after: [ffmpeg, yt-dlp]
     plugin: meson
     source: .
     source-type: git
