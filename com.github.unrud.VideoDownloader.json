@@ -63,8 +63,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/iustin/pyxattr/archive/refs/tags/v0.8.0.tar.gz",
-                    "sha256": "8d72f0c8d43bb9d75b1948229983d2e99593b0e9fd417e89a9026fd1e23b57e7",
+                    "url": "https://github.com/iustin/pyxattr/archive/refs/tags/v0.8.1.tar.gz",
+                    "sha256": "ce7ef783e751b96610a6eb32fc49a89340b5dc575fbe15054ce7935ebaf49edb",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/iustin/pyxattr/releases/latest",
@@ -124,8 +124,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/11.0.1.tar.gz",
-                    "sha256": "17e49a3c552c2a214d667e4c0d1e3908663922bdbc63c619f63560f444124f42",
+                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/11.0.2.tar.gz",
+                    "sha256": "94b19db57b4a20e1b253d888dfaefdc3bf5c581afbe340cf6d548ae8a419b401",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/aaugustin/websockets/tags",
