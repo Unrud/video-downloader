@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the video-downloader package.
+# Lee Junseo <junseo010111@gmail.com>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: video-downloader\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-27 21:57+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
+#: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
+#: src/main.py:38 src/window.ui:53
+msgid "Video Downloader"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
+#: data/com.github.unrud.VideoDownloader.desktop.in:4
+msgid "Download videos from websites like YouTube and many others"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
+msgid ""
+"Download videos from websites with an easy-to-use interface. Provides the "
+"following features:"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
+msgid "Convert videos to MP3"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
+msgid "Supports password-protected and private videos"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
+msgid "Download single videos or whole playlists"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
+msgid "Automatically selects a video format based on your quality demands"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
+msgid "Based on yt-dlp."
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+#: src/shortcuts_dialog.ui:39 src/window.ui:29
+msgid "New Window"
+msgstr ""
+
+#: src/authentication_dialog.py:30
+msgid "Authentication Required"
+msgstr ""
+
+#: src/authentication_dialog.py:34 src/window.py:355 src/window.ui:248
+msgid "Cancel"
+msgstr ""
+
+#: src/authentication_dialog.py:46
+msgid "Sign in"
+msgstr ""
+
+#: src/authentication_dialog.py:46
+msgid "Skip"
+msgstr ""
+
+#: src/authentication_dialog_login.ui:31
+#: src/authentication_dialog_password.ui:13
+msgid "The video is not public."
+msgstr ""
+
+#: src/authentication_dialog_login.ui:44
+msgid "Username"
+msgstr ""
+
+#: src/authentication_dialog_login.ui:70
+#: src/authentication_dialog_password.ui:22
+msgid "Password"
+msgstr ""
+
+#: src/main.py:37
+msgid "Prefill URL field"
+msgstr ""
+
+#: src/model.py:66
+msgid "Best"
+msgstr ""
+
+#: src/model.py:67
+msgid "4320p (8K)"
+msgstr ""
+
+#: src/model.py:68
+msgid "2160p (4K)"
+msgstr ""
+
+#: src/model.py:69
+msgid "1440p (HD)"
+msgstr ""
+
+#: src/model.py:70
+msgid "1080p (HD)"
+msgstr ""
+
+#: src/model.py:71
+msgid "720p (HD)"
+msgstr ""
+
+#: src/model.py:72
+msgid "480p"
+msgstr ""
+
+#: src/model.py:73
+msgid "360p"
+msgstr ""
+
+#: src/model.py:74
+msgid "240p"
+msgstr ""
+
+#: src/model.py:75
+msgid "144p"
+msgstr ""
+
+#: src/model.py:157
+msgid "Invalid download folder"
+msgstr ""
+
+#: src/model.py:277 src/model.py:283 src/window.py:347
+msgid "Not a directory"
+msgstr ""
+
+#: src/model.py:281 src/model.py:286
+msgid "Permission denied"
+msgstr ""
+
+#: src/playlist_dialog.py:29
+msgid "Download Playlist?"
+msgstr ""
+
+#: src/playlist_dialog.py:30
+msgid "The video is part of a playlist."
+msgstr ""
+
+#: src/playlist_dialog.py:32
+msgid "Single Video"
+msgstr ""
+
+#: src/playlist_dialog.py:33
+msgid "All Videos in Playlist"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:29
+msgid "General"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:33
+msgid "Open Menu"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:45
+msgid "Close Window"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:51
+msgid "Quit"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:57 src/window.ui:40
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:64
+msgid "Navigation"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:68
+msgid "Go back"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:74
+msgid "Switch to Audio"
+msgstr ""
+
+#: src/shortcuts_dialog.ui:80
+msgid "Switch to Video"
+msgstr ""
+
+#: src/window.py:178
+msgid "Downloading"
+msgstr ""
+
+#: src/window.py:180 src/window.py:203
+msgid "{} of {}"
+msgstr ""
+
+#: src/window.py:204 src/window.py:206
+msgid "unknown"
+msgstr ""
+
+#: src/window.py:274 src/window.ui:387
+msgid "Download failed"
+msgstr ""
+
+#: src/window.py:278 src/window.ui:504
+msgid "Download finished"
+msgstr ""
+
+#: src/window.py:282 src/window.ui:513
+msgid "Open Download Location"
+msgstr ""
+
+#: src/window.py:320
+msgid "Reset to Default"
+msgstr ""
+
+#: src/window.py:321 src/window.py:353 src/window.ui:36
+msgid "Change Download Location"
+msgstr ""
+
+#: src/window.py:349
+msgid "Invalid folder selected"
+msgstr ""
+
+#: src/window.py:355
+msgid "Select Folder"
+msgstr ""
+
+#: src/window.ui:44
+msgid "About Video Downloader"
+msgstr ""
+
+#: src/window.ui:94
+msgid "Main Menu"
+msgstr ""
+
+#: src/window.ui:108
+msgid "Audio"
+msgstr ""
+
+#: src/window.ui:130 src/window.ui:181
+msgid "URL"
+msgstr ""
+
+#: src/window.ui:140 src/window.ui:210
+msgid "Download"
+msgstr ""
+
+#: src/window.ui:159
+msgid "Video"
+msgstr ""
+
+#: src/window.ui:189
+msgid "Resolution"
+msgstr ""
+
+#: src/window.ui:197
+msgid "Prefer MPEG format"
+msgstr ""
+
+#: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
+msgid "Back"
+msgstr ""
+
+#: src/window.ui:406
+msgid "Details"
+msgstr ""
