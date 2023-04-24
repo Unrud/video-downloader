@@ -7,270 +7,274 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-27 21:57+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-04-25 08:48+0000\n"
+"Last-Translator: Lee Junseo <junseo010111@gmail.com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/video-downloader/"
+"gui/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:38 src/window.ui:53
 msgid "Video Downloader"
-msgstr ""
+msgstr "비디오 다운로더"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download videos from websites like YouTube and many others"
-msgstr ""
+msgstr "유튜브, 또는 다양한 웹사이트에서 동영상을 다운받으세요"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
-msgstr ""
+msgstr "간편한 인터페이스로 웹사이트들에서 동영상을 다운받을 수 있습니다. 다음과 "
+"같은 기능들을 제공합니다:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr ""
+msgstr "동영상을 MP3 형식으로 변환하기"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr ""
+msgstr "암호가 있거나 비공개된 영상들을 지원합니다"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr ""
+msgstr "동영상 한개, 또는 재생목록 전체를 다운받을 수 있습니다"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr ""
+msgstr "당신의 영상 품질 선택에 따라 비디오의 형식을 자동으로 선택합니다"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "yt-dlp를 기반으로 합니다."
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 #: src/shortcuts_dialog.ui:39 src/window.ui:29
 msgid "New Window"
-msgstr ""
+msgstr "새 창"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr ""
+msgstr "인증 필요"
 
 #: src/authentication_dialog.py:34 src/window.py:355 src/window.ui:248
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr ""
+msgstr "로그인"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr ""
+msgstr "건너뛰기"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:13
 msgid "The video is not public."
-msgstr ""
+msgstr "이 영상은 공개 상태가 아닙니다."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "아이디"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:22
 msgid "Password"
-msgstr ""
+msgstr "비밀번호"
 
 #: src/main.py:37
 msgid "Prefill URL field"
-msgstr ""
+msgstr "미리 입력된 URL란"
 
 #: src/model.py:66
 msgid "Best"
-msgstr ""
+msgstr "최상"
 
 #: src/model.py:67
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:68
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:69
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:70
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:71
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:72
 msgid "480p"
-msgstr ""
+msgstr "480p"
 
 #: src/model.py:73
 msgid "360p"
-msgstr ""
+msgstr "360p"
 
 #: src/model.py:74
 msgid "240p"
-msgstr ""
+msgstr "240p"
 
 #: src/model.py:75
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "잘못된 다운로드 폴더"
 
 #: src/model.py:277 src/model.py:283 src/window.py:347
 msgid "Not a directory"
-msgstr ""
+msgstr "경로가 아님"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "접근 권한 없음"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "재생목록을 다운로드 하시겠습니까?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "재생목록에 포함된 영상입니다."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr ""
+msgstr "단일 영상"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "재생목록의 모든 동영상들"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "일반"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "매뉴 열기"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "창 닫기"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "나가기"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:40
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "키보드 단축키"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "네비게이션"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "뒤로가기"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "음성으로 전환하기"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "영상으로 전환하기"
 
 #: src/window.py:178
 msgid "Downloading"
-msgstr ""
+msgstr "다운로드중"
 
 #: src/window.py:180 src/window.py:203
 msgid "{} of {}"
-msgstr ""
+msgstr "{} 의 {}"
 
 #: src/window.py:204 src/window.py:206
 msgid "unknown"
-msgstr ""
+msgstr "알수없음"
 
 #: src/window.py:274 src/window.ui:387
 msgid "Download failed"
-msgstr ""
+msgstr "다운로드 실패"
 
 #: src/window.py:278 src/window.ui:504
 msgid "Download finished"
-msgstr ""
+msgstr "다운로드 완료"
 
 #: src/window.py:282 src/window.ui:513
 msgid "Open Download Location"
-msgstr ""
+msgstr "다운로드 위치 열기"
 
 #: src/window.py:320
 msgid "Reset to Default"
-msgstr ""
+msgstr "기본값으로 초기화"
 
 #: src/window.py:321 src/window.py:353 src/window.ui:36
 msgid "Change Download Location"
-msgstr ""
+msgstr "다운로드 위치 변경"
 
 #: src/window.py:349
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "잘못된 폴더 선택됨"
 
 #: src/window.py:355
 msgid "Select Folder"
-msgstr ""
+msgstr "폴더 선택"
 
 #: src/window.ui:44
 msgid "About Video Downloader"
-msgstr ""
+msgstr "Video Downloader에 대하여"
 
 #: src/window.ui:94
 msgid "Main Menu"
-msgstr ""
+msgstr "메인 매뉴"
 
 #: src/window.ui:108
 msgid "Audio"
-msgstr ""
+msgstr "음성"
 
 #: src/window.ui:130 src/window.ui:181
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:140 src/window.ui:210
 msgid "Download"
-msgstr ""
+msgstr "다운로드"
 
 #: src/window.ui:159
 msgid "Video"
-msgstr ""
+msgstr "동영상"
 
 #: src/window.ui:189
 msgid "Resolution"
-msgstr ""
+msgstr "해상도"
 
 #: src/window.ui:197
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "MPEG 형식 선호"
 
 #: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
 msgid "Back"
-msgstr ""
+msgstr "뒤로가기"
 
 #: src/window.ui:406
 msgid "Details"
-msgstr ""
+msgstr "자세히 보기"
