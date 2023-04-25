@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.2" date="2023-04-25">
+    <description>
+      <ul>
+        <li>Fix display state of "Prefer MPEG format" switch after startup</li>
+        <li>Add Korean translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.1" date="2023-04-10">
     <description>
       <ul>
