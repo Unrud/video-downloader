@@ -201,7 +201,8 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             lambda r: list(self.model.resolutions).index(r),
             lambda i: list(self.model.resolutions)[i], bi=True))
         self._cs.push(PropertyBinding(
-            self.model, 'prefer-mpeg', self.prefer_mpeg_wdg, 'state', bi=True))
+            self.model, 'prefer-mpeg', self.prefer_mpeg_wdg, 'active',
+            bi=True))
         self._cs.push(PropertyBinding(
             self.model, 'state', self.main_stack_wdg, 'visible-child-name',
             func_a_to_b=lambda s: {'prepare': 'download',
