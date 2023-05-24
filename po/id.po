@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-27 21:57+0100\n"
-"PO-Revision-Date: 2023-03-27 21:48+0000\n"
-"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
+"PO-Revision-Date: 2023-05-25 19:52+0000\n"
+"Last-Translator: Christian Elbrianno <crse@protonmail.ch>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/"
 "video-downloader/gui/id/>\n"
 "Language: id\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -143,140 +143,140 @@ msgstr "Folder unduhan tidak valid"
 
 #: src/model.py:277 src/model.py:283 src/window.py:347
 msgid "Not a directory"
-msgstr ""
+msgstr "Bukan sebuah direktori"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "Izin ditolak"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "Unduh Daftar Putar?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "Video ini merupakan bagian dari daftar putar."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr ""
+msgstr "Video Tunggal"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "Semua Video dalam Daftar Putar"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "Umum"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Buka Menu"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Tutup Jendela"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Keluar"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:40
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Pintasan Papan Tik"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "Navigasi"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "Kembali"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Ganti ke Audio"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Ganti ke Video"
 
 #: src/window.py:178
 msgid "Downloading"
-msgstr ""
+msgstr "Mengunduh"
 
 #: src/window.py:180 src/window.py:203
 msgid "{} of {}"
-msgstr ""
+msgstr "{} dari {}"
 
 #: src/window.py:204 src/window.py:206
 msgid "unknown"
-msgstr ""
+msgstr "tidak diketahui"
 
 #: src/window.py:274 src/window.ui:387
 msgid "Download failed"
-msgstr ""
+msgstr "Unduhan gagal"
 
 #: src/window.py:278 src/window.ui:504
 msgid "Download finished"
-msgstr ""
+msgstr "Unduhan selesai"
 
 #: src/window.py:282 src/window.ui:513
 msgid "Open Download Location"
-msgstr ""
+msgstr "Buka Lokasi Unduhan"
 
 #: src/window.py:320
 msgid "Reset to Default"
-msgstr ""
+msgstr "Atur Ulang ke Asal"
 
 #: src/window.py:321 src/window.py:353 src/window.ui:36
 msgid "Change Download Location"
-msgstr ""
+msgstr "Ganti Lokasi Unduhan"
 
 #: src/window.py:349
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Folder terpilih tidak valid"
 
 #: src/window.py:355
 msgid "Select Folder"
-msgstr ""
+msgstr "Pilih Folder"
 
 #: src/window.ui:44
 msgid "About Video Downloader"
-msgstr ""
+msgstr "Tentang Video Downloader"
 
 #: src/window.ui:94
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu Utama"
 
 #: src/window.ui:108
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: src/window.ui:130 src/window.ui:181
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:140 src/window.ui:210
 msgid "Download"
-msgstr ""
+msgstr "Unduh"
 
 #: src/window.ui:159
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: src/window.ui:189
 msgid "Resolution"
-msgstr ""
+msgstr "Resolusi"
 
 #: src/window.ui:197
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Lebih suka format MPEG"
 
 #: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
 msgid "Back"
-msgstr ""
+msgstr "Kembali"
 
 #: src/window.ui:406
 msgid "Details"
-msgstr ""
+msgstr "Detail"
