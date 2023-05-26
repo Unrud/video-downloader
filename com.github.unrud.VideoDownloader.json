@@ -104,8 +104,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.17.0.tar.gz",
-                    "sha256": "d677199dc3f4d502d6d78bd8855f313eed427be4545bd6a8188c7fc0799ea379",
+                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.18.0.tar.gz",
+                    "sha256": "60f58349c3d62a99bb87665b2a16afda87dc2d537a14aa45aaad1a3748b781ba",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/Legrandin/pycryptodome/tags",
