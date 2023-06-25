@@ -79,7 +79,7 @@ class SignalConnection(Closable):
         def on_notify(*args):
             if no_args:
                 args = []
-            callback(*args, *extra_args)
+            return callback(*args, *extra_args)
         handler = obj.connect(signal_name, on_notify)
         self.add_close_callback(obj.disconnect, handler)
 
