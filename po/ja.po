@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-27 21:57+0100\n"
+"POT-Creation-Date: 2023-06-25 16:29+0200\n"
 "PO-Revision-Date: 2023-03-26 00:39+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/"
-"video-downloader/gui/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/video-"
+"downloader/gui/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
-#: src/main.py:38 src/window.ui:53
+#: src/main.py:39 src/window.ui:54
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
@@ -59,7 +59,7 @@ msgid "Based on yt-dlp."
 msgstr "yt-dlp を利用しています。"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
-#: src/shortcuts_dialog.ui:39 src/window.ui:29
+#: src/shortcuts_dialog.ui:39 src/window.ui:30
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
@@ -67,7 +67,7 @@ msgstr "新しいウィンドウ"
 msgid "Authentication Required"
 msgstr "認証が必要です"
 
-#: src/authentication_dialog.py:34 src/window.py:355 src/window.ui:248
+#: src/authentication_dialog.py:34 src/window.ui:249
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -80,7 +80,7 @@ msgid "Skip"
 msgstr "スキップ"
 
 #: src/authentication_dialog_login.ui:31
-#: src/authentication_dialog_password.ui:13
+#: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
 msgstr "閲覧が制限されている動画です。"
 
@@ -89,11 +89,11 @@ msgid "Username"
 msgstr "ユーザー名"
 
 #: src/authentication_dialog_login.ui:70
-#: src/authentication_dialog_password.ui:22
+#: src/authentication_dialog_password.ui:40
 msgid "Password"
 msgstr "パスワード"
 
-#: src/main.py:37
+#: src/main.py:38
 msgid "Prefill URL field"
 msgstr "URL フィールドに事前入力する"
 
@@ -141,7 +141,7 @@ msgstr "144p"
 msgid "Invalid download folder"
 msgstr "無効なダウンロードフォルダー"
 
-#: src/model.py:277 src/model.py:283 src/window.py:347
+#: src/model.py:277 src/model.py:283 src/window.py:434
 msgid "Not a directory"
 msgstr "ディレクトリではありません"
 
@@ -181,7 +181,7 @@ msgstr "ウィンドウを閉じる"
 msgid "Quit"
 msgstr "終了する"
 
-#: src/shortcuts_dialog.ui:57 src/window.ui:40
+#: src/shortcuts_dialog.ui:57 src/window.ui:41
 msgid "Keyboard Shortcuts"
 msgstr "キーボードショートカットを表示する"
 
@@ -201,82 +201,82 @@ msgstr "音声画面に切り替え"
 msgid "Switch to Video"
 msgstr "動画画面に切り替え"
 
-#: src/window.py:178
+#: src/window.py:263
 msgid "Downloading"
 msgstr "ダウンロード中"
 
-#: src/window.py:180 src/window.py:203
+#: src/window.py:265 src/window.py:288
 msgid "{} of {}"
 msgstr "{} / {}"
 
-#: src/window.py:204 src/window.py:206
+#: src/window.py:289 src/window.py:291
 msgid "unknown"
 msgstr "不明"
 
-#: src/window.py:274 src/window.ui:387
+#: src/window.py:359 src/window.ui:388
 msgid "Download failed"
 msgstr "ダウンロード失敗"
 
-#: src/window.py:278 src/window.ui:504
+#: src/window.py:363 src/window.ui:508
 msgid "Download finished"
 msgstr "ダウンロード完了"
 
-#: src/window.py:282 src/window.ui:513
+#: src/window.py:367 src/window.ui:517
 msgid "Open Download Location"
 msgstr "ダウンロード先を開く"
 
-#: src/window.py:320
+#: src/window.py:405
 msgid "Reset to Default"
 msgstr "デフォルトにリセット"
 
-#: src/window.py:321 src/window.py:353 src/window.ui:36
+#: src/window.py:406 src/window.py:439 src/window.ui:37
 msgid "Change Download Location"
 msgstr "ダウンロード先を変更"
 
-#: src/window.py:349
+#: src/window.py:436
 msgid "Invalid folder selected"
 msgstr "選択したフォルダーは無効です"
 
-#: src/window.py:355
+#: src/window.py:440
 msgid "Select Folder"
 msgstr "フォルダーを選択"
 
-#: src/window.ui:44
+#: src/window.ui:45
 msgid "About Video Downloader"
 msgstr "Video Downloader について"
 
-#: src/window.ui:94
+#: src/window.ui:95
 msgid "Main Menu"
 msgstr "メインメニュー"
 
-#: src/window.ui:108
+#: src/window.ui:109
 msgid "Audio"
 msgstr "音声"
 
-#: src/window.ui:130 src/window.ui:181
+#: src/window.ui:131 src/window.ui:182
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:140 src/window.ui:210
+#: src/window.ui:141 src/window.ui:211
 msgid "Download"
 msgstr "ダウンロード"
 
-#: src/window.ui:159
+#: src/window.ui:160
 msgid "Video"
 msgstr "動画"
 
-#: src/window.ui:189
+#: src/window.ui:190
 msgid "Resolution"
 msgstr "解像度"
 
-#: src/window.ui:197
+#: src/window.ui:198
 msgid "Prefer MPEG format"
 msgstr "MPEG 形式で取得"
 
-#: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
+#: src/window.ui:340 src/window.ui:359 src/window.ui:460 src/window.ui:479
 msgid "Back"
 msgstr "戻る"
 
-#: src/window.ui:406
+#: src/window.ui:407 src/window.ui:534
 msgid "Details"
 msgstr "詳細"

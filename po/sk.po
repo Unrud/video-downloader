@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-27 21:57+0100\n"
+"POT-Creation-Date: 2023-06-25 16:29+0200\n"
 "PO-Revision-Date: 2021-02-05 05:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: https://github.com/martin-sk\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
-#: src/main.py:38 src/window.ui:53
+#: src/main.py:39 src/window.ui:54
 msgid "Video Downloader"
 msgstr "Video Downloader"
 
@@ -58,7 +58,7 @@ msgid "Based on yt-dlp."
 msgstr "Založený na yt-dlp."
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
-#: src/shortcuts_dialog.ui:39 src/window.ui:29
+#: src/shortcuts_dialog.ui:39 src/window.ui:30
 msgid "New Window"
 msgstr "Nové okno"
 
@@ -66,7 +66,7 @@ msgstr "Nové okno"
 msgid "Authentication Required"
 msgstr "Vyžaduje sa autentifikácia"
 
-#: src/authentication_dialog.py:34 src/window.py:355 src/window.ui:248
+#: src/authentication_dialog.py:34 src/window.ui:249
 msgid "Cancel"
 msgstr "Zrušiť"
 
@@ -79,7 +79,7 @@ msgid "Skip"
 msgstr "Preskočiť"
 
 #: src/authentication_dialog_login.ui:31
-#: src/authentication_dialog_password.ui:13
+#: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
 msgstr "Video nie je verejné."
 
@@ -88,11 +88,11 @@ msgid "Username"
 msgstr "Používateľské meno"
 
 #: src/authentication_dialog_login.ui:70
-#: src/authentication_dialog_password.ui:22
+#: src/authentication_dialog_password.ui:40
 msgid "Password"
 msgstr "Heslo"
 
-#: src/main.py:37
+#: src/main.py:38
 msgid "Prefill URL field"
 msgstr "Predvyplnené URL pole"
 
@@ -140,7 +140,7 @@ msgstr "144p"
 msgid "Invalid download folder"
 msgstr ""
 
-#: src/model.py:277 src/model.py:283 src/window.py:347
+#: src/model.py:277 src/model.py:283 src/window.py:434
 msgid "Not a directory"
 msgstr ""
 
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Quit"
 msgstr "Ukončenie"
 
-#: src/shortcuts_dialog.ui:57 src/window.ui:40
+#: src/shortcuts_dialog.ui:57 src/window.ui:41
 msgid "Keyboard Shortcuts"
 msgstr "Klávesové skratky"
 
@@ -200,82 +200,82 @@ msgstr ""
 msgid "Switch to Video"
 msgstr ""
 
-#: src/window.py:178
+#: src/window.py:263
 msgid "Downloading"
 msgstr "Sťahujem"
 
-#: src/window.py:180 src/window.py:203
+#: src/window.py:265 src/window.py:288
 msgid "{} of {}"
 msgstr "{} z {}"
 
-#: src/window.py:204 src/window.py:206
+#: src/window.py:289 src/window.py:291
 msgid "unknown"
 msgstr "neznámy"
 
-#: src/window.py:274 src/window.ui:387
+#: src/window.py:359 src/window.ui:388
 msgid "Download failed"
 msgstr "Sťahovanie neúspešné"
 
-#: src/window.py:278 src/window.ui:504
+#: src/window.py:363 src/window.ui:508
 msgid "Download finished"
 msgstr "Sťahovanie je hotové"
 
-#: src/window.py:282 src/window.ui:513
+#: src/window.py:367 src/window.ui:517
 msgid "Open Download Location"
 msgstr "Otvoriť cieľové umiestnenie"
 
-#: src/window.py:320
+#: src/window.py:405
 msgid "Reset to Default"
 msgstr ""
 
-#: src/window.py:321 src/window.py:353 src/window.ui:36
+#: src/window.py:406 src/window.py:439 src/window.ui:37
 msgid "Change Download Location"
 msgstr ""
 
-#: src/window.py:349
+#: src/window.py:436
 msgid "Invalid folder selected"
 msgstr ""
 
-#: src/window.py:355
+#: src/window.py:440
 msgid "Select Folder"
 msgstr ""
 
-#: src/window.ui:44
+#: src/window.ui:45
 msgid "About Video Downloader"
 msgstr "O programe"
 
-#: src/window.ui:94
+#: src/window.ui:95
 msgid "Main Menu"
 msgstr "Hlavná ponuka"
 
-#: src/window.ui:108
+#: src/window.ui:109
 msgid "Audio"
 msgstr "Zvuk"
 
-#: src/window.ui:130 src/window.ui:181
+#: src/window.ui:131 src/window.ui:182
 msgid "URL"
 msgstr "URL"
 
-#: src/window.ui:140 src/window.ui:210
+#: src/window.ui:141 src/window.ui:211
 msgid "Download"
 msgstr "Stiahnuť"
 
-#: src/window.ui:159
+#: src/window.ui:160
 msgid "Video"
 msgstr "Video"
 
-#: src/window.ui:189
+#: src/window.ui:190
 msgid "Resolution"
 msgstr "Rozlíšenie"
 
-#: src/window.ui:197
+#: src/window.ui:198
 msgid "Prefer MPEG format"
 msgstr ""
 
-#: src/window.ui:339 src/window.ui:358 src/window.ui:455 src/window.ui:474
+#: src/window.ui:340 src/window.ui:359 src/window.ui:460 src/window.ui:479
 msgid "Back"
 msgstr "Späť"
 
-#: src/window.ui:406
+#: src/window.ui:407 src/window.ui:534
 msgid "Details"
 msgstr "Detaily"
