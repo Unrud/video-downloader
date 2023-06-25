@@ -34,6 +34,6 @@ gnome.post_install(
 
 if (python_for_linting.found() and python_sources_for_linting.length() > 0)
   test('Lint python sources', python_for_linting,
-    args: ['-m', 'flake8', python_sources_for_linting]
+    args: ['-m', 'flake8', python_sources_for_linting],
   )
 endif
