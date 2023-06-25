@@ -53,7 +53,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
   <template class="VideoDownloaderWindow" parent="AdwApplicationWindow">
     <property name="title" translatable="yes">Video Downloader</property>
     <property name="default-width">600</property>
-    <child>
+    <property name="content">
       <object class="GtkStack" id="main_stack_wdg">
         <property name="transition-type">slide-left-right</property>
         <child>
@@ -574,7 +574,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
           </object>
         </child>
       </object>
-    </child>
+    </property>
     <child>
       <object class="GtkShortcutController">
         <property name="scope">global</property>
