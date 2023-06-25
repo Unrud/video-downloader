@@ -52,7 +52,8 @@ video_downloader_bin = configure_file(
   output: 'video-downloader',
   configuration: conf,
   install: true,
-  install_dir: get_option('bindir')
+  install_dir: get_option('bindir'),
+  install_mode: 'r-xr-xr-x'
 )
 python_sources_for_linting += video_downloader_bin
 
