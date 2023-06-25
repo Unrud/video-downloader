@@ -21,7 +21,8 @@ import sys
 from gi.repository import Adw, Gio, GLib
 
 from video_downloader.util import gobject_log
-from video_downloader.util.connection import CloseStack, SignalConnection
+from video_downloader.util.connection import (
+    CloseStack, SignalConnection, create_action)
 from video_downloader.window import Window
 
 N_ = gettext.gettext
@@ -44,16 +45,10 @@ class Application(Adw.Application):
         self.settings = gobject_log(
             Gio.Settings.new(self.props.application_id))
         # Setup actions
-        new_window_action = gobject_log(Gio.SimpleAction.new(
-            'new-window', GLib.VariantType('s')), 'new-window')
-        self._cs.push(SignalConnection(
-            new_window_action, 'activate',
-            lambda _, param: self._new_window(param.get_string())))
-        self.add_action(new_window_action)
-        quit_action = gobject_log(Gio.SimpleAction.new('quit', None), 'quit')
-        self._cs.push(SignalConnection(
-            quit_action, 'activate', self._quit, no_args=True))
-        self.add_action(quit_action)
+        create_action(self, self._cs, 'new-window',
+                      lambda _, param: self._new_window(param.get_string()),
+                      parameter_type=GLib.VariantType('s'))
+        create_action(self, self._cs, 'quit', self._quit, no_args=True)
         self._cs.push(SignalConnection(
             self, 'window-removed', lambda _, win: win.destroy()))
 
@@ -79,7 +74,7 @@ class Application(Adw.Application):
                                Gio.SettingsBindFlags.GET_NO_CHANGES))
         resolution = self.settings.get_uint('resolution')
         model.resolution = sorted(model.resolutions,
-                                  key=lambda x: abs(x-resolution))[0]
+                                  key=lambda x: abs(x - resolution))[0]
         self.settings.bind('resolution', model, 'resolution',
                            Gio.SettingsBindFlags.SET)
         win.present()

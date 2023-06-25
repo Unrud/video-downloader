@@ -19,9 +19,9 @@ import functools
 import traceback
 from collections import OrderedDict
 
-from gi.repository import GLib, GObject
+from gi.repository import Gio, GLib, GObject
 
-from video_downloader.util import g_log
+from video_downloader.util import g_log, gobject_log
 
 
 class Closable:
@@ -126,3 +126,12 @@ class PropertyBinding(Closable):
                 dest_obj.set_property(dest_prop, value)
             finally:
                 self.__frozen = False
+
+
+def create_action(action_group, closable, name, callback, *extra_args,
+                  parameter_type=None, no_args=False):
+    action = gobject_log(Gio.SimpleAction.new(name, parameter_type), name)
+    closable.push(SignalConnection(
+        action, 'activate', callback, *extra_args, no_args=no_args))
+    action_group.add_action(action)
+    closable.add_close_callback(action_group.remove_action, name)

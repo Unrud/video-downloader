@@ -31,7 +31,7 @@ from video_downloader.playlist_dialog import PlaylistDialog
 from video_downloader.shortcuts_dialog import ShortcutsDialog
 from video_downloader.util import gobject_log
 from video_downloader.util.connection import (CloseStack, PropertyBinding,
-                                              SignalConnection)
+                                              SignalConnection, create_action)
 from video_downloader.util.path import expand_path, open_in_file_manager
 from video_downloader.util.response import AsyncResponse
 
@@ -154,39 +154,28 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         for action_name in self.model.actions.list_actions():
             self.add_action(self.model.actions.lookup_action(action_name))
             self._cs.add_close_callback(self.remove_action, action_name)
-        for action_name, callback in [
-                ('close', self.destroy), ('about', self._show_about_dialog),
-                ('shortcuts', self._show_shortcuts_dialog),
-                ('change-download-folder', self._change_download_folder)]:
-            action = gobject_log(Gio.SimpleAction.new(action_name, None),
-                                 action_name)
-            self._cs.push(SignalConnection(
-                action, 'activate', callback, no_args=True))
-            self.add_action(action)
-            self._cs.add_close_callback(self.remove_action, action_name)
-        action_name = 'set-audio-video-page'
-        action = gobject_log(Gio.SimpleAction.new(
-            action_name, GLib.VariantType('s')), action_name)
-        self._cs.push(SignalConnection(
-            action, 'activate',
+        create_action(self, self._cs, 'close', self.destroy, no_args=True)
+        create_action(self, self._cs, 'about', self._show_about_dialog,
+                      no_args=True)
+        create_action(self, self._cs, 'shortcuts', self._show_shortcuts_dialog,
+                      no_args=True)
+        create_action(self, self._cs, 'change-download-folder',
+                      self._change_download_folder, no_args=True)
+        create_action(
+            self, self._cs, 'set-audio-video-page',
             lambda _, param: self.audio_video_stack_wdg.set_visible_child_name(
-                                 param.get_string())))
-        self.add_action(action)
-        self._cs.add_close_callback(self.remove_action, action_name)
+                                 param.get_string()),
+            parameter_type=GLib.VariantType('s'))
         # Register notifcation actions
         self._notification_uuid = str(uuid.uuid4())
-        for name, callback, *extra_args in [
-                ('notification-success', self.present),
-                ('notification-error', self.present),
-                ('notification-open-finished-download-dir',
-                 self.model.actions.activate_action,
-                 'open-finished-download-dir')]:
-            action_name = '%s--%s' % (name, self._notification_uuid)
-            action = gobject_log(Gio.SimpleAction.new(action_name), name)
-            self._cs.push(SignalConnection(
-                action, 'activate', callback, *extra_args, no_args=True))
-            application.add_action(action)
-            self._cs.add_close_callback(application.remove_action, action_name)
+        create_action(application, self._cs, 'notification-success--' +
+                      self._notification_uuid, self.present, no_args=True)
+        create_action(application, self._cs, 'notification-error--' +
+                      self._notification_uuid, self.present, no_args=True)
+        create_action(
+            application, self._cs, 'notification-open-finished-download-dir--'
+            + self._notification_uuid, self.model.actions.activate_action,
+            'open-finished-download-dir', no_args=True)
         # Bind properties to UI
         self._cs.push(PropertyBinding(
             self.model, 'error', self.error_buffer, 'text'))
@@ -369,14 +358,14 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         if state == 'error':
             notification.set_title(N_('Download failed'))
             notification.set_default_action(
-                'app.notification-error--%s' % self._notification_uuid)
+                'app.notification-error--' + self._notification_uuid)
         elif state == 'success':
             notification.set_title(N_('Download finished'))
             notification.set_default_action(
-                'app.notification-success--%s' % self._notification_uuid)
+                'app.notification-success--' + self._notification_uuid)
             notification.add_button(
                 N_('Open Download Location'),
-                'app.notification-open-finished-download-dir--%s' %
+                'app.notification-open-finished-download-dir--' +
                 self._notification_uuid)
         else:
             assert False, 'unreachable'
