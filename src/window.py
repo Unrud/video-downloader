@@ -415,11 +415,13 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         return async_response
 
     def _change_download_folder(self):
-        def handle_response(dialog, res):
-            if res != Gtk.ResponseType.ACCEPT:
+        def handle_callback(dialog, task):
+            try:
+                file = dialog.select_folder_finish(task)
+            except GLib.GError:
+                # Dialog cancelled
                 async_response.cancel()
                 return
-            file = dialog.get_file()
             message = path = None
             if file and file.get_path():
                 path = file.get_path()
@@ -433,17 +435,14 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             self.on_download_folder_error(
                 N_('Invalid folder selected'), message, path,
                 show_reset_button=False).chain(async_response)
-            connection.close()
-        dialog = gobject_log(Gtk.FileChooserNative(
+        dialog = gobject_log(Gtk.FileDialog(
             modal=True, title=N_('Change Download Location'),
-            action=Gtk.FileChooserAction.SELECT_FOLDER,
-            accept_label=N_('Select Folder'), cancel_label=N_('Cancel')))
-        dialog.set_transient_for(self)
-        connection = SignalConnection(dialog, 'response', handle_response)
+            accept_label=N_('Select Folder')))
+        cancellable = Gio.Cancellable()
         async_response = AsyncResponse()
-        async_response.add_close_callback(connection.close)
+        async_response.add_close_callback(cancellable.cancel)
         self._cs.push(async_response)
-        dialog.show()
+        dialog.select_folder(self, cancellable, handle_callback)
         return async_response
 
     def on_playlist_request(self):
