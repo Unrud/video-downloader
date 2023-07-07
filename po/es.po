@@ -4,13 +4,15 @@
 # Rafael Mardojai CM <mardojai.cardenas@gmail.com>, 2020.
 # Óscar Fernández Díaz <oscfdezdz@tuta.io>, 2022.
 # gallegonovato <fran-carro@hotmail.es>, 2023.
+# Óscar Fernández Díaz <oscfdezdz@users.noreply.hosted.weblate.org>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-25 16:29+0200\n"
-"PO-Revision-Date: 2023-03-02 08:38+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2023-07-08 08:48+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@users.noreply.hosted.weblate"
+".org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/video-downloader/"
 "gui/es/>\n"
 "Language: es\n"
@@ -18,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -194,7 +196,7 @@ msgstr "Navegación"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "Atrás"
+msgstr "Volver"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
