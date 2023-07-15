@@ -2,14 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Vojtěch Perník <translations@pervoj.cz>, 2021.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# vikdevelop <super-vik1@protonmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-25 16:29+0200\n"
-"PO-Revision-Date: 2023-03-29 15:52+0000\n"
-"Last-Translator: Unrud <unrud@outlook.com>\n"
+"PO-Revision-Date: 2023-07-16 15:00+0000\n"
+"Last-Translator: vikdevelop <super-vik1@protonmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/video-downloader/"
 "gui/cs/>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -56,7 +56,7 @@ msgstr "Automatický výběr formátu videa podle zvolených požadavků na kval
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "Postavený na yt-dlp."
+msgstr "Založen na yt-dlp."
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 #: src/shortcuts_dialog.ui:39 src/window.ui:30
@@ -65,7 +65,7 @@ msgstr "Nové okno"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "Je vyžadována autentikace"
+msgstr "Je vyžadováno ověření"
 
 #: src/authentication_dialog.py:34 src/window.ui:249
 msgid "Cancel"
@@ -139,7 +139,7 @@ msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr "Neplatná složka ke stažení"
+msgstr "Neplatná složka pro stahování"
 
 #: src/model.py:277 src/model.py:283 src/window.py:434
 msgid "Not a directory"
@@ -195,15 +195,15 @@ msgstr "Přejít zpět"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Přepnout na zvuk"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Přepnout na video"
 
 #: src/window.py:263
 msgid "Downloading"
-msgstr "Stahuji"
+msgstr "Stahování"
 
 #: src/window.py:265 src/window.py:288
 msgid "{} of {}"
@@ -215,7 +215,7 @@ msgstr "neznámý"
 
 #: src/window.py:359 src/window.ui:388
 msgid "Download failed"
-msgstr "Stahování selhalo"
+msgstr "Stahování se nezdařilo"
 
 #: src/window.py:363 src/window.ui:508
 msgid "Download finished"
@@ -223,23 +223,23 @@ msgstr "Stahování dokončeno"
 
 #: src/window.py:367 src/window.ui:517
 msgid "Open Download Location"
-msgstr "Otevřít adresář stahování"
+msgstr "Otevřít adresář pro stahování"
 
 #: src/window.py:405
 msgid "Reset to Default"
-msgstr ""
+msgstr "Resetovat na výchozí hodnoty"
 
 #: src/window.py:406 src/window.py:439 src/window.ui:37
 msgid "Change Download Location"
-msgstr ""
+msgstr "Vybrat složku pro stahování"
 
 #: src/window.py:436
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Vybrána nesprávná složka"
 
 #: src/window.py:440
 msgid "Select Folder"
-msgstr ""
+msgstr "Vybrat složku"
 
 #: src/window.ui:45
 msgid "About Video Downloader"
@@ -271,7 +271,7 @@ msgstr "Rozlišení"
 
 #: src/window.ui:198
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Preferovat formát MPEG"
 
 #: src/window.ui:340 src/window.ui:359 src/window.ui:460 src/window.ui:479
 msgid "Back"
