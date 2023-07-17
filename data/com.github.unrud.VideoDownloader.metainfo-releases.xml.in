@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.6" date="2023-07-17">
+    <description>
+      <ul>
+        <li>Update Czech translation</li>
+        <li>Add Spanish translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.5" date="2023-06-25">
     <description>
       <ul>
