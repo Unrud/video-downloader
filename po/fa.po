@@ -2,20 +2,22 @@
 # Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Ali Khomami P. <alikhomami888@gmail.com>, 2020.
+# "P. A." <thekhanxp@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-25 16:29+0200\n"
-"PO-Revision-Date: 2021-02-05 05:25+0100\n"
-"Last-Translator: Ali Khomami P. <alikhomami888@gmail.com>\n"
-"Language-Team: Persian\n"
+"PO-Revision-Date: 2023-07-25 15:03+0000\n"
+"Last-Translator: \"P. A.\" <thekhanxp@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/video-downloader/"
+"gui/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -137,15 +139,15 @@ msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "پوشه دانلود نامعتبر است"
 
 #: src/model.py:277 src/model.py:283 src/window.py:434
 msgid "Not a directory"
-msgstr ""
+msgstr "یک مسیر نیست"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "اجازه رد شد"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -193,11 +195,11 @@ msgstr "عقب رفتن"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "تغییر به صوت/صدا"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "تغییر به ویدیو"
 
 #: src/window.py:263
 msgid "Downloading"
@@ -221,27 +223,27 @@ msgstr "بارگیری انجام شد"
 
 #: src/window.py:367 src/window.ui:517
 msgid "Open Download Location"
-msgstr ""
+msgstr "باز کردن مکان دانلود"
 
 #: src/window.py:405
 msgid "Reset to Default"
-msgstr ""
+msgstr "بازگردانی تنظیمات پیش فرض"
 
 #: src/window.py:406 src/window.py:439 src/window.ui:37
 msgid "Change Download Location"
-msgstr ""
+msgstr "تغییر مکان دانلود"
 
 #: src/window.py:436
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "پوشه نامعتبری انتخاب شده است"
 
 #: src/window.py:440
 msgid "Select Folder"
-msgstr ""
+msgstr "انتخاب پوشه"
 
 #: src/window.ui:45
 msgid "About Video Downloader"
-msgstr ""
+msgstr "درباره دانلود کننده ویدیو"
 
 #: src/window.ui:95
 msgid "Main Menu"
@@ -269,7 +271,7 @@ msgstr "وضوح"
 
 #: src/window.ui:198
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "ترجیح دادن فرمت MPEG"
 
 #: src/window.ui:340 src/window.ui:359 src/window.ui:460 src/window.ui:479
 msgid "Back"
