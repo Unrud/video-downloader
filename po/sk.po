@@ -3,20 +3,22 @@
 # This file is distributed under the same license as the video-downloader package.
 # Albano Battistella <albano:battistella@hotmail.com>, 2020.
 # MartinIIoT <>, 2020-2021.
+# Milan Šalka <salka.milan@googlemail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-25 16:29+0200\n"
-"PO-Revision-Date: 2021-02-05 05:27+0100\n"
-"Last-Translator: \n"
-"Language-Team: https://github.com/martin-sk\n"
-"Language: sk_SK\n"
+"PO-Revision-Date: 2023-08-11 09:50+0000\n"
+"Last-Translator: Milan Šalka <salka.milan@googlemail.com>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/video-downloader/"
+"gui/sk/>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -138,15 +140,15 @@ msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Neplatný priečinok na stiahnutie"
 
 #: src/model.py:277 src/model.py:283 src/window.py:434
 msgid "Not a directory"
-msgstr ""
+msgstr "Nie je adresár"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "Povolenie zamietnutá"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -174,7 +176,7 @@ msgstr "Otvorenie ponuky"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Zatvoriť okno"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
@@ -194,11 +196,11 @@ msgstr "Prejdenie späť"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Prepnúť na Audio"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Prepnúť na video"
 
 #: src/window.py:263
 msgid "Downloading"
@@ -226,19 +228,19 @@ msgstr "Otvoriť cieľové umiestnenie"
 
 #: src/window.py:405
 msgid "Reset to Default"
-msgstr ""
+msgstr "Reset na Default"
 
 #: src/window.py:406 src/window.py:439 src/window.ui:37
 msgid "Change Download Location"
-msgstr ""
+msgstr "Zmeniť Poloha"
 
 #: src/window.py:436
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Neplatné zložky vybrané"
 
 #: src/window.py:440
 msgid "Select Folder"
-msgstr ""
+msgstr "Vyberte priečinok"
 
 #: src/window.ui:45
 msgid "About Video Downloader"
@@ -270,7 +272,7 @@ msgstr "Rozlíšenie"
 
 #: src/window.ui:198
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Preferenčný formát"
 
 #: src/window.ui:340 src/window.ui:359 src/window.ui:460 src/window.ui:479
 msgid "Back"
