@@ -75,10 +75,10 @@ class SubtitlesConverterPP(FFmpegPostProcessor):
             if not filepath:
                 continue
             if not os.path.isfile(filepath):
-                log('Skipping missing subtitle (%r, %r)', lang, sub['ext'])
+                log('Skipping missing subtitle (%r, %r)', lang, sub.get('ext'))
                 continue
-            log('Converting subtitle (%r, %r)', lang, sub['ext'])
-            if sub['ext'] in ['dfxp', 'ttml', 'tt']:
+            log('Converting subtitle (%r, %r)', lang, sub.get('ext'))
+            if sub.get('ext') in ['dfxp', 'ttml', 'tt']:
                 # Try to use yt-dlp's internal dfxp2srt converter
                 with open(filepath, 'rb') as f:
                     data = f.read()
