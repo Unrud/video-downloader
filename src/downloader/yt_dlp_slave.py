@@ -39,6 +39,11 @@ MAX_OUTPUT_TITLE_LENGTH = 200
 MAX_THUMBNAIL_RESOLUTION = 1024
 
 
+def log(format_string, *args):
+    print(f'[yt_dlp_slave] {format_string % args}',
+          file=sys.stderr, flush=True)
+
+
 def _short_filename(name, length):
     for i in range(len(name), -1, -1):
         output = name[:i].strip()
@@ -69,8 +74,7 @@ class SubtitlesConverterPP(FFmpegPostProcessor):
             filepath = sub.get('filepath')
             if not filepath:
                 continue
-            print('[yt_dlp_slave] Converting subtitle (%r, %r)' %
-                  (lang, sub['ext']), file=sys.stderr, flush=True)
+            log('Converting subtitle (%r, %r)', lang, sub['ext'])
             if sub['ext'] in ['dfxp', 'ttml', 'tt']:
                 # Try to use yt-dlp's internal dfxp2srt converter
                 with open(filepath, 'rb') as f:
@@ -134,8 +138,7 @@ class ThumbnailConverterPP(FFmpegPostProcessor):
             if new_thumbnails:  # Convert only one thumbnail
                 files_to_delete.append(filepath)
                 continue
-            print('[yt_dlp_slave] Converting thumbnail',
-                  file=sys.stderr, flush=True)
+            log('Converting thumbnail')
             # Try to convert thumbnail with ffmpeg
             new_filepath = _convert_filepath(info, files_to_delete, filepath,
                                              'jpg')
