@@ -141,7 +141,10 @@ class ThumbnailConverterPP(FFmpegPostProcessor):
             if new_thumbnails:  # Convert only one thumbnail
                 files_to_delete.append(filepath)
                 continue
-            log('Converting thumbnail')
+            if not os.path.isfile(filepath):
+                log('Skipping missing thumbnail (%r)', thumb.get('id'))
+                continue
+            log('Converting thumbnail (%r)', thumb.get('id'))
             # Try to convert thumbnail with ffmpeg
             new_filepath = _convert_filepath(info, files_to_delete, filepath,
                                              'jpg')
