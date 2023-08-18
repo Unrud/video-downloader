@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.9" date="2023-08-18">
+    <description>
+      <ul>
+        <li>Skip missing thumbnails and subtitles</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.8" date="2023-08-16">
     <description>
       <ul>
