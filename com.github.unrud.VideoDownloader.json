@@ -99,13 +99,13 @@
             "buildsystem": "simple",
             "build-commands": [
                 "touch .separate_namespace",
-                "pip3 install --prefix=/app ."
+                "pip3 install --no-build-isolation --prefix=/app ."
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.18.0.tar.gz",
-                    "sha256": "60f58349c3d62a99bb87665b2a16afda87dc2d537a14aa45aaad1a3748b781ba",
+                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.19.0.tar.gz",
+                    "sha256": "30354c769a508f644cf5c9647ef1f3a346b6fb3e64034fc3a8a364f6986beeb1",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/Legrandin/pycryptodome/tags",
