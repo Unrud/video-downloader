@@ -164,8 +164,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2023.10.07/yt-dlp.tar.gz",
-                    "sha256": "39d1a69242cc8235fe1f3e387cd383aae239e563796efb9de0f516133ee14870",
+                    "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2023.10.13/yt-dlp.tar.gz",
+                    "sha256": "64944f4452a7657b5fb31ae55d823d9411a1a29f9c1071d33fa3e6286e20522a",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
