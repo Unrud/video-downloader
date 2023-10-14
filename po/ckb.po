@@ -7,270 +7,277 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-25 16:29+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-10-14 21:23+0000\n"
+"Last-Translator: \"Hoshmand M. Qadir\" <hoshmandctf@pm.me>\n"
+"Language-Team: Kurdish (Central) <https://hosted.weblate.org/projects/"
+"video-downloader/gui/ckb/>\n"
 "Language: ckb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:54
 msgid "Video Downloader"
-msgstr ""
+msgstr "دابەزێنەری ڤیدیۆ"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download videos from websites like YouTube and many others"
-msgstr ""
+msgstr "داگرتنی ڤیدیۆ لە ماڵپەڕەکانی وەک یوتیوب و چەندانی تر"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
+"داگرتنی ڤیدیۆ لە ماڵپەڕەکانەوە بە ڕووکارێکی ئاسان بۆ بەکارهێنان. ئەم "
+"تایبەتمەندیانەی خوارەوە پێشکەش دەکات:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr ""
+msgstr "گۆڕینی ڤیدیۆکان بۆ MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr ""
+msgstr "پشتگیری لە ڤیدیۆی پارێزراو بە وشەی نهێنی و تایبەت دەکات"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr ""
+msgstr "تاکە ڤیدیۆ یان تەواوی پلەی لیستەکان دابەزێنە"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
+"بە شێوەیەکی ئۆتۆماتیکی فۆرماتێکی ڤیدیۆیی هەڵدەبژێرێت بە پشتبەستن بە "
+"داواکارییەکانی کوالیتی"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "لەسەر بنەمای yt-dlp."
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 #: src/shortcuts_dialog.ui:39 src/window.ui:30
 msgid "New Window"
-msgstr ""
+msgstr "پەنجەرەی نوێ"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr ""
+msgstr "سەلماندن پێویستە"
 
 #: src/authentication_dialog.py:34 src/window.ui:249
 msgid "Cancel"
-msgstr ""
+msgstr "ڕەتکردنەوە"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr ""
+msgstr "چوونە ژوورەوە"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr ""
+msgstr "پەڕاندن"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr ""
+msgstr "ڤیدیۆکە گشتی نییە."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "ناوی بەکارهێنەر"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr ""
+msgstr "وشەی نهێنی"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr ""
+msgstr "مەیدانی URL پێش پڕکردنەوە"
 
 #: src/model.py:66
 msgid "Best"
-msgstr ""
+msgstr "باشترین"
 
 #: src/model.py:67
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:68
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:69
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:70
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:71
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:72
 msgid "480p"
-msgstr ""
+msgstr "480p"
 
 #: src/model.py:73
 msgid "360p"
-msgstr ""
+msgstr "360p"
 
 #: src/model.py:74
 msgid "240p"
-msgstr ""
+msgstr "240p"
 
 #: src/model.py:75
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "فۆڵدەری دابەزاندنی نادروست"
 
 #: src/model.py:277 src/model.py:283 src/window.py:434
 msgid "Not a directory"
-msgstr ""
+msgstr "فۆڵدەر نییە"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "مۆڵەت ڕەتکرایەوە"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "داگرتنی پلەی لیست؟"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "ڤیدیۆکە بەشێکە لە پلەی لیستێک."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr ""
+msgstr "تاکە ڤیدیۆ"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "هەموو ڤیدیۆکان لە پلەیلیستدان"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "گشتی"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "مێنۆ بکەرەوە"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "پەنجەرەکە داخە"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "دەرچوون"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:41
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "کورتکراوەکانی تەختەکلیل"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "گەڕان"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "بگەڕێوە دواوە"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "بگۆڕە بۆ دەنگ"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "بگۆڕە بۆ ڤیدیۆ"
 
 #: src/window.py:263
 msgid "Downloading"
-msgstr ""
+msgstr "دابەزاندن"
 
 #: src/window.py:265 src/window.py:288
 msgid "{} of {}"
-msgstr ""
+msgstr "{} لە {}"
 
 #: src/window.py:289 src/window.py:291
 msgid "unknown"
-msgstr ""
+msgstr "نەزانراو"
 
 #: src/window.py:359 src/window.ui:388
 msgid "Download failed"
-msgstr ""
+msgstr "داگرتنەکە سەرکەوتوو نەبوو"
 
 #: src/window.py:363 src/window.ui:508
 msgid "Download finished"
-msgstr ""
+msgstr "داگرتن تەواو بوو"
 
 #: src/window.py:367 src/window.ui:517
 msgid "Open Download Location"
-msgstr ""
+msgstr "شوێنی دابەزاندن بکەرەوە"
 
 #: src/window.py:405
 msgid "Reset to Default"
-msgstr ""
+msgstr "ڕێست بکە بۆ باری سەرەکی"
 
 #: src/window.py:406 src/window.py:439 src/window.ui:37
 msgid "Change Download Location"
-msgstr ""
+msgstr "گۆڕینی شوێنی دابەزاندن"
 
 #: src/window.py:436
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "فۆڵدەری نادروست هەڵبژێردرا"
 
 #: src/window.py:440
 msgid "Select Folder"
-msgstr ""
+msgstr "فۆڵدەر هەڵبژێرە"
 
 #: src/window.ui:45
 msgid "About Video Downloader"
-msgstr ""
+msgstr "دەربارەی ڤیدیۆ دابەزێنەر"
 
 #: src/window.ui:95
 msgid "Main Menu"
-msgstr ""
+msgstr "لیستی سه‌ره‌كی"
 
 #: src/window.ui:109
 msgid "Audio"
-msgstr ""
+msgstr "دەنگ"
 
 #: src/window.ui:131 src/window.ui:182
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:141 src/window.ui:211
 msgid "Download"
-msgstr ""
+msgstr "دابەزاندن"
 
 #: src/window.ui:160
 msgid "Video"
-msgstr ""
+msgstr "ڤیدیۆ"
 
 #: src/window.ui:190
 msgid "Resolution"
-msgstr ""
+msgstr "ڕونی"
 
 #: src/window.ui:198
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "فۆرماتەکەی MPEG بە باشتر دەزانرێت"
 
 #: src/window.ui:340 src/window.ui:359 src/window.ui:460 src/window.ui:479
 msgid "Back"
-msgstr ""
+msgstr "گەڕانەوە"
 
 #: src/window.ui:407 src/window.ui:534
 msgid "Details"
-msgstr ""
+msgstr "ووردەکاریەکان"
