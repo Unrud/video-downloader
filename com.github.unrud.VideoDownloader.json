@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.unrud.VideoDownloader",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "44",
+    "runtime-version": "45",
     "sdk": "org.gnome.Sdk",
     "command": "video-downloader",
     "finish-args": [
@@ -51,6 +51,10 @@
                         "url": "https://ffmpeg.org/releases/",
                         "pattern": ">(ffmpeg-([\\d.]+)\\.tar\\.xz)<"
                     }
+                },
+                {
+                    "type": "patch",
+                    "path": "build-aux/flatpak/ffmpeg-binutils.patch"
                 }
             ]
         },
