@@ -23,41 +23,17 @@
         "*.la",
         "*.a"
     ],
+    "cleanup-commands": [
+        "mkdir -p /app/lib/ffmpeg"
+    ],
+    "add-extensions": {
+        "org.freedesktop.Platform.ffmpeg-full": {
+            "directory": "lib/ffmpeg",
+            "version": "23.08",
+            "add-ld-path": "."
+        }
+    },
     "modules": [
-        {
-            "name": "ffmpeg",
-            "config-opts": [
-                "--disable-debug",
-                "--disable-doc",
-                "--disable-static",
-                "--enable-gpl",
-                "--enable-shared",
-                "--disable-ffplay",
-                "--disable-devices",
-                "--enable-gnutls",
-                "--enable-libmp3lame",
-                "--enable-libvorbis"
-            ],
-            "cleanup": [
-                "/share/ffmpeg"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz",
-                    "sha256": "57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082",
-                    "x-checker-data": {
-                        "type": "html",
-                        "url": "https://ffmpeg.org/releases/",
-                        "pattern": ">(ffmpeg-([\\d.]+)\\.tar\\.xz)<"
-                    }
-                },
-                {
-                    "type": "patch",
-                    "path": "build-aux/flatpak/ffmpeg-binutils.patch"
-                }
-            ]
-        },
         {
             "name": "pyxattr",
             "buildsystem": "simple",
