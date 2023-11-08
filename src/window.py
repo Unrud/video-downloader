@@ -15,14 +15,13 @@
 # You should have received a copy of the GNU General Public License
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
-import functools
 import gettext
 import locale
 import math
 import os
 import uuid
 
-from gi.repository import Adw, Gdk, GdkPixbuf, Gio, GLib, Gtk, Pango
+from gi.repository import Adw, GdkPixbuf, Gio, GLib, Gtk
 
 from video_downloader.about_dialog import build_about_dialog
 from video_downloader.authentication_dialog import LoginDialog, PasswordDialog
@@ -40,90 +39,11 @@ MAX_ASPECT_RATIO = 2.39
 N_ = gettext.gettext
 
 
-class SuccessDetailsController:
-    def __init__(self, text_view):
-        self._cs = CloseStack()
-        self._text_view = text_view
-        self._text_buffer = gobject_log(Gtk.TextBuffer.new())
-        self._text_buffer.set_enable_undo(False)
-        self._text_view.set_buffer(self._text_buffer)
-        self._hovering_over_link = None
-
-        controller_key = gobject_log(Gtk.EventControllerKey.new())
-        self._cs.push(SignalConnection(
-            controller_key, 'key-pressed', self._key_pressed))
-        self._text_view.add_controller(controller_key)
-        controller_motion = gobject_log(Gtk.EventControllerMotion.new())
-        self._cs.push(SignalConnection(
-            controller_motion, 'motion', self._motion_callback))
-        self._text_view.add_controller(controller_motion)
-        controller_click = gobject_log(Gtk.GestureClick.new())
-        self._cs.push(SignalConnection(
-            controller_click, 'released', self._released_callback))
-        self._text_view.add_controller(controller_click)
-
-    def clear(self):
-        self._text_buffer.set_text('')
-        tag_table = self._text_buffer.get_tag_table()
-        tags = []
-        tag_table.foreach(tags.append)
-        for tag in tags:
-            tag_table.remove(tag)
-
-    def add_link(self, text, callback, *callback_args):
-        tag = gobject_log(self._text_buffer.create_tag(
-            foreground='blue', underline=Pango.Underline.SINGLE))
-        tag.link_callback = functools.partial(callback, *callback_args)
-        iter_ = self._text_buffer.get_end_iter()
-        if not iter_.is_start():
-            self._text_buffer.insert(iter_, "\n")
-        self._text_buffer.insert_with_tags(iter_, text, tag)
-
-    def shutdown(self):
-        self._cs.close()
-
-    def _key_pressed(self, controller, keyval, keycode, modifiers):
-        if keyval in (Gdk.KEY_Return, Gdk.KEY_KP_Enter):
-            iter_ = self._text_buffer.get_iter_at_mark(
-                self._text_buffer.get_insert())
-            for tag in iter_.get_tags():
-                if hasattr(tag, 'link_callback'):
-                    tag.link_callback()
-        return Gdk.EVENT_PROPAGATE
-
-    def _motion_callback(self, controller, x, y):
-        tx, ty = self._text_view.window_to_buffer_coords(
-            Gtk.TextWindowType.WIDGET, x, y)
-        over_text, iter_ = self._text_view.get_iter_at_location(tx, ty)
-        hovering = False
-        if over_text:
-            for tag in iter_.get_tags():
-                if hasattr(tag, 'link_callback'):
-                    hovering = True
-                    break
-        if self._hovering_over_link != hovering:
-            self._text_view.set_cursor_from_name(
-                'pointer' if hovering else 'text')
-            self._hovering_over_link = hovering
-
-    def _released_callback(self, gesture, n_press, x, y):
-        if gesture.get_button() > 1:
-            return
-        tx, ty = self._text_view.window_to_buffer_coords(
-            Gtk.TextWindowType.WIDGET, x, y)
-        over_text, iter_ = self._text_view.get_iter_at_location(tx, ty)
-        if not over_text:
-            return
-        for tag in iter_.get_tags():
-            if hasattr(tag, 'link_callback'):
-                tag.link_callback()
-
-
 @Gtk.Template(resource_path='/com/github/unrud/VideoDownloader/window.ui')
 class Window(Adw.ApplicationWindow, HandlerInterface):
     __gtype_name__ = 'VideoDownloaderWindow'
-    error_buffer = Gtk.Template.Child()
-    success_details_view_wdg = Gtk.Template.Child()
+    error_detail_wdg = Gtk.Template.Child()
+    success_detail_wdg = Gtk.Template.Child()
     audio_url_wdg = Gtk.Template.Child()
     video_url_wdg = Gtk.Template.Child()
     resolution_wdg = Gtk.Template.Child()
@@ -178,7 +98,7 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             'open-finished-download-dir', no_args=True)
         # Bind properties to UI
         self._cs.push(PropertyBinding(
-            self.model, 'error', self.error_buffer, 'text'))
+            self.model, 'error', self.error_detail_wdg, 'label'))
         self._cs.push(PropertyBinding(
             self.model, 'url', self.audio_url_wdg, 'text', bi=True))
         self._cs.push(PropertyBinding(
@@ -233,22 +153,21 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         self._cs.push(PropertyBinding(
             self.download_images_wdg, 'transition-running',
             func_a_to_b=lambda b: b or self._clean_thumbnails()))
-        self._success_details_controller = SuccessDetailsController(
-            self.success_details_view_wdg)
-        self._cs.add_close_callback(self._success_details_controller.shutdown)
         self._cs.push(PropertyBinding(
             self.model, 'finished-download-filenames',
-            func_a_to_b=self._update_success_details))
+            self.success_detail_wdg, 'label',
+            func_a_to_b=lambda filenames: '\n'.join(
+                (f'<span baseline_shift="{-22 * 1024}">'
+                 f'<a href="{s}">{s}</a>'
+                 f'</span>')
+                for s in map(GLib.markup_escape_text, filenames or []))))
+        self._cs.push(SignalConnection(
+            self.success_detail_wdg, 'activate_link',
+            lambda sender, filename: open_in_file_manager(
+                self.model.finished_download_dir, [filename])))
         # Workaround for focusing AdwEntryRow at program startup
         self._cs.push(SignalConnection(
             self, 'show', self._update_focus_and_default, no_args=True))
-
-    def _update_success_details(self, filenames):
-        self._success_details_controller.clear()
-        for filename in filenames or []:
-            self._success_details_controller.add_link(
-                filename, open_in_file_manager,
-                self.model.finished_download_dir, [filename])
 
     def _update_download_progress(self):
         progress = self.model.download_progress

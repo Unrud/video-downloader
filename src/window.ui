@@ -20,10 +20,6 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <object class="GtkTextBuffer" id="error_buffer">
-    <property name="enable-undo">False</property>
-    <property name="text">Error XXX</property>
-  </object>
   <menu id="hamburger_menu">
     <section>
       <item>
@@ -422,14 +418,19 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="hscrollbar-policy">never</property>
                                     <property name="has-frame">True</property>
                                     <property name="child">
-                                      <object class="GtkTextView">
-                                        <property name="editable">0</property>
+                                      <object class="GtkLabel" id="error_detail_wdg">
+                                        <style>
+                                          <class name="body"/>
+                                        </style>
+                                        <property name="selectable">True</property>
+                                        <property name="xalign">0</property>
+                                        <property name="yalign">0</property>
+                                        <property name="wrap">True</property>
                                         <property name="wrap-mode">word-char</property>
-                                        <property name="buffer">error_buffer</property>
-                                        <property name="bottom-margin">6</property>
-                                        <property name="left-margin">6</property>
-                                        <property name="right-margin">6</property>
-                                        <property name="top-margin">6</property>
+                                        <property name="margin-bottom">6</property>
+                                        <property name="margin-start">6</property>
+                                        <property name="margin-end">6</property>
+                                        <property name="margin-top">6</property>
                                       </object>
                                     </property>
                                   </object>
@@ -549,14 +550,21 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                     <property name="hscrollbar-policy">never</property>
                                     <property name="has-frame">True</property>
                                     <property name="child">
-                                      <object class="GtkTextView" id="success_details_view_wdg">
-                                        <property name="editable">0</property>
+                                      <object class="GtkLabel" id="success_detail_wdg">
+                                        <style>
+                                          <class name="body"/>
+                                          <class name="link"/>
+                                        </style>
+                                        <property name="selectable">True</property>
+                                        <property name="use-markup">True</property>
+                                        <property name="xalign">0</property>
+                                        <property name="yalign">0</property>
+                                        <property name="wrap">True</property>
                                         <property name="wrap-mode">word-char</property>
-                                        <property name="bottom-margin">0</property>
-                                        <property name="left-margin">6</property>
-                                        <property name="right-margin">6</property>
-                                        <property name="top-margin">6</property>
-                                        <property name="pixels-below-lines">6</property>
+                                        <property name="margin-bottom">6</property>
+                                        <property name="margin-start">6</property>
+                                        <property name="margin-end">6</property>
+                                        <property name="margin-top">6</property>
                                       </object>
                                     </property>
                                   </object>
