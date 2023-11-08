@@ -126,7 +126,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
             self.download_bytes_total = -1
             self.download_speed = -1
             self.download_eta = -1
-            self.finished_download_filenames = []
+            self.finished_download_filenames = None
             self.finished_download_dir = ''
             self._try_start_download()
         elif state == 'download':
@@ -144,7 +144,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
     def _open_finished_download_dir(self):
         assert self.finished_download_dir
         open_in_file_manager(self.finished_download_dir,
-                             self.finished_download_filenames)
+                             self.finished_download_filenames or [])
 
     def _try_start_download(self):
         path = expand_path(self.download_folder)
