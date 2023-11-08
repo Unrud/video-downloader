@@ -514,6 +514,12 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                           </object>
                         </child>
                         <child>
+                          <object class="GtkLabel" id="finished_download_titles_wdg">
+                            <property name="label">Title XXX</property>
+                            <property name="ellipsize">middle</property>
+                          </object>
+                        </child>
+                        <child>
                           <object class="GtkButton" id="finished_download_dir_wdg">
                             <property name="label" translatable="yes">Open Download Location</property>
                             <property name="halign">center</property>

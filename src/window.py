@@ -56,6 +56,7 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
     success_back_wdg = Gtk.Template.Child()
     download_cancel_wdg = Gtk.Template.Child()
     finished_download_dir_wdg = Gtk.Template.Child()
+    finished_download_titles_wdg = Gtk.Template.Child()
     download_page_title_wdg = Gtk.Template.Child()
     download_title_wdg = Gtk.Template.Child()
     download_progress_wdg = Gtk.Template.Child()
@@ -153,6 +154,10 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         self._cs.push(PropertyBinding(
             self.download_images_wdg, 'transition-running',
             func_a_to_b=lambda b: b or self._clean_thumbnails()))
+        self._cs.push(PropertyBinding(
+            self.model, 'download-titles',
+            self.finished_download_titles_wdg, 'label',
+            func_a_to_b=lambda titles: ' | '.join(titles or [])))
         self._cs.push(PropertyBinding(
             self.model, 'finished-download-filenames',
             self.success_detail_wdg, 'label',
@@ -280,6 +285,8 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
                 'app.notification-error--' + self._notification_uuid)
         elif state == 'success':
             notification.set_title(N_('Download finished'))
+            if self.model.download_titles:
+                notification.set_body(' | '.join(self.model.download_titles))
             notification.set_default_action(
                 'app.notification-success--' + self._notification_uuid)
             notification.add_button(

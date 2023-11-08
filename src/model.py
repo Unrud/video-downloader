@@ -54,6 +54,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
     download_playlist_count = GObject.Property(type=GObject.TYPE_INT64)
     download_filename = GObject.Property(type=str)
     download_title = GObject.Property(type=str)
+    download_titles = GObject.Property(type=GObject.TYPE_STRV)
     download_thumbnail = GObject.Property(type=str)
     # 0.0 - 1.0 (inclusive), negative if unknown:
     download_progress = GObject.Property(type=float, default=-1)
@@ -120,6 +121,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
             self.download_playlist_count = 0
             self.download_filename = ''
             self.download_title = ''
+            self.download_titles = None
             self.download_thumbnail = ''
             self.download_progress = -1
             self.download_bytes = -1
@@ -242,6 +244,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
         self.download_playlist_index = playlist_index
         self.download_playlist_count = playlist_count
         self.download_title = title
+        self.download_titles = [*(self.download_titles or []), title]
 
     def _download_unlock(self):
         if self._active_download_lock:
