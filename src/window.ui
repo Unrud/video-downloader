@@ -514,67 +514,73 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                           </object>
                         </child>
                         <child>
-                          <object class="GtkLabel" id="finished_download_titles_wdg">
-                            <property name="label">Title XXX</property>
-                            <property name="ellipsize">middle</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkButton" id="finished_download_dir_wdg">
-                            <property name="label" translatable="yes">Open Download Location</property>
-                            <property name="halign">center</property>
-                            <property name="action-name">win.open-finished-download-dir</property>
-                          </object>
-                        </child>
-                        <child>
                           <object class="GtkBox">
-                            <property name="vexpand">1</property>
                             <property name="orientation">vertical</property>
-                            <property name="spacing">8</property>
+                            <property name="spacing">18</property>
                             <child>
-                              <object class="GtkExpander" id="success_details_expander_wdg">
-                                <child>
-                                  <placeholder/>
-                                </child>
-                                <child type="label">
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Details</property>
-                                  </object>
-                                </child>
-                                <accessibility>
-                                  <relation name="owns">success_details_revealer_wdg</relation>
-                                </accessibility>
+                              <object class="GtkLabel" id="finished_download_titles_wdg">
+                                <property name="label">Title XXX</property>
+                                <property name="ellipsize">middle</property>
                               </object>
                             </child>
                             <child>
-                              <object class="GtkRevealer" id="success_details_revealer_wdg">
+                              <object class="GtkButton" id="finished_download_dir_wdg">
+                                <property name="label" translatable="yes">Open Download Location</property>
+                                <property name="halign">center</property>
+                                <property name="action-name">win.open-finished-download-dir</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkBox">
                                 <property name="vexpand">1</property>
-                                <property name="transition-type">crossfade</property>
-                                <property name="reveal-child" bind-source="success_details_expander_wdg" bind-property="expanded" bind-flags="sync-create"/>
-                                <property name="child">
-                                  <object class="GtkScrolledWindow">
-                                    <property name="hscrollbar-policy">never</property>
-                                    <property name="has-frame">True</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">8</property>
+                                <child>
+                                  <object class="GtkExpander" id="success_details_expander_wdg">
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child type="label">
+                                      <object class="GtkLabel">
+                                        <property name="label" translatable="yes">Details</property>
+                                      </object>
+                                    </child>
+                                    <accessibility>
+                                      <relation name="owns">success_details_revealer_wdg</relation>
+                                    </accessibility>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkRevealer" id="success_details_revealer_wdg">
+                                    <property name="vexpand">1</property>
+                                    <property name="transition-type">crossfade</property>
+                                    <property name="reveal-child" bind-source="success_details_expander_wdg" bind-property="expanded" bind-flags="sync-create"/>
                                     <property name="child">
-                                      <object class="GtkLabel" id="success_detail_wdg">
-                                        <style>
-                                          <class name="body"/>
-                                          <class name="link"/>
-                                        </style>
-                                        <property name="selectable">True</property>
-                                        <property name="use-markup">True</property>
-                                        <property name="xalign">0</property>
-                                        <property name="yalign">0</property>
-                                        <property name="wrap">True</property>
-                                        <property name="wrap-mode">word-char</property>
-                                        <property name="margin-bottom">6</property>
-                                        <property name="margin-start">6</property>
-                                        <property name="margin-end">6</property>
-                                        <property name="margin-top">6</property>
+                                      <object class="GtkScrolledWindow">
+                                        <property name="hscrollbar-policy">never</property>
+                                        <property name="has-frame">True</property>
+                                        <property name="child">
+                                          <object class="GtkLabel" id="success_detail_wdg">
+                                            <style>
+                                              <class name="body"/>
+                                              <class name="link"/>
+                                            </style>
+                                            <property name="selectable">True</property>
+                                            <property name="use-markup">True</property>
+                                            <property name="xalign">0</property>
+                                            <property name="yalign">0</property>
+                                            <property name="wrap">True</property>
+                                            <property name="wrap-mode">word-char</property>
+                                            <property name="margin-bottom">6</property>
+                                            <property name="margin-start">6</property>
+                                            <property name="margin-end">6</property>
+                                            <property name="margin-top">6</property>
+                                          </object>
+                                        </property>
                                       </object>
                                     </property>
                                   </object>
-                                </property>
+                                </child>
                               </object>
                             </child>
                           </object>
