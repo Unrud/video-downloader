@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.10" date="2023-11-08">
+    <description>
+      <ul>
+        <li>Add Kurdish translation</li>
+        <li>Display of downloaded titles on the success page and in the notification</li>
+        <li>Improved readability of links in the details view in dark mode</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.9" date="2023-08-18">
     <description>
       <ul>
