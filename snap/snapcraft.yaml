@@ -40,8 +40,8 @@ parts:
     # Build from source because the ffmpeg package installs libraries as dependencies
     # that conflict with the Gnome extension
     plugin: autotools
-    source: https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
-    source-checksum: sha256/57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
+    source: https://ffmpeg.org/releases/ffmpeg-6.1.tar.xz
+    source-checksum: sha256/488c76e57dd9b3bee901f71d5c95eaf1db4a5a31fe46a28654e837144207c270
     autotools-configure-parameters:
       # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
       - --prefix=/usr
@@ -69,10 +69,10 @@ parts:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     after: [ffmpeg]
     plugin: python
-    source: https://github.com/yt-dlp/yt-dlp/releases/download/2023.10.13/yt-dlp.tar.gz
-    source-checksum: sha256/64944f4452a7657b5fb31ae55d823d9411a1a29f9c1071d33fa3e6286e20522a
+    source: https://github.com/yt-dlp/yt-dlp/releases/download/2023.11.14/yt-dlp.tar.gz
+    source-checksum: sha256/50dff869a296fe515234f3427b6f95f562c889c2e60d3ba7e3b4bd5d73f4fa94
     python-packages:
-      - pyxattr==0.7.2
+      - pyxattr==0.8.1
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
@@ -80,6 +80,9 @@ parts:
     override-pull: |
       craftctl default
       sed -i 's/^certifi\b/#\0/' requirements.txt
+      sed -i 's/^requests\b/#\0/' requirements.txt
+      sed -i 's/^urllib3\b/#\0/' requirements.txt
+      sed -i 's/^secretstorage\b/#\0/' requirements.txt
     stage:
       # WORKAROUND: Skip venv from python plugin
       - -bin/activate
