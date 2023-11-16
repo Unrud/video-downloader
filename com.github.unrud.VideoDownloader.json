@@ -144,8 +144,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2023.11.14/yt-dlp.tar.gz",
-                    "sha256": "50dff869a296fe515234f3427b6f95f562c889c2e60d3ba7e3b4bd5d73f4fa94",
+                    "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2023.11.16/yt-dlp.tar.gz",
+                    "sha256": "aa7fb7e49b57b1b5ac439a72568575e4df904ffc30417e19e644990e7239ac53",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
@@ -158,8 +158,7 @@
                     "commands": [
                         "sed -i 's/^certifi\\b/#\\0/' requirements.txt",
                         "sed -i 's/^requests\\b/#\\0/' requirements.txt",
-                        "sed -i 's/^urllib3\\b/#\\0/' requirements.txt",
-                        "sed -i 's/^secretstorage\\b/#\\0/' requirements.txt"
+                        "sed -i 's/^urllib3\\b/#\\0/' requirements.txt"
                     ]
                 }
             ]
