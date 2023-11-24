@@ -25,8 +25,8 @@ import signal
 import sys
 
 VERSION = @VERSION@
-pkgdatadir = @pkgdatadir@
-localedir = @localedir@
+pkgdatadir = os.path.join(os.environ.get('DESTDIR') or '/', '.' + @pkgdatadir@)
+localedir = os.path.join(os.environ.get('DESTDIR') or '/', '.' + @localedir@)
 
 sys.path.insert(1, pkgdatadir)
 signal.signal(signal.SIGINT, signal.SIG_DFL)
