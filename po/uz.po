@@ -2,31 +2,33 @@
 # Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Umidjon Almasov <umidjon@almasov.uz>, 2022.
+# Elvis <svlpolb31j@zlorkun.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-25 16:29+0200\n"
-"PO-Revision-Date: 2022-02-01 21:01+0500\n"
-"Last-Translator: Umidjon Almasov <umidjon@almasov.uz>\n"
-"Language-Team: Uzbek\n"
+"PO-Revision-Date: 2024-02-18 12:01+0000\n"
+"Last-Translator: Elvis <svlpolb31j@zlorkun.com>\n"
+"Language-Team: Uzbek <https://hosted.weblate.org/projects/video-downloader/"
+"gui/uz/>\n"
 "Language: uz\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.4\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:54
 msgid "Video Downloader"
-msgstr "Video yuklab oluvchi"
+msgstr "Video Yuklab oluvchi"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download videos from websites like YouTube and many others"
-msgstr "YouTube va koʻplab boshqa saytlardan video yuklab olish"
+msgstr "YouTube va koʻplab boshqa saytlardan video yuklab oladi"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
@@ -34,11 +36,11 @@ msgid ""
 "following features:"
 msgstr ""
 "Foydalanish uchun oson boʻlgan interfeys orqali saytlardan video yuklab "
-"olish. Quyidagi imkoniyatlar mavjud:"
+"oladi. Quyidagi imkoniyatlarni taqdim etadi:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Video MP3 ga aylantirish"
+msgstr "Videoni MP3 ga aylantirish"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
@@ -139,15 +141,16 @@ msgstr "144p"
 
 #: src/model.py:157
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Yuklab olish papkasi yaroqsiz"
 
 #: src/model.py:277 src/model.py:283 src/window.py:434
+#, fuzzy
 msgid "Not a directory"
-msgstr ""
+msgstr "Papka emas"
 
 #: src/model.py:281 src/model.py:286
 msgid "Permission denied"
-msgstr ""
+msgstr "Ruxsat berilmadi"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -167,51 +170,53 @@ msgstr "Pleylistdagi hamma videolar"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "Umumiy"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Menyuni Ochish"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Menyuni Yopish"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Chiqish"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:41
+#, fuzzy
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Klaviatura yorliqlari"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "Navigatsiya"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "Ortga qaytish"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Audioga o'tish"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Videoga o'tish"
 
 #: src/window.py:263
 msgid "Downloading"
 msgstr "Yuklab olinmoqda"
 
 #: src/window.py:265 src/window.py:288
+#, fuzzy
 msgid "{} of {}"
 msgstr "{} {} dan"
 
 #: src/window.py:289 src/window.py:291
 msgid "unknown"
-msgstr "nomaʻlum"
+msgstr "noma'lum"
 
 #: src/window.py:359 src/window.ui:388
 msgid "Download failed"
@@ -227,19 +232,19 @@ msgstr "Yuklab olingan joyni ochish"
 
 #: src/window.py:405
 msgid "Reset to Default"
-msgstr ""
+msgstr "Standart holatga qaytarish"
 
 #: src/window.py:406 src/window.py:439 src/window.ui:37
 msgid "Change Download Location"
-msgstr ""
+msgstr "Yuklash joyini o'zgartirish"
 
 #: src/window.py:436
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Yaroqsiz papka tanlandi"
 
 #: src/window.py:440
 msgid "Select Folder"
-msgstr ""
+msgstr "Papkani tanlash"
 
 #: src/window.ui:45
 msgid "About Video Downloader"
@@ -247,7 +252,7 @@ msgstr "Dastur haqida"
 
 #: src/window.ui:95
 msgid "Main Menu"
-msgstr ""
+msgstr "Asosiy menyu"
 
 #: src/window.ui:109
 msgid "Audio"
@@ -267,11 +272,11 @@ msgstr "Video"
 
 #: src/window.ui:190
 msgid "Resolution"
-msgstr "Oʻlchamlari"
+msgstr "O'lchamlari"
 
 #: src/window.ui:198
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "MPEG formatini afzal ko'rish"
 
 #: src/window.ui:340 src/window.ui:359 src/window.ui:460 src/window.ui:479
 msgid "Back"
