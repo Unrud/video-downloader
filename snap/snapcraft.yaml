@@ -40,8 +40,8 @@ parts:
     # Build from source because the ffmpeg package installs libraries as dependencies
     # that conflict with the Gnome extension
     plugin: autotools
-    source: https://ffmpeg.org/releases/ffmpeg-6.1.tar.xz
-    source-checksum: sha256/488c76e57dd9b3bee901f71d5c95eaf1db4a5a31fe46a28654e837144207c270
+    source: https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz
+    source-checksum: sha256/8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968
     autotools-configure-parameters:
       # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
       - --prefix=/usr
