@@ -69,19 +69,17 @@ parts:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     after: [ffmpeg]
     plugin: python
-    source: https://github.com/yt-dlp/yt-dlp/releases/download/2023.12.30/yt-dlp.tar.gz
-    source-checksum: sha256/5408fe5d12cd1c430ee10346770e3d60baad5c63a38b41c8967005e4956780a7
+    source: .
+    source-type: git
     python-packages:
       - pyxattr==0.8.1
+      - yt-dlp==2024.3.10
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
       - PYTHONPATH: ""
     override-pull: |
-      craftctl default
-      sed -i 's/^certifi\b/#\0/' requirements.txt
-      sed -i 's/^requests\b/#\0/' requirements.txt
-      sed -i 's/^urllib3\b/#\0/' requirements.txt
+      # nop
     stage:
       # WORKAROUND: Skip venv from python plugin
       - -bin/activate

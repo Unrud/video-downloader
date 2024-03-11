@@ -139,27 +139,18 @@
             "name": "yt-dlp",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --prefix=/app ."
+                "pip3 install --no-dependencies --prefix=/app *.whl"
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2023.12.30/yt-dlp.tar.gz",
-                    "sha256": "5408fe5d12cd1c430ee10346770e3d60baad5c63a38b41c8967005e4956780a7",
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/06/f8/a42be2524a6f53f5aa78f37313473890a2155ea2e3d11247b8f35d32226a/yt_dlp-2024.3.10-py3-none-any.whl",
+                    "sha256": "bbe66b9a3aa23b6378ccca3ea20f5aadf385fa21a993513a105d73c827a86ed4",
                     "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
-                        "version-query": "[.[].name | select(. != \"nightly\")] | sort[-1]",
-                        "url-query": "\"https://github.com/yt-dlp/yt-dlp/releases/download/\" + $version + \"/yt-dlp.tar.gz\""
+                        "type": "pypi",
+                        "name": "yt-dlp",
+                        "packagetype": "bdist_wheel"
                     }
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i 's/^certifi\\b/#\\0/' requirements.txt",
-                        "sed -i 's/^requests\\b/#\\0/' requirements.txt",
-                        "sed -i 's/^urllib3\\b/#\\0/' requirements.txt"
-                    ]
                 }
             ]
         },
