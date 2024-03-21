@@ -9,6 +9,7 @@ Categories=Network;GTK;
 StartupNotify=true
 X-GNOME-UsesNotifications=true
 Actions=new-window;
+Keywords=Youtube;Download
 
 [Desktop Action new-window]
 Name=New Window
