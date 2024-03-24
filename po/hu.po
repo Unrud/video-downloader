@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-25 16:29+0200\n"
+"POT-Creation-Date: 2024-03-24 12:12+0100\n"
 "PO-Revision-Date: 2023-03-21 14:52+0000\n"
 "Last-Translator: Unrud <unrud@outlook.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/video-"
@@ -20,13 +20,14 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
-#: src/main.py:39 src/window.ui:54
+#: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
 msgstr "Videóletöltő"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
-msgid "Download videos from websites like YouTube and many others"
+#, fuzzy
+msgid "Download web videos"
 msgstr "Videók letöltése a YouTube és sok más webhelyről"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
@@ -57,8 +58,8 @@ msgstr "Minőségi igényeknek megfelelő videoformátumot önműködően kivál
 msgid "Based on yt-dlp."
 msgstr "A yt-dlp alapján."
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:14
-#: src/shortcuts_dialog.ui:39 src/window.ui:30
+#: data/com.github.unrud.VideoDownloader.desktop.in:15
+#: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
 msgstr "Új ablak"
 
@@ -66,7 +67,7 @@ msgstr "Új ablak"
 msgid "Authentication Required"
 msgstr "Hitelesítés szükséges"
 
-#: src/authentication_dialog.py:34 src/window.ui:249
+#: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
 msgstr "Mégse"
 
@@ -96,55 +97,55 @@ msgstr "Jelszó"
 msgid "Prefill URL field"
 msgstr "URL-cím mező előtöltése"
 
-#: src/model.py:66
+#: src/model.py:67
 msgid "Best"
 msgstr "Legjobb"
 
-#: src/model.py:67
+#: src/model.py:68
 msgid "4320p (8K)"
 msgstr "4320p (8K)"
 
-#: src/model.py:68
+#: src/model.py:69
 msgid "2160p (4K)"
 msgstr "2160p (4K)"
 
-#: src/model.py:69
+#: src/model.py:70
 msgid "1440p (HD)"
 msgstr "1440p (HD)"
 
-#: src/model.py:70
+#: src/model.py:71
 msgid "1080p (HD)"
 msgstr "1080p (HD)"
 
-#: src/model.py:71
+#: src/model.py:72
 msgid "720p (HD)"
 msgstr "720p (HD)"
 
-#: src/model.py:72
+#: src/model.py:73
 msgid "480p"
 msgstr "480p"
 
-#: src/model.py:73
+#: src/model.py:74
 msgid "360p"
 msgstr "360p"
 
-#: src/model.py:74
+#: src/model.py:75
 msgid "240p"
 msgstr "240p"
 
-#: src/model.py:75
+#: src/model.py:76
 msgid "144p"
 msgstr "144p"
 
-#: src/model.py:157
+#: src/model.py:159
 msgid "Invalid download folder"
 msgstr "Érvénytelen letöltési mappa"
 
-#: src/model.py:277 src/model.py:283 src/window.py:434
+#: src/model.py:280 src/model.py:286 src/window.py:360
 msgid "Not a directory"
 msgstr "Nem könyvtár"
 
-#: src/model.py:281 src/model.py:286
+#: src/model.py:284 src/model.py:289
 msgid "Permission denied"
 msgstr "Hozzáférés megtagadva"
 
@@ -180,7 +181,7 @@ msgstr "Ablak bezárása"
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/shortcuts_dialog.ui:57 src/window.ui:41
+#: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
 msgstr "Gyorsbillentyűk"
 
@@ -200,82 +201,82 @@ msgstr "Hangra váltás"
 msgid "Switch to Video"
 msgstr "Videóra váltás"
 
-#: src/window.py:263
+#: src/window.py:187
 msgid "Downloading"
 msgstr "Letöltés folyamatban"
 
-#: src/window.py:265 src/window.py:288
+#: src/window.py:189 src/window.py:212
 msgid "{} of {}"
 msgstr "{}/{}"
 
-#: src/window.py:289 src/window.py:291
+#: src/window.py:213 src/window.py:215
 msgid "unknown"
 msgstr "ismeretlen"
 
-#: src/window.py:359 src/window.ui:388
+#: src/window.py:283 src/window.ui:384
 msgid "Download failed"
 msgstr "Letöltés sikertelen"
 
-#: src/window.py:363 src/window.ui:508
+#: src/window.py:287 src/window.ui:509
 msgid "Download finished"
 msgstr "Letöltés befejeződött"
 
-#: src/window.py:367 src/window.ui:517
+#: src/window.py:293 src/window.ui:528
 msgid "Open Download Location"
 msgstr "Letöltési hely megnyitása"
 
-#: src/window.py:405
+#: src/window.py:331
 msgid "Reset to Default"
 msgstr "Visszaállítás alapértelmezettre"
 
-#: src/window.py:406 src/window.py:439 src/window.ui:37
+#: src/window.py:332 src/window.py:365 src/window.ui:33
 msgid "Change Download Location"
 msgstr "Letöltési hely módosítása"
 
-#: src/window.py:436
+#: src/window.py:362
 msgid "Invalid folder selected"
 msgstr "Érvénytelen mappa van kiválasztva"
 
-#: src/window.py:440
+#: src/window.py:366
 msgid "Select Folder"
 msgstr "Mappa kiválasztása"
 
-#: src/window.ui:45
+#: src/window.ui:41
 msgid "About Video Downloader"
 msgstr "A Videó letöltő névjegye"
 
-#: src/window.ui:95
+#: src/window.ui:91
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: src/window.ui:109
+#: src/window.ui:105
 msgid "Audio"
 msgstr "Hang"
 
-#: src/window.ui:131 src/window.ui:182
+#: src/window.ui:127 src/window.ui:178
 msgid "URL"
 msgstr "URL-cím"
 
-#: src/window.ui:141 src/window.ui:211
+#: src/window.ui:137 src/window.ui:207
 msgid "Download"
 msgstr "Letöltés"
 
-#: src/window.ui:160
+#: src/window.ui:156
 msgid "Video"
 msgstr "Videó"
 
-#: src/window.ui:190
+#: src/window.ui:186
 msgid "Resolution"
 msgstr "Felbontás"
 
-#: src/window.ui:198
+#: src/window.ui:194
 msgid "Prefer MPEG format"
 msgstr "MPEG formátum előnyben részesítése"
 
-#: src/window.ui:340 src/window.ui:359 src/window.ui:460 src/window.ui:479
+#: src/window.ui:336 src/window.ui:355 src/window.ui:461 src/window.ui:480
 msgid "Back"
 msgstr "Vissza"
 
-#: src/window.ui:407 src/window.ui:534
+#: src/window.ui:403 src/window.ui:545
 msgid "Details"
 msgstr "Részletek"

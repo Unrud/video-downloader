@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-25 16:29+0200\n"
+"POT-Creation-Date: 2024-03-24 12:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,13 +19,13 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
-#: src/main.py:39 src/window.ui:54
+#: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
 msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
-msgid "Download videos from websites like YouTube and many others"
+msgid "Download web videos"
 msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
@@ -54,8 +54,8 @@ msgstr ""
 msgid "Based on yt-dlp."
 msgstr ""
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:14
-#: src/shortcuts_dialog.ui:39 src/window.ui:30
+#: data/com.github.unrud.VideoDownloader.desktop.in:15
+#: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
 msgstr ""
 
@@ -63,7 +63,7 @@ msgstr ""
 msgid "Authentication Required"
 msgstr ""
 
-#: src/authentication_dialog.py:34 src/window.ui:249
+#: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
 msgstr ""
 
@@ -93,55 +93,55 @@ msgstr ""
 msgid "Prefill URL field"
 msgstr ""
 
-#: src/model.py:66
+#: src/model.py:67
 msgid "Best"
 msgstr ""
 
-#: src/model.py:67
+#: src/model.py:68
 msgid "4320p (8K)"
 msgstr ""
 
-#: src/model.py:68
+#: src/model.py:69
 msgid "2160p (4K)"
 msgstr ""
 
-#: src/model.py:69
+#: src/model.py:70
 msgid "1440p (HD)"
 msgstr ""
 
-#: src/model.py:70
+#: src/model.py:71
 msgid "1080p (HD)"
 msgstr ""
 
-#: src/model.py:71
+#: src/model.py:72
 msgid "720p (HD)"
 msgstr ""
 
-#: src/model.py:72
+#: src/model.py:73
 msgid "480p"
 msgstr ""
 
-#: src/model.py:73
+#: src/model.py:74
 msgid "360p"
 msgstr ""
 
-#: src/model.py:74
+#: src/model.py:75
 msgid "240p"
 msgstr ""
 
-#: src/model.py:75
+#: src/model.py:76
 msgid "144p"
 msgstr ""
 
-#: src/model.py:157
+#: src/model.py:159
 msgid "Invalid download folder"
 msgstr ""
 
-#: src/model.py:277 src/model.py:283 src/window.py:434
+#: src/model.py:280 src/model.py:286 src/window.py:360
 msgid "Not a directory"
 msgstr ""
 
-#: src/model.py:281 src/model.py:286
+#: src/model.py:284 src/model.py:289
 msgid "Permission denied"
 msgstr ""
 
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: src/shortcuts_dialog.ui:57 src/window.ui:41
+#: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
 msgstr ""
 
@@ -197,82 +197,82 @@ msgstr ""
 msgid "Switch to Video"
 msgstr ""
 
-#: src/window.py:263
+#: src/window.py:187
 msgid "Downloading"
 msgstr ""
 
-#: src/window.py:265 src/window.py:288
+#: src/window.py:189 src/window.py:212
 msgid "{} of {}"
 msgstr ""
 
-#: src/window.py:289 src/window.py:291
+#: src/window.py:213 src/window.py:215
 msgid "unknown"
 msgstr ""
 
-#: src/window.py:359 src/window.ui:388
+#: src/window.py:283 src/window.ui:384
 msgid "Download failed"
 msgstr ""
 
-#: src/window.py:363 src/window.ui:508
+#: src/window.py:287 src/window.ui:509
 msgid "Download finished"
 msgstr ""
 
-#: src/window.py:367 src/window.ui:517
+#: src/window.py:293 src/window.ui:528
 msgid "Open Download Location"
 msgstr ""
 
-#: src/window.py:405
+#: src/window.py:331
 msgid "Reset to Default"
 msgstr ""
 
-#: src/window.py:406 src/window.py:439 src/window.ui:37
+#: src/window.py:332 src/window.py:365 src/window.ui:33
 msgid "Change Download Location"
 msgstr ""
 
-#: src/window.py:436
+#: src/window.py:362
 msgid "Invalid folder selected"
 msgstr ""
 
-#: src/window.py:440
+#: src/window.py:366
 msgid "Select Folder"
 msgstr ""
 
-#: src/window.ui:45
+#: src/window.ui:41
 msgid "About Video Downloader"
 msgstr ""
 
-#: src/window.ui:95
+#: src/window.ui:91
 msgid "Main Menu"
 msgstr ""
 
-#: src/window.ui:109
+#: src/window.ui:105
 msgid "Audio"
 msgstr ""
 
-#: src/window.ui:131 src/window.ui:182
+#: src/window.ui:127 src/window.ui:178
 msgid "URL"
 msgstr ""
 
-#: src/window.ui:141 src/window.ui:211
+#: src/window.ui:137 src/window.ui:207
 msgid "Download"
 msgstr ""
 
-#: src/window.ui:160
+#: src/window.ui:156
 msgid "Video"
 msgstr ""
 
-#: src/window.ui:190
+#: src/window.ui:186
 msgid "Resolution"
 msgstr ""
 
-#: src/window.ui:198
+#: src/window.ui:194
 msgid "Prefer MPEG format"
 msgstr ""
 
-#: src/window.ui:340 src/window.ui:359 src/window.ui:460 src/window.ui:479
+#: src/window.ui:336 src/window.ui:355 src/window.ui:461 src/window.ui:480
 msgid "Back"
 msgstr ""
 
-#: src/window.ui:407 src/window.ui:534
+#: src/window.ui:403 src/window.ui:545
 msgid "Details"
 msgstr ""
