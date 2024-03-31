@@ -212,8 +212,10 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         ) if bytes_ >= 0 or bytes_total >= 0 else ''
         speed_msg = filesize_fmt(speed, 'B/\u2060s') if speed >= 0 else ''
         self.download_info_wdg.set_text(
-            f'{time_msg}{" - " if time_msg and (size_msg + speed_msg) else ""}'
-            f'{size_msg}{f" ({speed_msg})" if size_msg else speed_msg}')
+            time_msg +
+            ('\u00A0- ' if time_msg and (size_msg or speed_msg) else '') +
+            size_msg +
+            (f" ({speed_msg})" if size_msg and speed_msg else speed_msg))
 
     def _add_thumbnail(self, thumbnail):
         try:
