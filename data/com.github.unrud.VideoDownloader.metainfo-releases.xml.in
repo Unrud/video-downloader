@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
-  <release version="0.12.11" date="2023-03-09">
+  <release version="0.12.12" date="2024-03-31">
+    <description>
+      <ul>
+        <li>Workaround for xdg-desktop-portal bug that causes FileNotFoundError</li>
+      </ul>
+    </description>
+  </release>
+  <release version="0.12.11" date="2024-03-09">
     <description>
       <ul>
         <li>Add Hindi translation</li>
