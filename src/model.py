@@ -83,7 +83,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
         self._handler = handler
         self._cs.add_close_callback(setattr, self, '_handler', None)
         self._downloader = downloader.Downloader(self)
-        self._cs.add_close_callback(self._downloader.shutdown)
+        self._cs.add_close_callback(self._downloader.destroy)
         self._active_download_lock = None
         self.actions = gobject_log(Gio.SimpleActionGroup.new())
         for action_name, callback, *extra_args in [
@@ -165,7 +165,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
                 self._try_start_download()
         response.add_done_callback(handle_response)
 
-    def shutdown(self):
+    def destroy(self):
         self._cs.close()
 
     def on_pulse(self):

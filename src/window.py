@@ -68,7 +68,7 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         self._cs = CloseStack()
         self.application = application
         self.model = gobject_log(Model(self))
-        self._cs.add_close_callback(self.model.shutdown)
+        self._cs.add_close_callback(self.model.destroy)
         self.window_group = gobject_log(Gtk.WindowGroup())
         self.window_group.add_window(self)
         # Setup actions

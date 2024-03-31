@@ -46,7 +46,7 @@ class Downloader:
         self._pending_response = None
         self._cancelled = False
 
-    def shutdown(self):
+    def destroy(self):
         self._handler = None
         if self._process:
             self._finish_process_and_kill_pgrp()
