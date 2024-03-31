@@ -196,7 +196,7 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
                 if abs(num) < 1000:
                     break
                 num /= 1000
-            return locale.format_string('%.1f %s%s', (num, unit, suffix))
+            return locale.format_string('%.1f\u00A0%s%s', (num, unit, suffix))
 
         bytes_ = self.model.download_bytes
         bytes_total = self.model.download_bytes_total
@@ -205,19 +205,15 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         eta_h = eta // 60 // 60
         eta_m = eta // 60 % 60
         eta_s = eta % 60
-        msg = '%d∶%02d∶%02d' % (eta_h, eta_m, eta_s) if eta >= 0 else ''
-        if msg and (speed >= 0 or bytes_ >= 0 or bytes_total >= 0):
-            msg += ' - '
-        if bytes_ >= 0 or bytes_total >= 0:
-            msg += N_('{} of {}').format(
-                filesize_fmt(bytes_) if bytes_ >= 0 else N_('unknown'),
-                filesize_fmt(bytes_total) if bytes_total >= 0
-                else N_('unknown'))
-            if speed >= 0:
-                msg += ' (' + filesize_fmt(speed, 'B/s') + ')'
-        elif speed >= 0:
-            msg += filesize_fmt(speed, 'B/s')
-        self.download_info_wdg.set_text(msg)
+        time_msg = '%d∶%02d∶%02d' % (eta_h, eta_m, eta_s) if eta >= 0 else ''
+        size_msg = N_('{} of {}').format(
+            filesize_fmt(bytes_) if bytes_ >= 0 else N_('unknown'),
+            filesize_fmt(bytes_total) if bytes_total >= 0 else N_('unknown')
+        ) if bytes_ >= 0 or bytes_total >= 0 else ''
+        speed_msg = filesize_fmt(speed, 'B/\u2060s') if speed >= 0 else ''
+        self.download_info_wdg.set_text(
+            f'{time_msg}{" - " if time_msg and (size_msg + speed_msg) else ""}'
+            f'{size_msg}{f" ({speed_msg})" if size_msg else speed_msg}')
 
     def _add_thumbnail(self, thumbnail):
         try:

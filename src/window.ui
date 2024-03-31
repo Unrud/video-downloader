@@ -304,6 +304,8 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                 <child>
                                   <object class="GtkLabel" id="download_info_wdg">
                                     <property name="valign">center</property>
+                                    <property name="wrap">1</property>
+                                    <property name="justify">center</property>
                                     <property name="label">Info XXX</property>
                                     <style>
                                       <class name="dim-label"/>
