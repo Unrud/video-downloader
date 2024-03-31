@@ -16,6 +16,7 @@
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
 import io
+import os
 import subprocess
 import sys
 import threading
@@ -54,8 +55,26 @@ class PatchedPopen(subprocess.Popen):
         return outs, errs_buf.getvalue()
 
 
+def patch_getcwd():
+    def patched_chdir(path):
+        nonlocal cwd
+        chdir(path)
+        if os.path.isabs(path):
+            cwd = os.path.normpath(path)
+        else:
+            cwd = os.path.normpath(os.path.join(cwd, path))
+    chdir = os.chdir
+    cwd = os.getcwd()
+    os.getcwd = lambda: cwd
+    os.getcwdb = lambda: os.fsencode(cwd)
+    os.chdir = patched_chdir
+
+
 def install_monkey_patches():
     # ffmpeg writes progress information to stderr, but yt-dlp captures it
     # by default. Overriding this behavior allows us to show activity while
     # converting audio to MP3 or finishing videos.
     subprocess.Popen = PatchedPopen
+    # getcwd is broken inside of xdg-desktop-portal FUSE for documents
+    if os.name == 'posix':
+        patch_getcwd()
