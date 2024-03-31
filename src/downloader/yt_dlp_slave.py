@@ -272,6 +272,8 @@ class YoutubeDLSlave:
 
     def error(self, msg):
         print(msg, file=sys.stderr, flush=True)
+        traceback.print_exc(file=sys.stderr)
+        sys.stderr.flush()
         # Handle authentication requests
         if (self._allow_authentication_request and
                 re.search(r'\b[Ss]ign in\b|--username', msg)):
