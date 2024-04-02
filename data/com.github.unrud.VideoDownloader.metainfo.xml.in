@@ -24,6 +24,7 @@
   <launchable type="desktop-id">com.github.unrud.VideoDownloader.desktop</launchable>
   <url type="bugtracker">https://github.com/Unrud/video-downloader/issues</url>
   <url type="homepage">https://github.com/Unrud/video-downloader</url>
+  <url type="vcs-browser">https://github.com/Unrud/video-downloader</url>
   <url type="translate">https://hosted.weblate.org/engage/video-downloader/</url>
   <developer_name translate="no">Unrud</developer_name>
   <developer id="io.github.unrud">
