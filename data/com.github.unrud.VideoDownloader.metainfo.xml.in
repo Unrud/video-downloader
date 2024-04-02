@@ -25,7 +25,7 @@
   <url type="bugtracker">https://github.com/Unrud/video-downloader/issues</url>
   <url type="homepage">https://github.com/Unrud/video-downloader</url>
   <url type="translate">https://hosted.weblate.org/engage/video-downloader/</url>
-  <developer_name translatable="no">Unrud</developer_name>
+  <developer_name translate="no">Unrud</developer_name>
   <update_contact>unrud_AT_outlook.com</update_contact>
   <translation type="gettext">video-downloader</translation>
   <screenshots>
