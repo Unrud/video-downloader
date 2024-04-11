@@ -30,6 +30,10 @@
   <developer id="io.github.unrud">
     <name translate="no">Unrud</name>
   </developer>
+  <branding>
+    <color type="primary" scheme_preference="light">#ffbe6f</color>
+    <color type="primary" scheme_preference="dark">#81111e</color>
+  </branding>
   <update_contact>unrud_AT_outlook.com</update_contact>
   <translation type="gettext">video-downloader</translation>
   <screenshots>
