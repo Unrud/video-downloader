@@ -25,7 +25,7 @@ from video_downloader.util.connection import (
     CloseStack, SignalConnection, create_action)
 from video_downloader.window import Window
 
-_ = gettext.gettext
+N_ = gettext.gettext
 
 
 class Application(Adw.Application):
@@ -35,8 +35,8 @@ class Application(Adw.Application):
         self._cs = CloseStack()
         self.add_main_option(
             'url', ord('u'), GLib.OptionFlags.NONE, GLib.OptionArg.STRING,
-            _('Prefill URL field'), 'URL')
-        GLib.set_application_name(_('Video Downloader'))
+            N_('Prefill URL field'), 'URL')
+        GLib.set_application_name(N_('Video Downloader'))
 
     def do_startup(self):
         Adw.Application.do_startup(self)

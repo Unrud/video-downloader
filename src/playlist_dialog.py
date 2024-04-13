@@ -19,16 +19,16 @@ import gettext
 
 from gi.repository import Gtk
 
-_ = gettext.gettext
+N_ = gettext.gettext
 
 
 class PlaylistDialog(Gtk.MessageDialog):
     def __init__(self, parent):
         super().__init__(modal=True, destroy_with_parent=True,
                          message_type=Gtk.MessageType.QUESTION,
-                         text=_('Download Playlist?'),
-                         secondary_text=_('The video is part of a playlist.'))
+                         text=N_('Download Playlist?'),
+                         secondary_text=N_('The video is part of a playlist.'))
         self.set_transient_for(parent)
-        self.add_button(_('Single Video'), Gtk.ResponseType.NO)
-        self.add_button(_('All Videos in Playlist'), Gtk.ResponseType.YES)
+        self.add_button(N_('Single Video'), Gtk.ResponseType.NO)
+        self.add_button(N_('All Videos in Playlist'), Gtk.ResponseType.YES)
         self.set_default_response(Gtk.ResponseType.NO)
