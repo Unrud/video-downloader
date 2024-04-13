@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-24 12:12+0100\n"
+"POT-Creation-Date: 2024-04-13 19:20+0200\n"
 "PO-Revision-Date: 2023-04-25 08:48+0000\n"
 "Last-Translator: Lee Junseo <junseo010111@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/video-downloader/"
@@ -58,7 +58,12 @@ msgstr "당신의 영상 품질 선택에 따라 비디오의 형식을 자동�
 msgid "Based on yt-dlp."
 msgstr "yt-dlp를 기반으로 합니다."
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:15
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "YouTube;Download;"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
 msgstr "새 창"
@@ -141,7 +146,7 @@ msgstr "144p"
 msgid "Invalid download folder"
 msgstr "잘못된 다운로드 폴더"
 
-#: src/model.py:280 src/model.py:286 src/window.py:360
+#: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
 msgstr "경로가 아님"
 
@@ -205,39 +210,39 @@ msgstr "영상으로 전환하기"
 msgid "Downloading"
 msgstr "다운로드중"
 
-#: src/window.py:189 src/window.py:212
+#: src/window.py:189 src/window.py:209
 msgid "{} of {}"
 msgstr "{} 의 {}"
 
-#: src/window.py:213 src/window.py:215
+#: src/window.py:210 src/window.py:211
 msgid "unknown"
 msgstr "알수없음"
 
-#: src/window.py:283 src/window.ui:384
+#: src/window.py:281 src/window.ui:386
 msgid "Download failed"
 msgstr "다운로드 실패"
 
-#: src/window.py:287 src/window.ui:509
+#: src/window.py:285 src/window.ui:511
 msgid "Download finished"
 msgstr "다운로드 완료"
 
-#: src/window.py:293 src/window.ui:528
+#: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
 msgstr "다운로드 위치 열기"
 
-#: src/window.py:331
+#: src/window.py:329
 msgid "Reset to Default"
 msgstr "기본값으로 초기화"
 
-#: src/window.py:332 src/window.py:365 src/window.ui:33
+#: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
 msgstr "다운로드 위치 변경"
 
-#: src/window.py:362
+#: src/window.py:360
 msgid "Invalid folder selected"
 msgstr "잘못된 폴더 선택됨"
 
-#: src/window.py:366
+#: src/window.py:364
 msgid "Select Folder"
 msgstr "폴더 선택"
 
@@ -273,10 +278,10 @@ msgstr "해상도"
 msgid "Prefer MPEG format"
 msgstr "MPEG 형식 선호"
 
-#: src/window.ui:336 src/window.ui:355 src/window.ui:461 src/window.ui:480
+#: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
 msgstr "뒤로가기"
 
-#: src/window.ui:403 src/window.ui:545
+#: src/window.ui:405 src/window.ui:547
 msgid "Details"
 msgstr "자세히 보기"

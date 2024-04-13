@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-24 12:12+0100\n"
+"POT-Creation-Date: 2024-04-13 19:20+0200\n"
 "PO-Revision-Date: 2023-07-16 15:00+0000\n"
 "Last-Translator: vikdevelop <super-vik1@protonmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/video-downloader/"
@@ -59,7 +59,12 @@ msgstr "Automatický výběr formátu videa podle zvolených požadavků na kval
 msgid "Based on yt-dlp."
 msgstr "Založen na yt-dlp."
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:15
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "YouTube;Download;"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
 msgstr "Nové okno"
@@ -142,7 +147,7 @@ msgstr "144p"
 msgid "Invalid download folder"
 msgstr "Neplatná složka pro stahování"
 
-#: src/model.py:280 src/model.py:286 src/window.py:360
+#: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
 msgstr "Nikoliv adresář"
 
@@ -206,39 +211,39 @@ msgstr "Přepnout na video"
 msgid "Downloading"
 msgstr "Stahování"
 
-#: src/window.py:189 src/window.py:212
+#: src/window.py:189 src/window.py:209
 msgid "{} of {}"
 msgstr "{} z {}"
 
-#: src/window.py:213 src/window.py:215
+#: src/window.py:210 src/window.py:211
 msgid "unknown"
 msgstr "neznámý"
 
-#: src/window.py:283 src/window.ui:384
+#: src/window.py:281 src/window.ui:386
 msgid "Download failed"
 msgstr "Stahování se nezdařilo"
 
-#: src/window.py:287 src/window.ui:509
+#: src/window.py:285 src/window.ui:511
 msgid "Download finished"
 msgstr "Stahování dokončeno"
 
-#: src/window.py:293 src/window.ui:528
+#: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
 msgstr "Otevřít adresář pro stahování"
 
-#: src/window.py:331
+#: src/window.py:329
 msgid "Reset to Default"
 msgstr "Resetovat na výchozí hodnoty"
 
-#: src/window.py:332 src/window.py:365 src/window.ui:33
+#: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
 msgstr "Vybrat složku pro stahování"
 
-#: src/window.py:362
+#: src/window.py:360
 msgid "Invalid folder selected"
 msgstr "Vybrána nesprávná složka"
 
-#: src/window.py:366
+#: src/window.py:364
 msgid "Select Folder"
 msgstr "Vybrat složku"
 
@@ -274,10 +279,10 @@ msgstr "Rozlišení"
 msgid "Prefer MPEG format"
 msgstr "Preferovat formát MPEG"
 
-#: src/window.ui:336 src/window.ui:355 src/window.ui:461 src/window.ui:480
+#: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
 msgstr "Zpět"
 
-#: src/window.ui:403 src/window.ui:545
+#: src/window.ui:405 src/window.ui:547
 msgid "Details"
 msgstr "Detaily"

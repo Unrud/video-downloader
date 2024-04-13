@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-24 12:12+0100\n"
+"POT-Creation-Date: 2024-04-13 19:20+0200\n"
 "PO-Revision-Date: 2023-05-19 16:49+0000\n"
 "Last-Translator: Peter Dave Hello <hsu@peterdavehello.org>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -56,7 +56,12 @@ msgstr "根據您的品質需求自動選擇影片格式"
 msgid "Based on yt-dlp."
 msgstr "基於 yt-dlp."
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:15
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "YouTube;Download;"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
 msgstr "新視窗"
@@ -139,7 +144,7 @@ msgstr "144p"
 msgid "Invalid download folder"
 msgstr "無效的下載資料夾"
 
-#: src/model.py:280 src/model.py:286 src/window.py:360
+#: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
 msgstr "不是一個目錄"
 
@@ -203,39 +208,39 @@ msgstr "切換至影片"
 msgid "Downloading"
 msgstr "正在下載"
 
-#: src/window.py:189 src/window.py:212
+#: src/window.py:189 src/window.py:209
 msgid "{} of {}"
 msgstr "{} / {}"
 
-#: src/window.py:213 src/window.py:215
+#: src/window.py:210 src/window.py:211
 msgid "unknown"
 msgstr "未知"
 
-#: src/window.py:283 src/window.ui:384
+#: src/window.py:281 src/window.ui:386
 msgid "Download failed"
 msgstr "下載失敗"
 
-#: src/window.py:287 src/window.ui:509
+#: src/window.py:285 src/window.ui:511
 msgid "Download finished"
 msgstr "下載完成"
 
-#: src/window.py:293 src/window.ui:528
+#: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
 msgstr "開啟下載位置"
 
-#: src/window.py:331
+#: src/window.py:329
 msgid "Reset to Default"
 msgstr "重設為預設值"
 
-#: src/window.py:332 src/window.py:365 src/window.ui:33
+#: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
 msgstr "更改下載位置"
 
-#: src/window.py:362
+#: src/window.py:360
 msgid "Invalid folder selected"
 msgstr "選擇的資料夾無效"
 
-#: src/window.py:366
+#: src/window.py:364
 msgid "Select Folder"
 msgstr "選擇資料夾"
 
@@ -271,10 +276,10 @@ msgstr "解析度"
 msgid "Prefer MPEG format"
 msgstr "偏好 MPEG 格式"
 
-#: src/window.ui:336 src/window.ui:355 src/window.ui:461 src/window.ui:480
+#: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
 msgstr "返回"
 
-#: src/window.ui:403 src/window.ui:545
+#: src/window.ui:405 src/window.ui:547
 msgid "Details"
 msgstr "詳細資訊"

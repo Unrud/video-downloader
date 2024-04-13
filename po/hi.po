@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-24 12:12+0100\n"
+"POT-Creation-Date: 2024-04-13 19:20+0200\n"
 "PO-Revision-Date: 2024-03-02 11:01+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/video-downloader/"
@@ -59,7 +59,12 @@ msgstr ""
 msgid "Based on yt-dlp."
 msgstr "yt-dlp पर आधारित।"
 
-#: data/com.github.unrud.VideoDownloader.desktop.in:15
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.unrud.VideoDownloader.desktop.in:14
+msgid "YouTube;Download;"
+msgstr ""
+
+#: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
 msgstr "नई विंडो"
@@ -142,7 +147,7 @@ msgstr "144p"
 msgid "Invalid download folder"
 msgstr "अमान्य डाउनलोड फ़ोल्डर"
 
-#: src/model.py:280 src/model.py:286 src/window.py:360
+#: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
 msgstr "कोई डॉयरेक्टरी नहीं"
 
@@ -206,39 +211,39 @@ msgstr "वीडियो पर स्विच करें"
 msgid "Downloading"
 msgstr "डाउनलोड हो रहा है"
 
-#: src/window.py:189 src/window.py:212
+#: src/window.py:189 src/window.py:209
 msgid "{} of {}"
 msgstr "{} का {}"
 
-#: src/window.py:213 src/window.py:215
+#: src/window.py:210 src/window.py:211
 msgid "unknown"
 msgstr "अज्ञात"
 
-#: src/window.py:283 src/window.ui:384
+#: src/window.py:281 src/window.ui:386
 msgid "Download failed"
 msgstr "डाउनलोड विफल"
 
-#: src/window.py:287 src/window.ui:509
+#: src/window.py:285 src/window.ui:511
 msgid "Download finished"
 msgstr "डाउनलोड समाप्त हो गया"
 
-#: src/window.py:293 src/window.ui:528
+#: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
 msgstr "डाउनलोड स्थान खोलें"
 
-#: src/window.py:331
+#: src/window.py:329
 msgid "Reset to Default"
 msgstr "डिफ़ॉल्ट पर रीसेट करें"
 
-#: src/window.py:332 src/window.py:365 src/window.ui:33
+#: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
 msgstr "डाउनलोड स्थान बदलें"
 
-#: src/window.py:362
+#: src/window.py:360
 msgid "Invalid folder selected"
 msgstr "अमान्य फ़ोल्डर चयनित"
 
-#: src/window.py:366
+#: src/window.py:364
 msgid "Select Folder"
 msgstr "फोल्डर का चयन करें"
 
@@ -274,10 +279,10 @@ msgstr "रेज़लूशन"
 msgid "Prefer MPEG format"
 msgstr "MPEG प्रारूप को प्राथमिकता दें"
 
-#: src/window.ui:336 src/window.ui:355 src/window.ui:461 src/window.ui:480
+#: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
 msgstr "पीछे"
 
-#: src/window.ui:403 src/window.ui:545
+#: src/window.ui:405 src/window.ui:547
 msgid "Details"
 msgstr "विवरण"
