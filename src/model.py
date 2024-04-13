@@ -31,7 +31,7 @@ from video_downloader.util.connection import (CloseStack, PropertyBinding,
 from video_downloader.util.path import expand_path, open_in_file_manager
 from video_downloader.util.response import AsyncResponse, Response
 
-_ = gettext.gettext
+N_ = gettext.gettext
 
 
 class Model(GObject.GObject, downloader.HandlerInterface):
@@ -64,16 +64,16 @@ class Model(GObject.GObject, downloader.HandlerInterface):
     download_speed = GObject.Property(type=GObject.TYPE_INT64, default=-1)
     download_eta = GObject.Property(type=GObject.TYPE_INT64, default=-1)
     resolutions = collections.OrderedDict([
-        (MAX_RESOLUTION, _('Best')),
-        (4320, _('4320p (8K)')),
-        (2160, _('2160p (4K)')),
-        (1440, _('1440p (HD)')),
-        (1080, _('1080p (HD)')),
-        (720, _('720p (HD)')),
-        (480, _('480p')),
-        (360, _('360p')),
-        (240, _('240p')),
-        (144, _('144p'))])
+        (MAX_RESOLUTION, N_('Best')),
+        (4320, N_('4320p (8K)')),
+        (2160, N_('2160p (4K)')),
+        (1440, N_('1440p (HD)')),
+        (1080, N_('1080p (HD)')),
+        (720, N_('720p (HD)')),
+        (480, N_('480p')),
+        (360, N_('360p')),
+        (240, N_('240p')),
+        (144, N_('144p'))])
 
     _global_download_lock = set()
 
@@ -156,7 +156,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
             self.state = 'download'
             return
         response = self._handler.on_download_folder_error(
-            _('Invalid download folder'), message, path)
+            N_('Invalid download folder'), message, path)
 
         def handle_response(response):
             if response.cancelled:
@@ -277,16 +277,16 @@ def check_download_dir(path: str, create: bool = False
         try:
             os.makedirs(path, exist_ok=True)
         except FileExistsError:
-            return _('Not a directory')
+            return N_('Not a directory')
         except Exception:
             g_log(None, GLib.LogLevelFlags.LEVEL_DEBUG,
                   '%s', traceback.format_exc())
-            return _('Permission denied')
+            return N_('Permission denied')
     elif not os.path.isdir(path):
-        return _('Not a directory')
+        return N_('Not a directory')
     if not os.access(path, os.R_OK | os.W_OK | os.X_OK,
                      effective_ids=os.access in os.supports_effective_ids):
-        return _('Permission denied')
+        return N_('Permission denied')
     return None
 
 
