@@ -21,17 +21,17 @@ from gi.repository import GObject, Gtk
 
 from video_downloader.util.connection import CloseStack, PropertyBinding
 
-N_ = gettext.gettext
+_ = gettext.gettext
 
 
 class BaseAuthenticationDialog(Gtk.Dialog):
     def __init__(self, parent):
         super().__init__(modal=True, destroy_with_parent=True, resizable=False,
-                         title=N_('Authentication Required'),
+                         title=_('Authentication Required'),
                          use_header_bar=True)
         self._cs = CloseStack()
         self.set_transient_for(parent)
-        self.add_button(N_('Cancel'), Gtk.ResponseType.CANCEL)
+        self.add_button(_('Cancel'), Gtk.ResponseType.CANCEL)
         self._ok_button = self.add_button('', Gtk.ResponseType.OK)
         self._update_response(False)
         self.set_default_response(Gtk.ResponseType.OK)
@@ -43,7 +43,7 @@ class BaseAuthenticationDialog(Gtk.Dialog):
         super().destroy()
 
     def _update_response(self, form_filled):
-        self._ok_button.set_label(N_('Sign in') if form_filled else N_('Skip'))
+        self._ok_button.set_label(_('Sign in') if form_filled else _('Skip'))
 
     def _build_content(self):
         raise NotImplementedError

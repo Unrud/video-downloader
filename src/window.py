@@ -36,7 +36,7 @@ from video_downloader.util.response import AsyncResponse
 
 DOWNLOAD_IMAGE_SIZE = 128
 MAX_ASPECT_RATIO = 2.39
-N_ = gettext.gettext
+_ = gettext.gettext
 
 
 @Gtk.Template(resource_path='/com/github/unrud/VideoDownloader/window.ui')
@@ -184,9 +184,9 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
     def _update_download_page_title(self):
         playlist_count = self.model.download_playlist_count
         playlist_index = self.model.download_playlist_index
-        s = N_('Downloading')
+        s = _('Downloading')
         if playlist_count > 1:
-            s += ' (' + N_('{} of {}').format(
+            s += ' (' + _('{} of {}').format(
                 playlist_index + 1, playlist_count) + ')'
         self.download_page_title_wdg.set_text(s)
 
@@ -206,9 +206,9 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         eta_m = eta // 60 % 60
         eta_s = eta % 60
         time_msg = '%d∶%02d∶%02d' % (eta_h, eta_m, eta_s) if eta >= 0 else ''
-        size_msg = N_('{} of {}').format(
-            filesize_fmt(bytes_) if bytes_ >= 0 else N_('unknown'),
-            filesize_fmt(bytes_total) if bytes_total >= 0 else N_('unknown')
+        size_msg = _('{} of {}').format(
+            filesize_fmt(bytes_) if bytes_ >= 0 else _('unknown'),
+            filesize_fmt(bytes_total) if bytes_total >= 0 else _('unknown')
         ) if bytes_ >= 0 or bytes_total >= 0 else ''
         speed_msg = filesize_fmt(speed, 'B/\u2060s') if speed >= 0 else ''
         self.download_info_wdg.set_text(
@@ -278,17 +278,17 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             return
         notification = gobject_log(Gio.Notification())
         if state == 'error':
-            notification.set_title(N_('Download failed'))
+            notification.set_title(_('Download failed'))
             notification.set_default_action(
                 'app.notification-error--' + self._notification_uuid)
         elif state == 'success':
-            notification.set_title(N_('Download finished'))
+            notification.set_title(_('Download finished'))
             if self.model.download_titles:
                 notification.set_body(' | '.join(self.model.download_titles))
             notification.set_default_action(
                 'app.notification-success--' + self._notification_uuid)
             notification.add_button(
-                N_('Open Download Location'),
+                _('Open Download Location'),
                 'app.notification-open-finished-download-dir--' +
                 self._notification_uuid)
         else:
@@ -326,8 +326,8 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             message_type=Gtk.MessageType.ERROR, text=title,
             secondary_text=message, buttons=Gtk.ButtonsType.CANCEL)
         if show_reset_button:
-            dialog.add_button(N_('Reset to Default'), RESPONSE_TYPE_RESET)
-        dialog.add_button(N_('Change Download Location'), RESPONSE_TYPE_CHANGE)
+            dialog.add_button(_('Reset to Default'), RESPONSE_TYPE_RESET)
+        dialog.add_button(_('Change Download Location'), RESPONSE_TYPE_CHANGE)
         dialog.set_default_response(RESPONSE_TYPE_CHANGE)
         dialog.set_transient_for(self)
         connection = SignalConnection(dialog, 'response', handle_response)
@@ -355,13 +355,13 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
                     async_response.set_result(None)
                     return
             else:
-                message = N_('Not a directory')
+                message = _('Not a directory')
             self.on_download_folder_error(
-                N_('Invalid folder selected'), message, path,
+                _('Invalid folder selected'), message, path,
                 show_reset_button=False).chain(async_response)
         dialog = gobject_log(Gtk.FileDialog(
-            modal=True, title=N_('Change Download Location'),
-            accept_label=N_('Select Folder')))
+            modal=True, title=_('Change Download Location'),
+            accept_label=_('Select Folder')))
         cancellable = Gio.Cancellable()
         async_response = AsyncResponse()
         async_response.add_close_callback(cancellable.cancel)
