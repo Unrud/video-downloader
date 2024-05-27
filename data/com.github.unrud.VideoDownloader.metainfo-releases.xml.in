@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.13" date="2024-05-27">
+    <description>
+      <ul>
+        <li>Update Appdata</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.12" date="2024-03-31">
     <description>
       <ul>
