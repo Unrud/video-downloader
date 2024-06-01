@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-03-02 11:01+0000\n"
+"PO-Revision-Date: 2024-06-01 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/video-downloader/"
 "gui/hi/>\n"
@@ -16,27 +16,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr "Video Downloader"
+msgstr "वीडियो डाउनलोडर"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
-#, fuzzy
 msgid "Download web videos"
-msgstr "YouTube और अन्य कई वेबसाइटों से वीडियो डाउनलोड करें"
+msgstr "वेब वीडियो डाउनलोड करें"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"उपयोग में आसान इंटरफ़ेस वाली वेबसाइटों से वीडियो डाउनलोड करें। निम्नलिखित सुविधाएँ प्रदान "
-"करता है:"
+"उपयोग में आसान इंटरफ़ेस वाली वेबसाइटों से वीडियो डाउनलोड करें। निम्नलिखित "
+"सुविधाएं प्रदान करता है:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
@@ -62,12 +61,12 @@ msgstr "yt-dlp पर आधारित।"
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YouTube;डाउनलोड;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr "नई विंडो"
+msgstr "नई खिड़की"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
@@ -92,7 +91,7 @@ msgstr "वीडियो सार्वजनिक नहीं है।"
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr "उपयोगकर्ता नाम"
+msgstr "उपयोक्तानाम"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
@@ -101,7 +100,7 @@ msgstr "पासवर्ड"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr "URL फ़ील्ड प्रीफ़िल करें"
+msgstr "URL क्षेत्र पहले से भरें"
 
 #: src/model.py:67
 msgid "Best"
@@ -145,11 +144,11 @@ msgstr "144p"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr "अमान्य डाउनलोड फ़ोल्डर"
+msgstr "अमान्य डाउनलोड फोल्डर"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr "कोई डॉयरेक्टरी नहीं"
+msgstr "निर्देशिका नहीं"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
@@ -173,7 +172,7 @@ msgstr "प्लेलिस्ट में सभी वीडियो"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr "जनरल"
+msgstr "सामान्य"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
@@ -181,7 +180,7 @@ msgstr "मेनू खोलें"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr "विंडो बंद करें"
+msgstr "खिड़की बंद करें"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
@@ -193,19 +192,19 @@ msgstr "कीबोर्ड शॉर्टकट"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr "नेविगेशन"
+msgstr "पथ-प्रदर्शन"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "वापस जाएँ"
+msgstr "पीछे जाएं"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr "ऑडियो पर स्विच करें"
+msgstr "ऑडियो पर जाएं"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr "वीडियो पर स्विच करें"
+msgstr "वीडियो पर जाएं"
 
 #: src/window.py:187
 msgid "Downloading"
@@ -233,7 +232,7 @@ msgstr "डाउनलोड स्थान खोलें"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr "डिफ़ॉल्ट पर रीसेट करें"
+msgstr "तयशुदा पर रीसेट"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
@@ -241,19 +240,19 @@ msgstr "डाउनलोड स्थान बदलें"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr "अमान्य फ़ोल्डर चयनित"
+msgstr "अमान्य फोल्डर चयनित"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr "फोल्डर का चयन करें"
+msgstr "फोल्डर चुनें"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr "Video Downloader के बारे में"
+msgstr "वीडियो डाउनलोडर के बारे में"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr "मुख्य मेन्यू"
+msgstr "मुख्य मेनू"
 
 #: src/window.ui:105
 msgid "Audio"
@@ -273,7 +272,7 @@ msgstr "वीडियो"
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr "रेज़लूशन"
+msgstr "रिजोल्यूशन"
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
