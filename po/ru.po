@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the video-downloader package.
 # Umidjon Almasov <umidjon@almasov.uz>, 2022.
 # Valeriy Manzhos <valeronishe2002@gmail.com>, 2023.
+# Host1c <npasynkov77@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2023-03-19 14:38+0000\n"
-"Last-Translator: Valeriy Manzhos <valeronishe2002@gmail.com>\n"
+"PO-Revision-Date: 2024-06-12 21:09+0000\n"
+"Last-Translator: Host1c <npasynkov77@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/video-downloader/"
 "gui/ru/>\n"
 "Language: ru\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -27,9 +28,8 @@ msgstr "Загрузчик видео"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
-#, fuzzy
 msgid "Download web videos"
-msgstr "Загружает видео с таких сайтов как YouTube и многих других"
+msgstr "Позволяет скачать видео из интернета"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
@@ -63,7 +63,7 @@ msgstr "Основан на yt-dlp."
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YuuTube;Скачать;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
