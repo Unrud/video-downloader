@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-05-30 19:09+0000\n"
+"PO-Revision-Date: 2024-06-19 10:09+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/video-downloader/"
 "gui/nl/>\n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr "Videodownloader"
+msgstr "Video­downloader"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
@@ -44,16 +44,16 @@ msgstr "Converteer video's naar MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "Ondersteunt met wachtwoord-beveiligde video's en privévideo's"
+msgstr "Ondersteunt met wachtwoord beveiligde video's en privé­video's"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "Download losse video's of hele afspeellijsten"
+msgstr "Download losse video's of hele afspeel­lijsten"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
-"Bepaalt automatisch het videoformaat op basis van je kwaliteitsinstellingen"
+"Bepaalt automatisch het video­formaat op basis van je kwaliteits­instellingen"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
@@ -92,7 +92,7 @@ msgstr "Deze video is niet openbaar"
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr "Gebruikersnaam"
+msgstr "Gebruikers­naam"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
@@ -145,7 +145,7 @@ msgstr "144p"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr "Ongeldige downloadmap"
+msgstr "Ongeldige download­map"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
@@ -157,11 +157,11 @@ msgstr "Toestemming geweigerd"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr "Afspeellijst downloaden?"
+msgstr "Afspeel­lijst downloaden?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr "Deze video maakt deel uit van een afspeellijst"
+msgstr "Deze video maakt deel uit van een afspeel­lijst"
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
@@ -169,7 +169,7 @@ msgstr "Losse video"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "Alle video's in de afspeellijst"
+msgstr "Alle video's in de afspeel­lijst"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
@@ -229,7 +229,7 @@ msgstr "Downloaden voltooid"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "Downloadlocatie openen"
+msgstr "Download­locatie openen"
 
 #: src/window.py:329
 msgid "Reset to Default"
@@ -237,7 +237,7 @@ msgstr "Standaard herstellen"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "Downloadlocatie aanpassen"
+msgstr "Download­locatie aanpassen"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
@@ -249,7 +249,7 @@ msgstr "Map selecteren"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr "Over Videodownloader"
+msgstr "Over Video­downloader"
 
 #: src/window.ui:91
 msgid "Main Menu"
