@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the video-downloader package.
 # Albano Battistella <albano:battistella@hotmail.com>, 2020.
 # MartinIIoT <>, 2020-2021.
-# Milan Šalka <salka.milan@googlemail.com>, 2023.
+# Milan Šalka <salka.milan@googlemail.com>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2023-08-11 09:50+0000\n"
+"PO-Revision-Date: 2024-06-19 10:09+0000\n"
 "Last-Translator: Milan Šalka <salka.milan@googlemail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/video-downloader/"
 "gui/sk/>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+"X-Generator: Weblate 5.6-rc\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -28,9 +28,8 @@ msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
-#, fuzzy
 msgid "Download web videos"
-msgstr "Sťahovanie videí zo stránok ako YouTube a mnoho ďaľších"
+msgstr "Stiahnuť webové videá"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
@@ -63,7 +62,7 @@ msgstr "Založený na yt-dlp."
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YouTube;Stiahnuť;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
