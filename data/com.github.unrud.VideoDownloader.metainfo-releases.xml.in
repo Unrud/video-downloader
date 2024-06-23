@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.15" date="2024-06-23">
+    <description>
+      <ul>
+        <li>Add Finnish translation</li>
+        <li>Update Dutch translation</li>
+        <li>Update Italian translation</li>
+        <li>Update Russian translation</li>
+        <li>Update Slovak translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.14" date="2024-06-08">
     <description>
       <ul>
-        <li>Add Croatian translation</li>
-        <li>Add Czech translation</li>
-        <li>Add Dutch translation</li>
-        <li>Add Hindi translation</li>
-        <li>Add Hungarian translation</li>
-        <li>Add Japanese translation</li>
-        <li>Add Spanish translation</li>
-        <li>Add Swedish translation</li>
-        <li>Add Turkish translation</li>
-        <li>Add Ukrainian translation</li>
+        <li>Update Croatian translation</li>
+        <li>Update Czech translation</li>
+        <li>Update Dutch translation</li>
+        <li>Update Hindi translation</li>
+        <li>Update Hungarian translation</li>
+        <li>Update Japanese translation</li>
+        <li>Update Spanish translation</li>
+        <li>Update Swedish translation</li>
+        <li>Update Turkish translation</li>
+        <li>Update Ukrainian translation</li>
       </ul>
     </description>
   </release>
