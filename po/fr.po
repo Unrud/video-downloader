@@ -4,13 +4,14 @@
 # Thorfin89 <thorfin89@free.fr>, 2020.
 # Irénée THIRION <irenee.thirion@e.email>, 2022.
 # "J. Lavoie" <j.lavoie@net-c.ca>, 2023.
+# rene-coty <irenee.thirion@e.email>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2023-03-04 19:37+0000\n"
-"Last-Translator: \"J. Lavoie\" <j.lavoie@net-c.ca>\n"
+"PO-Revision-Date: 2024-07-05 10:09+0000\n"
+"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/video-downloader/"
 "gui/fr/>\n"
 "Language: fr\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -28,10 +29,8 @@ msgstr "Téléchargeur de vidéos"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
-#, fuzzy
 msgid "Download web videos"
-msgstr ""
-"Téléchargez des vidéos à partir de sites comme YouTube et bien d’autres"
+msgstr "Téléchargez des vidéos à partir de sites web"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
@@ -65,7 +64,7 @@ msgstr "Basé sur yt-dlp."
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YouTube;Download;Télécharger;Vidéos;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
