@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.16" date="2024-07-08">
+    <description>
+      <ul>
+        <li>Limit status text update rate</li>
+        <li>Add Estonian translation</li>
+        <li>Update French translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.15" date="2024-06-23">
     <description>
       <ul>
