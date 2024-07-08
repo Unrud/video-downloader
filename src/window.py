@@ -30,7 +30,8 @@ from video_downloader.playlist_dialog import PlaylistDialog
 from video_downloader.shortcuts_dialog import ShortcutsDialog
 from video_downloader.util import gobject_log
 from video_downloader.util.connection import (CloseStack, PropertyBinding,
-                                              SignalConnection, create_action)
+                                              RateLimit, SignalConnection,
+                                              create_action)
 from video_downloader.util.path import expand_path, open_in_file_manager
 from video_downloader.util.response import AsyncResponse
 
@@ -131,11 +132,13 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
         self._cs.push(PropertyBinding(
             self.model, 'finished-download-dir',
             func_a_to_b=self._update_finished_download_dir_wdg_tooltip))
+        update_download_msg_rate_limited = self._cs.push(RateLimit(
+            self._update_download_msg, 1))
         for name in ['download-bytes', 'download-bytes-total',
                      'download-speed', 'download-eta']:
-            self._cs.push(PropertyBinding(
-                self.model, name,
-                func_a_to_b=lambda _: self._update_download_msg()))
+            self._cs.push(SignalConnection(
+                self.model, 'notify::' + name,
+                update_download_msg_rate_limited, no_args=True))
         self._cs.push(PropertyBinding(
             self.model, 'download-progress',
             func_a_to_b=lambda _: self._update_download_progress()))

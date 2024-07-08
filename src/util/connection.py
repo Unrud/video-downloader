@@ -16,6 +16,8 @@
 # along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
 
 import functools
+import math
+import time
 import traceback
 from collections import OrderedDict
 
@@ -64,6 +66,7 @@ class CloseStack(Closable):
         self.__closables[self.__key] = closable
         closable.add_close_callback(self.__closables.pop, self.__key)
         self.__key += 1
+        return closable
 
     def close(self):
         while self.__closables:
@@ -126,6 +129,36 @@ class PropertyBinding(Closable):
                 dest_obj.set_property(dest_prop, value)
             finally:
                 self.__frozen = False
+
+
+class RateLimit(Closable):
+    def __init__(self, func, seconds=0):
+        super().__init__()
+        self.__seconds = seconds
+        self.__func = func
+        self.__last_call = 0
+        self.__timeout = None
+
+        def cleanup_timeout():
+            if self.__timeout is None:
+                return
+            GLib.Source.remove(self.__timeout)
+            self.__timeout = None
+        self.add_close_callback(cleanup_timeout)
+
+    def __call__(self):
+        if self.__timeout is not None or self.closed:
+            return
+        timeout = max(self.__seconds - (time.monotonic() - self.__last_call),
+                      0)
+        self.__timeout = GLib.timeout_add(
+            math.ceil(timeout * 1000), self.__handle_timeout)
+
+    def __handle_timeout(self):
+        self.__func()
+        self.__last_call = time.monotonic()
+        self.__timeout = None
+        return False
 
 
 def create_action(action_group, closable, name, callback, *extra_args,
