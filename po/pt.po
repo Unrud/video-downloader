@@ -2,21 +2,22 @@
 # Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Gustavo Machado Peredo <gustavomperedo@protonmail.com>, 2020.
+# FCastro32 <fc32.wake623@silomails.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2023-03-21 14:52+0000\n"
-"Last-Translator: Unrud <unrud@outlook.com>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/video-"
-"downloader/gui/pt/>\n"
+"PO-Revision-Date: 2024-07-17 04:09+0000\n"
+"Last-Translator: FCastro32 <fc32.wake623@silomails.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/"
+"video-downloader/gui/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -35,12 +36,12 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Abaixe vídeos de websites com uma interface fácil de user. Contém as "
+"Baixe vídeos de websites com uma interface fácil de user. Contém as "
 "seguintes funções:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Conversão de vídeos para mp3"
+msgstr "Converta vídeos para mp3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
@@ -71,7 +72,7 @@ msgstr "Nova Janela"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "Autenticação Requirida"
+msgstr "Autenticação Exigida"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
@@ -181,7 +182,7 @@ msgstr "Abrir menu"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr "Fecha a janela"
+msgstr "Fechar janela"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
@@ -197,7 +198,7 @@ msgstr "Navegação"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "Recuar"
+msgstr "Retornar"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
@@ -225,11 +226,11 @@ msgstr "Falha no download"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr "Download terminado"
+msgstr "Download finalizado"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "Abrir Diretório de Download"
+msgstr "Abrir Local de Download"
 
 #: src/window.py:329
 msgid "Reset to Default"
@@ -237,11 +238,11 @@ msgstr "Restaurar para o padrão"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "Mudar diretório de Download"
+msgstr "Mudar Local de Download"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr "Diretório inválido detectado"
+msgstr "Diretório inválido selecionado"
 
 #: src/window.py:364
 msgid "Select Folder"
