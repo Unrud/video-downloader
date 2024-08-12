@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the video-downloader package.
 # Gustavo Machado Peredo <gustavomperedo@protonmail.com>, 2020.
 # FCastro32 <fc32.wake623@silomails.com>, 2024.
+# tuxanator <gabrielmaia720@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-07-17 04:09+0000\n"
-"Last-Translator: FCastro32 <fc32.wake623@silomails.com>\n"
+"PO-Revision-Date: 2024-08-13 13:09+0000\n"
+"Last-Translator: tuxanator <gabrielmaia720@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "video-downloader/gui/pt/>\n"
 "Language: pt\n"
@@ -27,9 +28,8 @@ msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
-#, fuzzy
 msgid "Download web videos"
-msgstr "Descarregue vídeos de websites como YouTube e outros"
+msgstr "Descarregue vídeos da web"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
@@ -63,7 +63,7 @@ msgstr "Baseado no yt-dlp"
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YouTube;Descarregar;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
