@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # SPiRiT <such.a.lost.spirit@gmail.com>, 2023.
+# yoval keshet <keshetyoval@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2023-04-05 10:48+0000\n"
-"Last-Translator: SPiRiT <such.a.lost.spirit@gmail.com>\n"
+"PO-Revision-Date: 2024-08-29 09:09+0000\n"
+"Last-Translator: yoval keshet <keshetyoval@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/video-downloader/"
 "gui/he/>\n"
 "Language: he\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -60,7 +61,7 @@ msgstr "מבוסס על yt-dlp."
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "יוטיוב;הורדה;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
