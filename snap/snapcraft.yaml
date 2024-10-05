@@ -40,8 +40,8 @@ parts:
     # Build from source because the ffmpeg package installs libraries as dependencies
     # that conflict with the Gnome extension
     plugin: autotools
-    source: https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz
-    source-checksum: sha256/8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389
+    source: https://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
+    source-checksum: sha256/40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6
     autotools-configure-parameters:
       # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
       - --prefix=/usr
@@ -73,7 +73,7 @@ parts:
     source-type: git
     python-packages:
       - pyxattr==0.8.1
-      - yt-dlp==2024.8.6
+      - yt-dlp==2024.9.27
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
