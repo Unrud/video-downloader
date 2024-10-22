@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # AngryPenguinPL <angrypenguinpoland@gmail.com>, 2024.
+# Piotr Wieczorek <wieczorek.piotr.praga@protonmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-07-11 11:46+0000\n"
-"Last-Translator: AngryPenguinPL <angrypenguinpoland@gmail.com>\n"
+"PO-Revision-Date: 2024-10-23 09:19+0000\n"
+"Last-Translator: Piotr Wieczorek <wieczorek.piotr.praga@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/video-downloader/"
 "gui/pl/>\n"
 "Language: pl\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -35,20 +36,20 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Pobieraj filmy ze stron internetowych w łatwym do użycia interfejsie. "
+"Pobieraj filmy ze stron internetowych z łatwym w użytkowaniu interfejsie. "
 "Oferuje następujące funkcje:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Konwersja wideo do MP3"
+msgstr "Przekonwertuj wideo do MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "Obsługuje filmy chronione hasłem i prywatne"
+msgstr "Obsługuje prywatne filmy i te chronione hasłem"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "Pobieranie pojedynczych filmów lub całych list odtwarzania"
+msgstr "Pobierz pojedynczy film albo całą listę odtwarzania"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
@@ -57,21 +58,21 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "Został oparty na yt-dlp."
+msgstr "Oparty na yt-dlp."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr "YouTube;Download;"
+msgstr "YouTube;Pobieranie;Wideo;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr "Nowe okno"
+msgstr "Nowe Okno"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "Wymagane uwierzytelnienie"
+msgstr "Wymagane Uwierzytelnienie"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
@@ -79,7 +80,7 @@ msgstr "Anuluj"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr "Zaloguj"
+msgstr "Zaloguj się"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
@@ -88,7 +89,7 @@ msgstr "Pomiń"
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr "Wideo nie jest publiczne."
+msgstr "To wideo nie jest publiczne."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
