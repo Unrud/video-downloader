@@ -1,288 +1,281 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-# mere <mere@users.noreply.hosted.weblate.org>, 2023, 2024.
+# Littux <littux.dustux@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-10-26 10:15+0000\n"
-"Last-Translator: mere <mere@users.noreply.hosted.weblate.org>\n"
-"Language-Team: Romanian <https://hosted.weblate.org/projects/"
-"video-downloader/gui/ro/>\n"
-"Language: ro\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ml\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr "Video Downloader"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr "Descărcare video-uri web"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Descărcați videoclipuri de pe site-uri web cu o interfață ușor de utilizat. "
-"Oferă următoarele caracteristici:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Convertiți videoclipuri în MP3"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "Suportă videoclipuri private și protejare prin parolă"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "Descărcați videoclipuri individuale sau liste de redare întregi"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
-"Selectează automat un format video în funcție de cerințele tale de calitate"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "Bazat pe yt-dlp."
+msgstr ""
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr "YouTube;Download;Descărcător;"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr "Fereastră nouă"
+msgstr ""
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "Autentificare necesară"
+msgstr ""
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr "Anulează"
+msgstr ""
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr "Conectează-te"
+msgstr ""
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr "Omite"
+msgstr ""
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr "Videoclipul nu este public."
+msgstr ""
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr "Nume de utilizator"
+msgstr ""
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr "Parolă"
+msgstr ""
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr "Precompletați câmpul URL"
+msgstr ""
 
 #: src/model.py:67
 msgid "Best"
-msgstr "Cel mai bun"
+msgstr ""
 
 #: src/model.py:68
 msgid "4320p (8K)"
-msgstr "4320p (8K)"
+msgstr ""
 
 #: src/model.py:69
 msgid "2160p (4K)"
-msgstr "2160p (4K)"
+msgstr ""
 
 #: src/model.py:70
 msgid "1440p (HD)"
-msgstr "1440p (HD)"
+msgstr ""
 
 #: src/model.py:71
 msgid "1080p (HD)"
-msgstr "1080p (HD)"
+msgstr ""
 
 #: src/model.py:72
 msgid "720p (HD)"
-msgstr "720p (HD)"
+msgstr ""
 
 #: src/model.py:73
 msgid "480p"
-msgstr "480p"
+msgstr ""
 
 #: src/model.py:74
 msgid "360p"
-msgstr "360p"
+msgstr ""
 
 #: src/model.py:75
 msgid "240p"
-msgstr "240p"
+msgstr ""
 
 #: src/model.py:76
 msgid "144p"
-msgstr "144p"
+msgstr ""
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr "Dosar de descărcare invalid"
+msgstr ""
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr "Nu este un director"
+msgstr ""
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr "Permisiunea refuzată"
+msgstr ""
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr "Descărcați playlist-ul?"
+msgstr ""
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr "Videoclipul face parte dintr-un playlist."
+msgstr ""
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr "Un singur videoclip"
+msgstr ""
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "Toate videoclipurile din Playlist"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr "General"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr "Deschideți meniul"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr "Închideți fereastra"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr "Închide"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr "Comenzi rapide de la tastatură"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr "Navigare"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "Înapoi"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr "Comutați la Audio"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr "Comutați la Video"
+msgstr ""
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr "Descărcarea"
+msgstr ""
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr "{} din {}"
+msgstr ""
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr "necunoscut"
+msgstr ""
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr "Descărcare eșuată"
+msgstr ""
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr "Descărcarea s-a terminat"
+msgstr ""
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "Deschideți locația de descărcare"
+msgstr ""
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr "Resetare la valorile implicite"
+msgstr ""
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "Modificarea locației de descărcare"
+msgstr ""
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr "Dosar nevalid selectat"
+msgstr ""
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr "Selectați Folder"
+msgstr ""
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr "Despre Video Downloader"
+msgstr ""
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr "Meniu principal"
+msgstr ""
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr "Audio"
+msgstr ""
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr "URL-ul"
+msgstr ""
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr "Descarcă"
+msgstr ""
 
 #: src/window.ui:156
 msgid "Video"
-msgstr "Video"
+msgstr ""
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr "Rezoluţie"
+msgstr ""
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr "Prefer formatul MPEG"
+msgstr ""
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr "Înainte"
+msgstr ""
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr "Detalii"
+msgstr ""
