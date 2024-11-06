@@ -139,13 +139,13 @@
             "name": "yt-dlp",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --no-dependencies --prefix=/app *.whl"
+                "pip3 install --no-dependencies --prefix=/app \"$(echo *.whl)[default]\""
             ],
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/bb/68/548f9819b41d53561d4f3d39588111cf39993c066b6e5300b4ae118eb2e6/yt_dlp-2024.10.22-py3-none-any.whl",
-                    "sha256": "ba166602ebe22a220e4dc1ead45bf00eb469ed812b22f4fb8bb54734f9b02084",
+                    "url": "https://files.pythonhosted.org/packages/6e/e4/e45c5067a79780954b905db4a42aa83d7aaefd91e32b18ab91c77600e668/yt_dlp-2024.11.4-py3-none-any.whl",
+                    "sha256": "589d51ed9f154624a45c1f0ceb3d68d0d1e2031460e8dbc62139be631c20b388",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp",
