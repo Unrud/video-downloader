@@ -97,25 +97,54 @@ class Model(GObject.GObject, downloader.HandlerInterface):
             self._cs.push(SignalConnection(
                 action, 'activate', callback, *extra_args, no_args=True))
             self.actions.add_action(action)
-        self._cs.push(PropertyBinding(
-            self, 'url', self.actions.lookup_action('download'), 'enabled',
-            bool))
-        self._prev_state = None
-        self._cs.push(PropertyBinding(
-            self, 'state', func_a_to_b=self._state_transition))
+
+        def update_download_action_enabled():
+            self.actions.lookup_action('download').set_property(
+                'enabled', bool(self.url) and
+                self._is_valid_state_transition(self.state, 'prepare'))
+        for name in ['state', 'url']:
+            self._cs.push(SignalConnection(
+                self, 'notify::' + name,
+                update_download_action_enabled, no_args=True))
+        update_download_action_enabled()
         self._cs.push(PropertyBinding(
             self, 'state', self.actions.lookup_action('cancel'), 'enabled',
-            lambda s: s == 'download'))
+            lambda state: self._is_valid_state_transition(state, 'cancel')))
+        self._cs.push(PropertyBinding(
+            self, 'state', self.actions.lookup_action('back'), 'enabled',
+            lambda state: self._is_valid_state_transition(state, 'start')))
         self._cs.push(PropertyBinding(
             self, 'state',
             self.actions.lookup_action('open-finished-download-dir'),
-            'enabled', lambda s: s == 'success'))
+            'enabled', lambda state: state == 'success'))
+
+        self._prev_state = None
+        self._cs.push(PropertyBinding(
+            self, 'state', func_a_to_b=self._state_transition))
+
+    @staticmethod
+    def _is_valid_state_transition(state, next_state):
+        if next_state == 'start':
+            return state not in ['start', 'download']
+        if next_state == 'prepare':
+            return state == 'start'
+        if next_state == 'download':
+            return state == 'prepare'
+        if next_state in ['cancel', 'success', 'error']:
+            return state == 'download'
+        return False
 
     def _state_transition(self, state):
-        if state == 'start':
-            assert self._prev_state != 'download'
-        elif state == 'prepare':
-            assert self._prev_state == 'start'
+        if self._prev_state == state:
+            return
+        if not self._is_valid_state_transition(self._prev_state, state):
+            self.state = self._prev_state
+            assert False, 'invalid state transition %r -> %r' % (
+                self._prev_state, state)
+            return
+        self._prev_state = state
+
+        if state == 'prepare':
             self.error = ''
             self.download_playlist_index = 0
             self.download_playlist_count = 0
@@ -131,17 +160,10 @@ class Model(GObject.GObject, downloader.HandlerInterface):
             self.finished_download_filenames = None
             self.finished_download_dir = ''
             self._try_start_download()
-        elif state == 'download':
-            assert self._prev_state == 'prepare'
+        if state == 'download':
             self._downloader.start()
-        elif state == 'cancel':
-            assert self._prev_state == 'download'
+        if state == 'cancel':
             self._downloader.cancel()
-        elif state in ['success', 'error']:
-            assert self._prev_state == 'download'
-        else:
-            assert False, 'invalid value for \'state\' property: %r' % state
-        self._prev_state = state
 
     def _open_finished_download_dir(self):
         assert self.finished_download_dir
