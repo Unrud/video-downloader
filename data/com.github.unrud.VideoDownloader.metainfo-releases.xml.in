@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.20" date="2024-11-30">
+    <description>
+      <ul>
+        <li>Add Basque translation</li>
+        <li>Add Portuguese (Brazil) translation</li>
+        <li>Fix download not starting in rare circumstances</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.19" date="2024-11-17">
     <description>
       <ul>
