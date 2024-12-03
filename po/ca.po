@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the video-downloader package.
 # Ícar N. S. <icar.nin@protonmail.com>, 2021.
 # Roger VC <rogervilarasau@gmail.com>, 2023.
+# Eder Etxebarria Rojo <eder@betxepare.eus>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2023-04-09 10:48+0000\n"
-"Last-Translator: Roger VC <rogervilarasau@gmail.com>\n"
+"PO-Revision-Date: 2024-12-04 13:00+0000\n"
+"Last-Translator: Eder Etxebarria Rojo <eder@betxepare.eus>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/video-downloader/"
 "gui/ca/>\n"
 "Language: ca\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -64,7 +65,7 @@ msgstr "Basat en yt-dlp."
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "Youtube;Descarrega;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
