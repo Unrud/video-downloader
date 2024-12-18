@@ -11,7 +11,7 @@ adopt-info: video-downloader
 
 base: core22
 confinement: strict
-
+type: app
 environment:
   # WORKAROUND: Add python modules in Snap to search path
   PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
@@ -119,3 +119,17 @@ parts:
       # WORKAROUND: Move files from fake installation location to actual target
       snap/video-downloader/current/usr: usr
     parse-info: [usr/share/metainfo/com.github.unrud.VideoDownloader.metainfo.xml]
+  cleanup:
+    after:  # Make this part run last; list all your other parts here
+      - video-downloader
+      - ffmepg
+      - yt-dlp
+    plugin: nil
+    build-snaps:  # List all content-snaps and base snaps you're using here
+      - gnome-42-2204
+      - core22
+    override-prime: |
+      set -eux
+      for snap in "gnome-42-2204" "core22"; do
+      cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+      done  
