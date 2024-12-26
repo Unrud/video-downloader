@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.21" date="2024-12-26">
+    <description>
+      <ul>
+        <li>Update Catalan translation</li>
+        <li>Only check file extension when mode is "audio"</li>
+        <li>Limit ID length</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.20" date="2024-11-30">
     <description>
       <ul>
