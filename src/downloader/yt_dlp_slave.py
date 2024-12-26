@@ -36,6 +36,7 @@ from video_downloader.util.path import encode_filesystem_path
 
 # File names are typically limited to 255 bytes
 MAX_OUTPUT_TITLE_LENGTH = 200
+MAX_ID_LENGTH = 200
 MAX_THUMBNAIL_RESOLUTION = 1024
 
 
@@ -450,6 +451,9 @@ class YoutubeDLSlave:
                     self._handler.on_error(
                         'ERROR: Failed to create download folder: %s' % e)
                     sys.exit(1)
+                if len(info.get('id', '')) >= MAX_ID_LENGTH:
+                    info['id'] = info.get(
+                        'id', '')[:max(0, MAX_ID_LENGTH - 1)] + '…'
                 info_path = os.path.join(
                     temp_download_dir,
                     sanitize_filename((info.get('id') or '') + '.info.json'))
