@@ -451,7 +451,7 @@ class YoutubeDLSlave:
                     self._handler.on_error(
                         'ERROR: Failed to create download folder: %s' % e)
                     sys.exit(1)
-                if len(info.get('id', '')) >= MAX_ID_LENGTH:
+                if len(info.get('id', '')) > MAX_ID_LENGTH:
                     info['id'] = info.get(
                         'id', '')[:max(0, MAX_ID_LENGTH - 1)] + '…'
                 info_path = os.path.join(
