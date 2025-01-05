@@ -24,7 +24,7 @@ Based on [yt-dlp](https://github.com/yt-dlp/yt-dlp).
 
 ## Translation
 
-We're using [Weblate](https://hosted.weblate.org/engage/video-downloader/) to translate the UI. So feel free, to contribute translations over there.
+We use [Weblate](https://hosted.weblate.org/engage/video-downloader/) to translate the UI, so feel free to contribute translations over there.
 
 ## Screenshots
 
