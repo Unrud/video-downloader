@@ -104,8 +104,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/14.1.tar.gz",
-                    "sha256": "822f3c2bd7ac6b2d9b90271dccaf4e74453b3b0aba5323ade0bcade60102a5c1",
+                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/14.2.tar.gz",
+                    "sha256": "1a66f8b1dfda367398fa4806435d0eca4ef6ae5563d2f192916dfa40a2646696",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/aaugustin/websockets/tags",
@@ -144,8 +144,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/a4/97/73eadf12412173dc518897a2715693e6caa73d6550ddf0b7c47c6f1e7703/yt_dlp-2025.1.15-py3-none-any.whl",
-                    "sha256": "b8666b88e23c3fa5ee1e80920f4a9dfac7c405504a447214c0cf3d0c386edcfc",
+                    "url": "https://files.pythonhosted.org/packages/33/9b/1b28a179fb4e1c751ab2a3d39c82606a9754a0d4521d7a9b7579e08aa5f8/yt_dlp-2025.1.26-py3-none-any.whl",
+                    "sha256": "3e76bd896b9f96601021ca192ca0fbdd195e3c3dcc28302a3a34c9bc4979da7b",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp",
