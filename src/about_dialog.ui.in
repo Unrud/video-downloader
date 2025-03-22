@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2020-2023 Unrud <unrud@outlook.com>
+<!-- Copyright (C) 2020–2025 Unrud <unrud@outlook.com>
 
 This file is part of Video Downloader.
 
@@ -101,7 +101,7 @@ vikdevelop
 Vojtěch Perník
 yoval keshet</property>
     <!-- Legal -->
-    <property name="copyright">Copyright © 2019-2023 Unrud</property>
+    <property name="copyright">Copyright © 2019–2025 Unrud</property>
     <property name="license-type">gpl-3-0</property>
   </object>
 </interface>
