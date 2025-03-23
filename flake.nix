@@ -52,7 +52,7 @@
           ];
 
           preFixup = ''
-            wrapProgram $out/bin/$pname/video-downloader \
+            wrapProgram $out/bin/video-downloader \
               --prefix PYTHONPATH : ${python}/${python.sitePackages} \
           '';
 
