@@ -9,24 +9,19 @@
     let
       allSystems = [
         "x86_64-linux"
-        #"aarch64-linux"
+        "aarch64-linux"
         #"x86_64-darwin"
         #"aarch64-darwin"
       ];
 
       forAllSystems = f: nixpkgs.lib.genAttrs allSystems (system: f  {
         pkgs = import nixpkgs { inherit system; };
+        python = with import nixpkgs { inherit system; }; python3.withPackages (ps: with ps; [ pygobject3 yt-dlp ]);
       });
-
-      system = "x86_64-linux";
-
-      python =
-        with import nixpkgs { inherit system; };
-        python3.withPackages (ps : with ps; [ pygobject3 yt-dlp ]);
 
     in
     {
-      packages = forAllSystems ({ pkgs }: {
+      packages = forAllSystems ({ pkgs, python }: {
 
         default = pkgs.stdenv.mkDerivation rec {        
           name = "video-downloader";
