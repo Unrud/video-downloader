@@ -7,275 +7,281 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-03-23 19:43+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/video-downloader/"
+"gui/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr ""
+msgstr "வீடியோ பதிவிறக்கம்"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr ""
+msgstr "வலை வீடியோக்களைப் பதிவிறக்கவும்"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
+"பயன்படுத்த எளிதான இடைமுகத்துடன் வலைத்தளங்களிலிருந்து வீடியோக்களைப் பதிவிறக்கவும். பின்வரும்"
+" அம்சங்களை வழங்குகிறது:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr ""
+msgstr "வீடியோக்களை எம்பி 3 ஆக மாற்றவும்"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr ""
+msgstr "கடவுச்சொல் பாதுகாக்கப்பட்ட மற்றும் தனிப்பட்ட வீடியோக்களை ஆதரிக்கிறது"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr ""
+msgstr "ஒற்றை வீடியோக்கள் அல்லது முழு பிளேலிச்ட்களைப் பதிவிறக்கவும்"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
+"உங்கள் தரமான கோரிக்கைகளின் அடிப்படையில் வீடியோ வடிவமைப்பை தானாகவே தேர்ந்தெடுக்கிறது"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "YT-DLP ஐ அடிப்படையாகக் கொண்டது."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YouTube; பதிவிறக்கம்;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr ""
+msgstr "புதிய சாளரம்"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr ""
+msgstr "ஏற்பு தேவை"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr ""
+msgstr "ரத்துசெய்"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr ""
+msgstr "விடுபதிகை"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr ""
+msgstr "தவிர்"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr ""
+msgstr "வீடியோ பொதுவில் இல்லை."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "பயனர்பெயர்"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr ""
+msgstr "கடவுச்சொல்"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr ""
+msgstr "முகவரி புலத்தை முன்னரே நிரப்பவும்"
 
 #: src/model.py:67
 msgid "Best"
-msgstr ""
+msgstr "சிறந்த"
 
 #: src/model.py:68
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320 ப (8 கே)"
 
 #: src/model.py:69
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (செக்கா)"
 
 #: src/model.py:70
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440 ப (எச்டி)"
 
 #: src/model.py:71
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (எச்டி)"
 
 #: src/model.py:72
 msgid "720p (HD)"
-msgstr ""
+msgstr "720 ப (எச்டி)"
 
 #: src/model.py:73
 msgid "480p"
-msgstr ""
+msgstr "480 ப"
 
 #: src/model.py:74
 msgid "360p"
-msgstr ""
+msgstr "360 ப"
 
 #: src/model.py:75
 msgid "240p"
-msgstr ""
+msgstr "240 ப"
 
 #: src/model.py:76
 msgid "144p"
-msgstr ""
+msgstr "144 ப"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr ""
+msgstr "தவறான பதிவிறக்க கோப்புறை"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr ""
+msgstr "ஒரு அடைவு அல்ல"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr ""
+msgstr "இசைவு மறுக்கப்பட்டது"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "பிளேலிச்ட்டைப் பதிவிறக்கவா?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "வீடியோ ஒரு பிளேலிச்ட்டின் ஒரு பகுதியாகும்."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr ""
+msgstr "ஒற்றை வீடியோ"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "பிளேலிச்ட்டில் உள்ள அனைத்து வீடியோக்களும்"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "பொது"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "திறந்த பட்டியல்"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "சாளரத்தை மூடு"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "வெளியேறு"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "விசைப்பலகை குறுக்குவழிகள்"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "வானோடல்"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "திரும்பிச் செல்லுங்கள்"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "ஆடியோவுக்கு மாறவும்"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "வீடியோவுக்கு மாறவும்"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr ""
+msgstr "பதிவிறக்குகிறது"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr ""
+msgstr "{} of}"
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr ""
+msgstr "தெரியவில்லை"
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr ""
+msgstr "பதிவிறக்கம் தோல்வியடைந்தது"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr ""
+msgstr "பதிவிறக்கம் முடிந்தது"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr ""
+msgstr "பதிவிறக்க இருப்பிடத்தைத் திறக்கவும்"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr ""
+msgstr "இயல்புநிலைக்கு மீட்டமைக்கவும்"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr ""
+msgstr "பதிவிறக்க இருப்பிடத்தை மாற்றவும்"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "தவறான கோப்புறை தேர்ந்தெடுக்கப்பட்டது"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr ""
+msgstr "கோப்புறையைத் தேர்ந்தெடு"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr ""
+msgstr "வீடியோ பதிவிறக்கம் பற்றி"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr ""
+msgstr "பட்டியல் விளையாடுங்கள்"
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr ""
+msgstr "ஆடியோ"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr ""
+msgstr "முகவரி"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr ""
+msgstr "பதிவிறக்கம்"
 
 #: src/window.ui:156
 msgid "Video"
-msgstr ""
+msgstr "ஒளிதோற்றம்"
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr ""
+msgstr "பகுத்தல்"
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "MPEG வடிவமைப்பை விரும்புங்கள்"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr ""
+msgstr "பின்"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr ""
+msgstr "விவரங்கள்"
