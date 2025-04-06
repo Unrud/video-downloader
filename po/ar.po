@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-04-03 20:34+0000\n"
+"PO-Revision-Date: 2025-04-07 17:05+0000\n"
 "Last-Translator: The Best Way <fouad.ao@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/video-downloader/"
 "gui/ar/>\n"
@@ -56,7 +56,7 @@ msgstr "أختيار تلقائيًا لتنسيق الفيديو بناءً ع�
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "Based on yt-dlp."
+msgstr "مبنى على yt-dlp."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
