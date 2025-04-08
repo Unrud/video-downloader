@@ -1,291 +1,288 @@
-# Catalan translation for video-downloader.
-# Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-# Ícar N. S. <icar.nin@protonmail.com>, 2021.
-# Roger VC <rogervilarasau@gmail.com>, 2023.
-# Eder Etxebarria Rojo <eder@betxepare.eus>, 2024.
-# pau oliveres <p.q.oliveres@gmail.com>, 2025.
+# The Best Way <fouad.ao@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-03-28 09:01+0000\n"
-"Last-Translator: pau oliveres <p.q.oliveres@gmail.com>\n"
-"Language-Team: Catalan <https://hosted.weblate.org/projects/video-downloader/"
-"gui/ca/>\n"
-"Language: ca\n"
+"PO-Revision-Date: 2025-04-02 20:34+0000\n"
+"Last-Translator: The Best Way <fouad.ao@gmail.com>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/video-downloader/"
+"gui/ar/>\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Weblate 5.11-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr "Descarregador de vídeo"
+msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr "Descarrega vídeos de la web"
+msgstr "تنزيل مقاطع فيديو من الويب"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Descarrega vídeos des de llocs web amb una interfície fàcil d'usar. Suporta "
-"les següents característiques:"
+"قم بتنزيل مقاطع الفيديو من مواقع الويب بواجهة سهلة الاستخدام تتوفر الميزات "
+"التالية:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Converteix vídeos a MP3"
+msgstr "التحويل الى ملف صوتي بصيغة MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "Suporta vídeos protegits per contrasenya i privats"
+msgstr "يدعم مقاطع الفيديو الخاصة والمحمية بكلمة مرور"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "Descarrega vídeos individuals o llistes de reproducció completes"
+msgstr "تحميل مقاطع الفيديو الفردية أو قوائم تشغيل بالكامل"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr ""
-"Selecciona automàticament un format de vídeo basat en la vostra resolució "
-"preferida"
+msgstr "أختيار تلقائيًا لتنسيق الفيديو بناءً على متطلبات الجودة الخاصة بك"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "Basat en yt-dlp."
+msgstr ""
+"مبنى على yt-dlp هو برنامج مفتوح المصدر يستخدم لتنزيل مقاطع الفيديو والصوت"
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr "Youtube;Descarrega;"
+msgstr "YouTube;Download;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr "Finestra nova"
+msgstr "نافذة جديدة"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "Cal autenticació"
+msgstr "المصادقة المطلوبة"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr "Cancel·la"
+msgstr "إلغاء"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr "Inicia la sessió"
+msgstr "تسجيل الدخول"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr "Omet"
+msgstr "تخطى"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr "El vídeo no és públic."
+msgstr "الفيديو ليس عام"
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr "Nom d'usuari"
+msgstr "اسم المستخدم"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr "Contrasenya"
+msgstr "كلمة المرور"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr "Omple el camp de la URL"
+msgstr "رابط الملء التلقائي"
 
 #: src/model.py:67
 msgid "Best"
-msgstr "Millor"
+msgstr "الأفضل"
 
 #: src/model.py:68
 msgid "4320p (8K)"
-msgstr "4320p (8K)"
+msgstr "الجودة 4320p (8K)"
 
 #: src/model.py:69
 msgid "2160p (4K)"
-msgstr "2160p (4K)"
+msgstr "الجودة 2160p (4K)"
 
 #: src/model.py:70
 msgid "1440p (HD)"
-msgstr "1440p (HD)"
+msgstr "الجودة 1440p (HD)"
 
 #: src/model.py:71
 msgid "1080p (HD)"
-msgstr "1080p (HD)"
+msgstr "الجودة 1080p (HD)"
 
 #: src/model.py:72
 msgid "720p (HD)"
-msgstr "720p (HD)"
+msgstr "الجودة 720p (HD)"
 
 #: src/model.py:73
 msgid "480p"
-msgstr "480p"
+msgstr "الجودة 480p"
 
 #: src/model.py:74
 msgid "360p"
-msgstr "360p"
+msgstr "الجودة 360p"
 
 #: src/model.py:75
 msgid "240p"
-msgstr "240p"
+msgstr "الجودة 240p"
 
 #: src/model.py:76
 msgid "144p"
-msgstr "144p"
+msgstr "الجودة 144p"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr "Carpeta de baixada no vàlida"
+msgstr "مجلد تنزيل غير صالح"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr "No és un directori"
+msgstr "المسار التالي غير موجود"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr "Permís denegat"
+msgstr "تم رفض الوصول"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr "Voleu baixar la llista de reproducció?"
+msgstr "هل تريد تحميل قائمة التشغيل؟"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr "El vídeo forma part d'una llista de reproducció."
+msgstr "الفيديو جزء من قائمة التشغيل."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr "Un sol vídeo"
+msgstr "فيديو واحد"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "Tots els vídeos a la llista de reproducció"
+msgstr "جميع مقاطع الفيديو في قائمة التشغيل"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr "General"
+msgstr "عام"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr "Obre el menú"
+msgstr "فتح القائمة"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr "Tanca la finestra"
+msgstr "إغلاق النافذة"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr "Surt"
+msgstr "خروج"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr "Dreceres del teclat"
+msgstr "إختصارات لوحة المفاتحي"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr "Navegació"
+msgstr "التنقل"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "Ves enrere"
+msgstr "العودة الى الخلف"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr "Canviar a Àudio"
+msgstr "التبديل إلى الصوت"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr "Canviar a Vídeo"
+msgstr "التبديل إلى الفيديو"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr "S'està baixant"
+msgstr "جاري التحميل"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr "{} de {}"
+msgstr "{} من {}"
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr "desconegut"
+msgstr "غير معورف"
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr "Ha fallat la baixada"
+msgstr "خطاء في التحميل"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr "La baixada ha finalitzat"
+msgstr "تم الإنتهاء من التحميل بنجاح"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "Obre la ubicació de la descàrrega"
+msgstr "فتح موقع التحميلات"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr "Restableix al valor per defecte"
+msgstr "إعادة الضبط الى الوضع الإفتراضي"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "Canviar la ubicació de baixada"
+msgstr "تغيير موقع التحميل"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr "Carpeta seleccionada no vàlida"
+msgstr "خطاء في تحديد الممجلد"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr "Seleccionar carpeta"
+msgstr "تحديد المجلد"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr "Sobre el Descarregador de vídeo"
+msgstr "حول Video Downloader"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr "Menú principal"
+msgstr "القائمة الرئيسية"
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr "Àudio"
+msgstr "الصوتيات"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr "URL"
+msgstr "عنوان الرابط URL"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr "Baixa"
+msgstr "تحميل"
 
 #: src/window.ui:156
 msgid "Video"
-msgstr "Vídeo"
+msgstr "الفيديوهات"
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr "Resolució"
+msgstr "الجودة"
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr "Prefereix el format MPEG"
+msgstr "استخدام صيغ الفيديوالصوت التابعة لعائلة MPEG"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr "Enrere"
+msgstr "العودة"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr "Detalls"
+msgstr "التفاصيل"

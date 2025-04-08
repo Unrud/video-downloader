@@ -84,8 +84,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.21.0.tar.gz",
-                    "sha256": "195e5cdfbb550b03f83f2af2aa4652c14b64783574d835fe61bb06c8fc06ba21",
+                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.22.0.tar.gz",
+                    "sha256": "d1499d50dfe0628fe45157956e9c522011f37043a2d3f2457631c97e56f9e6c1",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/Legrandin/pycryptodome/tags",
@@ -104,8 +104,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/15.0.tar.gz",
-                    "sha256": "0c7d8599cf1ce596dad7fa939e8afd856b92f8d154989305123ee74fba906ced",
+                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/15.0.1.tar.gz",
+                    "sha256": "8451495265af3e368f794c4dc15c99ce90c771d95560f542bff8c64b5455af3b",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/aaugustin/websockets/tags",
@@ -144,8 +144,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/9e/45/6d1b759e68f5363b919828fb0e0c167a1cd5003b5b7c74cc0f0c2096be4f/yt_dlp-2025.2.19-py3-none-any.whl",
-                    "sha256": "3ed218eaeece55e9d715afd41abc450dc406ee63bf79355169dfde312d38fdb8",
+                    "url": "https://files.pythonhosted.org/packages/a8/bf/7b0affb8f163376309696cfd1c677818fa0969fbb9d88225087208799afe/yt_dlp-2025.3.31-py3-none-any.whl",
+                    "sha256": "8ecb3aa218a3bebe431119f513a8972b9b9d992edf67168c00ab92329a03baec",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp",
