@@ -1,3 +1,9 @@
+# Difference with source Unrud/video-downloader
+
+This fork is regularly updated from source. I do not develop the software.
+I only added the flake feature to integrate it with NixOS easily.
+
+
 # Video Downloader
 
 [![Translation status](https://hosted.weblate.org/widgets/video-downloader/-/gui/svg-badge.svg)](https://hosted.weblate.org/engage/video-downloader/)
