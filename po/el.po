@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Stratos Petrelis <petrelis-stratos@outlook.com.gr>, 2024.
+# GiannosOB <giannos2105@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-07-09 18:09+0000\n"
-"Last-Translator: Stratos Petrelis <petrelis-stratos@outlook.com.gr>\n"
+"PO-Revision-Date: 2025-04-23 15:01+0000\n"
+"Last-Translator: GiannosOB <giannos2105@gmail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/video-downloader/"
 "gui/el/>\n"
 "Language: el\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.11.1-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -196,7 +197,7 @@ msgstr "Περιήγηση"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "Πίσω"
+msgstr "Πηγαίνετε πίσω"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
@@ -208,7 +209,7 @@ msgstr "Αλλαγή σε Βίντεο"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr "Λήψη"
+msgstr "Κατέβασμα"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
@@ -280,7 +281,7 @@ msgstr "Προτίμηση μορφής MPEG"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr "Πίσω"
+msgstr "Επιστροφή"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
