@@ -4,13 +4,14 @@
 # Gustavo Machado Peredo <gustavomperedo@protonmail.com>, 2020.
 # FCastro32 <fc32.wake623@silomails.com>, 2024.
 # tuxanator <gabrielmaia720@gmail.com>, 2024.
+# Manuela Silva <mmsrs@sky.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-08-13 13:09+0000\n"
-"Last-Translator: tuxanator <gabrielmaia720@gmail.com>\n"
+"PO-Revision-Date: 2025-05-04 13:05+0000\n"
+"Last-Translator: Manuela Silva <mmsrs@sky.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "video-downloader/gui/pt/>\n"
 "Language: pt\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -29,41 +30,42 @@ msgstr "Video Downloader"
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr "Descarregue vídeos da web"
+msgstr "Transferir vídeos da Web"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Baixe vídeos de websites com uma interface fácil de user. Contém as "
-"seguintes funções:"
+"Transfira vídeos dos sites da Web com uma interface fácil de utilizar. "
+"Contém as seguintes funcionalidades:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Converta vídeos para mp3"
+msgstr "Converter vídeos para MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "Suporte para vídeos privados e protegidos por senha"
+msgstr "Suporte para vídeos privados e protegidos por palavra-passe"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "Baixe apenas um vídeo ou playlists inteiras"
+msgstr "Transferir um vídeo ou listas de reprodução inteiras"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
-"Automaticamente seleciona um formato de arquivo baseado nas suas escolhas"
+"Seleciona automaticamente um formato de vídeo baseado nas suas escolhas de "
+"qualidade"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "Baseado no yt-dlp"
+msgstr "Baseado no yt-dlp."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr "YouTube;Descarregar;"
+msgstr "YouTube;Transferir;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
@@ -72,7 +74,7 @@ msgstr "Nova Janela"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "Autenticação Exigida"
+msgstr "Autenticação Necessária"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
@@ -80,25 +82,25 @@ msgstr "Cancelar"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr "Entrar"
+msgstr "Iniciar sessão"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr "Pular"
+msgstr "Ignorar"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr "Esse vídeo não é público."
+msgstr "O vídeo não é público."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr "Nome de usuário"
+msgstr "Nome do utilizador"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr "Senha"
+msgstr "Palavra-passe"
 
 #: src/main.py:38
 msgid "Prefill URL field"
@@ -146,11 +148,11 @@ msgstr "144p"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr "Diretório de download inválido"
+msgstr "Pasta de transferências inválida"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr "Não é um diretório"
+msgstr "Não é uma diretoria"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
@@ -158,19 +160,19 @@ msgstr "Permissão negada"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr "Baixar playlist?"
+msgstr "Transferir lista de reprodução?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr "Esse vídeo é parte de uma playlist."
+msgstr "O vídeo é parte de uma lista de reprodução."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr "Único vídeo"
+msgstr "Um Vídeo"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "Todos os vídeos da playlist"
+msgstr "Todos os Vídeos da Lista de Reprodução"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
@@ -178,11 +180,11 @@ msgstr "Geral"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr "Abrir menu"
+msgstr "Abrir Menu"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr "Fechar janela"
+msgstr "Fechar Janela"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
@@ -190,7 +192,7 @@ msgstr "Sair"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr "Teclas de atalho"
+msgstr "Teclas de Atalho"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
@@ -198,19 +200,19 @@ msgstr "Navegação"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "Retornar"
+msgstr "Anterior"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr "Alternar para áudio"
+msgstr "Mudar para Áudio"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr "Alternar para vídeo"
+msgstr "Mudar para Vídeo"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr "Baixando"
+msgstr "A transferir"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
@@ -222,31 +224,31 @@ msgstr "desconhecido"
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr "Falha no download"
+msgstr "Transferência falhou"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr "Download finalizado"
+msgstr "Transferência terminada"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "Abrir Local de Download"
+msgstr "Abrir Localização da Transferência"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr "Restaurar para o padrão"
+msgstr "Reiniciar para Predefinição"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "Mudar Local de Download"
+msgstr "Alterar Localização da Transferência"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr "Diretório inválido selecionado"
+msgstr "Pasta selecionada inválida"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr "Selecionar diretório"
+msgstr "Selecionar Pasta"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
@@ -254,11 +256,11 @@ msgstr "Sobre o Video Downloader"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr "Menu principal"
+msgstr "Menu Principal"
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr "Audio"
+msgstr "Áudio"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
@@ -266,7 +268,7 @@ msgstr "URL"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr "Baixar"
+msgstr "Transferir"
 
 #: src/window.ui:156
 msgid "Video"
@@ -282,7 +284,7 @@ msgstr "Preferir formato MPEG"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr "Voltar"
+msgstr "Anterior"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
