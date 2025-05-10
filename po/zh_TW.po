@@ -3,42 +3,43 @@
 # This file is distributed under the same license as the video-downloader package.
 # Peter Dave Hello <hsu@peterdavehello.org>, 2023.
 # Onnar Rick <rickonnar@gmail.com>, 2024.
+# taijuin Lee <taijuin@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-07-21 16:09+0000\n"
-"Last-Translator: Onnar Rick <rickonnar@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
-"video-downloader/gui/zh_Hant/>\n"
+"PO-Revision-Date: 2025-05-11 04:01+0000\n"
+"Last-Translator: taijuin Lee <taijuin@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/video-downloader/gui/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr "Video Downloader"
+msgstr "影片下載器"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr "下載網站上的視頻"
+msgstr "下載網路影片"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
-msgstr "透過簡單的介面從各種網站下載影片。提供以下功能："
+msgstr "以簡單易用的介面從網站下載影片。提供以下功能："
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "將影片轉換成 MP3"
+msgstr "將影片轉換為 MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
@@ -59,7 +60,7 @@ msgstr "基於 yt-dlp."
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr "YouTube;Download;"
+msgstr "YouTube;Download;下載;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
@@ -68,7 +69,7 @@ msgstr "新視窗"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "需要驗證"
+msgstr "需要驗證身分"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
@@ -85,7 +86,7 @@ msgstr "略過"
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr "此影片不是公開影片。"
+msgstr "此影片未公開。"
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
@@ -146,11 +147,11 @@ msgstr "無效的下載資料夾"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr "不是一個目錄"
+msgstr "不是目錄"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr "權限被拒絕"
+msgstr "沒有權限"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -234,7 +235,7 @@ msgstr "重設為預設值"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "更改下載位置"
+msgstr "變更下載位置"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
@@ -246,7 +247,7 @@ msgstr "選擇資料夾"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr "關於影片下載器"
+msgstr "關於《影片下載器》"
 
 #: src/window.ui:91
 msgid "Main Menu"
@@ -258,7 +259,7 @@ msgstr "音訊"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr "URL"
+msgstr "影片網址"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
