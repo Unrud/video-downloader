@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-05-11 04:01+0000\n"
+"PO-Revision-Date: 2025-05-12 12:01+0000\n"
 "Last-Translator: taijuin Lee <taijuin@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/video-downloader/gui/zh_Hant/>\n"
@@ -259,7 +259,7 @@ msgstr "音訊"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr "影片網址"
+msgstr "網址"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
