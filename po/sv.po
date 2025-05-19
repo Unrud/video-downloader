@@ -4,13 +4,14 @@
 # Åke Engelbrektson <eson@svenskasprakfiler.se>, 2021.
 # Luna Jernberg <droidbittin@gmail.com>, 2023.
 # bittin1ddc447d824349b2 <bittin@reimu.nl>, 2024.
+# AnjaRuni <anjaeisemann@posteo.de>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-06-01 17:09+0000\n"
-"Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
+"PO-Revision-Date: 2025-05-19 14:36+0000\n"
+"Last-Translator: AnjaRuni <anjaeisemann@posteo.de>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/video-downloader/"
 "gui/sv/>\n"
 "Language: sv\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -53,7 +54,7 @@ msgstr "Ladda ner enstaka videoklipp eller hela spelningslistor"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr "Välj automatiskt ett videoformat, baserat på dina kvalitetskrav."
+msgstr "Väljer automatiskt ett videoformat, baserat på dina kvalitetskrav"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
