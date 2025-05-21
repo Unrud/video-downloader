@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.26" date="2025-05-21">
+    <description>
+      <ul>
+        <li>Fix Chinese translation not working</li>
+        <li>Update Chinese translation</li>
+        <li>Update German translation</li>
+        <li>Update Norwegian translation</li>
+        <li>Update Portuguese translation</li>
+        <li>Update Swedish translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.25" date="2025-04-26">
     <description>
       <ul>
