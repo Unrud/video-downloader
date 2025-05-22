@@ -144,8 +144,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/ea/18/bbccb18661a853c3db947152439229b9bf686fe0ab2cc7848ab3a24f2ad2/yt_dlp-2025.4.30-py3-none-any.whl",
-                    "sha256": "53cd82bf13f12a1fe9c564b0004e001156b153c9247fa3cef14d1400ab359150",
+                    "url": "https://files.pythonhosted.org/packages/25/68/4f108193ebce3ee7beb5f9a21daa6bc875e261150b510be468626f151959/yt_dlp-2025.5.22-py3-none-any.whl",
+                    "sha256": "a49c4b76afeaded6254c3e2b759d8d5a13271aa963d5fccb51fe059d1c313151",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp",
