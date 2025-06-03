@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-05-31 07:10+0000\n"
+"PO-Revision-Date: 2025-06-03 17:30+0000\n"
 "Last-Translator: taijuin Lee <taijuin@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/video-downloader/gui/zh_Hant/>\n"
@@ -227,7 +227,7 @@ msgstr "下載完成"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "開啟下載檔案位置"
+msgstr "開啟下載位置"
 
 #: src/window.py:329
 msgid "Reset to Default"
@@ -235,7 +235,7 @@ msgstr "重設為預設值"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "變更下載檔案位置"
+msgstr "變更下載位置"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
