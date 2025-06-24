@@ -4,13 +4,14 @@
 # Umidjon Almasov <umidjon@almasov.uz>, 2022.
 # Valeriy Manzhos <valeronishe2002@gmail.com>, 2023.
 # Host1c <npasynkov77@gmail.com>, 2024.
+# Oleksandr Pidlisniak <podlesnyak@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-06-12 21:09+0000\n"
-"Last-Translator: Host1c <npasynkov77@gmail.com>\n"
+"PO-Revision-Date: 2025-06-24 04:14+0000\n"
+"Last-Translator: Oleksandr Pidlisniak <podlesnyak@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/video-downloader/"
 "gui/ru/>\n"
 "Language: ru\n"
@@ -18,11 +19,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
+#, fuzzy
 msgid "Video Downloader"
 msgstr "Загрузчик видео"
 
