@@ -1,286 +1,284 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-# Peter Dave Hello <hsu@peterdavehello.org>, 2023.
-# Onnar Rick <rickonnar@gmail.com>, 2024.
-# taijuin Lee <taijuin@gmail.com>, 2025.
+# loliisdabezt <hrskai2001@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-06-03 17:30+0000\n"
-"Last-Translator: taijuin Lee <taijuin@gmail.com>\n"
-"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
-"projects/video-downloader/gui/zh_Hant/>\n"
-"Language: zh_TW\n"
+"PO-Revision-Date: 2025-06-18 17:07+0000\n"
+"Last-Translator: loliisdabezt <hrskai2001@gmail.com>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/"
+"video-downloader/gui/vi/>\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.12.1\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr "影片下載器"
+msgstr "Trình tải xuống video"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr "下載網路影片"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
-msgstr "以簡單易用的介面從網站下載影片。提供以下功能："
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "將影片轉換為 MP3"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "支援密碼保護和私人影片"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "下載單一影片或整個播放清單"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr "根據您的品質需求自動選擇影片格式"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "基於 yt-dlp."
+msgstr ""
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr "YouTube;Download;下載;"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr "新視窗"
+msgstr ""
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "需要驗證身分"
+msgstr ""
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr "取消"
+msgstr ""
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr "登入"
+msgstr ""
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr "略過"
+msgstr ""
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr "此影片未公開。"
+msgstr ""
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr "使用者名稱"
+msgstr ""
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr "密碼"
+msgstr ""
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr "預先填寫 URL 欄位"
+msgstr ""
 
 #: src/model.py:67
 msgid "Best"
-msgstr "最佳"
+msgstr ""
 
 #: src/model.py:68
 msgid "4320p (8K)"
-msgstr "4320p (8K)"
+msgstr ""
 
 #: src/model.py:69
 msgid "2160p (4K)"
-msgstr "2160p (4K)"
+msgstr ""
 
 #: src/model.py:70
 msgid "1440p (HD)"
-msgstr "1440p (HD)"
+msgstr ""
 
 #: src/model.py:71
 msgid "1080p (HD)"
-msgstr "1080p (HD)"
+msgstr ""
 
 #: src/model.py:72
 msgid "720p (HD)"
-msgstr "720p (HD)"
+msgstr ""
 
 #: src/model.py:73
 msgid "480p"
-msgstr "480p"
+msgstr ""
 
 #: src/model.py:74
 msgid "360p"
-msgstr "360p"
+msgstr ""
 
 #: src/model.py:75
 msgid "240p"
-msgstr "240p"
+msgstr ""
 
 #: src/model.py:76
 msgid "144p"
-msgstr "144p"
+msgstr ""
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr "無效的下載資料夾"
+msgstr ""
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr "不是目錄"
+msgstr ""
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr "沒有權限"
+msgstr ""
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr "要下載播放清單嗎？"
+msgstr ""
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr "此影片是播放清單的一部分。"
+msgstr ""
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr "單一影片"
+msgstr ""
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "播放清單中的所有影片"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr "一般"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr "開啟選單"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr "關閉視窗"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr "結束"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr "鍵盤快捷鍵"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr "導覽"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "返回"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr "切換至音訊"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr "切換至影片"
+msgstr ""
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr "正在下載"
+msgstr ""
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr "{} / {}"
+msgstr ""
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr "未知"
+msgstr ""
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr "下載失敗"
+msgstr ""
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr "下載完成"
+msgstr ""
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "開啟下載位置"
+msgstr ""
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr "重設為預設值"
+msgstr ""
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "變更下載位置"
+msgstr ""
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr "選擇的資料夾無效"
+msgstr ""
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr "選擇資料夾"
+msgstr ""
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr "關於《影片下載器》"
+msgstr ""
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr "主選單"
+msgstr ""
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr "音訊"
+msgstr ""
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr "網址"
+msgstr ""
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr "下載"
+msgstr ""
 
 #: src/window.ui:156
 msgid "Video"
-msgstr "影片"
+msgstr ""
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr "解析度"
+msgstr ""
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr "偏好 MPEG 格式"
+msgstr ""
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr "返回"
+msgstr ""
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr "詳細資訊"
+msgstr ""
