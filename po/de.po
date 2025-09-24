@@ -34,7 +34,7 @@ msgstr "Webvideos herunterladen"
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Lade Videos von Webseiten mit einer benutzerfreundlichen Oberfläche herunter. Bietet die "
-"folgende Funktionen:"
+"folgenden Funktionen:"
 msgstr ""
 "Über eine einfach zu bedienende Oberfläche können Videos von vielen "
 "Webseiten heruntergeladen werden. Das Programm bietet:"
