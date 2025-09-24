@@ -28,31 +28,31 @@ msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
-msgid "Download web videos"
+msgid "Webvideos herunterladen"
 msgstr "Webvideos herunterladen"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
-"Download videos from websites with an easy-to-use interface. Provides the "
-"following features:"
+"Lade Videos von Webseiten mit einer benutzerfreundlichen Oberfläche herunter. Bietet die "
+"folgende Funktionen:"
 msgstr ""
 "Über eine einfach zu bedienende Oberfläche können Videos von vielen "
 "Webseiten heruntergeladen werden. Das Programm bietet:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
-msgid "Convert videos to MP3"
-msgstr "Videos nach MP3 zu konvertieren"
+msgid "Videos in MP3 umwandeln"
+msgstr "Videos zu MP3 konvertieren"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
-msgid "Supports password-protected and private videos"
+msgid "Unterstützt passwortgeschützte und private Videos"
 msgstr "Passwortgeschütze und private Videos herunterzuladen"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
-msgid "Download single videos or whole playlists"
+msgid "Einzelne Videos oder ganze Wiedergabelisten herunterladen"
 msgstr "Einzelne Videos und ganze Wiedergabelisten herunterzuladen"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
-msgid "Automatically selects a video format based on your quality demands"
+msgid "Wählt automatisch ein Videoformat basierend auf deinen Qualitätsanforderungen aus."
 msgstr ""
 "Automatisch das Videoformat auszuwählen, das den eigenen Qualitätsansprüchen "
 "entspricht"
@@ -63,42 +63,42 @@ msgstr "Basiert auf yt-dlp."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
-msgid "YouTube;Download;"
+msgid "YouTube; Download;"
 msgstr "YouTube;Download;herunterladen;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
-msgid "New Window"
+msgid "Neues Fenster"
 msgstr "Neues Fenster"
 
 #: src/authentication_dialog.py:30
-msgid "Authentication Required"
+msgid "Authentifizierung erforderlich"
 msgstr "Authentifizierung erforderlich"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
-msgid "Cancel"
+msgid "Abbrechen"
 msgstr "Abbrechen"
 
 #: src/authentication_dialog.py:46
-msgid "Sign in"
+msgid "Anmelden"
 msgstr "Anmelden"
 
 #: src/authentication_dialog.py:46
-msgid "Skip"
+msgid "Überspringen"
 msgstr "Überspringen"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
-msgid "The video is not public."
+msgid "Video ist nicht öffentlich."
 msgstr "Das Video ist nicht öffentlich."
 
 #: src/authentication_dialog_login.ui:44
-msgid "Username"
+msgid "Nutzername"
 msgstr "Benutzername"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
-msgid "Password"
+msgid "Passwort"
 msgstr "Passwort"
 
 #: src/main.py:38
@@ -106,7 +106,7 @@ msgid "Prefill URL field"
 msgstr "URL-Feld vorausfüllen"
 
 #: src/model.py:67
-msgid "Best"
+msgid "Beste"
 msgstr "Beste"
 
 #: src/model.py:68
@@ -146,51 +146,51 @@ msgid "144p"
 msgstr "144p"
 
 #: src/model.py:159
-msgid "Invalid download folder"
+msgid "Ungültiger Download-Ordner"
 msgstr "Ungültiger Download-Ordner"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
-msgid "Not a directory"
+msgid "Kein Verzeichnis"
 msgstr "Kein Ordner"
 
 #: src/model.py:284 src/model.py:289
-msgid "Permission denied"
+msgid "Berechtigung verweigert"
 msgstr "Erlaubnis verweigert"
 
 #: src/playlist_dialog.py:29
-msgid "Download Playlist?"
+msgid "Wiedergabeliste herunterladen?"
 msgstr "Wiedergabeliste herunterladen?"
 
 #: src/playlist_dialog.py:30
-msgid "The video is part of a playlist."
+msgid "Video ist Teil einer Wiedergabeliste."
 msgstr "Das Video ist Teil einer Wiedergabeliste."
 
 #: src/playlist_dialog.py:32
-msgid "Single Video"
+msgid "Einzelnes Video"
 msgstr "Einzelnes Video"
 
 #: src/playlist_dialog.py:33
-msgid "All Videos in Playlist"
+msgid "Alle Videos in der Wiedergabeliste"
 msgstr "Alle Videos der Liste"
 
 #: src/shortcuts_dialog.ui:29
-msgid "General"
+msgid "Allgemein"
 msgstr "Allgemein"
 
 #: src/shortcuts_dialog.ui:33
-msgid "Open Menu"
+msgid Menü öffnen"
 msgstr "Menü öffnen"
 
 #: src/shortcuts_dialog.ui:45
-msgid "Close Window"
+msgid "Fenster schließen"
 msgstr "Fenster schließen"
 
 #: src/shortcuts_dialog.ui:51
-msgid "Quit"
+msgid "Beenden"
 msgstr "Beenden"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
-msgid "Keyboard Shortcuts"
+msgid "Tastaturkürzel"
 msgstr "Tastenkürzel"
 
 #: src/shortcuts_dialog.ui:64
@@ -198,63 +198,63 @@ msgid "Navigation"
 msgstr "Navigation"
 
 #: src/shortcuts_dialog.ui:68
-msgid "Go back"
+msgid "Zurück"
 msgstr "Zurück gehen"
 
 #: src/shortcuts_dialog.ui:74
-msgid "Switch to Audio"
+msgid "Zu Audio wechseln"
 msgstr "Zu Audio wechseln"
 
 #: src/shortcuts_dialog.ui:80
-msgid "Switch to Video"
+msgid "Zu Video wechseln"
 msgstr "Zu Video wechseln"
 
 #: src/window.py:187
-msgid "Downloading"
+msgid "Herunterladen"
 msgstr "Lädt herunter"
 
 #: src/window.py:189 src/window.py:209
-msgid "{} of {}"
+msgid "{} von {}"
 msgstr "{} von {}"
 
 #: src/window.py:210 src/window.py:211
-msgid "unknown"
+msgid "unbekannt"
 msgstr "unbekannt"
 
 #: src/window.py:281 src/window.ui:386
-msgid "Download failed"
+msgid "Download fehlgeschlagen"
 msgstr "Download fehlgeschlagen"
 
 #: src/window.py:285 src/window.ui:511
-msgid "Download finished"
+msgid "Download abgeschlossen"
 msgstr "Download abgeschlossen"
 
 #: src/window.py:291 src/window.ui:530
-msgid "Open Download Location"
+msgid "Download-Speicherort öffnen"
 msgstr "Download-Ort öffnen"
 
 #: src/window.py:329
-msgid "Reset to Default"
+msgid "Auf Standard zurücksetzen"
 msgstr "Zurücksetzen"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
-msgid "Change Download Location"
+msgid "Download-Speicherort ändern"
 msgstr "Download-Ort ändern"
 
 #: src/window.py:360
-msgid "Invalid folder selected"
+msgid "Ungültiger Ordner ausgewählt"
 msgstr "Unzulässiger Ordner"
 
 #: src/window.py:364
-msgid "Select Folder"
+msgid "Ordner auswählen"
 msgstr "Ordner auswählen"
 
 #: src/window.ui:41
-msgid "About Video Downloader"
+msgid "Über Video Downloader"
 msgstr "Info zu Video Downloader"
 
 #: src/window.ui:91
-msgid "Main Menu"
+msgid "Hauptmenü"
 msgstr "Hauptmenü"
 
 #: src/window.ui:105
@@ -274,17 +274,18 @@ msgid "Video"
 msgstr "Video"
 
 #: src/window.ui:186
-msgid "Resolution"
+msgid "Auflösung"
 msgstr "Auflösung"
 
 #: src/window.ui:194
-msgid "Prefer MPEG format"
+msgid "MPEG-Format bevorzugen"
 msgstr "MPEG-Format bevorzugen"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
-msgid "Back"
+msgid "Zurück"
 msgstr "Zurück"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
 msgstr "Details"
+
