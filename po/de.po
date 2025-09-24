@@ -4,13 +4,14 @@
 # Roy Meissner <roy-meissner@gmx.net>, 2020.
 # Unrud <unrud@outlook.com>, 2023.
 # AnjaRuni <anjaeisemann@posteo.de>, 2025.
+# HenRy <helge1o1o1@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-05-19 14:36+0000\n"
-"Last-Translator: AnjaRuni <anjaeisemann@posteo.de>\n"
+"PO-Revision-Date: 2025-09-25 17:03+0000\n"
+"Last-Translator: HenRy <helge1o1o1@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/video-downloader/"
 "gui/de/>\n"
 "Language: de\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -41,7 +42,7 @@ msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Videos nach MP3 zu konvertieren"
+msgstr "Videos zu MP3 konvertieren"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
@@ -49,12 +50,12 @@ msgstr "Passwortgeschütze und private Videos herunterzuladen"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "Einzelne Videos und ganze Wiedergabelisten herunterzuladen"
+msgstr "Einzelne Videos und ganze Wiedergabelisten herunterladen"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
-"Automatisch das Videoformat auszuwählen, das den eigenen Qualitätsansprüchen "
+"Automatisch das Videoformat auswählen, das den eigenen Qualitätsansprüchen "
 "entspricht"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
@@ -90,11 +91,11 @@ msgstr "Überspringen"
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr "Das Video ist nicht öffentlich."
+msgstr "Video nicht öffentlich."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr "Benutzername"
+msgstr "Nutzername"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
@@ -151,11 +152,11 @@ msgstr "Ungültiger Download-Ordner"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr "Kein Ordner"
+msgstr "Kein Verzeichnis"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr "Erlaubnis verweigert"
+msgstr "Zugriff verweigert"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
@@ -163,7 +164,7 @@ msgstr "Wiedergabeliste herunterladen?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr "Das Video ist Teil einer Wiedergabeliste."
+msgstr "Video ist Teil einer Wiedergabeliste."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
@@ -171,7 +172,7 @@ msgstr "Einzelnes Video"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "Alle Videos der Liste"
+msgstr "Alle Videos in der Wiedergabeliste"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
@@ -211,7 +212,7 @@ msgstr "Zu Video wechseln"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr "Lädt herunter"
+msgstr "Herunterladen"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
@@ -235,7 +236,7 @@ msgstr "Download-Ort öffnen"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr "Zurücksetzen"
+msgstr "Auf Standard zurücksetzen"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
@@ -243,7 +244,7 @@ msgstr "Download-Ort ändern"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr "Unzulässiger Ordner"
+msgstr "Ungültiger Ordner ausgewählt"
 
 #: src/window.py:364
 msgid "Select Folder"
@@ -251,7 +252,7 @@ msgstr "Ordner auswählen"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr "Info zu Video Downloader"
+msgstr "Über Video Downloader"
 
 #: src/window.ui:91
 msgid "Main Menu"
@@ -267,7 +268,7 @@ msgstr "URL"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr "Herunterladen"
+msgstr "Download"
 
 #: src/window.ui:156
 msgid "Video"
