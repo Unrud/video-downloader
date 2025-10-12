@@ -5,13 +5,14 @@
 # Irénée THIRION <irenee.thirion@e.email>, 2022.
 # "J. Lavoie" <j.lavoie@net-c.ca>, 2023.
 # rene-coty <irenee.thirion@e.email>, 2024.
+# Simeon Thuet <srvp.simearduino@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-07-05 10:09+0000\n"
-"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
+"PO-Revision-Date: 2025-10-13 14:07+0000\n"
+"Last-Translator: Simeon Thuet <srvp.simearduino@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/video-downloader/"
 "gui/fr/>\n"
 "Language: fr\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -38,7 +39,7 @@ msgid ""
 "following features:"
 msgstr ""
 "Téléchargez des vidéos à partir de sites internet grâce à une interface "
-"simple à utiliser. L’application propose les fonctions suivantes :"
+"simple à utiliser. L’application propose les fonctions suivantes:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
