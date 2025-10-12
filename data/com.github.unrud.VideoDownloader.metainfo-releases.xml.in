@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.28" date="2025-10-12">
+    <description>
+      <ul>
+        <li>Update German translation</li>
+        <li>Update Russian translation</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.27" date="2025-08-21">
     <description>
       <ul>
