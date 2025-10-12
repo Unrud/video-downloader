@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.unrud.VideoDownloader",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "47",
+    "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
     "command": "video-downloader",
     "finish-args": [
@@ -23,16 +23,6 @@
         "*.la",
         "*.a"
     ],
-    "cleanup-commands": [
-        "mkdir -p /app/lib/ffmpeg"
-    ],
-    "add-extensions": {
-        "org.freedesktop.Platform.ffmpeg-full": {
-            "directory": "lib/ffmpeg",
-            "version": "24.08",
-            "add-ld-path": "."
-        }
-    },
     "modules": [
         {
             "name": "pyxattr",
