@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-09-25 17:03+0000\n"
+"PO-Revision-Date: 2025-10-13 14:07+0000\n"
 "Last-Translator: HenRy <helge1o1o1@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/video-downloader/"
 "gui/de/>\n"
@@ -46,7 +46,7 @@ msgstr "Videos zu MP3 konvertieren"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "Passwortgeschütze und private Videos herunterzuladen"
+msgstr "Unterstützt passwortgeschützte und private Videos"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
@@ -108,7 +108,7 @@ msgstr "URL-Feld vorausfüllen"
 
 #: src/model.py:67
 msgid "Best"
-msgstr "Beste"
+msgstr "Beste Verfügbare"
 
 #: src/model.py:68
 msgid "4320p (8K)"
@@ -132,19 +132,19 @@ msgstr "720p (HD)"
 
 #: src/model.py:73
 msgid "480p"
-msgstr "480p"
+msgstr "480p (SD)"
 
 #: src/model.py:74
 msgid "360p"
-msgstr "360p"
+msgstr "360p (SD)"
 
 #: src/model.py:75
 msgid "240p"
-msgstr "240p"
+msgstr "240p (SD)"
 
 #: src/model.py:76
 msgid "144p"
-msgstr "144p"
+msgstr "144p (SD)"
 
 #: src/model.py:159
 msgid "Invalid download folder"
@@ -172,7 +172,7 @@ msgstr "Einzelnes Video"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "Alle Videos in der Wiedergabeliste"
+msgstr "Alle Videos der Wiedergabeliste"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
@@ -232,7 +232,7 @@ msgstr "Download abgeschlossen"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "Download-Ort öffnen"
+msgstr "Download-Speicherort öffnen"
 
 #: src/window.py:329
 msgid "Reset to Default"
@@ -240,7 +240,7 @@ msgstr "Auf Standard zurücksetzen"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "Download-Ort ändern"
+msgstr "Download-Speicherort ändern"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
