@@ -12,6 +12,10 @@ adopt-info: video-downloader
 base: core22
 confinement: strict
 
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+
 environment:
   # WORKAROUND: Add python modules in Snap to search path
   PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
@@ -65,9 +69,18 @@ parts:
     stage:
       - -usr/include
 
+  deno:
+    plugin: dump
+    source:
+      - on amd64: https://github.com/denoland/deno/releases/download/v2.5.6/deno-x86_64-unknown-linux-gnu.zip
+      - on arm64: https://github.com/denoland/deno/releases/download/v2.5.6/deno-aarch64-unknown-linux-gnu.zip
+    source-type: zip
+    override-build: |
+      install -Dt "${CRAFT_PART_INSTALL}/usr/bin" deno
+
   yt-dlp:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
-    after: [ffmpeg]
+    after: [deno, ffmpeg]
     plugin: python
     source: .
     source-type: git
