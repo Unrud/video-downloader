@@ -28,7 +28,7 @@
             "name": "pyxattr",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --prefix=/app ."
+                "pip3 install --no-build-isolation --prefix=/app ."
             ],
             "sources": [
                 {
@@ -109,7 +109,7 @@
             "name": "brotli",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --prefix=/app ."
+                "pip3 install --no-build-isolation --prefix=/app ."
             ],
             "sources": [
                 {
@@ -171,8 +171,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/e7/fd/34fbdaf0d53386c47e219c532a479766cd9336fde34c00834c8e0123df7a/yt_dlp_ejs-0.3.1-py3-none-any.whl",
-                    "sha256": "a6e3548874db7c774388931752bb46c7f4642c044b2a189e56968f3d5ecab622",
+                    "url": "https://files.pythonhosted.org/packages/9d/0d/1f0d7a735ca60b87953271b15d00eff5eef05f6118390ddf6f81982526ed/yt_dlp_ejs-0.3.2-py3-none-any.whl",
+                    "sha256": "f2dc6b3d1b909af1f13e021621b0af048056fca5fb07c4db6aa9bbb37a4f66a9",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp-ejs",
@@ -190,8 +190,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/5f/16/fdebbee6473473a1c0576bd165a50e4a70762484d638c1d59fa9074e175b/yt_dlp-2025.11.12-py3-none-any.whl",
-                    "sha256": "b47af37bbb16b08efebb36825a280ea25a507c051f93bf413a6e4a0e586c6e79",
+                    "url": "https://files.pythonhosted.org/packages/6e/2f/98c3596ad923f8efd32c90dca62e241e8ad9efcebf20831173c357042ba0/yt_dlp-2025.12.8-py3-none-any.whl",
+                    "sha256": "36e2584342e409cfbfa0b5e61448a1c5189e345cf4564294456ee509e7d3e065",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp",
