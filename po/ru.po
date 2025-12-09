@@ -6,13 +6,14 @@
 # Host1c <npasynkov77@gmail.com>, 2024.
 # Oleksandr Pidlisniak <podlesnyak@gmail.com>, 2025.
 # Yurt Page <yurtpage+weblate@gmail.com>, 2025.
+# klewf <stp101@ya.ru>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-09-06 22:05+0000\n"
-"Last-Translator: Yurt Page <yurtpage+weblate@gmail.com>\n"
+"PO-Revision-Date: 2025-12-10 20:00+0000\n"
+"Last-Translator: klewf <stp101@ya.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/video-downloader/"
 "gui/ru/>\n"
 "Language: ru\n"
@@ -20,13 +21,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
+#, fuzzy
 msgid "Video Downloader"
-msgstr "Скачиватель видео"
+msgstr "Загрузчик видео"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
@@ -163,8 +165,9 @@ msgid "Download Playlist?"
 msgstr "Загрузить плейлист?"
 
 #: src/playlist_dialog.py:30
+#, fuzzy
 msgid "The video is part of a playlist."
-msgstr "Видео является часть плейлиста."
+msgstr "Видео является частью плейлиста."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
