@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-12-10 20:00+0000\n"
+"PO-Revision-Date: 2025-12-13 17:00+0000\n"
 "Last-Translator: klewf <stp101@ya.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/video-downloader/"
 "gui/ru/>\n"
@@ -26,7 +26,6 @@ msgstr ""
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
-#, fuzzy
 msgid "Video Downloader"
 msgstr "Загрузчик видео"
 
