@@ -1,293 +1,287 @@
-# Russian translations for video-downloader package.
-# Copyright (C) 2020 THE video-downloader'S COPYRIGHT HOLDER
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-# Umidjon Almasov <umidjon@almasov.uz>, 2022.
-# Valeriy Manzhos <valeronishe2002@gmail.com>, 2023.
-# Host1c <npasynkov77@gmail.com>, 2024.
-# Oleksandr Pidlisniak <podlesnyak@gmail.com>, 2025.
-# Yurt Page <yurtpage+weblate@gmail.com>, 2025.
-# klewf <stp101@ya.ru>, 2025.
+# Ivan Lukan <proivan1711@users.noreply.hosted.weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-12-13 17:00+0000\n"
-"Last-Translator: klewf <stp101@ya.ru>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/video-downloader/"
-"gui/ru/>\n"
-"Language: ru\n"
+"PO-Revision-Date: 2025-11-13 23:05+0000\n"
+"Last-Translator: Ivan Lukan <proivan1711@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Slovenian <https://hosted.weblate.org/projects/"
+"video-downloader/gui/sl/>\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr "Загрузчик видео"
+msgstr "Prenosnik videov"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr "Позволяет скачать видео из интернета"
+msgstr "Prenos spletnih videov"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Загружает видео с сайтов при помощи легкого в использовании интерфейса. "
-"Предоставляет следующие возможности:"
+"Prenesite videe s spletnih strani z vmesnikom, ki je enostaven za uporabo. "
+"Ponuja naslednje funkcije:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "Конвертация видео в MP3"
+msgstr "Pretvori videe v MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "Поддержка видео защищенных паролем и частные"
+msgstr "Podpira videe, zaščitene z geslom, in zasebne videe"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "Загрузка отдельных видео или плейлиста целиком"
+msgstr "Prenesite posamezne videe ali celotne sezname predvajanja"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr ""
-"Автоматический выбор формата видео на основе ваших требований к качеству"
+msgstr "Samodejno izbere format videoposnetka glede na vaše zahteve kakovosti"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "Основан на yt-dlp."
+msgstr ""
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr "YuuTube;Скачать;"
+msgstr ""
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr "Новое окно"
+msgstr ""
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "Требуется авторизация"
+msgstr ""
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr "Отмена"
+msgstr ""
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr "Вход"
+msgstr ""
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr "Пропустить"
+msgstr ""
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr "Видео не является публичным."
+msgstr ""
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr "Имя пользователя"
+msgstr ""
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr "Пароль"
+msgstr ""
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr "Заполните поле URL"
+msgstr ""
 
 #: src/model.py:67
 msgid "Best"
-msgstr "Наилучшее"
+msgstr ""
 
 #: src/model.py:68
 msgid "4320p (8K)"
-msgstr "4320p (8K)"
+msgstr ""
 
 #: src/model.py:69
 msgid "2160p (4K)"
-msgstr "2160p (4K)"
+msgstr ""
 
 #: src/model.py:70
 msgid "1440p (HD)"
-msgstr "1440p (HD)"
+msgstr ""
 
 #: src/model.py:71
 msgid "1080p (HD)"
-msgstr "1080p (HD)"
+msgstr ""
 
 #: src/model.py:72
 msgid "720p (HD)"
-msgstr "720p (HD)"
+msgstr ""
 
 #: src/model.py:73
 msgid "480p"
-msgstr "480p"
+msgstr ""
 
 #: src/model.py:74
 msgid "360p"
-msgstr "360p"
+msgstr ""
 
 #: src/model.py:75
 msgid "240p"
-msgstr "240p"
+msgstr ""
 
 #: src/model.py:76
 msgid "144p"
-msgstr "144p"
+msgstr ""
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr "Неправильная папка для загрузки"
+msgstr ""
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr "Не каталог"
+msgstr ""
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr "Отказано в доступе"
+msgstr ""
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr "Загрузить плейлист?"
+msgstr ""
 
 #: src/playlist_dialog.py:30
-#, fuzzy
 msgid "The video is part of a playlist."
-msgstr "Видео является частью плейлиста."
+msgstr ""
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr "Отдельное видео"
+msgstr ""
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "Все видео в плейлисте"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr "Основное"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr "Открыть меню"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr "Закрыть окно"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr "Завершить"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr "Комбинации клавиш"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr "Навигация"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "Перейти назад"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr "Переключиться на аудио"
+msgstr ""
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr "Переключиться на видео"
+msgstr ""
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr "Загрузка"
+msgstr ""
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr "{} из {}"
+msgstr ""
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr "неизвестно"
+msgstr ""
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr "Загрузка не удалась"
+msgstr ""
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr "Загрузка завершена"
+msgstr ""
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "Открыть место загрузки"
+msgstr ""
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr "Сбросить по умолчанию"
+msgstr ""
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "Изменить место загрузки"
+msgstr ""
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr "Выбрана недопустимая папка"
+msgstr ""
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr "Выберите папку"
+msgstr ""
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr "О программе"
+msgstr ""
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr "Главное меню"
+msgstr ""
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr "Аудио"
+msgstr ""
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr "Загрузить"
+msgstr ""
 
 #: src/window.ui:156
 msgid "Video"
-msgstr "Видео"
+msgstr ""
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr "Разрешение"
+msgstr ""
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr "Предпочитать формат MPEG"
+msgstr ""
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr "Назад"
+msgstr ""
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr "Подробно"
+msgstr ""
