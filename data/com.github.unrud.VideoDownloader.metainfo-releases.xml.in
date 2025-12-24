@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <releases>
+  <release version="0.12.29" date="2025-12-24">
+    <description>
+      <ul>
+        <li>Update translations</li>
+      </ul>
+    </description>
+  </release>
   <release version="0.12.28" date="2025-10-12">
     <description>
       <ul>
