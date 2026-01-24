@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the video-downloader package.
 # Albano Battistella <albano:battistella@hotmail.com>, 2020-2023.
 # "J. Lavoie" <j.lavoie@net-c.ca>, 2023.
-# albanobattistella <albano_battistella@hotmail.com>, 2024.
+# albanobattistella <albano_battistella@hotmail.com>, 2024, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-06-09 16:09+0000\n"
+"PO-Revision-Date: 2026-01-25 17:05+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/video-downloader/"
 "gui/it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -36,8 +36,8 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
-"Scarica video da siti Web con un'interfaccia facile da usare. Fornisce "
-"leseguenti caratteristiche:"
+"Scarica video da siti Web con un'interfaccia facile da usare. Fornisce le "
+"seguenti caratteristiche:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
@@ -76,7 +76,7 @@ msgstr "Autenticazione richiesta"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
