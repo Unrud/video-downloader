@@ -94,8 +94,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/15.0.1.tar.gz",
-                    "sha256": "8451495265af3e368f794c4dc15c99ce90c771d95560f542bff8c64b5455af3b",
+                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/16.0.tar.gz",
+                    "sha256": "c720700d313af5d1c61372da62d78c5b6192ed09871367df65a8e1087b60b1f0",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/aaugustin/websockets/tags",
@@ -134,8 +134,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.6.4/deno-x86_64-unknown-linux-gnu.zip",
-                    "sha256": "9100bbd0450c17b82002d3948bb8e7e1953c9e6506e63b586e2daa4042eca7f6",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.6.6/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "73a4662b078dd5fab5b461cc960ea635be26f3b8bdb84c689793b418e180ffa2",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
@@ -148,8 +148,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.6.4/deno-aarch64-unknown-linux-gnu.zip",
-                    "sha256": "dafb54c5454d7fcca81305215442e832e0c34e90b76a2e9a31d0676cbb06bfc6",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.6.6/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "aa97ff7a7ec2c3d88cbd4acb0a9948653d8c4e134061cf830c5645cca54eb1ed",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
