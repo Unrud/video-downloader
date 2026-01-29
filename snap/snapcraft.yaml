@@ -72,8 +72,8 @@ parts:
   deno:
     plugin: dump
     source:
-      - on amd64: https://github.com/denoland/deno/releases/download/v2.6.6/deno-x86_64-unknown-linux-gnu.zip
-      - on arm64: https://github.com/denoland/deno/releases/download/v2.6.6/deno-aarch64-unknown-linux-gnu.zip
+      - on amd64: https://github.com/denoland/deno/releases/download/v2.6.7/deno-x86_64-unknown-linux-gnu.zip
+      - on arm64: https://github.com/denoland/deno/releases/download/v2.6.7/deno-aarch64-unknown-linux-gnu.zip
     source-type: zip
     override-build: |
       install -Dt "${CRAFT_PART_INSTALL}/usr/bin" deno
@@ -86,7 +86,7 @@ parts:
     source-type: git
     python-packages:
       - pyxattr==0.8.1
-      - yt-dlp[default]==2025.12.8
+      - yt-dlp[default]==2026.1.29
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
