@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2026-01-20 21:01+0000\n"
+"PO-Revision-Date: 2026-02-15 03:41+0000\n"
 "Last-Translator: Yago Raña Gayoso <yago.rana.gayoso@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/video-"
 "downloader/gui/gl/>\n"
@@ -34,162 +34,166 @@ msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
+"Descargue vídeos desde sitios web con unha interface fácil de usar. "
+"Funcionalidades:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr ""
+msgstr "Convertir vídeos a MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr ""
+msgstr "Soporte para vídeos privados e protexidos con contrasinal"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr ""
+msgstr "Descargar vídeos individualmente ou listas de reprodución completas"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
+"Automaticamente seleccionar un formato de vídeo baseado nas súas demandas de "
+"calidade"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "Baseado en yt-dlp."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YouTube;Descargar;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr ""
+msgstr "Nova xanela"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr ""
+msgstr "Autenticación requirida"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr ""
+msgstr "Acceder"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr ""
+msgstr "Omitir"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr ""
+msgstr "Este vídeo non é público."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "Nome de usuario"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr ""
+msgstr "Contrasinal"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr ""
+msgstr "Completar campo de URL"
 
 #: src/model.py:67
 msgid "Best"
-msgstr ""
+msgstr "A mellor"
 
 #: src/model.py:68
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:69
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:70
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:71
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:72
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:73
 msgid "480p"
-msgstr ""
+msgstr "480p"
 
 #: src/model.py:74
 msgid "360p"
-msgstr ""
+msgstr "360p"
 
 #: src/model.py:75
 msgid "240p"
-msgstr ""
+msgstr "240p"
 
 #: src/model.py:76
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Cartafol de descarga non válido"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr ""
+msgstr "Non é un directorio"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr ""
+msgstr "Permiso denegado"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "Descargar lista de reprodución?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "O vídeo é parte dunha lista de reprodución."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr ""
+msgstr "Vídeo individual"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "Todos os vídeos na lista de reprodución"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "Xeral"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Abrir menú"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Cerrar xanela"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Saír"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Atallos de teclado"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "Navegación"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
