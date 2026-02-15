@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2026-02-15 03:41+0000\n"
+"PO-Revision-Date: 2026-02-16 21:09+0000\n"
 "Last-Translator: Yago Raña Gayoso <yago.rana.gayoso@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/video-"
 "downloader/gui/gl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16-dev\n"
+"X-Generator: Weblate 5.16\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -197,35 +197,35 @@ msgstr "Navegación"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "Ir atrás"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Cambiar a audio"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Cambiar a vídeo"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr ""
+msgstr "Decargando"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr ""
+msgstr "{} de {}"
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr ""
+msgstr "descoñecido"
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr ""
+msgstr "Produciuse un erro na descarga"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr ""
+msgstr "Descarga terminada"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
