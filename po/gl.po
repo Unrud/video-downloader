@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2026-02-16 21:09+0000\n"
+"PO-Revision-Date: 2026-02-19 14:09+0000\n"
 "Last-Translator: Yago Raña Gayoso <yago.rana.gayoso@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/video-"
 "downloader/gui/gl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -229,60 +229,60 @@ msgstr "Descarga terminada"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr ""
+msgstr "Abrir ubicación da descarga"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr ""
+msgstr "Restablecer aos valores predeterminados"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr ""
+msgstr "Cambiar ubicación da descarga"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "O cartafol seleccionado non é válido"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr ""
+msgstr "Seleccionar cartafol"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr ""
+msgstr "Acerca de Descargador de vídeos"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr ""
+msgstr "Menú principal"
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr ""
+msgstr "Descargar"
 
 #: src/window.ui:156
 msgid "Video"
-msgstr ""
+msgstr "Vídeo"
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr ""
+msgstr "Resolución"
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Preferir formato MPEG"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr ""
+msgstr "Atrás"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr ""
+msgstr "Detalles"
