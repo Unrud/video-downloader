@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the video-downloader package.
 # SPiRiT <such.a.lost.spirit@gmail.com>, 2023.
 # yoval keshet <keshetyoval@gmail.com>, 2024.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2024-08-29 09:09+0000\n"
-"Last-Translator: yoval keshet <keshetyoval@gmail.com>\n"
+"PO-Revision-Date: 2026-02-22 14:37+0000\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/video-downloader/"
 "gui/he/>\n"
 "Language: he\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 5.7.1-dev\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -28,9 +29,8 @@ msgstr "מוריד הסרטונים"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
-#, fuzzy
 msgid "Download web videos"
-msgstr "הורד סרטונים מאתרים כמו יוטיוב ורבים אחרים"
+msgstr "הורדת סרטונים מאתרים"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
