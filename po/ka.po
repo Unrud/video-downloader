@@ -7,276 +7,281 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-02-22 14:37+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <https://hosted.weblate.org/projects/video-"
+"downloader/gui/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr ""
+msgstr "ვიდეოს გადმომწერი"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr ""
+msgstr "ვიდეოების გადმოწერა ვებიდან"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
+"გადმოწერეთ ვიდეოები ვებსაიტებიდან ადვილად გამოსაყენებელი ინტერფეისით. "
+"მოგაწვდით შემდეგ ფუნქციებს:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr ""
+msgstr "ვიდეოების MP3-ში გადაყვანა"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr ""
+msgstr "აქვს პაროლით დაცული და პირადი ვიდეოების მხარდაჭერა"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr ""
+msgstr "ერთი ვიდეოსი, ან მთელი დასაკრავი სიის გადმოწერა"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
 msgstr ""
+"ავტომატურად ირჩევს ვიდეოს ფორმატს თქვენი ვიდეოს ხარისხის მოთხოვნის მიხედვით"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "დაფუძნებულია yt-dlp-ზე."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YouTube;Download;გადმოწერა;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr ""
+msgstr "ახალი ფანჯარა"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr ""
+msgstr "საჭიროა ავთენტიკაცია"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr ""
+msgstr "გაუქმება"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr ""
+msgstr "შესვლა"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr ""
+msgstr "გამოტოვება"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr ""
+msgstr "ვიდეო საჯარო არაა."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "მომხმარებლის სახელი"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr ""
+msgstr "პაროლი"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr ""
+msgstr "ბმულის ველის წინასწარი შევსება"
 
 #: src/model.py:67
 msgid "Best"
-msgstr ""
+msgstr "საუკეთესო"
 
 #: src/model.py:68
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:69
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:70
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:71
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:72
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:73
 msgid "480p"
-msgstr ""
+msgstr "480p"
 
 #: src/model.py:74
 msgid "360p"
-msgstr ""
+msgstr "360p"
 
 #: src/model.py:75
 msgid "240p"
-msgstr ""
+msgstr "240p"
 
 #: src/model.py:76
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr ""
+msgstr "არასწორი გადმოწერის საქაღალდე"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr ""
+msgstr "საქაღალდე არაა"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr ""
+msgstr "წვდომა აკრძალულია"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "გადმოვწერო დასაკრავი სია?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "ვიდეო დასაკრავი სიის ნაწილია."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr ""
+msgstr "ერთი ვიდეო"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "დასაკრავი სიის ყველა ვიდეო"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "ზოგადი"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "მენიუს გახსნა"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "ფანჯრის დახურვა"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "გასვლა"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "კლავიატურის მალსახმობები"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "ნავიგაცია"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "უკან გადასვლა"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "აუდიოზე გადართვა"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "ვიდეოზე გადართვა"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr ""
+msgstr "მიმდინარეობს გადმოწერა"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr ""
+msgstr "{} /{}"
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr ""
+msgstr "უცნობი"
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr ""
+msgstr "გადმოწერა ჩავარდა"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr ""
+msgstr "გადმოწერა დასრულდა"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr ""
+msgstr "გადმოწერის მდებარეობის გახსნა"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr ""
+msgstr "ნაგულისხმევზე ჩამოყრა"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr ""
+msgstr "გადმოწერის მდებარეობის შეცვლა"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "არჩეულია არასწორი საქაღალდე"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr ""
+msgstr "აირჩიეთ საქაღალდე"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr ""
+msgstr "ვიდეოს გადმომწერის შესახებ"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr ""
+msgstr "მთავარი მენიუ"
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr ""
+msgstr "აუდიო"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr ""
+msgstr "გადმოწერა"
 
 #: src/window.ui:156
 msgid "Video"
-msgstr ""
+msgstr "ვიდეო"
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr ""
+msgstr "გარჩევადობა"
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "მირჩევნია MPEG ფორმატი"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr ""
+msgstr "უკან"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr ""
+msgstr "დეტალები"
