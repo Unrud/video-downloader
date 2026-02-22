@@ -2,21 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # loliisdabezt <hrskai2001@gmail.com>, 2025.
+# Ngô Quang Đại <thanglinh868686@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-06-18 17:07+0000\n"
-"Last-Translator: loliisdabezt <hrskai2001@gmail.com>\n"
-"Language-Team: Vietnamese <https://hosted.weblate.org/projects/"
-"video-downloader/gui/vi/>\n"
+"PO-Revision-Date: 2026-02-22 14:37+0000\n"
+"Last-Translator: Ngô Quang Đại <thanglinh868686@gmail.com>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/video-"
+"downloader/gui/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12.1\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -27,258 +28,259 @@ msgstr "Trình tải xuống video"
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr ""
+msgstr "Tải xuống video trên web"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
+"Tải xuống video từ web với giao diện dễ sử dụng. Cung cấp các tính năng sau:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr ""
+msgstr "Chuyển đổi video sang MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr ""
+msgstr "Hỗ trợ video được bảo vệ bằng mật khẩu và video riêng tư"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr ""
+msgstr "Tải xuống 1 video hoặc cả danh sách phát"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr ""
+msgstr "Tự động chọn định dạng video dựa trên yêu cầu chất lượng của bạn"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "Dựa trên yt-dlp."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YouTube;Tải xuống;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr ""
+msgstr "Cửa sổ mới"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr ""
+msgstr "Yêu cầu xác thực"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr ""
+msgstr "Hủy"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr ""
+msgstr "Đăng nhập"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr ""
+msgstr "Bỏ qua"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr ""
+msgstr "Video không được công khai."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "Tên người dùng"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr ""
+msgstr "Mật khẩu"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr ""
+msgstr "Điền trước URL"
 
 #: src/model.py:67
 msgid "Best"
-msgstr ""
+msgstr "Tốt nhất"
 
 #: src/model.py:68
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:69
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:70
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:71
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:72
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:73
 msgid "480p"
-msgstr ""
+msgstr "480p"
 
 #: src/model.py:74
 msgid "360p"
-msgstr ""
+msgstr "360p"
 
 #: src/model.py:75
 msgid "240p"
-msgstr ""
+msgstr "240p"
 
 #: src/model.py:76
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Thư mục tải xuống không hợp lệ"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr ""
+msgstr "Không phải thư mục"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr ""
+msgstr "Quyền truy cập bị từ chối"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "Tải xuống danh sách phát?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "Video này là 1 phần của danh sách phát."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr ""
+msgstr "1 Video"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "Tất cả Video trong danh sách phát"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "Tổng quan"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Mở Menu"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Đóng cửa sổ"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Thoát"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Phím tắt"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "Điều hướng"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "Quay lại"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Chuyển sang âm thanh"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Chuyển sang video"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr ""
+msgstr "Đang tải xuống"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr ""
+msgstr "{} của {}"
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr ""
+msgstr "không rõ"
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr ""
+msgstr "Tải xuống thất bại"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr ""
+msgstr "Đã tải xong"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr ""
+msgstr "Mở vị trí tải xuống"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr ""
+msgstr "Khôi phục về mặc định"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr ""
+msgstr "Thay đổi vị trí tải xuống"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Thư mục đã chọn không hợp lệ"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr ""
+msgstr "Chọn thư mục"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr ""
+msgstr "Về Video Downloader"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu chính"
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr ""
+msgstr "Âm thanh"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr ""
+msgstr "Tải xuống"
 
 #: src/window.ui:156
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr ""
+msgstr "Độ phân giải"
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Ưu tiên định dạng MPEG"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr ""
+msgstr "Quay lại"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr ""
+msgstr "Chi tiết"
