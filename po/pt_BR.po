@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the video-downloader package.
 # Thiago Carmona <Banana@users.noreply.hosted.weblate.org>, 2024.
 # dedakir923 <dedakir923@exoular.com>, 2025.
+# delvani <del.cidrak@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-04-03 00:29+0000\n"
-"Last-Translator: dedakir923 <dedakir923@exoular.com>\n"
+"PO-Revision-Date: 2026-02-16 21:09+0000\n"
+"Last-Translator: delvani <del.cidrak@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "video-downloader/gui/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 5.16\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -129,7 +130,7 @@ msgstr "720p (HD)"
 
 #: src/model.py:73
 msgid "480p"
-msgstr "480p (SD)"
+msgstr "480p"
 
 #: src/model.py:74
 msgid "360p"
