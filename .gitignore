@@ -2,3 +2,6 @@
 \#*\#
 /video-downloader_*.snap
 /po/*.mo
+settings.json
+__pycache__
+compilacion.txt
