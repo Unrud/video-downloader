@@ -1,110 +1,109 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
-# SPiRiT <such.a.lost.spirit@gmail.com>, 2023.
-# yoval keshet <keshetyoval@gmail.com>, 2024.
-# Yaron Shahrabani <sh.yaron@gmail.com>, 2026.
+# MikayelB <mikael.bejanyan@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2026-02-22 14:37+0000\n"
-"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://hosted.weblate.org/projects/video-downloader/"
-"gui/he/>\n"
-"Language: he\n"
+"PO-Revision-Date: 2025-12-31 09:01+0000\n"
+"Last-Translator: MikayelB <mikael.bejanyan@gmail.com>\n"
+"Language-Team: Armenian <https://hosted.weblate.org/projects/video-"
+"downloader/gui/hy/>\n"
+"Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
-"n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr "מוריד הסרטונים"
+msgstr "Վիդեոների Ներբեռնիչ"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr "הורדת סרטונים מאתרים"
+msgstr "Ներբեռնել համացանցից վիդեոներ"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
-msgstr "הורדת סרטונים ממגוון אתרים, עם ממשק פשוט לשימוש שמאפשר:"
+msgstr ""
+"Ներբեռնեք վիդեոներ կայքերից՝ հեշտ ինտերֆեյսի միջոցով։ Ունի հետևյալ "
+"հնարավորությունները․"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr "המרת סרטונים ל-MP3"
+msgstr "Փոխակերպել վիդեոները MP3-ի"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr "תמיכה בסרטונים מוגנים עם סיסמה וסרטונים פרטיים"
+msgstr "Աշխատում է գաղտնաբառով պաշտպանված և private (մասնավոր) վիդեոների հետ"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr "הורדת סרטונים בודדים או פלייליסט שלם"
+msgstr "Ներբեռնել առանձին վիդեոներ կամ ամբողջական playlist-ներ"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr "בחירה אוטומטית של פורמט הסרטון, לפי דרישות האיכות שלך"
+msgstr "Ավտոմատ ընտրում է վիդեոյի ֆորմատը՝ ըստ որակի պահանջների"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr "מבוסס על yt-dlp."
+msgstr "Հիմնված է yt-dlp -ի վրա։"
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr "יוטיוב;הורדה;"
+msgstr "YouTube;Download;Ներբեռնել;Վիդեոներ;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr "חלון חדש"
+msgstr "Նոր պատուհան"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr "נדרשת הזדהות"
+msgstr "Պահանջվում է նույնականացում"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr "ביטול"
+msgstr "Չեղարկել"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr "התחברות"
+msgstr "Մուտք գործել"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr "דלג"
+msgstr "Բաց թողնել"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr "הסרטון אינו ציבורי."
+msgstr "Վիդեոն public չէ։"
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr "שם משתמש"
+msgstr "Մուտքանուն"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr "סיסמה"
+msgstr "Գաղտնաբառ"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr "קישור למילוי אוטומטי"
+msgstr "Կանխավ լրացնել URL դաշտը"
 
 #: src/model.py:67
 msgid "Best"
-msgstr "הכי טובה"
+msgstr "Լավագույնը"
 
 #: src/model.py:68
 msgid "4320p (8K)"
@@ -144,144 +143,144 @@ msgstr "144p"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr "תיקיית הורדה לא תקינה"
+msgstr "Անվավեր ներբեռնման պանակ (Folder)"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr "זו לא תיקייה"
+msgstr "Պանակ չէ (directory չէ)"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr "הגישה נדחתה"
+msgstr "Թույլտվությունը մերժված է"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr "להוריד פלייליסט?"
+msgstr "Ներբեռնե՞լ playlist-ը"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr "הסרטון הוא חלק מפלייליסט."
+msgstr "Վիդեոն playlist-ի մաս է։"
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr "סרטון בודד"
+msgstr "Մեկ վիդեո"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr "כל הסרטונים בפלייליסט"
+msgstr "Playlist-ի բոլոր վիդեոները"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr "כללי"
+msgstr "Ընդհանուր"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr "פתיחת תפריט"
+msgstr "Բացել մենյուն"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr "סגירת תפריט"
+msgstr "Փակել պատուհանը"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr "יציאה"
+msgstr "Ելք"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr "קיצורי דרך במקלדת"
+msgstr "Ստեղնաշարի կարճ հրամաններ (shortcuts)"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr "ניווט"
+msgstr "Նավիգացիա"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr "אחורה"
+msgstr "Հետ գնալ"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr "עבור לשמע"
+msgstr "Անցնել Audio-ի"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr "עבור לוידאו"
+msgstr "Անցնել Video-ի"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr "מוריד"
+msgstr "Ներբեռնում է"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr "{} מתוך {}"
+msgstr "{} , {}-ից"
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr "לא ידוע"
+msgstr "անհայտ"
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr "ההורדה נכשלה"
+msgstr "Ներբեռնումը ձախողվեց"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr "ההורדה הושלמה"
+msgstr "Ներբեռնումը ավարտված է"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr "פתח תיקיית הורדות"
+msgstr "Բացել ներբեռնման պանակը (folder)"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr "ברירות מחדל"
+msgstr "Վերադարձնել սկզբնական կարգավորումները"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr "בחר תיקיית יעד להורדות"
+msgstr "Փոխել ներբեռնման տեղը"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr "נבחרה תיקייה לא תקינה"
+msgstr "Ընտրված պանակը (folder) անվավեր է"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr "בחר תיקייה"
+msgstr "Ընտրել պանակ (folder)"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr "אודות מוריד הסרטונים"
+msgstr "Video Downloader-ի մասին"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr "תפריט ראשי"
+msgstr "Գլխավոր մենյու"
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr "שמע"
+msgstr "Աուդիո"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr "קישור"
+msgstr "URL"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr "הורדה"
+msgstr "Ներբեռնել"
 
 #: src/window.ui:156
 msgid "Video"
-msgstr "סרטון"
+msgstr "Վիդեո"
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr "רזולוציה"
+msgstr "Որակ"
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr "עדיפות לפורמט MPEG"
+msgstr "Նախընտրել MPEG ֆորմատը"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr "חזרה"
+msgstr "Հետ"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr "פרטים"
+msgstr "Մանրամասներ"
