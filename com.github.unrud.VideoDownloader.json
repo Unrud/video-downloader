@@ -134,8 +134,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.7.2/deno-x86_64-unknown-linux-gnu.zip",
-                    "sha256": "bc3af4d1bedd7893664b925c0f39fb08f7b12242e57ed4acdc0cf64540b4449c",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.7.5/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "fd0a9e6cf085acb861b67577a13bfd0b1829e1c6d6a6dcfd35bcb8f05c973a47",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
@@ -148,8 +148,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.7.2/deno-aarch64-unknown-linux-gnu.zip",
-                    "sha256": "c36c0b284d084dfe7045a106e60bd98d919183fd69d7902a42f3c7a244bf4386",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.7.5/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "69259408777465378ad78ea97c3ec6722704a93caabdb8d272b36d93d8025101",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
@@ -171,8 +171,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/7e/5b/1283356b70d4893a8a050cee15092e1b08ea15310b94365f88067146721b/yt_dlp_ejs-0.5.0-py3-none-any.whl",
-                    "sha256": "674fc0efea741d3100cdf3f0f9e123150715ee41edf47ea7a62fbdeda204bdec",
+                    "url": "https://files.pythonhosted.org/packages/59/f6/54fe93b9db02b7727043fb48816504f09066ca6d7f7d6145cd9d713a1047/yt_dlp_ejs-0.7.0-py3-none-any.whl",
+                    "sha256": "967e9cbe114ddfd046ff4668af18b1827b4597e2e47a83deea668a355828c798",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp-ejs",
@@ -190,8 +190,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/7e/a4/8b5cd28ab87aef48ef15e74241befec3445496327db028f34147a9e0f14f/yt_dlp-2026.3.3-py3-none-any.whl",
-                    "sha256": "166c6e68c49ba526474bd400e0129f58aa522c2896204aa73be669c3d2f15e63",
+                    "url": "https://files.pythonhosted.org/packages/f0/ef/52ed7ed10d2e1a22badf74b520b617c48b0a725a981620393245ac842bf9/yt_dlp-2026.3.13-py3-none-any.whl",
+                    "sha256": "e22e7716f94c08e76b29c0172a3fe0c01d8cabab9bce7f528ad440d70a0d213c",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp",
