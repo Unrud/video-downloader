@@ -49,6 +49,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
     # TYPE_STRV is None by default, empty list can be None or []
     finished_download_filenames = GObject.Property(type=GObject.TYPE_STRV)
     automatic_subtitles = GObject.Property(type=GObject.TYPE_STRV)
+    save_subtitles_separately = GObject.Property(type=bool, default=False)
     prefer_mpeg = GObject.Property(type=bool, default=False)
     download_playlist_index = GObject.Property(type=GObject.TYPE_INT64)
     download_playlist_count = GObject.Property(type=GObject.TYPE_INT64)
@@ -214,6 +215,10 @@ class Model(GObject.GObject, downloader.HandlerInterface):
         assert self.state in ['download', 'cancel']
         return [*languages_from_locale(), *(self.automatic_subtitles or [])]
 
+    def get_save_subtitles_separately(self):
+        assert self.state in ['download', 'cancel']
+        return self.save_subtitles_separately
+
     def get_url(self):
         assert self.state in ['download', 'cancel']
         return self.url
@@ -318,6 +323,9 @@ class HandlerInterface:
 
     #                                                   user password
     def on_login_request(self) -> Response[typing.Tuple[str, str]]:
+        raise NotImplementedError
+
+    def get_save_subtitles_separately(self) -> Response[bool]:
         raise NotImplementedError
 
     #                                         password

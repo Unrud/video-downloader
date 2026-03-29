@@ -200,6 +200,18 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                         </child>
                                       </object>
                                     </child>
+                                    <child>
+                                    <object class="AdwActionRow">
+                                        <property name="title" translatable="yes">Save embedded subtitles separately</property>
+                                        <property name="subtitle" translatable="yes">Also save subtitle files alongside the video</property>
+                                        <property name="activatable-widget">save_subtitles_separately_wdg</property>
+                                        <child>
+                                          <object class="GtkSwitch" id="save_subtitles_separately_wdg">
+                                            <property name="valign">center</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                                 <child>
