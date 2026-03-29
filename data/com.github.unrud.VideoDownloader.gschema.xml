@@ -8,6 +8,14 @@
     <key type="b" name="prefer-mpeg">
       <default>false</default>
     </key>
+    
+    <key type="b" name="prefer-download-thumbnail">
+      <default>false</default>
+      <summary>Save thumbnails with downloads</summary>
+      <description> 
+        If true, thumbnails will be saved alongside video/audio files.
+      </description>
+    </key>
 
     <key type="as" name="automatic-subtitles">
       <default>[]</default>

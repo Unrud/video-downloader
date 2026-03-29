@@ -127,9 +127,11 @@ class SubtitlesConverterPP(FFmpegPostProcessor):
 class ThumbnailConverterPP(FFmpegPostProcessor):
     """Convert thumbnail to JPEG and if required decrease resolution"""
 
-    def __init__(self, thumbnail_callback=None):
+    def __init__(self, handler, thumbnail_callback=None, save_thumbnail=False):
         super().__init__()
+        self._handler = handler
         self._thumbnail_callback = thumbnail_callback
+        self._save_thumbnail = save_thumbnail
 
     def run(self, info):
         files_to_delete = []
@@ -166,6 +168,11 @@ class ThumbnailConverterPP(FFmpegPostProcessor):
             new_thumbnails.insert(0, {**thumb, 'filepath': filepath})
             if self._thumbnail_callback is not None:
                 self._thumbnail_callback(os.path.abspath(filepath))
+            if self._save_thumbnail:
+                download_dir = self._handler.get_download_dir()
+                target_path = os.path.join(download_dir, os.path.basename(filepath))
+                shutil.copy(filepath, target_path)
+                self._handler.on_download_finished(os.path.basename(target_path))
         info['thumbnails'] = new_thumbnails
         return files_to_delete, info
 
@@ -351,7 +358,9 @@ class YoutubeDLSlave:
                 {'key': 'FFmpegEmbedSubtitle'},
                 {'key': 'XAttrMetadata'}]}
         self.extra_postprocessors = [
-            (ThumbnailConverterPP(self._handler.on_download_thumbnail),
+            (ThumbnailConverterPP(self._handler,
+                                  self._handler.on_download_thumbnail,
+                                  self._handler.get_prefer_download_thumbnail()),
              'before_dl'),
             (SubtitlesConverterPP(), 'before_dl')]
         mode = self._handler.get_mode()
