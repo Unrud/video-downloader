@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.unrud.VideoDownloader",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "49",
+    "runtime-version": "50",
     "sdk": "org.gnome.Sdk",
     "command": "video-downloader",
     "finish-args": [
@@ -134,8 +134,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.7.6/deno-x86_64-unknown-linux-gnu.zip",
-                    "sha256": "f930789c59335e374ebe28671f3b426c2e40e5328de0edab7002185f81fdf857",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.7.9/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "1d7e719118120b6e9bc6e3e76624a25732970e661d740d09bb930a3bc01119ff",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
@@ -148,8 +148,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.7.6/deno-aarch64-unknown-linux-gnu.zip",
-                    "sha256": "abf6b16e8fbd8aa3907bc9d56630a53a256feb31c2dafa80a92129da17308b81",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.7.9/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "f8e13d1670ed0b3d955e7a218386e1b2c6b98c3eb7923d4cfa04f1bc73404ed9",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
