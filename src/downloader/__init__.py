@@ -187,6 +187,9 @@ class HandlerInterface:
     def get_prefer_mpeg(self) -> Response[bool]:
         raise NotImplementedError
 
+    def get_prefer_download_thumbnail(self) -> Response[bool]:
+        raise NotImplementedError
+    
     def get_automatic_subtitles(self) -> Response[typing.List[str]]:
         raise NotImplementedError
 

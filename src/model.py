@@ -50,6 +50,7 @@ class Model(GObject.GObject, downloader.HandlerInterface):
     finished_download_filenames = GObject.Property(type=GObject.TYPE_STRV)
     automatic_subtitles = GObject.Property(type=GObject.TYPE_STRV)
     prefer_mpeg = GObject.Property(type=bool, default=False)
+    prefer_download_thumbnail = GObject.Property(type=bool, default=False)
     download_playlist_index = GObject.Property(type=GObject.TYPE_INT64)
     download_playlist_count = GObject.Property(type=GObject.TYPE_INT64)
     download_filename = GObject.Property(type=str)
@@ -209,7 +210,11 @@ class Model(GObject.GObject, downloader.HandlerInterface):
     def get_prefer_mpeg(self):
         assert self.state in ['download', 'cancel']
         return self.prefer_mpeg
-
+    
+    def get_prefer_download_thumbnail(self):
+        assert self.state in ['download', 'cancel']
+        return self.prefer_download_thumbnail
+    
     def get_automatic_subtitles(self):
         assert self.state in ['download', 'cancel']
         return [*languages_from_locale(), *(self.automatic_subtitles or [])]
