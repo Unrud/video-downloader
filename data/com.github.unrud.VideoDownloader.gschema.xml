@@ -13,6 +13,10 @@
       <default>[]</default>
     </key>
 
+    <key type="b" name="save-subtitles-separately">
+      <default>false</default>
+    </key>
+
     <key type="s" name="mode">
       <choices>
         <choice value="audio"/>

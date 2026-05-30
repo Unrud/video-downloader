@@ -466,11 +466,38 @@ class YoutubeDLSlave:
                 try:
                     os.replace(temp_filepath,
                                os.path.join(download_dir, filename))
+                    
+                    # Extract subtitle files if requested
+                    if self._handler.get_save_subtitles_separately():
+                        # All subtitle formats that yt-dlp might generate
+                        subtitle_extensions = ('.vtt', '.srt', '.ass', '.ssa', '.sub', 
+                                             '.sbv', '.dfxp', '.ttml', '.tt', 
+                                             '.json', '.json3', '.srv1', '.srv2', '.srv3')
+                        # Find and move all subtitle files from temp directory
+                        for temp_file in os.listdir(temp_download_dir):
+                            if temp_file.lower().endswith(subtitle_extensions):
+                                subtitle_source = os.path.join(temp_download_dir, temp_file)
+                                # Extract language/type info from filename
+                                # Format is typically: id.format_id.lang.ext or id.format_id.ext
+                                parts = temp_file.rsplit('.', 2)
+                                if len(parts) >= 2:
+                                    # Use the second-to-last part as identifier (language code)
+                                    subtitle_suffix = parts[-2]
+                                    extension = parts[-1]
+                                    subtitle_filename = f'{output_title}.{subtitle_suffix}.{extension}'
+                                else:
+                                    # Fallback: use the original filename structure
+                                    subtitle_filename = output_title + '.' + temp_file.split('.', 1)[-1]
+                                subtitle_dest = os.path.join(download_dir, subtitle_filename)
+                                os.replace(subtitle_source, subtitle_dest)
+                                log('Extracted subtitle: %s', subtitle_filename)
+
+
                 except OSError as e:
                     traceback.print_exc(file=sys.stderr)
                     sys.stderr.flush()
                     self._handler.on_error((
-                        'ERROR: Falied to move finished download to '
+                        'ERROR: Failed to move finished download to '
                         'download folder: %s') % e)
                     sys.exit(1)
                 # Delete download directory
