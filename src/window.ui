@@ -200,6 +200,17 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                         </child>
                                       </object>
                                     </child>
+                                    <child>
+                                      <object class="AdwActionRow">
+                                        <property name="title" translatable="yes">Download Thumbnail</property>
+                                        <property name="activatable-widget">prefer_download_thumbnail_wdg</property>
+                                        <child>
+                                          <object class="GtkSwitch" id="prefer_download_thumbnail_wdg">
+                                            <property name="valign">center</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                                 <child>
@@ -214,6 +225,7 @@ along with Video Downloader.  If not, see <http://www.gnu.org/licenses/>.
                                     </style>
                                   </object>
                                 </child>
+
                               </object>
                             </child>
                           </object>

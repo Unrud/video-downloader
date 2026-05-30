@@ -49,6 +49,7 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
     video_url_wdg = Gtk.Template.Child()
     resolution_wdg = Gtk.Template.Child()
     prefer_mpeg_wdg = Gtk.Template.Child()
+    prefer_download_thumbnail_wdg = Gtk.Template.Child()
     main_stack_wdg = Gtk.Template.Child()
     audio_video_stack_wdg = Gtk.Template.Child()
     audio_download_wdg = Gtk.Template.Child()
@@ -113,6 +114,9 @@ class Window(Adw.ApplicationWindow, HandlerInterface):
             lambda i: list(self.model.resolutions)[i], bi=True))
         self._cs.push(PropertyBinding(
             self.model, 'prefer-mpeg', self.prefer_mpeg_wdg, 'active',
+            bi=True))
+        self._cs.push(PropertyBinding(
+            self.model, 'prefer_download_thumbnail', self.prefer_download_thumbnail_wdg, 'active',
             bi=True))
         self._cs.push(PropertyBinding(
             self.model, 'state', self.main_stack_wdg, 'visible-child-name',
