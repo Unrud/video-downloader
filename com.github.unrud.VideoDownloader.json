@@ -134,8 +134,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.8.0/deno-x86_64-unknown-linux-gnu.zip",
-                    "sha256": "be2c8b53c8ca1d66be76feb9b1a524419da708b00d4ca074cf5c633c81c1627b",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.8.2/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "184da7a5267ab649bc08821b3bc3ce6805d8e6985fb82707cb8d5e9fd6535362",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
@@ -148,8 +148,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.8.0/deno-aarch64-unknown-linux-gnu.zip",
-                    "sha256": "933a6a7d2985957271cd2085a5a5a1832398aa221a354daab5635196cf2cbbae",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.8.2/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "48647189aee6454ed9b9852fa700a77f92b39465c04c625901d165bc8e937afc",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
@@ -190,8 +190,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/cd/13/5093bcb954878e50f7217fd2ab94282b53934022e4e4a03265582da83bf5/yt_dlp-2026.3.17-py3-none-any.whl",
-                    "sha256": "32992db94303a8a5d211a183f2174834fe7f8c29d83ed2e7a324eae97a8f26d8",
+                    "url": "https://files.pythonhosted.org/packages/f3/ee/188a3dadf9dfdac713243521f919feca1cd091d4358c9ea7e8ebb710a7cc/yt_dlp-2026.6.9-py3-none-any.whl",
+                    "sha256": "442ba4c75724b9496144c8434b617962ee08d0ee7c26ec663848fe9b78d5a3e4",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp",
