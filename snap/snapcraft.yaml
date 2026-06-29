@@ -44,8 +44,8 @@ parts:
     # Build from source because the ffmpeg package installs libraries as dependencies
     # that conflict with the Gnome extension
     plugin: autotools
-    source: https://ffmpeg.org/releases/ffmpeg-7.1.4.tar.xz
-    source-checksum: sha256/71f4aac3573ed9060489cb62526a6c7dda815ae10993789611acd7be9fa9fbf4
+    source: https://ffmpeg.org/releases/ffmpeg-7.1.5.tar.xz
+    source-checksum: sha256/de668509caf9e35e3cd162473441fdb29538c6d96ed080292b3cf9e6fc5d558f
     autotools-configure-parameters:
       # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
       - --prefix=/usr
@@ -72,8 +72,8 @@ parts:
   deno:
     plugin: dump
     source:
-      - on amd64: https://github.com/denoland/deno/releases/download/v2.8.2/deno-x86_64-unknown-linux-gnu.zip
-      - on arm64: https://github.com/denoland/deno/releases/download/v2.8.2/deno-aarch64-unknown-linux-gnu.zip
+      - on amd64: https://github.com/denoland/deno/releases/download/v2.9.0/deno-x86_64-unknown-linux-gnu.zip
+      - on arm64: https://github.com/denoland/deno/releases/download/v2.9.0/deno-aarch64-unknown-linux-gnu.zip
     source-type: zip
     override-build: |
       install -Dt "${CRAFT_PART_INSTALL}/usr/bin" deno
