@@ -69,6 +69,8 @@ class Application(Adw.Application):
                                Gio.SettingsBindFlags.GET_NO_CHANGES))
         self.settings.bind('automatic-subtitles', model, 'automatic-subtitles',
                            Gio.SettingsBindFlags.DEFAULT)
+        self.settings.bind('save-subtitles-separately', model, 'save-subtitles-separately',
+                           Gio.SettingsBindFlags.DEFAULT)
         self.settings.bind('mode', model, 'mode', (
                                Gio.SettingsBindFlags.DEFAULT |
                                Gio.SettingsBindFlags.GET_NO_CHANGES))
