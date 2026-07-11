@@ -51,7 +51,7 @@ parts:
     source-type: git
     python-packages:
       - pyxattr==0.8.1
-      - yt-dlp[default]==2026.6.9
+      - yt-dlp[default]==2026.7.4
     stage-snaps:
       - ffmpeg-2404/latest/stable
     override-pull: |
