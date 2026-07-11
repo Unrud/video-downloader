@@ -1,5 +1,9 @@
 # Build by running `snapcraft pack`.
 
+# WARNING:
+# Snapcraft uses caching for already build steps but it's buggy and can cause strange problems.
+# Clean the cache by running `snapcraft clean`.
+
 name: video-downloader
 license: GPL-3.0+
 grade: stable
