@@ -1,24 +1,20 @@
-# Build by running "snapcraft".
-
-# WARNING:
-# Snapcraft uses caching for already build steps but it's buggy and can cause strange problems.
-# Clean the cache by running "snapcraft clean".
+# Build by running `snapcraft pack`.
 
 name: video-downloader
 license: GPL-3.0+
 grade: stable
 adopt-info: video-downloader
 
-base: core22
+base: core24
 confinement: strict
 
-architectures:
-  - build-on: amd64
-  - build-on: arm64
+platforms:
+  amd64:
+  arm64:
 
 environment:
   # WORKAROUND: Add python modules in Snap to search path
-  PYTHONPATH: ${SNAP}/lib/python3.10/site-packages:${SNAP}/usr/lib/python3/dist-packages
+  PYTHONPATH: ${SNAP}/lib/python3.12/site-packages:${SNAP}/usr/lib/python3/dist-packages
 
 apps:
   video-downloader:
@@ -39,36 +35,6 @@ slots:
     name: com.github.unrud.VideoDownloader
 
 parts:
-  ffmpeg:
-    # WORKAROUND:
-    # Build from source because the ffmpeg package installs libraries as dependencies
-    # that conflict with the Gnome extension
-    plugin: autotools
-    source: https://ffmpeg.org/releases/ffmpeg-7.1.5.tar.xz
-    source-checksum: sha256/de668509caf9e35e3cd162473441fdb29538c6d96ed080292b3cf9e6fc5d558f
-    autotools-configure-parameters:
-      # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
-      - --prefix=/usr
-      - --disable-debug
-      - --disable-doc
-      - --disable-static
-      - --enable-gpl
-      - --enable-shared
-      - --disable-ffplay
-      - --disable-devices
-      - --enable-gnutls
-      - --enable-libmp3lame
-      - --enable-libvorbis
-    build-packages:
-      - nasm
-      - libgnutls28-dev
-      - libmp3lame-dev
-      - libvorbis-dev
-    stage-packages:
-      - libmp3lame0
-    stage:
-      - -usr/include
-
   deno:
     plugin: dump
     source:
@@ -79,18 +45,15 @@ parts:
       install -Dt "${CRAFT_PART_INSTALL}/usr/bin" deno
 
   yt-dlp:
-    # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
-    after: [deno, ffmpeg]
+    after: [deno]
     plugin: python
     source: .
     source-type: git
     python-packages:
       - pyxattr==0.8.1
       - yt-dlp[default]==2026.6.9
-    build-environment:
-      # WORKAROUND: The python plugin is broken with gnome extension
-      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
-      - PYTHONPATH: ""
+    stage-snaps:
+      - ffmpeg-2404/latest/stable
     override-pull: |
       # nop
     stage:
@@ -101,14 +64,14 @@ parts:
       - -bin/Activate.ps1
       - -bin/python
       - -bin/python3
-      - -bin/python3.10
+      - -bin/python3.12
       - -bin/pip
       - -bin/pip3
-      - -bin/pip3.10
+      - -bin/pip3.12
       - -pyvenv.cfg
 
   video-downloader:
-    after: [ffmpeg, yt-dlp]
+    after: [yt-dlp]
     plugin: meson
     source: .
     source-type: git
@@ -120,10 +83,6 @@ parts:
       - librsvg2-bin
     stage-packages:
       - xdg-user-dirs
-    override-pull: |
-      craftctl default
-      # WORKAROUND: Point icon directly to SVG otherwise snapcraft can't find it
-      sed -e 's|Icon=com.github.unrud.VideoDownloader|Icon=/usr/share/icons/hicolor/scalable/apps/com.github.unrud.VideoDownloader.svg|' -i data/com.github.unrud.VideoDownloader.desktop.in
     override-build: |
       craftctl default
       # WORKAROUND: Use python from search path, the path detected by meson doesn't exist when running the Snap
