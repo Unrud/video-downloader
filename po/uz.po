@@ -4,13 +4,14 @@
 # Umidjon Almasov <umidjon@almasov.uz>, 2022.
 # Elvis <svlpolb31j@zlorkun.com>, 2024.
 # Bahrom Miragzamov <miragzamov24@gmail.com>, 2025.
+# ALISHER XUDAYBERGANOV <xudayberganov@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: 2025-04-01 20:33+0000\n"
-"Last-Translator: Bahrom Miragzamov <miragzamov24@gmail.com>\n"
+"PO-Revision-Date: 2026-07-17 08:01+0000\n"
+"Last-Translator: ALISHER XUDAYBERGANOV <xudayberganov@gmail.com>\n"
 "Language-Team: Uzbek <https://hosted.weblate.org/projects/video-downloader/"
 "gui/uz/>\n"
 "Language: uz\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 2026.8.dev0\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
@@ -191,7 +192,6 @@ msgid "Quit"
 msgstr "Chiqish"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
-#, fuzzy
 msgid "Keyboard Shortcuts"
 msgstr "Klaviatura yorliqlari"
 
@@ -216,7 +216,6 @@ msgid "Downloading"
 msgstr "Yuklab olinmoqda"
 
 #: src/window.py:189 src/window.py:209
-#, fuzzy
 msgid "{} of {}"
 msgstr "{} {} dan"
 
