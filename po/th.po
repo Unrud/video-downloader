@@ -2,281 +2,288 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the video-downloader package.
 # Siwakon Sukphunphon <siwakornsuk01@gmail.com>, 2026.
+# KuroisKitsune <161731320+KuroisKitsune@users.noreply.github.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-08-21 16:51+0000\n"
+"Last-Translator: KuroisKitsune "
+"<161731320+KuroisKitsune@users.noreply.github.com>\n"
+"Language-Team: Thai <https://hosted.weblate.org/projects/video-downloader/"
+"gui/th/>\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr ""
+msgstr "Video Downloader"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr ""
+msgstr "ดาวน์โหลดวิดีโอจากเว็บ"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
-msgstr ""
+msgstr "ดาวน์โหลดวิดีโอจากเว็บไซต์ต่างๆ ใช้งานง่าย. ซึ่งมีคุณสมบัติดังต่อไปนี้:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr ""
+msgstr "แปลงวิดีโอเป็น MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr ""
+msgstr "รองรับการตั้งรหัสและวิดีโอแบบส่วนตัว"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr ""
+msgstr "ดาวน์โหลดวิดีโอเดียว หรือทั้งเพลย์ลิสต์"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr ""
+msgstr "เลือกนามสกุลไฟล์วิดีโอมาตรฐานโดยอัตโนมัติจากคุณภาพที่คุณต้องการ"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "อิงพื้นฐานจาก yt-dlp."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "ยูทูป;ดาวน์โหลด;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr ""
+msgstr "หน้าต่างใหม่"
 
 #: src/authentication_dialog.py:30
+#, fuzzy
 msgid "Authentication Required"
-msgstr ""
+msgstr "จำเป็นต้องยืนยันตัวตน"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
 msgid "Cancel"
-msgstr ""
+msgstr "ยกเลิก"
 
 #: src/authentication_dialog.py:46
 msgid "Sign in"
-msgstr ""
+msgstr "เข้าสู่ระบบ"
 
 #: src/authentication_dialog.py:46
 msgid "Skip"
-msgstr ""
+msgstr "ข้าม"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr ""
+msgstr "วิดีโอนี้ไม่เปิดสาธารณะ."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "ชื่อผู้ใช้"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
 msgid "Password"
-msgstr ""
+msgstr "รหัสผ่าน"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr ""
+msgstr "โปรดใส่ URL"
 
 #: src/model.py:67
 msgid "Best"
-msgstr ""
+msgstr "ดีที่สุด"
 
 #: src/model.py:68
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:69
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:70
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:71
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:72
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:73
 msgid "480p"
-msgstr ""
+msgstr "480p"
 
 #: src/model.py:74
 msgid "360p"
-msgstr ""
+msgstr "360p"
 
 #: src/model.py:75
 msgid "240p"
-msgstr ""
+msgstr "240p"
 
 #: src/model.py:76
 msgid "144p"
-msgstr ""
+msgstr "144p"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr ""
+msgstr "โฟลเดอร์ดาวน์โหลดไม่ถูกต้อง"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr ""
+msgstr "ไม่พบ"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr ""
+msgstr "การอนุญาตถูกปฏิเสธ"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "ดาวน์โหลดเพลย์ลิสต์?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "วิดีโอนี้อยู่ในเพลย์ลิสต์."
 
 #: src/playlist_dialog.py:32
 msgid "Single Video"
-msgstr ""
+msgstr "วิดีโอเดียว"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "ทุกวิดีโอที่อยู่ในเพลย์ลิสต์"
 
 #: src/shortcuts_dialog.ui:29
 msgid "General"
-msgstr ""
+msgstr "ทั่วไป"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "เปิดเมนู"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "ปิดหน้าต่าง"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "ออก"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "ปุ่มคีย์ลัด"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "การนำทาง"
 
 #: src/shortcuts_dialog.ui:68
 msgid "Go back"
-msgstr ""
+msgstr "กลับไป"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "สลับเป็นเสียงเท่านั้น"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "สลับเป็นวิดีโอ"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr ""
+msgstr "กำลังดาวน์โหลด"
 
 #: src/window.py:189 src/window.py:209
 msgid "{} of {}"
-msgstr ""
+msgstr "{} of {}"
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr ""
+msgstr "ไม่ทราบ"
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr ""
+msgstr "การดาวน์โหลดล้มเหลว"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr ""
+msgstr "การดาวน์โหลดเสร็จสิ้น"
 
 #: src/window.py:291 src/window.ui:530
+#, fuzzy
 msgid "Open Download Location"
-msgstr ""
+msgstr "เปิดตำแหน่งไฟล์ที่ดาวน์โหลด"
 
 #: src/window.py:329
+#, fuzzy
 msgid "Reset to Default"
-msgstr ""
+msgstr "คืนสู่ค่าเริ่มต้น"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
 msgid "Change Download Location"
-msgstr ""
+msgstr "เปลี่ยนตำแหน่งไฟล์ที่ดาวน์โหลด"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "โฟลเดอร์ที่คุณเลือกไม่ถูกต้อง"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr ""
+msgstr "เลือกโฟลเดอร์"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr ""
+msgstr "เกี่ยวกับ Video Downloader"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr ""
+msgstr "เมนูหลัก"
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr ""
+msgstr "เสียง"
 
 #: src/window.ui:127 src/window.ui:178
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr ""
+msgstr "ดาวน์โหลด"
 
 #: src/window.ui:156
 msgid "Video"
-msgstr ""
+msgstr "วิดีโอ"
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr ""
+msgstr "ความละเอียด"
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "เลือกใช้รูปแบบ MPEG"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
-msgstr ""
+msgstr "กลับ"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr ""
+msgstr "รายละเอียด"
