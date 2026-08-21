@@ -42,8 +42,8 @@ parts:
   deno:
     plugin: dump
     source:
-      - on amd64: https://github.com/denoland/deno/releases/download/v2.9.1/deno-x86_64-unknown-linux-gnu.zip
-      - on arm64: https://github.com/denoland/deno/releases/download/v2.9.1/deno-aarch64-unknown-linux-gnu.zip
+      - on amd64: https://github.com/denoland/deno/releases/download/v2.9.5/deno-x86_64-unknown-linux-gnu.zip
+      - on arm64: https://github.com/denoland/deno/releases/download/v2.9.5/deno-aarch64-unknown-linux-gnu.zip
     source-type: zip
     override-build: |
       install -Dt "${CRAFT_PART_INSTALL}/usr/bin" deno
@@ -55,7 +55,7 @@ parts:
     source-type: git
     python-packages:
       - pyxattr==0.8.1
-      - yt-dlp[default]==2026.7.4
+      - yt-dlp[default]==2026.8.19
     stage-snaps:
       - ffmpeg-2404/latest/stable
     override-pull: |
