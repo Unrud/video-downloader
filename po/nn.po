@@ -7,276 +7,302 @@ msgstr ""
 "Project-Id-Version: video-downloader\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-13 19:20+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-09-02 09:51+0000\n"
+"Last-Translator: niedzwiedz63 <niedzwiedz63@yahoo.com>\n"
+"Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/video-"
+"downloader/gui/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:7
 #: data/com.github.unrud.VideoDownloader.desktop.in:3 src/about_dialog.ui.in:27
 #: src/main.py:39 src/window.ui:50
 msgid "Video Downloader"
-msgstr ""
+msgstr "Videonedlastar"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:8
 #: data/com.github.unrud.VideoDownloader.desktop.in:4
 msgid "Download web videos"
-msgstr ""
+msgstr "Last ned nettvideoar"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:10
 msgid ""
 "Download videos from websites with an easy-to-use interface. Provides the "
 "following features:"
 msgstr ""
+"Last ned videoar med eit enkelt brukargrensesnitt. Inneheld følgjande "
+"funksjonar:"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:15
 msgid "Convert videos to MP3"
-msgstr ""
+msgstr "Konverter videoar til MP3"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:16
 msgid "Supports password-protected and private videos"
-msgstr ""
+msgstr "Støttar passordbeskytta og private videoar"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:17
 msgid "Download single videos or whole playlists"
-msgstr ""
+msgstr "Last ned enkeltvideoar eller heile spillelister"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:18
 msgid "Automatically selects a video format based on your quality demands"
-msgstr ""
+msgstr "Vel automatisk eit videoformat basert på kvalitetskrava dine"
 
 #: data/com.github.unrud.VideoDownloader.metainfo.xml.in:20
+#, fuzzy
 msgid "Based on yt-dlp."
-msgstr ""
+msgstr "Basert på yt-dlp."
 
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.unrud.VideoDownloader.desktop.in:14
 msgid "YouTube;Download;"
-msgstr ""
+msgstr "YouTube;Last ned;"
 
 #: data/com.github.unrud.VideoDownloader.desktop.in:17
 #: src/shortcuts_dialog.ui:39 src/window.ui:26
 msgid "New Window"
-msgstr ""
+msgstr "Nytt vindauge"
 
 #: src/authentication_dialog.py:30
 msgid "Authentication Required"
-msgstr ""
+msgstr "Autentisering påkravd"
 
 #: src/authentication_dialog.py:34 src/window.ui:245
+#, fuzzy
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: src/authentication_dialog.py:46
+#, fuzzy
 msgid "Sign in"
-msgstr ""
+msgstr "Logg inn"
 
 #: src/authentication_dialog.py:46
+#, fuzzy
 msgid "Skip"
-msgstr ""
+msgstr "Hopp over"
 
 #: src/authentication_dialog_login.ui:31
 #: src/authentication_dialog_password.ui:31
 msgid "The video is not public."
-msgstr ""
+msgstr "Videoen er ikkje offentleg."
 
 #: src/authentication_dialog_login.ui:44
 msgid "Username"
-msgstr ""
+msgstr "Brukarnamn"
 
 #: src/authentication_dialog_login.ui:70
 #: src/authentication_dialog_password.ui:40
+#, fuzzy
 msgid "Password"
-msgstr ""
+msgstr "Passord"
 
 #: src/main.py:38
 msgid "Prefill URL field"
-msgstr ""
+msgstr "Fyll ut adressefelt på førehand"
 
 #: src/model.py:67
 msgid "Best"
-msgstr ""
+msgstr "Best"
 
 #: src/model.py:68
+#, fuzzy
 msgid "4320p (8K)"
-msgstr ""
+msgstr "4320p (8K)"
 
 #: src/model.py:69
+#, fuzzy
 msgid "2160p (4K)"
-msgstr ""
+msgstr "2160p (4K)"
 
 #: src/model.py:70
+#, fuzzy
 msgid "1440p (HD)"
-msgstr ""
+msgstr "1440p (HD)"
 
 #: src/model.py:71
+#, fuzzy
 msgid "1080p (HD)"
-msgstr ""
+msgstr "1080p (HD)"
 
 #: src/model.py:72
+#, fuzzy
 msgid "720p (HD)"
-msgstr ""
+msgstr "720p (HD)"
 
 #: src/model.py:73
+#, fuzzy
 msgid "480p"
-msgstr ""
+msgstr "480p (SD)"
 
 #: src/model.py:74
+#, fuzzy
 msgid "360p"
-msgstr ""
+msgstr "360p (SD)"
 
 #: src/model.py:75
+#, fuzzy
 msgid "240p"
-msgstr ""
+msgstr "240p (SD)"
 
 #: src/model.py:76
+#, fuzzy
 msgid "144p"
-msgstr ""
+msgstr "144p (SD)"
 
 #: src/model.py:159
 msgid "Invalid download folder"
-msgstr ""
+msgstr "Ugyldig nedlastingsmappe"
 
 #: src/model.py:280 src/model.py:286 src/window.py:358
 msgid "Not a directory"
-msgstr ""
+msgstr "Ikkje ei mappe"
 
 #: src/model.py:284 src/model.py:289
 msgid "Permission denied"
-msgstr ""
+msgstr "Tilgang nekta"
 
 #: src/playlist_dialog.py:29
 msgid "Download Playlist?"
-msgstr ""
+msgstr "Laste ned speleliste?"
 
 #: src/playlist_dialog.py:30
 msgid "The video is part of a playlist."
-msgstr ""
+msgstr "Videoen er del av ei speleliste."
 
 #: src/playlist_dialog.py:32
+#, fuzzy
 msgid "Single Video"
-msgstr ""
+msgstr "Enkeltvideo"
 
 #: src/playlist_dialog.py:33
 msgid "All Videos in Playlist"
-msgstr ""
+msgstr "Alle videoar i spelelista"
 
 #: src/shortcuts_dialog.ui:29
+#, fuzzy
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: src/shortcuts_dialog.ui:33
 msgid "Open Menu"
-msgstr ""
+msgstr "Opne meny"
 
 #: src/shortcuts_dialog.ui:45
 msgid "Close Window"
-msgstr ""
+msgstr "Lat att vindauge"
 
 #: src/shortcuts_dialog.ui:51
 msgid "Quit"
-msgstr ""
+msgstr "Avslutt"
 
 #: src/shortcuts_dialog.ui:57 src/window.ui:37
 msgid "Keyboard Shortcuts"
-msgstr ""
+msgstr "Tastatursnarvegar"
 
 #: src/shortcuts_dialog.ui:64
 msgid "Navigation"
-msgstr ""
+msgstr "Navigering"
 
 #: src/shortcuts_dialog.ui:68
+#, fuzzy
 msgid "Go back"
-msgstr ""
+msgstr "Gå tilbake"
 
 #: src/shortcuts_dialog.ui:74
 msgid "Switch to Audio"
-msgstr ""
+msgstr "Byt til lyd"
 
 #: src/shortcuts_dialog.ui:80
 msgid "Switch to Video"
-msgstr ""
+msgstr "Byt til video"
 
 #: src/window.py:187
 msgid "Downloading"
-msgstr ""
+msgstr "Lastar ned"
 
 #: src/window.py:189 src/window.py:209
+#, fuzzy
 msgid "{} of {}"
-msgstr ""
+msgstr "{} av {}"
 
 #: src/window.py:210 src/window.py:211
 msgid "unknown"
-msgstr ""
+msgstr "ukjend"
 
 #: src/window.py:281 src/window.ui:386
 msgid "Download failed"
-msgstr ""
+msgstr "Mislykka nedlasting"
 
 #: src/window.py:285 src/window.ui:511
 msgid "Download finished"
-msgstr ""
+msgstr "Nedlastinga er fullført"
 
 #: src/window.py:291 src/window.ui:530
 msgid "Open Download Location"
-msgstr ""
+msgstr "Opne nedlastingsmappe"
 
 #: src/window.py:329
 msgid "Reset to Default"
-msgstr ""
+msgstr "Still tilbake til standard"
 
 #: src/window.py:330 src/window.py:363 src/window.ui:33
+#, fuzzy
 msgid "Change Download Location"
-msgstr ""
+msgstr "Endre nedlastingsmappe"
 
 #: src/window.py:360
 msgid "Invalid folder selected"
-msgstr ""
+msgstr "Ugyldig mappe vald"
 
 #: src/window.py:364
 msgid "Select Folder"
-msgstr ""
+msgstr "Vel mappe"
 
 #: src/window.ui:41
 msgid "About Video Downloader"
-msgstr ""
+msgstr "Om Videonedlastar"
 
 #: src/window.ui:91
 msgid "Main Menu"
-msgstr ""
+msgstr "Hovudmeny"
 
 #: src/window.ui:105
 msgid "Audio"
-msgstr ""
+msgstr "Lyd"
 
 #: src/window.ui:127 src/window.ui:178
+#, fuzzy
 msgid "URL"
-msgstr ""
+msgstr "Nettadresse"
 
 #: src/window.ui:137 src/window.ui:207
 msgid "Download"
-msgstr ""
+msgstr "Last ned"
 
 #: src/window.ui:156
+#, fuzzy
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: src/window.ui:186
 msgid "Resolution"
-msgstr ""
+msgstr "Oppløysing"
 
 #: src/window.ui:194
 msgid "Prefer MPEG format"
-msgstr ""
+msgstr "Føretrekk MPEG-format"
 
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
+#, fuzzy
 msgid "Back"
-msgstr ""
+msgstr "Tilbake"
 
 #: src/window.ui:405 src/window.ui:547
 msgid "Details"
-msgstr ""
+msgstr "Detaljar"
