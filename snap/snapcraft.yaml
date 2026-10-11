@@ -42,8 +42,8 @@ parts:
   deno:
     plugin: dump
     source:
-      - on amd64: https://github.com/denoland/deno/releases/download/v2.9.6/deno-x86_64-unknown-linux-gnu.zip
-      - on arm64: https://github.com/denoland/deno/releases/download/v2.9.6/deno-aarch64-unknown-linux-gnu.zip
+      - on amd64: https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-unknown-linux-gnu.zip
+      - on arm64: https://github.com/denoland/deno/releases/download/v2.9.7/deno-aarch64-unknown-linux-gnu.zip
     source-type: zip
     override-build: |
       install -Dt "${CRAFT_PART_INSTALL}/usr/bin" deno

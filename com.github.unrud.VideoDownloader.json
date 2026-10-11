@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.unrud.VideoDownloader",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "50",
+    "runtime-version": "51",
     "sdk": "org.gnome.Sdk",
     "command": "video-downloader",
     "finish-args": [
@@ -74,8 +74,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.23.0.tar.gz",
-                    "sha256": "5a905f0f4237b79aefee47f3e04568db2ecb70c55dd7cb118974c5260aa9e285",
+                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.24.1.tar.gz",
+                    "sha256": "89eb344ce7b6f51360e69666e121f54dce9f6fece59b9d4c6aed553a391fc5a6",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/Legrandin/pycryptodome/tags",
@@ -94,8 +94,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/17.1.tar.gz",
-                    "sha256": "35ceb07d65405d36302e4f5c21dd6f2050e0c334929cc9fc40b9c5973ce84bcb",
+                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/17.2.tar.gz",
+                    "sha256": "0bc575816ee77a3033a251829ef38bdad78c308b85fdd65ea390c7a131099426",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/aaugustin/websockets/tags",
@@ -134,8 +134,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.9.6/deno-x86_64-unknown-linux-gnu.zip",
-                    "sha256": "394f07f4da2bebe6ce6f1e7ce0fa16429b29b08c35e3fac3fe25972676dff4b2",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "c6527f24f4b16031d3ae4fa9f658d5f11534c8d84ce7dc8502420280919c3490",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
@@ -148,8 +148,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.9.6/deno-aarch64-unknown-linux-gnu.zip",
-                    "sha256": "9a46afc6c392c7cd2ff71a31558935545b46408d0e87f7a86908c712721c046e",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.9.7/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "c832298b1ad4422481334855f6003e0f54145762c5a134f20a489511d2f65bbf",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
