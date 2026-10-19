@@ -190,6 +190,9 @@ class HandlerInterface:
     def get_automatic_subtitles(self) -> Response[typing.List[str]]:
         raise NotImplementedError
 
+    def get_save_subtitles_separately(self) -> Response[bool]:
+        raise NotImplementedError
+
     def get_url(self) -> Response[str]:
         raise NotImplementedError
 

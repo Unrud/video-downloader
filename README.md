@@ -34,6 +34,28 @@ We use [Weblate](https://hosted.weblate.org/engage/video-downloader/) to transla
 
 ![screenshot 3](https://raw.githubusercontent.com/Unrud/video-downloader/master/screenshots/3.png)
 
+## Building
+
+### Dependencies
+
+Debian/Ubuntu: ```sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-4.0```
+Fedora: ```sudo dnf install python3-gobject gtk4```
+Arch: ```sudo pacman -S python-gobject gtk4```
+
+### Auto build and execute
+
+```bash
+./run-dev.sh
+```
+
+### Manual build
+
+```bash
+meson setup _build --prefix=$PWD/install
+meson compile -C _build
+meson install -C _build
+```
+
 ## Hidden configuration options
 
 The behavior of the program can be tweaked with GSettings.
