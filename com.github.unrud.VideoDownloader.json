@@ -74,8 +74,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v3.24.1.tar.gz",
-                    "sha256": "89eb344ce7b6f51360e69666e121f54dce9f6fece59b9d4c6aed553a391fc5a6",
+                    "url": "https://github.com/Legrandin/pycryptodome/archive/refs/tags/v4.1.0.tar.gz",
+                    "sha256": "edb0d7b6b6f15b30695a1f9a4770cd2798a8a5486c2b1968e5ec6ba74772df06",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/Legrandin/pycryptodome/tags",
@@ -94,8 +94,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/17.2.tar.gz",
-                    "sha256": "0bc575816ee77a3033a251829ef38bdad78c308b85fdd65ea390c7a131099426",
+                    "url": "https://github.com/aaugustin/websockets/archive/refs/tags/17.3.tar.gz",
+                    "sha256": "f80496c1d689e629c184055e15e27734251c7214841d486428c15bed185162ee",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/aaugustin/websockets/tags",
@@ -114,8 +114,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/google/brotli/archive/refs/tags/v1.2.0.tar.gz",
-                    "sha256": "816c96e8e8f193b40151dad7e8ff37b1221d019dbcb9c35cd3fadbfe6477dfec",
+                    "url": "https://github.com/google/brotli/archive/refs/tags/v1.2.1.tar.gz",
+                    "sha256": "98d35d11a78dc453aebb7d10c3748f3f73ff78c8267c0dc697b8631f67bf7e8f",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/google/brotli/releases/latest",
@@ -134,8 +134,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.9.7/deno-x86_64-unknown-linux-gnu.zip",
-                    "sha256": "c6527f24f4b16031d3ae4fa9f658d5f11534c8d84ce7dc8502420280919c3490",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.9.8/deno-x86_64-unknown-linux-gnu.zip",
+                    "sha256": "e890975bc2549807bbcc0b584ffafda72cc7c93349dd99c80483dd784f6c4609",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
@@ -148,8 +148,8 @@
                 },
                 {
                     "type": "archive",
-                    "url": "https://github.com/denoland/deno/releases/download/v2.9.7/deno-aarch64-unknown-linux-gnu.zip",
-                    "sha256": "c832298b1ad4422481334855f6003e0f54145762c5a134f20a489511d2f65bbf",
+                    "url": "https://github.com/denoland/deno/releases/download/v2.9.8/deno-aarch64-unknown-linux-gnu.zip",
+                    "sha256": "d49596c20b9788cf8f5d8ddf644103d4bde56ed239753f0bdb92ba9361d51905",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/denoland/deno/releases/latest",
@@ -190,8 +190,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/69/b2/8cd1613f56eed7ceb64fbd4df3f1c01246bfb098e6f398228bafda22b80b/yt_dlp-2026.8.19-py3-none-any.whl",
-                    "sha256": "1d57897e94c6665a0a6f9bc54b34e584284e32c034ffab3a7df25d8f7b24eedf",
+                    "url": "https://files.pythonhosted.org/packages/b7/75/ae700ddc7e0b1095fd06cf7e251627dcf4cafcaff460cce92cdc08023b13/yt_dlp-2026.10.21-py3-none-any.whl",
+                    "sha256": "94a3a3e2c423129d0bbd2f1be000c4171fa1226c29e251c84aff868f2851c247",
                     "x-checker-data": {
                         "type": "pypi",
                         "name": "yt-dlp",
