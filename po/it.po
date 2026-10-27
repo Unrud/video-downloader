@@ -280,6 +280,14 @@ msgstr "Risoluzione"
 msgid "Prefer MPEG format"
 msgstr "Preferisci il formato MPEG"
 
+#: src/window.ui:202
+msgid "Save embedded subtitles separately"
+msgstr "Salva sottotitoli incorporati separatamente"
+
+#: src/window.ui:210
+msgid "Also save subtitle files alongside the video"
+msgstr "Salva anche i file dei sottotitoli insieme al video"
+
 #: src/window.ui:338 src/window.ui:357 src/window.ui:463 src/window.ui:482
 msgid "Back"
 msgstr "Indietro"
